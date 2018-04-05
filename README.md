@@ -1,4 +1,4 @@
-# Windows File Manager (winfile)
+# Windows File Manager (WinFile)
 
 The Windows File Manager lives again and runs on all currently supported version of Windows,
 including Windows 10.  I welcome your thoughts, comments and suggestions.  There are two
@@ -24,7 +24,7 @@ can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(W
 
 The source code provided here was copied from the Windows NT 4 source tree in November
 2007.  The branch named original_plus contains a very limited set of  modifications
-from the original sources to enable winfile.exe to run on current Windows.
+from the original sources to enable WinFile.exe to run on current Windows.
 The most significant changes are:
 
 1. converted to Visual Studio solution; works on VS 2015 and 2017
@@ -55,7 +55,7 @@ instead of changing drives
 5. added context menus in both panes
 6. improved the means by which icons are displayed for files
 7. F12 runs notepad or notepad++ on the selected file
-8. moved the ini file location to %AppData%\Microsoft\winfile
+8. moved the ini file location to %AppData%\Roaming\Microsoft\WinFile
 9. File.Search can include a date which limits the files returned to those after the date provided;
 the output is also sorted by the date instead of by the name
 10. File.Search includes an option as to whether to include sub-directories
