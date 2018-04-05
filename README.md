@@ -2,17 +2,17 @@
 
 The Windows File Manager lives again and runs on all currently supported version of Windows,
 including Windows 10.  I welcome your thoughts, comments and suggestions.  There are two
-versions of the source code in two branches:
+primary versions of the source code in the master branch:
 
-1. original_plus: contains the source for WinFile as of Windows NT4 with minimal changes
+1. original_plus tag: refers to the source for WinFile as of Windows NT4 with minimal changes
 so that it compiles with Visual Studio and runs on current Windows.
 
-2. master: contains my personal changes / additions to WinFile.
+2. current master: contains my personal changes / additions to WinFile.
 
 I will consider bugs fixes and suggestions for minor changes to the master branch.  Feel free
 to create a pull request or post issues as you see fit.
 
-I will not be changing the original_plus branch nor creating other branches for other purposes.
+I will not be changing the original_plus sources nor creating other branches for other purposes.
 You are welcome do that on your own.
 
 ## History
@@ -22,8 +22,8 @@ can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(W
 
 ## Changes in original_plus
 
-The source code provided here was copied from the Windows NT 4 source tree in November
-2007.  The branch named original_plus contains a very limited set of  modifications
+The source code provided here (in the src directory) was copied from the Windows NT 4 source tree in November
+2007.  The tag named original_plus contains a very limited set of  modifications
 from the original sources to enable WinFile.exe to run on current Windows.
 The most significant changes are:
 
@@ -33,6 +33,11 @@ The most significant changes are:
 4. deleted some unused files (e.g., winfile.def)
 5. converted 64-bit arithmetic from internal libraries to C
 6. converted internal shell APIs to public APIs (the primary reason the old version would not run)
+
+The help directory contains both winfile.hlp and winfile.chm.  Winfile.hlp was in the NT4
+source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from 
+a regular installation of Windows 98 and works on Windows 10.  As is, WinFile.exe 
+tries to launch winfile.hlp which fails.
 
 ## Changes in master v10.0 after original_plus
 
