@@ -1,0 +1,91 @@
+
+// Suggestion database info
+// Used to automate the suggestions compiled into winfile
+//
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+//
+// Usage: Just add a new entry of the format:
+
+// SUGGEST( resource_number, error-code, flags, "your-reason-string" )
+//  resource_number = incremental number for string ID
+//  error-code = error this suggestion corresponds to
+//  "your-reason-string" string displayed for error
+//  flags: SUG_IGN_FORMATMESSAGE = prepend system FormatMessage text
+
+// Ok, so it's not perfect: your resource number can't clash
+// with any others in winfile.h.  Use 1 .. 99 (1101 to 1199)
+// resource # 0 is reserved.
+
+// What it does:
+// For system errors (defined here in winfile land as < DE_BEGIN (bit 29 off)),
+// it puts the "suggestion" below the error text (a blank line is between
+// them.
+//
+// For our errors (>= DE_BEGIN), it places the text below (1 blank line)
+// the previous string.  There is no longer any corresponding text called
+// "IDS_REASONS+DE_MYERROR" or "DE_MYERROR" in the resources.
+// Internal error messages and their reasons must be stored here in
+// the same string.
+
+#ifndef IDS_SUGGESTBEGIN
+#define IDS_SUGGESTBEGIN 1100
+#endif
+
+SUGGEST( 1, DE_SAMEFILE, 0L, \
+ "Source and destination are the same." )
+SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
+ "Select only one file to rename, or use wildcards (for example, *.TXT) to rename a group of files with similar names." )
+SUGGEST( 3, DE_DIFFDIR, 0L, \
+ "Cannot rename to a different directory or disk.\nUse the File Move command instead." )
+SUGGEST( 4, DE_ROOTDIR, 0L, \
+ "You cannot rename the root directory." )
+SUGGEST( 5, DE_DESTSUBTREE, 0L, \
+ "The destination directory is a subdirectory of the source." )
+SUGGEST( 6, DE_WINDOWSFILE, 0L, \
+ "File in use by Windows." )
+SUGGEST( 7, DE_MANYDEST, 0L, \
+ "Specify only one file or directory in the To box. Or, if you want to specify a group of files, use wildcards (for example, *.TXT)." )
+SUGGEST( 8, DE_RENAMREPLACE, 0L, \
+ "A file or directory by this name already exists.  Within a directory, file and directory names must be unique." )
+
+// This error is returned when selecting a grayed network drive and the rdr is not started
+SUGGEST( 9, ERROR_FILE_NOT_FOUND, 0L, \
+ "Make sure the correct path and filename are specified." )
+SUGGEST(10, ERROR_PATH_NOT_FOUND, 0L, \
+ "Make sure the correct path is specified." )
+SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
+ "Quit one or more applications, and then try again.  Or, use the Systems option in Control Panel to increase your virtual memory." )
+// 12
+SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
+ "Disable the write-protection on this disk or use another disk, and then try again." )
+SUGGEST(14, ERROR_NETWORK_ACCESS_DENIED, 0L, \
+ "Be sure you have the correct network permissions to perform this operation." )
+SUGGEST(15, ERROR_DISK_FULL, 0L, \
+  "Delete one or more files to increase disk space, and then try again." )
+SUGGEST(16, ERROR_NO_DATA_DETECTED, SUG_IGN_FORMATMESSAGE, \
+  "No data detected on this medium." )
+
+SUGGEST(17, DE_MAKEDIREXISTS, 0L, \
+  "The directory already exists." )
+SUGGEST(18, DE_DIREXISTSASFILE, 0L, \
+  "The specified name is already used by a file." )
+#ifdef ASSOC
+SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
+  "This can only be deleted when viewing Common File Types and extensions." )
+#endif
+
+// Block out errors that require arguments
+SUGGEST(50, ERROR_WRONG_DISK, SUG_IGN_FORMATMESSAGE, \
+  "The wrong disk is in the drive." )
+SUGGEST(51, ERROR_CHILD_NOT_COMPLETE, SUG_IGN_FORMATMESSAGE, \
+  "The application cannot be run in Windows NT mode." )
+SUGGEST(52, ERROR_INVALID_ORDINAL, SUG_IGN_FORMATMESSAGE, \
+  "The operating system cannot run this component." )
+SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
+  "The component cannot be run in Windows NT mode." )
+SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
+  "This program is not a valid Windows NT application." )
+SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
+  "An error occurred.  There is no message text for this error." )
+

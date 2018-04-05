@@ -1,0 +1,125 @@
+WINFILE Development Documentation -
+
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the MIT License.
+
+This file contains notes on the conventions used while developing WINFILE.EXE.
+It is broken into several sections:
+
+        o   Window Definitions
+        o   Window Relationships
+        o   Message Conventions
+        o   Variable Conventions
+        o   Utility Functions
+        o   Source File Organization
+        o   Segmentation
+        o   Etc.
+
+
+
+Window Definitions -
+
+
+
+Window Relationships -
+
+
+
+Message Conventions -
+
+    FS_CHANGEDISPLAY:
+        This message causes the window to alter the contents of what it's
+        displaying.  It is valid for Directory and Search Results windows.
+        There isn't a return value.
+
+        wParam  -   Indicates the type of change being made:
+                        CD_PATH -   Changes the path Directory window
+                                    displays including a filespec
+                                    with wildcards.  Valid only for
+                                    Directory windows.  lParam points
+                                    to the new path.  If lParam is
+                                    NULL, this is the REFRESH command.
+
+                        CD_VIEW -   LOWORD(lParam) contains the new
+                                    set of view flags.  Valid only for
+                                    Directory windows.
+
+                        CD_SORT -   LOWORD(lParam) contains the new
+                                    sort flags.
+
+        lParam  -   Depends upon the setting of wParam.
+
+
+    FS_GETDIRECTORY:
+        This message stores the window's current directory in the buffer
+        pointed to by lParam.  It is valid for the Tree and Directory MDI
+        windows.  The path is returned in upper case and always ends with
+        a backslash.
+
+            ex.:    "E:\PRE\", "C:\"
+
+        wParam  -   Maximum length of string
+        lParam  -   LPTSTR to buffer will contain the directory path
+
+
+    FS_GETDRIVE:
+        This message returns the single letter designation of the window's
+        current drive.  It is valid for Tree and Directory MDI windows.
+        The letter is returned in upper case.
+
+            ex.:    'C', 'A'
+
+        wParam  -   Unused
+        lParam  -   Unused
+
+    FS_GETSELECTION:
+        This messages returns a near pointer to a string containing the
+        names of the window's selected file(s seperated by spaces.  The
+        string is returned upper case.  No path info in included unless
+        a directory is selected.  The directories includes full path info
+        and NOT terminated with backslash.
+
+        The HIWORD of the return is a BOOL indicating if the last selected
+        item is a directory or not.
+
+            ex.:    "FOO.TXT LOO.LOO E:\DIR"
+
+        wParam  -   TRUE if only the latest file selected should be
+                    returned
+        lParam  -   Unused
+
+        NOTE: The sender is responsible for LocalFree()ing the returned
+              string.
+
+
+Variable Conventions -
+
+    Window Words -
+        Each MDI Child window has the following extra bytes allocated with it:
+
+            GWW_VIEW    -   The "current" view flags for the window
+            GWW_SORT    -   The "current" sort flags for the window
+            GWW_ATTRIBS -   The "current" attributes to display
+
+                Note: The Tree window contains the "System Wide" versions
+                      of these flags.  The Search window is hard coded
+                      to VIEW_NAMEONLY, IDM_BYNAME, and ATTR_DEFAULT.
+
+        In addition, MDI children have the following extra bytes which are
+        specific to them:
+
+            GWW_HWNDLB  -   (Directory) The hwnd of the window's list box
+            GWW_HDTA    -   (Directory) The handle of the directories DTA list
+
+
+
+
+Utility Functions -
+
+
+
+Source File Organization -
+
+
+
+Segmentation -
