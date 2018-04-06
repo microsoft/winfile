@@ -32,4 +32,6 @@ typedef struct tagDNODE
     TCHAR    szName[1];      // variable length field
   } DNODE;
 typedef DNODE *PDNODE;
-
+
+VOID GetTreePath(PDNODE pNode, register LPTSTR szDest);
+

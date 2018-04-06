@@ -51,7 +51,7 @@
 #define CONFIRMNOACCESSDEST  52
 #define SEARCHPROGDLG        53
 
-#define COPYTOCLIPBOARDDLG   54
+// #define COPYTOCLIPBOARDDLG   54
 
 #define ASSOCIATEFILEDLG        55
 #define ASSOCIATEFILEDLGCONFIG  56   // Same dialog
@@ -59,6 +59,8 @@
 #define COMPRESSPROGDLG         57  //  Compression progress dialogs
 #define UNCOMPRESSPROGDLG       58
 #define COMPRESSERRDLG          59  //  Compression Error Dialog
+
+#define GOTODIRDLG    60
 
 #define IDD_TEXT      -1
 #define IDD_TEXT1     100
@@ -74,12 +76,14 @@
 #define IDD_TEXT2     111
 #define IDD_IGNOREALL 112
 
-
+// next five match IDM_BYNAME list
 #define IDD_NAME      201
 #define IDD_TYPE      202
 #define IDD_SIZE      203
 #define IDD_DATE      204
-#define IDD_TIME      205
+#define IDD_FDATE	  205
+
+#define IDD_TIME      299
 #define IDD_FLAGS     206
 
 #define IDD_DOSNAMES  266
@@ -109,6 +113,7 @@
 #define IDD_SHARES       229
 #define IDD_SAVESETTINGS    231
 #define IDD_SEARCHALL       232
+#define IDD_INCLUDEDIRS  233
 #define IDD_HIGHCAP      241
 #define IDD_MAKESYS      242
 #define IDD_PROGRESS     243
@@ -144,6 +149,10 @@
 #define IDD_CSIZE           269
 #define IDD_CRATIOLABEL     270
 #define IDD_CRATIO          271
+
+#define IDD_RUNAS			272
+
+#define IDD_SHOWJUNCTION    273
 
 
 #define IDD_NEW             300
@@ -187,6 +196,8 @@
 #define IDD_UNCOMPRESS_TDIRS   353
 #define IDD_UNCOMPRESS_TFILES  354
 
+#define IDD_GOTODIR        355
+#define IDD_GOTOLIST       356
 
 #define IDD_ASSOCFIRST     100
 #define IDD_ASSOCLAST      109
@@ -203,5 +214,7 @@
 
 #define IDD_KK_TEXTTO         2001
 #define IDD_KK_TEXTFROM       2002
+
+#define IDD_DIRS 		2003
 
 

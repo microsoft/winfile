@@ -16,6 +16,48 @@
 
 LPTSTR CurDirCache[26];
 
+#define MAXHISTORY 32
+DWORD historyCur = 0;
+typedef struct HistoryDir
+{
+	HWND hwnd;
+	TCHAR szDir[MAXPATHLEN];
+} HistoryDir;
+HistoryDir rghistoryDir[MAXHISTORY];
+
+VOID
+SaveHistoryDir(HWND hwnd, LPWSTR szDir)
+{
+	if (rghistoryDir[historyCur].hwnd == hwnd && lstrcmpi(rghistoryDir[historyCur].szDir, szDir) == 0)
+		return;
+
+	historyCur = (historyCur + 1) % MAXHISTORY;
+
+	rghistoryDir[historyCur].hwnd = hwnd;
+	lstrcpy(rghistoryDir[historyCur].szDir, szDir);
+
+	// always leave one NULL entry after current
+	DWORD historyT = (historyCur + 1) % MAXHISTORY;
+	rghistoryDir[historyT].hwnd = NULL;
+	rghistoryDir[historyT].szDir[0] = '\0';
+}
+
+BOOL
+GetPrevHistoryDir(BOOL forward, HWND *phwnd, LPWSTR szDir)
+{
+	DWORD historyNext = (historyCur + 1) % MAXHISTORY;
+	DWORD historyPrev = (historyCur == 0 ? MAXHISTORY : historyCur )- 1;
+	DWORD historyT = forward ? historyNext : historyPrev;
+
+	if (rghistoryDir[historyT].hwnd == NULL)
+		return FALSE;
+	
+	historyCur = historyT;
+
+	*phwnd = rghistoryDir[historyCur].hwnd;  
+	lstrcpy(szDir, rghistoryDir[historyCur].szDir);
+	return TRUE;
+}
 
 LPWSTR
 pszNextComponent(
@@ -148,6 +190,7 @@ GetSelectedDrive()
  *
  *  returns:
  *  lpDir   ANSI string of current dir
+ *  NOTE: when drive != 0, string will be empty for an invalid drive.
  */
 
 VOID
@@ -199,12 +242,59 @@ BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir)
         drvstr[1] = ('\0');
     }
 
-	if (!CheckDirExists(drvstr))
+	if (GetFileAttributes(drvstr) == (DWORD)(-1))
 		return FALSE;
+
+//	if (!CheckDirExists(drvstr))
+//		return FALSE;
 
     ret = GetFullPathName( drvstr, MAXPATHLEN, pszDir, NULL);
 
-	return ret < MAXPATHLEN;
+	return ret != 0;
+}
+
+
+// similar to GetSelectedDirectory but for all already listed directories
+// doesn't change the current directory of the drives, but returns a list of them
+VOID
+GetAllDirectories(LPTSTR rgszDirs[])
+{
+	HWND mpdrivehwnd[MAX_DRIVES];
+    HWND hwnd;
+    DRIVE driveT;
+
+	for (driveT = 0; driveT < MAX_DRIVES; driveT++)
+	{
+		rgszDirs[driveT] = NULL;
+		mpdrivehwnd[driveT] = NULL;
+	}
+		
+    for (hwnd = GetWindow(hwndMDIClient,GW_CHILD); hwnd; hwnd = GetWindow(hwnd,GW_HWNDNEXT)) 
+    {
+    	driveT = (DRIVE)SendMessage(hwnd,FS_GETDRIVE,0,0L) - CHAR_A;
+    	if (mpdrivehwnd[driveT] == NULL)
+			mpdrivehwnd[driveT] = hwnd;    	
+	}
+
+	for (driveT = 0; driveT < MAX_DRIVES; driveT++)
+	{
+		TCHAR szDir[MAXPATHLEN];
+		
+		if (mpdrivehwnd[driveT] != NULL)
+		{
+		    SendMessage(mpdrivehwnd[driveT],FS_GETDIRECTORY,MAXPATHLEN,(LPARAM)szDir);
+
+		    StripBackslash(szDir);
+		}
+		else if (!GetSavedDirectory(driveT, szDir))
+			szDir[0] = '\0';
+
+		if (szDir[0] != '\0')
+		{
+			rgszDirs[driveT] = (LPTSTR) LocalAlloc(LPTR, ByteCountOf(lstrlen(szDir)+1));		
+			lstrcpy(rgszDirs[driveT], szDir);
+		}
+	}
 }
 
 
@@ -252,6 +342,8 @@ RefreshWindow(
    //
    if (bFlushCache)
       aDriveInfo[drive].bShareChkTried = FALSE;
+
+   // NOTE: similar to CreateDirWindow
 
    //
    // update the dir part first so tree can steal later
@@ -675,6 +767,8 @@ SetMDIWindowText(
    // Now delimit szTitle to keep it the same
    //
    szTitle[uTitleLen] = CHAR_NULL;
+
+   SaveHistoryDir(hwnd, szTitle);
 }
 
 #define ISDIGIT(c)  ((c) >= TEXT('0') && (c) <= TEXT('9'))
@@ -1321,7 +1415,7 @@ MyMessageBox(HWND hwnd, DWORD idTitle, DWORD idMessage, DWORD wStyle)
 //  there is no extension.  even if it's already quoted!)
 
 DWORD
-ExecProgram(LPTSTR lpPath, LPTSTR lpParms, LPTSTR lpDir, BOOL bLoadIt)
+ExecProgram(LPTSTR lpPath, LPTSTR lpParms, LPTSTR lpDir, BOOL bLoadIt, BOOL bRunAs)
 {
   DWORD          ret;
   INT           iCurCount;
@@ -1353,7 +1447,7 @@ ExecProgram(LPTSTR lpPath, LPTSTR lpParms, LPTSTR lpDir, BOOL bLoadIt)
      lpszTitle++;
 
   SetErrorMode(0);
-  ret = (DWORD) ShellExecute(hwndFrame, NULL, lpPath, lpParms, lpDir, bLoadIt ? SW_SHOWMINNOACTIVE : SW_SHOWNORMAL);
+  ret = (DWORD) ShellExecute(hwndFrame, bRunAs ? L"runas" : NULL, lpPath, lpParms, lpDir, bLoadIt ? SW_SHOWMINNOACTIVE : SW_SHOWNORMAL);
 
   SetErrorMode(1);
 
@@ -1465,5 +1559,42 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
   }
 
   return DocFind(ppBucket, szExt);
+}
+
+
+
+// string always upper case
+// returns true if additional characters; false if first one
+// repeating the first character leaves only one character
+// ch == '\0' resets the tick and buffer
+BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
+{
+	static DWORD tick64 = 0;
+	static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
+	DWORD tickT;
+	size_t ich;
+
+	if (ch == '\0')
+	{
+		tick64 = 0;
+		rgchTA[0] = '\0';
+		return FALSE;
+	}
+
+	tickT = GetTickCount();
+	ch = (WCHAR)CharUpper((LPWSTR)ch);
+	ich = wcslen(rgchTA);
+
+	// if only one char and it repeats or more than .5s since last char, start over
+	if (ich == 1 && rgchTA[0] == ch || tickT - tick64 > 500)
+		ich = 0;
+
+	rgchTA[ich] = ch;
+	rgchTA[ich+1] = '\0';
+
+	tick64 = tickT;
+	lstrcpy(szT, rgchTA);
+
+	return ich != 0;
 }
 

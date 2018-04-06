@@ -166,26 +166,4 @@ Extern HANDLE hEventUpdate;
 Extern HANDLE hEventUpdatePartial;
 
 
-//
-// Doc prototypes; typdefs
-//
-
-typedef struct _DOC_BUCKET** PPDOCBUCKET;
-typedef struct _DOC_BUCKET* PDOCBUCKET;
-
-PPDOCBUCKET DocConstruct(VOID);
-VOID DocDestruct(PPDOCBUCKET ppDocBucket);
-INT DocInsert(PPDOCBUCKET ppDocBucket, LPTSTR lpszExt, DWORD dwParam);
-PDOCBUCKET DocFind(PPDOCBUCKET ppDocBucket, LPTSTR lpszExt);
-DWORD DocGetParm(PDOCBUCKET pDocBucket);
-VOID DocSetParm(PDOCBUCKET pDocBucket, DWORD dwParm);
-
-#ifdef DOCENUM
-typedef struct _DOC_ENUM DOCENUM, *PDOCENUM;
-
-PDOCENUM DocOpenEnum(PPDOCBUCKET ppDocBucket);
-LPTSTR DocEnum(PDOCENUM pDocEnum, PDWORD pdwParm);
-VOID DocCloseEnum(PDOCENUM pDocEnum);
-#endif
-
 #endif // ndef _WFINFO_H

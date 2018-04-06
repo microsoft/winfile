@@ -448,8 +448,9 @@ NetCon_UpdateLines(DRIVE drive, DWORD dwType)
 
 struct _DOC_BUCKET {
    PDOCBUCKET next;
-   DWORD dwParm;
    TCHAR szExt[EXTSIZ];
+   HICON hIcon;
+   LPTSTR lpszFI;
 } DOCBUCKET;
 
 
@@ -515,6 +516,8 @@ DocDestruct(PPDOCBUCKET ppDocBucket)
          pDocBucket=pDocBucketNext) {
 
          pDocBucketNext = pDocBucket->next;
+       	 DestroyIcon(pDocBucket->hIcon);
+         LocalFree((HLOCAL)pDocBucket->lpszFI);
          LocalFree((HLOCAL)pDocBucket);
       }
    }
@@ -585,7 +588,7 @@ RemoveEndQuote(
 INT
 DocInsert(PPDOCBUCKET ppDocBucket,
          LPTSTR lpszExt,
-         DWORD dwParm)
+         LPTSTR lpszFileIcon)
 {
    PDOCBUCKET pDocBucket;
    INT iBucket;
@@ -623,7 +626,13 @@ DocInsert(PPDOCBUCKET ppDocBucket,
    RemoveEndQuote(szExt);
    lstrcpy(pDocBucket->szExt, szExt);
 
-   pDocBucket->dwParm = dwParm;
+   pDocBucket->hIcon = NULL;
+   pDocBucket->lpszFI = NULL;
+   
+   if (lpszFileIcon != NULL)
+	   pDocBucket->lpszFI = (LPTSTR) LocalAlloc(LPTR, ByteCountOf(lstrlen(lpszFileIcon)+1));		
+   if (pDocBucket->lpszFI != NULL)
+	  lstrcpy(pDocBucket->lpszFI, lpszFileIcon);
 
    ppDocBucket[iBucket] = pDocBucket;
 
@@ -682,17 +691,27 @@ DocFind(PPDOCBUCKET ppDocBucket, LPTSTR lpszExt)
 
 
 
-DWORD DocGetParm(PDOCBUCKET pDocBucket)
+HICON DocGetIcon(PDOCBUCKET pDocBucket)
 {
-   return pDocBucket->dwParm;
-}
+   if (pDocBucket == NULL)
+		return NULL;
 
-VOID
-DocSetParm(PDOCBUCKET pDocBucket, DWORD dwParm)
-{
-   pDocBucket->dwParm=dwParm;
-}
+   if (pDocBucket->hIcon == NULL && pDocBucket->lpszFI != NULL)
+   {
+      TCHAR *pchT = wcsrchr(pDocBucket->lpszFI, ',');
 
+      if (pchT != NULL)
+      {
+      	  INT index = atoi(pchT+1);
+      	  HICON hIcon;
+
+		  *pchT = '\0';
+      	  if (ExtractIconEx(pDocBucket->lpszFI, index, NULL, &hIcon, 1) == 1)
+      	  	pDocBucket->hIcon = hIcon;
+      }
+   }
+   return pDocBucket->hIcon;
+}
 
 
 #ifdef DOCENUM
@@ -755,7 +774,7 @@ DocOpenEnum(PPDOCBUCKET ppDocBucket)
 // Synopsis: Enumerates the pDocEnum structure
 //
 // IN        pDocEnum
-// OUT       pdwParm
+// OUT       phIcon
 //
 // Return:   szExt
 //
@@ -770,7 +789,7 @@ DocOpenEnum(PPDOCBUCKET ppDocBucket)
 /////////////////////////////////////////////////////////////////////
 
 LPTSTR
-DocEnum(register PDOCENUM pDocEnum, PDWORD pdwParm)
+DocEnum(register PDOCENUM pDocEnum, PHICON phIcon)
 {
    LPTSTR pszExt;
 
@@ -789,7 +808,7 @@ DocEnum(register PDOCENUM pDocEnum, PDWORD pdwParm)
       pDocEnum->pDocBucketCur = pDocEnum->ppDocBucketBase[pDocEnum->iCurChain];
    }
 
-   *pdwParm = pDocEnum->pDocBucketCur->dwParm;
+   *phIcon = pDocEnum->pDocBucketCur->hIcon;
    pszExt = pDocEnum->pDocBucketCur->szExt;
 
    //

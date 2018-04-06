@@ -13,16 +13,15 @@
 #include "lfn.h"
 #include "wfcopy.h"
 #include "wnetcaps.h"              // WNetGetCaps()
+#include "wfdrop.h"
 
+#include <shlobj.h>
 #include <commctrl.h>
+#include <ole2.h>
 
 #define HELP_PARTIALKEY 0x0105L    // call the search engine in winhelp
 
-#ifdef PROGMAN
-#define VIEW_NOCHANGE (VIEW_PLUSES|VIEW_ICON)
-#else
 #define VIEW_NOCHANGE VIEW_PLUSES
-#endif
 
 VOID MDIClientSizeChange(HWND hwndActive, INT iFlags);
 HWND LocateDirWindow(LPTSTR pszPath, BOOL bNoFileSpec, BOOL bNoTreeWindow);
@@ -93,7 +92,8 @@ RedoDriveWindows(HWND hwndActive)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  LocateDirWindow() -                                                     */
+/*  LocateDirWindow() - return MDI client window which has a tree window    */
+/*  and for which the path matches                                          */
 /*                                                                          */
 /*--------------------------------------------------------------------------*/
 
@@ -331,17 +331,6 @@ ChangeFileSystem(
                   if (!lstrcmpi(szPath, szFrom))
                   {
                      SendMessage(hwndTree, TC_SETDIRECTORY, FALSE, (LPARAM)szTo);
-
-                     lstrcpy(szPath, szTo);
-
-                     // update the window title
-
-                     AddBackslash(szPath);
-                     SendMessage(hwnd, FS_GETFILESPEC, MAXPATHLEN, (LPARAM)(szPath + lstrlen(szPath)));
-                     // if (wTextAttribs & TA_LOWERCASE)
-                     //         CharLower(szPath);
-
-                     SetMDIWindowText(hwnd, szPath);
                   }
                }
             }
@@ -355,8 +344,7 @@ ChangeFileSystem(
       case ( FSC_RMDIR ) :
       {
          // Close any open directory window.
-         if ( (hwnd = LocateDirWindow(szFrom, TRUE, FALSE)) &&
-              !HasTreeWindow(hwnd) )
+         if (hwnd = LocateDirWindow(szFrom, TRUE, TRUE))
          {
             SendMessage(hwnd, WM_CLOSE, 0, 0L);
          }
@@ -488,9 +476,6 @@ CreateTreeWindow(
 }
 
 
-
-
-
 /////////////////////////////////////////////////////////////////////
 //
 // Name:     CreateDirWindow
@@ -521,18 +506,19 @@ CreateDirWindow(
    HWND hwndActive)
 {
    register HWND hwndT;
-   WCHAR szFileSpec[MAXPATHLEN];
+   INT dxSplit;
 
-   //
-   // shift toggles 'replace on open'
-   //
-   if (GetKeyState(VK_SHIFT) < 0)
-      bReplaceOpen = !bReplaceOpen;
+   if (hwndActive == hwndSearch) {
+	   bReplaceOpen = FALSE;
+	   dxSplit = -1;
+   } else {
+	   dxSplit = GetSplit(hwndActive);
+   }
 
    //
    // Is a window with this path already open?
    //
-   if (!bReplaceOpen && (hwndT = LocateDirWindow(szPath, TRUE, TRUE))) {
+   if (!bReplaceOpen && (hwndT = LocateDirWindow(szPath, TRUE, FALSE))) {
 
       SendMessage(hwndMDIClient, WM_MDIACTIVATE, GET_WM_MDIACTIVATE_MPS(0, 0, hwndT));
       if (IsIconic(hwndT))
@@ -544,47 +530,69 @@ CreateDirWindow(
    // Are we replacing the contents of the currently active child?
    //
    if (bReplaceOpen) {
+	   CharUpperBuff(szPath, 1);     // make sure
 
-      //
-      // update the tree if necessary, before we throw on the filespec
-      //
-      if (hwndT = HasTreeWindow(hwndActive))
-         SendMessage(hwndT, TC_SETDIRECTORY, FALSE, (LPARAM)szPath);
+	   DRIVE drive = DRIVEID(szPath);
+	   for (INT i = 0; i<cDrives; i++)
+	   {
+		   if (drive == rgiDrive[i])
+		   {
+			   // if not already selected, do so now
+			   if (i != SendMessage(hwndDriveList, CB_GETCURSEL, i, 0L))
+			   {
+				   SelectToolbarDrive(i);
+			   }
+			   break;
+		   }
+	   }
 
-      SendMessage(hwndActive,
-                  FS_GETFILESPEC,
-                  COUNTOF(szFileSpec),
-                  (LPARAM)szFileSpec);
+	   if (hwndT = HasDirWindow(hwndActive))
+	   {
+		   AddBackslash(szPath);                   // default to all files
+		   SendMessage(hwndT, FS_GETFILESPEC, MAXFILENAMELEN, (LPARAM)(szPath + lstrlen(szPath)));
+		   SendMessage(hwndT, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)szPath);
+		   StripFilespec(szPath);
+	   }
 
-      //
-      // need to add this stuff to the path
-      //
-      AddBackslash(szPath);
-      lstrcat(szPath, szFileSpec);
+	   //
+	   // update the tree if necessary
+	   //
+	   ;
+	   if (hwndT = HasTreeWindow(hwndActive))
+	   {
+		   SendMessage(hwndT, TC_SETDRIVE, 0, (LPARAM)(szPath));
+	   }
 
-      SendMessage(GetDlgItem(hwndActive, IDCW_DIR), FS_CHANGEDISPLAY, CD_PATH, (LPARAM)szPath);
+	   //
+	   // Update the status in case we are "reading"
+	   //
+	   UpdateStatus(hwndActive);
 
-      //
-      // Update the status in case we are "reading"
-      //
-      UpdateStatus(hwndActive);
-
-      return hwndActive;
+	   return hwndActive;
    }
 
    AddBackslash(szPath);                   // default to all files
    lstrcat(szPath, szStarDotStar);
 
    //
-   // dir only tree window
+   // create tree and/or dir based on current window split
    //
-   return CreateTreeWindow(szPath, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, 0);
+   hwndActive = CreateTreeWindow(szPath, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, dxSplit);
+
+   // call TC_SETDRIVE like use of CreateTreeWindow in NewTree()
+   if (hwndActive && (hwndT = HasTreeWindow(hwndActive)))
+	   SendMessage(hwndT,
+		   TC_SETDRIVE,
+		   MAKELONG(MAKEWORD(FALSE, 0), TRUE),
+		   0L);
+
+   return hwndActive;
 }
 
 
 
 VOID
-OpenSelection(HWND hwndActive)
+OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
 {
    LPTSTR p;
    BOOL bDir;
@@ -654,7 +662,10 @@ OpenSelection(HWND hwndActive)
             SetFocus(hwndDir);
          }
 
-         CreateDirWindow(szPath, TRUE, hwndActive);
+		 //
+		 // shift toggles 'replace on open'
+		 //
+         CreateDirWindow(szPath, GetKeyState(VK_SHIFT) >= 0, hwndActive);
 
       } else if (hwndTree) {
 
@@ -662,7 +673,7 @@ OpenSelection(HWND hwndActive)
          // SHIFT open a dir only tree
 
          if (GetKeyState(VK_SHIFT) < 0) {
-            CreateDirWindow(szPath, TRUE, hwndActive);
+            CreateDirWindow(szPath, FALSE, hwndActive);
          } else {
             SendMessage(hwndTree, TC_TOGGLELEVEL, FALSE, 0L);
          }
@@ -676,7 +687,30 @@ OpenSelection(HWND hwndActive)
       //
       // Attempt to spawn the selected file.
       //
-      ret = ExecProgram(szPath, szNULL, NULL, (GetKeyState(VK_SHIFT) < 0));
+      if (fEdit)
+      {
+          // check if notepad++ exists: %ProgramFiles%\Notepad++\notepad++.exe
+          TCHAR szToRun[MAXPATHLEN];
+
+          DWORD cchEnv = GetEnvironmentVariable(TEXT("ProgramFiles"), szToRun, MAXPATHLEN);
+          if (cchEnv != 0)
+          {
+            lstrcat(szToRun, TEXT("\\Notepad++\\notepad++.exe"));
+            if (!PathFileExists(szToRun))
+            {
+                cchEnv = 0;
+            }
+          }
+
+          if (cchEnv == 0)
+            lstrcpy(szToRun, TEXT("notepad.exe"));
+
+          ret = ExecProgram(szToRun, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
+      }
+      else
+      {
+          ret = ExecProgram(szPath, szNULL, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
+      }
       if (ret)
          MyMessageBox(hwndFrame, IDS_EXECERRTITLE, ret, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
       else if (bMinOnRun)
@@ -838,13 +872,40 @@ AppCommandProc(register DWORD id)
       if (GetKeyState(VK_MENU) < 0)
          PostMessage(hwndFrame, WM_COMMAND, GET_WM_COMMAND_MPS(IDM_ATTRIBS, 0, 0));
       else
-         OpenSelection(hwndActive);
+      {
+         TypeAheadString('\0', NULL);
+
+         OpenOrEditSelection(hwndActive, FALSE);
+      }
       break;
 
+   case IDM_EDIT:
+      TypeAheadString('\0', NULL);
+
+      OpenOrEditSelection(hwndActive, TRUE);
+      break;
+      
    case IDM_ASSOCIATE:
 
       DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(ASSOCIATEDLG), hwndFrame, (DLGPROC)AssociateDlgProc);
       break;
+
+   case IDM_GOTODIR:
+      DialogBox(hAppInstance, (LPTSTR)MAKEINTRESOURCE(GOTODIRDLG), hwndFrame, (DLGPROC)GotoDirDlgProc);
+	  break;
+
+   case IDM_HISTORYBACK:
+   case IDM_HISTORYFWD:
+       {
+	   HWND hwndT;
+	   if (GetPrevHistoryDir(id == IDM_HISTORYFWD, &hwndT, szPath))
+	   {
+		   // history is saved with wildcard spec; remove it
+		   StripFilespec(szPath);
+		   SetCurrentPathOfWindow(szPath);
+	   }
+	   }
+	   break;
 
    case IDM_SEARCH:
 
@@ -875,6 +936,47 @@ AppCommandProc(register DWORD id)
       DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(RUNDLG), hwndFrame, (DLGPROC)RunDlgProc);
       break;
 
+   case IDM_STARTCMDSHELL:
+	   {
+		   BOOL bRunAs;
+		   BOOL bUseCmd;
+		   BOOL bDir;
+		   DWORD cchEnv;
+		   TCHAR szToRun[MAXPATHLEN];
+		   LPTSTR szDir;
+		   TCHAR szParams[MAXPATHLEN];
+
+			szDir = GetSelection(1|4|16, &bDir);
+			if (!bDir)
+				StripFilespec(szDir);
+	
+		   bRunAs = GetKeyState(VK_SHIFT) < 0;
+
+		   // check if conemu exists: %ProgramFiles%\ConEmu\ConEmu64.exe
+		   bUseCmd = TRUE;
+		   cchEnv = GetEnvironmentVariable(TEXT("ProgramFiles"), szToRun, MAXPATHLEN);
+		   if (cchEnv != 0) {
+			   if (lstrcmpi(szToRun + cchEnv - 6, TEXT(" (x86)")) == 0) {
+				   szToRun[cchEnv - 6] = TEXT('\0');
+			   }
+			   lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
+			   if (PathFileExists(szToRun)) {
+				   wsprintf(szParams, TEXT(" -Single -Dir \"%s\""), szDir);
+				   bUseCmd = FALSE;
+			   }
+		   }
+
+		   // use cmd.exe if ConEmu doesn't exist or we are running admin mode
+		   if (bUseCmd || bRunAs) {
+			   lstrcpy(szToRun, TEXT("cmd.exe"));
+			   szParams[0] = TEXT('\0');
+		   }
+
+		   ret = ExecProgram(szToRun, szParams, szDir, FALSE, bRunAs);
+		   LocalFree(szDir);
+		}
+	   break;
+
    case IDM_SELECT:
 
       // push the focus to the dir half so when they are done
@@ -895,6 +997,79 @@ AppCommandProc(register DWORD id)
       DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(MOVECOPYDLG), hwndFrame, (DLGPROC)SuperDlgProc);
       break;
 
+   case IDM_PASTE:
+      {
+      IDataObject *pDataObj;
+	  FORMATETC fmtetcDrop = { 0, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
+	  UINT uFormatEffect = RegisterClipboardFormat(CFSTR_PREFERREDDROPEFFECT);
+	  FORMATETC fmtetcEffect = { uFormatEffect, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
+	  STGMEDIUM stgmed;
+	  DWORD dwEffect = DROPEFFECT_COPY;
+	  LPWSTR szFiles = NULL;
+
+	  OleGetClipboard(&pDataObj);		// pDataObj == NULL if error
+
+	  if(pDataObj != NULL && pDataObj->lpVtbl->GetData(pDataObj, &fmtetcEffect, &stgmed) == S_OK)
+	  {
+	  	LPDWORD lpEffect = GlobalLock(stgmed.hGlobal);
+	  	if(*lpEffect & DROPEFFECT_COPY) dwEffect = DROPEFFECT_COPY;
+		if(*lpEffect & DROPEFFECT_MOVE) dwEffect = DROPEFFECT_MOVE;
+		GlobalUnlock(stgmed.hGlobal);
+	  	ReleaseStgMedium(&stgmed);
+	  }
+      
+	  // Try CF_HDROP
+	  if(pDataObj != NULL)
+		szFiles = QuotedDropList(pDataObj);
+
+	  // Try CFSTR_FILEDESCRIPTOR
+	  if (szFiles == NULL)
+	  {
+			szFiles = QuotedContentList(pDataObj);
+			if (szFiles != NULL)
+				// need to move the already copied files
+				dwEffect = DROPEFFECT_MOVE;
+	  }
+
+	  // Try "LongFileNameW"
+	  fmtetcDrop.cfFormat = RegisterClipboardFormat(TEXT("LongFileNameW"));
+	  if(szFiles == NULL && pDataObj != NULL && pDataObj->lpVtbl->GetData(pDataObj, &fmtetcDrop, &stgmed) == S_OK)
+	  {
+	  	LPWSTR lpFile = GlobalLock(stgmed.hGlobal);
+	  	DWORD cchFile = wcslen(lpFile);
+		szFiles = (LPWSTR)LocalAlloc(LMEM_FIXED, (cchFile+3) * sizeof(WCHAR));
+		lstrcpy (szFiles+1, lpFile);
+		*szFiles = '\"';
+		*(szFiles+1+cchFile) = '\"';
+		*(szFiles+1+cchFile+1) = '\0';		
+
+		GlobalUnlock(stgmed.hGlobal);
+		
+		// release the data using the COM API
+		ReleaseStgMedium(&stgmed);
+	  }
+
+	  if (szFiles != NULL)
+	  {
+		WCHAR     szTemp[MAXPATHLEN];
+
+		SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
+
+	    AddBackslash(szTemp);
+	    lstrcat(szTemp, szStarDotStar);   // put files in this dir
+
+	    CheckEsc(szTemp);
+
+		DMMoveCopyHelper(szFiles, szTemp, dwEffect == DROPEFFECT_COPY);
+
+		LocalFree((HLOCAL)szFiles);	
+	  }
+
+	  if (pDataObj != NULL)
+	    pDataObj->lpVtbl->Release(pDataObj);
+   	  }
+   	  break;
+   	  
    case IDM_PRINT:
       dwSuperDlgMode = id;
 
@@ -908,9 +1083,70 @@ AppCommandProc(register DWORD id)
       break;
 
    case IDM_COPYTOCLIPBOARD:
-      dwSuperDlgMode = id;
+   case IDM_CUTTOCLIPBOARD:
+	  {
+         LPTSTR  pszFiles;
+		 HANDLE hMemLongW, hDrop;
+		 LONG cbMemLong;
+		 HANDLE hMemDropEffect;
+		 TCHAR szPathLong[MAXPATHLEN];
+		 POINT pt;
 
-      DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(COPYTOCLIPBOARDDLG), hwndFrame, (DLGPROC)SuperDlgProc);
+         pszFiles=GetSelection(4, NULL);
+		 if (pszFiles == NULL) {
+			 break;
+		 }
+
+		 // LongFileNameW (only if one file)
+		 hMemLongW = NULL;
+		 if (!CheckMultiple(pszFiles))
+		 {
+			 GetNextFile(pszFiles, szPathLong, COUNTOF(szPathLong));
+		     cbMemLong = ByteCountOf(lstrlen(szPathLong)+1);
+		     hMemLongW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
+		     if (hMemLongW)
+		     {
+			     lstrcpy(GlobalLock(hMemLongW), szPathLong);
+			     GlobalUnlock(hMemLongW);
+		     }
+		 }
+
+		 hMemDropEffect = NULL;
+		 if (id == IDM_CUTTOCLIPBOARD) {
+			 hMemDropEffect = GlobalAlloc(GPTR | GMEM_DDESHARE, sizeof(DWORD));
+			 if (hMemDropEffect) {
+				 *(DWORD *)GlobalLock(hMemDropEffect) = DROPEFFECT_MOVE;
+				 GlobalUnlock(hMemDropEffect);
+			 }
+		 }
+
+		 // CF_HDROP
+		 pt.x = 0; pt.y = 0;
+		 hDrop = CreateDropFiles(pt, FALSE, pszFiles);
+
+		 if (OpenClipboard(hwndFrame)) 
+		 {
+			EmptyClipboard();
+
+			if (hMemDropEffect) {
+				SetClipboardData(RegisterClipboardFormat(CFSTR_PREFERREDDROPEFFECT), hMemDropEffect);
+			}
+
+			SetClipboardData(RegisterClipboardFormat(TEXT("LongFileNameW")), hMemLongW);
+			SetClipboardData(CF_HDROP, hDrop);
+
+			CloseClipboard();
+		 }
+		 else 
+		 {
+			  GlobalFree(hMemLongW);
+			  GlobalFree(hDrop);
+		 }
+
+         LocalFree((HANDLE)pszFiles);
+
+		 UpdateMoveStatus(id == IDM_CUTTOCLIPBOARD ? DROPEFFECT_MOVE : DROPEFFECT_COPY);
+	  }
       break;
 
    case IDM_UNDELETE:
@@ -941,6 +1177,8 @@ AppCommandProc(register DWORD id)
       {
          LPTSTR pSel, p;
          INT count;
+	     TCHAR         szTemp[MAXPATHLEN];
+
 
          BOOL bDir = FALSE;
 
@@ -954,24 +1192,43 @@ AppCommandProc(register DWORD id)
          count = 0;
          p = pSel;
 
-         while (p = GetNextFile(p, szPath, COUNTOF(szPath))) {
+         while (p = GetNextFile(p, szTemp, COUNTOF(szTemp))) {
             count++;
          }
 
          LocalFree((HANDLE)pSel);
 
-         if (count == 0)
-            break;          // nothing selected
+		 if (count == 1)
+		 {
+			 SHELLEXECUTEINFO sei;
 
-         if (count > 1)
+			 memset(&sei, 0, sizeof(sei));
+			 sei.cbSize = sizeof(sei);
+			 sei.fMask = SEE_MASK_INVOKEIDLIST;
+			 sei.hwnd = hwndActive;
+			 sei.lpVerb = TEXT("properties");
+			 sei.lpFile = szTemp;
+
+			 if (!bDir)
+			 {
+		        SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szPath), (LPARAM)szPath);
+				StripBackslash(szPath);
+
+				sei.lpDirectory = szPath;
+			 }
+
+			 ShellExecuteEx(&sei);
+		 }
+         else if (count > 1)
             DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(MULTIPLEATTRIBSDLG), hwndFrame, (DLGPROC) AttribsDlgProc);
 
+#if 0
          else if (bDir)
             DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(ATTRIBSDLGDIR), hwndFrame, (DLGPROC) AttribsDlgProc);
 
          else
             DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(ATTRIBSDLG), hwndFrame, (DLGPROC) AttribsDlgProc);
-
+#endif 
          break;
       }
 
@@ -1078,7 +1335,7 @@ AppCommandProc(register DWORD id)
       //
       SendMessage(hwndDir,
                   WM_COMMAND,
-                  GET_WM_COMMAND_MPS(0, hwndDir, LBN_SELCHANGE));
+                  GET_WM_COMMAND_MPS(0, hwndLB, LBN_SELCHANGE));
 
       break;
    }
@@ -1481,26 +1738,11 @@ DealWithNetError_NotifyResume:
 
        break;
 
-#ifdef PROGMAN
-    case IDM_VICON:
-
-       //
-       // !! LATER !!
-       //
-       // Add button and then fix CHeckTBButton !
-       //
-       // CheckTBButton(id);
-       //
-       dwFlags = GetWindowLong(hwndActive, GWL_VIEW) ^ VIEW_ICON;
-
-       id = CD_VIEW;
-       goto ChangeDisplay;
-#endif
-
     case IDM_BYNAME:
     case IDM_BYTYPE:
     case IDM_BYSIZE:
     case IDM_BYDATE:
+    case IDM_BYFDATE:
 
        CheckTBButton(id);
 
@@ -1713,6 +1955,8 @@ CHECK_OPTION:
 
           EnableDisconnectButton();
 
+		  StartBuildingDirectoryTrie();
+
           break;
        }
 
@@ -1916,4 +2160,32 @@ UpdateConnectionsOnConnect(VOID)
    }
 }
 
-
+DWORD 
+ReadMoveStatus()
+{
+	IDataObject *pDataObj;
+	FORMATETC fmtetcDrop = { 0, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
+	UINT uFormatEffect = RegisterClipboardFormat(CFSTR_PREFERREDDROPEFFECT);
+	FORMATETC fmtetcEffect = { uFormatEffect, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
+	STGMEDIUM stgmed;
+	DWORD dwEffect = DROPEFFECT_COPY;
+
+	OleGetClipboard(&pDataObj);		// pDataObj == NULL if error
+
+	if (pDataObj != NULL && pDataObj->lpVtbl->GetData(pDataObj, &fmtetcEffect, &stgmed) == S_OK)
+	{
+		LPDWORD lpEffect = GlobalLock(stgmed.hGlobal);
+		if (*lpEffect & DROPEFFECT_COPY) dwEffect = DROPEFFECT_COPY;
+		if (*lpEffect & DROPEFFECT_MOVE) dwEffect = DROPEFFECT_MOVE;
+		GlobalUnlock(stgmed.hGlobal);
+		ReleaseStgMedium(&stgmed);
+	}
+
+	return dwEffect;
+}
+
+VOID 
+UpdateMoveStatus(DWORD dwEffect)
+{
+	SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)(dwEffect == DROPEFFECT_MOVE ? TEXT("MOVE PENDING") : NULL));
+}

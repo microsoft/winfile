@@ -131,6 +131,7 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
           }
 
           CheckDlgButton(hDlg, IDD_SEARCHALL, !SearchInfo.bDontSearchSubs);
+		  CheckDlgButton(hDlg, IDD_INCLUDEDIRS, SearchInfo.bIncludeSubDirs);
           break;
 
       case WM_COMMAND:
@@ -148,6 +149,25 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   GetDlgItemText(hDlg, IDD_DIR, SearchInfo.szSearch, COUNTOF(SearchInfo.szSearch));
                   QualifyPath(SearchInfo.szSearch);
 
+				  GetDlgItemText(hDlg, IDD_DATE, szStart, COUNTOF(szStart));
+				  SearchInfo.ftSince.dwHighDateTime = SearchInfo.ftSince.dwLowDateTime = 0;
+				  if (lstrlen(szStart) != 0)
+				  {
+					  DATE date;
+					  SYSTEMTIME st;
+					  FILETIME ftLocal;
+					  HRESULT hr = VarDateFromStr(szStart, lcid, 0, &date);
+					  BOOL b1 = VariantTimeToSystemTime(date, &st);
+					  BOOL b2 = SystemTimeToFileTime(&st, &ftLocal);
+
+					  // SearchInfo.ftSince is in UTC (as are FILETIME in files to which this will be compared)
+					  BOOL b3 = LocalFileTimeToFileTime(&ftLocal, &SearchInfo.ftSince);
+					  if (FAILED(hr) || !b1 || !b2 || !b3) {
+						  MessageBeep(0);
+						  break;
+					  }
+				  }
+
                   GetDlgItemText(hDlg, IDD_NAME, szStart, COUNTOF(szStart));
 
                   KillQuoteTrailSpace( szStart );
@@ -155,6 +175,7 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   AppendToPath(SearchInfo.szSearch, szStart);
 
                   SearchInfo.bDontSearchSubs = !IsDlgButtonChecked(hDlg, IDD_SEARCHALL);
+				  SearchInfo.bIncludeSubDirs = IsDlgButtonChecked(hDlg, IDD_INCLUDEDIRS);
 
                   EndDialog(hDlg, TRUE);
 
@@ -173,6 +194,14 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                      SendMessage(hwndSearch, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)SearchInfo.szSearch);
 
                   } else {
+					  BOOL bMaximized = FALSE;
+					  HWND hwndMDIChild = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, (LPARAM)&bMaximized);
+
+					  // cf. https://www.codeproject.com/articles/2077/creating-a-new-mdi-child-maximization-and-focus-is
+					  if (bMaximized)
+					  {
+						  SendMessage(hwndMDIClient, WM_SETREDRAW, FALSE, 0);
+					  }
 
                      //
                      // !! BUGBUG !!
@@ -185,7 +214,6 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                      lstrcat(szMessage, SearchInfo.szSearch);
 
-
                      // Have the MDIClient create the MDI directory window.
 
                      MDICS.szClass = szSearchClass;
@@ -194,13 +222,24 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                      // Minimize
 
-                     MDICS.style = WS_MINIMIZE;
-                     MDICS.x  = CW_USEDEFAULT;
+                     MDICS.style = bMaximized ? WS_MAXIMIZE : WS_MINIMIZE;
+					 MDICS.x  = CW_USEDEFAULT;
                      MDICS.y  = 0;
                      MDICS.cx = CW_USEDEFAULT;
                      MDICS.cy = 0;
 
                      SendMessage(hwndMDIClient, WM_MDICREATE, 0L, (LPARAM)(LPMDICREATESTRUCT)&MDICS);
+
+					 if (bMaximized)
+					 {
+						 // the WM_MDICREATE above ceates the window maximized; 
+						 // here we re-activate the original maximized window
+
+						 SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndMDIChild, 0L);
+
+						 SendMessage(hwndMDIClient, WM_SETREDRAW, TRUE, 0);
+						 RedrawWindow(hwndMDIClient, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN);
+					 }
                   }
                   break;
 
@@ -270,7 +309,7 @@ RunDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
               case IDOK:
                 {
-                  BOOL bLoadIt;
+                  BOOL bLoadIt, bRunAs;
 
                   GetDlgItemText(hDlg, IDD_NAME, szTemp, COUNTOF(szTemp));
                   GetPathInfo(szTemp, &pDir, &pFile, &pPar);
@@ -289,6 +328,7 @@ RunDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   }
 
                   bLoadIt = IsDlgButtonChecked(hDlg, IDD_LOAD);
+				  bRunAs = IsDlgButtonChecked(hDlg, IDD_RUNAS);
 
                   // Stop SaveBits flickering by invalidating the SaveBitsStuff.
                   // You can't just hide the window because it messes up the
@@ -296,7 +336,7 @@ RunDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                   SetWindowPos(hDlg, 0, 0, 0, 0, 0, SWP_HIDEWINDOW|SWP_NOACTIVATE|SWP_NOMOVE|SWP_NOSIZE|SWP_NOZORDER);
 
-                  ret = ExecProgram(pDir, sz3, pDir2, bLoadIt);
+                  ret = ExecProgram(pDir, sz3, pDir2, bLoadIt, bRunAs);
                   if (ret) {
                      MyMessageBox(hDlg, IDS_EXECERRTITLE, ret, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
                      SetWindowPos(hDlg, 0, 0, 0, 0, 0, SWP_SHOWWINDOW|SWP_NOACTIVATE|SWP_NOMOVE|SWP_NOSIZE|SWP_NOZORDER);
@@ -322,143 +362,6 @@ DoHelp:
   return TRUE;
 }
 
-#ifdef LFNCLIPBOARD
-VOID
-CopyToClipboard(LPTSTR pszFrom)
-{
-   TCHAR szPath[MAXPATHLEN];
-   TCHAR szPathLong[MAXPATHLEN];
-
-   UINT uFormatA, uFormatW;
-   UINT uFormatLongA, uFormatLongW;
-
-   HANDLE hMemW, hMemA;
-   HANDLE hMemLongW, hMemLongA;
-
-   LPSTR lpszMemA, lpszMemLongA;
-   BOOL fDefUsed;
-   UINT cbMem;
-   UINT cbMemLong;
-
-   GetNextFile(pszFrom, szPath, COUNTOF(szPath));
-
-   QualifyPath(szPath);
-   lstrcpy(szPathLong, szPath);
-
-   GetShortPathName(szPathLong, szPath, COUNTOF(szPath));
-
-   uFormatW = RegisterClipboardFormat(TEXT("FileNameW"));
-   uFormatLongW = RegisterClipboardFormat(TEXT("LongFileNameW"));
-   uFormatA = RegisterClipboardFormat(TEXT("FileName"));
-   uFormatLongA = RegisterClipboardFormat(TEXT("LongFileName"));
-
-   if (!uFormatW || !uFormatLongW ||
-       !uFormatA || !uFormatLongA)
-      return;
-
-   cbMem = ByteCountOf(lstrlen(szPath)+1);
-   cbMemLong = ByteCountOf(lstrlen(szPathLong)+1);
-
-   hMemW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMem);
-   hMemLongW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
-   hMemA = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMem);
-   hMemLongA = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
-
-   if (!hMemW || !hMemLongW || !hMemA || !hMemLongA) {
-      if (!hMemW)
-         GlobalFree(hMemW);
-      if (!hMemLongW)
-         GlobalFree(hMemLongW);
-      if (!hMemA)
-         GlobalFree(hMemA);
-      if (!hMemLongA)
-         GlobalFree(hMemLongA);
-      return;
-   }
-
-   lstrcpy(GlobalLock(hMemW), szPath);
-   lstrcpy(GlobalLock(hMemLongW), szPathLong);
-
-   /*
-    * Need to deal with the problem of non-roundtrip conversion when
-    * best fit has been applied to long filename.
-    */
-
-   lpszMemA = (LPSTR) GlobalLock(hMemA);
-   WideCharToMultiByte(CP_ACP, 0, szPath, -1, lpszMemA, lstrlen(szPath), NULL, NULL);
-
-   lpszMemLongA = (LPSTR) GlobalLock(hMemLongA);
-   WideCharToMultiByte(CP_ACP, 0, szPathLong, -1, lpszMemLongA, lstrlen(szPathLong), NULL, &fDefUsed);
-
-   if (fDefUsed)
-      lstrcpyA(lpszMemLongA, lpszMemA);
-
-   GlobalUnlock(hMemW);
-   GlobalUnlock(hMemLongW);
-   GlobalUnlock(hMemA);
-   GlobalUnlock(hMemLongA);
-
-   if (OpenClipboard(hwndFrame)) {
-      EmptyClipboard();
-
-      SetClipboardData(uFormatW, hMemW);
-      SetClipboardData(uFormatLongW, hMemLongW);
-
-      SetClipboardData(uFormatA, hMemA);
-      SetClipboardData(uFormatLongA, hMemLongA);
-
-      CloseClipboard();
-   } else {
-      GlobalFree(hMemW);
-      GlobalFree(hMemLongW);
-      GlobalFree(hMemA);
-      GlobalFree(hMemLongA);
-   }
-}
-#else
-VOID
-CopyToClipboard(LPTSTR pszFrom)
-{
-   TCHAR szPath[MAXPATHLEN];
-   UINT wFormat;
-   HANDLE hMem;
-
-   GetNextFile(pszFrom, szPath, COUNTOF(szPath));
-
-   QualifyPath(szPath);
-   SheShortenPath(szPath, TRUE);
-
-   wFormat = RegisterClipboardFormat(TEXT("FileName"));
-
-   if (!wFormat)
-      return;
-
-   hMem = GlobalAlloc(GPTR|GMEM_DDESHARE, ByteCountOf(lstrlen(szPath)+1));
-
-   if (!hMem)
-      return;
-
-   lstrcpy(GlobalLock(hMem), szPath);
-   GlobalUnlock(hMem);
-
-   if (OpenClipboard(hwndFrame)) {
-      EmptyClipboard();
-      SetClipboardData(wFormat, hMem);
-#if 0
-      // write, excel and winword will not past the package
-      // if we put text in the clipboard.
-
-      hMem = GlobalAlloc(GPTR | GMEM_DDESHARE, ByteCountOf(lstrlen(szPath)+1));
-      if (hMem) {
-         lstrcpy(GlobalLock(hMem), szPath);
-         GlobalUnlock(hMem);
-         SetClipboardData(CF_OEMTEXT, hMem);
-      }
-#endif
-      CloseClipboard();
-   }
-}
-#endif
 
 VOID
 EnableCopy(HWND hDlg, BOOL bCopy)
@@ -612,30 +515,81 @@ JAPANEND
 
             break;
 
-         case IDM_COPYTOCLIPBOARD:
-
-            p=GetSelection(1, NULL);
-            break;
-
          default:
 
             p=GetSelection(0, NULL);
          }
 
          SetDlgItemText(hDlg, IDD_FROM, p);
-         LocalFree((HANDLE)p);
 
-         if ((dwSuperDlgMode == IDM_PRINT) || (dwSuperDlgMode == IDM_DELETE) ||
-            (dwSuperDlgMode == IDM_COPYTOCLIPBOARD))
-
+         if ((dwSuperDlgMode == IDM_PRINT) || (dwSuperDlgMode == IDM_DELETE))
             wParam = IDD_FROM;
          else
+         {
+            TCHAR szDirs[MAXPATHLEN];
+            LPTSTR rgszDirs[MAX_DRIVES];
+        	int drive, cchLeft, driveCur;
+        	BOOL fFirst = TRUE;
+            
             wParam = IDD_TO;
-         SendDlgItemMessage(hDlg, wParam, EM_LIMITTEXT, COUNTOF(szTo) - 1, 0L);
+            if (dwSuperDlgMode == IDM_RENAME)
+	            SetDlgItemText(hDlg, IDD_TO, p);
 
+			driveCur = GetWindowLongPtr(hwndActive, GWL_TYPE);
+
+			lstrcpy(szDirs, TEXT("Other: "));
+   			cchLeft = MAXPATHLEN - wcslen(szDirs);
+
+   			GetAllDirectories(rgszDirs);
+
+        	for (drive = 0; drive < MAX_DRIVES; drive++)
+        	{
+				if (drive != driveCur && rgszDirs[drive] != NULL)
+				{
+	        		int cchT = wcslen(rgszDirs[drive]);
+    	    		if (cchLeft > 1)
+        			{
+        				if (!fFirst)
+	        				wcsncat(szDirs, TEXT(";"), 1);
+	        			fFirst = FALSE;
+        				wcsncat(szDirs, rgszDirs[drive], cchLeft-2);
+	        			cchLeft = MAXPATHLEN - wcslen(szDirs);
+	        		}
+	        	
+	        		LocalFree(rgszDirs[drive]);
+	        	}
+        	}
+
+	        SetDlgItemText(hDlg, IDD_DIRS, szDirs);
+         }
+
+         SendDlgItemMessage(hDlg, wParam, EM_LIMITTEXT, COUNTOF(szTo) - 1, 0L);
+         LocalFree((HANDLE)p);
          break;
       }
 
+   case WM_NCACTIVATE:
+      if (IDM_RENAME == dwSuperDlgMode)
+      {
+		size_t ich1, ich2;
+		LPWSTR pchDot;
+
+		GetDlgItemText(hDlg, IDD_TO, szTo, COUNTOF(szTo));
+		ich1 = 0;
+		ich2 = wcslen(szTo);
+		pchDot = wcsrchr(szTo, '.');
+		if (pchDot != NULL)
+			ich2 = pchDot - szTo;
+		if (*szTo == '\"')
+		{
+			ich1 = 1;
+			if (pchDot == NULL)
+				ich2--;
+		}
+		SendDlgItemMessage(hDlg, IDD_TO, EM_SETSEL, ich1, ich2);
+      }
+      return FALSE;
+      
    case FS_COPYDONE:
 
       //
@@ -698,20 +652,6 @@ SuperDlgExit:
                CheckEsc(szTo);
          }
 
-         if (dwSuperDlgMode == IDM_COPYTOCLIPBOARD) {
-            if (CheckMultiple(pszFrom)) {
-               LoadString(hAppInstance, IDS_NOCOPYTOCLIP, szMessage, COUNTOF(szMessage));
-               GetWindowText(hDlg, szTitle, COUNTOF(szTitle));
-               MessageBox(hDlg, szMessage, szTitle, MB_OK | MB_ICONSTOP);
-            } else
-               CopyToClipboard(pszFrom);
-
-SuperDlgFreeExit:
-
-            LocalFree(pszFrom);
-            goto SuperDlgExit;
-         }
-
          if (!szTo[0])
          {
              switch (dwSuperDlgMode)
@@ -733,9 +673,10 @@ SuperDlgFreeExit:
          if (dwSuperDlgMode == IDM_PRINT) {
             WFPrint(pszFrom);
 
-            goto SuperDlgFreeExit;
+            LocalFree(pszFrom);
+            goto SuperDlgExit;
 
-         } else {
+		 } else {
 
             if (dwSuperDlgMode == IDM_RENAME && bTreeHasFocus) {
                MessWithRenameDirPath(pszFrom);
@@ -759,7 +700,8 @@ Error:
 
                MessageBox(hwndFrame, szMessage, szTitle, MB_OK | MB_ICONEXCLAMATION);
 
-               goto SuperDlgFreeExit;
+               LocalFree(pszFrom);
+	           goto SuperDlgExit;
             }
 
             pCopyInfo->pFrom = pszFrom;

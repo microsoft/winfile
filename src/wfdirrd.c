@@ -12,9 +12,6 @@
 #include "winfile.h"
 #include "lfn.h"
 
-#ifdef PROGMAN
-#include "wficon.h"
-#endif
 
 typedef enum {
    EDIRABORT_NULL        = 0,
@@ -53,7 +50,8 @@ LPXDTALINK CreateDTABlockWorker(HWND hwnd, HWND hwndDir);
 LPXDTALINK StealDTABlock(HWND hwndCur, LPWSTR pPath, DWORD dwAttribs);
 BOOL IsNetDir(LPWSTR pPath, LPWSTR pName);
 VOID DirReadAbort(HWND hwnd, LPXDTALINK lpStart, EDIRABORT eDirAbort);
-
+DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPCWSTR szChild, LPWSTR szDest, DWORD cwcDest);
+LONG WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
 
 BOOL
 InitDirRead(VOID)
@@ -264,15 +262,6 @@ StealDTABlock(
 
                lpStartCopy = MemClone(lpStart);
 
-
-#ifdef PROGMAN
-               if (lpStartCopy) {
-                  SetWindowLong(GetParent(hwnd),
-                                GWL_PICONBLOCK,
-                                (LONG)CopyIB((PICONBLOCK)GetWindowLong(hwnd,
-                                                                       GWL_PICONBLOCK)));
-               }
-#endif
                return lpStartCopy;
             }
          }
@@ -309,14 +298,6 @@ VOID
 FreeDTA(HWND hwnd)
 {
    register LPXDTALINK lpxdtaLink;
-
-#ifdef PROGMAN
-   //
-   // Must destory icon data before continuing
-   //
-   if (hwnd != (HWND)GetWindowLong(hwnd, GWL_LISTPARMS))
-      IconDTADestroy(GetParent(hwnd));
-#endif
 
    lpxdtaLink = (LPXDTALINK)GetWindowLongPtr(hwnd, GWL_HDTA);
 
@@ -466,14 +447,6 @@ BuildDocumentStringWorker()
 
    DWORD dwStatus;
 
-
-#ifdef PROGMAN
-   //
-   // Notify Icon that doc Icons are no longer valid
-   //
-   IconDocDestroy();
-#endif
-
    //
    // Reinitialize the ppDocBucket struct
    //
@@ -483,11 +456,7 @@ BuildDocumentStringWorker()
    if (!ppDocBucket)
       goto Return;
 
-#ifdef PROGMAN
-   nDocItems = FillDocType(ppDocBucket, L"Documents", szNULL, ICON_TYPE_LOADING);
-#else
-   FillDocType(ppDocBucket, L"Documents", szNULL, 0);
-#endif
+   FillDocType(ppDocBucket, L"Documents", szNULL);
 
 #ifdef NEC_98
     uLen = 96;      // 96 = 128 - 32.  Trying to match code added to wfinit.c
@@ -522,12 +491,7 @@ BuildDocumentStringWorker()
    p = pszDocuments;
    while (*p) {
 
-#ifdef PROGMAN
-      if (DocInsert(ppDocBucket, p, (DWORD)ICON_TYPE_LOADING) == 1)
-         nDocItems++;
-#else
       DocInsert(ppDocBucket, p, 0);
-#endif
 
       //
       // Find the next NULL.
@@ -559,11 +523,13 @@ BuildDocumentStringWorker()
       // those that are of the form *.ext
       //
       for (i=0, dwStatus = 0L; ERROR_NO_MORE_ITEMS!=dwStatus; i++) {
+		 DWORD cbClass, cbIconFile;
+		 TCHAR szClass[MAXPATHLEN];
+		 TCHAR szIconFile[MAXPATHLEN];
 
          dwStatus = RegEnumKey(hk, (DWORD)i, szT, COUNTOF(szT));
 
-         if (dwStatus ||
-            szT[0] != '.' || (szT[1] && szT[2] && szT[3] && szT[4])) {
+         if (dwStatus || szT[0] != '.') {
 
             //
             // either the class does not start with . or it has a greater
@@ -572,12 +538,27 @@ BuildDocumentStringWorker()
             continue;
          }
 
-#ifdef PROGMAN
-         if (DocInsert(ppDocBucket, szT+1, (DWORD)ICON_TYPE_LOADING) == 1)
-            nDocItems++;
-#else
-         DocInsert(ppDocBucket, szT+1, 0);
-#endif
+		 cbClass = sizeof(szClass);
+		 cbIconFile = 0;
+		 if (WFRegGetValueW(hk, szT, NULL, NULL, szClass, &cbClass) == ERROR_SUCCESS)
+		 {
+		    DWORD cbClass2;
+			TCHAR szClass2[MAXPATHLEN];
+
+			cbClass2 = sizeof(szClass2);
+			lstrcat(szClass, L"\\CurVer");
+			if (WFRegGetValueW(hk, szClass, NULL, NULL, szClass2, &cbClass2) == ERROR_SUCCESS)
+				lstrcpy(szClass, szClass2);
+			else
+				szClass[lstrlen(szClass)-7] = '\0';
+
+			cbIconFile = sizeof(szIconFile);
+			lstrcat(szClass, L"\\DefaultIcon");
+			if (WFRegGetValueW(hk, szClass, NULL, NULL, szIconFile, &cbIconFile) != ERROR_SUCCESS)
+				cbIconFile = 0;
+		 }
+
+		 DocInsert(ppDocBucket, szT+1, cbIconFile != 0 ? szIconFile : NULL);
       }
 
       if (bCloseKey)
@@ -585,13 +566,6 @@ BuildDocumentStringWorker()
    }
 
 Return:
-#ifdef PROGMAN
-   //
-   // Inform icon system that docs are online
-   //
-   IconDocCreate();
-#endif
-
 
    return;
 }
@@ -619,10 +593,6 @@ Restart:
       //
       // Delete all extra pibs
       //
-#ifdef PROGMAN
-      IconDeleteIBs();
-#endif
-
       if (!bDirReadRun)
          break;
 
@@ -666,9 +636,6 @@ Restart:
             SetWindowLongPtr(hwndDir, GWLP_USERDATA, 0);
          }
       }
-#ifdef PROGMAN
-      IconServer();
-#endif
    }
 }
 
@@ -689,12 +656,6 @@ CreateDTABlockWorker(
    LPXDTA lpxdta;
 
    INT iBitmap;
-#ifdef PROGMAN
-   INT iType;
-   INT iIcon;
-   INT iPrograms = 0;
-   PDOCBUCKET pProgramIcon;
-#endif
    DRIVE drive;
 
    LPWSTR lpTemp;
@@ -704,6 +665,7 @@ CreateDTABlockWorker(
    BOOL bAbort;
 
    WCHAR szPath[MAXPATHLEN];
+   WCHAR szLinkDest[MAXPATHLEN];
 
    DWORD dwAttribs;
    LPXDTALINK lpStart;
@@ -790,11 +752,6 @@ InvalidDirectory:
                szPath[3] = CHAR_NULL;
                SendMessage(hwndTree, TC_SETDIRECTORY, 0, (LPARAM)szPath);
                SendMessage(hwndTree, TC_COLLAPSELEVEL, 0, 0L);
-               SendMessage(hwndTree,
-                           WM_COMMAND,
-                           GET_WM_COMMAND_MPS(IDCW_LISTBOX,
-                                              GetDlgItem(hwnd, IDCW_LISTBOX),
-                                              LBN_SELCHANGE));
 Fail:
                MemDelete(lpStart);
                return NULL;
@@ -817,6 +774,62 @@ Fail:
          case ERROR_ACCESS_DENIED:
 
             iError = IDS_NOACCESSDIR;
+            {
+                DWORD tag = DecodeReparsePoint(szPath, NULL, szLinkDest, COUNTOF(szLinkDest));
+                if (tag != IO_REPARSE_TAG_RESERVED_ZERO && WFFindFirst(&lfndta, szLinkDest, ATTR_ALL))
+		        {
+		        	// TODO: make add routine to share with below
+
+					lpxdta = MemAdd(&lpLinkLast, lstrlen(szLinkDest), 0);
+
+					if (!lpxdta)
+					 goto CDBMemoryErr;
+
+					lpHead->dwEntries++;
+
+					lpxdta->dwAttrs = ATTR_DIR | ATTR_REPARSE_POINT;
+					lpxdta->ftLastWriteTime = lfndta.fd.ftLastWriteTime;
+
+					//
+					// files > 2^63 will come out negative, so tough.
+					// (WIN32_FIND_DATA.nFileSizeHigh is not signed, but
+					// LARGE_INTEGER is)
+					//
+					lpxdta->qFileSize.LowPart = lfndta.fd.nFileSizeLow;
+					lpxdta->qFileSize.HighPart = lfndta.fd.nFileSizeHigh;
+
+					lpxdta->byBitmap = BM_IND_CLOSE;
+					lpxdta->pDocB = NULL;
+
+					if (IsLFN(szLinkDest)) {
+					 lpxdta->dwAttrs |= ATTR_LFN;
+					}
+
+					if (!bCasePreserved)
+					 lpxdta->dwAttrs |= ATTR_LOWERCASE;
+
+                    if (tag == IO_REPARSE_TAG_MOUNT_POINT)
+                        lpxdta->dwAttrs |= ATTR_JUNCTION;
+
+                    else if (tag == IO_REPARSE_TAG_SYMLINK)
+                        lpxdta->dwAttrs |= ATTR_SYMBOLIC;
+
+					else
+					{
+						// DebugBreak();
+					}
+
+					lstrcpy(MemGetFileName(lpxdta), szLinkDest);
+				    MemGetAlternateFileName(lpxdta)[0] = CHAR_NULL;
+				    
+					lpHead->dwTotalCount++;
+					(lpHead->qTotalSize).QuadPart = (lpxdta->qFileSize).QuadPart +
+					                              (lpHead->qTotalSize).QuadPart;					
+
+			        iError = 0;
+			        goto Done;
+		        }
+		    }
             break;
 
          default:
@@ -869,10 +882,8 @@ Fail:
       //
       lpxdta->dwAttrs = ATTR_DIR | ATTR_PARENT;
       lpxdta->byBitmap = BM_IND_DIRUP;
+	  lpxdta->pDocB = NULL;
 
-#ifdef PROGMAN
-      lpxdta->byType = BM_TYPE_NONE;
-#endif
 
       MemGetFileName(lpxdta)[0] = CHAR_NULL;
       MemGetAlternateFileName(lpxdta)[0] = CHAR_NULL;
@@ -894,23 +905,33 @@ Fail:
       //
       lfndta.fd.dwFileAttributes &= ATTR_USED;
 
-#ifdef PROGMAN
       //
-      // Clear out type
-      //
-      iType = BM_TYPE_NONE;
-#endif
+      // if reparse point, figure out whether it is a junction point
+	  if (lfndta.fd.dwFileAttributes & ATTR_REPARSE_POINT)
+      {
+          DWORD tag = DecodeReparsePoint(szPath, pName, szLinkDest, COUNTOF(szLinkDest));
 
-      //
+          if (tag == IO_REPARSE_TAG_MOUNT_POINT)
+              lfndta.fd.dwFileAttributes |= ATTR_JUNCTION;
+
+          else if (tag == IO_REPARSE_TAG_SYMLINK)
+              lfndta.fd.dwFileAttributes |= ATTR_SYMBOLIC;
+
+          else
+          {
+              // DebugBreak();
+          }
+      }
+
+	  //
       // filter unwanted stuff here based on current view settings
       //
+	  pDoc = NULL;
+	  pProgram = NULL;
       if (!(lfndta.fd.dwFileAttributes & ATTR_DIR)) {
 
          pProgram = IsProgramFile(pName);
          pDoc     = IsDocument(pName);
-#ifdef PROGMAN
-         pProgramIcon = IsProgramIconFile(pName);
-#endif
 
          //
          // filter programs and documents
@@ -921,15 +942,11 @@ Fail:
             goto CDBCont;
          if (!(dwAttribs & ATTR_OTHER) && !(pProgram || pDoc))
             goto CDBCont;
-
-#ifdef PROGMAN
-         if (pProgramIcon) {
-            iType = BM_TYPE_PROGRAMICON;
-            iIcon = ICON_TYPE_LOADING;
-            iPrograms++;
-         }
-#endif
       }
+	  else if (lfndta.fd.dwFileAttributes & ATTR_JUNCTION) {
+		  if (!(dwAttribs & ATTR_JUNCTION))
+			  goto CDBCont;
+	  }
 
       //
       // figure out the bitmap type here
@@ -943,20 +960,17 @@ Fail:
             goto CDBCont;
          }
 
+        // NOTE: Reparse points are directories
+
          if (IsNetDir(szPath,pName))
             iBitmap = BM_IND_CLOSEDFS;
          else
             iBitmap = BM_IND_CLOSE;
-
       } else if (lfndta.fd.dwFileAttributes & (ATTR_HIDDEN | ATTR_SYSTEM)) {
          iBitmap = BM_IND_RO;
       } else if (pProgram) {
          iBitmap = BM_IND_APP;
       } else if (pDoc) {
-#ifdef PROGMAN
-         iType = BM_TYPE_DOCICON;
-         iIcon = (INT)pDoc;
-#endif
          iBitmap = BM_IND_DOC;
       } else {
          iBitmap = BM_IND_FIL;
@@ -983,11 +997,7 @@ Fail:
       lpxdta->qFileSize.HighPart = lfndta.fd.nFileSizeHigh;
 
       lpxdta->byBitmap = iBitmap;
-#ifdef PROGMAN
-      lpxdta->byType = iType;
-      lpxdta->iIcon = iIcon;
-      lpxdta->byHolder = FALSE;
-#endif
+      lpxdta->pDocB = pDoc;			// even if program, use extension list for icon to display
 
       if (IsLFN(pName)) {
          lpxdta->dwAttrs |= ATTR_LFN;
@@ -1035,10 +1045,6 @@ Abort:
    }
 
    WFFindClose(&lfndta);
-
-#ifdef PROGMAN
-   lpHead->iPrograms = iPrograms;
-#endif
 
 CDBDiskGone:
 
@@ -1160,4 +1166,120 @@ IsNetDir(LPWSTR pPath, LPWSTR pName)
    return dwType;
 }
 
+typedef struct _REPARSE_DATA_BUFFER {
+  ULONG  ReparseTag;
+  USHORT  ReparseDataLength;
+  USHORT  Reserved;
+  union {
+    struct {
+      USHORT  SubstituteNameOffset;
+      USHORT  SubstituteNameLength;
+      USHORT  PrintNameOffset;
+      USHORT  PrintNameLength;
+      ULONG   Flags; // it seems that the docu is missing this entry (at least 2008-03-07)
+      WCHAR  PathBuffer[1];
+      } SymbolicLinkReparseBuffer;
+    struct {
+      USHORT  SubstituteNameOffset;
+      USHORT  SubstituteNameLength;
+      USHORT  PrintNameOffset;
+      USHORT  PrintNameLength;
+      WCHAR  PathBuffer[1];
+      } MountPointReparseBuffer;
+    struct {
+      UCHAR  DataBuffer[1];
+    } GenericReparseBuffer;
+  };
+} REPARSE_DATA_BUFFER, *PREPARSE_DATA_BUFFER;
 
+#if FALSE
+// now coming from Windows 10 SDK files; not sure why struct above isn't there...
+
+#define REPARSE_DATA_BUFFER_HEADER_SIZE FIELD_OFFSET(REPARSE_DATA_BUFFER, GenericReparseBuffer)
+ 
+#define FSCTL_GET_REPARSE_POINT         CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 42, METHOD_BUFFERED, FILE_ANY_ACCESS) // REPARSE_DATA_BUFFER
+#define FILE_FLAG_OPEN_REPARSE_POINT    0x00200000
+#define IsReparseTagMicrosoft(_tag) (              \
+                           ((_tag) & 0x80000000)   \
+                           )
+#define IO_REPARSE_TAG_MOUNT_POINT              (0xA0000003L)       
+#define IO_REPARSE_TAG_SYMLINK                  (0xA000000CL)       
+#endif
+
+DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPCWSTR szChild, LPWSTR szDest, DWORD cwcDest)
+{
+	HANDLE hFile;
+	DWORD dwBufSize = MAXIMUM_REPARSE_DATA_BUFFER_SIZE;
+	REPARSE_DATA_BUFFER* rdata;
+	DWORD dwRPLen, cwcLink = 0;
+	DWORD reparseTag;
+	BOOL bRP;
+	WCHAR szFullPath[2*MAXPATHLEN];
+
+	lstrcpy(szFullPath, szMyFile);
+	StripFilespec(szFullPath);
+
+	if (szChild != NULL)
+		AppendToPath(szFullPath, szChild);
+
+	hFile = CreateFile(szFullPath, FILE_READ_EA, FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, NULL, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT, NULL);
+	if (hFile == INVALID_HANDLE_VALUE)
+		return IO_REPARSE_TAG_RESERVED_ZERO;
+		
+	// Allocate the reparse data structure
+	rdata = (REPARSE_DATA_BUFFER*)LocalAlloc(LMEM_FIXED, dwBufSize);
+	
+	// Query the reparse data
+	bRP = DeviceIoControl(hFile, FSCTL_GET_REPARSE_POINT, NULL, 0, rdata, dwBufSize, &dwRPLen, NULL);
+
+	CloseHandle(hFile);
+
+	if (!bRP)
+	{
+		LocalFree(rdata);
+		return IO_REPARSE_TAG_RESERVED_ZERO;
+	}
+
+	reparseTag = rdata->ReparseTag;
+
+	if (IsReparseTagMicrosoft(rdata->ReparseTag) && 
+		(rdata->ReparseTag == IO_REPARSE_TAG_MOUNT_POINT || rdata->ReparseTag == IO_REPARSE_TAG_SYMLINK)
+		)		
+	{
+		cwcLink = rdata->SymbolicLinkReparseBuffer.SubstituteNameLength / sizeof(WCHAR);
+		if (cwcLink <= cwcDest)
+		{
+			LPWSTR szT = &rdata->SymbolicLinkReparseBuffer.PathBuffer[rdata->SymbolicLinkReparseBuffer.SubstituteNameOffset / sizeof(WCHAR)];
+			if (szT[0] == '?' && szT[1] == '\\')
+			{
+				szT += 2;
+				cwcLink -= 2;
+			}
+			wcsncpy(szDest, szT, cwcLink);
+			szDest[cwcLink] = 0;
+		}
+		else
+		{
+			lstrcpy(szDest, L"<symbol link reference too long>");
+		}
+	}
+
+	LocalFree(rdata);
+	return reparseTag;
+}
+
+// RegGetValue isn't available on Windows XP
+LONG WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData)
+{
+	DWORD dwStatus;
+	HKEY hkeySub;
+
+	if ((dwStatus = RegOpenKey(hkey, lpSubKey, &hkeySub)) == ERROR_SUCCESS)
+	{
+			dwStatus = RegQueryValueEx(hkeySub, lpValue, NULL, pdwType, pvData, pcbData);
+
+			RegCloseKey(hkeySub);
+	}
+
+	return dwStatus;
+}

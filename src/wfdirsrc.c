@@ -8,12 +8,8 @@
 ********************************************************************/
 
 #include "winfile.h"
-#include <shlobj.h>
+#include "wfdrop.h"
 #include <commctrl.h>
-
-#ifdef PROGMAN
-#include "wficon.h"
-#endif
 
 #define DO_DROPFILE 0x454C4946L
 #define DO_PRINTFILE 0x544E5250L
@@ -168,15 +164,7 @@ ShowItemBitmaps(HWND hwndLB, BOOL bShow)
 
    fShowSourceBitmaps = bShow;
 
-#ifdef PROGMAN
-   dx = ((GetWindowLong(GetParent(GetParent(hwndLB)),GWL_VIEW) & VIEW_ICON) ?
-            dxIcon :
-            dxFolder) +
-
-        dyBorderx2 + dyBorder;
-#else
    dx = dxFolder + dyBorderx2 + dyBorder;
-#endif
 
    //
    // Invalidate the bitmap parts of all visible, selected items.
@@ -421,14 +409,14 @@ DragLoopCont:
 //
 // Synopsis: Rect the drop sink and update the status bar
 //
-// Return:
+// Return:     TRUE if the item was highlighted
 // Assumes:
 // Effects:
 // Notes:
 //
 /////////////////////////////////////////////////////////////////////
 
-VOID
+BOOL 
 DSRectItem(
    HWND hwndLB,
    INT iItem,
@@ -476,7 +464,7 @@ DSRectItem(
 
          UpdateWindow(hwndStatus);
       }
-      return;
+      return FALSE;
    }
 
    //
@@ -494,7 +482,7 @@ ClearStatus:
                   (LPARAM)szNULL);
 
       UpdateWindow(hwndStatus);
-      return;
+      return FALSE;
    }
 
    //
@@ -504,7 +492,7 @@ ClearStatus:
                    LB_GETTEXT,
                    iItem,
                    (LPARAM)(LPTSTR)&lpxdta) == LB_ERR || !lpxdta) {
-      return;
+      return FALSE;
    }
 
    if (!(lpxdta->dwAttrs & ATTR_DIR)  &&
@@ -537,7 +525,7 @@ ClearStatus:
                     szTemp);
 
       UpdateWindow(hwndStatus);
-      return;
+      return FALSE;
    }
 
    //
@@ -599,6 +587,101 @@ ClearStatus:
       InvalidateRect(hwndLB, &rc, FALSE);
       UpdateWindow(hwndLB);
    }
+
+   return TRUE;
+}
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// Name:     DSDragScrollSink
+//
+// Synopsis: Called by tree, dir and search drag loops.  
+//           Scrolls the target if the point is above or below it
+//
+//      lpds    drop struct sent with the message
+//
+/////////////////////////////////////////////////////////////////////
+
+VOID
+DSDragScrollSink(LPDROPSTRUCT lpds)
+{
+    HWND hwndMDIChildSource;
+    HWND hwndMDIChildSink;
+
+    RECT rcSink;
+    RECT rcScroll;
+    POINT ptDropScr;
+    HWND hwndToScroll;
+
+    hwndMDIChildSource = GetMDIChildFromDecendant(lpds->hwndSource);
+    hwndMDIChildSink = GetMDIChildFromDecendant(lpds->hwndSink);
+
+    // calculate the screen x/y of the ptDrop
+    if (lpds->hwndSink == NULL)
+    {
+      rcSink.left = rcSink.top = 0;
+    }
+    else
+    {
+      GetClientRect(lpds->hwndSink, &rcSink);
+      ClientToScreen(lpds->hwndSink, (LPPOINT)&rcSink.left);
+      ClientToScreen(lpds->hwndSink, (LPPOINT)&rcSink.right);
+    }
+
+    ptDropScr.x = rcSink.left + lpds->ptDrop.x;
+    ptDropScr.y = rcSink.top + lpds->ptDrop.y;
+
+    // determine which window we will be potentially scrolling; if the sink MDI is null,
+    // this means that the mouse is over the frame of this app or outside that;
+    // we scroll the source mdi child in that case
+    hwndToScroll = hwndMDIChildSink;
+    if (hwndToScroll == NULL)
+    {
+      hwndToScroll = hwndMDIChildSource;
+    }
+
+    GetClientRect(hwndToScroll, &rcScroll);
+    ClientToScreen(hwndToScroll, (LPPOINT)&rcScroll.left);
+    ClientToScreen(hwndToScroll, (LPPOINT)&rcScroll.right);
+
+    // if the drop y is above the top of the window to scroll
+    if (ptDropScr.y < rcScroll.top || ptDropScr.y > rcScroll.bottom)
+    {
+      // scroll up/down one line; figure out whether tree or dir list box
+      HWND hwndTree = HasTreeWindow(hwndToScroll);
+      HWND hwndDir = HasDirWindow(hwndToScroll);
+      HWND hwndLB = NULL;
+
+      if (hwndDir)
+      {
+        hwndLB = GetDlgItem(hwndDir, IDCW_LISTBOX);
+        if (hwndLB)
+        {
+            RECT rcLB;
+            GetClientRect(hwndLB, &rcLB);
+            ClientToScreen(hwndLB, (LPPOINT)&rcLB.left);
+            // no need: ClientToScreen(hwndLB, (LPPOINT)&rcLB.right);
+
+            if (ptDropScr.x < rcLB.left)
+            {
+                // to left of dir list box; switch to tree
+                hwndLB = NULL;
+            }
+        }
+      }
+
+      if (hwndLB == NULL && hwndTree)
+      {
+          // no dir or point outside of dir list box
+          hwndLB = GetDlgItem(hwndTree, IDCW_TREELISTBOX);
+      }
+
+      if (hwndLB)
+      {
+          SendMessage(hwndLB, WM_VSCROLL, ptDropScr.y < rcScroll.top ? SB_LINEUP : SB_LINEDOWN, 0L);
+      }
+    }          
 }
 
 
@@ -618,13 +701,7 @@ DropFilesOnApplication(LPTSTR pszFiles)
     POINT pt;
     HWND hwnd;
     RECT rc;
-    HANDLE hDrop,hT;
-    LPBYTE lpList;
-    UINT cbList;
-    UINT cbT;
-
-    LPDROPFILES lpdfs;
-    TCHAR szFile[MAXPATHLEN];
+    HANDLE hDrop;
 
     if (!(hwnd = hwndGlobalSink))
         return 0;
@@ -632,44 +709,13 @@ DropFilesOnApplication(LPTSTR pszFiles)
     hwndGlobalSink = NULL;
 
     GetCursorPos(&pt);
-
-    cbList = 2*sizeof(*szFile) + sizeof(DROPFILES);
-
-    hDrop = GlobalAlloc(GMEM_DDESHARE|GMEM_MOVEABLE|GMEM_ZEROINIT, cbList);
-    if (!hDrop)
-        return 0;
-
-    lpdfs = (LPDROPFILES)GlobalLock(hDrop);
-
     GetClientRect(hwnd,&rc);
     ScreenToClient(hwnd,&pt);
-    lpdfs->pt = pt;
-    lpdfs->fNC = !PtInRect(&rc,pt);
-    lpdfs->pFiles = sizeof(DROPFILES);
 
-    lpdfs->fWide = TRUE;
-
-    GlobalUnlock(hDrop);
-
-    while (pszFiles = GetNextFile(pszFiles, szFile, COUNTOF(szFile))) {
-
-       QualifyPath(szFile);
-
-       cbT = ByteCountOf(lstrlen(szFile)+1);
-
-       hT = GlobalReAlloc(hDrop, cbList + cbT, GMEM_MOVEABLE|GMEM_ZEROINIT);
-
-       if (!hT)
-          break;
-
-       hDrop = hT;
-       lpList = GlobalLock(hDrop);
-
-       lstrcpy((LPTSTR)(lpList+cbList-2*sizeof(*szFile)), szFile);
-
-       GlobalUnlock(hDrop);
-       cbList += cbT;
-    }
+    hDrop = CreateDropFiles(pt, !PtInRect(&rc,pt), pszFiles);
+        
+    if (!hDrop)
+        return 0;
 
     PostMessage(hwnd, WM_DROPFILES, (WPARAM)hDrop, 0L);
 
@@ -1143,7 +1189,7 @@ DSDropObject(
    //
    CheckEsc(szTemp);
 
-   ret = ExecProgram(szSourceFileQualified, szTemp, NULL, FALSE);
+   ret = ExecProgram(szSourceFileQualified, szTemp, NULL, FALSE, FALSE);
 
    if (ret)
       MyMessageBox(hwndFrame, IDS_EXECERRTITLE, (WORD)ret, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);

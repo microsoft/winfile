@@ -15,10 +15,7 @@
 #include "lfn.h"
 #include "wnetcaps.h"         // WNetGetCaps()
 
-#ifdef PROGMAN
-#include "wficon.h"
-#endif
-
+#include <ole2.h>
 
 typedef VOID (APIENTRY *FNPENAPP)(WORD, BOOL);
 
@@ -475,7 +472,7 @@ BoilThatDustSpec(register TCHAR *pStart, BOOL bLoadIt)
       else
          *pEnd = CHAR_NULL;
 
-      ret = ExecProgram(pStart, szNULL, NULL, bLoadIt);
+      ret = ExecProgram(pStart, szNULL, NULL, bLoadIt, FALSE);
       if (ret)
          MyMessageBox(NULL, IDS_EXECERRTITLE, ret, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
 
@@ -841,8 +838,7 @@ UINT
 FillDocType(
    PPDOCBUCKET ppDoc,
    LPCWSTR pszSection,
-   LPCWSTR pszDefault,
-   DWORD dwParm)
+   LPCWSTR pszDefault)
 {
    LPWSTR pszDocuments = NULL;
    LPWSTR p;
@@ -883,7 +879,7 @@ FillDocType(
    for(p2=pszDocuments; p2<p; p2++) {
 
       if (*p2) {
-         if (DocInsert(ppDoc, p2, dwParm) == 1)
+         if (DocInsert(ppDoc, p2, NULL) == 1)
             uRetval++;
 
          while(*p2 && p2!=p)
@@ -951,6 +947,19 @@ JAPANEND
    if (*lpCmdLine)
       nCmdShow = SW_SHOWMINNOACTIVE;
 
+   // setup ini file location
+   lstrcpy(szTheINIFile, szBaseINIFile);
+   dwRetval = GetEnvironmentVariable(TEXT("APPDATA"), szBuffer, MAXPATHLEN);
+   if (dwRetval > 0 && dwRetval <= (MAXPATHLEN - lstrlen(szRoamINIPath) - 1 - lstrlen(szBaseINIFile) - 1)) {
+	   wsprintf(szTheINIFile, TEXT("%s%s"), szBuffer, szRoamINIPath);
+	   if (CreateDirectory(szTheINIFile, NULL) || GetLastError() == ERROR_ALREADY_EXISTS) {
+		   wsprintf(szTheINIFile, TEXT("%s%s\\%s"), szBuffer, szRoamINIPath, szBaseINIFile);
+	   }
+	   else {
+		   wsprintf(szTheINIFile, TEXT("%s\\%s"), szBuffer, szBaseINIFile);
+	   }
+   }
+
    //
    // Constructors for info system.
    // Must always do since these never fail and we don't test for
@@ -972,6 +981,9 @@ JAPANEND
       I_Space(i);
    }
 
+	if (OleInitialize(0) != NOERROR)
+		return FALSE;
+	
    if (lpfnRegisterPenApp = (FNPENAPP)GetProcAddress((HANDLE)GetSystemMetrics(SM_PENWINDOWS), chPenReg))
       (*lpfnRegisterPenApp)(1, TRUE);
 
@@ -983,7 +995,7 @@ JAPANEND
 
    if (*lpCmdLine) {
 
-      if (dwRetval = ExecProgram(lpCmdLine, pszNextComponent(lpCmdLine), NULL, FALSE))
+      if (dwRetval = ExecProgram(lpCmdLine, pszNextComponent(lpCmdLine), NULL, FALSE, FALSE))
          MyMessageBox(NULL, IDS_EXECERRTITLE, dwRetval, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
       else
          nCmdShow = SW_SHOWMINNOACTIVE;
@@ -1093,11 +1105,7 @@ JAPANEND
    wndClass.lpfnWndProc    = TreeWndProc;
 // wndClass.cbClsExtra     = 0;
 
-#ifdef PROGMAN
-   wndClass.cbWndExtra     = 11 * sizeof(LONG_PTR);
-#else
-   wndClass.cbWndExtra     = 10 * sizeof(LONG_PTR);
-#endif
+   wndClass.cbWndExtra     = GWL_LASTFOCUS + sizeof(LONG_PTR);
 
 
 // wndClass.hInstance      = hInstance;
@@ -1147,7 +1155,7 @@ JAPANEND
    wndClass.style          = 0;  //CS_VREDRAW | CS_HREDRAW;
    wndClass.lpfnWndProc    = DirWndProc;
 // wndClass.cbClsExtra     = 0;
-   wndClass.cbWndExtra     = 7 * sizeof(LONG_PTR);
+   wndClass.cbWndExtra     = GWL_OLEDROP + sizeof(LONG_PTR);
 // wndClass.hInstance      = hInstance;
    wndClass.hIcon          = NULL;
 // wndClass.hCursor        = hcurArrow;
@@ -1162,7 +1170,7 @@ JAPANEND
    wndClass.style          = 0L;
    wndClass.lpfnWndProc    = SearchWndProc;
 // wndClass.cbClsExtra     = 0;
-   wndClass.cbWndExtra     = 10 * sizeof(LONG_PTR);
+   wndClass.cbWndExtra     = GWL_LASTFOCUS + sizeof(LONG_PTR);
 
 // wndClass.hInstance      = hInstance;
    wndClass.hIcon          = LoadIcon(hInstance, (LPTSTR) MAKEINTRESOURCE(DIRICON));
@@ -1174,6 +1182,24 @@ JAPANEND
       return FALSE;
    }
 
+#if 0
+   wndClass.lpszClassName  = szListbBox;
+   wndClass.style          = 0L;
+   wndClass.lpfnWndProc    = DirListBoxWndProc;
+// wndClass.cbClsExtra     = 0;
+   wndClass.cbWndExtra     = sizeof(LONG_PTR);
+
+// wndClass.hInstance      = hInstance;
+   wndClass.hIcon          = LoadIcon(hInstance, (LPTSTR) MAKEINTRESOURCE(DIRICON));
+// wndClass.hCursor        = NULL;
+   wndClass.hbrBackground  = NULL;
+// wndClass.lpszMenuName   = NULL;
+
+   if ((atomDirListBox = RegisterClass(&wndClass)) == 0) {
+      return FALSE;
+   }
+#endif
+
    if (!LoadString(hInstance, IDS_WINFILE, szTitle, COUNTOF(szTitle))) {
       return FALSE;
    }
@@ -1184,7 +1210,11 @@ JAPANEND
    // Check that at least some portion of the window is visible;
    // set to screen size if not
 
-   SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
+   // OLD: SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
+   rcT.left = GetSystemMetrics(SM_XVIRTUALSCREEN);
+   rcT.top = GetSystemMetrics(SM_YVIRTUALSCREEN);
+   rcT.right = rcT.left + GetSystemMetrics(SM_CXVIRTUALSCREEN);
+   rcT.bottom = rcT.top + GetSystemMetrics(SM_CYVIRTUALSCREEN);
 
    // right and bottom are width and height, so convert to coordinates
 
@@ -1193,8 +1223,10 @@ JAPANEND
 
    if (!IntersectRect(&rcS, &rcT, &win.rc))
    {
-      rcT.right = rcT.bottom = (LONG)CW_USEDEFAULT;
-      win.rc = rcT;
+      // window off virtual screen or initial case; put in main work area on primary screen
+	   SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
+	   rcT.right = rcT.bottom = (LONG)CW_USEDEFAULT;
+       win.rc = rcT;
    }
 
    // Now convert back again
@@ -1341,26 +1373,8 @@ JAPANEND
 
    if (ppProgBucket = DocConstruct()) {
 
-      FillDocType(ppProgBucket, L"Programs", szDefPrograms, 0);
+      FillDocType(ppProgBucket, L"Programs", szDefPrograms);
    }
-
-#ifdef PROGMAN
-   //
-   // Parse Exes that have icons
-   //
-
-   if (ppProgIconBucket = DocConstruct()) {
-
-      FillDocType(ppProgIconBucket, L"ProgramsIcons", szDefProgramsIcons, 0);
-   }
-
-   if (IconInit()) {
-
-      // !! LATER !!
-      //
-      // Eror message
-   }
-#endif
 
    BuildDocumentStringWorker();
 
@@ -1435,6 +1449,8 @@ JAPANEND
 
    SetThreadPriority(hThread, THREAD_PRIORITY_NORMAL);
 
+   StartBuildingDirectoryTrie();
+
    return TRUE;
 }
 
@@ -1486,16 +1502,8 @@ FreeFileManager()
    D_NetCon();
    D_VolInfo();
 
-#ifdef PROGMAN
-   IconFree();
-#endif
-
-
    DocDestruct(ppDocBucket);
    DocDestruct(ppProgBucket);
-#ifdef PROGMAN
-   DocDestruct(ppProgIconBucket);
-#endif
 
    if (lpfnRegisterPenApp)
       (*lpfnRegisterPenApp)(1, FALSE);
@@ -1529,6 +1537,7 @@ FreeFileManager()
    if (hVersion)
       FreeLibrary(hVersion);
 
+	OleUninitialize();
 
 #undef CLOSEHANDLE
 }

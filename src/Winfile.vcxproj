@@ -208,12 +208,16 @@
     <ClInclude Include="dbg.h" />
     <ClInclude Include="fmifs.h" />
     <ClInclude Include="lfn.h" />
+    <ClInclude Include="BagOValues.h" />
     <ClInclude Include="mpr.h" />
     <ClInclude Include="numfmt.h" />
+    <ClInclude Include="spinlock.h" />
     <ClInclude Include="suggest.h" />
     <ClInclude Include="treectl.h" />
     <ClInclude Include="wfcopy.h" />
     <ClInclude Include="wfdlgs.h" />
+    <ClInclude Include="wfdocb.h" />
+    <ClInclude Include="wfdrop.h" />
     <ClInclude Include="wfext.h" />
     <ClInclude Include="wfexti.h" />
     <ClInclude Include="wfgwl.h" />
@@ -266,8 +270,10 @@
     <ClCompile Include="wfdlgs3.c" />
     <ClCompile Include="wfdos.c" />
     <ClCompile Include="wfdrives.c" />
+    <ClCompile Include="wfdrop.c" />
     <ClCompile Include="wfext.c" />
     <ClCompile Include="wffile.c" />
+    <ClCompile Include="wfgoto.cpp" />
     <ClCompile Include="wfinfo.c" />
     <ClCompile Include="wfinit.c" />
     <ClCompile Include="wfmem.c" />

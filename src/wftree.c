@@ -15,10 +15,6 @@
 
 #include <commctrl.h>
 
-#ifdef PROGMAN
-#include "wficon.h"
-#endif
-
 HICON
 GetTreeIcon(HWND hWnd);
 
@@ -557,10 +553,6 @@ TreeWndProc(
             SetWindowLongPtr(hwnd, GWL_VOLNAME, 0L);
             SetWindowLongPtr(hwnd, GWL_PATHLEN, 0L);
 
-#ifdef PROGMAN
-            SetWindowLong(hwnd, GWL_PICONBLOCK, 0L);
-#endif
-
             if (!ResizeSplit(hwnd, dxSplit))
                return -1;
 
@@ -632,10 +624,6 @@ TreeWndProc(
          //
          if (GET_WM_MDIACTIVATE_FACTIVATE(hwnd, wParam, lParam)) {
 
-#ifdef PROGMAN
-            IconMDIActivate();
-#endif
-
             EnableCheckTBButtons(hwnd);
 
             SPC_SET_INVALID(qFreeSpace);
@@ -664,7 +652,6 @@ TreeWndProc(
                MF_ENABLED);
           }
           break;
-
 
       case WM_SYSCOMMAND:
 

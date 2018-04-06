@@ -11,6 +11,25 @@
 #include "winfile.h"
 #include "lfn.h"
 #include <commctrl.h>
+#include <shlobj.h>
+
+//
+// Overall Window structure
+//
+// Frame Window (FrameWndProc(), global hwndFrame)
+// Toolbar Window (?, global hwndToolbar)
+//    Combo Box for drive list (n/a, global hwndDriveList)
+// Drives bar (DrivesWndproc(), global hwndDriveBar)
+// MDI Client (n/a, global hwndMDIClient)
+//    Tree window (TreeWndProc(), <hwndActive> looked up)
+//       Tree control on left (TreeControlWndProc(), hwndTree = HasTreeWindow(hwndActive))
+//          Listbox (n/a, GetDlgItem(hwndTree, IDCW_TREELISTBOX))
+//       Directory content list on right (DirWndProc(), hwndDir = HasDirWindow(hwndActive), GWL_LISTPARMS -> parent hwndActive)
+//          Listbox (n/a, GetDlgItem(hwndDir, IDCW_LISTBOX))
+//    Search results window (SearchWndProc(), global hwndSearch, GWL_LISTPARMS -> hwndSearch)
+//       Listbox (n/a, GetDlgItem(hwndDir, IDCW_LISTBOX))
+// Status window (n/a, hwndStatus)
+//
 
 //
 // prototypes
@@ -172,6 +191,7 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
 
       LPWSTR    pSel = NULL;
       BOOL      bDir = TRUE;
+      IDataObject *pDataObj;
 
       //
       // In order to avoid deleting the tree control pNodes while
@@ -198,6 +218,31 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
       EnableMenuItem(hMenu, IDM_RENAME, uMenuFlags);
       EnableMenuItem(hMenu, IDM_MAKEDIR, uMenuFlags);
 
+	  if (OleGetClipboard(&pDataObj) == S_OK)
+	  {
+	      UINT uPaste = uMenuFlags;
+	  	  FORMATETC fmtetcDrop = { CF_HDROP, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
+	  	  FORMATETC fmtetcLFN = { 0, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
+	      unsigned short cp_format_descriptor = RegisterClipboardFormat(CFSTR_FILEDESCRIPTOR);
+		  unsigned short cp_format_contents = RegisterClipboardFormat(CFSTR_FILECONTENTS);
+
+		  //Set up format structure for the descriptor and contents
+		  FORMATETC descriptor_format = {cp_format_descriptor, NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
+		  FORMATETC contents_format = {cp_format_contents, NULL, DVASPECT_CONTENT, -1, TYMED_ISTREAM};
+
+  	  	  fmtetcLFN.cfFormat = RegisterClipboardFormat(TEXT("LongFileNameW"));
+
+		  if (pDataObj->lpVtbl->QueryGetData(pDataObj, &fmtetcDrop) != S_OK &&
+		  	  pDataObj->lpVtbl->QueryGetData(pDataObj, &fmtetcLFN) != S_OK && 
+			  (pDataObj->lpVtbl->QueryGetData(pDataObj, &descriptor_format) != S_OK ||
+			   pDataObj->lpVtbl->QueryGetData(pDataObj, &contents_format) != S_OK))
+		  	 uPaste |= MF_GRAYED;
+		  	 
+		  EnableMenuItem(hMenu, IDM_PASTE, uPaste);
+
+		  pDataObj->lpVtbl->Release(pDataObj);
+      }
+
       if (!hwndDir)
          uMenuFlags = MF_BYCOMMAND | MF_GRAYED;
 
@@ -221,7 +266,6 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
          : MF_BYCOMMAND | MF_ENABLED;
 
       EnableMenuItem(hMenu, IDM_PRINT, uMenuFlags);
-      EnableMenuItem(hMenu, IDM_COPYTOCLIPBOARD, uMenuFlags);
 
       //
       // See if we can enable the Properties... menu
@@ -383,10 +427,6 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
       EnableMenuItem(hMenu, IDM_DIRONLY,   uMenuFlags);
       EnableMenuItem(hMenu, IDM_SPLIT,     uMenuFlags);
 
-#ifdef PROGMAN
-      EnableMenuItem(hMenu, IDM_VICON,  (hwndActive == hwndSearch) ? MF_BYCOMMAND | MF_GRAYED : MF_BYCOMMAND);
-      CheckMenuItem(hMenu, IDM_VICON,   (uView & VIEW_ICON) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
-#endif
       dwView &= VIEW_EVERYTHING;
 
       CheckMenuItem(hMenu, IDM_VNAME,   (dwView == VIEW_NAMEONLY) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
@@ -397,7 +437,8 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
       CheckMenuItem(hMenu, IDM_BYTYPE, (dwSort == IDD_TYPE) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
       CheckMenuItem(hMenu, IDM_BYSIZE, (dwSort == IDD_SIZE) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
       CheckMenuItem(hMenu, IDM_BYDATE, (dwSort == IDD_DATE) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
-
+      CheckMenuItem(hMenu, IDM_BYFDATE,(dwSort == IDD_FDATE) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
+      
       if (hwndActive == hwndSearch || hwndDir)
          uMenuFlags = MF_BYCOMMAND | MF_ENABLED;
       else
@@ -416,6 +457,7 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
       EnableMenuItem(hMenu, IDM_BYTYPE, uMenuFlags);
       EnableMenuItem(hMenu, IDM_BYSIZE, uMenuFlags);
       EnableMenuItem(hMenu, IDM_BYDATE, uMenuFlags);
+      EnableMenuItem(hMenu, IDM_BYFDATE, uMenuFlags);
 
       if (IsIconic(hwndActive))
          uMenuFlags = MF_BYCOMMAND | MF_GRAYED;
@@ -727,35 +769,35 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
             WS_CHILD|WS_BORDER|WS_CLIPSIBLINGS,
             szNULL, hwndFrame, IDC_STATUS);
 
-         if (hwndStatus) {
-            HDC hDC;
-            INT nParts[3];
-            INT nInch;
+		 if (hwndStatus) {
+			 HDC hDC;
+			 INT nParts[3];
+			 INT nInch;
 
-            hDC = GetDC(NULL);
-            nInch = GetDeviceCaps(hDC, LOGPIXELSX);
-            ReleaseDC(NULL, hDC);
+			 hDC = GetDC(NULL);
+			 nInch = GetDeviceCaps(hDC, LOGPIXELSX);
+			 ReleaseDC(NULL, hDC);
 
-	    // use the smaller font for Status bar so that messages fix in it.
-            if( bJAPAN )
-            {
-                nParts[0] = nInch * 8 / 4 + (nInch * 7/8);
-                nParts[1] = nParts[0] + nInch * 11/ 4 + nInch * 7/8;
+			 // use the smaller font for Status bar so that messages fix in it.
+			 if (bJAPAN)
+			 {
+				 nParts[0] = nInch * 8 / 4 + (nInch * 7 / 8);
+				 nParts[1] = nParts[0] + nInch * 11 / 4 + nInch * 7 / 8;
+				 nParts[2] = -1;
 
-                SendMessage(hwndStatus, SB_SETPARTS, 2, (LPARAM)(LPINT)nParts);
+				 SendMessage(hwndStatus, SB_SETPARTS, 3, (LPARAM)(LPINT)nParts);
 
-                SendMessage(hwndStatus, WM_SETFONT, (WPARAM)hFontStatus, 0L );
-            }
-	    else
-	    {
-		nParts[0] = nInch * 9 / 4 + (nInch * 7/8);
-		nParts[1] = nParts[0] + nInch * 5/2 + nInch * 7/8;
+				 SendMessage(hwndStatus, WM_SETFONT, (WPARAM)hFontStatus, 0L);
+			 }
+			 else
+			 {
+				 nParts[0] = nInch * 9 / 4 + (nInch * 7 / 8);
+				 nParts[1] = nParts[0] + nInch * 5 / 2 + nInch * 7 / 8;
+				 nParts[2] = -1;
 
-		SendMessage(hwndStatus, SB_SETPARTS, 2, (LPARAM)(LPINT)nParts);
-
-			
-            }
-         }
+				 SendMessage(hwndStatus, SB_SETPARTS, 3, (LPARAM)(LPINT)nParts);
+			 }
+		 }
          break;
       }
 
@@ -782,7 +824,7 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
          } else if ((uMenu >= IDM_EXTENSIONS) && (uMenu < ((UINT)iNumExtensions + IDM_EXTENSIONS))) {
 
             index = uMenu - IDM_EXTENSIONS;
-            (extensions[index].ExtProc)(hwndFrame, FMEVENT_INITMENU, (HMENU)wParam);
+            (extensions[index].ExtProc)(hwndFrame, FMEVENT_INITMENU, (LPARAM)(HMENU)wParam);
 
          } else {
 
@@ -845,13 +887,8 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
             if (!GetWindow(hwnd, GW_OWNER)) {
 
-#ifdef PROGMAN
-               dwFlags = GetWindowLong(hwnd, GWL_VIEW) &
-                               (VIEW_EVERYTHING | VIEW_PLUSES | VIEW_ICON));
-#else
                dwFlags = GetWindowLongPtr(hwnd, GWL_VIEW) &
                                (VIEW_EVERYTHING | VIEW_PLUSES);
-#endif
 
                if (hwndT = HasDirWindow(hwnd)) {
                   SendMessage(hwndT, FS_CHANGEDISPLAY, CD_VIEW,
@@ -903,6 +940,10 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
    case FM_RELOAD_EXTENSIONS:
       return ExtensionMsgProc(wMsg, wParam, lParam);
       break;
+
+   case WM_SETFOCUS:
+	   UpdateMoveStatus(ReadMoveStatus());
+	   goto DoDefault;
 
    case WM_MENUSELECT:
       {

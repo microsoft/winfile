@@ -64,87 +64,81 @@ NewTree(
    if (!CheckDrive(hwndSrc, drive, FUNC_SETDRIVE))
       return;
 
+   pszSearchDir = (LPWSTR)SendMessage(hwndSrc,
+	   FS_GETSELECTION,
+	   1 | 4 | 16,
+	   (LPARAM)&bDir);
+
+   //
+   // If no selection
+   //
+   if (!pszSearchDir || !pszSearchDir[0] || DRIVEID(pszSearchDir) != drive) {
+
+	   //
+	   // Update net con in case remote drive was swapped from console
+	   //
+	   if (IsRemoteDrive(drive)) {
+		   R_NetCon(drive);
+	   }
+
+	   //
+	   // Update volume label here too if removable
+	   // This is broken since we may steal stale data from another window.
+	   // But this is what winball does and there's no simpler solution.
+	   //
+	   if (IsRemovableDrive(drive)) {
+		   R_VolInfo(drive);
+	   }
+
+	   // TODO: if directory in right pane, get that instead of directory in left pane
+
+	   GetSelectedDirectory(drive + 1, szDir);
+	   AddBackslash(szDir);
+	   SendMessage(hwndSrc,
+		   FS_GETFILESPEC,
+		   MAXPATHLEN,
+		   (LPARAM)(szDir + lstrlen(szDir)));
+   }
+   else {
+
+	   lstrcpy(szDir, pszSearchDir);
+
+	   if (!bDir) {
+
+		   RemoveLast(szDir);
+
+		   //
+		   // pszInitialSel is a global used to pass initial state:
+		   // currently selected item in the dir part of the window
+		   //
+		   // Freed by caller
+		   //
+		   psz = pszSearchDir + lstrlen(szDir) + 1;
+
+		   pszInitialDirSel = (LPWSTR)LocalAlloc(LMEM_FIXED,
+			   lstrlen(psz) * sizeof(*psz));
+		   if (pszInitialDirSel)
+			   lstrcpy(pszInitialDirSel, psz);
+	   }
+
+	   AddBackslash(szDir);
+	   lstrcat(szDir, szStarDotStar);
+   }
+
    if (hwndSrc == hwndSearch) {
-
       dxSplit = -1;
+   }
+   else {
 
-      // Handle search window case
+	   hwndTree = HasTreeWindow(hwndSrc);
+	   hwndDir = HasDirWindow(hwndSrc);
 
-      //
-      // First selected item, don't quote
-      //
-      pszSearchDir = (LPWSTR) SendMessage(hwndSearch,
-                                          FS_GETSELECTION,
-                                          1|16,
-                                          (LPARAM)&bDir);
-
-      //
-      // If testing for empty search window.
-      //
-
-      if (!pszSearchDir || !pszSearchDir[0] || DRIVEID(pszSearchDir)!=drive)
-         goto NoSearchPath;
-
-      lstrcpy(szDir, pszSearchDir);
-
-      if (!bDir) {
-
-         RemoveLast(szDir);
-
-         //
-         // pszInitialSel is a global used to pass initial state:
-         // currently selected item in the dir part of the window
-         //
-         // Freed by caller
-         //
-         psz = pszSearchDir + lstrlen(szDir) + 1;
-
-         pszInitialDirSel = (LPWSTR)LocalAlloc(LMEM_FIXED,
-                                               lstrlen(psz)*sizeof(*psz));
-         if (pszInitialDirSel)
-            lstrcpy(pszInitialDirSel, psz);
-      }
-
-      AddBackslash(szDir);
-      lstrcat(szDir, szStarDotStar);
-
-   } else {
-
-      hwndTree = HasTreeWindow(hwndSrc);
-      hwndDir = HasDirWindow(hwndSrc);
-
-      if (hwndTree && hwndDir)
-         dxSplit = GetWindowLong(hwndSrc, GWL_SPLIT);
-      else if (hwndDir)
-         dxSplit = 0;
-      else
-         dxSplit = 10000;
-
-NoSearchPath:
-
-      //
-      // Update net con in case remote drive was swapped from console
-      //
-      if (IsRemoteDrive(drive)) {
-         R_NetCon(drive);
-      }
-
-      //
-      // Update volume label here too if removable
-      // This is broken since we may steal stale data from another window.
-      // But this is what winball does and there's no simpler solution.
-      //
-      if (IsRemovableDrive(drive)) {
-         R_VolInfo(drive);
-      }
-      
-
-      GetSelectedDirectory(drive + 1, szDir);
-      AddBackslash(szDir);
-      SendMessage(hwndSrc,
-                  FS_GETFILESPEC,
-                  MAXPATHLEN,
-                  (LPARAM)(szDir+lstrlen(szDir)));
+	   if (hwndTree && hwndDir)
+		   dxSplit = GetSplit(hwndSrc);
+	   else if (hwndDir)
+		   dxSplit = 0;
+	   else
+		   dxSplit = 10000;
    }
 
    //
@@ -358,7 +352,7 @@ DrawDrive(HDC hdc, INT x, INT y, DRIVEIND driveInd, BOOL bCurrent, BOOL bFocus)
 // note: IsTheDiskReallyThere() has the side effect of setting the
 // current drive to the new disk if it is successful
 
-DWORD
+BOOL
 CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
 {
    DWORD err;
@@ -419,7 +413,7 @@ CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
                SetCursor(hCursor);
             ShowCursor(FALSE);
 
-            return 0;
+            return FALSE;
          }
 
          //
@@ -634,12 +628,7 @@ DrivesSetDrive(
    SetWindowLongPtr(hWnd, GWL_CURDRIVEIND, driveInd);
    SetWindowLongPtr(hWnd, GWL_CURDRIVEFOCUS, driveInd);
 
-   //
-   // this is set in TC_SETDRIVE as well but the FS_CHANGEDISPLAY
-   // likes to have this set before for the UpdateStatus() call
-   //
-   if (hwndChild != hwndSearch)
-      SetWindowLong(hwndChild, GWL_TYPE, drive);
+   // NOTE: similar to CreateDirWindow
 
    //
    // reset the dir first to allow tree to steal data

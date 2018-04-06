@@ -15,6 +15,7 @@
 #endif
 
 #include <windows.h>
+#include "wfdocb.h"
 #include "wfmem.h"
 
 LPXDTALINK

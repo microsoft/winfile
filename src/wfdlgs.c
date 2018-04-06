@@ -247,6 +247,7 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
           CheckDlgButton(hDlg, IDD_DOCS,       dwAttribs & ATTR_DOCS);
           CheckDlgButton(hDlg, IDD_OTHER,      dwAttribs & ATTR_OTHER);
           CheckDlgButton(hDlg, IDD_SHOWHIDDEN, dwAttribs & ATTR_HIDDEN);
+          CheckDlgButton(hDlg, IDD_SHOWJUNCTION, dwAttribs & ATTR_JUNCTION);
 
           break;
 
@@ -281,6 +282,8 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                       dwAttribs |= ATTR_OTHER;
                   if (IsDlgButtonChecked(hDlg, IDD_SHOWHIDDEN))
                       dwAttribs |= ATTR_HS;
+                  if (IsDlgButtonChecked(hDlg, IDD_SHOWJUNCTION))
+                      dwAttribs |= ATTR_JUNCTION;
 
                   if (!dwAttribs)
                         dwAttribs = ATTR_EVERYTHING;
@@ -293,10 +296,9 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   if (hwndDir = HasDirWindow(hwndActive)) {
                       SendMessage(hwndDir, FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
                       lstrcat(szTemp, szInclude);
-                      SetMDIWindowText(hwndActive, szTemp);
 
                       SetWindowLongPtr(hwndActive, GWL_ATTRIBS, dwAttribs);
-                      SendMessage(hwndDir, FS_CHANGEDISPLAY, CD_PATH, 0L);
+                      SendMessage(hwndDir, FS_CHANGEDISPLAY, CD_PATH_FORCE, (LPARAM)szTemp);
                   }
 
                   break;
@@ -731,4 +733,58 @@ KillQuoteTrailSpace( LPTSTR szFile )
       *pcLastSpace = CHAR_NULL;
 }
 
-
+VOID
+ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
+{
+	DWORD cmd, item;
+	POINT pt;
+
+	HMENU hMenu = GetSubMenu(LoadMenu(hAppInstance, TEXT("CTXMENU")), 0);
+
+	if (lParam == -1)
+	{
+		RECT rect;
+
+		item = SendMessage(hwndLB, LB_GETCURSEL, 0, 0);
+		SendMessage(hwndLB, LB_GETITEMRECT, (WPARAM)LOWORD(item), (LPARAM)&rect);
+		pt.x = rect.left;
+		pt.y = rect.bottom;
+		ClientToScreen(hwnd, &pt);
+		lParam = POINTTOPOINTS(pt);
+	}
+	else
+	{
+		POINTSTOPOINT(pt, lParam);
+
+		ScreenToClient(hwndLB, &pt);
+		item = SendMessage(hwndLB, LB_ITEMFROMPOINT, 0, POINTTOPOINTS(pt));
+
+		if (HIWORD(item) == 0)
+		{
+			HWND hwndTree, hwndParent;
+
+			SetFocus(hwnd);
+
+			hwndParent = GetParent(hwnd);
+			hwndTree = HasTreeWindow(hwndParent);
+
+			// if hwnd is the tree control within the parent window
+			if (hwndTree == hwnd) {
+				// tree control; do selection differently
+				SendMessage(hwndLB, LB_SETCURSEL, (WPARAM)item, 0L);
+				SendMessage(hwnd, WM_COMMAND, GET_WM_COMMAND_MPS(0, hwndLB, LBN_SELCHANGE));
+			}
+			else {
+				SendMessage(hwndLB, LB_SETSEL, (WPARAM)FALSE, (LPARAM)-1);
+				SendMessage(hwndLB, LB_SETSEL, (WPARAM)TRUE, (LPARAM)item);
+			}
+
+		}
+	}
+
+	cmd = TrackPopupMenu(hMenu, TPM_LEFTALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 0, hwnd, NULL);
+	if (cmd != 0)
+		PostMessage(hwndFrame, WM_COMMAND, GET_WM_COMMAND_MPS(cmd, 0, 0));
+
+	DestroyMenu(hMenu);
+}

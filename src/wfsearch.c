@@ -91,12 +91,13 @@ INT maxExtLast;
 
 
 VOID UpdateIfDirty(HWND hWnd);
-INT  FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bSubDirOnly);
+INT  FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse, BOOL bIncludeSubdirs);
 INT  SearchList(
    HWND hwndLB,
    LPWSTR szPath,
    LPWSTR szFileSpec,
    BOOL bRecurse,
+   BOOL bIncludeSubdirs,
    LPXDTALINK* plpStart,
    INT iFileCount,
    BOOL bRoot);
@@ -133,6 +134,7 @@ SearchList(
    LPWSTR szPath,
    LPWSTR szFileSpec,
    BOOL bRecurse,
+   BOOL bIncludeSubdirs,
    LPXDTALINK* plpStart,
    INT iFileCount,
    BOOL bRoot)
@@ -246,10 +248,19 @@ MemoryError:
          break;
       }
 
+	  // default ftSince is 0 and so normally this will be true
+	  bFound = CompareFileTime(&SearchInfo.ftSince, &lfndta.fd.ftLastWriteTime) < 0;
+
+	  // if we otherwise match, but shouldn't include directories in the output, skip
+	  if (bFound && !bIncludeSubdirs && (lfndta.fd.dwFileAttributes & ATTR_DIR) != 0)
+	  {
+		  bFound = FALSE;
+	  }
+
       //
-      // Make sure this is not a "." or ".." directory
+      // Make sure this matches date (if specified) and is not a "." or ".." directory 
       //
-      if (!ISDOTDIR(lfndta.fd.cFileName)) {
+      if (bFound && !ISDOTDIR(lfndta.fd.cFileName)) {
 
          lstrcpy(pszNextFile, lfndta.fd.cFileName);
 
@@ -308,6 +319,7 @@ MemoryError:
             iBitmap = BM_IND_FIL;
 
          lpxdta->byBitmap = iBitmap;
+		 lpxdta->pDocB = NULL;
 
          SendMessage(hwndFrame,
                      FS_SEARCHLINEINSERT,
@@ -369,6 +381,7 @@ SearchCleanup:
                               pszNewPath,
                               szFileSpec,
                               bRecurse,
+							  bIncludeSubdirs,
                               plpStart,
                               iFileCount,
                               FALSE);
@@ -444,7 +457,7 @@ FixUpFileSpec(
  */
 
 INT
-FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse)
+FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse, BOOL bIncludeSubdirs)
 {
    INT iRet;
    WCHAR szFileSpec[MAXPATHLEN+1];
@@ -471,6 +484,7 @@ FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse)
                      szPathName,
                      szFileSpec,
                      bRecurse,
+	                 bIncludeSubdirs,
                      &lpStart,
                      0,
                      TRUE);
@@ -566,7 +580,11 @@ SearchWndProc(
 #define lpItem1 ((LPXDTA)(lpcis->itemData1))
 #define lpItem2 ((LPXDTA)(lpcis->itemData2))
 
-      return lstrcmpi(MemGetFileName(lpItem1), MemGetFileName(lpItem2));
+	   // simple name sort if no date; otherwise sort by date (newest on top)
+	   if (SearchInfo.ftSince.dwHighDateTime == 0 && SearchInfo.ftSince.dwLowDateTime == 0)
+		   return lstrcmpi(MemGetFileName(lpItem1), MemGetFileName(lpItem2));
+	   else
+		   return CompareFileTime(&lpItem2->ftLastWriteTime, &lpItem1->ftLastWriteTime);
 
 #undef lpcis
 #undef lpItem1
@@ -732,8 +750,18 @@ SearchWndProc(
          if (wParam == CD_SEARCHUPDATE) {
             LoadString(hAppInstance, IDS_SEARCHTITLE, szTitle, COUNTOF(szTitle));
             LoadString(hAppInstance, IDS_SEARCHREFRESH, szMessage, COUNTOF(szMessage));
-            if (MessageBox(hwnd, szMessage, szTitle, MB_YESNO | MB_ICONQUESTION) != IDYES)
-               break;
+			int msg = MessageBox(hwnd, szMessage, szTitle, MB_ABORTRETRYIGNORE | MB_ICONQUESTION);
+
+			if (msg == IDABORT)
+			{
+				HWND hwndNext = GetWindow(hwndSearch, GW_HWNDNEXT);
+				SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndNext, 0);
+				SendMessage(hwndSearch, WM_CLOSE, 0, 0L);
+			}
+			if (msg != IDRETRY)
+			{
+				break;
+			}
          }
 
          //
@@ -878,12 +906,19 @@ SearchWndProc(
       //    lParam: LPDROPSTRUCT
       //
 
+      // based on current drop location scroll the sink up or down
+      DSDragScrollSink((LPDROPSTRUCT)lParam);
+
       //
       // DRAGLOOP is used to turn the source bitmaps on/off as we drag.
       //
 
       DSDragLoop(hwndLB, wParam, (LPDROPSTRUCT)lParam);
       break;
+
+   case WM_CONTEXTMENU:
+	   ActivateCommonContextMenu(hwnd, hwndLB, lParam);
+	   break;
 
    case WM_DRAGSELECT:
 
@@ -1103,6 +1138,21 @@ SearchProgDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
       StripPath(szTemp);
       SetDlgItemText(hDlg, IDD_NAME, szTemp);
 
+	  if (SearchInfo.ftSince.dwHighDateTime == 0 && SearchInfo.ftSince.dwLowDateTime == 0) {
+		  SetDlgItemText(hDlg, IDD_DATE, TEXT("n/a"));
+	  }
+	  else {
+		  SYSTEMTIME st;
+		  FILETIME ftLocal;
+		  FileTimeToLocalFileTime(&SearchInfo.ftSince, &ftLocal);
+		  FileTimeToSystemTime(&ftLocal, &st);
+		  if (st.wHour == 0 && st.wMinute == 0)
+			  wsprintf(szTemp, TEXT("%4d-%2d-%2d"), st.wYear, st.wMonth, st.wDay);
+		  else
+			  wsprintf(szTemp, TEXT("%4d-%2d-%2d %02d:%02d"), st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute);
+		  SetDlgItemText(hDlg, IDD_DATE, szTemp);
+	  }
+
       lstrcpy(szTemp,SearchInfo.szSearch);
       StripFilespec(szTemp);
       SetDlgItemPath(hDlg, IDD_PATH, szTemp);
@@ -1261,7 +1311,12 @@ CloseWindow:
       }
 
       SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM) hwndSearch, 0L);
-      UpdateSearchStatus(SearchInfo.hwndLB,
+
+	  // for some reason when the results list is short and the window already maximized,
+	  // the focus doesn't get set on the results window (specifically the LB); do so no.
+	  PostMessage(hwndSearch, WM_SETFOCUS, 0, 0L);
+	  
+	  UpdateSearchStatus(SearchInfo.hwndLB,
          (INT)SendMessage(SearchInfo.hwndLB, LB_GETCOUNT, 0, 0L));
    }
 }
@@ -1279,7 +1334,8 @@ SearchDrive()
 
    SearchInfo.iRet = FillSearchLB(SearchInfo.hwndLB,
                                   SearchInfo.szSearch,
-                                  !SearchInfo.bDontSearchSubs);
+                                  !SearchInfo.bDontSearchSubs,
+								  SearchInfo.bIncludeSubDirs);
 
    if (SearchInfo.hThread) {
       CloseHandle(SearchInfo.hThread);

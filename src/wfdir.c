@@ -15,10 +15,7 @@
 #include "numfmt.h"
 #include <commctrl.h>
 
-
-#ifdef PROGMAN
-#include "wficon.h"
-#endif
+#include "wfdrop.h"
 
 WCHAR   szAttr[]        = L"RHSAC";
 
@@ -63,11 +60,7 @@ DrawItem(
    LPWSTR pszLine = szBuf;
    INT iError;
 
-#ifdef PROGMAN
-   INT dyHeight = (dwViewOpts & VIEW_ICON) ? max(dyIcon, dyFileName) : dyFileName;
-#else
 #define dyHeight dyFileName
-#endif
 
    LPXDTA lpxdta  = (LPXDTA)lpLBItem->itemData;
    LPXDTALINK lpStart = (LPXDTALINK)GetWindowLongPtr(hwnd, GWL_HDTA);
@@ -180,33 +173,34 @@ DrawItem(
 
    if (fShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected) {
 
+         HICON hIcon = DocGetIcon(lpxdta->pDocB);
 
-#ifdef PROGMAN
-      if (dwViewOpts & VIEW_ICON) {
+         if (hIcon != NULL)
+         {
+             DrawIconEx(hDC,
+                    x + dyBorder,
+                    y-(dyFolder/2),
+                    hIcon,
+                    dxFolder,
+                    dyFolder,
+                    0,
+                    NULL,
+                    DI_NORMAL);
+         }
+         else
+         {
+             i = lpxdta->byBitmap;
 
-         IconDrawFile(hDC,
-                      (PICONBLOCK)GetWindowLong(GetParent(hwnd), GWL_PICONBLOCK),
-                      x + dyBorder,
-                      y,
-                      bHasFocus && bDrawSelected,
-                      lpxdta);
-
-      } else {
-#endif
-         i = lpxdta->byBitmap;
-
-         BitBlt(hDC,
-                x + dyBorder,
-                y-(dyFolder/2),
-                dxFolder,
-                dyFolder,
-                hdcMem,
-                i * dxFolder,
-                (bHasFocus && bDrawSelected) ? dyFolder : 0,
-                SRCCOPY);
-#ifdef PROGMAN
-      }
-#endif
+             BitBlt(hDC,
+                    x + dyBorder,
+                    y-(dyFolder/2),
+                    dxFolder,
+                    dyFolder,
+                    hdcMem,
+                    i * dxFolder,
+                    (bHasFocus && bDrawSelected) ? dyFolder : 0,
+                    SRCCOPY);
+         }
    }
 
    if (dwViewOpts & VIEW_EVERYTHING) {
@@ -222,13 +216,7 @@ DrawItem(
       if (bLower)
          CharLower(szBuf);
 
-#ifdef PROGMAN
-      x += (dwViewOpts & VIEW_ICON) ?
-             dxIcon + dyBorderx2 :
-             dxFolder + dyBorderx2;
-#else
-      x += dxFolder + dyBorderx2;
-#endif
+      x += dxFolder + dyBorderx2 + dyBorder;
 
       RightTabbedTextOut(hDC,
                          x,
@@ -244,19 +232,6 @@ DrawItem(
 
    } else {
 
-#ifdef PROGMAN
-
-      ExtTextOut(hDC,
-                 x + ((dwViewOpts & VIEW_ICON) ? dxIcon : dxFolder) +
-                    dyBorderx2 + dyBorder,
-                 y-(dyText/2),
-                 0,
-                 NULL,
-                 pszLine,
-                 lstrlen(pszLine),
-                 NULL);
-
-#else
       ExtTextOut(hDC,
                  x + dxFolder + dyBorderx2 + dyBorder,
                  y-(dyText/2),
@@ -265,7 +240,6 @@ DrawItem(
                  pszLine,
                  lstrlen(pszLine),
                  NULL);
-#endif
    }
 
 
@@ -377,8 +351,20 @@ CreateLBLine(register DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
    //
    if (dwLineFormat & VIEW_SIZE) {
       *pch++ = CHAR_TAB;
-      if (!(dwAttr & ATTR_DIR))
+      if (dwAttr & ATTR_DIR)
+      {
+          if (dwAttr & ATTR_JUNCTION)
+              lstrcpy(pch, TEXT("<JUNCTION>"));
+          else if (dwAttr & ATTR_SYMBOLIC)
+              lstrcpy(pch, TEXT("<SYMLINKD>"));
+          else
+              lstrcpy(pch, TEXT("<DIR>"));
+        pch += lstrlen(pch);
+      }
+      else 
+      {
          pch += PutSize(&lpxdta->qFileSize, pch);
+      }
    }
 
    //
@@ -408,6 +394,17 @@ CreateLBLine(register DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
    *pch = CHAR_NULL;
 }
 
+
+LRESULT DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
+{
+    switch (wMsg)
+    {
+    case WM_RBUTTONDOWN:
+        MessageBeep(1);
+        break;
+    }
+    return 0;
+}
 
 LRESULT
 DirWndProc(
@@ -470,10 +467,6 @@ DirWndProc(
 
          FreeSelInfo(pSelInfo);
          SetWindowLongPtr(hwnd, GWL_SELINFO, 0L);
-
-#ifdef PROGMAN
-         IconPreload(hwndParent, lpStart);
-#endif
       }
 
       SendMessage(hwndLB, WM_SETREDRAW, TRUE, 0L);
@@ -484,20 +477,6 @@ DirWndProc(
 
       return (LRESULT)lpStart;
    }
-
-#ifdef PROGMAN
-   case FS_ICONUPDATE:
-   {
-      RECT rc;
-
-      //
-      // wParam == item # to invalidate
-      //
-      SendMessage(hwndLB, LB_GETITEMRECT, wParam, (LPARAM)&rc);
-      InvalidateRect(hwndLB, &rc, FALSE);
-      break;
-   }
-#endif
 
    case FS_GETDIRECTORY:
 
@@ -604,13 +583,23 @@ DirWndProc(
 
       FreeSelInfo((PSELINFO)GetWindowLongPtr(hwnd, GWL_SELINFO));
 
+      {
+      IDropTarget *pDropTarget;
+      
+      pDropTarget = (IDropTarget *)GetWindowLongPtr(hwnd, GWL_OLEDROP);
+      UnregisterDropWindow(hwnd, pDropTarget);
+      }
+
       break;
    }
    case WM_CHARTOITEM:
    {
       UINT  i, j;
-      WCHAR ch, ch2;
+      WCHAR ch;
       UINT  cItems;
+      LPWSTR szItem;
+      WCHAR rgchMatch[MAXPATHLEN];
+      INT cchMatch;
 
       if ((ch = LOWORD(wParam)) <= CHAR_SPACE || !GetWindowLongPtr(hwnd, GWL_HDTA))
          return(-1L);
@@ -618,9 +607,13 @@ DirWndProc(
       i = GET_WM_CHARTOITEM_POS(wParam, lParam);
       cItems = (INT)SendMessage(hwndLB, LB_GETCOUNT, 0, 0L);
 
-      ch = (WCHAR)CharUpper((LPWSTR)ch);
+        // if more that one character to match, start at current position; else next position
+      if (TypeAheadString(ch, rgchMatch))
+          j = 0;
+      else
+          j = 1;
 
-      for (j=1; j <= cItems; j++) {
+      for (; j < cItems; j++) {
 
          if (SendMessage(hwndLB, LB_GETTEXT, (i + j) % cItems, (LPARAM)&lpxdta)
             == LB_ERR) {
@@ -628,16 +621,20 @@ DirWndProc(
             return -2L;
          }
 
-         ch2 = (WCHAR)CharUpper((LPWSTR)MemGetFileName(lpxdta)[0]);
+          szItem = (LPWSTR)MemGetFileName(lpxdta);
+         if (szItem[0] == '\0')
+                szItem = L"..";
+         cchMatch = wcslen(rgchMatch);
+         if (cchMatch > wcslen(szItem))
+                cchMatch = wcslen(szItem);
 
-         //
-         // Do it this way to be case insensitive.
-         //
-         if (ch == ch2)
+         if (CompareString( LOCALE_USER_DEFAULT, NORM_IGNORECASE, 
+             rgchMatch, cchMatch, szItem, cchMatch) == 2)
             break;
+
       }
 
-      if (j > cItems)
+      if (j == cItems)
          return -2L;
 
       return((i + j) % cItems);
@@ -663,8 +660,10 @@ DirWndProc(
       //    wParam: TRUE if the object is currently over a droppable sink
       //    lParam: LPDROPSTRUCT
 
-      // DRAGLOOP is used to turn the source bitmaps on/off as we drag.
+      // based on current drop location scroll the sink up or down
+      DSDragScrollSink((LPDROPSTRUCT)lParam);
 
+      // DRAGLOOP is used to turn the source bitmaps on/off as we drag.
       DSDragLoop(hwndLB, wParam, (LPDROPSTRUCT)lParam);
       break;
 
@@ -766,10 +765,6 @@ DirWndProc(
 #define pLBMItem ((LPMEASUREITEMSTRUCT)lParam)
 
       pLBMItem->itemHeight =
-#ifdef PROGMAN
-         GetWindowLong(hwndParent, GWL_VIEW) & VIEW_ICON ?
-            dyIcon :
-#endif
             dyFileName;    // the same as in SetLBFont()
 #undef pLBMItem
       break;
@@ -864,17 +859,27 @@ DirWndProc(
       }
       break;
 
+   case WM_CONTEXTMENU:
+	   ActivateCommonContextMenu(hwnd, hwndLB, lParam);
+	   break;
+
    case WM_VKEYTOITEM:
       switch (GET_WM_VKEYTOITEM_CODE(wParam, lParam)) {
       case VK_ESCAPE:
          bCancelTree = TRUE;
+         TypeAheadString('\0', NULL);
          return -2L;
 
-      case 0xBF:        /* Ctrl-/ */
+	  case 'A':			/* Ctrl-A */
+		  if (GetKeyState(VK_CONTROL) >= 0)
+			  break;
+	  case 0xBF:        /* Ctrl-/ */
+         TypeAheadString('\0', NULL);
          SendMessage(hwndFrame, WM_COMMAND, GET_WM_COMMAND_MPS(IDM_SELALL, 0, 0));
          return -2;
 
       case 0xDC:        /* Ctrl-\ */
+         TypeAheadString('\0', NULL);
          SendMessage(hwndFrame, WM_COMMAND, GET_WM_COMMAND_MPS(IDM_DESELALL, 0, 0));
          return -2;
 
@@ -891,6 +896,8 @@ DirWndProc(
                SetFocus(hwndTree ? hwndTree : hwndDrives);
             else
                SetFocus(hwndDrives);
+
+            TypeAheadString('\0', NULL);
             break;
          }
 
@@ -904,18 +911,20 @@ DirWndProc(
          StripBackslash(szTemp);
          StripFilespec(szTemp);
 
-         CreateDirWindow(szTemp, TRUE, hwndParent);
+         CreateDirWindow(szTemp, GetKeyState(VK_SHIFT) >= 0, hwndParent);
+         TypeAheadString('\0', NULL);
          return -2;
 
       default:
          {
-            // check for Ctrl-[DRIVE LETTER] and pass on to drives
-            // window
+#if 0
+          // check for Ctrl-[DRIVE LETTER] and pass on to drives
+          // window
 
-            if ((GetKeyState(VK_CONTROL) < 0) && hwndDriveBar) {
+          if ((GetKeyState(VK_CONTROL) < 0) && hwndDriveBar) {
                return SendMessage(hwndDriveBar, uMsg, wParam, lParam);
-            }
-
+          }
+#endif
             break;
          }
       }
@@ -944,6 +953,14 @@ DirWndProc(
    return 0L;
 }
 
+
+// Handles WM_CREATE, WM_FSC and FS_CHANGEDISPLAY for DirectoryWndProc
+// for WM_CREATE, wParam and lParam are ignored
+// for WM_FSC, wParam is FSC_* and lParam depends on the function (but the cases handled here are limited)
+// for FS_CHANGEDISPLAY, wParam is one of CD_* values; 
+//	for CD_SORT, LOWORD(lParam) == sort value
+//  for CD_VIEW, LOWORD(lParam) == view bits and HIWORD(lParam) == TRUE means always refresh
+//  for CD_PATH and CD_PATH_FORCE, lParam is the new path; if NULL, use MDI window text
 
 LRESULT
 ChangeDisplay(
@@ -1101,18 +1118,6 @@ ChangeDisplay(
                              GetMaxExtent(hwndLB, lpStart, TRUE),
                              dwNewView);
 
-#ifdef PROGMAN
-            if ((dwNewView ^ dwCurView) & VIEW_ICON) {
-
-               SetLBFont(hwnd,
-                         hwndLB,
-                         hFont,
-                         dwNewView,
-                         (LPXDTALINK)GetWindowLong(hwnd, GWL_HDTA));
-
-               IconMDIActivate();
-            }
-#endif
             InvalidateRect(hwndLB, NULL, TRUE);
 
             break;
@@ -1151,7 +1156,7 @@ ChangeDisplay(
          dwNewAttribs = GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
          SetWindowLongPtr(hwndListParms, GWL_VIEW, dwNewView);
 
-         bCreateDTABlock = FALSE;
+         bCreateDTABlock = FALSE;	// and szPath is NOT set
 
          goto CreateLB;
       }
@@ -1286,6 +1291,8 @@ ChangeDisplay(
          SetWindowLongPtr(hwnd, GWLP_USERDATA, 1);
          SendMessage(hwndLB, LB_RESETCONTENT, 0, 0L);
 
+		 // bCreateDTABlock is TRUE and szPath is set
+
          goto CreateNewPath;
       }
 
@@ -1321,10 +1328,19 @@ ChangeDisplay(
       SetWindowLongPtr(hwnd, GWL_TABARRAY, (LPARAM)pwTabs);
       SetWindowLongPtr(hwnd, GWL_SELINFO, 0L);
 
+      {
+      WF_IDropTarget *pDropTarget;
+      
+      RegisterDropWindow(hwnd, &pDropTarget);
+      SetWindowLongPtr(hwnd, GWL_OLEDROP, (LPARAM)pDropTarget);
+      }
+      
       //
       // get the dir to open from our parent window text
       //
       GetMDIWindowText(hwndListParms, szPath, COUNTOF(szPath));
+
+	  // bCreateDTABlock == TRUE and szPath just set
 
 CreateLB:
 
@@ -1340,7 +1356,7 @@ CreateLB:
       // I don't know why
       //
       hwndLB = CreateWindowEx(0L,
-                              szListbox,
+                              szListbox, // atomDirListBox,
                               NULL,
                               ws,
                               dyBorder,
@@ -1390,16 +1406,21 @@ CreateLB:
          SetWindowLongPtr(hwndListParms, GWL_LASTFOCUS, (LPARAM)hwndLB);
       }
 
-      if (bCreateDTABlock) {
+  CreateNewPath:
 
-CreateNewPath:
+	  if (bCreateDTABlock) {
 
          //
          // at this point szPath has the directory to read.  this
          // either came from the WM_CREATE case or the
          // FS_CHANGEDISPLAY (CD_PATH) directory reset
          //
-         SetMDIWindowText(hwndListParms, szPath);
+
+		 CharUpperBuff(szPath, 1);     // make sure
+
+		 SetWindowLongPtr(hwndListParms, GWL_TYPE, szPath[0] - TEXT('A'));
+
+		 SetMDIWindowText(hwndListParms, szPath);
 
          lpStart = CreateDTABlock(hwnd,
                                   szPath,
@@ -2277,10 +2298,6 @@ SetLBFont(
    SendMessage(hwndLB,
                LB_SETITEMHEIGHT,
                0,
-#ifdef PROGMAN
-               uViewFlags & VIEW_ICON ?
-                  max(dyFileName, dyIcon) :
-#endif
                (LONG)dyFileName);
 
    lpHead = MemLinkToHead(lpStart);
@@ -2294,11 +2311,7 @@ SetLBFont(
 
       SendMessage(hwndLB,
                   LB_SETCOLUMNWIDTH,
-#ifdef PROGMAN
-                  dxMaxExtent + dxIcon + dyBorderx2,
-#else
                   dxMaxExtent + dxFolder + dyBorderx2,
-#endif
                   0L);
 
    } else {
@@ -2567,6 +2580,7 @@ CompareDTA(
       break;
 
    case IDD_DATE:
+   case IDD_FDATE:
       {
          DWORD d1High, d1Low;
          DWORD d2High, d2Low;
@@ -2592,6 +2606,8 @@ CompareDTA(
                goto CompareNames;
 
          }
+         if (dwSort == IDD_FDATE)
+             ret = -ret;
          break;
       }
 
@@ -2798,10 +2814,19 @@ UsedAltname:
 
          if (hwndDir) {
 
+            // reparse point; szFile is full path
+            if (lpxdta->dwAttrs & (ATTR_JUNCTION | ATTR_SYMBOLIC))
+            {
+               if (iSelType & 8) 
+               {
+                  // if filename part, strip path
+                  StripPath(szFile);
+               }
+            }
             //
             // parent dir?
             //
-            if (lpxdta->dwAttrs & ATTR_PARENT) {
+            else if (lpxdta->dwAttrs & ATTR_PARENT) {
 
                //
                // if we are getting a full selection don't

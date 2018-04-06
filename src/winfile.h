@@ -33,6 +33,7 @@
 #include "wfexti.h"
 #include "wfhelp.h"
 
+#include "wfdocb.h"
 #include "wfmem.h"
 #ifdef HEAPCHECK
 #include "heap.h"
@@ -116,7 +117,7 @@ INT atoiW(LPWSTR sz);
 #define MAX_FILESYSNAME         MAXPATHLEN
 
 // Maximum size of an extension, including NULL
-#define EXTSIZ 5
+#define EXTSIZ 8
 
 #define TA_LOWERCASE    0x01
 #define TA_BOLD     0x02
@@ -292,6 +293,7 @@ typedef struct _SEARCH_INFO {
    BOOL bUpdateStatus;
    BOOL bCancel;
    BOOL bDontSearchSubs;
+   BOOL bIncludeSubDirs;
    BOOL bCasePreserved;
    INT iRet;
    LPXDTALINK lpStart;
@@ -302,6 +304,7 @@ typedef struct _SEARCH_INFO {
       SEARCH_MDICLOSE
    } eStatus;
    WCHAR szSearch[MAXPATHLEN+1];
+   FILETIME ftSince;			// UTC
 } SEARCH_INFO, *PSEARCH_INFO;
 
 typedef struct _COPYINFO {
@@ -362,6 +365,7 @@ VOID  UpdateConnections(BOOL bUpdateDriveList);
 
 // WFDLGS.C
 
+VOID ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam);
 VOID KillQuoteTrailSpace( LPTSTR szFile );
 VOID SaveWindows(HWND hwndMain);
 VOID NewFont(VOID);
@@ -387,6 +391,8 @@ VOID  ChangeFileSystem(DWORD dwOper, LPWSTR lpPath, LPWSTR lpTo);
 HWND  CreateDirWindow(register LPWSTR szPath, BOOL bReplaceOpen, HWND hwndActive);
 HWND CreateTreeWindow(LPWSTR szPath, INT x, INT y, INT dx, INT dy, INT dxSplit);
 VOID SwitchToSafeDrive();
+DWORD ReadMoveStatus();
+VOID UpdateMoveStatus(DWORD dwEffect);
 
 
 // WFDOS.C
@@ -432,7 +438,7 @@ VOID  StripPath(LPTSTR lpszPath);
 LPTSTR GetExtension(LPTSTR pszFile);
 BOOL  FindExtensionInList(LPTSTR pszExt, LPTSTR pszList);
 INT   MyMessageBox(HWND hWnd, DWORD idTitle, DWORD idMessage, DWORD dwStyle);
-DWORD ExecProgram(LPTSTR,LPTSTR,LPTSTR,BOOL);
+DWORD ExecProgram(LPTSTR,LPTSTR,LPTSTR,BOOL,BOOL);
 PDOCBUCKET IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppDocBucket);
 BOOL  IsNTFSDrive(DRIVE);
 BOOL  IsCasePreservedDrive(DRIVE);
@@ -444,7 +450,10 @@ INT   GetMDIWindowText(HWND hwnd, LPTSTR szTitle, INT size);
 BOOL  ResizeSplit(HWND hWnd, INT dxSplit);
 VOID  CheckEsc(LPTSTR);
 VOID  GetMDIWindowVolume(HWND hWnd, LPTSTR szTitle, INT size);
+BOOL TypeAheadString(WCHAR ch, LPWSTR szT);
 
+VOID SaveHistoryDir(HWND hwnd, LPWSTR szDir);
+BOOL GetPrevHistoryDir(BOOL forward, HWND *phwnd, LPWSTR szDir);
 
 // WFDIR.C
 
@@ -474,13 +483,13 @@ LPXDTALINK DirReadDone(HWND hwndDir, LPXDTALINK lpStart, INT iError);
 VOID  BuildDocumentString(VOID);
 VOID  BuildDocumentStringWorker(VOID);
 
-
 // WFDIRSRC.C
 
 HCURSOR  GetMoveCopyCursor(VOID);
 VOID  DrawItem(HWND hwnd, DWORD dwViewOpts, LPDRAWITEMSTRUCT lpLBItem, BOOL bHasFocus);
 VOID  DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds);
-VOID  DSRectItem(HWND hwndLB, INT iSel, BOOL bFocusOn, BOOL bSearch);
+BOOL  DSRectItem(HWND hwndLB, INT iSel, BOOL bFocusOn, BOOL bSearch);
+VOID  DSDragScrollSink(LPDROPSTRUCT lpds);
 INT   DSTrackPoint(HWND hWnd, HWND hwndLB, WPARAM wParam, LPARAM lParam, BOOL bSearch);
 VOID  DSSetSelection(HWND hwndLB, BOOL bSelect, LPTSTR szSpec, BOOL bSearch);
 BOOL  DSDropObject(HWND hwndHolder, HWND hwndLB, LPDROPSTRUCT lpds, BOOL bSearch);
@@ -522,8 +531,10 @@ VOID  InitExtensions(VOID);
 INT   GetDriveOffset(register DRIVE drive);
 VOID  InitMenus(VOID);
 VOID  LoadFailMessage(VOID);
-UINT  FillDocType(PPDOCBUCKET ppDoc, LPCWSTR pszSection, LPCWSTR pszDefault, DWORD dwParm);
+UINT  FillDocType(PPDOCBUCKET ppDoc, LPCWSTR pszSection, LPCWSTR pszDefault);
 BOOL  CheckDirExists(LPWSTR szDir);
+
+DWORD StartBuildingDirectoryTrie();
 
 
 // WFCOPY.C
@@ -533,7 +544,7 @@ DWORD  WFMoveCopyDriver(PCOPYINFO pCopyInfo);
 VOID   WFMoveCopyDriverThread(PCOPYINFO pCopyInfo);
 
 BOOL  IsDirectory(LPTSTR pPath);
-DWORD IsTheDiskReallyThere(HWND hwnd, register LPTSTR pPath, DWORD wFunc, BOOL bModal);
+BOOL  IsTheDiskReallyThere(HWND hwnd, register LPTSTR pPath, DWORD wFunc, BOOL bModal);
 BOOL  QualifyPath(LPTSTR);
 INT   CheckMultiple(LPTSTR pInput);
 VOID  SetDlgItemPath(HWND hDlg, INT id, LPTSTR pszPath);
@@ -544,6 +555,7 @@ VOID DialogEnterFileStuff(register HWND hwnd);
 
 // WFUTIL.C
 
+VOID  GetAllDirectories(LPTSTR rgszDirs[]);
 BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir);
 VOID  GetSelectedDirectory(INT iDrive, LPTSTR pszDir);
 VOID  SaveDirectory(LPTSTR pszDir);
@@ -562,7 +574,7 @@ VOID  WFHelp(HWND hwnd);
 
 // WFDRIVES.C
 
-DWORD CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc);
+BOOL CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc);
 VOID  NewTree(DRIVE drive, HWND hWnd);
 VOID  GetDriveRect(DRIVEIND driveInd, PRECT prc);
 
@@ -580,6 +592,7 @@ LRESULT TreeControlWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
 LRESULT DirWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
 LRESULT SearchWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
 VOID (*lpfnFormat)(PWSTR,FMIFS_MEDIA_TYPE,PWSTR,PWSTR,BOOLEAN,FMIFS_CALLBACK);
 VOID (*lpfnDiskCopy)(PWSTR,PWSTR,BOOLEAN,FMIFS_CALLBACK);
 BOOLEAN (*lpfnSetLabel)(PWSTR,PWSTR);
@@ -607,7 +620,9 @@ INT_PTR  SortByDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  ConfirmDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  AboutDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR  GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
+VOID SetCurrentPathOfWindow(LPWSTR szPath);
 
 // WFSEARCH.C
 
@@ -653,7 +668,7 @@ DWORD WFMove(LPTSTR pszFrom, LPTSTR pszTo, PBOOL pbErrorOnDest, BOOL bSilent);
 VOID  wfYield(VOID);
 VOID  InvalidateAllNetTypes(VOID);
 VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
-
+BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 
 
 //--------------------------------------------------------------------------
@@ -678,6 +693,8 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 // Extra Window Word Offsets
 //
 
+// NOTE: see winfile.c for a description of the overall window structure.
+
 //
 // Idx  Tree         Search         Dir
 // 0    SPLIT        HDTA           HDTA
@@ -687,10 +704,10 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 // 4    TYPE         TYPE           HDTAABORT
 // 5    VIEW         VIEW           INITIALDIRSEL
 // 6    SORT         SORT           NEXTHWND
-// 7    ATTRIBS      ATTRIBS
-// 8    FCSFLAG      FSCFLAG
-// 9    LASTFOCUS    LASTFOCUS
-// 10   PICONBLOCK
+// 7    OLEDROP      n/a            OLEDROP
+// 8    ATTRIBS      ATTRIBS        
+// 9    FCSFLAG      FSCFLAG
+// 10   LASTFOCUS    LASTFOCUS
 //
 
 
@@ -715,13 +732,13 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 #define GWL_SORT         (6*sizeof(LONG_PTR))
 #define GWL_NEXTHWND     (6*sizeof(LONG_PTR))
 
-#define GWL_ATTRIBS      (7*sizeof(LONG_PTR))
-#define GWL_FSCFLAG      (8*sizeof(LONG_PTR))
-#define GWL_LASTFOCUS    (9*sizeof(LONG_PTR))
+#define GWL_OLEDROP      (7*sizeof(LONG_PTR))
 
-#ifdef PROGMAN
-#define GWL_PICONBLOCK 40
-#endif
+#define GWL_ATTRIBS      (8*sizeof(LONG_PTR))
+
+#define GWL_FSCFLAG      (9*sizeof(LONG_PTR))
+
+#define GWL_LASTFOCUS    (10*sizeof(LONG_PTR))
 
 // szDrivesClass...
 
@@ -798,10 +815,6 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 #define FS_ENABLEFSC               (WM_USER+0x121)
 #define FS_DISABLEFSC              (WM_USER+0x122)
 
-#ifdef PROGMAN
-#define FS_ICONUPDATE              (WM_USER+0x123)
-#endif
-
 #define ATTR_READWRITE      0x0000
 #define ATTR_READONLY       FILE_ATTRIBUTE_READONLY     // == 0x0001
 #define ATTR_HIDDEN         FILE_ATTRIBUTE_HIDDEN       // == 0x0002
@@ -811,19 +824,22 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 #define ATTR_ARCHIVE        FILE_ATTRIBUTE_ARCHIVE      // == 0x0020
 #define ATTR_NORMAL         FILE_ATTRIBUTE_NORMAL       // == 0x0080
 #define ATTR_TEMPORARY      FILE_ATTRIBUTE_TEMPORARY    // == 0x0100
+#define ATTR_REPARSE_POINT  FILE_ATTRIBUTE_REPARSE_POINT // == 0x0400  
 #define ATTR_COMPRESSED     FILE_ATTRIBUTE_COMPRESSED   // == 0x0800
 #define ATTR_NOT_INDEXED    FILE_ATTRIBUTE_NOT_CONTENT_INDEXED // == 0x2000
-#define ATTR_USED           0x29BF
+#define ATTR_USED           0x2DBF						// ATTR we use that are returned from FindFirst/NextFile
 
 #define ATTR_PARENT         0x0040  // my hack DTA bits
-#define ATTR_LFN            0x1000  // my hack DTA bits
 #define ATTR_LOWERCASE      0x4000
+#define ATTR_LFN           0x10000  // my hack DTA bits
+#define ATTR_JUNCTION      0x20000
+#define ATTR_SYMBOLIC      0x40000
 
 #define ATTR_RWA            (ATTR_READWRITE | ATTR_ARCHIVE)
-#define ATTR_ALL            (ATTR_READONLY | ATTR_HIDDEN | ATTR_SYSTEM | ATTR_DIR | ATTR_ARCHIVE | ATTR_NORMAL | ATTR_COMPRESSED)
+#define ATTR_ALL            (ATTR_READONLY | ATTR_HIDDEN | ATTR_SYSTEM | ATTR_DIR | ATTR_ARCHIVE | ATTR_NORMAL | ATTR_COMPRESSED | ATTR_REPARSE_POINT)
 #define ATTR_PROGRAMS       0x0100
 #define ATTR_DOCS           0x0200
-#define ATTR_OTHER          0x0400
+#define ATTR_OTHER          0x1000
 #define ATTR_EVERYTHING     (ATTR_ALL | ATTR_PROGRAMS | ATTR_DOCS | ATTR_OTHER | ATTR_PARENT)
 #define ATTR_DEFAULT        (ATTR_EVERYTHING & ~(ATTR_HIDDEN | ATTR_SYSTEM))
 #define ATTR_HS             (ATTR_HIDDEN | ATTR_SYSTEM)
@@ -850,11 +866,7 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 #define VIEW_PLUSES         0x0020
 #define VIEW_DOSNAMES       0x0040
 
-#ifdef PROGMAN
-#define VIEW_ICON           0x0080
-#endif
-
-#define VIEW_EVERYTHING     (VIEW_SIZE | VIEW_TIME | VIEW_DATE | VIEW_FLAGS | VIEW_DOSNAMES)
+#define VIEW_EVERYTHING     (VIEW_SIZE | VIEW_TIME | VIEW_DATE | VIEW_FLAGS)
 
 #define CBSECTORSIZE        512
 
@@ -866,9 +878,9 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 /* Child Window IDs */
 #define IDCW_DRIVES         1
 #define IDCW_DIR            2
-#define IDCW_TREELISTBOX    3
+#define IDCW_TREELISTBOX    3	// list in tree control
 #define IDCW_TREECONTROL    5
-#define IDCW_LISTBOX        6   // list in search
+#define IDCW_LISTBOX        6   // list in directory and search
 
 
 #define HasDirWindow(hwnd)      GetDlgItem(hwnd, IDCW_DIR)
@@ -898,6 +910,13 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 #define IDM_COPYTOCLIPBOARD 118
 #define IDM_COMPRESS        119
 #define IDM_UNCOMPRESS      120
+#define IDM_PASTE           121
+#define IDM_EDIT            122
+#define IDM_CUTTOCLIPBOARD  123
+#define IDM_STARTCMDSHELL   124
+#define IDM_GOTODIR         125
+#define IDM_HISTORYBACK     126
+#define IDM_HISTORYFWD      127
 
 // This IDM_ is reserved for IDH_GROUP_ATTRIBS
 #define IDM_GROUP_ATTRIBS   199
@@ -932,11 +951,8 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 #define IDM_BYNAME          404
 #define IDM_BYTYPE          405
 #define IDM_BYSIZE          406
-#define IDM_BYDATE          407
-
-#ifdef PROGMAN
-#define IDM_VICON           408
-#endif
+#define IDM_BYDATE          407	// reverse date sort
+#define IDM_BYFDATE			408	// forward date sort
 
 #define IDM_VINCLUDE        409
 #define IDM_REPLACE         410
@@ -1058,13 +1074,6 @@ VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 #define BM_IND_CLOSEMINUS   10
 #define BM_IND_CLOSEDFS     11
 #define BM_IND_OPENDFS      12
-
-#ifdef PROGMAN
-#define BM_TYPE_NONE             0x0
-#define BM_TYPE_PROGRAMICON      0x1
-#define BM_TYPE_DOCICON          0x2
-#endif
-
 
 //#define IDS_ENDSESSION      40  /* Must be > 32 */
 //#define IDS_ENDSESSIONMSG   41
@@ -1436,7 +1445,6 @@ JAPANEND
 
 #include "wfdlgs.h"
 
-
 typedef struct _DRIVE_INFO {
 
    INT   iBusy;
@@ -1656,15 +1664,10 @@ Extern HMENU  hMenu;
 Extern UINT   uMenuFlags;
 Extern BOOL   bMDIFrameSysMenu;
 
+Extern ATOM atomDirListBox;
 
 Extern PPDOCBUCKET ppDocBucket;
 Extern PPDOCBUCKET ppProgBucket;
-#ifdef PROGMAN
-Extern PPDOCBUCKET ppProgIconBucket;
-
-Extern INT nDocItems;
-Extern INT nDocItemsNext  EQ( 0 );
-#endif
 
 Extern CRITICAL_SECTION CriticalSectionPath;
 
@@ -1743,10 +1746,8 @@ Extern TCHAR        szAddons[]              EQ( TEXT("AddOns") );
 Extern TCHAR        szUndelete[]            EQ( TEXT("UNDELETE.DLL") );
 
 Extern TCHAR        szDefPrograms[]         EQ( TEXT("EXE COM BAT PIF") );
-#ifdef PROGMAN
-Extern TCHAR        szDefProgramsIcons[]    EQ( TEXT("EXE") );
-#endif
-Extern TCHAR        szTheINIFile[]          EQ( TEXT("WINFILE.INI") );
+Extern TCHAR        szRoamINIPath[]         EQ( TEXT("\\Microsoft\\Winfile"));
+Extern TCHAR        szBaseINIFile[]         EQ( TEXT("WINFILE.INI") );
 Extern TCHAR        szPrevious[]            EQ( TEXT("Previous") );
 Extern TCHAR        szSettings[]            EQ( TEXT("Settings") );
 Extern TCHAR        szInternational[]       EQ( TEXT("Intl") );
@@ -1772,6 +1773,8 @@ Extern TCHAR        szStatusTree[80];
 Extern TCHAR        szStatusDir[80];
 
 Extern TCHAR        szOriginalDirPath[MAXPATHLEN]; // was OEM string!!!!!!
+
+Extern TCHAR        szTheINIFile[MAXPATHLEN];		// ini file location in %APPDATA%
 
 Extern TCHAR szBytes[20];
 Extern TCHAR szSBytes[10];

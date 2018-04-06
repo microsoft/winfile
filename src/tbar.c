@@ -188,10 +188,11 @@ CheckTBButton(DWORD idCommand)
       begin = IDM_VNAME;
       end = IDM_VOTHER;
     }
-  else if ((UINT)(idCommand-IDM_BYNAME) <= IDM_BYDATE-IDM_BYNAME)
+  else if ((UINT)(idCommand-IDM_BYNAME) <= IDM_BYFDATE-IDM_BYNAME)
     {
       begin = IDM_BYNAME;
       end = IDM_BYDATE;
+      // NOTE: no toolbar button for IDM_BYFDATE yet
     }
   else
     {
@@ -715,7 +716,7 @@ UnlockAndReturn:
          tbl.szHelp[0] = TEXT('\0');
 
          extensions[iExt].ExtProc(hwndFrame, FMEVENT_HELPSTRING,
-             (LPFMS_HELPSTRING)&tbl);
+             (LPARAM)(LPFMS_HELPSTRING)&tbl);
 
          if (extensions[iExt].bUnicode == FALSE) {
             CHAR   szAnsi[MAXDESCLEN];
@@ -774,7 +775,7 @@ ExtensionHelp:
                tbl.szHelp[0] = TEXT('\0');
 
                extensions[iExt].ExtProc(hwndFrame, FMEVENT_HELPSTRING,
-                   (LPFMS_HELPSTRING)&tbl);
+                   (LPARAM)(LPFMS_HELPSTRING)&tbl);
 
                if (extensions[iExt].bUnicode == FALSE)
                {
@@ -940,7 +941,7 @@ NormalHelp:
                tbl.szHelp[0] = TEXT('\0');
 
                extensions[iExt].ExtProc(hwndFrame, FMEVENT_HELPSTRING,
-                   (LPFMS_HELPSTRING)&tbl);
+                   (LPARAM)(LPFMS_HELPSTRING)&tbl);
 
                if (extensions[iExt].bUnicode == FALSE) {
                   CHAR   szAnsi[MAXDESCLEN];
@@ -1225,7 +1226,7 @@ InitToolbarExtension(INT iExt)
 
 
    if (!extensions[iExt].ExtProc(hwndFrame, FMEVENT_TOOLBARLOAD,
-       (LPFMS_TOOLBARLOAD)&tbl))
+       (LPARAM)(LPFMS_TOOLBARLOAD)&tbl))
 
       return FALSE;
 

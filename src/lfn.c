@@ -43,12 +43,28 @@ WFFindFirst(
    // and ORDINARY files too.
    //
 
-   dwAttrFilter |= ATTR_ARCHIVE | ATTR_READONLY | ATTR_NORMAL |
-                   ATTR_TEMPORARY | ATTR_COMPRESSED | ATTR_NOT_INDEXED;
-   lpFind->hFindFile = FindFirstFile(lpName, &lpFind->fd);
+   PVOID oldValue;
+   Wow64DisableWow64FsRedirection(&oldValue);
+
+   if ((dwAttrFilter & ~(ATTR_DIR | ATTR_HS)) == 0)
+   {
+	   // directories only (hidden or not)
+	   lpFind->hFindFile = FindFirstFileEx(lpName, FindExInfoStandard, &lpFind->fd, FindExSearchLimitToDirectories, NULL, 0);
+   }
+   else
+   {
+	   // normal case: directories and files
+	   lpFind->hFindFile = FindFirstFile(lpName, &lpFind->fd);
+   }
+
+   // add in attr_* which we want to include in the match even though the caller didn't request them.
+   dwAttrFilter |= ATTR_ARCHIVE | ATTR_READONLY | ATTR_NORMAL | ATTR_REPARSE_POINT |
+	   ATTR_TEMPORARY | ATTR_COMPRESSED | ATTR_NOT_INDEXED;
 
    lpFind->fd.dwFileAttributes &= ATTR_USED;
-   
+
+   Wow64RevertWow64FsRedirection(oldValue);
+
    //
    // Keep track of length
    //
@@ -93,6 +109,9 @@ WFFindFirst(
 BOOL
 WFFindNext(LPLFNDTA lpFind)
 {
+	PVOID oldValue;
+	Wow64DisableWow64FsRedirection(&oldValue);
+	
    while (FindNextFile(lpFind->hFindFile, &lpFind->fd)) {
 
 	  lpFind->fd.dwFileAttributes &= ATTR_USED;
@@ -120,8 +139,12 @@ WFFindNext(LPLFNDTA lpFind)
          lstrcpy(lpFind->fd.cFileName, lpFind->fd.cAlternateFileName);
       }
 
+	  Wow64RevertWow64FsRedirection(oldValue);
+
       return TRUE;
    }
+
+   Wow64RevertWow64FsRedirection(oldValue);
 
    lpFind->err = GetLastError();
    return(FALSE);

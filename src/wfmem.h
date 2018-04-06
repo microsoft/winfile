@@ -39,11 +39,7 @@ typedef struct _XDTAHEAD {
    DWORD dwAlternateFileNameExtent;
    DWORD fdwStatus;
 
-#ifdef PROGMAN
-   INT   iPrograms;
-#else
    DWORD dwPad;            /* quad word align for Alpha */
-#endif
 
 } XDTAHEAD;
 
@@ -55,13 +51,10 @@ typedef struct _XDTA {
    LARGE_INTEGER qFileSize;
    UINT  cchFileNameOffset;
 
-#ifdef PROGMAN
-   INT   iIcon;
-   BYTE  byHolder;
-#endif
-
    BYTE  byBitmap;
    BYTE  byType;
+
+   PDOCBUCKET pDocB;
 
    WCHAR cFileNames[1];
 } XDTA;

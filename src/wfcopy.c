@@ -684,7 +684,7 @@ IsDirectory(LPTSTR pPath)
 //  0 = fail (general)
 //  1 = succeed
 
-DWORD
+BOOL 
 IsTheDiskReallyThere(
    HWND hwnd,
    register LPTSTR pPath,
@@ -781,7 +781,8 @@ DiskNotThere:
       // If failed due to security, return 2
       // (this is non-zero which means sorta error)
       //
-      return 2;
+      // old: return 2;
+      break;
 
    case ERROR_NOT_READY:
 
@@ -3271,7 +3272,7 @@ DMMoveCopyHelper(
 
       LoadString(hAppInstance, IDS_MOUSECONFIRM, szTitle, COUNTOF(szTitle));
 
-      if (MessageBox(hwndFrame, szMessage, szTitle, MB_YESNO | MB_ICONEXCLAMATION) != IDYES)
+      if (MessageBox(hwndFrame, szMessage, szTitle, MB_YESNO | MB_ICONEXCLAMATION | MB_SETFOREGROUND) != IDYES)
          return DE_OPCANCELLED;
    }
 
