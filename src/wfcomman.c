@@ -1004,7 +1004,7 @@ AppCommandProc(register DWORD id)
 		   DWORD cchEnv;
 		   TCHAR szToRun[MAXPATHLEN];
 		   LPTSTR szDir;
-		   TCHAR szParams[MAXPATHLEN];
+		   TCHAR szParams[MAXPATHLEN + 20];
 
 			szDir = GetSelection(1|4|16, &bDir);
 			if (!bDir)
@@ -1021,7 +1021,7 @@ AppCommandProc(register DWORD id)
 			   }
 			   lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
 			   if (PathFileExists(szToRun)) {
-				   wsprintf(szParams, TEXT(" -Single -Dir \"%s\""), szDir);
+				   wnsprintf(szParams, sizeof(szParams) / sizeof(szParams[0]), TEXT(" -Single -Dir \"%s\""), szDir);
 				   bUseCmd = FALSE;
 			   }
 		   }
