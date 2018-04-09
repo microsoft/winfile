@@ -507,6 +507,8 @@ CreateDirWindow(
 {
    register HWND hwndT;
    INT dxSplit;
+   DRIVE drive;
+   INT i;
 
    if (hwndActive == hwndSearch) {
 	   bReplaceOpen = FALSE;
@@ -532,8 +534,8 @@ CreateDirWindow(
    if (bReplaceOpen) {
 	   CharUpperBuff(szPath, 1);     // make sure
 
-	   DRIVE drive = DRIVEID(szPath);
-	   for (INT i = 0; i<cDrives; i++)
+	   drive = DRIVEID(szPath);
+	   for (i = 0; i<cDrives; i++)
 	   {
 		   if (drive == rgiDrive[i])
 		   {

@@ -28,6 +28,7 @@ HistoryDir rghistoryDir[MAXHISTORY];
 VOID
 SaveHistoryDir(HWND hwnd, LPWSTR szDir)
 {
+	DWORD historyT;
 	if (rghistoryDir[historyCur].hwnd == hwnd && lstrcmpi(rghistoryDir[historyCur].szDir, szDir) == 0)
 		return;
 
@@ -37,7 +38,7 @@ SaveHistoryDir(HWND hwnd, LPWSTR szDir)
 	lstrcpy(rghistoryDir[historyCur].szDir, szDir);
 
 	// always leave one NULL entry after current
-	DWORD historyT = (historyCur + 1) % MAXHISTORY;
+	historyT = (historyCur + 1) % MAXHISTORY;
 	rghistoryDir[historyT].hwnd = NULL;
 	rghistoryDir[historyT].szDir[0] = '\0';
 }
