@@ -100,17 +100,12 @@ vector<PDNODE> FilterBySubtree(vector<PDNODE> const& parents, vector<PDNODE>  co
 	vector<PDNODE> results;
 
 	// for each child, if parent in parents, return
-	for (auto i = 0u; i < children.size(); i++)
-	{
-		PDNODE child = children.at(i);
+	std::copy_if(children.begin(), children.end(), std::back_inserter(results), [&parents](PDNODE const& child) {
 		PDNODE parent = child->pParent;
 
-		if (find(parents.begin(), parents.end(), parent) != parents.end())
-		{
-			results.push_back(child);
-		}
-	}
-
+		return (find(parents.begin(), parents.end(), parent) != parents.end());
+	});
+	
 	return results;
 }
 
