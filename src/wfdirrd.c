@@ -116,7 +116,7 @@ DestroyDirRead(VOID)
 //
 // IN    hwnd        --    window of destination (?)
 // IN    pPath       --    Path to search for files from
-// IN    dwAttribs   --    files must satify these attributes
+// IN    dwAttribs   --    files must satisfy these attributes
 // IN    bDontSteal  --    TRUE = Always read off disk
 //                   --    FALSE = Allow steal from other window
 //
@@ -704,7 +704,7 @@ CreateDTABlockWorker(
    if (!WFFindFirst(&lfndta, szPath, dwAttribs & ATTR_ALL)) {
 
       //
-      // Try again!  But first, see if the directory was invaild!
+      // Try again!  But first, see if the directory was invalid!
       //
       if (ERROR_PATH_NOT_FOUND == lfndta.err) {
 

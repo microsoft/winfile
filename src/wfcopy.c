@@ -806,7 +806,7 @@ DiskNotThere:
 
    case ERROR_UNRECOGNIZED_VOLUME:              // 0x1F  huh?  What's this?
 
-      // general failue (disk not formatted)
+      // general failure (disk not formatted)
 
       LoadString(hAppInstance, IDS_COPYERROR + dwFunc, szTitle, COUNTOF(szTitle));
 
@@ -2057,7 +2057,7 @@ WF_CreateDirectory(HWND hwndParent, LPTSTR szDest, LPTSTR szSrc)
 
                //
                // Here we must also ignore the ERROR_ALREADY_EXISTS error.
-               // Even though we checked for existance above, on NTFS, we
+               // Even though we checked for existence above, on NTFS, we
                // may only have WX privilege so it was not found by
                // FindFirstFile.
                //
@@ -2147,7 +2147,7 @@ WFMoveCopyDriver(PCOPYINFO pCopyInfo)
 // Name:     WFMoveCopyDriverThread
 //
 // Synopsis: The following function is the mainline function for
-//           COPYing, RENAMEing, DELETEing, and MOVEing single/multiple files.
+//           COPYing, RENAMEing, DELETing, and MOVEing single/multiple files.
 //
 // pFrom - String containing list of source specs
 // pTo   - String containing destination specs
@@ -2669,7 +2669,7 @@ DoMkDir:
             WFSetAttr(szDest, pDTA->fd.dwFileAttributes & ~(ATTR_DIR|ATTR_VOLUME));
 
          //
-         // If it already exists ingore the error return
+         // If it already exists ignore the error return
          // as long as it is a directory and not a file.
          //
          if (ret == ERROR_ALREADY_EXISTS) {
@@ -2751,7 +2751,7 @@ SkipMKDir:
          //
 
          //
-         // Tuck away the attribs incase we fail.
+         // Tuck away the attribs in case we fail.
          //
          dwAttr = GetFileAttributes(szSource);
 
@@ -3142,8 +3142,8 @@ ShowMessageBox:
          case DE_OPCANCELLED:
 
             //
-            // Since we are cancelling an op, we definately know that
-            // an error occured.
+            // Since we are cancelling an op, we definitely know that
+            // an error occurred.
             //
             bErrorOccured = TRUE;
             ret = 0;
@@ -3504,7 +3504,7 @@ CopyError(LPTSTR pszSource,
 ; Parameters:
 ;
 ; pszDest   - Fully qualified path to destination file
-; nError    - Type of error which occured: DE_NODISKSPACE or DE_PATHNOTFOUND
+; nError    - Type of error which occurred: DE_NODISKSPACE or DE_PATHNOTFOUND
 ;
 ; returns:
 ;   0   success (destination path has been created)

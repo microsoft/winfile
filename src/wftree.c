@@ -450,7 +450,7 @@ TreeWndProc(
           // you must first StripBackslash() the thing!
 
           GetMDIWindowText(hwnd, (LPTSTR)lParam, (INT)wParam);        // get the string
-          StripFilespec((LPTSTR)lParam);        // Remove the trailing extention
+          StripFilespec((LPTSTR)lParam);        // Remove the trailing extension
           AddBackslash((LPTSTR)lParam);        // terminate with a backslash
           break;
 
@@ -753,7 +753,7 @@ TreeWndProc(
 
          if (IsIconic(hwnd)) {
             // this paints the background of the icon properly, doing
-            // brush allignment and other nasty stuff
+            // brush alignment and other nasty stuff
 
             DefWindowProc(hwnd, WM_ICONERASEBKGND, wParam, 0L);
          } else {
@@ -855,7 +855,7 @@ TreeWndProc(
            break;
 
         //
-        // FALL THRU
+        // FALL THROUGH
         //
 
       default:

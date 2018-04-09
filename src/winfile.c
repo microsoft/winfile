@@ -327,7 +327,7 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
                      //
                      uCompFlags = MF_BYCOMMAND | MF_ENABLED;
 
-                     // FALL THRU...
+                     // FALL THROUGH...
                   }
                   case ( 2 ) :
                   {
@@ -734,7 +734,7 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
          ccs.hWindowMenu = (HWND)dwMenuIDs[3];
          ccs.idFirstChild = IDM_CHILDSTART;
 
-         // create the MDI client at aproximate size to make sure
+         // create the MDI client at approximate size to make sure
          // "run minimized" works
 
          GetClientRect(hwndFrame, &rc);
@@ -1023,7 +1023,7 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
       wParam = IDM_EXIT;
 
-      /*** FALL THRU to WM_COMMAND ***/
+      /*** FALL THROUGH to WM_COMMAND ***/
 
    case WM_COMMAND:
       {
@@ -1047,7 +1047,7 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
             DestroyWindow(hwnd);
             break;
          }
-          /*** FALL THRU ***/
+          /*** FALL THROUGH ***/
 
    default:
 

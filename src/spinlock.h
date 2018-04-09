@@ -11,7 +11,7 @@
 
 #include <windows.h>
 
-const unsigned int YIELD_ITERATION = 30; // yeild after 30 iterations
+const unsigned int YIELD_ITERATION = 30; // yield after 30 iterations
 const unsigned int MAX_SLEEP_ITERATION = 40;
 const int SeedVal = 100;
 

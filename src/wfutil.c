@@ -444,7 +444,7 @@ WFHelp(HWND hwnd)
 
 }
 
-// atoi with decimal comma seperators
+// atoi with decimal comma separators
 //
 
 //#ifdef INLIBRARY
@@ -965,7 +965,7 @@ IsLFNSelected()
 //  GetSelection() -
 //  caller must free LPTSTR returned.
 //
-//  LPTSTR must have 2 chars for checkesc saftey at end
+//  LPTSTR must have 2 chars for checkesc safety at end
 //
 //--------------------------------------------------------------------------
 
@@ -1162,7 +1162,7 @@ WritePrivateProfileBool(LPTSTR szKey, BOOL bParam)
 //
 // Name:     CleanupMessages
 //
-// Synopsis: Make sure all the WM_FSC messsages have been processed.
+// Synopsis: Make sure all the WM_FSC messages have been processed.
 //
 //
 // Return:   VOID
@@ -1553,7 +1553,7 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
   if (!*szExt) {
 
      //
-     // The specified path didn't have an extention.  It can't be a program.
+     // The specified path didn't have an extension.  It can't be a program.
      //
      return(FALSE);
   }
