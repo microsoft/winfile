@@ -1004,7 +1004,9 @@ AppCommandProc(register DWORD id)
 		   DWORD cchEnv;
 		   TCHAR szToRun[MAXPATHLEN];
 		   LPTSTR szDir;
-		   TCHAR szParams[MAXPATHLEN];
+
+#define ConEmuParamFormat TEXT(" -Single -Dir \"%s\"")
+           TCHAR szParams[MAXPATHLEN + COUNTOF(ConEmuParamFormat)];
 
 			szDir = GetSelection(1|4|16, &bDir);
 			if (!bDir)
@@ -1021,7 +1023,7 @@ AppCommandProc(register DWORD id)
 			   }
 			   lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
 			   if (PathFileExists(szToRun)) {
-				   wsprintf(szParams, TEXT(" -Single -Dir \"%s\""), szDir);
+				   wsprintf(szParams, ConEmuParamFormat, szDir);
 				   bUseCmd = FALSE;
 			   }
 		   }
@@ -1043,7 +1045,8 @@ AppCommandProc(register DWORD id)
            BOOL bDir;
            TCHAR szToRun[MAXPATHLEN];
            LPTSTR szDir;
-           TCHAR szParams[MAXPATHLEN + 20];
+#define PowerShellParamFormat TEXT(" -noexit -command \"cd \\\"%s\\\"\"")
+           TCHAR szParams[MAXPATHLEN + COUNTOF(PowerShellParamFormat)];
 
            szDir = GetSelection(1 | 4 | 16, &bDir);
            if (!bDir)
@@ -1053,7 +1056,7 @@ AppCommandProc(register DWORD id)
 
            if (GetPowershellExePath(szToRun))
            {
-               wsprintf(szParams, TEXT(" -noexit -command \"cd \\\"%s\\\"\""), szDir);
+               wsprintf(szParams, PowerShellParamFormat, szDir);
 
                ret = ExecProgram(szToRun, szParams, szDir, FALSE, bRunAs);
            }
