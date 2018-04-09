@@ -703,7 +703,12 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
           }
 
           if (cchEnv == 0)
-            lstrcpy(szToRun, TEXT("notepad.exe"));
+          {
+              if (GetSystemDirectory(szToRun, MAXPATHLEN) > 0)
+                  lstrcat(szToRun, TEXT("\\notepad.exe"));
+              else
+                  lstrcpy(szToRun, TEXT("C:\\Windows\\System32\\notepad.exe"));
+          }
 
           ret = ExecProgram(szToRun, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
       }
@@ -1028,10 +1033,13 @@ AppCommandProc(register DWORD id)
 			   }
 		   }
 
-		   // use cmd.exe if ConEmu doesn't exist or we are running admin mode
+		   // use C:\Windows\System32\cmd.exe if ConEmu doesn't exist or we are running admin mode
 		   if (bUseCmd || bRunAs) {
-			   lstrcpy(szToRun, TEXT("cmd.exe"));
 			   szParams[0] = TEXT('\0');
+			   if (GetSystemDirectory(szToRun, MAXPATHLEN) > 0)
+				   lstrcat(szToRun, TEXT("\\cmd.exe"));
+			   else
+				   lstrcpy(szToRun, TEXT("C:\\Windows\\System32\\cmd.exe"));
 		   }
 
 		   ret = ExecProgram(szToRun, szParams, szDir, FALSE, bRunAs);
