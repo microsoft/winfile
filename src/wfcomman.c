@@ -695,6 +695,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
           DWORD cchEnv = GetEnvironmentVariable(TEXT("ProgramFiles"), szToRun, MAXPATHLEN);
           if (cchEnv != 0)
           {
+            // NOTE: assume ProgramFiles directory and "\\Notepad++\\notepad++.exe" never exceed MAXPATHLEN
             lstrcat(szToRun, TEXT("\\Notepad++\\notepad++.exe"));
             if (!PathFileExists(szToRun))
             {
@@ -703,7 +704,13 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
           }
 
           if (cchEnv == 0)
-            lstrcpy(szToRun, TEXT("notepad.exe"));
+          {
+              // NOTE: assume system directory and "\\notepad.exe" never exceed MAXPATHLEN
+              if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
+                  lstrcat(szToRun, TEXT("\\notepad.exe"));
+              else
+                  lstrcpy(szToRun, TEXT("notepad.exe"));
+          }
 
           ret = ExecProgram(szToRun, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
       }
@@ -1021,7 +1028,8 @@ AppCommandProc(register DWORD id)
 			   if (lstrcmpi(szToRun + cchEnv - 6, TEXT(" (x86)")) == 0) {
 				   szToRun[cchEnv - 6] = TEXT('\0');
 			   }
-			   lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
+               // NOTE: assume ProgramFiles directory and "\\ConEmu\\ConEmu64.exe" never exceed MAXPATHLEN
+               lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
 			   if (PathFileExists(szToRun)) {
 				   wsprintf(szParams, ConEmuParamFormat, szDir);
 				   bUseCmd = FALSE;
@@ -1030,7 +1038,11 @@ AppCommandProc(register DWORD id)
 
 		   // use cmd.exe if ConEmu doesn't exist or we are running admin mode
 		   if (bUseCmd || bRunAs) {
-			   lstrcpy(szToRun, TEXT("cmd.exe"));
+               // NOTE: assume system directory and "\\cmd.exe" never exceed MAXPATHLEN
+               if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
+                    lstrcat(szToRun, TEXT("\\cmd.exe"));
+               else
+			        lstrcpy(szToRun, TEXT("cmd.exe"));
 			   szParams[0] = TEXT('\0');
 		   }
 
