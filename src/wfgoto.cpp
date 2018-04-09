@@ -470,7 +470,7 @@ vector<PDNODE> *GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
 
 	for (int i = 0; i < options_per_word.size(); i++)
 	{
-		vector<PDNODE> * option = options_per_word.at(i);
+		vector<PDNODE> *option = options_per_word.at(i);
 		// if we didn't return one of the options as is
 		if (option != final_options)
 			delete option;
