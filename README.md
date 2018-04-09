@@ -24,6 +24,7 @@ can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(W
 ## What it looks like
 
 ![(https://commons.wikimedia.org/wiki/File:Winfile-v10-0-file-manager_%28cropped%29.png)](https://upload.wikimedia.org/wikipedia/commons/6/67/Winfile-v10-0-file-manager_%28cropped%29.png)
+
 Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded the image to Wikimedia.
 
 ## Changes in original_plus
