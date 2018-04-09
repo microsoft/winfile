@@ -3397,7 +3397,7 @@ TryAgain:
 ;
 ; lpszSource - Source file name
 ; lpszDest   - Destination file name
-; nError     - dos (or our exteneded) error code
+; nError     - dos (or our extended) error code
 ;
 ; dwFunc      - Operation being performed during error.  Can be one of:
 ;              FUNC_DELETE - Delete files in pFrom

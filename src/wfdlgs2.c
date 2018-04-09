@@ -232,7 +232,7 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
 					 if (bMaximized)
 					 {
-						 // the WM_MDICREATE above creates the window maximized; 
+						 // the WM_MDICREATE above creates the window maximized;
 						 // here we re-activate the original maximized window
 
 						 SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndMDIChild, 0L);

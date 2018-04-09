@@ -1331,7 +1331,7 @@ UpdateConnections(BOOL bUpdateDriveList)
          // this drive has gone away
          //
          if (IsLastWindow()) {
-            // disconecting the last drive
+            // disconnecting the last drive
             // set this guy to the first non floppy / cd rom
 
             for (i = 0; i < cDrives; i++) {
@@ -1381,7 +1381,7 @@ UpdateConnections(BOOL bUpdateDriveList)
    SetCursor(hCursor);
 
    //
-   // Update diso btn/menu item
+   // Update disco btn/menu item
    //
    EnableDisconnectButton();
 
@@ -1529,7 +1529,7 @@ CopyDiskEnd()
    LockFormatDisk(CancelInfo.Info.Copy.iSourceDrive,
       CancelInfo.Info.Copy.iDestDrive, 0, IDM_FORMAT, FALSE);
 
-   // If not successful, and the user _didn't_ hit cance, throw up
+   // If not successful, and the user _didn't_ hit cancel, throw up
    // an error message (as implemented, hitting cancel does not return
    // a dialog box.
 

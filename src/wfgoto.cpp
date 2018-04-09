@@ -233,7 +233,7 @@ vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 		lastOutput = out;
 	}
 
-	// shrink actual vetor to final size
+	// shrink actual vector to final size
 	combined->resize(lastOutput);
 
 	// cleanup secondary vector created; may be NULL

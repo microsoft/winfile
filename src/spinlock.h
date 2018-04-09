@@ -45,7 +45,7 @@ void SpinLock::Lock()
 	m_iterations = 0;
 	while (true)
 	{
-		// A thread alreading owning the lock shouldn't be allowed to wait to acquire the lock - reentrant safe
+		// A thread already owning the lock shouldn't be allowed to wait to acquire the lock - reentrant safe
 		if (this->dest == GetCurrentThreadId())
 			break;
 		/*

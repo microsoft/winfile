@@ -554,7 +554,7 @@ ReadDirLevel(
    // case we look through the DTA structure in the dir window
    // to get all the directories (instead of calling FindFirst/FindNext).
    // in this case we have to disable yielding since the user could
-   // potentialy close the dir window that we are reading, or change
+   // potentially close the dir window that we are reading, or change
    // directory.
    //
 
@@ -1162,7 +1162,7 @@ FillOutTreeList(HWND hwndTC,
 
 	// convert szDir into a sequence of null terminated strings for each directory segment
 	// TODO: shared function
-	lstrcpy(szExpand, szDir + lstrlen(szExists) + 1);  // skip temp path (that which is already in tree) and interveening '\\'
+	lstrcpy(szExpand, szDir + lstrlen(szExists) + 1);  // skip temp path (that which is already in tree) and intervening '\\'
 	p = szExpand;
 
 	while (*p) {                // null out all slashes
@@ -2713,7 +2713,7 @@ UpdateSelection:
       static BOOL fOldShowSourceBitmaps = 0;
 
       //
-      // WM_DRAGMOVE is sent when two consequetive TRUE QUERYDROPOBJECT
+      // WM_DRAGMOVE is sent when two consecutive TRUE QUERYDROPOBJECT
       // messages come from the same window.
       //
 

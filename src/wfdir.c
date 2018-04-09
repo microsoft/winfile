@@ -2006,7 +2006,7 @@ PutAttributes(
 // Name:     GetMaxExtent
 //
 // Synopsis: Compute the max ext of all files in this DTA block
-//           and update the case to match (wTextAttrebs & TA_LOWERCASE)
+//           and update the case to match (wTextAttribs & TA_LOWERCASE)
 //
 // Return:
 //

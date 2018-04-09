@@ -1,6 +1,7 @@
 # Windows File Manager (WinFile)
 
-The Windows File Manager lives again and runs on all currently supported version of Windows,
+The Windows File Manager lives again and runs as a native x86 and x64 desktop app
+on all currently supported version of Windows,
 including Windows 10.  I welcome your thoughts, comments and suggestions.  There are two
 primary versions of the source code in the master branch:
 
@@ -20,6 +21,12 @@ You are welcome do that on your own.
 The Windows File manager was originally released with Windows 3.0 in the early 1990s.  You
 can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
 
+## What it looks like
+
+![(https://commons.wikimedia.org/wiki/File:Winfile-v10-0-file-manager_%28cropped%29.png)](https://upload.wikimedia.org/wikipedia/commons/6/67/Winfile-v10-0-file-manager_%28cropped%29.png)
+
+Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded the image to Wikimedia.
+
 ## Changes in original_plus
 
 The source code provided here (in the src directory) was copied from the Windows NT 4 source tree in November
@@ -38,6 +45,8 @@ The help directory contains both winfile.hlp and winfile.chm.  Winfile.hlp was i
 source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from 
 a regular installation of Windows 98 and works on Windows 10.  As is, WinFile.exe 
 tries to launch winfile.hlp which fails.
+
+To create your own local branch referring to this release, run "git checkout -b <your branch> original_plus".
 
 ## Changes in master v10.0 after original_plus
 

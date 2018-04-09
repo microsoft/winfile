@@ -59,6 +59,7 @@ BEGIN
 	"^c",       IDM_COPYTOCLIPBOARD, NOINVERT
 	"^v",       IDM_PASTE, NOINVERT
 	"^k",       IDM_STARTCMDSHELL, NOINVERT
+	"^p",       IDM_STARTPOWERSHELL, NOINVERT
 	"^g",       IDM_GOTODIR, NOINVERT
 	"^f",       IDM_SEARCH, NOINVERT
 	VK_LEFT,    IDM_HISTORYBACK, NOINVERT, VIRTKEY, ALT
@@ -93,6 +94,7 @@ BEGIN
     MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "Select &Files...", IDM_SELECT
 	MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
 	MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "E&xit",            IDM_EXIT

@@ -283,7 +283,7 @@ EnableCheckTBButtons(HWND hwndActive)
 //
 //
 // Notes:   Non re-entrant!  This is due to static szDriveSlash!
-//          (NOT mulithread safe)
+//          (NOT multithread safe)
 //
 /////////////////////////////////////////////////////////////////////
 

@@ -429,8 +429,8 @@ CreateTreeWindow(
 
    //
    // this saves people from creating more windows than they should
-   // note, when the mdi window is maximized many people don't reallize
-   // how many windows they have openend.
+   // note, when the mdi window is maximized many people don't realize
+   // how many windows they have opened.
    //
    if (iNumWindows > 26) {
 
@@ -620,7 +620,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
    SetWindowDirectory();
 
    //
-   // get the relavant parameters
+   // get the relevant parameters
    //
    GetTreeWindows(hwndActive, &hwndTree, &hwndDir);
    if (hwndTree || hwndDir)
@@ -784,6 +784,66 @@ FmifsLoaded()
    return TRUE;
 }
 
+BOOL
+GetPowershellExePath(LPTSTR szPSPath)
+{
+    HKEY hkey;
+    if (ERROR_SUCCESS != RegOpenKey(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Microsoft\\PowerShell"), &hkey))
+    {
+        return FALSE;
+    }
+
+    szPSPath[0] = TEXT('\0');
+
+    for (int ikey = 0; ikey < 5; ikey++)
+    {
+        TCHAR         szSub[10];    // just the "1" or "3"
+
+        DWORD dwError = RegEnumKey(hkey, ikey, szSub, COUNTOF(szSub));
+
+        if (dwError == ERROR_SUCCESS)
+        {
+            // if installed, get powershell exe
+            DWORD dwInstall;
+            DWORD dwType;
+            DWORD cbValue = sizeof(dwInstall);
+            dwError = RegGetValue(hkey, szSub, TEXT("Install"), RRF_RT_DWORD, &dwType, (PVOID)&dwInstall, &cbValue);
+
+            if (dwError == ERROR_SUCCESS && dwInstall == 1)
+            {
+                // this install of powershell is active; get path
+
+                HKEY hkeySub;
+                dwError = RegOpenKey(hkey, szSub, &hkeySub);
+
+                if (dwError == ERROR_SUCCESS)
+                {
+                    LPTSTR szPSExe = TEXT("\\Powershell.exe");
+
+                    cbValue = (MAXPATHLEN - lstrlen(szPSExe)) * sizeof(TCHAR);
+                    dwError = RegGetValue(hkeySub, TEXT("PowerShellEngine"), TEXT("ApplicationBase"), RRF_RT_REG_SZ | RRF_RT_REG_EXPAND_SZ, &dwType, (PVOID)szPSPath, &cbValue);
+
+                    if (dwError == ERROR_SUCCESS)
+                    {
+                        lstrcat(szPSPath, szPSExe);
+                    }
+                    else
+                    {
+                        // reset to empty string if not successful
+                        szPSPath[0] = TEXT('\0');
+                    }
+
+                    RegCloseKey(hkeySub);
+                }
+            }
+        }
+    }
+
+    RegCloseKey(hkey);
+
+    // return true if we got a valid path
+    return szPSPath[0] != TEXT('\0');
+}
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
@@ -976,6 +1036,31 @@ AppCommandProc(register DWORD id)
 		   LocalFree(szDir);
 		}
 	   break;
+
+    case IDM_STARTPOWERSHELL:
+       {
+           BOOL bRunAs;
+           BOOL bDir;
+           TCHAR szToRun[MAXPATHLEN];
+           LPTSTR szDir;
+           TCHAR szParams[MAXPATHLEN + 20];
+
+           szDir = GetSelection(1 | 4 | 16, &bDir);
+           if (!bDir)
+               StripFilespec(szDir);
+
+           bRunAs = GetKeyState(VK_SHIFT) < 0;
+
+           if (GetPowershellExePath(szToRun))
+           {
+               wsprintf(szParams, TEXT(" -noexit -command \"cd \\\"%s\\\"\""), szDir);
+
+               ret = ExecProgram(szToRun, szParams, szDir, FALSE, bRunAs);
+           }
+
+           LocalFree(szDir);
+       }
+       break;
 
    case IDM_SELECT:
 

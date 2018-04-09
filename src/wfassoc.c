@@ -2354,7 +2354,7 @@ FileTypeRead(HWND hDlg,
 // IN      hDlg                  HWND   Dialog to read from
 // IN      pAssociateFileDlgInfo --     Target to write out
 // IN      hk                    HKEY   HKey to write to
-// IN      lpszKey               LPTSTR  Beginnin root key
+// IN      lpszKey               LPTSTR  Beginning root key
 //
 //
 // Return:   DWORD   ERROR_SUCCESS = success
@@ -2488,7 +2488,7 @@ FileTypeWrite(HWND hDlg,
       goto Error;
 
    //
-   // We add 1 because we substitue our paren here
+   // We add 1 because we substitute our paren here
    //
    pFileType->lpszBuf[uOffset] = CHAR_OPENPAREN;
    pFileType->uExe = uOffset+1;
@@ -3111,7 +3111,7 @@ ExtLinkToFileType(PEXT pExt, LPTSTR lpszIdent)
 // IN    hDlg                   HWND
 // INOUT pAssociateFileDlgInfo  --
 //
-// Return:   BOOL    TRUE = successuful
+// Return:   BOOL    TRUE = successful
 //
 // Assumes:  The extension to be deleted is highlighted in the cb dropdownbox
 //           It _must_already_exist_ in the current pFileType!
@@ -3165,7 +3165,7 @@ AssociateFileDlgExtDelete(HWND hDlg,
 // IN    hDlg                   HWND
 // INOUT pAssociateFileDlgInfo  --
 //
-// Return:   BOOL    TRUE = successuful
+// Return:   BOOL    TRUE = successful
 //
 // Assumes:  IDD_EXT cb edit field has a valid extension
 //           It _must_not_already_exist_ in the current pFileType!
@@ -4401,7 +4401,7 @@ Error:
 //
 // Assumes:  Stable data structure
 //
-// Effects:  pExtBase strucuture
+// Effects:  pExtBase structure
 //
 //
 // Notes:    Does not free pExt or modify pExt at all

@@ -446,7 +446,7 @@ TreeWndProc(
 
           // wParam is the length of the string pointed to by lParam
           // returns in lParam ANSI directory string with
-          // a trailing backslash.  if you want to do a SetCurrentDirecotor()
+          // a trailing backslash.  if you want to do a SetCurrentDirector()
           // you must first StripBackslash() the thing!
 
           GetMDIWindowText(hwnd, (LPTSTR)lParam, (INT)wParam);        // get the string
