@@ -1,5 +1,7 @@
 # Windows File Manager (WinFile)
 
+![icon](winfile.png)
+
 The Windows File Manager lives again and runs on all currently supported version of Windows,
 including Windows 10.  I welcome your thoughts, comments and suggestions.  There are two
 primary versions of the source code in the master branch:
