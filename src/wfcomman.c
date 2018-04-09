@@ -961,7 +961,7 @@ AppCommandProc(register DWORD id)
 			   }
 			   lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
 			   if (PathFileExists(szToRun)) {
-				   wnsprintf(szParams, MAXPATHLEN + 20, TEXT(" -Single -Dir \"%s\""), szDir);
+				   wnsprintf(szParams, sizeof(szParams) / sizeof(szParams[0]), TEXT(" -Single -Dir \"%s\""), szDir);
 				   bUseCmd = FALSE;
 			   }
 		   }
