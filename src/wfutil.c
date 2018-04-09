@@ -183,7 +183,7 @@ GetSelectedDrive()
  *  GetSelectedDirectory() -
  *
  *  Gets the directory selected for the drive. uses the windows
- *  z-order to give precidence to windows higher in the order.
+ *  z-order to give precedence to windows higher in the order.
  *
  *  works like GetCurrentDirectory() except it looks through
  *  the window list for directories first (and returns ANSI)
@@ -444,7 +444,7 @@ WFHelp(HWND hwnd)
 
 }
 
-// atoi with decimal comma seperators
+// atoi with decimal comma separators
 //
 
 //#ifdef INLIBRARY
@@ -470,11 +470,11 @@ AddCommasInternal(LPTSTR szBuf, DWORD dw)
 
    pTemp = szTemp + len - 1;
 
-   // szComman size may be < 1 !
+   // szComma size may be < 1 !
 
    p = szBuf + len + ((len - 1) / 3)*iCommaLen;
 
-   *p-- = CHAR_NULL;    // null terimnate the string we are building
+   *p-- = CHAR_NULL;    // null terminate the string we are building
 
    count = 1;
    while (pTemp >= szTemp) {
@@ -1162,7 +1162,7 @@ WritePrivateProfileBool(LPTSTR szKey, BOOL bParam)
 //
 // Name:     CleanupMessages
 //
-// Synopsis: Make sure all the WM_FSC messsages have been processed.
+// Synopsis: Make sure all the WM_FSC messages have been processed.
 //
 //
 // Return:   VOID
@@ -1553,7 +1553,7 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
   if (!*szExt) {
 
      //
-     // The specified path didn't have an extention.  It can't be a program.
+     // The specified path didn't have an extension.  It can't be a program.
      //
      return(FALSE);
   }
