@@ -16,9 +16,9 @@ extern unsigned long BreakFlags;
 extern unsigned long TraceFlags;
 
 DWORD DbgPrint( LPTSTR Format, ...);
-VOID DbgAssert(LPTSTR file, int line);
+VOID DbgAssert(LPTSTR file, unsigned line);
 VOID DbgTrace(DWORD tf, LPTSTR lpstr);
-VOID DbgBreak(DWORD bf, LPTSTR file, int line);
+VOID DbgBreak(DWORD bf, LPTSTR file, unsigned line);
 VOID DbgPrint1(DWORD tf, LPTSTR fmt, LPTSTR p1);
 VOID DbgEnter(LPTSTR funName);
 VOID DbgLeave(LPTSTR funName);

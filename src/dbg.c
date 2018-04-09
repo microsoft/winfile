@@ -30,7 +30,7 @@ unsigned long BreakFlags = 0
 
 VOID DbgAssert(
 LPTSTR file,
-int line)
+unsigned line)
 {
 	 wsprintf(szFmt,szAsrtFmt,file,line);
 	 OutputDebugString(szFmt);
@@ -57,7 +57,7 @@ LPTSTR lpstr)
 VOID DbgBreak(
 DWORD bf,
 LPTSTR file,
-int line)
+unsigned line)
 {
     if (bf & BreakFlags) {
 	 wsprintf(szFmt,TEXT("BREAK at %s:%d\n"), file, line);

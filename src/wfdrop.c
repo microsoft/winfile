@@ -181,7 +181,7 @@ static HRESULT StreamToFile(IStream *stream, TCHAR *szFile)
 {
     byte buffer[BLOCK_SIZE];
     unsigned long bytes_read;
-    int bytes_written;
+    unsigned bytes_written;
     HRESULT hr;
 	HANDLE hFile;
 
@@ -244,7 +244,7 @@ LPWSTR QuotedContentList(IDataObject *pDataObject)
             // Get the descriptor information
             STGMEDIUM sm_desc= {0,0,0};
             STGMEDIUM sm_content = {0,0,0};
-			unsigned int file_index, cchTempPath, cchFiles;
+			unsigned file_index, cchTempPath, cchFiles;
             WCHAR szTempPath[MAX_PATH+1];
 
             hr = pDataObject->lpVtbl->GetData(pDataObject, &descriptor_format, &sm_desc);

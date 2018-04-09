@@ -11,9 +11,9 @@
 
 #include <windows.h>
 
-const unsigned int YIELD_ITERATION = 30; // yeild after 30 iterations
-const unsigned int MAX_SLEEP_ITERATION = 40;
-const int SeedVal = 100;
+const unsigned YIELD_ITERATION = 30; // yeild after 30 iterations
+const unsigned MAX_SLEEP_ITERATION = 40;
+const unsigned SeedVal = 100;
 
 // This class acts as a synchronization object similar to a mutex
 
@@ -22,7 +22,7 @@ struct SpinLock
 	volatile LONG dest;
 	LONG exchange;
 	LONG compare;
-	unsigned int m_iterations;
+	unsigned m_iterations;
 
 public:
 	SpinLock()

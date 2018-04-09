@@ -84,7 +84,7 @@ public:
 		for (; itr != m_Values.end(); itr++)
 		{
 			const wstring& key = itr->first;
-			int cmp = key.compare(0, lowered.size(), lowered);
+			unsigned cmp = key.compare(0, lowered.size(), lowered);
 			if (cmp == 0)
 			{
 				if (!fPrefix && key.size() != lowered.size())

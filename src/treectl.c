@@ -94,7 +94,7 @@ GetRealExtent(
     PDNODE pNode,
     HWND hwndLB,
     LPTSTR szPath,
-    int *pLen);
+    unsigned *pLen);
 
 void
 ResetTreeMax(
@@ -363,7 +363,7 @@ InsertDirectory(
       }
       else
       {
-	     int iCmp;
+	     unsigned iCmp;
          do
          {
             iMid = (iMax + iMin) / 2;
@@ -3159,7 +3159,7 @@ GetRealExtent(
     PDNODE pNode,
     HWND hwndLB,
     LPTSTR szPath,
-    int *pLen)
+    unsigned *pLen)
 
 {
     HDC hdc;
@@ -3214,7 +3214,7 @@ ResetTreeMax(
     DWORD NumItems;
     DWORD ctr;
     PDNODE pNode;
-    int Len;
+    unsigned Len;
     UINT xNew, xTreeMax;
 
 

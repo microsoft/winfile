@@ -19,7 +19,7 @@ typedef ATOMSTRUC {
 } ATOMENTRY;
 
 typedef struct {
-    int     numEntries;
+    unsigned     numEntries;
     PATOM   pAtom[ 1 ];
 } ATOMTABLE;
 ATOMTABLE * PASCAL pAtomTable;
@@ -28,8 +28,8 @@ ATOMTABLE * PASCAL pAtomTable;
 LPTSTR FAR PASCAL lstrbscan(LPTSTR, LPTSTR);
 LPTSTR FAR PASCAL lstrbskip(LPTSTR, LPTSTR);
 
-int  FAR PASCAL OpenPathName(LPTSTR, int);
-int  FAR PASCAL DeletePathName(LPTSTR);
+unsigned  FAR PASCAL OpenPathName(LPTSTR, int);
+unsigned  FAR PASCAL DeletePathName(LPTSTR);
 WORD FAR PASCAL _ldup(int);
 
 

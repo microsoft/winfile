@@ -81,8 +81,8 @@ static TBBUTTON tbButtons[] = {
 #define TBAR_BUTTON_COUNT (sizeof(tbButtons)/sizeof(tbButtons[0]))
 
 static struct {
-  int idM;
-  int idB;
+  unsigned idM;
+  unsigned idB;
 } sAllButtons[] = {
   IDM_MOVE,             12,
   IDM_COPY,             11,
@@ -131,10 +131,10 @@ static struct {
 #define TBAR_ALL_BUTTONS        (sizeof(sAllButtons)/sizeof(sAllButtons[0]))
 #define TBAR_EXTRA_BITMAPS      16
 
-static int iSel = -1;
+static unsigned iSel = -1;
 
 Static VOID
-ExtensionName(int i, LPTSTR szName)
+ExtensionName(unsigned i, LPTSTR szName)
 {
   TCHAR szFullName[256];
   LPTSTR lpName;
@@ -643,7 +643,7 @@ LoadDesc(UINT uID, LPTSTR lpDesc)
    GetMenuString(hMenu, uMenu, szMenu, COUNTOF(szMenu), MF_BYPOSITION);
    if (GetMenuString(hMenu, uID, szItem, COUNTOF(szItem), MF_BYCOMMAND) <= 0) {
 
-      int i;
+      unsigned i;
 
       for (i=0; ; ++i) {
          if (i >= NUMEXTRACOMMANDS)
@@ -681,8 +681,8 @@ GetAdjustInfo(LPTBNOTIFY lpTBNotify)
 {
    LPTBBUTTON lpButton = &lpTBNotify->tbButton;
    FMS_HELPSTRING tbl;
-   int iExt;
-   int j = lpTBNotify->iItem;
+   unsigned iExt;
+   unsigned j = lpTBNotify->iItem;
 
 
    if ((UINT)j < TBAR_ALL_BUTTONS) {
@@ -927,7 +927,7 @@ NormalHelp:
 
 
        if (lpnmhdr->code == TTN_NEEDTEXT) {
-           int iExt;
+           unsigned iExt;
            UINT idString;
            LPTOOLTIPTEXT lpTT = (LPTOOLTIPTEXT) lParam;
            FMS_HELPSTRING tbl;

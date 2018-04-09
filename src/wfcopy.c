@@ -628,7 +628,7 @@ IsRootDirectory(register LPTSTR pPath)
 
   if (*pPath == CHAR_BACKSLASH && *(pPath+1) == CHAR_BACKSLASH) {   /* some sort of UNC name */
     LPTSTR p;
-    int cBackslashes=0;
+    unsigned cBackslashes=0;
 
     for (p=pPath+2; *p; ) {
       if (*p == CHAR_BACKSLASH && (++cBackslashes > 1))

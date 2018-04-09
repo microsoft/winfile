@@ -528,7 +528,7 @@ JAPANEND
          {
             TCHAR szDirs[MAXPATHLEN];
             LPTSTR rgszDirs[MAX_DRIVES];
-        	int drive, cchLeft, driveCur;
+        	unsigned drive, cchLeft, driveCur;
         	BOOL fFirst = TRUE;
             
             wParam = IDD_TO;
@@ -546,7 +546,7 @@ JAPANEND
         	{
 				if (drive != driveCur && rgszDirs[drive] != NULL)
 				{
-	        		int cchT = wcslen(rgszDirs[drive]);
+	        		unsigned cchT = wcslen(rgszDirs[drive]);
     	    		if (cchLeft > 1)
         			{
         				if (!fFirst)

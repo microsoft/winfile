@@ -17,7 +17,7 @@
 
 typedef struct {
 	IDataObject ido;
-	int ref_count;
+	unsigned ref_count;
 	FORMATETC *m_pFormatEtc;
 	STGMEDIUM *m_pStgMedium;
 	LONG	   m_nNumFormats;
@@ -27,8 +27,8 @@ typedef struct {
 
 typedef struct {
 	IEnumFORMATETC ief;
-	int ref_count;
-	int ix;
+	unsigned ref_count;
+	unsigned ix;
 	LONG		m_lRefCount;		// Reference count for this COM interface
 	ULONG		m_nIndex;			// current enumerator index
 	ULONG		m_nNumFormats;		// number of FORMATETC members

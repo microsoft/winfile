@@ -31,9 +31,9 @@ vector<PDNODE> *g_allNodes;			// holds the nodes we created to make freeing them
 // -1: path a is a prefix of path b
 // +1: path b is a prefix of path a
 // +2: first difference in the paths has b sort lower
-int ParentOrdering(const PDNODE& a, const PDNODE& b)
+unsigned ParentOrdering(const PDNODE& a, const PDNODE& b)
 {
-	int wCmp;
+	unsigned wCmp;
 	if (a->nLevels == b->nLevels)
 	{
 		// when they are the same elements, definitely the same name; no need to recurse up
@@ -103,7 +103,7 @@ vector<PDNODE> *FilterBySubtree(vector<PDNODE> * parents, vector<PDNODE> * child
 	vector<PDNODE> *results = new vector <PDNODE>();
 
 	// for each child, if parent in parents, return
-	for (int i = 0; i < children->size(); i++)
+	for (unsigned i = 0; i < children->size(); i++)
 	{
 		PDNODE child = children->at(i);
 		PDNODE parent = child->pParent;
@@ -119,13 +119,13 @@ vector<PDNODE> *FilterBySubtree(vector<PDNODE> * parents, vector<PDNODE> * child
 
 vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 {
-	int count = trees.size();
+	unsigned count = trees.size();
 
 	if (count == 0)
 		return NULL;
 
 	size_t maxOutput = 0;
-	for (int i = 0; i < count; i++)
+	for (unsigned i = 0; i < count; i++)
 	{
 		vector<PDNODE> *tree = trees[i];
 
@@ -152,7 +152,7 @@ vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 	vector<PDNODE> *first = NULL;
 
 	// for all other result sets, merge
-	for (int i = 1; i < count; i++)
+	for (unsigned i = 1; i < count; i++)
 	{
 		size_t out = 0;			// always start writing to the begining of the output
 
@@ -194,7 +194,7 @@ vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 			PDNODE& p1 = first->at(first1);
 			PDNODE& p2 = second->at(first2);
 
-			int wCmp = ParentOrdering(p1, p2);
+			unsigned wCmp = ParentOrdering(p1, p2);
 			switch (wCmp)
 			{
 			case -2:
@@ -490,7 +490,7 @@ VOID UpdateGotoList(HWND hDlg)
 	if (options == NULL)
 		return;
 		
-	for (int i = 0; i < 10 && i < options->size(); i++)
+	for (unsigned i = 0; i < 10 && i < options->size(); i++)
 	{
 		GetTreePath(options->at(i), szText);
 

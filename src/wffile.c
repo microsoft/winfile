@@ -313,7 +313,7 @@ VOID wfProgressYield()
 /////////////////////////////////////////////////////////////////////////////
 
 VOID DisplayUncompressProgress(
-    int iType)
+    unsigned iType)
 {
     TCHAR szNum[30];
 
@@ -463,7 +463,7 @@ BOOL APIENTRY UncompressProgDlg(
 /////////////////////////////////////////////////////////////////////////////
 
 void DisplayCompressProgress(
-    int iType)
+    unsigned iType)
 {
     TCHAR szTemp[120];
     TCHAR szNum[30];
@@ -1090,7 +1090,7 @@ BOOL WFDoCompress(
     ULONG  Length;
     HANDLE FindHandle;
     WIN32_FIND_DATA FindData;
-    int MBRet;
+    unsigned MBRet;
 
 
     //
@@ -1420,7 +1420,7 @@ BOOL WFDoUncompress(
     ULONG  Length;
     HANDLE FindHandle;
     WIN32_FIND_DATA FindData;
-    int MBRet;
+    unsigned MBRet;
 
 
     //
@@ -1714,7 +1714,7 @@ extern VOID GetTreePath(PDNODE pNode, register LPTSTR szDest);
 VOID RedrawAllTreeWindows()
 {
     HWND hwnd, hwndTree, hwndLB;
-    int cItems, ctr;
+    unsigned cItems, ctr;
     PDNODE pNode;
     DWORD dwAttribs;
     TCHAR szPathName[MAXPATHLEN * 2];
@@ -1765,12 +1765,12 @@ VOID RedrawAllTreeWindows()
 //
 /////////////////////////////////////////////////////////////////////////////
 
-int CompressErrMessageBox(
+unsigned CompressErrMessageBox(
     HWND hwndActive,
     LPTSTR szFile,
     PHANDLE phFile)
 {
-    int rc;
+    unsigned rc;
 
 
     //

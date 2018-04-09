@@ -795,7 +795,7 @@ GetPowershellExePath(LPTSTR szPSPath)
 
     szPSPath[0] = TEXT('\0');
 
-    for (int ikey = 0; ikey < 5; ikey++)
+    for (unsigned ikey = 0; ikey < 5; ikey++)
     {
         TCHAR         szSub[10];    // just the "1" or "3"
 
