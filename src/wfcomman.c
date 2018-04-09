@@ -1016,7 +1016,7 @@ AppCommandProc(register DWORD id)
            TCHAR szParams[MAXPATHLEN + COUNTOF(ConEmuParamFormat)];
 
 			szDir = GetSelection(1|4|16, &bDir);
-			if (!bDir)
+			if (!bDir && szDir)
 				StripFilespec(szDir);
 	
 		   bRunAs = GetKeyState(VK_SHIFT) < 0;
