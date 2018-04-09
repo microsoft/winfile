@@ -108,7 +108,7 @@ ResetTreeMax(
 /*                                                                          */
 /*  GetTreePathIndirect() -                                                 */
 /*                                                                          */
-/*  build a complete path for a given node in the tree by recursivly        */
+/*  build a complete path for a given node in the tree by recursively       */
 /*  traversing the tree structure                                           */
 /*                                                                          */
 /*--------------------------------------------------------------------------*/
@@ -158,7 +158,7 @@ GetTreePath(PDNODE pNode, register LPTSTR szDest)
 /*  ScanDirLevel() -                                                        */
 /*                                                                          */
 /*  look down to see if this node has any sub directories                   */
-/*
+/*                                                                          */
 /*--------------------------------------------------------------------------*/
 
 VOID
@@ -503,7 +503,7 @@ wfYield()
 // bPartialSort         TRUE means partially sorted on disk
 //
 // Return:              TRUE  = successful tree read
-//                      FALSE = user abort or bugus tree read.
+//                      FALSE = user abort or bogus tree read.
 //
 // Assumes:
 //
@@ -2972,7 +2972,7 @@ UpdateSelection:
 
       case VK_UP:
          j = -1;
-         /** FALL THRU ***/
+         /** FALL THROUGH ***/
 
       case VK_DOWN:
          TypeAheadString('\0', NULL);

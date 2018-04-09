@@ -795,7 +795,7 @@ CreateSavedWindows()
 
 // void  GetTextStuff(HDC hdc)
 //
-// this computes all the globals that are dependant on the
+// this computes all the globals that are dependent on the
 // currently selected font
 //
 // in:
@@ -827,7 +827,7 @@ GetTextStuff(HDC hdc)
    GetTextMetrics(hdc, &tm);
 
    //
-   // these are all dependant on the text metrics
+   // these are all dependent on the text metrics
    //
    dxDrive = dxDriveBitmap + tm.tmMaxCharWidth + (4*dyBorderx2);
    dyDrive = max(dyDriveBitmap + (4*dyBorderx2), dyText);

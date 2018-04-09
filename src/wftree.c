@@ -855,7 +855,7 @@ TreeWndProc(
            break;
 
         //
-        // FALL THRU
+        // FALL THROUGH
         //
 
       default:

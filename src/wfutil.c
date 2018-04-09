@@ -965,7 +965,7 @@ IsLFNSelected()
 //  GetSelection() -
 //  caller must free LPTSTR returned.
 //
-//  LPTSTR must have 2 chars for checkesc saftey at end
+//  LPTSTR must have 2 chars for checkesc safety at end
 //
 //--------------------------------------------------------------------------
 

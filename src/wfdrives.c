@@ -648,7 +648,7 @@ DrivesSetDrive(
    }
 
    //
-   // do this before TC_SETDRIVE incase the tree read
+   // do this before TC_SETDRIVE in case the tree read
    // is aborted and lFreeSpace gets set to -2L
    //
    // Was -1L, ignore new cache.

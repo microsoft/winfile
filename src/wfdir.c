@@ -291,7 +291,7 @@ FocusOnly:
 //
 // Name:     CreateLBLine
 //
-// Synopsis: Creats a string with all details in a file
+// Synopsis: Creates a string with all details in a file
 //
 // Return:
 //
@@ -510,7 +510,7 @@ DirWndProc(
 
    case FS_SETSELECTION:
       //
-      // wParam is the select(TRUE)/unselect(FALSE) param
+      // wParam is the select(TRUE)/deselect(FALSE) param
       // lParam is the filespec to match against
       //
       SendMessage(hwndLB, WM_SETREDRAW, FALSE, 0L);
@@ -1027,7 +1027,7 @@ ChangeDisplay(
       // listbox is filled.
       //
 
-      /*** FALL THRU ***/
+      /*** FALL THROUGH ***/
 
    case FS_CHANGEDISPLAY:
 

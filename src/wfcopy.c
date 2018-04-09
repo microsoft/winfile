@@ -2147,7 +2147,7 @@ WFMoveCopyDriver(PCOPYINFO pCopyInfo)
 // Name:     WFMoveCopyDriverThread
 //
 // Synopsis: The following function is the mainline function for
-//           COPYing, RENAMEing, DELETEing, and MOVEing single/multiple files.
+//           COPYing, RENAMEing, DELETing, and MOVEing single/multiple files.
 //
 // pFrom - String containing list of source specs
 // pTo   - String containing destination specs
@@ -2751,7 +2751,7 @@ SkipMKDir:
          //
 
          //
-         // Tuck away the attribs incase we fail.
+         // Tuck away the attribs in case we fail.
          //
          dwAttr = GetFileAttributes(szSource);
 

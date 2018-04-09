@@ -349,7 +349,7 @@ ChangeFileSystem(
             SendMessage(hwnd, WM_CLOSE, 0, 0L);
          }
 
-         /*** FALL THRU ***/
+         /*** FALL THROUGH ***/
       }
 
       case ( FSC_MKDIR ) :
@@ -366,7 +366,7 @@ ChangeFileSystem(
             }
          }
 
-         /*** FALL THRU ***/
+         /*** FALL THROUGH ***/
       }
 
       case ( FSC_DELETE ) :

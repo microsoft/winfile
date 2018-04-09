@@ -333,7 +333,7 @@ VOID DisplayUncompressProgress(
                 break;
             }
 
-            // else...fall thru
+            // else...fall through
         }
         case ( PROGRESS_UPD_DIRECTORY ) :
         {
@@ -486,7 +486,7 @@ void DisplayCompressProgress(
                 break;
             }
 
-            // else...fall thru
+            // else...fall through
         }
         case ( PROGRESS_UPD_DIRECTORY ) :
         {
@@ -516,7 +516,7 @@ void DisplayCompressProgress(
                 break;
             }
 
-            // else...fall thru
+            // else...fall through
         }
         case ( PROGRESS_UPD_COMPRESSEDSIZE ) :
         {
@@ -528,7 +528,7 @@ void DisplayCompressProgress(
                 break;
             }
 
-            // else...fall thru
+            // else...fall through
         }
         case ( PROGRESS_UPD_FILESIZE ) :
         {
@@ -540,7 +540,7 @@ void DisplayCompressProgress(
                 break;
             }
 
-            // else...fall thru
+            // else...fall through
         }
         case ( PROGRESS_UPD_PERCENTAGE ) :
         {
@@ -1857,7 +1857,7 @@ BOOL CALLBACK CompressErrDialogProc(
                 {
                     bIgnoreAllErrors = TRUE;
 
-                    //  fall thru...
+                    //  fall through...
                 }
                 case ( IDABORT ) :
                 case ( IDRETRY ) :

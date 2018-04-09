@@ -347,7 +347,7 @@ SelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                         break;
 
                 case IDOK:      // select
-                case IDYES:     // unselect
+                case IDYES:     // deselect
 
                         // change "Cancel" to "Close"
 

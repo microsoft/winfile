@@ -635,7 +635,7 @@ SearchWndProc(
       break;
 
    case FS_SETSELECTION:
-      // wParam is the select(TRUE)/unselect(FALSE) param
+      // wParam is the select(TRUE)/deselect(FALSE) param
       // lParam is the filespec to match against
 
       SendMessage(hwndLB, WM_SETREDRAW, FALSE, 0L);
@@ -1080,7 +1080,7 @@ SearchWndProc(
                     TRUE);
       }
 
-      /*** FALL THRU ***/
+      /*** FALL THROUGH ***/
 
    default:
       return(DefMDIChildProc(hwnd, uMsg, wParam, lParam));

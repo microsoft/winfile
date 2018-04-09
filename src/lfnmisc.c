@@ -232,7 +232,7 @@ WORD I_LFNEditName( LPTSTR lpSrc, LPTSTR lpEd, LPTSTR lpRes, INT iResBufSize )
 
                //
                // For all other delimiters, we use the first
-               // occurance (e.g., *f.txt).
+               // occurrence (e.g., *f.txt).
                //
                if (CHAR_DOT != delimit)
                   lpChar = NULL;

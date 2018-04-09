@@ -713,7 +713,7 @@ DoConfigWinIni:
          }
 
          //
-         // Done deleteing everything, now free pFileType after
+         // Done deleting everything, now free pFileType after
          // delinking
          //
          if (pFileType == pFileTypeBase) {
@@ -888,7 +888,7 @@ Done:
             RegFlushKey(HKEY_CLASSES_ROOT);
 
          }
-         // FALL THRU
+         // FALL THROUGH
 
       case IDCANCEL:
 Cancel:
@@ -1254,7 +1254,7 @@ AssociateFileDlgCommand(HWND hDlg,
                   if (!pExt->bDelete && !lstrcmpi(szExt, pExt->szExt))
                   {
                      //
-                     // Found one, Hilight!
+                     // Found one, Highlight!
                      //
                      i = SendDlgItemMessage(hDlg, IDD_EXTLIST, LB_FINDSTRINGEXACT,
                         (WPARAM)-1, (LPARAM) &szExt[1]);
@@ -2580,7 +2580,7 @@ Error:
 // IN        iIndex                      INT  index of DDE info to read
 //
 // Return:   DWORD     = ERROR_SUCCESS success
-//                    = else faile, = error code
+//                    = else failed, = error code
 //
 // Assumes:  pAssociateFileDlgInfo set up correctly
 //

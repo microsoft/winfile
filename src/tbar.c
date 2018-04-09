@@ -412,7 +412,7 @@ SelectToolbarDrive(DRIVEIND DriveInd)
 
 
 
-// value iDrive = drive to hilight added.
+// value iDrive = drive to highlight added.
 
 VOID
 FillToolbarDrives(DRIVE drive)
