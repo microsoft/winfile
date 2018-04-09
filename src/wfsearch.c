@@ -570,6 +570,7 @@ SearchWndProc(
    WCHAR szPath[MAXPATHLEN];
    WCHAR szTitle[128];
    WCHAR szMessage[MAXMESSAGELEN];
+   int msg;
 
    hwndLB = GetDlgItem(hwnd, IDCW_LISTBOX);
 
@@ -750,7 +751,7 @@ SearchWndProc(
          if (wParam == CD_SEARCHUPDATE) {
             LoadString(hAppInstance, IDS_SEARCHTITLE, szTitle, COUNTOF(szTitle));
             LoadString(hAppInstance, IDS_SEARCHREFRESH, szMessage, COUNTOF(szMessage));
-			int msg = MessageBox(hwnd, szMessage, szTitle, MB_ABORTRETRYIGNORE | MB_ICONQUESTION);
+			msg = MessageBox(hwnd, szMessage, szTitle, MB_ABORTRETRYIGNORE | MB_ICONQUESTION);
 
 			if (msg == IDABORT)
 			{

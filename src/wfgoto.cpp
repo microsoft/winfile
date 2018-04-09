@@ -295,9 +295,10 @@ vector<wstring> SplitIntoWords(LPTSTR szText)
 void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes)
 {
 	// free all PDNODE in BagOValues
-	for (PDNODE p : *pNodes)
+	for (int i = 0; i < pNodes->size(); i++)
 	{
-		LocalFree(p);
+		PDNODE child = pNodes->at(i);
+		LocalFree(child);
 	}
 
 	// free that vector and the BagOValues itself
@@ -375,8 +376,9 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 		// if spaces, each word individually (and not whole thing)
 		vector<wstring> words = SplitIntoWords(lfndta.fd.cFileName);
 
-		for (auto word : words)
+		for (int i = 0; i < words.size(); i++)
 		{
+			wstring word = words.at(i);
 			// TODO: how to mark which word is primary to avoid double free?
 			pbov->Add(word, pNodeChild);
 		}
@@ -418,8 +420,9 @@ vector<PDNODE> *GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
 
 	vector<vector<PDNODE> *> options_per_word;
 
-	for (auto word : words)
+	for (int i = 0; i < words.size(); i++)
 	{
+		wstring word = words.at(i);
 		vector<PDNODE> *options;
 		size_t pos = word.find_first_of(L'\\');
 		if (pos == word.size() - 1)
@@ -465,8 +468,9 @@ vector<PDNODE> *GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
 
 	vector<PDNODE> *final_options = TreeIntersection(options_per_word);
 
-	for (auto option : options_per_word)
+	for (int i = 0; i < options_per_word.size(); i++)
 	{
+		vector<PDNODE> * option = options_per_word.at(i);
 		// if we didn't return one of the options as is
 		if (option != final_options)
 			delete option;
