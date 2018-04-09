@@ -248,7 +248,7 @@ InvalidateDrive(DRIVEIND driveInd)
 //
 // void NEAR PASCAL RectDrive(DRIVEIND driveInd, BOOL bDraw)
 //
-// draw the hilight rect around the drive to indicate that it is
+// draw the highlight rect around the drive to indicate that it is
 // the target of a drop action.
 //
 // in:

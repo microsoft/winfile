@@ -1002,7 +1002,7 @@ JAPANEND
    }
 
    //
-   // Read WINFILE.INI and set the approriate variables.
+   // Read WINFILE.INI and set the appropriate variables.
    //
    GetSettings();
 

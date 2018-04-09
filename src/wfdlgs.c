@@ -288,7 +288,7 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   if (!dwAttribs)
                         dwAttribs = ATTR_EVERYTHING;
 
-                  EndDialog(hDlg, TRUE);        // here to avoid exces repaints
+                  EndDialog(hDlg, TRUE);        // here to avoid excess repaints
 
                   // we need to update the tree if they changed the system/hidden
                   // flags.  ...  FIX31

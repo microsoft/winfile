@@ -154,7 +154,7 @@ vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 	// for all other result sets, merge
 	for (int i = 1; i < count; i++)
 	{
-		size_t out = 0;			// always start writing to the begining of the output
+		size_t out = 0;			// always start writing to the beginning of the output
 
 		size_t first1 = 0;		// scan index for last result in combined result (thus far)
 		size_t last1;			// count of items in 'first'; set below
@@ -233,7 +233,7 @@ vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 		lastOutput = out;
 	}
 
-	// shrink actual vetor to final size
+	// shrink actual vector to final size
 	combined->resize(lastOutput);
 
 	// cleanup secondary vector created; may be NULL

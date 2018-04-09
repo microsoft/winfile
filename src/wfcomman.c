@@ -429,8 +429,8 @@ CreateTreeWindow(
 
    //
    // this saves people from creating more windows than they should
-   // note, when the mdi window is maximized many people don't reallize
-   // how many windows they have openend.
+   // note, when the mdi window is maximized many people don't realize
+   // how many windows they have opened.
    //
    if (iNumWindows > 26) {
 
@@ -620,7 +620,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
    SetWindowDirectory();
 
    //
-   // get the relavant parameters
+   // get the relevant parameters
    //
    GetTreeWindows(hwndActive, &hwndTree, &hwndDir);
    if (hwndTree || hwndDir)
