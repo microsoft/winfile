@@ -20,6 +20,10 @@ You are welcome do that on your own.
 The Windows File manager was originally released with Windows 3.0 in the early 1990s.  You
 can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
 
+## What it looks like
+
+![[By CHEF-KOCH’s Technology News Blog, via Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Winfile-v10-0-file-manager_%28cropped%29.png)](https://upload.wikimedia.org/wikipedia/commons/6/67/Winfile-v10-0-file-manager_%28cropped%29.png)
+
 ## Changes in original_plus
 
 The source code provided here (in the src directory) was copied from the Windows NT 4 source tree in November
