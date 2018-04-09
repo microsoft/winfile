@@ -658,6 +658,7 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 
 	SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
+	// TODO(Thai): Make this index all drives
 	if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), NULL, scanEpocNew))
 	{
 		pBagNew->Sort();
