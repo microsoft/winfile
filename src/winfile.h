@@ -918,6 +918,7 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define IDM_HISTORYBACK     126
 #define IDM_HISTORYFWD      127
 #define IDM_STARTPOWERSHELL 128
+#define IDM_STARTBASHSHELL  129
 
 // This IDM_ is reserved for IDH_GROUP_ATTRIBS
 #define IDM_GROUP_ATTRIBS   199
