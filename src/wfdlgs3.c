@@ -1402,7 +1402,7 @@ DrivesDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
          INT nCurDrive;
          DRIVEIND nIndex;
          LPTSTR lpszVolShare;
-         TCHAR szDrive[] = SZ_ACOLON;
+         // TCHAR szDrive[] = SZ_ACOLON;
 
          nCurDrive = GetSelectedDrive();
          nIndex = 0;
