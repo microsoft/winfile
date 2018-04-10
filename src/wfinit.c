@@ -686,11 +686,13 @@ CheckDirExists(
 {
    BOOL bRet = FALSE;
 
+   /*
    if (IsNetDrive(DRIVEID(szDir)) == 2) {
 
       CheckDrive(hwndFrame, DRIVEID(szDir), FUNC_SETDRIVE);
       return TRUE;
    }
+   */
 
    if (IsValidDisk(DRIVEID(szDir)))
       bRet = SetCurrentDirectory(szDir);
@@ -1242,7 +1244,7 @@ JAPANEND
    //
    {
       HWND hwndPrev;
-      HWND hwnd;
+      //  HWND hwnd;
 
       hwndPrev = NULL; // FindWindow (szFrameClass, NULL);
 
