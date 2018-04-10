@@ -2263,7 +2263,7 @@ FixTabsAndThings(
 // Effects:
 //
 //    Listbox tabs array
-//       LB_SETCOLUMWIDTH
+//       LB_SETCOLUMNWIDTH
 //       or
 //       LB_SETHORIZONTALEXTENT
 //
