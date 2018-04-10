@@ -201,7 +201,7 @@ WORD I_LFNEditName( LPTSTR lpSrc, LPTSTR lpEd, LPTSTR lpRes, INT iResBufSize )
    LPTSTR lpChar;
 
    //
-   // We have a special case hack for the the dot, since when we do a
+   // We have a special case hack for the dot, since when we do a
    // rename from foo.bar.baz to *.txt, we want to use the last dot, not
    // the first one (desired result = foo.bar.txt, not foo.txt)
    //
