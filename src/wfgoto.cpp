@@ -702,8 +702,9 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 	return ERROR_SUCCESS;
 }
 
+// We're building a Trie structure (not just a directory tree)
 DWORD
-StartBuildingDirectoryTree()
+StartBuildingDirectoryTrie()
 {
 	HANDLE hThreadCopy;
 	DWORD dwIgnore;
