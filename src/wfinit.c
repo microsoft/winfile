@@ -1246,6 +1246,7 @@ JAPANEND
 
       hwndPrev = NULL; // FindWindow (szFrameClass, NULL);
 
+	  /*
       if (hwndPrev != NULL) {
          //  For Win32, this will accomplish almost the same effect as the
          //  above code does for Win 3.0/3.1   [stevecat]
@@ -1261,7 +1262,7 @@ JAPANEND
 
          return FALSE;
       }
-
+	  */
    }
 
 

@@ -743,7 +743,7 @@ FormatDrive( IN PVOID ThreadParameter )
          CancelInfo.Info.Format.fmMediaType,
          wszFileSystem,
          wszLabel,
-         (BOOLEAN)CancelInfo.Info.Format.fQuick,
+         (BOOLEAN)(CancelInfo.Info.Format.fQuick ? TRUE : FALSE),
          (FMIFS_CALLBACK)&Callback_Function);
    } while (CancelInfo.Info.Format.fFlags & FF_RETRY);
 

@@ -243,14 +243,8 @@ WORD I_LFNEditName( LPTSTR lpSrc, LPTSTR lpEd, LPTSTR lpRes, INT iResBufSize )
                while ((ResLen < iResBufSize) &&
                   ( *lpSrc != CHAR_NULL ) && ( *lpSrc != delimit )) {
 #endif
-
-                  if (ResLen < iResBufSize) {
-
-                     *(lpRes++) = *(lpSrc++);
-                     ResLen++;
-                  }
-                  else
-                     return ERROR_INVALID_PARAMETER ;
+					*(lpRes++) = *(lpSrc++);
+					ResLen++;
                }
             }
             break;
@@ -278,7 +272,7 @@ WORD I_LFNEditName( LPTSTR lpSrc, LPTSTR lpEd, LPTSTR lpRes, INT iResBufSize )
             ResLen++;
             if (*lpSrc)              // point one past CHAR_DOT
                lpSrc++;
-               break;
+            break;
 
          default:
             if ((*lpSrc != DOT ) && (*lpSrc != CHAR_NULL)) {

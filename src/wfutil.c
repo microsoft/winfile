@@ -461,11 +461,11 @@ AddCommasInternal(LPTSTR szBuf, DWORD dw)
    // if *szComma[0] == NULL, get out now
 
    if (!szComma[0]) {
-      wsprintf(szBuf,TEXT("%ld"),dw);
+      wsprintf(szBuf,TEXT("%lu"),dw);
       return szBuf;
    }
 
-   len = wsprintf(szTemp, TEXT("%ld"), dw);
+   len = wsprintf(szTemp, TEXT("%lu"), dw);
    iCommaLen = lstrlen(szComma);
 
    pTemp = szTemp + len - 1;
