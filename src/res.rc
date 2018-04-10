@@ -7,8 +7,27 @@
 
 ********************************************************************/
 
+#define APSTUDIO_HIDDEN_SYMBOLS
 #include "winfile.h"
+#include <prsht.h>
+#undef APSTUDIO_HIDDEN_SYMBOLS
 #include "wfcopy.h"
+
+
+#ifdef WIN32
+#undef WIN32
+#define WIN32 100
+#endif
+
+#ifdef WINVER
+#undef WINVER
+#define WINVER 0x0400
+#endif
+
+#ifdef _WIN32_WINNT
+#undef _WIN32_WINNT
+#define _WIN32_WINNT 0x0403
+#endif
 
 BITMAPS         BITMAP PRELOAD wbbitmap.bmp
 
