@@ -2055,7 +2055,7 @@ CHECK_OPTION:
 
           EnableDisconnectButton();
 
-		  StartBuildingDirectoryTrie();
+		  StartBuildingDirectoryTree();
 
           break;
        }

@@ -534,7 +534,7 @@ VOID  LoadFailMessage(VOID);
 UINT  FillDocType(PPDOCBUCKET ppDoc, LPCWSTR pszSection, LPCWSTR pszDefault);
 BOOL  CheckDirExists(LPWSTR szDir);
 
-DWORD StartBuildingDirectoryTrie();
+DWORD StartBuildingDirectoryTree();
 
 
 // WFCOPY.C
