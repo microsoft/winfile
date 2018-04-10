@@ -1,8 +1,9 @@
-# Windows File Manager (WinFile)
+# ![icon](winfile.png) Windows File Manager (WinFile)
 
 The Windows File Manager lives again and runs as a native x86 and x64 desktop app
-on all currently supported version of Windows,
-including Windows 10.  I welcome your thoughts, comments and suggestions.  There are two
+on all currently supported version of Windows, including Windows 10.
+
+I welcome your thoughts, comments and suggestions.  There are two
 primary versions of the source code in the master branch:
 
 1. original_plus tag: refers to the source for WinFile as of Windows NT4 with minimal changes
