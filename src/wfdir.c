@@ -1303,7 +1303,7 @@ ChangeDisplay(
    case WM_CREATE:
 
       //
-      // dwNewView, dwNewSort and dwNewAddribs define the viewing
+      // dwNewView, dwNewSort and dwNewAttribs define the viewing
       // parameters of the new window (GLOBALS)
       // the window text of the parent window defines the
       // filespec and the directory to open up
