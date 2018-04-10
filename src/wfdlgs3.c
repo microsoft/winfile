@@ -456,7 +456,7 @@ FillDriveCapacity(HWND hDlg, INT nDrive, FMIFS_MEDIA_TYPE fmSelect, BOOL fDoPopu
          break;
 
       //
-      // add 3.5" 640KB meida type
+      // add 3.5" 640KB media type
       //
       case FmMediaF3_640_512:      // 3.5", 640KB,  512 bytes/sector
          LoadString(hAppInstance, IDS_640KB, szTitle, COUNTOF(szTitle));
