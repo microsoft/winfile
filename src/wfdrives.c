@@ -15,6 +15,7 @@
 #include "lfn.h"
 #include "wfcopy.h"
 #include <commctrl.h>
+#include <shlobj.h>
 
 VOID RectDrive(INT nDrive, BOOL bFocusOn);
 VOID InvalidateDrive(DRIVEIND driveInd);
