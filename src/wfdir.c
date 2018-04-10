@@ -3356,7 +3356,7 @@ GetDirStatus(
 
 
 HWND
-GetMDIChildFromDecendant(HWND hwnd)
+GetMDIChildFromDescendant(HWND hwnd)
 {
    HWND hwndT;
 

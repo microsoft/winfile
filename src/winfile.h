@@ -468,7 +468,7 @@ INT  PutDate(LPFILETIME lpftDate, LPTSTR szStr);
 INT  PutTime(LPFILETIME lpftTime, LPTSTR szStr);
 INT  PutSize(PLARGE_INTEGER pqSize, LPTSTR szOutStr);
 INT  PutAttributes(register DWORD dwAttribute, register LPTSTR szStr);
-HWND GetMDIChildFromDecendant(HWND hwnd);
+HWND GetMDIChildFromDescendant(HWND hwnd);
 VOID SetLBFont(HWND hwnd, HWND hwndLB, HANDLE hNewFont, DWORD dwViewFlags, LPXDTALINK lpStart);
 
 

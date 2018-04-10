@@ -312,7 +312,7 @@ DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
       goto DragLoopCont;
    }
 
-   hwndMDIChildSink = GetMDIChildFromDecendant(lpds->hwndSink);
+   hwndMDIChildSink = GetMDIChildFromDescendant(lpds->hwndSink);
 
    //
    // Are we over the source listbox? (sink and source the same)
@@ -614,8 +614,8 @@ DSDragScrollSink(LPDROPSTRUCT lpds)
     POINT ptDropScr;
     HWND hwndToScroll;
 
-    hwndMDIChildSource = GetMDIChildFromDecendant(lpds->hwndSource);
-    hwndMDIChildSink = GetMDIChildFromDecendant(lpds->hwndSink);
+    hwndMDIChildSource = GetMDIChildFromDescendant(lpds->hwndSource);
+    hwndMDIChildSink = GetMDIChildFromDescendant(lpds->hwndSink);
 
     // calculate the screen x/y of the ptDrop
     if (lpds->hwndSink == NULL)
