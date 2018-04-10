@@ -1,11 +1,11 @@
 /********************************************************************
 
-    wfgoto.cpp
+wfgoto.cpp
 
-    This file contains code that supports the goto directory command
+This file contains code that supports the goto directory command
 
-    Copyright (c) Microsoft Corporation. All rights reserved.
-    Licensed under the MIT License.
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the MIT License.
 
 ********************************************************************/
 
@@ -25,12 +25,12 @@ DWORD g_driveScanEpoc;				// incremented when a refresh is requested; old bags a
 BagOValues<PDNODE> *g_pBagOCDrive;	// holds the values from the scan per g_driveScanEpoc
 vector<PDNODE> *g_allNodes;			// holds the nodes we created to make freeing them simpler (e.g., because some are reused)
 
-// compare path starting at the root; returns:
-// 0: paths are the same length and same names
-// -2: first difference in the paths has a sort lower
-// -1: path a is a prefix of path b
-// +1: path b is a prefix of path a
-// +2: first difference in the paths has b sort lower
+									// compare path starting at the root; returns:
+									// 0: paths are the same length and same names
+									// -2: first difference in the paths has a sort lower
+									// -1: path a is a prefix of path b
+									// +1: path b is a prefix of path a
+									// +2: first difference in the paths has b sort lower
 int ParentOrdering(const PDNODE& a, const PDNODE& b)
 {
 	int wCmp;
@@ -95,47 +95,41 @@ bool CompareNodes(const PDNODE& a, const PDNODE& b)
 	return ParentOrdering(a, b) < 0;
 }
 
-vector<PDNODE> *FilterBySubtree(vector<PDNODE> * parents, vector<PDNODE> * children)
+vector<PDNODE> FilterBySubtree(vector<PDNODE> const& parents, vector<PDNODE>  const& children)
 {
-	if (parents == NULL || children == NULL)
-		return NULL;
-
-	vector<PDNODE> *results = new vector <PDNODE>();
+	vector<PDNODE> results;
 
 	// for each child, if parent in parents, return
-	for (int i = 0; i < children->size(); i++)
+	std::copy_if(children.begin(),
+				 children.end(),
+				 std::back_inserter(results),
+				 [&parents](PDNODE const& child)
 	{
-		PDNODE child = children->at(i);
 		PDNODE parent = child->pParent;
-
-		if (find(parents->begin(), parents->end(), parent) != parents->end())
-		{
-			results->insert(results->end(), child);
-		}
-	}
+		return (find(parents.begin(), parents.end(), parent) != parents.end());
+	});
 
 	return results;
 }
 
-vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
+vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 {
+	vector<PDNODE> result;
 	int count = trees.size();
 
 	if (count == 0)
-		return NULL;
+		return result;
+
+	// If any tree is empty, return empty
+	if (std::any_of(trees.begin(), trees.end(), [](auto& tree) { return tree.size() == 0; }))
+		return result;
 
 	size_t maxOutput = 0;
-	for (int i = 0; i < count; i++)
+	for (auto& tree : trees)
 	{
-		vector<PDNODE> *tree = trees[i];
-
-		// if any tree is empty, result is empty
-		if (tree == NULL)
-			return NULL;
-
-		sort(tree->begin(), tree->end(), CompareNodes);
-		if (tree->size() > maxOutput)
-			maxOutput = tree->size();
+		sort(tree.begin(), tree.end(), CompareNodes);
+		if (tree.size() > maxOutput)
+			maxOutput = tree.size();
 	}
 
 	// if just one, return it (after sort above)
@@ -143,13 +137,13 @@ vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 		return trees[0];
 
 	// use up to two outputs and switch back and forth; lastOutput is last number output 
-	vector<PDNODE> *outputA = new vector <PDNODE>(maxOutput);
-	vector<PDNODE> *outputB = NULL;
+	vector<PDNODE> outputA(maxOutput);
+	vector<PDNODE> outputB(maxOutput);
 	vector<PDNODE> *combined = NULL;
 	size_t lastOutput = 0;
 
 	// first is left side of merge; changes each time through the loop
-	vector<PDNODE> *first = NULL;
+	vector<PDNODE>* first = NULL;
 
 	// for all other result sets, merge
 	for (int i = 1; i < count; i++)
@@ -162,33 +156,31 @@ vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 		if (i == 1)
 		{
 			// on first time through loop, output is A and 'first' is trees[0];
-			first = trees[0];
+			first = &trees[0];
 			last1 = first->size();
-			combined = outputA;
+			combined = &outputA;
 		}
 		else if (i % 2 == 0)
 		{
 			// even passes: output is B and 'first' is outputA; create output B if it doesn't exist yet
-			first = outputA;
+			first = &outputA;
 			last1 = lastOutput;
 
-			if (outputB == NULL)
-				outputB = new vector <PDNODE>(maxOutput);
-			combined = outputB;
+			combined = &outputB;
 		}
 		else
 		{
 			// odd passes except first: output is A and 'first' is B; both outputs already exist
-			first = outputB;
+			first = &outputB;
 			last1 = lastOutput;
-			combined = outputA;
+			combined = &outputA;
 		}
 
-		auto second = trees[i];	// second results
+		auto second = &trees[i];	// second results
 		size_t first2 = 0;		// scan index for second results
 		size_t last2 = second->size();	// end of second results
 
-		// while results in both sets
+										// while results in both sets
 		while (first1 < last1 && first2 < last2)
 		{
 			PDNODE& p1 = first->at(first1);
@@ -236,13 +228,7 @@ vector<PDNODE> *TreeIntersection(vector<vector<PDNODE> *> trees)
 	// shrink actual vetor to final size
 	combined->resize(lastOutput);
 
-	// cleanup secondary vector created; may be NULL
-	if (combined == outputA)
-		delete outputB;
-	else
-		delete outputA;
-
-	return combined;
+	return (*combined);
 }
 
 PDNODE CreateNode(PDNODE pParentNode, WCHAR *szName, DWORD dwAttribs)
@@ -286,7 +272,7 @@ vector<wstring> SplitIntoWords(LPTSTR szText)
 	while (getline(ss, item, L' '))
 	{
 		if (item.size() != 0)
-			words.insert(words.end(), item);
+			words.push_back(item);
 	}
 
 	return words;
@@ -332,7 +318,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 			return TRUE;
 		}
 
-		pNodes->insert(pNodes->end(), pNodeParent);
+		pNodes->push_back(pNodeParent);
 		pbov->Add(szPath, pNodeParent);
 	}
 
@@ -370,8 +356,8 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 			// out of memory
 			break;
 		}
-		pNodes->insert(pNodes->end(), pNodeChild);
-		
+		pNodes->push_back(pNodeChild);
+
 		// if spaces, each word individually (and not whole thing)
 		vector<wstring> words = SplitIntoWords(lfndta.fd.cFileName);
 
@@ -380,7 +366,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 			// TODO: how to mark which word is primary to avoid double free?
 			pbov->Add(word, pNodeChild);
 		}
-		
+
 		//
 		// Construct the path to this new subdirectory.
 		//
@@ -394,7 +380,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 		AddBackslash(szPath);
 		lstrcat(szPath, lfndta.fd.cFileName);         // cFileName is ANSI now
 
-		// add directories in subdir
+													  // add directories in subdir
 		if (!BuildDirectoryBagOValues(pbov, pNodes, szPath, pNodeChild, scanEpoc))
 		{
 			WFFindClose(&lfndta);
@@ -409,18 +395,18 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	return TRUE;
 }
 
-vector<PDNODE> *GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
+vector<PDNODE> GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
 {
 	if (g_pBagOCDrive == NULL)
-		return NULL;
+		return vector<PDNODE>();
 
 	vector<wstring> words = SplitIntoWords(szText);
 
-	vector<vector<PDNODE> *> options_per_word;
+	vector<vector<PDNODE>> options_per_word;
 
 	for (auto word : words)
 	{
-		vector<PDNODE> *options;
+		vector<PDNODE> options;
 		size_t pos = word.find_first_of(L'\\');
 		if (pos == word.size() - 1)
 		{
@@ -438,7 +424,7 @@ vector<PDNODE> *GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
 		{
 			options = g_pBagOCDrive->Retrieve(word, fPrefix, 1000);
 
-			if (options != NULL && options->size() == 1000)
+			if (options.size() == 1000)
 				*pbLimited = TRUE;
 		}
 		else
@@ -447,30 +433,23 @@ vector<PDNODE> *GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
 			wstring first = word.substr(0, pos);
 			wstring second = word.substr(pos + 1);
 
-			vector<PDNODE> *options1;
-			vector<PDNODE> *options2;
+			vector<PDNODE> options1;
+			vector<PDNODE> options2;
 
 			options1 = g_pBagOCDrive->Retrieve(first, fPrefix, 1000);
 			options2 = g_pBagOCDrive->Retrieve(second, fPrefix, 1000);
 
-			if (options1 != NULL && options1->size() == 1000 || 
-				options2 != NULL && options2->size() == 1000)
+			if (options1.size() == 1000 ||
+				options2.size() == 1000)
 				*pbLimited = TRUE;
 
 			options = FilterBySubtree(options1, options2);
 		}
 
-		options_per_word.insert(options_per_word.end(), options);
+		options_per_word.emplace_back(std::move(options));
 	}
 
-	vector<PDNODE> *final_options = TreeIntersection(options_per_word);
-
-	for (auto option : options_per_word)
-	{
-		// if we didn't return one of the options as is
-		if (option != final_options)
-			delete option;
-	}
+	vector<PDNODE> final_options = TreeIntersection(options_per_word);
 
 	return final_options;
 }
@@ -482,17 +461,17 @@ VOID UpdateGotoList(HWND hDlg)
 
 	DWORD dw = GetDlgItemText(hDlg, IDD_GOTODIR, szText, COUNTOF(szText));
 
-	vector<PDNODE> *options = GetDirectoryOptionsFromText(szText, &bLimited);
+	vector<PDNODE> options = GetDirectoryOptionsFromText(szText, &bLimited);
 
 	HWND hwndLB = GetDlgItem(hDlg, IDD_GOTOLIST);
 	SendMessage(hwndLB, LB_RESETCONTENT, 0, 0);
 
-	if (options == NULL)
+	if (options.size() == 0)
 		return;
-		
-	for (int i = 0; i < 10 && i < options->size(); i++)
+
+	for (auto i = 0u; i < 10u && i < options.size(); i++)
 	{
-		GetTreePath(options->at(i), szText);
+		GetTreePath(options[i], szText);
 
 		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)szText);
 	}
@@ -501,14 +480,12 @@ VOID UpdateGotoList(HWND hDlg)
 	{
 		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)TEXT("... limited ..."));
 	}
-	else if (options->size() >= 10)
+	else if (options.size() >= 10)
 	{
 		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)TEXT("... more ..."));
 	}
 
 	SendMessage(hwndLB, LB_SETCURSEL, 0, 0);
-
-	delete options;
 }
 
 /*--------------------------------------------------------------------------*/
@@ -561,7 +538,7 @@ LRESULT APIENTRY GotoEditSubclassProc(
 	return CallWindowProc(wpOrigEditProc, hwnd, uMsg, wParam, lParam);
 }
 
-VOID 
+VOID
 SetCurrentPathOfWindow(LPWSTR szPath)
 {
 	HWND hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
@@ -631,7 +608,7 @@ GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 			}
 			else
 			{
-				if (SendDlgItemMessage(hDlg, IDD_GOTOLIST, LB_GETTEXT, iSel, (LPARAM)szPath) == LB_ERR || 
+				if (SendDlgItemMessage(hDlg, IDD_GOTOLIST, LB_GETTEXT, iSel, (LPARAM)szPath) == LB_ERR ||
 					!PathIsDirectory(szPath))
 					iSel = LB_ERR;
 			}
@@ -678,6 +655,7 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 
 	SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
+	// TODO(Thai): Make this index all drives
 	if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), NULL, scanEpocNew))
 	{
 		pBagNew->Sort();
@@ -706,11 +684,11 @@ StartBuildingDirectoryTrie()
 	// Move/Copy things.
 	//
 	hThreadCopy = CreateThread(NULL,
-		0L,
-		BuildDirectoryTreeBagOValues,
-		NULL,
-		0L,
-		&dwIgnore);
+							   0L,
+							   BuildDirectoryTreeBagOValues,
+							   NULL,
+							   0L,
+							   &dwIgnore);
 
 	if (!hThreadCopy) {
 		return GetLastError();
