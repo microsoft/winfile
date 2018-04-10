@@ -42,7 +42,7 @@ SaveWindows(HWND hwndMain)
 
    SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
 
-   wsprintf(buf2, TEXT("%d,%d,%d,%d, , ,%d"), rcT.left + wp.rcNormalPosition.left,
+   wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld, , ,%u"), rcT.left + wp.rcNormalPosition.left,
       rcT.top + wp.rcNormalPosition.top,
       wp.rcNormalPosition.right - wp.rcNormalPosition.left,
       wp.rcNormalPosition.bottom - wp.rcNormalPosition.top,
@@ -90,7 +90,7 @@ DO_AGAIN:
          //   x_icon, y_icon,
          //   show_window, view, sort, attribs, split, directory
 
-         wsprintf(buf2, TEXT("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s"),
+         wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld,%ld,%ld,%u,%lu,%lu,%lu,%d,%s"),
             wp.rcNormalPosition.left, wp.rcNormalPosition.top,
             wp.rcNormalPosition.right, wp.rcNormalPosition.bottom,
             wp.ptMinPosition.x, wp.ptMinPosition.y,
