@@ -1,11 +1,11 @@
 /********************************************************************
 
-wfgoto.cpp
+	wfgoto.cpp
 
-This file contains code that supports the goto directory command
+	This file contains code that supports the goto directory command
 
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the MIT License.
+	Copyright (c) Microsoft Corporation. All rights reserved.
+	Licensed under the MIT License.
 
 ********************************************************************/
 
@@ -25,12 +25,12 @@ DWORD g_driveScanEpoc;				// incremented when a refresh is requested; old bags a
 BagOValues<PDNODE> *g_pBagOCDrive;	// holds the values from the scan per g_driveScanEpoc
 vector<PDNODE> *g_allNodes;			// holds the nodes we created to make freeing them simpler (e.g., because some are reused)
 
-									// compare path starting at the root; returns:
-									// 0: paths are the same length and same names
-									// -2: first difference in the paths has a sort lower
-									// -1: path a is a prefix of path b
-									// +1: path b is a prefix of path a
-									// +2: first difference in the paths has b sort lower
+// compare path starting at the root; returns:
+// 0: paths are the same length and same names
+// -2: first difference in the paths has a sort lower
+// -1: path a is a prefix of path b
+// +1: path b is a prefix of path a
+// +2: first difference in the paths has b sort lower
 int ParentOrdering(const PDNODE& a, const PDNODE& b)
 {
 	int wCmp;
@@ -180,7 +180,7 @@ vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 		size_t first2 = 0;		// scan index for second results
 		size_t last2 = second->size();	// end of second results
 
-										// while results in both sets
+		// while results in both sets
 		while (first1 < last1 && first2 < last2)
 		{
 			PDNODE& p1 = first->at(first1);
@@ -380,7 +380,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 		AddBackslash(szPath);
 		lstrcat(szPath, lfndta.fd.cFileName);         // cFileName is ANSI now
 
-													  // add directories in subdir
+		// add directories in subdir
 		if (!BuildDirectoryBagOValues(pbov, pNodes, szPath, pNodeChild, scanEpoc))
 		{
 			WFFindClose(&lfndta);
