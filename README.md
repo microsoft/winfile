@@ -73,7 +73,7 @@ instead of changing drives
 9. File.Search can include a date which limits the files returned to those after the date provided;
 the output is also sorted by the date instead of by the name
 10. File.Search includes an option as to whether to include sub-directories
-11. ctrl+K starts a command shell (ConEmu if installed) in the current directory; shfit+ctrl+K
+11. ctrl+K starts a command shell (ConEmu if installed) in the current directory; shift+ctrl+K
 starts an elevated command shell (cmd.exe only)
 12. File.Goto (ctrl+G) enables one to type a few words of a path and get a list of directories;
 selecting one changes to that directory.  Only drive c: is indexed.
