@@ -563,7 +563,7 @@ INT   GetSelectedDrive(VOID);
 VOID  GetTextStuff(HDC hdc);
 INT   GetHeightFromPointsString(LPTSTR szPoints);
 INT   GetDrive(HWND hwnd, POINT pt);
-VOID  CheckSlashies(LPTSTR);
+VOID  CheckSlashes(LPTSTR);
 // DWORD IsNetDrive(DRIVE drive);
 BOOL  IsCDRomDrive(DRIVE drive);
 BOOL  IsRamDrive(DRIVE drive);

@@ -273,7 +273,7 @@ JAPANEND
     // Save it away.
     //
     StrNCpy(szTemp, lpszPath, COUNTOF(szTemp));
-    CheckSlashies(szTemp);
+    CheckSlashes(szTemp);
     StripColon(szTemp);
 
     nSpaceLeft = MAXPATHLEN - 1;
@@ -2231,7 +2231,7 @@ WFMoveCopyDriverThread(PCOPYINFO pCopyInfo)
    //
    // Change all '/' characters to '\' characters in dest spec
    //
-   CheckSlashies(pCopyInfo->pFrom);
+   CheckSlashes(pCopyInfo->pFrom);
 
    //
    // Check for multiple source files

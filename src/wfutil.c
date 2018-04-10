@@ -1215,14 +1215,14 @@ IsWild(LPTSTR lpszPath)
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
-/*  CheckSlashies() -                                                       */
+/*  CheckSlashes() -                                                        */
 /*                                                                          */
 /*--------------------------------------------------------------------------*/
 
 /* Replaces frontslashes (evil) with backslashes (good). */
 
 VOID
-CheckSlashies(LPTSTR lpT)
+CheckSlashes(LPTSTR lpT)
 {
   while (*lpT)
     {
