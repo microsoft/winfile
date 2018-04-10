@@ -1114,7 +1114,7 @@ DSDropObject(
    // directory drop on a file? this is a NOP
    //
    if (lpds->wFmt == DOF_DIRECTORY) {
-      DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+      DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
       return FALSE;
    }
 
@@ -1195,7 +1195,7 @@ DSDropObject(
       MyMessageBox(hwndFrame, IDS_EXECERRTITLE, (WORD)ret, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
 
 DODone:
-   DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+   DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
    if (pSel)
    {
       LocalFree((HANDLE)pSel);
@@ -1237,7 +1237,7 @@ DirMoveCopy:
 
    ret = DMMoveCopyHelper(pFrom, szTemp, fShowSourceBitmaps);
 
-   DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+   DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
 
    if (ret)
       return TRUE;

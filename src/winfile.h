@@ -1799,7 +1799,7 @@ Extern INT  dxIcon          EQ( 32 );
 Extern INT  dyFileName;
 Extern INT  nFloppies;       // Number of Removable Drives
 
-Extern INT   iSelHilite     EQ( -1 );
+Extern INT   iSelHighlight     EQ( -1 );
 
 Extern INT   cDisableFSC    EQ( 0 );     // has fsc been disabled?
 Extern INT   iReadLevel     EQ( 0 );     // global.  if !0 someone is reading a tree

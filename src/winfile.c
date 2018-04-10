@@ -1212,7 +1212,7 @@ EnablePropertiesMenu(
    LPWSTR pSel)
 {
    LPXDTALINK lpStart;
-   LRESULT dwHilight;  // Number of highlighted entries in listbox
+   LRESULT dwHighlight;  // Number of highlighted entries in listbox
    LPXDTA lpxdta;    // Pointer to listbox DTA data
    BOOL bRet;        // Return value
    HWND hwndLB;
@@ -1235,13 +1235,13 @@ EnablePropertiesMenu(
    if (!hwndLB)
       return (FALSE);
 
-   dwHilight = SendMessage(hwndLB, LB_GETSELCOUNT, 0, 0L);
+   dwHighlight = SendMessage(hwndLB, LB_GETSELCOUNT, 0, 0L);
 
    //
    // This is OK since the search window can never contain the root
    //
    if (hwndActive == hwndSearch)
-      return (dwHilight >= 1);
+      return (dwHighlight >= 1);
 
    hwndTree = HasTreeWindow(hwndActive);
    hwndDir = HasDirWindow(hwndActive);
@@ -1255,10 +1255,10 @@ EnablePropertiesMenu(
       if (!(lpStart = (LPXDTALINK)GetWindowLongPtr(GetParent(hwndLB), GWL_HDTA)))
          return (FALSE);
 
-      if (dwHilight <= 0)
+      if (dwHighlight <= 0)
          goto ReturnFalse;
 
-      if (dwHilight > 1)
+      if (dwHighlight > 1)
          goto ReturnTrue;
 
       //

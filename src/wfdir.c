@@ -694,8 +694,8 @@ DirWndProc(
 
 #define lpds ((LPDROPSTRUCT)lParam)
 
-      iSelHilite = lpds->dwControlData;
-      DSRectItem(hwndLB, iSelHilite, (BOOL)wParam, FALSE);
+      iSelHighlight = lpds->dwControlData;
+      DSRectItem(hwndLB, iSelHighlight, (BOOL)wParam, FALSE);
       break;
 
 #undef lpds
@@ -720,16 +720,16 @@ DirWndProc(
 
          // Is it a new one?
 
-         if (iSel == iSelHilite && fOldShowSourceBitmaps == fShowSourceBitmaps)
+         if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
             break;
 
          fOldShowSourceBitmaps = fShowSourceBitmaps;
 
          // Yup, un-select the old item.
-         DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+         DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
 
          // Select the new one.
-         iSelHilite = iSel;
+         iSelHighlight = iSel;
          DSRectItem(hwndLB, iSel, TRUE, FALSE);
          break;
 
