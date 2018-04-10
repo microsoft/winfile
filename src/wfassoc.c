@@ -3465,7 +3465,7 @@ RegExtDelete(HWND hDlg, HKEY hk, PEXT pExt)
    
     dwError = RegNodeDelete(hk, pExt->szExt);
    
-    if (pExt->pftOrig && ERROR_SUCCESS == dwError)
+    if (ERROR_SUCCESS == dwError)
     {
         i = SendDlgItemMessage( hDlg,
                                 IDD_EXT,

@@ -1681,10 +1681,6 @@ BOOL GetRootPath(
     {
         return (FALSE);
     }
-    else
-    {
-        szReturn[0] = TEXT('\0');
-    }
 
     //
     //  Return the correct drive letter by taking into account

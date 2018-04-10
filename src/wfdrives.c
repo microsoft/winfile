@@ -1067,8 +1067,6 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
             nDrive = DriveFromPoint(hwndDriveBar, pt);
 
             if (nDriveDoubleClick == nDrive) {
-                nDriveDoubleClick = -1;
-
                // the double click is valid
                if (nDrive >= 0)
                     NewTree(rgiDrive[nDrive], hwndChild);
