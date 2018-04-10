@@ -2220,7 +2220,7 @@ TreeControlWndProc(
          // Do it this way to be case insensitive.
          //
          cchMatch = wcslen(rgchMatch);
-         if (cchMatch > wcslen(pNode->szName))
+         if (cchMatch > (INT)wcslen(pNode->szName))
                 cchMatch = wcslen(pNode->szName);
          if (CompareString( LOCALE_USER_DEFAULT, NORM_IGNORECASE, 
              rgchMatch, cchMatch, pNode->szName, cchMatch) == 2)
