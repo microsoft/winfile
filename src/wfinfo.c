@@ -996,7 +996,7 @@ UpdateInit(PVOID ThreadParameter)
       // Main:                         Worker:
       // Set hEventUpdate
       //                               Reset hEventUpdate
-      //                               Reset hEventUpdateParitial
+      //                               Reset hEventUpdatePartial
       // Wait hEventUpdatePartial
       //
       // Worker never wakes up since hEventUpdate is reset.
