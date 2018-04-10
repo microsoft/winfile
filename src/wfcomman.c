@@ -472,6 +472,10 @@ CreateTreeWindow(
    SetWindowLongPtr(hwnd, GWL_SORT, dwNewSort);
    SetWindowLongPtr(hwnd, GWL_ATTRIBS, dwNewAttribs);
 
+   // Set the icon for the MDI Child
+   SendMessage(hwnd, WM_SETICON, ICON_SMALL, (LPARAM)hicoTreeDir);
+   
+
    return hwnd;
 }
 
