@@ -2945,7 +2945,7 @@ GDSDone:
 //          structure
 //
 //          hDTA->head.dwEntries must be < INTMAX since there is
-//          a conversion from dword to int.  bleech.
+//          a conversion from dword to int.  blech.
 //
 // Effects:
 //

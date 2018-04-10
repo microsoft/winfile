@@ -1040,7 +1040,7 @@ UpdateDriveListWorker(VOID)
    INT cRealDrives = 0;
    INT i;
    HANDLE hEnum;
-   LPTCH pcBuf;       // 16k buffer.  bleech.
+   LPTCH pcBuf;       // 16k buffer.  blech.
    DWORD dwEntries;
    DRIVE drive;
    DWORD dwBufSiz = BUF_SIZ;
