@@ -1100,7 +1100,7 @@ BOOL WFDoCompress(
     lstrcpy(szGlobalDir, DirectorySpec);
     DisplayCompressProgress(PROGRESS_UPD_DIRECTORY);
 
-    if (lstrlen(FileSpec) == 0)
+    if (FileSpec[0] == '\0')
     {
 DoCompressRetryCreate:
 
@@ -1430,7 +1430,7 @@ BOOL WFDoUncompress(
     lstrcpy(szGlobalDir, DirectorySpec);
     DisplayUncompressProgress(PROGRESS_UPD_DIRECTORY);
 
-    if (lstrlen(FileSpec) == 0)
+    if (FileSpec[0] == '\0')
     {
 DoUncompressRetryCreate:
 
