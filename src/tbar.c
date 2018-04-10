@@ -19,7 +19,7 @@
 // LATER: create a specific global for this to avoid
 // redundant computations.
 
-// ASSUMES: height of combob-padding > size of bitmap!
+// ASSUMES: height of combobox-padding > size of bitmap!
 
 
 #define MAXDESCLEN              128
