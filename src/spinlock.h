@@ -51,7 +51,7 @@ void SpinLock::Lock()
 		/*
 		Spinning in a loop of interlockedxxx calls can reduce the available memory bandwidth and slow
 		down the rest of the system. Interlocked calls are expensive in their use of the system memory
-		bus. It is better to see if the 'dest' value is what it is expected and then retry interlockedxx.
+		bus. It is better to see if the 'dest' value is what it is expected and then retry interlockedxxx.
 		*/
 		if (InterlockedCompareExchange(&this->dest, this->exchange, this->compare) == 0)
 		{
