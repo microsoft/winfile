@@ -852,6 +852,31 @@ GetPowershellExePath(LPTSTR szPSPath)
     return szPSPath[0] != TEXT('\0');
 }
 
+BOOL GetBashExePath(LPTSTR szBashPath, UINT bufSize)
+{
+	const TCHAR szBashFilename[] = TEXT("bash.exe");
+	UINT len;
+	BOOL isWow64;
+#ifdef _WIN64
+	len = GetSystemDirectory(szBashPath, bufSize);
+	if ((len != 0) && (len + COUNTOF(szBashFilename) + 1 < bufSize) && PathAppend(szBashPath, TEXT("bash.exe")))
+	{
+		return PathFileExists(szBashPath);
+	}
+	return FALSE;
+#else
+	/* Bash is not available on 32-bit Windows */
+	if (IsWow64Process(GetCurrentProcess(), &isWow64) && isWow64)
+	{
+		len = ExpandEnvironmentStrings(TEXT("%SystemRoot%\\Sysnative\\bash.exe"), szBashPath, bufSize);
+		if (len != 0 && len <= bufSize)
+		{
+			return PathFileExists(szBashPath);
+		}
+	}
+	return FALSE;
+#endif
+}
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
 /*  AppCommandProc() -                                                      */
@@ -1076,6 +1101,27 @@ AppCommandProc(register DWORD id)
            LocalFree(szDir);
        }
        break;
+
+	case IDM_STARTBASHSHELL:
+		{
+			BOOL bRunAs;
+			BOOL bDir;
+			TCHAR szToRun[MAXPATHLEN];
+			LPTSTR szDir;
+
+			szDir = GetSelection(1 | 4 | 16, &bDir);
+			if (!bDir && szDir)
+				StripFilespec(szDir);
+
+			bRunAs = GetKeyState(VK_SHIFT) < 0;
+
+			if (GetBashExePath(szToRun, COUNTOF(szToRun))) {
+				ret = ExecProgram(szToRun, NULL, szDir, FALSE, bRunAs);
+			}
+
+			LocalFree(szDir);
+		}
+		break;
 
    case IDM_SELECT:
 
