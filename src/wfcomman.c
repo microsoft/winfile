@@ -856,26 +856,23 @@ BOOL GetBashExePath(LPTSTR szBashPath, UINT bufSize)
 {
 	const TCHAR szBashFilename[] = TEXT("bash.exe");
 	UINT len;
-	BOOL isWow64;
-#ifdef _WIN64
+
 	len = GetSystemDirectory(szBashPath, bufSize);
 	if ((len != 0) && (len + COUNTOF(szBashFilename) + 1 < bufSize) && PathAppend(szBashPath, TEXT("bash.exe")))
 	{
+		if (PathFileExists(szBashPath))
+			return TRUE;
+	}
+
+	// If we are running 32 bit Winfile on 64 bit Windows, System32 folder is redirected to SysWow64, which
+	// doesn't include bash.exe. So we also need to check Sysnative folder, which always maps to System32 folder.
+	len = ExpandEnvironmentStrings(TEXT("%SystemRoot%\\Sysnative\\bash.exe"), szBashPath, bufSize);
+	if (len != 0 && len <= bufSize)
+	{
 		return PathFileExists(szBashPath);
 	}
+
 	return FALSE;
-#else
-	/* Bash is not available on 32-bit Windows */
-	if (IsWow64Process(GetCurrentProcess(), &isWow64) && isWow64)
-	{
-		len = ExpandEnvironmentStrings(TEXT("%SystemRoot%\\Sysnative\\bash.exe"), szBashPath, bufSize);
-		if (len != 0 && len <= bufSize)
-		{
-			return PathFileExists(szBashPath);
-		}
-	}
-	return FALSE;
-#endif
 }
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
