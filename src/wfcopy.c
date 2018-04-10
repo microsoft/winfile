@@ -132,7 +132,7 @@ FindFileName(register LPTSTR pPath)
  */
 
 VOID
-AppendToPath(LPTSTR pPath, LPTSTR pMore)
+AppendToPath(LPTSTR pPath, LPCTSTR pMore)
 {
 
   /* Don't append a \ to empty paths. */

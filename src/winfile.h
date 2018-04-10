@@ -552,6 +552,7 @@ DWORD NetCheck(LPTSTR pPath, DWORD dwType);
 
 VOID DialogEnterFileStuff(register HWND hwnd);
 
+VOID AppendToPath(LPTSTR, LPCTSTR);
 
 // WFUTIL.C
 
