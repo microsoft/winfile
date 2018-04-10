@@ -688,6 +688,7 @@ END
 #define VER_FILEDESCRIPTION_STR     "File Manager"
 #define VER_INTERNALNAME_STR        "fileman\0"
 #define VER_ORIGINALFILENAME_STR     "WINFILE.EXE"
+#undef  VER_PRODUCTNAME_STR
 #define VER_PRODUCTNAME_STR         "File Manager"
 
 #include "common.ver"
