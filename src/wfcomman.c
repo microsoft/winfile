@@ -507,6 +507,8 @@ CreateDirWindow(
 {
    register HWND hwndT;
    INT dxSplit;
+   DRIVE drive;
+   INT i;
 
    if (hwndActive == hwndSearch) {
 	   bReplaceOpen = FALSE;
@@ -532,8 +534,8 @@ CreateDirWindow(
    if (bReplaceOpen) {
 	   CharUpperBuff(szPath, 1);     // make sure
 
-	   DRIVE drive = DRIVEID(szPath);
-	   for (INT i = 0; i<cDrives; i++)
+	   drive = DRIVEID(szPath);
+	   for (i = 0; i<cDrives; i++)
 	   {
 		   if (drive == rgiDrive[i])
 		   {
@@ -791,22 +793,102 @@ FmifsLoaded()
    return TRUE;
 }
 
+#ifndef  UNICODE
+LSTATUS MyRegGetValue (HKEY hkey, LPCSTR lpSubKey, LPCSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData)
+{
+	typedef LSTATUS (WINAPI *REGGETVALUEA)(HKEY hkey, LPCSTR lpSubKey, LPCSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
+	REGGETVALUEA LoadLibAddy;
+	DWORD type;
+	LoadLibAddy = (REGGETVALUEA)GetProcAddress(GetModuleHandle(L"advapi32.dll"), "RegGetValueA");
+
+
+	if (LoadLibAddy)
+	{
+		return LoadLibAddy(hkey, lpSubKey, lpValue, dwFlags, pdwType, pvData, pcbData);
+	}
+	else
+	{
+		if (dwFlags == RRF_RT_REG_SZ)
+		{
+			type = REG_SZ;
+		}
+		else if (dwFlags == RRF_RT_REG_DWORD)
+		{
+			type = REG_DWORD;
+		}
+		if (pszSubKey && pszSubKey[0])
+		{
+			RegOpenKeyExA(hkey,pszSubKey,0,KEY_READ,&hksub);
+			dwStatus = RegQueryValueExA(hksub, pszValue, NULL, &type, (LPBYTE)pvData, pcbData);
+			RegCloseKey(hksub);
+		}
+		else
+		{
+			dwStatus = RegQueryValueExA(hkey, pszValue, NULL, &type, (LPBYTE)pvData, pcbData);
+		}
+	}
+}
+#else   /* UNICODE version belows */
+LSTATUS MyRegGetValue (HKEY hkey, LPCWSTR pszSubKey, LPCWSTR pszValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData)
+{
+	typedef LSTATUS (WINAPI *REGGETVALUEW)(HKEY hkey, LPCWSTR pszSubKey, LPCWSTR pszValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
+	REGGETVALUEW LoadLibAddy;
+	DWORD type;
+	HKEY    hksub;
+	LSTATUS dwStatus;
+
+	LoadLibAddy = (REGGETVALUEW)GetProcAddress(GetModuleHandle(L"advapi32.dll"), "RegGetValueW");
+
+	if (LoadLibAddy)
+	{
+		return LoadLibAddy(hkey, pszSubKey, pszValue, dwFlags, pdwType, pvData, pcbData);
+	}
+	else
+	{
+		if (dwFlags == RRF_RT_REG_SZ)
+		{
+			type = REG_SZ;
+		}
+		else if (dwFlags == RRF_RT_REG_DWORD || dwFlags == RRF_RT_DWORD)
+		{
+			type = REG_DWORD;
+		}
+		if (pszSubKey && pszSubKey[0])
+		{
+			RegOpenKeyExW(hkey,pszSubKey,0,KEY_READ,&hksub);
+			dwStatus = RegQueryValueExW(hksub, pszValue, NULL, &type, (LPBYTE)pvData, pcbData);
+			RegCloseKey(hksub);
+		}
+		else
+		{
+			dwStatus = RegQueryValueExW(hkey, pszValue, NULL, &type, (LPBYTE)pvData, pcbData);
+		}
+		return dwStatus;
+	}
+}
+#endif /* !UNICODE */
+
+
 BOOL
 GetPowershellExePath(LPTSTR szPSPath)
 {
-    HKEY hkey;
-    if (ERROR_SUCCESS != RegOpenKey(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Microsoft\\PowerShell"), &hkey))
-    {
-        return FALSE;
-    }
+	HKEY hkey;
+	TCHAR szSub[10];    // just the "1" or "3"
+	DWORD dwError;
+	HKEY hkeySub;
+	LPTSTR szPSExe;
+	int ikey;
+
+	if (ERROR_SUCCESS != RegOpenKey(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Microsoft\\PowerShell"), &hkey))
+	{
+		return FALSE;
+	}
 
     szPSPath[0] = TEXT('\0');
 
-    for (int ikey = 0; ikey < 5; ikey++)
+    for (ikey = 0; ikey < 5; ikey++)
     {
-        TCHAR         szSub[10];    // just the "1" or "3"
-
-        DWORD dwError = RegEnumKey(hkey, ikey, szSub, COUNTOF(szSub));
+        dwError = RegEnumKey(hkey, ikey, szSub, COUNTOF(szSub));
 
         if (dwError == ERROR_SUCCESS)
         {
@@ -814,21 +896,20 @@ GetPowershellExePath(LPTSTR szPSPath)
             DWORD dwInstall;
             DWORD dwType;
             DWORD cbValue = sizeof(dwInstall);
-            dwError = RegGetValue(hkey, szSub, TEXT("Install"), RRF_RT_DWORD, &dwType, (PVOID)&dwInstall, &cbValue);
+            dwError = MyRegGetValue(hkey, szSub, TEXT("Install"), RRF_RT_DWORD, &dwType, (PVOID)&dwInstall, &cbValue);
 
             if (dwError == ERROR_SUCCESS && dwInstall == 1)
             {
                 // this install of powershell is active; get path
 
-                HKEY hkeySub;
                 dwError = RegOpenKey(hkey, szSub, &hkeySub);
 
                 if (dwError == ERROR_SUCCESS)
                 {
-                    LPTSTR szPSExe = TEXT("\\Powershell.exe");
+                    szPSExe = TEXT("\\Powershell.exe");
 
                     cbValue = (MAXPATHLEN - lstrlen(szPSExe)) * sizeof(TCHAR);
-                    dwError = RegGetValue(hkeySub, TEXT("PowerShellEngine"), TEXT("ApplicationBase"), RRF_RT_REG_SZ | RRF_RT_REG_EXPAND_SZ, &dwType, (PVOID)szPSPath, &cbValue);
+                    dwError = MyRegGetValue(hkeySub, TEXT("PowerShellEngine"), TEXT("ApplicationBase"), RRF_RT_REG_SZ | RRF_RT_REG_EXPAND_SZ, &dwType, (PVOID)szPSPath, &cbValue);
 
                     if (dwError == ERROR_SUCCESS)
                     {

@@ -1976,6 +1976,11 @@ TreeControlWndProc(
 
    WCHAR      szPath[MAXPATHLEN*3];
 
+   PDNODE     pParentNode;
+
+   RECT rc;
+
+
    hwndLB = GetDlgItem(hwnd, IDCW_TREELISTBOX);
    hwndParent = GetParent(hwnd);
 
@@ -1985,7 +1990,6 @@ TreeControlWndProc(
 
    case TC_COLLAPSELEVEL:
    {
-      PDNODE     pParentNode;
 
       //
       // Don't do anything while the tree is being built.
@@ -2088,7 +2092,6 @@ TreeControlWndProc(
       //
       // set the selection in the tree to that for a given path
       //
-      INT i;
 
       if (FindItemFromPath(hwndLB, (LPTSTR)lParam, wParam != 0, &i, NULL))
 	  {
@@ -2117,9 +2120,6 @@ TreeControlWndProc(
 	   if (GetWindowLongPtr(hwnd, GWL_READLEVEL))
 		   break;
 
-	   RECT rc;
-	   INT i;
-	   PDNODE    pNode;
 
 	   // do the same as TC_SETDIRECTORY above for the simple case
 	   if (FindItemFromPath(hwndLB, (LPTSTR)lParam, 0, &i, &pNode))

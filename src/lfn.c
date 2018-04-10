@@ -18,6 +18,35 @@
 
 BOOL IsFATName(LPTSTR pName);
 
+typedef BOOL (WINAPI *tW64P)(HANDLE, PBOOL);
+typedef BOOL (WINAPI *tFSDisable)(PVOID*);
+typedef BOOL (WINAPI *tFSRevert)(PVOID);
+
+HMODULE hKernel = NULL;
+BOOL bIsWow64 = FALSE;
+BOOL bWow64FuncsSearched = FALSE;
+
+tFSDisable pDisableFunc = NULL;
+tFSRevert pRevertFunc = NULL;
+tW64P pIsWow64Func = NULL;
+
+void _InitWow64Funcs() {
+	if(!bWow64FuncsSearched) {
+		hKernel = GetModuleHandle(L"Kernel32");
+		pIsWow64Func = (tW64P) GetProcAddress(hKernel, "IsWow64Process");
+
+		if (pIsWow64Func)
+		{
+			pIsWow64Func(GetCurrentProcess(), &bIsWow64);
+			if (bIsWow64)
+			{
+				pDisableFunc = (tFSDisable) GetProcAddress(hKernel, "Wow64DisableWow64FsRedirection");
+				pRevertFunc = (tFSRevert) GetProcAddress(hKernel, "Wow64RevertWow64FsRedirection");
+			}
+		}
+		bWow64FuncsSearched = TRUE;
+	}
+}
 
 /* WFFindFirst -
  *
@@ -43,8 +72,12 @@ WFFindFirst(
    // and ORDINARY files too.
    //
 
-   PVOID oldValue;
-   Wow64DisableWow64FsRedirection(&oldValue);
+	PVOID oldValue;
+
+	_InitWow64Funcs();
+
+	if ((pDisableFunc) && (pRevertFunc))
+		pDisableFunc(&oldValue);
 
    if ((dwAttrFilter & ~(ATTR_DIR | ATTR_HS)) == 0)
    {
@@ -63,7 +96,8 @@ WFFindFirst(
 
    lpFind->fd.dwFileAttributes &= ATTR_USED;
 
-   Wow64RevertWow64FsRedirection(oldValue);
+   if ((pDisableFunc) && (pRevertFunc))
+		pRevertFunc(oldValue);
 
    //
    // Keep track of length
@@ -110,8 +144,12 @@ BOOL
 WFFindNext(LPLFNDTA lpFind)
 {
 	PVOID oldValue;
-	Wow64DisableWow64FsRedirection(&oldValue);
-	
+
+	_InitWow64Funcs();
+
+	if ((pDisableFunc) && (pRevertFunc))
+		pDisableFunc(&oldValue);
+
    while (FindNextFile(lpFind->hFindFile, &lpFind->fd)) {
 
 	  lpFind->fd.dwFileAttributes &= ATTR_USED;
@@ -139,12 +177,14 @@ WFFindNext(LPLFNDTA lpFind)
          lstrcpy(lpFind->fd.cFileName, lpFind->fd.cAlternateFileName);
       }
 
-	  Wow64RevertWow64FsRedirection(oldValue);
+	   if ((pDisableFunc) && (pRevertFunc))
+			pRevertFunc(oldValue);
 
       return TRUE;
    }
 
-   Wow64RevertWow64FsRedirection(oldValue);
+   if ((pDisableFunc) && (pRevertFunc))
+		pRevertFunc(oldValue);
 
    lpFind->err = GetLastError();
    return(FALSE);
