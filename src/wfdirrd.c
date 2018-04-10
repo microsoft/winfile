@@ -1220,7 +1220,7 @@ DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPCWSTR szChild, LPWSTR szDest, DWORD
 	StripFilespec(szFullPath);
 
 	if (szChild != NULL)
-		AppendToPath(szFullPath, szChild);
+		AppendToPath(szFullPath, (LPTSTR)szChild);
 
 	hFile = CreateFile(szFullPath, FILE_READ_EA, FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, NULL, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT, NULL);
 	if (hFile == INVALID_HANDLE_VALUE)
