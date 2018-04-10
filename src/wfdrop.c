@@ -609,12 +609,17 @@ WF_IDropTarget * WF_IDropTarget_new(HWND hwnd)
 
   result = calloc(1, sizeof(WF_IDropTarget));
 
-  result->idt.lpVtbl = (IDropTargetVtbl*)&idt_vtbl;
+  if (result)
+  {
+	  result->idt.lpVtbl = (IDropTargetVtbl*)&idt_vtbl;
 
-  result->m_lRefCount  = 1;
-  result->m_hWnd = hwnd;
-  result->m_fAllowDrop = FALSE;
-  
+	  result->m_lRefCount = 1;
+	  result->m_hWnd = hwnd;
+	  result->m_fAllowDrop = FALSE;
+
+	  // return result;
+  }
+
   return result;
 }
 

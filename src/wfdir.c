@@ -2901,7 +2901,8 @@ UsedAltname:
          goto GDSExit;
 
       if ((!bLFNTest) && ((i + 1) < iMac))
-         lstrcat(p, szBlank);
+		 if(p)
+            lstrcat(p, szBlank);
    }
 
 GDSExit:

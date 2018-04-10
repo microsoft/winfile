@@ -2646,8 +2646,9 @@ TRY_COPY_AGAIN:
                // ERROR_PATH_NOT_FOUND ERROR_FILE_NOT_FOUND, do we're
                // ok by accident.
                //
+			   if(pcr)
+			      pcr->bFastMove = TRUE;
 
-               pcr->bFastMove = TRUE;
                goto DoMove;
             }
 #endif
