@@ -100,11 +100,14 @@ vector<PDNODE> FilterBySubtree(vector<PDNODE> const& parents, vector<PDNODE>  co
 	vector<PDNODE> results;
 
 	// for each child, if parent in parents, return
-	std::copy_if(children.begin(), children.end(), std::back_inserter(results), [&parents](PDNODE const& child) {
-		PDNODE parent = child->pParent;
-
-		return (find(parents.begin(), parents.end(), parent) != parents.end());
-	});
+	std::copy_if(children.begin(), 
+				 children.end(), 
+				 std::back_inserter(results), 
+				 [&parents](PDNODE const& child) 
+				 {
+					PDNODE parent = child->pParent;
+					return (find(parents.begin(), parents.end(), parent) != parents.end());
+				 });
 	
 	return results;
 }
@@ -116,7 +119,6 @@ vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 
 	if (count == 0)
 		return result;
-
 
 	// If any tree is empty, return empty
 	if (std::any_of(trees.begin(), trees.end(), [](auto& tree) { return tree.size() == 0; }))
