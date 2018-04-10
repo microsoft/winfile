@@ -2447,7 +2447,7 @@ Error:
 
       //
       // Now always set 0L since string is in lpxdta->byBitmap!
-      // tolken for no items
+      // token for no items
       //
       goto Error;
 
