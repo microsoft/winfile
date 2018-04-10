@@ -309,7 +309,7 @@ InsertDirectory(
 
    pNode->pParent = pParentNode;
    pNode->nLevels = pParentNode ? (pParentNode->nLevels + (BYTE)1) : (BYTE)0;
-   pNode->wFlags  = (BYTE)NULL;
+   pNode->wFlags  = (BYTE)0;
    pNode->dwNetType = (DWORD)-1;
 
 #ifdef USE_TF_LFN
