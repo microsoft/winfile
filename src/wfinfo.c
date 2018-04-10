@@ -945,7 +945,7 @@ DocCloseEnum(PDOCENUM pDocEnum)
 // Notes:    Until hEventUpdatePartial, no one can access:
 //           cDrives, aDriveInfo.
 //
-//           This is guaranteed to be synchonous with the main thread.
+//           This is guaranteed to be synchronous with the main thread.
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -996,7 +996,7 @@ UpdateInit(PVOID ThreadParameter)
       // Main:                         Worker:
       // Set hEventUpdate
       //                               Reset hEventUpdate
-      //                               Reset hEventUpdateParitial
+      //                               Reset hEventUpdatePartial
       // Wait hEventUpdatePartial
       //
       // Worker never wakes up since hEventUpdate is reset.
@@ -1040,7 +1040,7 @@ UpdateDriveListWorker(VOID)
    INT cRealDrives = 0;
    INT i;
    HANDLE hEnum;
-   LPTCH pcBuf;       // 16k buffer.  bleech.
+   LPTCH pcBuf;       // 16k buffer.  blech.
    DWORD dwEntries;
    DRIVE drive;
    DWORD dwBufSiz = BUF_SIZ;
@@ -1146,7 +1146,7 @@ EnumRetry:
                         LocalFree((HLOCAL)pDriveInfo->lpConnectInfo);
 
                      //
-                     // To avoid redundancy and preserve persistent connectn
+                     // To avoid redundancy and preserve persistent connection
                      // remote names when LanmanWorkstation stops, we
                      // save the names enumerated here.
                      //

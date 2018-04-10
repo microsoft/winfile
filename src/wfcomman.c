@@ -2055,7 +2055,7 @@ CHECK_OPTION:
 
           EnableDisconnectButton();
 
-		  StartBuildingDirectoryTrie();
+		  StartBuildingDirectoryTree();
 
           break;
        }
@@ -2114,7 +2114,7 @@ ACPCallHelp:
 // OUT: VOID
 // Precond: System directory is on a safe hard disk
 //          szMessage not being used
-// Postcond: Swich to this directory.
+// Postcond: Switch to this directory.
 //          szMessage trashed.
 
 VOID

@@ -26,7 +26,7 @@ typedef struct _EXTENSION {                                     /* ;Internal */
 } EXTENSION;                                                    /* ;Internal */
 
 // !! WARNING !!
-// MAX_EXTENSIONS is assummed 5 in winfile
+// MAX_EXTENSIONS is assumed 5 in winfile
 // Must be changed there LATER
 
 #define MAX_EXTENSIONS 10                                       /* ;Internal */

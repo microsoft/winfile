@@ -468,7 +468,7 @@ INT  PutDate(LPFILETIME lpftDate, LPTSTR szStr);
 INT  PutTime(LPFILETIME lpftTime, LPTSTR szStr);
 INT  PutSize(PLARGE_INTEGER pqSize, LPTSTR szOutStr);
 INT  PutAttributes(register DWORD dwAttribute, register LPTSTR szStr);
-HWND GetMDIChildFromDecendant(HWND hwnd);
+HWND GetMDIChildFromDescendant(HWND hwnd);
 VOID SetLBFont(HWND hwnd, HWND hwndLB, HANDLE hNewFont, DWORD dwViewFlags, LPXDTALINK lpStart);
 
 
@@ -534,7 +534,7 @@ VOID  LoadFailMessage(VOID);
 UINT  FillDocType(PPDOCBUCKET ppDoc, LPCWSTR pszSection, LPCWSTR pszDefault);
 BOOL  CheckDirExists(LPWSTR szDir);
 
-DWORD StartBuildingDirectoryTrie();
+DWORD StartBuildingDirectoryTree();
 
 
 // WFCOPY.C
@@ -563,7 +563,7 @@ INT   GetSelectedDrive(VOID);
 VOID  GetTextStuff(HDC hdc);
 INT   GetHeightFromPointsString(LPTSTR szPoints);
 INT   GetDrive(HWND hwnd, POINT pt);
-VOID  CheckSlashies(LPTSTR);
+VOID  CheckSlashes(LPTSTR);
 // DWORD IsNetDrive(DRIVE drive);
 BOOL  IsCDRomDrive(DRIVE drive);
 BOOL  IsRamDrive(DRIVE drive);
@@ -1799,7 +1799,7 @@ Extern INT  dxIcon          EQ( 32 );
 Extern INT  dyFileName;
 Extern INT  nFloppies;       // Number of Removable Drives
 
-Extern INT   iSelHilite     EQ( -1 );
+Extern INT   iSelHighlight     EQ( -1 );
 
 Extern INT   cDisableFSC    EQ( 0 );     // has fsc been disabled?
 Extern INT   iReadLevel     EQ( 0 );     // global.  if !0 someone is reading a tree

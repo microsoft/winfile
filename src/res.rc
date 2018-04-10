@@ -631,7 +631,7 @@ BEGIN
     MH_MYITEMS+IDM_BYTYPE,      "Sorts files by type"
     MH_MYITEMS+IDM_BYSIZE,      "Sorts files by size"
     MH_MYITEMS+IDM_BYDATE,      "Sorts files by date"
-    MH_MYITEMS+IDM_BYFDATE,     "Sorts files by foward date"
+    MH_MYITEMS+IDM_BYFDATE,     "Sorts files by forward date"
     MH_MYITEMS+IDM_VINCLUDE,    "Shows files of a specified type"
 
     MH_MYITEMS+IDM_CONFIRM,     "Controls confirmation messages"

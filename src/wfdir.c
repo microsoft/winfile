@@ -694,8 +694,8 @@ DirWndProc(
 
 #define lpds ((LPDROPSTRUCT)lParam)
 
-      iSelHilite = lpds->dwControlData;
-      DSRectItem(hwndLB, iSelHilite, (BOOL)wParam, FALSE);
+      iSelHighlight = lpds->dwControlData;
+      DSRectItem(hwndLB, iSelHighlight, (BOOL)wParam, FALSE);
       break;
 
 #undef lpds
@@ -720,16 +720,16 @@ DirWndProc(
 
          // Is it a new one?
 
-         if (iSel == iSelHilite && fOldShowSourceBitmaps == fShowSourceBitmaps)
+         if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
             break;
 
          fOldShowSourceBitmaps = fShowSourceBitmaps;
 
          // Yup, un-select the old item.
-         DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+         DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
 
          // Select the new one.
-         iSelHilite = iSel;
+         iSelHighlight = iSel;
          DSRectItem(hwndLB, iSel, TRUE, FALSE);
          break;
 
@@ -1303,7 +1303,7 @@ ChangeDisplay(
    case WM_CREATE:
 
       //
-      // dwNewView, dwNewSort and dwNewAddribs define the viewing
+      // dwNewView, dwNewSort and dwNewAttribs define the viewing
       // parameters of the new window (GLOBALS)
       // the window text of the parent window defines the
       // filespec and the directory to open up
@@ -2263,7 +2263,7 @@ FixTabsAndThings(
 // Effects:
 //
 //    Listbox tabs array
-//       LB_SETCOLUMWIDTH
+//       LB_SETCOLUMNWIDTH
 //       or
 //       LB_SETHORIZONTALEXTENT
 //
@@ -2447,7 +2447,7 @@ Error:
 
       //
       // Now always set 0L since string is in lpxdta->byBitmap!
-      // tolken for no items
+      // token for no items
       //
       goto Error;
 
@@ -2945,7 +2945,7 @@ GDSDone:
 //          structure
 //
 //          hDTA->head.dwEntries must be < INTMAX since there is
-//          a conversion from dword to int.  bleech.
+//          a conversion from dword to int.  blech.
 //
 // Effects:
 //
@@ -3356,7 +3356,7 @@ GetDirStatus(
 
 
 HWND
-GetMDIChildFromDecendant(HWND hwnd)
+GetMDIChildFromDescendant(HWND hwnd)
 {
    HWND hwndT;
 

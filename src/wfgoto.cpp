@@ -703,7 +703,7 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 }
 
 DWORD
-StartBuildingDirectoryTrie()
+StartBuildingDirectoryTree()
 {
 	HANDLE hThreadCopy;
 	DWORD dwIgnore;
