@@ -434,23 +434,20 @@ vector<PDNODE> GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
 			wstring first = word.substr(0, pos);
 			wstring second = word.substr(pos + 1);
 
-			vector<PDNODE> options1;
-			vector<PDNODE> options2;
-
-			options1 = g_pBagOCDrive->Retrieve(first, fPrefix, 1000);
-			options2 = g_pBagOCDrive->Retrieve(second, fPrefix, 1000);
+			vector<PDNODE> options1 = std::move(g_pBagOCDrive->Retrieve(first, fPrefix, 1000));
+			vector<PDNODE> options2 = std::move(g_pBagOCDrive->Retrieve(second, fPrefix, 1000));
 
 			if (options1.size() == 1000 ||
 				options2.size() == 1000)
 				*pbLimited = TRUE;
 
-			options = FilterBySubtree(options1, options2);
+			options = std::move(FilterBySubtree(options1, options2));
 		}
 
 		options_per_word.emplace_back(std::move(options));
 	}
 
-	vector<PDNODE> final_options = TreeIntersection(options_per_word);
+	vector<PDNODE> final_options = std::move(TreeIntersection(options_per_word));
 
 	return final_options;
 }
