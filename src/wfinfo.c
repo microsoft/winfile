@@ -1146,7 +1146,7 @@ EnumRetry:
                         LocalFree((HLOCAL)pDriveInfo->lpConnectInfo);
 
                      //
-                     // To avoid redundancy and preserve persistent connectn
+                     // To avoid redundancy and preserve persistent connection
                      // remote names when LanmanWorkstation stops, we
                      // save the names enumerated here.
                      //
