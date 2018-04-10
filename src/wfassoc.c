@@ -1012,7 +1012,7 @@ DoHelp:
 /////////////////////////////////////////////////////////////////////
 
 
-INT
+INT APIENTRY
 AssociateFileDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    INT i;
@@ -4574,4 +4574,3 @@ GenerateFriendlyName(LPTSTR lpszCommand)
     return (p);
 }
 
-

@@ -3241,4 +3241,4 @@ ResetTreeMax(
     SendMessage(hwndLB, LB_SETHORIZONTALEXTENT, xTreeMax, 0L);
 }
 
-
+

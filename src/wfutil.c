@@ -809,7 +809,7 @@ IsCDRomDrive(DRIVE drive)
 }
 
 
-#if 0
+//#if 0
 // this is called for every drive at init time so it must
 // be sure to not trigger things like the phantom B: drive support
 //
@@ -840,7 +840,7 @@ IsNetDrive(INT drive)
    }
    return 0;
 }
-#endif
+//#endif
 
 BOOL
 IsNTFSDrive(register DRIVE drive)

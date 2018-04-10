@@ -36,4 +36,3 @@ LRESULT ExtensionMsgProc(UINT wMsg, WPARAM wParam, LPARAM lpSel);    /* ;Interna
 VOID FreeExtensions(VOID);                                      /* ;Internal */
 
 #endif /* _INC_WFEXTI */
-

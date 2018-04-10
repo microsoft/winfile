@@ -122,10 +122,10 @@ BEGIN
     MENUITEM    "T&ree and Directory",  IDM_BOTH
     MENUITEM    "Tr&ee Only",           IDM_TREEONLY
     MENUITEM    "Directory &Only",      IDM_DIRONLY
-    MENUITEM    SEPARATOR
-    MENUITEM    "Sp&lit"                IDM_SPLIT
-    MENUITEM    SEPARATOR
-    MENUITEM    "&Name",                IDM_VNAME,
+//    MENUITEM    SEPARATOR
+//    MENUITEM    "Sp&lit"                IDM_SPLIT
+//    MENUITEM    SEPARATOR
+//    MENUITEM    "&Name",                IDM_VNAME,
     MENUITEM    "&All File Details",    IDM_VDETAILS,   CHECKED
     MENUITEM    "&Partial Details...",  IDM_VOTHER
     MENUITEM    SEPARATOR
@@ -140,7 +140,7 @@ BEGIN
     POPUP       "&Options"
     BEGIN
     MENUITEM    "&Confirmation...",     IDM_CONFIRM
-    MENUITEM    "&Font..."          IDM_FONT
+//    MENUITEM    "&Font..."          IDM_FONT
     MENUITEM    "Customize Tool&bar...", IDM_TOOLBARCUST
     MENUITEM    SEPARATOR
     MENUITEM    "&Toolbar",                 IDM_TOOLBAR
@@ -302,10 +302,10 @@ BEGIN
     IDS_FORMATSELDISK,      "Select the disk to format."                                                                                               /* 128 */
 
 JAPANBEGIN
-    IDS_KK_COPYFROMSTR,        "ƒRƒs[Œ³(&F):"
-    IDS_KK_COPYTOSTR,          "ƒRƒs[æ(&T):"
-    IDS_KK_RENAMEFROMSTR,      "Œ³‚Ì–¼‘O(&F):"
-    IDS_KK_RENAMETOSTR,        "V‚µ‚¢–¼‘O(&T):"
+    IDS_KK_COPYFROMSTR,        "ï¿½Rï¿½sï¿½[ï¿½ï¿½(&F):"
+    IDS_KK_COPYTOSTR,          "ï¿½Rï¿½sï¿½[ï¿½ï¿½(&T):"
+    IDS_KK_RENAMEFROMSTR,      "ï¿½ï¿½ï¿½Ì–ï¿½ï¿½O(&F):"
+    IDS_KK_RENAMETOSTR,        "ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½O(&T):"
 JAPANEND
 
 //    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
@@ -371,7 +371,7 @@ JAPANEND
     IDS_COPYINGTITLE            "Copying..."
 
 JAPANBEGIN
-    IDS_KK_COPY                 "ƒRƒs[æ:"
+    IDS_KK_COPY                 "ï¿½Rï¿½sï¿½[ï¿½ï¿½:"
 JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "Quick Formatting..."
@@ -546,9 +546,9 @@ JAPANEND
     IDS_COPYINGDISKTITLE        "Copying Disk"
     IDS_SEARCHING               "Searching..."
 
-JAPANBEGIN
-    IDS_WRNNOSHIFTJIS           "‚±‚ÌƒtƒHƒ“ƒg‚ðŽg—p‚·‚é‚ÆŠ¿Žš‚Ì•\Ž¦‚ª\n‚Å‚«‚È‚­‚È‚è‚Ü‚·B"
-JAPANEND
+//JAPANBEGIN
+//    IDS_WRNNOSHIFTJIS           "ï¿½ï¿½ï¿½Ìƒtï¿½Hï¿½ï¿½ï¿½gï¿½ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½ÆŠï¿½ï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½ï¿½\nï¿½Å‚ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½Ü‚ï¿½ï¿½B"
+//JAPANEND
 
     IDS_INITUPDATEFAIL          "Unable to initialize background update support.  File Manager will exit.  "
     IDS_INITUPDATEFAILTITLE     "File Manager Initialization"
@@ -690,5 +690,3 @@ END
 #define VER_ORIGINALFILENAME_STR     "WINFILE.EXE"
 
 #include "common.ver"
-
-
