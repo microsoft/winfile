@@ -945,7 +945,7 @@ DocCloseEnum(PDOCENUM pDocEnum)
 // Notes:    Until hEventUpdatePartial, no one can access:
 //           cDrives, aDriveInfo.
 //
-//           This is guaranteed to be synchonous with the main thread.
+//           This is guaranteed to be synchronous with the main thread.
 //
 /////////////////////////////////////////////////////////////////////
 
