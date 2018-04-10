@@ -931,4 +931,3 @@ ResizeWindows(HWND hwndParent,INT dxWindow, INT dyWindow)
    UpdateWindow(hwndParent);
 }
 
-

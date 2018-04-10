@@ -461,7 +461,7 @@ VOID   UpdateStatus(HWND hWnd);
 LPWSTR DirGetSelection(HWND hwndDir, HWND hwndView, HWND hwndLB, INT iSelType, BOOL *pfDir, PINT piLastSel);
 VOID   FillDirList(HWND hwndDir, LPXDTALINK lpStart);
 VOID   CreateLBLine(register DWORD dwLineFormat, LPXDTA lpxdta, LPTSTR szBuffer);
-INT    GetMaxExtent(HWND hwndLB, HANDLE hDTA, BOOL bNTFS);
+INT    GetMaxExtent(HWND hwndLB, LPXDTALINK hDTA, BOOL bNTFS);
 VOID   UpdateSelection(HWND hwndLB);
 
 INT  PutDate(LPFILETIME lpftDate, LPTSTR szStr);
@@ -1925,4 +1925,3 @@ Extern INT nCopyMaxQueue;
 #undef Extern
 #undef EQ
 
-
