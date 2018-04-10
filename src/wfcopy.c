@@ -1365,7 +1365,7 @@ GetNameDialog(DWORD dwOp, LPTSTR pFrom, LPTSTR pTo)
 //           FUNC_COPY   - Copy files in pFrom to pTo
 //
 // OUTC pdwError         -- If error, this holds the err code else 0
-// INC  bIsLFNDestFrive  -- Is the dest drive lfn?
+// INC  bIsLFNDriveDest  -- Is the dest drive lfn?
 //
 // Return:   DWORD:
 //
