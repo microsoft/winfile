@@ -2090,7 +2090,7 @@ TreeControlWndProc(
       //
       DWORD i;
 
-      if (FindItemFromPath(hwndLB, (LPTSTR)lParam, wParam != 0, &i, NULL))
+      if (FindItemFromPath(hwndLB, (LPTSTR)lParam, wParam != 0, (DWORD*)&i, NULL))
 	  {
 		  SendMessage(hwndLB, LB_SETCURSEL, i, 0L);
 
@@ -2122,7 +2122,7 @@ TreeControlWndProc(
 	   PDNODE    pNode;
 
 	   // do the same as TC_SETDIRECTORY above for the simple case
-	   if (FindItemFromPath(hwndLB, (LPTSTR)lParam, 0, &i, &pNode))
+	   if (FindItemFromPath(hwndLB, (LPTSTR)lParam, 0, (DWORD*)&i, &pNode))
 	   {
 		   // found exact node already displayed; select it and continue
 		   SendMessage(hwndLB, LB_SETCURSEL, i, 0L);
