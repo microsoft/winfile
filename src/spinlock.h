@@ -36,7 +36,7 @@ public:
 	void Lock();
 	void Unlock();
 
-	inline bool HasThreasholdReached() { return (m_iterations >= YIELD_ITERATION); }
+	inline bool HasThresholdReached() { return (m_iterations >= YIELD_ITERATION); }
 };
 
 
@@ -64,7 +64,7 @@ void SpinLock::Lock()
 		// spin wait to acquire 
 		while (this->dest != this->compare)
 		{
-			if (HasThreasholdReached())
+			if (HasThresholdReached())
 			{
 				if (m_iterations + YIELD_ITERATION >= MAX_SLEEP_ITERATION)
 					Sleep(0);
