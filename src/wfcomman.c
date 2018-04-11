@@ -1016,7 +1016,7 @@ AppCommandProc(register DWORD id)
            TCHAR szParams[MAXPATHLEN + COUNTOF(ConEmuParamFormat)];
 
 			szDir = GetSelection(1|4|16, &bDir);
-			if (!bDir)
+			if (!bDir && szDir)
 				StripFilespec(szDir);
 	
 		   bRunAs = GetKeyState(VK_SHIFT) < 0;
@@ -1061,7 +1061,7 @@ AppCommandProc(register DWORD id)
            TCHAR szParams[MAXPATHLEN + COUNTOF(PowerShellParamFormat)];
 
            szDir = GetSelection(1 | 4 | 16, &bDir);
-           if (!bDir)
+           if (!bDir && szDir)
                StripFilespec(szDir);
 
            bRunAs = GetKeyState(VK_SHIFT) < 0;
@@ -2114,7 +2114,7 @@ ACPCallHelp:
 // OUT: VOID
 // Precond: System directory is on a safe hard disk
 //          szMessage not being used
-// Postcond: Swich to this directory.
+// Postcond: Switch to this directory.
 //          szMessage trashed.
 
 VOID

@@ -2704,8 +2704,8 @@ UpdateSelection:
 
       UpdateWindow(hwndStatus);
 
-      iSelHilite = ((LPDROPSTRUCT)lParam)->dwControlData;
-      RectTreeItem(hwndLB, iSelHilite, (BOOL)wParam);
+      iSelHighlight = ((LPDROPSTRUCT)lParam)->dwControlData;
+      RectTreeItem(hwndLB, iSelHighlight, (BOOL)wParam);
       break;
 
    case WM_DRAGMOVE:
@@ -2733,7 +2733,7 @@ UpdateSelection:
       //
       // Is it a new one?
       //
-      if (iSel == iSelHilite && fOldShowSourceBitmaps == fShowSourceBitmaps)
+      if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
          break;
 
       fOldShowSourceBitmaps = fShowSourceBitmaps;
@@ -2741,12 +2741,12 @@ UpdateSelection:
       //
       // Yup, un-select the old item.
       //
-      RectTreeItem(hwndLB, iSelHilite, FALSE);
+      RectTreeItem(hwndLB, iSelHighlight, FALSE);
 
       //
       // Select the new one.
       //
-      iSelHilite = iSel;
+      iSelHighlight = iSel;
       RectTreeItem(hwndLB, iSel, TRUE);
       break;
    }

@@ -144,7 +144,6 @@ PEXT pExtBase = NULL;
 
 INT APIENTRY AssociateFileDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 BOOL AssociateDlgInit(HWND hDlg, LPTSTR lpszExt, INT iSel);
-VOID AssoicateFileDlgCommand(HWND hDlg, WPARAM wParam, LPARAM lParam, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
 BOOL AssociateFileDlgExtAdd(HWND hDlg, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
 BOOL AssociateFileDlgExtDelete(HWND hDlg, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
 BOOL AssociateFileDlgCommand(HWND hDlg, WPARAM wParam, LPARAM lParam, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);

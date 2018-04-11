@@ -948,8 +948,8 @@ SearchWndProc(
       SendMessage(hwndStatus, SB_SIMPLE, (wParam ? 1 : 0), 0L);
       UpdateWindow(hwndStatus);
 
-      iSelHilite = lpds->dwControlData;
-      DSRectItem(hwndLB, iSelHilite, (BOOL)wParam, TRUE);
+      iSelHighlight = lpds->dwControlData;
+      DSRectItem(hwndLB, iSelHighlight, (BOOL)wParam, TRUE);
       break;
 
    case WM_DRAGMOVE:
@@ -976,17 +976,17 @@ SearchWndProc(
       //
       // Is it a new one?
       //
-      if (iSel == iSelHilite)
+      if (iSel == iSelHighlight)
          break;
 
       //
       // Yup, un-select the old item.
       //
-      DSRectItem(hwndLB, iSelHilite, FALSE, TRUE);
+      DSRectItem(hwndLB, iSelHighlight, FALSE, TRUE);
 
       //
       // Select the new one.
-      iSelHilite = iSel;
+      iSelHighlight = iSel;
       DSRectItem(hwndLB, iSel, TRUE, TRUE);
       break;
 
