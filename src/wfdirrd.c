@@ -11,7 +11,7 @@
 
 #include "winfile.h"
 #include "lfn.h"
-
+#include "wfcopy.h"
 
 typedef enum {
    EDIRABORT_NULL        = 0,
@@ -1247,7 +1247,8 @@ DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPCWSTR szChild, LPWSTR szDest, DWORD
 		)		
 	{
 		cwcLink = rdata->SymbolicLinkReparseBuffer.SubstituteNameLength / sizeof(WCHAR);
-		if (cwcLink <= cwcDest)
+        // NOTE: cwcLink does not include any '\0' termination character
+		if (cwcLink < cwcDest)
 		{
 			LPWSTR szT = &rdata->SymbolicLinkReparseBuffer.PathBuffer[rdata->SymbolicLinkReparseBuffer.SubstituteNameOffset / sizeof(WCHAR)];
 			if (szT[0] == '?' && szT[1] == '\\')
@@ -1255,7 +1256,7 @@ DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPCWSTR szChild, LPWSTR szDest, DWORD
 				szT += 2;
 				cwcLink -= 2;
 			}
-			wcsncpy(szDest, szT, cwcLink);
+			wcsncpy_s(szDest, MAXPATHLEN, szT, cwcLink);
 			szDest[cwcLink] = 0;
 		}
 		else

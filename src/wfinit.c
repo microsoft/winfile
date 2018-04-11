@@ -16,6 +16,7 @@
 #include "wnetcaps.h"         // WNetGetCaps()
 
 #include <ole2.h>
+#include <shlobj.h>
 
 typedef VOID (APIENTRY *FNPENAPP)(WORD, BOOL);
 
@@ -950,7 +951,7 @@ JAPANEND
    // setup ini file location
    lstrcpy(szTheINIFile, szBaseINIFile);
    dwRetval = GetEnvironmentVariable(TEXT("APPDATA"), szBuffer, MAXPATHLEN);
-   if (dwRetval > 0 && dwRetval <= (MAXPATHLEN - lstrlen(szRoamINIPath) - 1 - lstrlen(szBaseINIFile) - 1)) {
+   if (dwRetval > 0 && dwRetval <= (DWORD)(MAXPATHLEN - lstrlen(szRoamINIPath) - 1 - lstrlen(szBaseINIFile) - 1)) {
 	   wsprintf(szTheINIFile, TEXT("%s%s"), szBuffer, szRoamINIPath);
 	   if (CreateDirectory(szTheINIFile, NULL) || GetLastError() == ERROR_ALREADY_EXISTS) {
 		   wsprintf(szTheINIFile, TEXT("%s%s\\%s"), szBuffer, szRoamINIPath, szBaseINIFile);
