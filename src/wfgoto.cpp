@@ -103,7 +103,7 @@ vector<PDNODE> *FilterBySubtree(vector<PDNODE> * parents, vector<PDNODE> * child
 	vector<PDNODE> *results = new vector <PDNODE>();
 
 	// for each child, if parent in parents, return
-	for (int i = 0; i < children->size(); i++)
+	for (SIZE_T i = 0; i < children->size(); i++)
 	{
 		PDNODE child = children->at(i);
 		PDNODE parent = child->pParent;
@@ -490,7 +490,7 @@ VOID UpdateGotoList(HWND hDlg)
 	if (options == NULL)
 		return;
 		
-	for (int i = 0; i < 10 && i < options->size(); i++)
+	for (SIZE_T i = 0; i < 10 && i < options->size(); i++)
 	{
 		GetTreePath(options->at(i), szText);
 
