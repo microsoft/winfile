@@ -45,7 +45,6 @@ SaveWindows(HWND hwndMain)
    // WINDOWPLACEMENT coordinates for top-level windows are in Workspace coordinates;
    // we tranlate this into screen coordinates prior to saving;
    // also, the values saved for the third and fourth values are width and height.
-  
    wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld, , ,%u"), rcT.left + wp.rcNormalPosition.left,
       rcT.top + wp.rcNormalPosition.top,
       wp.rcNormalPosition.right - wp.rcNormalPosition.left,
