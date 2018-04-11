@@ -2194,7 +2194,7 @@ TreeControlWndProc(
       WCHAR    ch;
       PDNODE    pNode;
       WCHAR rgchMatch[MAXPATHLEN];
-      INT cchMatch;
+      SIZE_T cchMatch;
 
       //
       // backslash means the root

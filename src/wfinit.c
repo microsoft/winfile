@@ -16,6 +16,7 @@
 #include "wnetcaps.h"         // WNetGetCaps()
 
 #include <ole2.h>
+#include <shlobj.h>
 
 typedef VOID (APIENTRY *FNPENAPP)(WORD, BOOL);
 
@@ -952,7 +953,7 @@ JAPANEND
    // setup ini file location
    lstrcpy(szTheINIFile, szBaseINIFile);
    dwRetval = GetEnvironmentVariable(TEXT("APPDATA"), szBuffer, MAXPATHLEN);
-   if (dwRetval > 0 && (int)dwRetval <= (MAXPATHLEN - lstrlen(szRoamINIPath) - 1 - lstrlen(szBaseINIFile) - 1)) {
+   if (dwRetval > 0 && dwRetval <= (DWORD)(MAXPATHLEN - lstrlen(szRoamINIPath) - 1 - lstrlen(szBaseINIFile) - 1)) {
 	   wsprintf(szTheINIFile, TEXT("%s%s"), szBuffer, szRoamINIPath);
 	   if (CreateDirectory(szTheINIFile, NULL) || GetLastError() == ERROR_ALREADY_EXISTS) {
 		   wsprintf(szTheINIFile, TEXT("%s%s\\%s"), szBuffer, szRoamINIPath, szBaseINIFile);
@@ -1220,15 +1221,21 @@ JAPANEND
 
    // right and bottom are width and height, so convert to coordinates
 
+   // NOTE: in the cold startup case (no value in winfile.ini), the coordinates are
+   // left: CW_USEDEFAULT, top: 0, right: CW_USEDEFAULT, bottom: 0.
+
    win.rc.right += win.rc.left;
    win.rc.bottom += win.rc.top;
 
    if (!IntersectRect(&rcS, &rcT, &win.rc))
    {
-      // window off virtual screen or initial case; put in main work area on primary screen
-	   SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
-	   rcT.right = rcT.bottom = (LONG)CW_USEDEFAULT;
-       win.rc = rcT;
+      // window off virtual screen or initial case; reset to defaults
+       win.rc.right = win.rc.left = (LONG)CW_USEDEFAULT;
+       win.rc.top = win.rc.bottom = 0;
+
+       // compenstate as above so the conversion below still results in the defaults
+       win.rc.right += win.rc.left;
+       win.rc.bottom += win.rc.top;
    }
 
    // Now convert back again
