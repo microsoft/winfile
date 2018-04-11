@@ -739,6 +739,7 @@ AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
         switch (GET_WM_COMMAND_ID(wParam, lParam))
         {
         case IDOK:
+        case IDCANCEL:
             EndDialog(hDlg, IDOK);
             return TRUE;
         }
