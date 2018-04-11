@@ -807,3 +807,15 @@ BEGIN
     DEFPUSHBUTTON   "OK", IDOK, 418, 13, 40, 14, WS_GROUP
     PUSHBUTTON      "Cancel", IDCANCEL, 418, 30, 40, 14, WS_GROUP
 END
+
+ABOUTDLG DIALOG 13, 54, 250, 70
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About File Manager"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            APPICON, -1, 6, 6, 32, 32
+    LTEXT           "Windows File Manager", -1, 36, 6, 200, 8
+    LTEXT           "Based on code from Microsoft Windows NT 4.0.", -1, 36, 18, 200, 8
+    LTEXT           "Maintained on GitHub at https://github.com/Microsoft/winfile", -1, 36, 30, 200, 8
+    DEFPUSHBUTTON   "OK", IDOK, 190, 50, 40, 14
+END
