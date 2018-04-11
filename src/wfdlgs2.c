@@ -397,7 +397,7 @@ MessWithRenameDirPath(LPTSTR pszPath)
    // !! LATER !!
    //
    // Should we allow backslashes here also ?
-   // CheckSlashies(pszPath); or add || clause.
+   // CheckSlashes(pszPath); or add || clause.
    //
 
    lpsz = (CHAR_DQUOTE == pszPath[0]) ?
