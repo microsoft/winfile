@@ -16,18 +16,19 @@
 
 #ifdef WIN32
 #undef WIN32
-#define WIN32 100
 #endif
+#define WIN32 100
 
 #ifdef WINVER
 #undef WINVER
-#define WINVER 0x0400
 #endif
+#define WINVER 0x0400
 
 #ifdef _WIN32_WINNT
 #undef _WIN32_WINNT
-#define _WIN32_WINNT 0x0403
 #endif
+#define _WIN32_WINNT 0x0403
+
 
 BITMAPS         BITMAP PRELOAD wbbitmap.bmp
 
