@@ -1226,7 +1226,6 @@ JAPANEND
    {
       // window off virtual screen or initial case; put in main work area on primary screen
 	   SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
-	   rcT.right = rcT.bottom = (LONG)CW_USEDEFAULT;
        win.rc = rcT;
    }
 
