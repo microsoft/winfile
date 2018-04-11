@@ -444,7 +444,8 @@ NetCon_UpdateLines(DRIVE drive, DWORD dwType)
 #define DOCBUCKETMAXBIT 5
 #define DOCBUCKETMAX (1 << DOCBUCKETMAXBIT)
 
-#define DOCHASHFUNC(x) (x[0] & ~(~0 << DOCBUCKETMAXBIT))
+// #define DOCHASHFUNC(x) (x[0] & ~(~0 << DOCBUCKETMAXBIT))
+#define DOCHASHFUNC(x) (x[0] & 0x1F)
 
 struct _DOC_BUCKET {
    PDOCBUCKET next;
