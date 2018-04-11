@@ -29,7 +29,7 @@ unsigned long BreakFlags = 0
     ;     // set these to break on TRACEs
 
 VOID DbgAssert(
-LPSTR file,
+LPTSTR file,
 int line)
 {
 	 wsprintf(szFmt,szAsrtFmt,file,line);
