@@ -1219,15 +1219,21 @@ JAPANEND
 
    // right and bottom are width and height, so convert to coordinates
 
+   // NOTE: in the cold startup case (no value in winfile.ini), the coordinates are
+   // left: CW_USEDEFAULT, top: 0, right: CW_USEDEFAULT, bottom: 0.
+
    win.rc.right += win.rc.left;
    win.rc.bottom += win.rc.top;
 
    if (!IntersectRect(&rcS, &rcT, &win.rc))
    {
-      // window off virtual screen or initial case; put in main work area on primary screen
-	   SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
-	   rcT.right = rcT.bottom = (LONG)CW_USEDEFAULT;
-       win.rc = rcT;
+      // window off virtual screen or initial case; reset to defaults
+       win.rc.right = win.rc.left = (LONG)CW_USEDEFAULT;
+       win.rc.top = win.rc.bottom = 0;
+
+       // compenstate as above so the conversion below still results in the defaults
+       win.rc.right += win.rc.left;
+       win.rc.bottom += win.rc.top;
    }
 
    // Now convert back again

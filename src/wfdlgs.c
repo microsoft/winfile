@@ -42,6 +42,10 @@ SaveWindows(HWND hwndMain)
 
    SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
 
+   // WINDOWPLACEMENT coordinates for top-level windows are in Workspace coordinates;
+   // we tranlate this into screen coordinates prior to saving;
+   // also, the values saved for the third and fourth values are width and height.
+
    wsprintf(buf2, TEXT("%d,%d,%d,%d, , ,%d"), rcT.left + wp.rcNormalPosition.left,
       rcT.top + wp.rcNormalPosition.top,
       wp.rcNormalPosition.right - wp.rcNormalPosition.left,
@@ -89,6 +93,8 @@ DO_AGAIN:
          //   x_win, y_win,
          //   x_icon, y_icon,
          //   show_window, view, sort, attribs, split, directory
+
+         // NOTE: MDI child windows are in child coordinats; no translation is done.
 
          wsprintf(buf2, TEXT("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s"),
             wp.rcNormalPosition.left, wp.rcNormalPosition.top,
