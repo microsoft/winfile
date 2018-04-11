@@ -14,22 +14,6 @@
 #include "wfcopy.h"
 
 
-#ifdef WIN32
-#undef WIN32
-#endif
-#define WIN32 100
-
-#ifdef WINVER
-#undef WINVER
-#endif
-#define WINVER 0x0400
-
-#ifdef _WIN32_WINNT
-#undef _WIN32_WINNT
-#endif
-#define _WIN32_WINNT 0x0403
-
-
 BITMAPS         BITMAP PRELOAD wbbitmap.bmp
 
 IDB_TOOLBAR     BITMAP PRELOAD toolbar.bmp
