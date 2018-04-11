@@ -1431,4 +1431,3 @@ ClearSearchLB(BOOL bWorkerCall)
    }
 }
 
-

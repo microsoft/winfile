@@ -232,4 +232,3 @@ FormatSuggest( DWORD dwError )
    }
    return pdwReturn;
 }
-

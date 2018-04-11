@@ -1672,4 +1672,3 @@ DestroyCancelWindow()
    }
    CancelInfo.hCancelDlg = NULL;
 }
-

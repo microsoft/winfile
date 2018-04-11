@@ -1594,5 +1594,3 @@ LoadFailMessage(VOID)
    return;
 }
 
-
-
