@@ -15,7 +15,6 @@
 #include "lfn.h"
 #include "wnetcaps.h"         // WNetGetCaps()
 
-#include <shlobj.h>
 #include <ole2.h>
 #include <shlobj.h>
 

@@ -15,7 +15,6 @@
 #include "lfn.h"
 #include "wfcopy.h"
 
-#include <shlobj.h>
 #include <commctrl.h>
 #include <shlobj.h>
 
