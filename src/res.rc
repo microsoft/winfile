@@ -693,5 +693,3 @@ END
 #define VER_ORIGINALFILENAME_STR     "WINFILE.EXE"
 
 #include "common.ver"
-
-
