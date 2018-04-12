@@ -625,7 +625,7 @@ DirWndProc(
          if (szItem[0] == '\0')
                 szItem = L"..";
          cchMatch = wcslen(rgchMatch);
-         if (cchMatch > (INT)wcslen(szItem))
+         if (cchMatch > wcslen(szItem))
                 cchMatch = wcslen(szItem);
 
          if (CompareString( LOCALE_USER_DEFAULT, NORM_IGNORECASE, 
