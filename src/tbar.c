@@ -1325,7 +1325,6 @@ FreeToolbarExtensions(VOID)
 VOID
 SaveRestoreToolbar(BOOL bSave)
 {
-   static LPTSTR aNames[] = { szSettings, szTheINIFile } ;
    static TCHAR  szSubKey[] = TEXT("Software\\Microsoft\\File Manager\\Settings");
    static TCHAR  szValueName [] = TEXT("ToolbarWindow");
 
