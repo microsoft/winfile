@@ -61,6 +61,7 @@
 #define COMPRESSERRDLG          59  //  Compression Error Dialog
 
 #define GOTODIRDLG    60
+#define ABOUTDLG      61
 
 #define IDD_TEXT      -1
 #define IDD_TEXT1     100

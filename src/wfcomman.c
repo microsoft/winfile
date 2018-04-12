@@ -2079,8 +2079,7 @@ ACPCallHelp:
        break;
 
     case IDM_ABOUT:
-       LoadString(hAppInstance, IDS_WINFILE, szTitle, COUNTOF(szTitle));
-       ShellAbout(hwndFrame, szTitle, NULL, NULL);
+       DialogBox(hAppInstance, (LPTSTR)MAKEINTRESOURCE(ABOUTDLG), hwndFrame, (DLGPROC)AboutDlgProc);
        break;
 
     case IDM_DRIVESMORE:

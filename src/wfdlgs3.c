@@ -724,6 +724,29 @@ DoHelp:
   return TRUE;
 }
 
+/*--------------------------------------------------------------------------*/
+/*                                                                          */
+/*  AboutDlgProc() -  DialogProc callback function for ABOUTDLG             */
+/*                                                                          */
+/*--------------------------------------------------------------------------*/
+
+INT_PTR
+AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+{
+    switch (wMsg)
+    {
+    case WM_COMMAND:
+        switch (GET_WM_COMMAND_ID(wParam, lParam))
+        {
+        case IDOK:
+        case IDCANCEL:
+            EndDialog(hDlg, IDOK);
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 VOID
 FormatDrive( IN PVOID ThreadParameter )
 {
