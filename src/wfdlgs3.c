@@ -740,17 +740,17 @@ AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     WORD wMinorVersion   = 0;
     WORD wBuildNumber    = 0;
     WORD wRevisionNumber = 0;
-    WCHAR wszVersion[CCH_VERSION] = { 0 };
+    TCHAR szVersion[CCH_VERSION] = { 0 };
 
     switch (wMsg)
     {
     case WM_INITDIALOG:
         if (GetProductVersion(&wMajorVersion, &wMinorVersion, &wBuildNumber, &wRevisionNumber))
         {
-            if (SUCCEEDED(StringCchPrintf(wszVersion, CCH_VERSION, L"Version %d.%d.%d.%d",
+            if (SUCCEEDED(StringCchPrintf(szVersion, CCH_VERSION, TEXT("Version %d.%d.%d.%d"),
                 (int)wMajorVersion, (int)wMinorVersion, (int)wBuildNumber, (int)wRevisionNumber)))
             {
-                SetDlgItemText(hDlg, IDD_VERTEXT, wszVersion);
+                SetDlgItemText(hDlg, IDD_VERTEXT, szVersion);
             }
         }
         return TRUE;
@@ -1730,18 +1730,18 @@ DestroyCancelWindow()
 BOOL GetProductVersion(WORD * pwMajor, WORD * pwMinor, WORD * pwBuild, WORD * pwRevision)
 {
     BOOL               success = FALSE;
-    WCHAR              wszCurrentModulePath[MAX_PATH];
+    TCHAR              szCurrentModulePath[MAX_PATH];
     DWORD              cchPath;
     DWORD              cbVerInfo;
     LPVOID             pFileVerInfo;
     UINT               uLen;
     VS_FIXEDFILEINFO * pFixedFileInfo;
 
-    cchPath = GetModuleFileName(NULL, wszCurrentModulePath, MAX_PATH);
+    cchPath = GetModuleFileName(NULL, szCurrentModulePath, MAX_PATH);
 
     if (cchPath && GetLastError() != ERROR_INSUFFICIENT_BUFFER)
     {
-        cbVerInfo = GetFileVersionInfoSize(wszCurrentModulePath, NULL);
+        cbVerInfo = GetFileVersionInfoSize(szCurrentModulePath, NULL);
 
         if (cbVerInfo)
         {
@@ -1749,10 +1749,10 @@ BOOL GetProductVersion(WORD * pwMajor, WORD * pwMinor, WORD * pwBuild, WORD * pw
 
             if (pFileVerInfo)
             {
-                if (GetFileVersionInfo(wszCurrentModulePath, 0, cbVerInfo, pFileVerInfo))
+                if (GetFileVersionInfo(szCurrentModulePath, 0, cbVerInfo, pFileVerInfo))
                 {
                     // Get the pointer to the VS_FIXEDFILEINFO structure
-                    if (VerQueryValue(pFileVerInfo, L"\\", (LPVOID *)&pFixedFileInfo, &uLen))
+                    if (VerQueryValue(pFileVerInfo, TEXT("\\"), (LPVOID *)&pFixedFileInfo, &uLen))
                     {
                         if (pFixedFileInfo && uLen)
                         {
