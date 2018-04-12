@@ -16,7 +16,7 @@
 #include <ole2.h>
 #include <shlobj.h>
 
-#ifndef GUID_DEFINED
+#ifndef GUID_DEFINED
 DEFINE_OLEGUID(IID_IUnknown,            0x00000000L, 0, 0);
 DEFINE_OLEGUID(IID_IDropSource,             0x00000121, 0, 0);
 DEFINE_OLEGUID(IID_IDropTarget,             0x00000122, 0, 0);
