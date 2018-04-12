@@ -1122,8 +1122,8 @@ FillVersionList(HWND hDlg)
    for (j=0; VerQueryValueIndexW(lpVersionBuffer,
                                 szVersionKey,
                                 j,
-                                &lpszKey,
-                                &lpszValue,
+                                (LPVOID*)&lpszKey,
+                                (LPVOID*)&lpszValue,
                                 &cbValue);  j++) {
 
       if (!lstrcmp(lpszKey, szFileVersion) ||

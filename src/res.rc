@@ -123,9 +123,9 @@ BEGIN
     MENUITEM    "Tr&ee Only",           IDM_TREEONLY
     MENUITEM    "Directory &Only",      IDM_DIRONLY
     MENUITEM    SEPARATOR
-    MENUITEM    "Sp&lit"                IDM_SPLIT
+    MENUITEM    "Sp&lit",               IDM_SPLIT
     MENUITEM    SEPARATOR
-    MENUITEM    "&Name",                IDM_VNAME,
+    MENUITEM    "&Name",                IDM_VNAME
     MENUITEM    "&All File Details",    IDM_VDETAILS,   CHECKED
     MENUITEM    "&Partial Details...",  IDM_VOTHER
     MENUITEM    SEPARATOR
@@ -140,7 +140,7 @@ BEGIN
     POPUP       "&Options"
     BEGIN
     MENUITEM    "&Confirmation...",     IDM_CONFIRM
-    MENUITEM    "&Font..."          IDM_FONT
+    MENUITEM    "&Font...",             IDM_FONT
     MENUITEM    "Customize Tool&bar...", IDM_TOOLBARCUST
     MENUITEM    SEPARATOR
     MENUITEM    "&Toolbar",                 IDM_TOOLBAR
@@ -204,6 +204,7 @@ BEGIN
 END
 
 
+#define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 /*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
 STRINGTABLE DISCARDABLE PRELOAD
 BEGIN
@@ -361,9 +362,7 @@ JAPANEND
 
 // include reason strings
 
-#define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 #include "suggest.db"
-#undef SUGGEST
 
     IDS_DESTFULL                "The destination disk is full.  Please insert another disk to continue."
     IDS_WRITEPROTECTFILE        "This is a system, hidden, or read-only file."
@@ -560,6 +559,7 @@ JAPANEND
     IDS_MULTICOMPRESSERR        "File Manager is currently in the process of compressing/uncompressing files.\nYou must wait until this is complete before attempting to compress/uncompress additional files."
 
 END
+#undef SUGGEST
 
 /* Help strings for the popup menus.
  */
