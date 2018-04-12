@@ -2090,7 +2090,7 @@ TreeControlWndProc(
       //
       DWORD i;
 
-      if (FindItemFromPath(hwndLB, (LPTSTR)lParam, wParam != 0, (DWORD*)&i, NULL))
+      if (FindItemFromPath(hwndLB, (LPTSTR)lParam, wParam != 0, &i, NULL))
 	  {
 		  SendMessage(hwndLB, LB_SETCURSEL, i, 0L);
 
@@ -2122,7 +2122,7 @@ TreeControlWndProc(
 	   PDNODE    pNode;
 
 	   // do the same as TC_SETDIRECTORY above for the simple case
-	   if (FindItemFromPath(hwndLB, (LPTSTR)lParam, 0, (DWORD*)&i, &pNode))
+	   if (FindItemFromPath(hwndLB, (LPTSTR)lParam, 0, &i, &pNode))
 	   {
 		   // found exact node already displayed; select it and continue
 		   SendMessage(hwndLB, LB_SETCURSEL, i, 0L);
@@ -2220,7 +2220,7 @@ TreeControlWndProc(
          // Do it this way to be case insensitive.
          //
          cchMatch = wcslen(rgchMatch);
-         if (cchMatch > (INT)wcslen(pNode->szName))
+         if (cchMatch > wcslen(pNode->szName))
                 cchMatch = wcslen(pNode->szName);
          if (CompareString( LOCALE_USER_DEFAULT, NORM_IGNORECASE, 
              rgchMatch, cchMatch, pNode->szName, cchMatch) == 2)
