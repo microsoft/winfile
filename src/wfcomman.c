@@ -19,9 +19,7 @@
 #include <commctrl.h>
 #include <ole2.h>
 
-#ifndef HELP_PARTIALKEY
 #define HELP_PARTIALKEY 0x0105L    // call the search engine in winhelp
-#endif
 
 #define VIEW_NOCHANGE VIEW_PLUSES
 
