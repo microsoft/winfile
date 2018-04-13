@@ -2017,9 +2017,9 @@ ChangeDisplay:
        WritePrivateProfileBool(szMinOnRun, bMinOnRun);
        goto CHECK_OPTION;
 
-    case IDM_INDEXONRUN:
-       bTemp = bIndexOnRun = !bIndexOnRun;
-       WritePrivateProfileBool(szIndexOnRun, bIndexOnRun);
+    case IDM_INDEXONLAUNCH:
+       bTemp = bIndexOnLaunch = !bIndexOnLaunch;
+       WritePrivateProfileBool(szIndexOnLaunch, bIndexOnLaunch);
 
 CHECK_OPTION:
        //
