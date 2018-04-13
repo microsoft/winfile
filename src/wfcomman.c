@@ -2016,6 +2016,10 @@ ChangeDisplay:
        bTemp = bMinOnRun = !bMinOnRun;
        WritePrivateProfileBool(szMinOnRun, bMinOnRun);
 
+    case IDM_INDEXONRUN:
+       bTemp = bIndexOnRun = !bIndexOnRun;
+       WritePrivateProfileBool(szIndexOnRun, bIndexOnRun);
+
 CHECK_OPTION:
        //
        // Check/Uncheck the menu item.

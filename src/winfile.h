@@ -988,6 +988,8 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define IDM_SAVENOW         513
 #endif
 
+#define IDM_INDEXONRUN      514
+
 #define IDM_SECURITY        5
 #define IDM_PERMISSIONS     605      // !! WARNING HARD CODED !!
 #define IDM_AUDITING        606
@@ -1681,6 +1683,7 @@ Extern BOOL   bJapan      EQ( FALSE );
 JAPANEND
 
 Extern BOOL bMinOnRun     EQ( FALSE );
+Extern BOOL bIndexOnRun   EQ( TRUE );
 Extern BOOL bStatusBar    EQ( TRUE );
 
 Extern BOOL bDriveBar        EQ( TRUE );
@@ -1716,6 +1719,7 @@ Extern TCHAR        szToolbar[]             EQ( TEXT("ToolBar") );
 Extern TCHAR        szNewWinOnNetConnect[]  EQ( TEXT("NewWinOnNetConnect") );
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
+Extern TCHAR        szIndexOnRun[]          EQ( TEXT("IndexOnRun") );
 Extern TCHAR        szStatusBar[]           EQ( TEXT("StatusBar") );
 Extern TCHAR        szSaveSettings[]        EQ( TEXT("Save Settings") );
 
