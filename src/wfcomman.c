@@ -2015,6 +2015,7 @@ ChangeDisplay:
     case IDM_MINONRUN:
        bTemp = bMinOnRun = !bMinOnRun;
        WritePrivateProfileBool(szMinOnRun, bMinOnRun);
+       goto CHECK_OPTION;
 
     case IDM_INDEXONRUN:
        bTemp = bIndexOnRun = !bIndexOnRun;
