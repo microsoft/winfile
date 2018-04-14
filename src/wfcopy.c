@@ -3587,4 +3587,3 @@ CopyMoveRetry(LPTSTR pszDest, INT nError, PBOOL pbErrorOnDest)
 
    return 0;        // success
 }
-

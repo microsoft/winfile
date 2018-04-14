@@ -60,4 +60,3 @@ VOID DbgTraceDefMessage(LPTSTR funName, WORD msgId);
 #define LEAVE(funName)
 
 #endif // DBG
-

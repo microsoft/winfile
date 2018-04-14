@@ -15,6 +15,7 @@
 
 #define LABEL_NTFS_MAX 32
 #define LABEL_FAT_MAX  11
+#define CCH_VERSION    40
 
 VOID FormatDrive( IN PVOID ThreadParameter );
 VOID CopyDiskette( IN PVOID ThreadParameter );
@@ -25,6 +26,8 @@ VOID CopyDiskEnd(VOID);
 VOID FormatEnd(VOID);
 VOID CancelDlgQuit(VOID);
 VOID LockFormatDisk(INT iDrive1, INT iDrive2, DWORD dwMessage, DWORD dwCommand, BOOL bLock);
+
+BOOL GetProductVersion(WORD * pwMajor, WORD * pwMinor, WORD * pwBuild, WORD * pwRevision);
 
 DWORD ulTotalSpace, ulSpaceAvail;
 
@@ -722,6 +725,45 @@ DoHelp:
          return FALSE;
    }
   return TRUE;
+}
+
+/*--------------------------------------------------------------------------*/
+/*                                                                          */
+/*  AboutDlgProc() -  DialogProc callback function for ABOUTDLG             */
+/*                                                                          */
+/*--------------------------------------------------------------------------*/
+
+INT_PTR
+AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+{
+    WORD wMajorVersion   = 0;
+    WORD wMinorVersion   = 0;
+    WORD wBuildNumber    = 0;
+    WORD wRevisionNumber = 0;
+    TCHAR szVersion[CCH_VERSION] = { 0 };
+
+    switch (wMsg)
+    {
+    case WM_INITDIALOG:
+        if (GetProductVersion(&wMajorVersion, &wMinorVersion, &wBuildNumber, &wRevisionNumber))
+        {
+            if (SUCCEEDED(StringCchPrintf(szVersion, CCH_VERSION, TEXT("Version %d.%d.%d.%d"),
+                (int)wMajorVersion, (int)wMinorVersion, (int)wBuildNumber, (int)wRevisionNumber)))
+            {
+                SetDlgItemText(hDlg, IDD_VERTEXT, szVersion);
+            }
+        }
+        return TRUE;
+    case WM_COMMAND:
+        switch (GET_WM_COMMAND_ID(wParam, lParam))
+        {
+        case IDOK:
+        case IDCANCEL:
+            EndDialog(hDlg, IDOK);
+            return TRUE;
+        }
+    }
+    return FALSE;
 }
 
 VOID
@@ -1672,4 +1714,63 @@ DestroyCancelWindow()
    }
    CancelInfo.hCancelDlg = NULL;
 }
-
+
+//
+// GetProductVersion
+// Gets the product version values for the current module
+//
+// Parameters:
+//   pwMajor    - [OUT] A pointer to the major version number
+//   pwMinor    - [OUT] A pointer to the minor version number
+//   pwBuild    - [OUT] A pointer to the build number
+//   pwRevision - [OUT] A pointer to the revision number
+//   
+// Returns TRUE if successful
+//
+BOOL GetProductVersion(WORD * pwMajor, WORD * pwMinor, WORD * pwBuild, WORD * pwRevision)
+{
+    BOOL               success = FALSE;
+    TCHAR              szCurrentModulePath[MAX_PATH];
+    DWORD              cchPath;
+    DWORD              cbVerInfo;
+    LPVOID             pFileVerInfo;
+    UINT               uLen;
+    VS_FIXEDFILEINFO * pFixedFileInfo;
+
+    cchPath = GetModuleFileName(NULL, szCurrentModulePath, MAX_PATH);
+
+    if (cchPath && GetLastError() != ERROR_INSUFFICIENT_BUFFER)
+    {
+        cbVerInfo = GetFileVersionInfoSize(szCurrentModulePath, NULL);
+
+        if (cbVerInfo)
+        {
+            pFileVerInfo = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, cbVerInfo);
+
+            if (pFileVerInfo)
+            {
+                if (GetFileVersionInfo(szCurrentModulePath, 0, cbVerInfo, pFileVerInfo))
+                {
+                    // Get the pointer to the VS_FIXEDFILEINFO structure
+                    if (VerQueryValue(pFileVerInfo, TEXT("\\"), (LPVOID *)&pFixedFileInfo, &uLen))
+                    {
+                        if (pFixedFileInfo && uLen)
+                        {
+                            *pwMajor    = HIWORD(pFixedFileInfo->dwProductVersionMS);
+                            *pwMinor    = LOWORD(pFixedFileInfo->dwProductVersionMS);
+                            *pwBuild    = HIWORD(pFixedFileInfo->dwProductVersionLS);
+                            *pwRevision = LOWORD(pFixedFileInfo->dwProductVersionLS);
+
+                            success = TRUE;
+                        }
+                    }
+                }
+
+                HeapFree(GetProcessHeap(), 0, pFileVerInfo);
+            }
+        }
+
+    }
+
+    return success;
+}

@@ -180,8 +180,8 @@ HDROP CreateDropFiles(POINT pt, BOOL fNC, LPTSTR pszFiles)
 static HRESULT StreamToFile(IStream *stream, TCHAR *szFile)
 {
     byte buffer[BLOCK_SIZE];
-    unsigned long bytes_read;
-    int bytes_written;
+    DWORD bytes_read;
+    DWORD bytes_written;
     HRESULT hr;
 	HANDLE hFile;
 

@@ -1319,4 +1319,3 @@ bDialogMessage(PMSG pMsg)
    return FALSE;
 }
 
-

@@ -4574,4 +4574,3 @@ GenerateFriendlyName(LPTSTR lpszCommand)
     return (p);
 }
 
-
