@@ -2526,14 +2526,12 @@ TRY_COPY_AGAIN:
 #endif
                      } else {
 
-                        if (pCopyInfo->dwFunc == FUNC_MOVE) {
-
-                           //
-                           // On move, must delete destination file
-                           // on copy, the fs does this for us.
-                           //
-                           ret = SafeFileRemove (szDest);
-                        }
+                         //
+                         // On move, must delete destination file
+                         // on copy, the fs does this for us.
+                         //
+                         ret = SafeFileRemove (szDest);
+                        
 
                          //
                          //  Reset the file attributes that may have been
@@ -2648,8 +2646,9 @@ TRY_COPY_AGAIN:
                // ERROR_PATH_NOT_FOUND ERROR_FILE_NOT_FOUND, do we're
                // ok by accident.
                //
+			   if(pcr)
+			      pcr->bFastMove = TRUE;
 
-               pcr->bFastMove = TRUE;
                goto DoMove;
             }
 #endif

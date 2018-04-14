@@ -1838,7 +1838,7 @@ PutSize(
     /*
      *  Convert it into a string.
      */
-    wsprintf(szBuffer, TEXT("%I64u"), pqSize->QuadPart);
+    wsprintf(szBuffer, TEXT("%lld"), pqSize->QuadPart);
 
     /*
      *  Format the string.
@@ -2901,7 +2901,8 @@ UsedAltname:
          goto GDSExit;
 
       if ((!bLFNTest) && ((i + 1) < iMac))
-         lstrcat(p, szBlank);
+         if(p)
+            lstrcat(p, szBlank);
    }
 
 GDSExit:

@@ -20,13 +20,12 @@
 DWORD
 PrintFile(HWND hwnd, LPTSTR szFile)
 {
-   DWORD          ret;
+   DWORD          ret = 0;
    INT           iCurCount;
    INT           i;
    HCURSOR       hCursor;
    WCHAR      szDir[MAXPATHLEN];
 
-   ret = 0;
 
    hCursor = SetCursor(LoadCursor(NULL, IDC_WAIT));
    iCurCount = ShowCursor(TRUE) - 1;

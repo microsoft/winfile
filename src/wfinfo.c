@@ -444,7 +444,12 @@ NetCon_UpdateLines(DRIVE drive, DWORD dwType)
 #define DOCBUCKETMAXBIT 5
 #define DOCBUCKETMAX (1 << DOCBUCKETMAXBIT)
 
+#if DOCBUCKETMAXBIT == 5
+#define DOCHASHFUNC(x) (x[0] & 0x1F) // 0x1F = ~(~0 << DOCBUCKETMAXBIT) in VS 2017
+#else
+#pragma message("WARNING:	DOCHASHFUNC(x) may cause undefined behaviour.")
 #define DOCHASHFUNC(x) (x[0] & ~(~0 << DOCBUCKETMAXBIT))
+#endif
 
 struct _DOC_BUCKET {
    PDOCBUCKET next;

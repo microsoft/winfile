@@ -65,7 +65,7 @@ public:
 
 		vector<TValue> *results = NULL;
 		TValue val = TValue();
-		TPair laspair = make_pair(lowered, val);
+		TPair laspair;
 
 		this->m_spinlock.Lock();
 
@@ -75,13 +75,14 @@ public:
 			itr = m_LastItr;
 		else
 		{
+			laspair = make_pair(lowered, val);
 			itr = lower_bound(m_Values.begin(), m_Values.end(), laspair, CompareFirst);
 
 			m_lastStr = lowered;
 			m_LastItr = itr;
 		}
 
-		for (; itr != m_Values.end(); itr++)
+		for (; itr != m_Values.end(); ++itr)
 		{
 			const wstring& key = itr->first;
 			int cmp = key.compare(0, lowered.size(), lowered);

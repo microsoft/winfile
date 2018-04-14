@@ -356,7 +356,7 @@ DrawDrive(HDC hdc, INT x, INT y, DRIVEIND driveInd, BOOL bCurrent, BOOL bFocus)
 BOOL
 CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
 {
-   DWORD err;
+   // DWORD err;
    DRIVEIND driveInd;
    HCURSOR hCursor;
    WCHAR szDrive[] = SZ_ACOLON;
@@ -378,6 +378,7 @@ CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
    while ((driveInd < cDrives) && (rgiDrive[driveInd] != drive))
        driveInd++;
 
+/*
    switch (IsNetDrive(drive)) {
 
    case 2:
@@ -446,6 +447,7 @@ CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
    default:
       break;
    }
+*/
 
    if (hCursor)
       SetCursor(hCursor);
@@ -1068,8 +1070,6 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
             nDrive = DriveFromPoint(hwndDriveBar, pt);
 
             if (nDriveDoubleClick == nDrive) {
-                nDriveDoubleClick = -1;
-
                // the double click is valid
                if (nDrive >= 0)
                     NewTree(rgiDrive[nDrive], hwndChild);

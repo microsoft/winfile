@@ -244,13 +244,9 @@ WORD I_LFNEditName( LPTSTR lpSrc, LPTSTR lpEd, LPTSTR lpRes, INT iResBufSize )
                   ( *lpSrc != CHAR_NULL ) && ( *lpSrc != delimit )) {
 #endif
 
-                  if (ResLen < iResBufSize) {
+                  *(lpRes++) = *(lpSrc++);
+                  ResLen++;
 
-                     *(lpRes++) = *(lpSrc++);
-                     ResLen++;
-                  }
-                  else
-                     return ERROR_INVALID_PARAMETER ;
                }
             }
             break;

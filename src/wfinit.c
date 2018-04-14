@@ -687,11 +687,13 @@ CheckDirExists(
 {
    BOOL bRet = FALSE;
 
+   /*
    if (IsNetDrive(DRIVEID(szDir)) == 2) {
 
       CheckDrive(hwndFrame, DRIVEID(szDir), FUNC_SETDRIVE);
       return TRUE;
    }
+   */
 
    if (IsValidDisk(DRIVEID(szDir)))
       bRet = SetCurrentDirectory(szDir);
@@ -1249,10 +1251,11 @@ JAPANEND
    //
    {
       HWND hwndPrev;
-      HWND hwnd;
+      //  HWND hwnd;
 
       hwndPrev = NULL; // FindWindow (szFrameClass, NULL);
 
+	  /*
       if (hwndPrev != NULL) {
          //  For Win32, this will accomplish almost the same effect as the
          //  above code does for Win 3.0/3.1   [stevecat]
@@ -1268,7 +1271,7 @@ JAPANEND
 
          return FALSE;
       }
-
+	  */
    }
 
 

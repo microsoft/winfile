@@ -7,8 +7,12 @@
 
 ********************************************************************/
 
+#define APSTUDIO_HIDDEN_SYMBOLS
 #include "winfile.h"
+#include <prsht.h>
+#undef APSTUDIO_HIDDEN_SYMBOLS
 #include "wfcopy.h"
+
 
 BITMAPS         BITMAP PRELOAD wbbitmap.bmp
 

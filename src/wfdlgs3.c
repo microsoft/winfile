@@ -785,7 +785,7 @@ FormatDrive( IN PVOID ThreadParameter )
          CancelInfo.Info.Format.fmMediaType,
          wszFileSystem,
          wszLabel,
-         (BOOLEAN)CancelInfo.Info.Format.fQuick,
+         (BOOLEAN)(CancelInfo.Info.Format.fQuick ? TRUE : FALSE),
          (FMIFS_CALLBACK)&Callback_Function);
    } while (CancelInfo.Info.Format.fFlags & FF_RETRY);
 
@@ -1444,7 +1444,7 @@ DrivesDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
          INT nCurDrive;
          DRIVEIND nIndex;
          LPTSTR lpszVolShare;
-         TCHAR szDrive[] = SZ_ACOLON;
+         // TCHAR szDrive[] = SZ_ACOLON;
 
          nCurDrive = GetSelectedDrive();
          nIndex = 0;

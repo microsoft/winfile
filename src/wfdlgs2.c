@@ -151,7 +151,7 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
 				  GetDlgItemText(hDlg, IDD_DATE, szStart, COUNTOF(szStart));
 				  SearchInfo.ftSince.dwHighDateTime = SearchInfo.ftSince.dwLowDateTime = 0;
-				  if (lstrlen(szStart) != 0)
+				  if (szStart[0] != '\0')
 				  {
 					  DATE date;
 					  SYSTEMTIME st;
