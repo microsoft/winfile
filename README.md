@@ -1,21 +1,32 @@
 # ![icon](winfile.png) Windows File Manager (WinFile)
 
 The Windows File Manager lives again and runs as a native x86 and x64 desktop app
-on all currently supported version of Windows, including Windows 10.
+on all currently supported version of Windows, including Windows 10. I welcome your thoughts, comments and suggestions.
 
-I welcome your thoughts, comments and suggestions.  There are two
-primary versions of the source code in the master branch:
+There are two primary versions of the source code in the master branch:
 
 1. original_plus tag: refers to the source for WinFile as of Windows NT4 with minimal changes
 so that it compiles with Visual Studio and runs on current Windows.
 
 2. current master: contains my personal changes / additions to WinFile.
 
-I will consider bugs fixes and suggestions for minor changes to the master branch.  Feel free
-to create a pull request or post issues as you see fit.
+I will consider bugs fixes and suggestions for minor changes to the master branch.  Feel free to create a pull request or post issues as you see fit.
 
 I will not be changing the original_plus sources nor creating other branches for other purposes.
 You are welcome do that on your own.
+
+##Download The App
+If you just want to download the WinFile application without worrying about compiling from the source code, we have precompiled versions available for both original_plus as well as the latest stable release for you to download. Source code for the corresponding release is also, optionally, available.
+
+Please select the version which you would like to download.
+
+[Latest Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
+
+[Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
+
+To see more release binaries, including of older versions, [see the releases page](http://https://github.com/Microsoft/winfile/releases).
+
+
 
 ## History
 
