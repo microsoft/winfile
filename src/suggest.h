@@ -45,4 +45,3 @@ PDWORD FormatSuggest(DWORD dwError);
 #define DE_UPDATING         (DE_BEGIN+16)
 #define DE_DELEXTWRONGMODE  (DE_BEGIN+17)
 #define DE_REGNAME          (DE_BEGIN+18)
-
