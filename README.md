@@ -24,8 +24,7 @@ Please select the version which you would like to download.
 
 [Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
 
-To see more release binaries, including of older versions, [see the releases page](http://https://github.com/Microsoft/winfile/releases).
-
+To see more release binaries, including of older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
 
 
 ## History
