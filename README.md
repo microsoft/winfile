@@ -15,7 +15,7 @@ I will consider bugs fixes and suggestions for minor changes to the master branc
 I will not be changing the original_plus sources nor creating other branches for other purposes.
 You are welcome do that on your own.
 
-##Download The App
+## Download The App
 If you just want to download the WinFile application without worrying about compiling from the source code, we have precompiled versions available for both original_plus as well as the latest stable release for you to download. Source code for the corresponding release is also, optionally, available.
 
 Please select the version which you would like to download.
