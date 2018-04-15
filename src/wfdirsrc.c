@@ -252,7 +252,7 @@ SelectItem(HWND hwndLB, WPARAM wParam, BOOL bSel)
 //           detecting all kinds of different destinations.
 //
 //      hwndLB  source listbox (either the dir or the sort)
-//      wParam  same as sent for WM_DRAGLOOP (TRUE if on a dropable sink)
+//      wParam  same as sent for WM_DRAGLOOP (TRUE if on a droppable sink)
 //      lpds    drop struct sent with the message
 //      bSearch TRUE if we are in the search listbox
 //
@@ -312,7 +312,7 @@ DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
       goto DragLoopCont;
    }
 
-   hwndMDIChildSink = GetMDIChildFromDecendant(lpds->hwndSink);
+   hwndMDIChildSink = GetMDIChildFromDescendant(lpds->hwndSink);
 
    //
    // Are we over the source listbox? (sink and source the same)
@@ -365,7 +365,7 @@ DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
    if (hwndDir && (hwndDir == GetParent(lpds->hwndSink))) {
 
       //
-      // Are we over an occupided part of the list box?
+      // Are we over an occupied part of the list box?
       //
       if (lpds->dwControlData != (DWORD)-1) {
 
@@ -512,7 +512,7 @@ ClearStatus:
 
       //
       // We are in a directory window (not search window)
-      // but we aren't over a folder, so just use the curernt directory.
+      // but we aren't over a folder, so just use the current directory.
       //
       SendMessage(GetParent(hwndLB), FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
       StripBackslash(szTemp);
@@ -614,8 +614,8 @@ DSDragScrollSink(LPDROPSTRUCT lpds)
     POINT ptDropScr;
     HWND hwndToScroll;
 
-    hwndMDIChildSource = GetMDIChildFromDecendant(lpds->hwndSource);
-    hwndMDIChildSink = GetMDIChildFromDecendant(lpds->hwndSink);
+    hwndMDIChildSource = GetMDIChildFromDescendant(lpds->hwndSource);
+    hwndMDIChildSink = GetMDIChildFromDescendant(lpds->hwndSink);
 
     // calculate the screen x/y of the ptDrop
     if (lpds->hwndSink == NULL)
@@ -898,7 +898,7 @@ DSTrackPoint(
       bDir = lpxdta->dwAttrs & ATTR_DIR;
 
       //
-      // avoid dragging the parrent dir
+      // avoid dragging the parent dir
       //
       if (lpxdta->dwAttrs & ATTR_PARENT) {
          return 1;
@@ -1114,7 +1114,7 @@ DSDropObject(
    // directory drop on a file? this is a NOP
    //
    if (lpds->wFmt == DOF_DIRECTORY) {
-      DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+      DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
       return FALSE;
    }
 
@@ -1167,7 +1167,7 @@ DSDropObject(
 
 
    //
-   // create an absolute path to the argument (search window alaready
+   // create an absolute path to the argument (search window already
    // is absolute)
    //
    if (lpds->hwndSource == hwndSearch) {
@@ -1195,7 +1195,7 @@ DSDropObject(
       MyMessageBox(hwndFrame, IDS_EXECERRTITLE, (WORD)ret, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
 
 DODone:
-   DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+   DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
    if (pSel)
    {
       LocalFree((HANDLE)pSel);
@@ -1237,7 +1237,7 @@ DirMoveCopy:
 
    ret = DMMoveCopyHelper(pFrom, szTemp, fShowSourceBitmaps);
 
-   DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+   DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
 
    if (ret)
       return TRUE;

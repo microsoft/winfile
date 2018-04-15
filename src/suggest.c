@@ -39,7 +39,7 @@ DWORD adwSuggest[][3] = {
 // Return:   DWORD      # characters added
 //
 // Assumes:  iError has DE_BIT off for system errors
-//           lpBuf[0] if no inital string
+//           lpBuf[0] if no initial string
 //
 // Effects:  lpBuf appended with text
 //
@@ -232,4 +232,3 @@ FormatSuggest( DWORD dwError )
    }
    return pdwReturn;
 }
-

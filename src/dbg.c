@@ -129,4 +129,3 @@ WORD msgId)
 }
 
 #endif // DBG
-

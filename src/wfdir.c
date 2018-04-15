@@ -291,7 +291,7 @@ FocusOnly:
 //
 // Name:     CreateLBLine
 //
-// Synopsis: Creats a string with all details in a file
+// Synopsis: Creates a string with all details in a file
 //
 // Return:
 //
@@ -485,7 +485,7 @@ DirWndProc(
       //
       // get the string
       //
-      StripFilespec((LPWSTR)lParam); // Remove the trailing extention
+      StripFilespec((LPWSTR)lParam); // Remove the trailing extension
 
       AddBackslash((LPWSTR)lParam);  // terminate with a backslash
       break;
@@ -510,7 +510,7 @@ DirWndProc(
 
    case FS_SETSELECTION:
       //
-      // wParam is the select(TRUE)/unselect(FALSE) param
+      // wParam is the select(TRUE)/deselect(FALSE) param
       // lParam is the filespec to match against
       //
       SendMessage(hwndLB, WM_SETREDRAW, FALSE, 0L);
@@ -599,7 +599,7 @@ DirWndProc(
       UINT  cItems;
       LPWSTR szItem;
       WCHAR rgchMatch[MAXPATHLEN];
-      INT cchMatch;
+      SIZE_T cchMatch;
 
       if ((ch = LOWORD(wParam)) <= CHAR_SPACE || !GetWindowLongPtr(hwnd, GWL_HDTA))
          return(-1L);
@@ -694,8 +694,8 @@ DirWndProc(
 
 #define lpds ((LPDROPSTRUCT)lParam)
 
-      iSelHilite = lpds->dwControlData;
-      DSRectItem(hwndLB, iSelHilite, (BOOL)wParam, FALSE);
+      iSelHighlight = lpds->dwControlData;
+      DSRectItem(hwndLB, iSelHighlight, (BOOL)wParam, FALSE);
       break;
 
 #undef lpds
@@ -720,16 +720,16 @@ DirWndProc(
 
          // Is it a new one?
 
-         if (iSel == iSelHilite && fOldShowSourceBitmaps == fShowSourceBitmaps)
+         if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
             break;
 
          fOldShowSourceBitmaps = fShowSourceBitmaps;
 
          // Yup, un-select the old item.
-         DSRectItem(hwndLB, iSelHilite, FALSE, FALSE);
+         DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
 
          // Select the new one.
-         iSelHilite = iSel;
+         iSelHighlight = iSel;
          DSRectItem(hwndLB, iSel, TRUE, FALSE);
          break;
 
@@ -1027,7 +1027,7 @@ ChangeDisplay(
       // listbox is filled.
       //
 
-      /*** FALL THRU ***/
+      /*** FALL THROUGH ***/
 
    case FS_CHANGEDISPLAY:
 
@@ -1184,7 +1184,7 @@ ChangeDisplay(
          // recreate the whole thing)
          //
          // if lParam == NULL this is a refresh, otherwise
-         // check for short circut case to avoid rereading
+         // check for short circuit case to avoid rereading
          // the directory
          //
          GetMDIWindowText(hwndListParms, szPath, COUNTOF(szPath));
@@ -1303,7 +1303,7 @@ ChangeDisplay(
    case WM_CREATE:
 
       //
-      // dwNewView, dwNewSort and dwNewAddribs define the viewing
+      // dwNewView, dwNewSort and dwNewAttribs define the viewing
       // parameters of the new window (GLOBALS)
       // the window text of the parent window defines the
       // filespec and the directory to open up
@@ -1838,7 +1838,7 @@ PutSize(
     /*
      *  Convert it into a string.
      */
-    wsprintf(szBuffer, TEXT("%I64u"), pqSize->QuadPart);
+    wsprintf(szBuffer, TEXT("%lld"), pqSize->QuadPart);
 
     /*
      *  Format the string.
@@ -2006,7 +2006,7 @@ PutAttributes(
 // Name:     GetMaxExtent
 //
 // Synopsis: Compute the max ext of all files in this DTA block
-//           and update the case to match (wTextAttrebs & TA_LOWERCASE)
+//           and update the case to match (wTextAttribs & TA_LOWERCASE)
 //
 // Return:
 //
@@ -2263,7 +2263,7 @@ FixTabsAndThings(
 // Effects:
 //
 //    Listbox tabs array
-//       LB_SETCOLUMWIDTH
+//       LB_SETCOLUMNWIDTH
 //       or
 //       LB_SETHORIZONTALEXTENT
 //
@@ -2360,7 +2360,7 @@ RightTabbedTextOut(
    cch = CharCountToTab(pLine);
    GetTextExtentPoint32(hdc, pLine, cch, &size);
 
-   // first position is left alligned so bias initial x value
+   // first position is left aligned so bias initial x value
    x += size.cx;
 
    //
@@ -2447,7 +2447,7 @@ Error:
 
       //
       // Now always set 0L since string is in lpxdta->byBitmap!
-      // tolken for no items
+      // token for no items
       //
       goto Error;
 
@@ -2631,7 +2631,7 @@ CDDone:
 // Synopsis:
 //
 // Takes a Listbox and returns a string containing the names of the selected
-// files seperated by spaces.
+// files separated by spaces.
 //
 // iSelType == 0 return all files: dirs fully qualified, rest filespec only
 // iSelType == 1 return only the first file (filter out the rest)
@@ -2900,8 +2900,10 @@ UsedAltname:
       if (iSelType & 1)
          goto GDSExit;
 
-      if ((!bLFNTest) && ((i + 1) < iMac))
-         lstrcat(p, szBlank);
+      if ((!bLFNTest) && ((i + 1) < iMac)) {
+          if (p)
+              lstrcat(p, szBlank);
+      }
    }
 
 GDSExit:
@@ -2945,7 +2947,7 @@ GDSDone:
 //          structure
 //
 //          hDTA->head.dwEntries must be < INTMAX since there is
-//          a conversion from dword to int.  bleech.
+//          a conversion from dword to int.  blech.
 //
 // Effects:
 //
@@ -3356,7 +3358,7 @@ GetDirStatus(
 
 
 HWND
-GetMDIChildFromDecendant(HWND hwnd)
+GetMDIChildFromDescendant(HWND hwnd)
 {
    HWND hwndT;
 

@@ -26,7 +26,7 @@ typedef struct {
    HANDLE hFindFile;           // handle returned by FindFirstFile()
    DWORD dwAttrFilter;         // search attribute mask.
    DWORD err;                  // error info if failure.
-   WIN32_FIND_DATA fd;         // FindFirstFile() data strucrure;
+   WIN32_FIND_DATA fd;         // FindFirstFile() data structure;
    INT   nSpaceLeft;           // Space left for deeper paths
 } LFNDTA, *LPLFNDTA, * PLFNDTA;
 
@@ -52,4 +52,3 @@ BOOL  LFNMergePath(LPTSTR,LPTSTR);
 BOOL  IsLFNSelected(VOID);
 
 
-

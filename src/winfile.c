@@ -327,7 +327,7 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
                      //
                      uCompFlags = MF_BYCOMMAND | MF_ENABLED;
 
-                     // FALL THRU...
+                     // FALL THROUGH...
                   }
                   case ( 2 ) :
                   {
@@ -734,7 +734,7 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
          ccs.hWindowMenu = (HWND)dwMenuIDs[3];
          ccs.idFirstChild = IDM_CHILDSTART;
 
-         // create the MDI client at aproximate size to make sure
+         // create the MDI client at approximate size to make sure
          // "run minimized" works
 
          GetClientRect(hwndFrame, &rc);
@@ -1023,7 +1023,7 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
       wParam = IDM_EXIT;
 
-      /*** FALL THRU to WM_COMMAND ***/
+      /*** FALL THROUGH to WM_COMMAND ***/
 
    case WM_COMMAND:
       {
@@ -1047,7 +1047,7 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
             DestroyWindow(hwnd);
             break;
          }
-          /*** FALL THRU ***/
+          /*** FALL THROUGH ***/
 
    default:
 
@@ -1212,7 +1212,7 @@ EnablePropertiesMenu(
    LPWSTR pSel)
 {
    LPXDTALINK lpStart;
-   LRESULT dwHilight;  // Number of highlighted entries in listbox
+   LRESULT dwHighlight;  // Number of highlighted entries in listbox
    LPXDTA lpxdta;    // Pointer to listbox DTA data
    BOOL bRet;        // Return value
    HWND hwndLB;
@@ -1235,13 +1235,13 @@ EnablePropertiesMenu(
    if (!hwndLB)
       return (FALSE);
 
-   dwHilight = SendMessage(hwndLB, LB_GETSELCOUNT, 0, 0L);
+   dwHighlight = SendMessage(hwndLB, LB_GETSELCOUNT, 0, 0L);
 
    //
    // This is OK since the search window can never contain the root
    //
    if (hwndActive == hwndSearch)
-      return (dwHilight >= 1);
+      return (dwHighlight >= 1);
 
    hwndTree = HasTreeWindow(hwndActive);
    hwndDir = HasDirWindow(hwndActive);
@@ -1255,10 +1255,10 @@ EnablePropertiesMenu(
       if (!(lpStart = (LPXDTALINK)GetWindowLongPtr(GetParent(hwndLB), GWL_HDTA)))
          return (FALSE);
 
-      if (dwHilight <= 0)
+      if (dwHighlight <= 0)
          goto ReturnFalse;
 
-      if (dwHilight > 1)
+      if (dwHighlight > 1)
          goto ReturnTrue;
 
       //
@@ -1319,4 +1319,3 @@ bDialogMessage(PMSG pMsg)
    return FALSE;
 }
 
-

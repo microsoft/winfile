@@ -32,7 +32,7 @@ public:
 	{
 	}
 
-	// copies the value, but doesn't assume any memory mangement needs be done
+	// copies the value, but doesn't assume any memory management needs be done
 	void Add(wstring key, TValue value)
 	{
 		this->m_spinlock.Lock();
@@ -70,7 +70,7 @@ public:
 		this->m_spinlock.Lock();
 
 		// if last saved string/iterator is a prefix of the new string, start there
-		TVector::const_iterator itr;
+		TItr itr;
 		if (m_lastStr.size() != 0 && lowered.compare(0, m_lastStr.size(), m_lastStr) == 0)
 			itr = m_LastItr;
 		else

@@ -566,7 +566,7 @@ RemoveEndQuote(
 //
 // Name:     DocInsert
 //
-// Synopsis: Inserts an extension into a pDocBucket structre
+// Synopsis: Inserts an extension into a pDocBucket structure
 //
 // INOUTC    ppDocBucket  --  Doc struct to add to
 // INOUTC    lpszExt      --  Extension to add
@@ -913,7 +913,7 @@ DocCloseEnum(PDOCENUM pDocEnum)
 //
 // 1. Slow work goes to temporary stack space
 //
-// 2. Critical sections guarentee single update; lagging thread discards
+// 2. Critical sections guarantee single update; lagging thread discards
 //    its information instead of modifying state.
 //
 // 3. It is assumed that all threads will attempt U_ before using info.
@@ -945,7 +945,7 @@ DocCloseEnum(PDOCENUM pDocEnum)
 // Notes:    Until hEventUpdatePartial, no one can access:
 //           cDrives, aDriveInfo.
 //
-//           This is guarenteed to be synchonous with the main thread.
+//           This is guaranteed to be synchronous with the main thread.
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -996,7 +996,7 @@ UpdateInit(PVOID ThreadParameter)
       // Main:                         Worker:
       // Set hEventUpdate
       //                               Reset hEventUpdate
-      //                               Reset hEventUpdateParitial
+      //                               Reset hEventUpdatePartial
       // Wait hEventUpdatePartial
       //
       // Worker never wakes up since hEventUpdate is reset.
@@ -1040,7 +1040,7 @@ UpdateDriveListWorker(VOID)
    INT cRealDrives = 0;
    INT i;
    HANDLE hEnum;
-   LPTCH pcBuf;       // 16k buffer.  bleech.
+   LPTCH pcBuf;       // 16k buffer.  blech.
    DWORD dwEntries;
    DRIVE drive;
    DWORD dwBufSiz = BUF_SIZ;
@@ -1146,7 +1146,7 @@ EnumRetry:
                         LocalFree((HLOCAL)pDriveInfo->lpConnectInfo);
 
                      //
-                     // To avoid redundancy and preserve persistant connectn
+                     // To avoid redundancy and preserve persistent connection
                      // remote names when LanmanWorkstation stops, we
                      // save the names enumerated here.
                      //
@@ -1964,7 +1964,7 @@ ResetDriveInfo()
       //
       // Any clearing of drive information should be done
       // here.  As soon as a drive is invalid, we reset the
-      // neccesary stuff when it becomes valid.
+      // necessary stuff when it becomes valid.
       // (Must be set for "good" drives elsewhere)
       //
 
@@ -1972,7 +1972,7 @@ ResetDriveInfo()
       // Clear all invalid drives' bShareChkFail.
       //
       // (This bool checks if a IsNetDir / IsNetPath fails-- due to
-      // WNetGetDirectoryType failing (due to not being adminstrator on
+      // WNetGetDirectoryType failing (due to not being administrator on
       // remote machine).  Only call WNetGetDirectory once, since it is
       // s-l-o-w for fails.  It's also cached, too.
       //
@@ -2092,4 +2092,3 @@ WaitLoadEvent(BOOL bNet)
 }
 
 
-

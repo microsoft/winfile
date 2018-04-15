@@ -42,7 +42,10 @@ SaveWindows(HWND hwndMain)
 
    SystemParametersInfo(SPI_GETWORKAREA, 0, (PVOID)&rcT, 0);
 
-   wsprintf(buf2, TEXT("%d,%d,%d,%d, , ,%d"), rcT.left + wp.rcNormalPosition.left,
+   // WINDOWPLACEMENT coordinates for top-level windows are in Workspace coordinates;
+   // we tranlate this into screen coordinates prior to saving;
+   // also, the values saved for the third and fourth values are width and height.
+   wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld, , ,%u"), rcT.left + wp.rcNormalPosition.left,
       rcT.top + wp.rcNormalPosition.top,
       wp.rcNormalPosition.right - wp.rcNormalPosition.left,
       wp.rcNormalPosition.bottom - wp.rcNormalPosition.top,
@@ -90,7 +93,8 @@ DO_AGAIN:
          //   x_icon, y_icon,
          //   show_window, view, sort, attribs, split, directory
 
-         wsprintf(buf2, TEXT("%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%s"),
+         // NOTE: MDI child windows are in child coordinats; no translation is done.
+         wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld,%ld,%ld,%u,%lu,%lu,%lu,%d,%s"),
             wp.rcNormalPosition.left, wp.rcNormalPosition.top,
             wp.rcNormalPosition.right, wp.rcNormalPosition.bottom,
             wp.ptMinPosition.x, wp.ptMinPosition.y,
@@ -288,7 +292,7 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   if (!dwAttribs)
                         dwAttribs = ATTR_EVERYTHING;
 
-                  EndDialog(hDlg, TRUE);        // here to avoid exces repaints
+                  EndDialog(hDlg, TRUE);        // here to avoid excess repaints
 
                   // we need to update the tree if they changed the system/hidden
                   // flags.  ...  FIX31
@@ -347,7 +351,7 @@ SelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                         break;
 
                 case IDOK:      // select
-                case IDYES:     // unselect
+                case IDYES:     // deselect
 
                         // change "Cancel" to "Close"
 

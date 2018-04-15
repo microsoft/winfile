@@ -232,7 +232,7 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
 					 if (bMaximized)
 					 {
-						 // the WM_MDICREATE above ceates the window maximized; 
+						 // the WM_MDICREATE above creates the window maximized;
 						 // here we re-activate the original maximized window
 
 						 SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndMDIChild, 0L);
@@ -397,7 +397,7 @@ MessWithRenameDirPath(LPTSTR pszPath)
    // !! LATER !!
    //
    // Should we allow backslashes here also ?
-   // CheckSlashies(pszPath); or add || clause.
+   // CheckSlashes(pszPath); or add || clause.
    //
 
    lpsz = (CHAR_DQUOTE == pszPath[0]) ?
@@ -528,7 +528,7 @@ JAPANEND
          {
             TCHAR szDirs[MAXPATHLEN];
             LPTSTR rgszDirs[MAX_DRIVES];
-        	int drive, cchLeft, driveCur;
+            int drive, driveCur;
         	BOOL fFirst = TRUE;
             
             wParam = IDD_TO;
@@ -538,7 +538,6 @@ JAPANEND
 			driveCur = GetWindowLongPtr(hwndActive, GWL_TYPE);
 
 			lstrcpy(szDirs, TEXT("Other: "));
-   			cchLeft = MAXPATHLEN - wcslen(szDirs);
 
    			GetAllDirectories(rgszDirs);
 
@@ -546,16 +545,16 @@ JAPANEND
         	{
 				if (drive != driveCur && rgszDirs[drive] != NULL)
 				{
-	        		int cchT = wcslen(rgszDirs[drive]);
-    	    		if (cchLeft > 1)
-        			{
-        				if (!fFirst)
-	        				wcsncat(szDirs, TEXT(";"), 1);
-	        			fFirst = FALSE;
-        				wcsncat(szDirs, rgszDirs[drive], cchLeft-2);
-	        			cchLeft = MAXPATHLEN - wcslen(szDirs);
-	        		}
-	        	
+                    if (!fFirst)
+                    {
+                        wcsncat_s(szDirs, MAXPATHLEN, TEXT(";"), 1);
+                    }
+                    fFirst = FALSE;
+
+                    // NOTE: this call may truncate the result that goes in szDirs,
+                    // but due to the limited width of the dialog, we can't see it all anyway.
+                    wcsncat_s(szDirs, MAXPATHLEN, rgszDirs[drive], _TRUNCATE);
+
 	        		LocalFree(rgszDirs[drive]);
 	        	}
         	}
@@ -893,7 +892,7 @@ GetVersionDatum(LPTSTR pszName)
 // pszPath is modified by this call (pszName is appended).
 //
 // Note, Codepage is bogus, since everything is really in unicode.
-// Note, Language is bogus, since FindResourceEx takes a langauge already...
+// Note, Language is bogus, since FindResourceEx takes a language already...
 
 
 LPTSTR
@@ -1123,8 +1122,8 @@ FillVersionList(HWND hDlg)
    for (j=0; VerQueryValueIndexW(lpVersionBuffer,
                                 szVersionKey,
                                 j,
-                                &lpszKey,
-                                &lpszValue,
+                                (LPVOID*)&lpszKey,
+                                (LPVOID*)&lpszValue,
                                 &cbValue);  j++) {
 
       if (!lstrcmp(lpszKey, szFileVersion) ||
@@ -1941,6 +1940,3 @@ NoQuotes(LPTSTR szT)
    return TRUE;
 }
 
-
-
-

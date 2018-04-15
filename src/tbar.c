@@ -19,7 +19,7 @@
 // LATER: create a specific global for this to avoid
 // redundant computations.
 
-// ASSUMES: height of combob-padding > size of bitmap!
+// ASSUMES: height of combobox-padding > size of bitmap!
 
 
 #define MAXDESCLEN              128
@@ -283,7 +283,7 @@ EnableCheckTBButtons(HWND hwndActive)
 //
 //
 // Notes:   Non re-entrant!  This is due to static szDriveSlash!
-//          (NOT mulithread safe)
+//          (NOT multithread safe)
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -412,7 +412,7 @@ SelectToolbarDrive(DRIVEIND DriveInd)
 
 
 
-// value iDrive = drive to hilight added.
+// value iDrive = drive to highlight added.
 
 VOID
 FillToolbarDrives(DRIVE drive)
@@ -800,7 +800,7 @@ ExtensionHelp:
 
 NormalHelp:
          MenuHelp((WORD)uMsg, wParam, lParam, GetMenu(hwndFrame),
-            hAppInstance, hwndStatus, dwMenuIDs);
+            hAppInstance, hwndStatus, (LPUINT)dwMenuIDs);
       } else {
          uID = uItem;
 
@@ -1274,12 +1274,12 @@ AddSep:
 
    if (tbl.idBitmap) {
       tbAddBitmap.hInst = extensions[iExt].hModule;
-      tbAddBitmap.nID   = tbl.idBitmap;
+      tbAddBitmap.nID   = (UINT_PTR)tbl.idBitmap;
       iStart = (INT)SendMessage(hwndToolbar, TB_ADDBITMAP, tbl.cButtons,
                                (LPARAM) &tbAddBitmap);
    } else {
       tbAddBitmap.hInst = 0;
-      tbAddBitmap.nID   = (UINT)tbl.hBitmap;
+      tbAddBitmap.nID   = (UINT_PTR)tbl.hBitmap;
       iStart = (INT)SendMessage(hwndToolbar, TB_ADDBITMAP, tbl.cButtons,
                                (LPARAM) &tbAddBitmap);
    }
@@ -1325,7 +1325,6 @@ FreeToolbarExtensions(VOID)
 VOID
 SaveRestoreToolbar(BOOL bSave)
 {
-   static LPTSTR aNames[] = { szSettings, szTheINIFile } ;
    static TCHAR  szSubKey[] = TEXT("Software\\Microsoft\\File Manager\\Settings");
    static TCHAR  szValueName [] = TEXT("ToolbarWindow");
 

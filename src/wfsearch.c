@@ -460,8 +460,12 @@ INT
 FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse, BOOL bIncludeSubdirs)
 {
    INT iRet;
+   INT iFileCount;
    WCHAR szFileSpec[MAXPATHLEN+1];
    WCHAR szPathName[MAXPATHLEN+1];
+   WCHAR szWildCard[20];
+   LPWCH lpszCurrentFileSpecStart;
+   LPWCH lpszCurrentFileSpecEnd;
    LPXDTALINK lpStart = NULL;
 
    //
@@ -473,21 +477,48 @@ FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse, BOOL bIncludeS
    StripPath(szFileSpec);
    StripFilespec(szPathName);
 
-   FixUpFileSpec(szFileSpec);
+   lpszCurrentFileSpecEnd = szFileSpec;
 
    maxExt = 0;
 
    iDirsRead = 1;
    dwLastUpdateTime = 0;
+   iRet = 0;
+   iFileCount = 0;
 
-   iRet = SearchList(hwndLB,
-                     szPathName,
-                     szFileSpec,
-                     bRecurse,
-	                 bIncludeSubdirs,
-                     &lpStart,
-                     0,
-                     TRUE);
+   //
+   // This loop runs for each subspec in the search string
+   //
+   while (*lpszCurrentFileSpecEnd) {
+	  lpszCurrentFileSpecStart = lpszCurrentFileSpecEnd;
+
+	  // Find the next separator or the end of the string
+	  while ((*lpszCurrentFileSpecEnd) && (*lpszCurrentFileSpecEnd) != ';')
+		 lpszCurrentFileSpecEnd++;
+
+	  // If a separator is reached, add the string terminator and move the
+	  // end after the terminator for the next cycle
+	  if (*lpszCurrentFileSpecEnd == ';') {
+		  *lpszCurrentFileSpecEnd = TEXT('\0');
+		  lpszCurrentFileSpecEnd++;
+	  }
+
+      // copy the wild card to a temporary buffer sine FixUpFileSpec modifies the buffer
+      wcsncpy_s(szWildCard, COUNTOF(szWildCard), lpszCurrentFileSpecStart, _TRUNCATE);
+
+	  FixUpFileSpec(szWildCard);
+
+	  iRet = SearchList(hwndLB,
+		  szPathName,
+		  szWildCard,
+		  bRecurse,
+		  bIncludeSubdirs,
+		  &lpStart,
+		  iFileCount,
+		  TRUE);
+
+      iFileCount = iRet;
+   }
 
    //
    // Only SetSel if none set already
@@ -635,7 +666,7 @@ SearchWndProc(
       break;
 
    case FS_SETSELECTION:
-      // wParam is the select(TRUE)/unselect(FALSE) param
+      // wParam is the select(TRUE)/deselect(FALSE) param
       // lParam is the filespec to match against
 
       SendMessage(hwndLB, WM_SETREDRAW, FALSE, 0L);
@@ -948,8 +979,8 @@ SearchWndProc(
       SendMessage(hwndStatus, SB_SIMPLE, (wParam ? 1 : 0), 0L);
       UpdateWindow(hwndStatus);
 
-      iSelHilite = lpds->dwControlData;
-      DSRectItem(hwndLB, iSelHilite, (BOOL)wParam, TRUE);
+      iSelHighlight = lpds->dwControlData;
+      DSRectItem(hwndLB, iSelHighlight, (BOOL)wParam, TRUE);
       break;
 
    case WM_DRAGMOVE:
@@ -976,17 +1007,17 @@ SearchWndProc(
       //
       // Is it a new one?
       //
-      if (iSel == iSelHilite)
+      if (iSel == iSelHighlight)
          break;
 
       //
       // Yup, un-select the old item.
       //
-      DSRectItem(hwndLB, iSelHilite, FALSE, TRUE);
+      DSRectItem(hwndLB, iSelHighlight, FALSE, TRUE);
 
       //
       // Select the new one.
-      iSelHilite = iSel;
+      iSelHighlight = iSel;
       DSRectItem(hwndLB, iSel, TRUE, TRUE);
       break;
 
@@ -1080,7 +1111,7 @@ SearchWndProc(
                     TRUE);
       }
 
-      /*** FALL THRU ***/
+      /*** FALL THROUGH ***/
 
    default:
       return(DefMDIChildProc(hwnd, uMsg, wParam, lParam));
@@ -1400,4 +1431,3 @@ ClearSearchLB(BOOL bWorkerCall)
    }
 }
 
-

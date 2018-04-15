@@ -349,7 +349,7 @@ ChangeFileSystem(
             SendMessage(hwnd, WM_CLOSE, 0, 0L);
          }
 
-         /*** FALL THRU ***/
+         /*** FALL THROUGH ***/
       }
 
       case ( FSC_MKDIR ) :
@@ -366,7 +366,7 @@ ChangeFileSystem(
             }
          }
 
-         /*** FALL THRU ***/
+         /*** FALL THROUGH ***/
       }
 
       case ( FSC_DELETE ) :
@@ -429,8 +429,8 @@ CreateTreeWindow(
 
    //
    // this saves people from creating more windows than they should
-   // note, when the mdi window is maximized many people don't reallize
-   // how many windows they have openend.
+   // note, when the mdi window is maximized many people don't realize
+   // how many windows they have opened.
    //
    if (iNumWindows > 26) {
 
@@ -620,7 +620,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
    SetWindowDirectory();
 
    //
-   // get the relavant parameters
+   // get the relevant parameters
    //
    GetTreeWindows(hwndActive, &hwndTree, &hwndDir);
    if (hwndTree || hwndDir)
@@ -695,6 +695,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
           DWORD cchEnv = GetEnvironmentVariable(TEXT("ProgramFiles"), szToRun, MAXPATHLEN);
           if (cchEnv != 0)
           {
+            // NOTE: assume ProgramFiles directory and "\\Notepad++\\notepad++.exe" never exceed MAXPATHLEN
             lstrcat(szToRun, TEXT("\\Notepad++\\notepad++.exe"));
             if (!PathFileExists(szToRun))
             {
@@ -703,7 +704,13 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
           }
 
           if (cchEnv == 0)
-            lstrcpy(szToRun, TEXT("notepad.exe"));
+          {
+              // NOTE: assume system directory and "\\notepad.exe" never exceed MAXPATHLEN
+              if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
+                  lstrcat(szToRun, TEXT("\\notepad.exe"));
+              else
+                  lstrcpy(szToRun, TEXT("notepad.exe"));
+          }
 
           ret = ExecProgram(szToRun, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
       }
@@ -784,7 +791,89 @@ FmifsLoaded()
    return TRUE;
 }
 
+BOOL
+GetPowershellExePath(LPTSTR szPSPath)
+{
+    HKEY hkey;
+    if (ERROR_SUCCESS != RegOpenKey(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Microsoft\\PowerShell"), &hkey))
+    {
+        return FALSE;
+    }
 
+    szPSPath[0] = TEXT('\0');
+
+    for (int ikey = 0; ikey < 5; ikey++)
+    {
+        TCHAR         szSub[10];    // just the "1" or "3"
+
+        DWORD dwError = RegEnumKey(hkey, ikey, szSub, COUNTOF(szSub));
+
+        if (dwError == ERROR_SUCCESS)
+        {
+            // if installed, get powershell exe
+            DWORD dwInstall;
+            DWORD dwType;
+            DWORD cbValue = sizeof(dwInstall);
+            dwError = RegGetValue(hkey, szSub, TEXT("Install"), RRF_RT_DWORD, &dwType, (PVOID)&dwInstall, &cbValue);
+
+            if (dwError == ERROR_SUCCESS && dwInstall == 1)
+            {
+                // this install of powershell is active; get path
+
+                HKEY hkeySub;
+                dwError = RegOpenKey(hkey, szSub, &hkeySub);
+
+                if (dwError == ERROR_SUCCESS)
+                {
+                    LPTSTR szPSExe = TEXT("\\Powershell.exe");
+
+                    cbValue = (MAXPATHLEN - lstrlen(szPSExe)) * sizeof(TCHAR);
+                    dwError = RegGetValue(hkeySub, TEXT("PowerShellEngine"), TEXT("ApplicationBase"), RRF_RT_REG_SZ | RRF_RT_REG_EXPAND_SZ, &dwType, (PVOID)szPSPath, &cbValue);
+
+                    if (dwError == ERROR_SUCCESS)
+                    {
+                        lstrcat(szPSPath, szPSExe);
+                    }
+                    else
+                    {
+                        // reset to empty string if not successful
+                        szPSPath[0] = TEXT('\0');
+                    }
+
+                    RegCloseKey(hkeySub);
+                }
+            }
+        }
+    }
+
+    RegCloseKey(hkey);
+
+    // return true if we got a valid path
+    return szPSPath[0] != TEXT('\0');
+}
+
+BOOL GetBashExePath(LPTSTR szBashPath, UINT bufSize)
+{
+	const TCHAR szBashFilename[] = TEXT("bash.exe");
+	UINT len;
+
+	len = GetSystemDirectory(szBashPath, bufSize);
+	if ((len != 0) && (len + COUNTOF(szBashFilename) + 1 < bufSize) && PathAppend(szBashPath, TEXT("bash.exe")))
+	{
+		if (PathFileExists(szBashPath))
+			return TRUE;
+	}
+
+	// If we are running 32 bit Winfile on 64 bit Windows, System32 folder is redirected to SysWow64, which
+	// doesn't include bash.exe. So we also need to check Sysnative folder, which always maps to System32 folder.
+	len = ExpandEnvironmentStrings(TEXT("%SystemRoot%\\Sysnative\\bash.exe"), szBashPath, bufSize);
+	if (len != 0 && len <= bufSize)
+	{
+		return PathFileExists(szBashPath);
+	}
+
+	return FALSE;
+}
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
 /*  AppCommandProc() -                                                      */
@@ -944,10 +1033,12 @@ AppCommandProc(register DWORD id)
 		   DWORD cchEnv;
 		   TCHAR szToRun[MAXPATHLEN];
 		   LPTSTR szDir;
-		   TCHAR szParams[MAXPATHLEN];
+
+#define ConEmuParamFormat TEXT(" -Single -Dir \"%s\"")
+           TCHAR szParams[MAXPATHLEN + COUNTOF(ConEmuParamFormat)];
 
 			szDir = GetSelection(1|4|16, &bDir);
-			if (!bDir)
+			if (!bDir && szDir)
 				StripFilespec(szDir);
 	
 		   bRunAs = GetKeyState(VK_SHIFT) < 0;
@@ -959,16 +1050,21 @@ AppCommandProc(register DWORD id)
 			   if (lstrcmpi(szToRun + cchEnv - 6, TEXT(" (x86)")) == 0) {
 				   szToRun[cchEnv - 6] = TEXT('\0');
 			   }
-			   lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
+               // NOTE: assume ProgramFiles directory and "\\ConEmu\\ConEmu64.exe" never exceed MAXPATHLEN
+               lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
 			   if (PathFileExists(szToRun)) {
-				   wsprintf(szParams, TEXT(" -Single -Dir \"%s\""), szDir);
+				   wsprintf(szParams, ConEmuParamFormat, szDir);
 				   bUseCmd = FALSE;
 			   }
 		   }
 
 		   // use cmd.exe if ConEmu doesn't exist or we are running admin mode
 		   if (bUseCmd || bRunAs) {
-			   lstrcpy(szToRun, TEXT("cmd.exe"));
+               // NOTE: assume system directory and "\\cmd.exe" never exceed MAXPATHLEN
+               if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
+                    lstrcat(szToRun, TEXT("\\cmd.exe"));
+               else
+			        lstrcpy(szToRun, TEXT("cmd.exe"));
 			   szParams[0] = TEXT('\0');
 		   }
 
@@ -976,6 +1072,53 @@ AppCommandProc(register DWORD id)
 		   LocalFree(szDir);
 		}
 	   break;
+
+    case IDM_STARTPOWERSHELL:
+       {
+           BOOL bRunAs;
+           BOOL bDir;
+           TCHAR szToRun[MAXPATHLEN];
+           LPTSTR szDir;
+#define PowerShellParamFormat TEXT(" -noexit -command \"cd \\\"%s\\\"\"")
+           TCHAR szParams[MAXPATHLEN + COUNTOF(PowerShellParamFormat)];
+
+           szDir = GetSelection(1 | 4 | 16, &bDir);
+           if (!bDir && szDir)
+               StripFilespec(szDir);
+
+           bRunAs = GetKeyState(VK_SHIFT) < 0;
+
+           if (GetPowershellExePath(szToRun))
+           {
+               wsprintf(szParams, PowerShellParamFormat, szDir);
+
+               ret = ExecProgram(szToRun, szParams, szDir, FALSE, bRunAs);
+           }
+
+           LocalFree(szDir);
+       }
+       break;
+
+	case IDM_STARTBASHSHELL:
+		{
+			BOOL bRunAs;
+			BOOL bDir;
+			TCHAR szToRun[MAXPATHLEN];
+			LPTSTR szDir;
+
+			szDir = GetSelection(1 | 4 | 16, &bDir);
+			if (!bDir && szDir)
+				StripFilespec(szDir);
+
+			bRunAs = GetKeyState(VK_SHIFT) < 0;
+
+			if (GetBashExePath(szToRun, COUNTOF(szToRun))) {
+				ret = ExecProgram(szToRun, NULL, szDir, FALSE, bRunAs);
+			}
+
+			LocalFree(szDir);
+		}
+		break;
 
    case IDM_SELECT:
 
@@ -1979,8 +2122,7 @@ ACPCallHelp:
        break;
 
     case IDM_ABOUT:
-       LoadString(hAppInstance, IDS_WINFILE, szTitle, COUNTOF(szTitle));
-       ShellAbout(hwndFrame, szTitle, NULL, NULL);
+       DialogBox(hAppInstance, (LPTSTR)MAKEINTRESOURCE(ABOUTDLG), hwndFrame, (DLGPROC)AboutDlgProc);
        break;
 
     case IDM_DRIVESMORE:
@@ -2014,7 +2156,7 @@ ACPCallHelp:
 // OUT: VOID
 // Precond: System directory is on a safe hard disk
 //          szMessage not being used
-// Postcond: Swich to this directory.
+// Postcond: Switch to this directory.
 //          szMessage trashed.
 
 VOID
