@@ -15,6 +15,7 @@
 
 #define LABEL_NTFS_MAX 32
 #define LABEL_FAT_MAX  11
+#define CCH_VERSION    40
 
 VOID FormatDrive( IN PVOID ThreadParameter );
 VOID CopyDiskette( IN PVOID ThreadParameter );
@@ -25,6 +26,8 @@ VOID CopyDiskEnd(VOID);
 VOID FormatEnd(VOID);
 VOID CancelDlgQuit(VOID);
 VOID LockFormatDisk(INT iDrive1, INT iDrive2, DWORD dwMessage, DWORD dwCommand, BOOL bLock);
+
+BOOL GetProductVersion(WORD * pwMajor, WORD * pwMinor, WORD * pwBuild, WORD * pwRevision);
 
 DWORD ulTotalSpace, ulSpaceAvail;
 
@@ -456,7 +459,7 @@ FillDriveCapacity(HWND hDlg, INT nDrive, FMIFS_MEDIA_TYPE fmSelect, BOOL fDoPopu
          break;
 
       //
-      // add 3.5" 640KB meida type
+      // add 3.5" 640KB media type
       //
       case FmMediaF3_640_512:      // 3.5", 640KB,  512 bytes/sector
          LoadString(hAppInstance, IDS_640KB, szTitle, COUNTOF(szTitle));
@@ -724,6 +727,45 @@ DoHelp:
   return TRUE;
 }
 
+/*--------------------------------------------------------------------------*/
+/*                                                                          */
+/*  AboutDlgProc() -  DialogProc callback function for ABOUTDLG             */
+/*                                                                          */
+/*--------------------------------------------------------------------------*/
+
+INT_PTR
+AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+{
+    WORD wMajorVersion   = 0;
+    WORD wMinorVersion   = 0;
+    WORD wBuildNumber    = 0;
+    WORD wRevisionNumber = 0;
+    TCHAR szVersion[CCH_VERSION] = { 0 };
+
+    switch (wMsg)
+    {
+    case WM_INITDIALOG:
+        if (GetProductVersion(&wMajorVersion, &wMinorVersion, &wBuildNumber, &wRevisionNumber))
+        {
+            if (SUCCEEDED(StringCchPrintf(szVersion, CCH_VERSION, TEXT("Version %d.%d.%d.%d"),
+                (int)wMajorVersion, (int)wMinorVersion, (int)wBuildNumber, (int)wRevisionNumber)))
+            {
+                SetDlgItemText(hDlg, IDD_VERTEXT, szVersion);
+            }
+        }
+        return TRUE;
+    case WM_COMMAND:
+        switch (GET_WM_COMMAND_ID(wParam, lParam))
+        {
+        case IDOK:
+        case IDCANCEL:
+            EndDialog(hDlg, IDOK);
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+
 VOID
 FormatDrive( IN PVOID ThreadParameter )
 {
@@ -743,7 +785,7 @@ FormatDrive( IN PVOID ThreadParameter )
          CancelInfo.Info.Format.fmMediaType,
          wszFileSystem,
          wszLabel,
-         (BOOLEAN)CancelInfo.Info.Format.fQuick,
+         (BOOLEAN)(CancelInfo.Info.Format.fQuick ? TRUE : FALSE),
          (FMIFS_CALLBACK)&Callback_Function);
    } while (CancelInfo.Info.Format.fFlags & FF_RETRY);
 
@@ -1331,7 +1373,7 @@ UpdateConnections(BOOL bUpdateDriveList)
          // this drive has gone away
          //
          if (IsLastWindow()) {
-            // disconecting the last drive
+            // disconnecting the last drive
             // set this guy to the first non floppy / cd rom
 
             for (i = 0; i < cDrives; i++) {
@@ -1381,7 +1423,7 @@ UpdateConnections(BOOL bUpdateDriveList)
    SetCursor(hCursor);
 
    //
-   // Update diso btn/menu item
+   // Update disco btn/menu item
    //
    EnableDisconnectButton();
 
@@ -1402,7 +1444,6 @@ DrivesDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
          INT nCurDrive;
          DRIVEIND nIndex;
          LPTSTR lpszVolShare;
-         TCHAR szDrive[] = SZ_ACOLON;
 
          nCurDrive = GetSelectedDrive();
          nIndex = 0;
@@ -1529,7 +1570,7 @@ CopyDiskEnd()
    LockFormatDisk(CancelInfo.Info.Copy.iSourceDrive,
       CancelInfo.Info.Copy.iDestDrive, 0, IDM_FORMAT, FALSE);
 
-   // If not successful, and the user _didn't_ hit cance, throw up
+   // If not successful, and the user _didn't_ hit cancel, throw up
    // an error message (as implemented, hitting cancel does not return
    // a dialog box.
 
@@ -1672,4 +1713,63 @@ DestroyCancelWindow()
    }
    CancelInfo.hCancelDlg = NULL;
 }
-
+
+//
+// GetProductVersion
+// Gets the product version values for the current module
+//
+// Parameters:
+//   pwMajor    - [OUT] A pointer to the major version number
+//   pwMinor    - [OUT] A pointer to the minor version number
+//   pwBuild    - [OUT] A pointer to the build number
+//   pwRevision - [OUT] A pointer to the revision number
+//   
+// Returns TRUE if successful
+//
+BOOL GetProductVersion(WORD * pwMajor, WORD * pwMinor, WORD * pwBuild, WORD * pwRevision)
+{
+    BOOL               success = FALSE;
+    TCHAR              szCurrentModulePath[MAX_PATH];
+    DWORD              cchPath;
+    DWORD              cbVerInfo;
+    LPVOID             pFileVerInfo;
+    UINT               uLen;
+    VS_FIXEDFILEINFO * pFixedFileInfo;
+
+    cchPath = GetModuleFileName(NULL, szCurrentModulePath, MAX_PATH);
+
+    if (cchPath && GetLastError() != ERROR_INSUFFICIENT_BUFFER)
+    {
+        cbVerInfo = GetFileVersionInfoSize(szCurrentModulePath, NULL);
+
+        if (cbVerInfo)
+        {
+            pFileVerInfo = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, cbVerInfo);
+
+            if (pFileVerInfo)
+            {
+                if (GetFileVersionInfo(szCurrentModulePath, 0, cbVerInfo, pFileVerInfo))
+                {
+                    // Get the pointer to the VS_FIXEDFILEINFO structure
+                    if (VerQueryValue(pFileVerInfo, TEXT("\\"), (LPVOID *)&pFixedFileInfo, &uLen))
+                    {
+                        if (pFixedFileInfo && uLen)
+                        {
+                            *pwMajor    = HIWORD(pFixedFileInfo->dwProductVersionMS);
+                            *pwMinor    = LOWORD(pFixedFileInfo->dwProductVersionMS);
+                            *pwBuild    = HIWORD(pFixedFileInfo->dwProductVersionLS);
+                            *pwRevision = LOWORD(pFixedFileInfo->dwProductVersionLS);
+
+                            success = TRUE;
+                        }
+                    }
+                }
+
+                HeapFree(GetProcessHeap(), 0, pFileVerInfo);
+            }
+        }
+
+    }
+
+    return success;
+}

@@ -74,7 +74,7 @@ Message Conventions -
 
     FS_GETSELECTION:
         This messages returns a near pointer to a string containing the
-        names of the window's selected file(s seperated by spaces.  The
+        names of the window's selected file(s separated by spaces.  The
         string is returned upper case.  No path info in included unless
         a directory is selected.  The directories includes full path info
         and NOT terminated with backslash.

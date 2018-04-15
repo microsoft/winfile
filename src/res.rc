@@ -7,8 +7,14 @@
 
 ********************************************************************/
 
+// fix loading in VS per https://stackoverflow.com/questions/16537289/rc2247-cannot-open-rc-file-resource-explorer-cannot-load-resource-load-fai/18317658#18317658
+
+#define APSTUDIO_HIDDEN_SYMBOLS
 #include "winfile.h"
+#include <prsht.h>
+#undef APSTUDIO_HIDDEN_SYMBOLS
 #include "wfcopy.h"
+
 
 BITMAPS         BITMAP PRELOAD wbbitmap.bmp
 
@@ -58,7 +64,9 @@ BEGIN
 	"^x",       IDM_CUTTOCLIPBOARD, NOINVERT
 	"^c",       IDM_COPYTOCLIPBOARD, NOINVERT
 	"^v",       IDM_PASTE, NOINVERT
+	"^b",       IDM_STARTBASHSHELL, NOINVERT
 	"^k",       IDM_STARTCMDSHELL, NOINVERT
+	"^p",       IDM_STARTPOWERSHELL, NOINVERT
 	"^g",       IDM_GOTODIR, NOINVERT
 	"^f",       IDM_SEARCH, NOINVERT
 	VK_LEFT,    IDM_HISTORYBACK, NOINVERT, VIRTKEY, ALT
@@ -92,7 +100,9 @@ BEGIN
     MENUITEM    "Cr&eate Directory...", IDM_MAKEDIR
     MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "Select &Files...", IDM_SELECT
+	MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
 	MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
 	MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "E&xit",            IDM_EXIT
@@ -121,9 +131,9 @@ BEGIN
     MENUITEM    "Tr&ee Only",           IDM_TREEONLY
     MENUITEM    "Directory &Only",      IDM_DIRONLY
     MENUITEM    SEPARATOR
-    MENUITEM    "Sp&lit"                IDM_SPLIT
+    MENUITEM    "Sp&lit",               IDM_SPLIT
     MENUITEM    SEPARATOR
-    MENUITEM    "&Name",                IDM_VNAME,
+    MENUITEM    "&Name",                IDM_VNAME
     MENUITEM    "&All File Details",    IDM_VDETAILS,   CHECKED
     MENUITEM    "&Partial Details...",  IDM_VOTHER
     MENUITEM    SEPARATOR
@@ -138,7 +148,7 @@ BEGIN
     POPUP       "&Options"
     BEGIN
     MENUITEM    "&Confirmation...",     IDM_CONFIRM
-    MENUITEM    "&Font..."          IDM_FONT
+    MENUITEM    "&Font...",             IDM_FONT
     MENUITEM    "Customize Tool&bar...", IDM_TOOLBARCUST
     MENUITEM    SEPARATOR
     MENUITEM    "&Toolbar",                 IDM_TOOLBAR
@@ -194,13 +204,16 @@ BEGIN
     MENUITEM    "Re&name...\tF2",   IDM_RENAME
     MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "&Run...",          IDM_RUN
+    MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
 	MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
+	MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
 	MENUITEM    "&Goto Directory...", IDM_GOTODIR
 	MENUITEM	"About",			IDM_ABOUT
 	END
 END
 
 
+#define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 /*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
 STRINGTABLE DISCARDABLE PRELOAD
 BEGIN
@@ -358,9 +371,7 @@ JAPANEND
 
 // include reason strings
 
-#define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 #include "suggest.db"
-#undef SUGGEST
 
     IDS_DESTFULL                "The destination disk is full.  Please insert another disk to continue."
     IDS_WRITEPROTECTFILE        "This is a system, hidden, or read-only file."
@@ -557,6 +568,7 @@ JAPANEND
     IDS_MULTICOMPRESSERR        "File Manager is currently in the process of compressing/uncompressing files.\nYou must wait until this is complete before attempting to compress/uncompress additional files."
 
 END
+#undef SUGGEST
 
 /* Help strings for the popup menus.
  */
@@ -628,7 +640,7 @@ BEGIN
     MH_MYITEMS+IDM_BYTYPE,      "Sorts files by type"
     MH_MYITEMS+IDM_BYSIZE,      "Sorts files by size"
     MH_MYITEMS+IDM_BYDATE,      "Sorts files by date"
-    MH_MYITEMS+IDM_BYFDATE,     "Sorts files by foward date"
+    MH_MYITEMS+IDM_BYFDATE,     "Sorts files by forward date"
     MH_MYITEMS+IDM_VINCLUDE,    "Shows files of a specified type"
 
     MH_MYITEMS+IDM_CONFIRM,     "Controls confirmation messages"
@@ -678,14 +690,50 @@ END
 
 #include "winfile.dlg"
 
-#include <ntverp.h>
-
-#define VER_FILETYPE    VFT_APP
-#define VER_FILESUBTYPE VFT2_UNKNOWN
+// Define version information
 #define VER_FILEDESCRIPTION_STR     "File Manager"
 #define VER_INTERNALNAME_STR        "fileman\0"
-#define VER_ORIGINALFILENAME_STR     "WINFILE.EXE"
+#define VER_ORIGINALFILENAME_STR    "WINFILE.EXE"
+#define VER_COMPANYNAME_STR         "Microsoft Corporation"
+#define VER_PRODUCTNAME_STR         "File Manager"
+#define VER_LEGALCOPYRIGHT_STR      "Copyright (c) Microsoft Corporation. All rights reserved."
 
-#include "common.ver"
+#define VER_FILEVERSION             10,0,0,0
+#define VER_FILEVERSION_STR         "10.0.0.0\0"
+#define VER_PRODUCTVERSION          10,0,0,0
+#define VER_PRODUCTVERSION_STR      "10.0.0.0\0"
 
-
+#ifndef DEBUG
+#define VER_DEBUG                   0
+#else
+#define VER_DEBUG                   VS_FF_DEBUG
+#endif
+
+VS_VERSION_INFO VERSIONINFO
+    FILEVERSION     VER_FILEVERSION
+    PRODUCTVERSION  VER_PRODUCTVERSION
+    FILEFLAGSMASK   VS_FFI_FILEFLAGSMASK
+    FILEFLAGS       VER_DEBUG
+    FILEOS          VOS__WINDOWS32
+    FILETYPE        VFT_APP
+    FILESUBTYPE     VFT2_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName", VER_COMPANYNAME_STR
+            VALUE "FileDescription", VER_FILEDESCRIPTION_STR
+            VALUE "FileVersion", VER_FILEVERSION_STR
+            VALUE "InternalName", VER_INTERNALNAME_STR
+            VALUE "OriginalFilename", VER_ORIGINALFILENAME_STR
+            VALUE "ProductName", VER_PRODUCTNAME_STR
+            VALUE "ProductVersion", VER_PRODUCTVERSION_STR
+            VALUE "LegalCopyright", VER_LEGALCOPYRIGHT_STR
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 1033, 1200
+    END
+END

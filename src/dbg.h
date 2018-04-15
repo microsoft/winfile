@@ -37,8 +37,8 @@ VOID DbgTraceDefMessage(LPTSTR funName, WORD msgId);
 #define BF_PROCTRACE            0x40000000
 #define BF_START                0x80000000
 
-#define ASSERT(fOk)             if (!(fOk)) DbgAssert(__FILE__, __LINE__)
-#define FBREAK(bf)              DbgBreak(bf, __FILE__, __LINE__)
+#define ASSERT(fOk)             if (!(fOk)) DbgAssert(TEXT(__FILE__), __LINE__)
+#define FBREAK(bf)              DbgBreak(bf, TEXT(__FILE__), __LINE__)
 #define TRACE(tf, lpstr)        DbgTrace(tf, lpstr)
 #define PRINT(tf, fmt, p1)      DbgPrint1(tf, fmt, (LPTSTR)(p1))
 #define MSG(funName, msgName)   DbgTraceMessage(funName, msgName)
@@ -60,4 +60,3 @@ VOID DbgTraceDefMessage(LPTSTR funName, WORD msgId);
 #define LEAVE(funName)
 
 #endif // DBG
-

@@ -144,7 +144,6 @@ PEXT pExtBase = NULL;
 
 INT APIENTRY AssociateFileDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 BOOL AssociateDlgInit(HWND hDlg, LPTSTR lpszExt, INT iSel);
-VOID AssoicateFileDlgCommand(HWND hDlg, WPARAM wParam, LPARAM lParam, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
 BOOL AssociateFileDlgExtAdd(HWND hDlg, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
 BOOL AssociateFileDlgExtDelete(HWND hDlg, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
 BOOL AssociateFileDlgCommand(HWND hDlg, WPARAM wParam, LPARAM lParam, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
@@ -337,7 +336,7 @@ UpdateSelectionExt(HWND hDlg, BOOL bForce)
       pFileType=pExt->pFileType;
 
       //
-      // Munge data structre for string... ugly
+      // Munge data structure for string... ugly
       //
       p = &pFileType->lpszBuf[pFileType->uExeSpace];
 
@@ -713,7 +712,7 @@ DoConfigWinIni:
          }
 
          //
-         // Done deleteing everything, now free pFileType after
+         // Done deleting everything, now free pFileType after
          // delinking
          //
          if (pFileType == pFileTypeBase) {
@@ -888,7 +887,7 @@ Done:
             RegFlushKey(HKEY_CLASSES_ROOT);
 
          }
-         // FALL THRU
+         // FALL THROUGH
 
       case IDCANCEL:
 Cancel:
@@ -1254,7 +1253,7 @@ AssociateFileDlgCommand(HWND hDlg,
                   if (!pExt->bDelete && !lstrcmpi(szExt, pExt->szExt))
                   {
                      //
-                     // Found one, Hilight!
+                     // Found one, Highlight!
                      //
                      i = SendDlgItemMessage(hDlg, IDD_EXTLIST, LB_FINDSTRINGEXACT,
                         (WPARAM)-1, (LPARAM) &szExt[1]);
@@ -1436,7 +1435,7 @@ Reload:
                WM_SETREDRAW, (WPARAM)FALSE, 0L);
 
             //
-            // Delete the (None) entry at the begining.
+            // Delete the (None) entry at the beginning.
             //
             SendDlgItemMessage(pAssociateFileDlgInfo->hDlg, IDD_CLASSLIST, LB_DELETESTRING, 0, 0L);
 
@@ -1462,7 +1461,7 @@ Reload:
             }
 
             //
-            // Add the (None) entry at the begining.
+            // Add the (None) entry at the beginning.
             //
             SendDlgItemMessage(pAssociateFileDlgInfo->hDlg, IDD_CLASSLIST, LB_INSERTSTRING,0,(LPARAM)szNone);
 
@@ -2354,7 +2353,7 @@ FileTypeRead(HWND hDlg,
 // IN      hDlg                  HWND   Dialog to read from
 // IN      pAssociateFileDlgInfo --     Target to write out
 // IN      hk                    HKEY   HKey to write to
-// IN      lpszKey               LPTSTR  Beginnin root key
+// IN      lpszKey               LPTSTR  Beginning root key
 //
 //
 // Return:   DWORD   ERROR_SUCCESS = success
@@ -2488,7 +2487,7 @@ FileTypeWrite(HWND hDlg,
       goto Error;
 
    //
-   // We add 1 because we substitue our paren here
+   // We add 1 because we substitute our paren here
    //
    pFileType->lpszBuf[uOffset] = CHAR_OPENPAREN;
    pFileType->uExe = uOffset+1;
@@ -2580,7 +2579,7 @@ Error:
 // IN        iIndex                      INT  index of DDE info to read
 //
 // Return:   DWORD     = ERROR_SUCCESS success
-//                    = else faile, = error code
+//                    = else failed, = error code
 //
 // Assumes:  pAssociateFileDlgInfo set up correctly
 //
@@ -2768,7 +2767,7 @@ DDEWrite(PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo, INT i)
    lstrcat(szKey, aDDEType[i].lpszRegistry);
 
    //
-   // If we are not writting the main command (open) and
+   // If we are not writing the main command (open) and
    // there is no szCommand, then delete the node.
    //
    if (i && !pAssociateFileDlgInfo->DDEInfo[i].szCommand[0]) {
@@ -3111,9 +3110,9 @@ ExtLinkToFileType(PEXT pExt, LPTSTR lpszIdent)
 // IN    hDlg                   HWND
 // INOUT pAssociateFileDlgInfo  --
 //
-// Return:   BOOL    TRUE = successuful
+// Return:   BOOL    TRUE = successful
 //
-// Assumes:  The extension to be deleted is hilighted in the cb dropdownbox
+// Assumes:  The extension to be deleted is highlighted in the cb dropdownbox
 //           It _must_already_exist_ in the current pFileType!
 //
 // Effects:  Modifies matching pExt by turning off the deleted ext.
@@ -3165,7 +3164,7 @@ AssociateFileDlgExtDelete(HWND hDlg,
 // IN    hDlg                   HWND
 // INOUT pAssociateFileDlgInfo  --
 //
-// Return:   BOOL    TRUE = successuful
+// Return:   BOOL    TRUE = successful
 //
 // Assumes:  IDD_EXT cb edit field has a valid extension
 //           It _must_not_already_exist_ in the current pFileType!
@@ -3421,7 +3420,7 @@ RegExtAddHelper(HKEY hk, LPTSTR lpszExt, PFILETYPE pFileType)
 //
 //
 // Assumes:  pExt->bDelete is set and therefore be safely deleted
-//           from existance
+//           from existence
 //
 // Effects:  Updates the pExtBase to a stable state.
 //           pExt is either deleted from the backbone or changed to mach ext
@@ -3465,7 +3464,7 @@ RegExtDelete(HWND hDlg, HKEY hk, PEXT pExt)
    
     dwError = RegNodeDelete(hk, pExt->szExt);
    
-    if (pExt->pftOrig && ERROR_SUCCESS == dwError)
+    if (ERROR_SUCCESS == dwError)
     {
         i = SendDlgItemMessage( hDlg,
                                 IDD_EXT,
@@ -3762,7 +3761,7 @@ AssociateDlgInit(HWND hDlg, LPTSTR lpszExt, INT iSel)
       ClassListFileTypeAdd(hDlg, pFileType);
    }
 
-   // Add the (None) entry at the begining.
+   // Add the (None) entry at the beginning.
    SendDlgItemMessage(hDlg,IDD_CLASSLIST, LB_INSERTSTRING,0,(LPARAM)szNone);
 
    if (-1 == iSel) {
@@ -4077,7 +4076,7 @@ ExtFree(PEXT pExt)
 //           pcchOffset holds next free location
 //           (one PAST the written '\0')
 //
-// Notes:    One character past the current string is guarenteed to
+// Notes:    One character past the current string is guaranteed to
 //           be usable (i.e. lstrcat(pFileType->xxx, " ")) is ok.
 //
 /////////////////////////////////////////////////////////////////////
@@ -4401,7 +4400,7 @@ Error:
 //
 // Assumes:  Stable data structure
 //
-// Effects:  pExtBase strucuture
+// Effects:  pExtBase structure
 //
 //
 // Notes:    Does not free pExt or modify pExt at all
@@ -4575,4 +4574,3 @@ GenerateFriendlyName(LPTSTR lpszCommand)
     return (p);
 }
 
-

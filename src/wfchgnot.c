@@ -318,7 +318,7 @@ NotifyResume(DRIVE drive, UINT uType)
 //
 // Assumes:  Single threaded implementation.  All calls in this file
 //           are non reentrant.  (Multithreaded approach removed around
-//           9/15/93 to elimintate a thread.)
+//           9/15/93 to eliminate a thread.)
 //
 // Effects:  ahwndWindows
 //           ahChange

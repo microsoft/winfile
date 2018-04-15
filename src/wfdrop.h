@@ -80,7 +80,7 @@ typedef struct WF_IDataObjectVtbl
         
         HRESULT ( STDMETHODCALLTYPE __RPC_FAR *GetCanonicalFormatEtc )( 
             WF_IDataObject __RPC_FAR * This,
-            /* [unique][in] */ FORMATETC __RPC_FAR *pformatectIn,
+            /* [unique][in] */ FORMATETC __RPC_FAR *pformatetcIn,
             /* [out] */ FORMATETC __RPC_FAR *pformatetcOut);
         
         /* [local] */ HRESULT ( STDMETHODCALLTYPE __RPC_FAR *SetData )( 

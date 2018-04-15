@@ -20,7 +20,7 @@ static TCHAR szFormat[] = TEXT("%s%02d");
 extern TCHAR szInternational[];
 
 //
-// atoi with decimal comma seperators
+// atoi with decimal comma separators
 //
 LPTSTR
 ShortSizeFormatInternal(LPTSTR szBuf, LARGE_INTEGER qw)
