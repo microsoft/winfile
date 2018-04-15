@@ -1,9 +1,9 @@
 /********************************************************************
 
     wfgoto.cpp
-    
+
     This file contains code that supports the goto directory command
-    
+
     Copyright (c) Microsoft Corporation. All rights reserved.
     Licensed under the MIT License.
 
@@ -653,7 +653,6 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 
 	SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
-	// TODO(Thai): Make this index all drives
 	if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), nullptr, scanEpocNew))
 	{
 		pBagNew->Sort();
