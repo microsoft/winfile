@@ -61,6 +61,7 @@
 #define COMPRESSERRDLG          59  //  Compression Error Dialog
 
 #define GOTODIRDLG    60
+#define ABOUTDLG      61
 
 #define IDD_TEXT      -1
 #define IDD_TEXT1     100
@@ -75,6 +76,7 @@
 #define IDD_TONAME    109
 #define IDD_TEXT2     111
 #define IDD_IGNOREALL 112
+#define IDD_VERTEXT   113
 
 // next five match IDM_BYNAME list
 #define IDD_NAME      201
@@ -217,4 +219,3 @@
 
 #define IDD_DIRS 		2003
 
-

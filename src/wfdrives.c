@@ -15,6 +15,7 @@
 #include "lfn.h"
 #include "wfcopy.h"
 #include <commctrl.h>
+#include <shlobj.h>
 
 VOID RectDrive(INT nDrive, BOOL bFocusOn);
 VOID InvalidateDrive(DRIVEIND driveInd);
@@ -248,7 +249,7 @@ InvalidateDrive(DRIVEIND driveInd)
 //
 // void NEAR PASCAL RectDrive(DRIVEIND driveInd, BOOL bDraw)
 //
-// draw the hilight rect around the drive to indicate that it is
+// draw the highlight rect around the drive to indicate that it is
 // the target of a drop action.
 //
 // in:
@@ -648,7 +649,7 @@ DrivesSetDrive(
    }
 
    //
-   // do this before TC_SETDRIVE incase the tree read
+   // do this before TC_SETDRIVE in case the tree read
    // is aborted and lFreeSpace gets set to -2L
    //
    // Was -1L, ignore new cache.

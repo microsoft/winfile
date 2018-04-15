@@ -458,7 +458,7 @@ LFNMergePath(LPTSTR lpMask, LPTSTR lpFile)
       // If there is a trailing '.', always but always kill it.
 
       iResStrlen = lstrlen( szT );
-      if ( CHAR_DOT == szT[ iResStrlen-1 ] )
+      if ((iResStrlen != 0) && CHAR_DOT == szT[iResStrlen - 1])
          szT[ iResStrlen-1 ] = CHAR_NULL;
    }
 
@@ -544,4 +544,3 @@ WFMove(LPTSTR pszFrom, LPTSTR pszTo, PBOOL pbErrorOnDest, BOOL bSilent)
 }
 
 
-

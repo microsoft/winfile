@@ -108,7 +108,7 @@ ResetTreeMax(
 /*                                                                          */
 /*  GetTreePathIndirect() -                                                 */
 /*                                                                          */
-/*  build a complete path for a given node in the tree by recursivly        */
+/*  build a complete path for a given node in the tree by recursively       */
 /*  traversing the tree structure                                           */
 /*                                                                          */
 /*--------------------------------------------------------------------------*/
@@ -158,7 +158,7 @@ GetTreePath(PDNODE pNode, register LPTSTR szDest)
 /*  ScanDirLevel() -                                                        */
 /*                                                                          */
 /*  look down to see if this node has any sub directories                   */
-/*
+/*                                                                          */
 /*--------------------------------------------------------------------------*/
 
 VOID
@@ -309,7 +309,7 @@ InsertDirectory(
 
    pNode->pParent = pParentNode;
    pNode->nLevels = pParentNode ? (pParentNode->nLevels + (BYTE)1) : (BYTE)0;
-   pNode->wFlags  = (BYTE)NULL;
+   pNode->wFlags  = 0;
    pNode->dwNetType = (DWORD)-1;
 
 #ifdef USE_TF_LFN
@@ -503,7 +503,7 @@ wfYield()
 // bPartialSort         TRUE means partially sorted on disk
 //
 // Return:              TRUE  = successful tree read
-//                      FALSE = user abort or bugus tree read.
+//                      FALSE = user abort or bogus tree read.
 //
 // Assumes:
 //
@@ -554,7 +554,7 @@ ReadDirLevel(
    // case we look through the DTA structure in the dir window
    // to get all the directories (instead of calling FindFirst/FindNext).
    // in this case we have to disable yielding since the user could
-   // potentialy close the dir window that we are reading, or change
+   // potentially close the dir window that we are reading, or change
    // directory.
    //
 
@@ -1162,7 +1162,7 @@ FillOutTreeList(HWND hwndTC,
 
 	// convert szDir into a sequence of null terminated strings for each directory segment
 	// TODO: shared function
-	lstrcpy(szExpand, szDir + lstrlen(szExists) + 1);  // skip temp path (that which is already in tree) and interveening '\\'
+	lstrcpy(szExpand, szDir + lstrlen(szExists) + 1);  // skip temp path (that which is already in tree) and intervening '\\'
 	p = szExpand;
 
 	while (*p) {                // null out all slashes
@@ -1394,7 +1394,7 @@ EmptyStatusAndReturn:
       StripBackslash(szPath);
 
       SetStatusText(SBT_NOBORDERS|255, SST_FORMAT|SST_RESOURCE,
-               (LPTSTR)(DWORD)(fShowSourceBitmaps ? IDS_DRAG_COPYING : IDS_DRAG_MOVING),
+               (LPCTSTR)(DWORD)(fShowSourceBitmaps ? IDS_DRAG_COPYING : IDS_DRAG_MOVING),
                szPath);
       UpdateWindow(hwndStatus);
 
@@ -2088,7 +2088,7 @@ TreeControlWndProc(
       //
       // set the selection in the tree to that for a given path
       //
-      INT i;
+      DWORD i;
 
       if (FindItemFromPath(hwndLB, (LPTSTR)lParam, wParam != 0, &i, NULL))
 	  {
@@ -2118,7 +2118,7 @@ TreeControlWndProc(
 		   break;
 
 	   RECT rc;
-	   INT i;
+	   DWORD i;
 	   PDNODE    pNode;
 
 	   // do the same as TC_SETDIRECTORY above for the simple case
@@ -2194,7 +2194,7 @@ TreeControlWndProc(
       WCHAR    ch;
       PDNODE    pNode;
       WCHAR rgchMatch[MAXPATHLEN];
-      INT cchMatch;
+      SIZE_T cchMatch;
 
       //
       // backslash means the root
@@ -2298,7 +2298,7 @@ TreeControlWndProc(
 
 	  /* Did we find it? */
 	  if (!FindItemFromPath(hwndLB, (LPTSTR)lParam,
-		  wParam == FSC_MKDIR || wParam == FSC_MKDIRQUIET, &nIndex, &pNode)) {
+		  wParam == FSC_MKDIR || wParam == FSC_MKDIRQUIET, (DWORD*)&nIndex, &pNode)) {
          break;
 	  }
 
@@ -2704,8 +2704,8 @@ UpdateSelection:
 
       UpdateWindow(hwndStatus);
 
-      iSelHilite = ((LPDROPSTRUCT)lParam)->dwControlData;
-      RectTreeItem(hwndLB, iSelHilite, (BOOL)wParam);
+      iSelHighlight = ((LPDROPSTRUCT)lParam)->dwControlData;
+      RectTreeItem(hwndLB, iSelHighlight, (BOOL)wParam);
       break;
 
    case WM_DRAGMOVE:
@@ -2713,7 +2713,7 @@ UpdateSelection:
       static BOOL fOldShowSourceBitmaps = 0;
 
       //
-      // WM_DRAGMOVE is sent when two consequetive TRUE QUERYDROPOBJECT
+      // WM_DRAGMOVE is sent when two consecutive TRUE QUERYDROPOBJECT
       // messages come from the same window.
       //
 
@@ -2733,7 +2733,7 @@ UpdateSelection:
       //
       // Is it a new one?
       //
-      if (iSel == iSelHilite && fOldShowSourceBitmaps == fShowSourceBitmaps)
+      if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
          break;
 
       fOldShowSourceBitmaps = fShowSourceBitmaps;
@@ -2741,12 +2741,12 @@ UpdateSelection:
       //
       // Yup, un-select the old item.
       //
-      RectTreeItem(hwndLB, iSelHilite, FALSE);
+      RectTreeItem(hwndLB, iSelHighlight, FALSE);
 
       //
       // Select the new one.
       //
-      iSelHilite = iSel;
+      iSelHighlight = iSel;
       RectTreeItem(hwndLB, iSel, TRUE);
       break;
    }
@@ -2972,7 +2972,7 @@ UpdateSelection:
 
       case VK_UP:
          j = -1;
-         /** FALL THRU ***/
+         /** FALL THROUGH ***/
 
       case VK_DOWN:
          TypeAheadString('\0', NULL);
@@ -3241,4 +3241,3 @@ ResetTreeMax(
     SendMessage(hwndLB, LB_SETHORIZONTALEXTENT, xTreeMax, 0L);
 }
 
-

@@ -149,7 +149,7 @@ vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 	// for all other result sets, merge
 	for (int i = 1; i < count; i++)
 	{
-		size_t out = 0;			// always start writing to the begining of the output
+		size_t out = 0;			// always start writing to the beginning of the output
 
 		size_t first1 = 0;		// scan index for last result in combined result (thus far)
 		size_t last1;			// count of items in 'first'; set below
@@ -226,7 +226,7 @@ vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 		lastOutput = out;
 	}
 
-	// shrink actual vetor to final size
+	// shrink actual vector to final size
 	combined->resize(lastOutput);
 
 	return (*combined);
@@ -563,7 +563,7 @@ GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 		hwndEdit = GetDlgItem(hDlg, IDD_GOTODIR);
 
 		// Subclass the edit control. 
-		wpOrigEditProc = (WNDPROC)SetWindowLong(hwndEdit, GWL_WNDPROC, (LONG)GotoEditSubclassProc);
+		wpOrigEditProc = (WNDPROC)SetWindowLongPtr(hwndEdit, GWLP_WNDPROC, (LONG_PTR)GotoEditSubclassProc);
 
 		SendDlgItemMessage(hDlg, IDD_GOTOLIST, LB_ADDSTRING, 0, (LPARAM)TEXT("<type name fragments into edit box>"));
 		break;
@@ -627,7 +627,7 @@ GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 		hwndEdit = GetDlgItem(hDlg, IDD_GOTODIR);
 
 		// Remove the subclass from the edit control. 
-		SetWindowLong(hwndEdit, GWL_WNDPROC, (LONG)wpOrigEditProc);
+		SetWindowLongPtr(hwndEdit, GWLP_WNDPROC, (LONG_PTR)wpOrigEditProc);
 		break;
 
 	default:
@@ -671,6 +671,7 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 	return ERROR_SUCCESS;
 }
 
+// We're building a Trie structure (not just a directory tree)
 DWORD
 StartBuildingDirectoryTrie()
 {

@@ -180,8 +180,8 @@ HDROP CreateDropFiles(POINT pt, BOOL fNC, LPTSTR pszFiles)
 static HRESULT StreamToFile(IStream *stream, TCHAR *szFile)
 {
     byte buffer[BLOCK_SIZE];
-    unsigned long bytes_read;
-    int bytes_written;
+    DWORD bytes_read;
+    DWORD bytes_written;
     HRESULT hr;
 	HANDLE hFile;
 
@@ -609,12 +609,17 @@ WF_IDropTarget * WF_IDropTarget_new(HWND hwnd)
 
   result = calloc(1, sizeof(WF_IDropTarget));
 
-  result->idt.lpVtbl = (IDropTargetVtbl*)&idt_vtbl;
+  if (result)
+  {
+	  result->idt.lpVtbl = (IDropTargetVtbl*)&idt_vtbl;
 
-  result->m_lRefCount  = 1;
-  result->m_hWnd = hwnd;
-  result->m_fAllowDrop = FALSE;
-  
+	  result->m_lRefCount = 1;
+	  result->m_hWnd = hwnd;
+	  result->m_fAllowDrop = FALSE;
+
+	  // return result;
+  }
+
   return result;
 }
 

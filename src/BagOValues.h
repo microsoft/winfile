@@ -32,7 +32,7 @@ public:
 	{
 	}
 
-	// copies the value, but doesn't assume any memory mangement needs be done
+	// copies the value, but doesn't assume any memory management needs be done
 	void Add(wstring key, TValue value)
 	{
 		this->m_spinlock.Lock();
