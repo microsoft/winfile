@@ -1,0 +1,1436 @@
+/********************************************************************
+
+   en-US.rc
+
+   Copyright (c) Microsoft Corporation. All rights reserved.
+   Licensed under the MIT License.
+
+********************************************************************/
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+FRAMEMENU MENU PRELOAD
+BEGIN
+POPUP       "&File"
+BEGIN
+    MENUITEM    "&Open\tEnter", IDM_OPEN
+    MENUITEM    "Edit\tF12", IDM_EDIT
+    MENUITEM    "&Move...\tF7", IDM_MOVE
+    MENUITEM    "&Copy...\tF8", IDM_COPY
+    MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "&Paste\tCtrl+V", IDM_PASTE
+    MENUITEM    "&Delete...\tDel", IDM_DELETE
+    MENUITEM    "Re&name...\tF2", IDM_RENAME
+    MENUITEM    "Proper&ties...\tAlt+Enter", IDM_ATTRIBS
+    MENUITEM    SEPARATOR
+    MENUITEM    "Compre&ss...", IDM_COMPRESS
+    MENUITEM    "&Uncompress...", IDM_UNCOMPRESS
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Run...", IDM_RUN
+    MENUITEM    "Pr&int...", IDM_PRINT
+    MENUITEM    "&Associate...", IDM_ASSOCIATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "Cr&eate Directory...", IDM_MAKEDIR
+    MENUITEM    "Searc&h...\tCtrl+F", IDM_SEARCH
+    MENUITEM    "Select &Files...", IDM_SELECT
+    MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
+    MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+    MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    SEPARATOR
+    MENUITEM    "E&xit", IDM_EXIT
+END
+POPUP       "&Disk"
+BEGIN
+    MENUITEM    "&Copy Disk...", IDM_DISKCOPY
+    MENUITEM    "&Label Disk...", IDM_LABEL
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Format Disk...", IDM_FORMAT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Select Drive...", IDM_DRIVESMORE
+END
+POPUP       "&Tree"
+BEGIN
+    MENUITEM    "E&xpand One Level\t+", IDM_EXPONE
+    MENUITEM    "Expand &Branch\t*", IDM_EXPSUB
+    MENUITEM    "Expand &All\tCtrl+*", IDM_EXPALL
+    MENUITEM    "&Collapse Branch\t-", IDM_COLLAPSE
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Indicate Expandable Branches", IDM_ADDPLUSES
+END
+POPUP       "&View"
+BEGIN
+    MENUITEM    "T&ree and Directory", IDM_BOTH
+    MENUITEM    "Tr&ee Only", IDM_TREEONLY
+    MENUITEM    "Directory &Only", IDM_DIRONLY
+    MENUITEM    SEPARATOR
+    MENUITEM    "Sp&lit", IDM_SPLIT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Name", IDM_VNAME
+    MENUITEM    "&All File Details", IDM_VDETAILS, CHECKED
+    MENUITEM    "&Partial Details...", IDM_VOTHER
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Sort by Name", IDM_BYNAME
+    MENUITEM    "Sort &by Type", IDM_BYTYPE
+    MENUITEM    "Sort by Si&ze", IDM_BYSIZE
+    MENUITEM    "Sort by &Date", IDM_BYDATE
+    MENUITEM    "Sort &forward Date", IDM_BYFDATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "By File &Type...", IDM_VINCLUDE
+END
+POPUP       "&Options"
+BEGIN
+    MENUITEM    "&Confirmation...", IDM_CONFIRM
+    MENUITEM    "&Font...", IDM_FONT
+    MENUITEM    "Customize Tool&bar...", IDM_TOOLBARCUST
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Toolbar", IDM_TOOLBAR
+    MENUITEM    "&Drivebar", IDM_DRIVEBAR
+    MENUITEM    "&Status Bar", IDM_STATUSBAR
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Minimize on Use", IDM_MINONRUN
+    MENUITEM    "Save Settings on &Exit", IDM_SAVESETTINGS
+#ifdef PROGMAN
+    MENUITEM    SEPARATOR
+    MENUITEM    "Save Settings &Now", IDM_SAVENOW
+#endif
+END
+POPUP       "&Security"
+BEGIN
+    MENUITEM    "&Permissions...", IDM_PERMISSIONS
+    MENUITEM    "&Auditing...", IDM_AUDITING
+    MENUITEM    "&Owner...", IDM_OWNER
+END
+POPUP       "&Window"
+BEGIN
+    MENUITEM    "&New Window", IDM_NEWWINDOW
+    MENUITEM    "&Cascade\tShift+F5", IDM_CASCADE
+    MENUITEM    "Tile &Horizontally", IDM_TILEHORIZONTALLY
+    MENUITEM    "&Tile Vertically\tShift+F4", IDM_TILE
+    MENUITEM    "&Arrange Icons", IDM_ARRANGE
+    MENUITEM    "&Refresh\tF5", IDM_REFRESH
+END
+POPUP       "&Help"
+BEGIN
+    MENUITEM    "&Contents", IDM_HELPINDEX
+    MENUITEM    "&Search for Help on...", IDM_HELPKEYS
+    MENUITEM    "&How to Use Help", IDM_HELPHELP
+    MENUITEM    SEPARATOR
+    MENUITEM    "&About File Manager...", IDM_ABOUT
+END
+
+END
+
+CTXMENU MENU PRELOAD
+BEGIN
+POPUP "Dummy Popup"
+BEGIN
+    MENUITEM    "&New Window\ton Selection", IDM_NEWWINDOW
+    MENUITEM    "&Open\tEnter", IDM_OPEN
+    MENUITEM    "Edit\tF12", IDM_EDIT
+    MENUITEM    "&Move...\tF7", IDM_MOVE
+    MENUITEM    "&Copy...\tF8", IDM_COPY
+    MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "&Paste\tCtrl+V", IDM_PASTE
+    MENUITEM    "&Delete...\tDel", IDM_DELETE
+    MENUITEM    "Re&name...\tF2", IDM_RENAME
+    MENUITEM    "Proper&ties...\tAlt+Enter", IDM_ATTRIBS
+    MENUITEM    "&Run...", IDM_RUN
+    MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
+    MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+    MENUITEM    "&Goto Directory...", IDM_GOTODIR
+    MENUITEM    "About", IDM_ABOUT
+END
+END
+
+
+#define SUGGEST(id,err,flags,str) id+    IDS_SUGGESTBEGIN str
+/*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
+STRINGTABLE DISCARDABLE PRELOAD
+BEGIN
+//    IDS_ENDSESSION          "Exit Windows"                  /* 32 */
+//    IDS_ENDSESSIONMSG       "This will end your Windows session."                                                                                      /* 128 */
+
+    IDS_COPYDISK            "Copy Disk"                     /* 32 */
+    IDS_INSERTDEST          "Insert destination disk."                                                                                                 /* 128 */
+    IDS_INSERTSRC           "Insert source disk."                                                                                                      /* 128 */
+    IDS_INSERTSRCDEST       "Insert source and destination disks."                                                                                     /* 128 */
+    IDS_FORMATTINGDEST      "Formatting Destination Disk"                                                                                             /* 128 */
+
+    IDS_COPYDISKERR         "Copy Disk Error"               /* 32 */
+    IDS_COPYDISKERRMSG      "Unable to copy disk."                                                                                                     /* 128 */
+    IDS_COPYSRCDESTINCOMPAT "Source and destination disks are incompatible."                                                                          /* 128 */
+
+    IDS_PERCENTCOMP         "%d%% completed"                /* 32 */
+    IDS_CREATEROOT          "Creating root directory..."       /* 32 */
+    IDS_COPYSYSFILES        "Copying system files..."          /* 32 */
+    IDS_FORMATERR           "Format Disk Error"             /* 32 */
+    IDS_FORMATQUICKFAILURE  "File Manager cannot perform a quick format.\n\nContinue with normal format?"
+//    IDS_FORMATERRMSG        "Cannot format disk."                                                                                                      /* 128 */
+//    IDS_FORMATCURERR      "You cannot format the current drive."                                                                                     /* 128 */
+    IDS_FORMATCOMPLETE      "Format Complete"               /* 32 */
+    IDS_FORMATANOTHER       "%ld bytes total disk space\n%ld bytes available on disk\n\nDo you want to format another disk?"                           /* 128 */
+
+//    IDS_SYSDISK             "Make System Disk"
+//    IDS_SYSDISKRUSURE       "Are you sure you want to copy system files onto the disk in drive %c?"
+//    IDS_SYSDISKERR          "System Disk Error"
+//    IDS_SYSDISKNOFILES      "The MS-DOS startup drive does not contain system files or is not available."
+//    IDS_SYSDISKSAMEDRIVE    "Cannot copy system files to the MS-DOS startup drive."
+//    IDS_SYSDISKADDERR       "Cannot add system files to this disk.\n\nMake sure a formatted disk is present in the drive and that the drive door is closed."
+
+    IDS_NETERR              "Network Error"                 /* 32 */
+    IDS_NETDISCONWINERR     "This drive contains the Windows system files and cannot be disconnected."                                                 /* 128 */
+    IDS_NETDISCONOPEN       "File Manager cannot disconnect network drive.\n\nFiles are open on this drive."
+
+    IDS_ATTRIBERR           "File Manager cannot change attributes.  "
+    IDS_MAKEDIRERR          "File Manager cannot create directory.  "
+
+    IDS_LABELDISKERR        "File Manager cannot label disk.\n\nMake sure the disk is not write-protected, is not a network drive, and that the label is valid.\
+                         Labels cannot contain the following characters:\n[space] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+    IDS_SEARCHNOMATCHES     "No matching files were found."
+    IDS_SEARCHREFRESH       "The contents of this drive have changed. Do you want to retry the Search?"
+    IDS_LABELACCESSDENIED   "You must be logged onto this workstation as an administrator to perform this operation on hard disks."
+
+    IDS_DRIVETEMP           "Drive %c:%c"
+
+    IDS_EXECERRTITLE, "Cannot Run Program"
+    IDS_PRINTERRTITLE, "Cannot Print File"
+
+    IDS_UNKNOWNMSG, "Unexpected error: %d."
+    IDS_NOMEMORYMSG, "Not enough memory to start the specified application.\n\nQuit one or more applications, and then try again."                   /* 128 */
+    IDS_FILENOTFOUNDMSG, "File Manager cannot find file (or one of its components).\n\nMake sure the path and filename are correct and that all required libraries are available."
+    IDS_BADPATHMSG, "The specified path is invalid."                                                                                           /* 128 */
+//    IDS_MANYOPENFILESMSG,   "Too many files are currently in use.\n\nQuit one or more applications or increase the value of the FILES command in CONFIG.SYS, and then try again."                                    /* 128 */
+    IDS_NOASSOCMSG, "No application is associated with this file.\n\nChoose Associate from the File menu to create an association."       /* 128 */
+    IDS_ASSOCINCOMPLETE, "File Manager cannot open or print file.\n\nStart the application used to create this file and open or print it from there."
+//    IDS_MULTIPLEDSMSG,      "Cannot start more than one copy of the specified program."                                                                /* 128 */
+//    IDS_OS2APPMSG           "The specified application is not a Windows or MS-DOS program."                                                            /* 128 */
+//    IDS_NEWWINDOWSMSG       "This application requires a newer version of Microsoft Windows."                                                          /* 128 */
+//    IDS_PMODEONLYMSG        "This application requires Windows."                                                             /* 128 */
+    IDS_DDEFAIL             "An error occurred in sending the command to the application."                                                                /* 128 */
+//    IDS_COMPRESSEDEXE       "This program or one of its components is compressed.\n\nUse the MS-DOS expand utility to copy the file from the setup disks."
+    IDS_INVALIDDLL          "One of the library files needed to run this application is damaged. Please reinstall this application."
+    IDS_SHAREERROR          "This file is in use by some other application."
+
+    IDS_CREATELONGDIR       "File Manager may not be able to access files created in the directory '%s.'\n\nDo you want to continue?"
+    IDS_CREATELONGDIRTITLE  "Create Directory"
+
+    IDS_MOUSECONFIRM, "Confirm Mouse Operation"       /* 32 */
+    IDS_COPYMOUSECONFIRM, "Are you sure you want to copy the selected files or directories to %s?"
+    IDS_MOVEMOUSECONFIRM, "Are you sure you want to move the selected files or directories to %s?"
+    IDS_EXECMOUSECONFIRM, "Are you sure you want to start %s using %s as the initial file?"                                                          /* 128 */
+
+    IDS_WINFILE, "File Manager"                  /* 32 */
+    IDS_TREETITLE, "Directory Tree"                /* 32 */
+    IDS_SEARCHTITLE, "Search Results: "              /* 32 */
+
+    IDS_READING             "Reading directory, please wait..."
+    IDS_TOOMANYTITLE, "Too Many Files"                /* 32 */
+    IDS_OOMTITLE, "File Manager - Out of Memory"  /* 32 */
+    IDS_OOMREADINGDIRMSG, "Unable to read entire directory.  Only a partial listing will be displayed."                                              /* 128 */
+
+//    IDS_PRINTFNF            "The file to be printed cannot be found. Make sure the correct path and filename are specified."              /* 128 */
+    IDS_PRINTMEMORY         "Not enough memory to print.\n\nQuit one or more applications, and then try again."                                 /* 128 */
+    IDS_PRINTDISK           "Not enough disk space to print.\n\nDelete one or more files to increase disk space, and then try again."           /* 128 */
+    IDS_PRINTERROR          "An error has occurred while printing.\n\nMake sure the printer is properly configured and selected."               /* 128 */
+    IDS_PRINTONLYONE        "File Manager cannot print multiple files.\n\nSelect only one file, and then try again."                            /* 128 */
+
+    IDS_CURDIRIS, "Current Directory: %s"                                                                                                       /* 128 */
+    IDS_COPY, "Copy"                          /* 32 */
+    IDS_RENAME, "Rename"                        /* 32 */
+    IDS_FORMAT, "Format Disk"                   /* 32 */
+    IDS_FORMATSELDISK, "Select the disk to format."                                                                                               /* 128 */
+
+JAPANBEGIN
+    IDS_KK_COPYFROMSTR, "コピ�?��?(&F):"
+    IDS_KK_COPYTOSTR, "コピ�?��?(&T):"
+    IDS_KK_RENAMEFROMSTR, "�?の名前(&F):"
+    IDS_KK_RENAMETOSTR, "新しい名前(&T):"
+JAPANEND
+
+//    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
+
+    IDS_CREATINGMSG, "Creating:"                     /* 32 */
+    IDS_REMOVINGDIRMSG, "Removing:"                     /* 32 */
+    IDS_REMOVINGMSG, "Removing..."                   /* 32 */
+    IDS_COPYINGMSG, "Copying:"                      /* 32 */
+    IDS_OPENINGMSG, "Opening..."                    /* 32 */
+    IDS_CLOSINGMSG, "Closing..."                    /* 32 */
+    IDS_RENAMINGMSG, "Renaming..."                   /* 32 */
+    IDS_MOVINGMSG, "Moving..."                     /* 32 */
+    IDS_DELETINGMSG, "Deleting..."                   /* 32 */
+    IDS_PRINTINGMSG, "Printing: %s"                  /* 32 */
+
+//    IDS_NOSUCHDRIVE,        "Drive %c does not exist."                                                                                            /* 128 */
+    IDS_DRIVENOTREADY, "There is no disk in drive %c.\n\nInsert a disk, and then try again."
+    IDS_UNFORMATTED, "The disk in drive %c is not formatted.\n\nDo you want to format it now?"
+
+    IDS_STATUSMSG, "Total %d file(s) (%s)"             /* 128 */
+    IDS_STATUSMSG2, "Selected %d file(s) (%s)"          /* 128 */
+    IDS_DRIVEFREE, "%c: %s free,  %s total"            /* 128 */
+    IDS_TREEABORT, "Incomplete directory tree displayed"     /* 128 */
+    IDS_DIRSREAD, "Directories read: %d "                   /* 32 */
+    IDS_SEARCHMSG, "%d file(s) found"
+    IDS_BYTES, "%ld bytes"
+    IDS_SBYTES, "%s bytes"
+
+    IDS_SELECTEDFILES, "the selected files"            /* 32 */
+
+/* These strings are used for generating error messages
+* from the Copy, Move, and Delete code. */
+
+    IDS_COPYERROR + FUNC_COPY   "Error Copying File"
+    IDS_COPYERROR + FUNC_MOVE   "Error Moving File"
+    IDS_COPYERROR + FUNC_DELETE "Error Deleting File"
+    IDS_COPYERROR + FUNC_RENAME "Error Renaming File"
+    IDS_COPYERROR + FUNC_SETDRIVE "Error Selecting Drive"
+    IDS_COPYERROR + FUNC_EXPAND   "Error Reading Directory"
+    IDS_COPYERROR + FUNC_LABEL    "Error Labeling Disk"
+
+/* The first %s is replaced by a file name. The second %s is replaced
+* by one of the "reasons" below. */
+
+    IDS_VERBS + FUNC_COPY       "File Manager cannot copy %s: %s"
+    IDS_VERBS + FUNC_MOVE       "File Manager cannot move %s: %s"
+    IDS_VERBS + FUNC_DELETE     "File Manager cannot delete %s: %s"
+    IDS_VERBS + FUNC_RENAME     "File Manager cannot rename %s: %s"
+    IDS_ACTIONS + 1             "File Manager cannot create directory %s: %s"
+    IDS_ACTIONS + 2             "File Manager cannot remove directory %s: %s"
+    IDS_REPLACING               "File Manager cannot create or replace %s: %s"
+//    IDS_CREATING             "File Manager cannot create %s: %s"
+
+// include reason strings
+
+#include "suggest.db"
+
+    IDS_DESTFULL                "The destination disk is full.  Please insert another disk to continue."
+    IDS_WRITEPROTECTFILE        "This is a system, hidden, or read-only file."
+
+    IDS_COPYINGTITLE            "Copying..."
+
+JAPANBEGIN
+    IDS_KK_COPY                 "コピ�?��?:"
+JAPANEND
+
+    IDS_QUICKFORMATTINGTITLE    "Quick Formatting..."
+
+    IDS_BUSYFORMATQUITVERIFY    "File Manager is currently formatting a disk.  Exiting File Manager will abort this operation."
+    IDS_BUSYCOPYQUITVERIFY      "File Manager is currently copying a disk.  Exiting File Manager will abort this operation."
+    IDS_PERCENTCOMPLETE         "Percent Complete"
+
+    IDS_12MB                    "1%s2 MB"
+    IDS_360KB                   "360K"
+    IDS_144MB                   "1%s44 MB"
+    IDS_720KB                   "720K"
+    IDS_288MB                   "2%s88 MB"
+    IDS_2080MB                  "20%s8 MB"
+
+#if defined(JAPAN) && defined(i386)
+/* ADD KBNES. NEC MEDIATYPE START */
+JAPANBEGIN
+    IDS_125MB                   "1%s25 MB"
+    IDS_256KB                   "256K"
+    IDS_128MB                   "128 MB"
+JAPANEND
+/* ADD KBNES. NEC MEDIATYPE END */
+
+//
+// FMR jul.21.1994 JY
+// We added 640KB/1.23MB media types.
+//
+JAPANBEGIN
+    IDS_640KB                   "640K"
+    IDS_123MB                   "1%s23 MB"
+JAPANEND
+#endif
+
+    IDS_DEVICECAP               "Drive Capacity"
+    IDS_QSUPMEDIA               "File manager cannot obtain disk information.\n\nMake sure the disk is in the drive."
+    IDS_REMOVEMED               "Unknown Disk Type"
+
+    IDS_CANTFORMATTITLE         "Unknown Disk Type"
+    IDS_CANTFORMAT              "The type of disk in drive %s can not be formatted with the File Manager.  Please use the Disk Administrator to format this disk."
+
+    IDS_FFERR_INCFS             "Incompatible file system."
+    IDS_FFERR_ACCESSDENIED      "Access denied."
+    IDS_FFERR_DISKWP            "The disk is write-protected."
+    IDS_FFERR_CANTLOCK          "File Manager cannot lock volume."
+    IDS_FFERR_CANTQUICKF        "File Manager cannot quick format disk.\n\nMake sure the disk is the correct density rating."
+    IDS_FFERR_SRCIOERR          "IO error on the source disk."
+    IDS_FFERR_DSTIOERR          "IO error on the destination disk."
+    IDS_FFERR_SRCDSTIOERR       "IO error on both the source and destination disks."
+    IDS_FFERR_GENIOERR          "An IO error has occurred."
+//    IDS_FFERR_MEDIASENSE      "This disk is capable of being formatted at a capacity of %s. Continue formatting at this capacity?"
+    IDS_FFERR                   "File Manager cannot format disk.\n\nMake sure the disk is in the drive and not write-protected, damaged, or of wrong density rating."
+    IDS_FFERR_BADLABEL          "File Manager cannot label the disk.\n\nThe specified label is invalid.  Make sure the label does not contain any of the following characters\n\
+                                [space] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+
+    IDS_FORMATCONFIRM           "Formatting will erase ALL data from your disk. Are you sure that you want to format the disk in drive %c?"
+    IDS_FORMATCONFIRMTITLE      "Confirm Format Disk"
+
+    IDS_DISKCOPYCONFIRM         "This operation will erase ALL data from the destination disk. Are you sure you want to continue?"
+    IDS_DISKCOPYCONFIRMTITLE    "Confirm Copy Disk"
+    IDS_ANDCLOSE                "&Close"        // goes on Selection dialog
+    IDS_CLOSE                   "Close"         // braindead "&Change"
+    IDS_PATHNOTTHERE            "Directory %s does not exist.\n\nDo you want to create it?"
+    IDS_PROGRAMS                "Programs#*.exe;*.pif;*.com;*.bat#All Files (*.*)#*.*#"
+
+    IDS_MENUANDITEM             "%s - %s"
+    IDS_DRIVELABEL              "Drive:"
+    IDS_STATUSMSGSINGLE         "%s, "
+
+    IDS_CONNECTHELP             "Connect network drive"
+    IDS_DISCONHELP              "Disconnect network drive"
+    IDS_CONNECTIONHELP          "Network connections"
+    IDS_SHAREASHELP             "Share directory"
+    IDS_STOPSHAREHELP           "Stop sharing directory"
+    IDS_VDETAILSHELP            "View all file details"
+    IDS_VNAMEHELP               "View name only"
+    IDS_BYNAMEHELP              "Sort by name"
+    IDS_BYTYPEHELP              "Sort by type"
+    IDS_BYSIZEHELP              "Sort by size"
+    IDS_BYDATEHELP              "Sort by date"
+    IDS_NEWWINHELP              "New window"
+    IDS_COPYHELP                "Copy files"
+    IDS_MOVEHELP                "Move files"
+    IDS_DELHELP                 "Delete files"
+
+    IDS_DIRNAMELABEL            "&Directory Name:"
+    IDS_DRIVENOTAVAILABLE       "Network drive is not available."
+
+    IDS_SHAREDAS                "Shared as %s"
+    IDS_NOTSHARED               "Not shared"
+
+    IDS_DRIVE_COMPRESSED        " - COMPRESSED"
+
+    IDS_DRAG_COPYING            "Copying files to %s"
+    IDS_DRAG_MOVING             "Moving files to %s"
+    IDS_DRAG_EXECUTING          "Running files with %s"
+
+    IDS_ORDERB                  "%s bytes"
+    IDS_ORDERKB                 "%sKB"
+    IDS_ORDERMB                 "%sMB"
+    IDS_ORDERGB                 "%sGB"
+    IDS_ORDERTB                 "%sTB"
+
+    IDS_VN_COMMENTS             "Comments"
+    IDS_VN_COMPANYNAME          "Company Name"
+    IDS_VN_FILEDESCRIPTION      "File Description"
+    IDS_VN_INTERNALNAME         "Internal Name"
+    IDS_VN_LEGALTRADEMARKS      "Legal Trademarks"
+    IDS_VN_ORIGINALFILENAME     "Original Filename"
+    IDS_VN_PRIVATEBUILD         "Private Build Description"
+    IDS_VN_PRODUCTNAME          "Product Name"
+    IDS_VN_PRODUCTVERSION       "Product Version"
+    IDS_VN_SPECIALBUILD         "Special Build Description"
+
+    IDS_VN_LANGUAGE             "Language"
+    IDS_VN_LANGUAGES            "Languages"
+
+    IDS_ASSOCIATE               "Browse"
+    IDS_RUN                     "Run"
+    IDS_WINHELPERR              "Unable to show Help information."
+    IDS_NOEXEASSOC              "Files with the extension %s are programs and cannot be associated with another application."
+    IDS_ASSOCNOTEXE             "%s is not a program and cannot be associated with a file extension."
+    IDS_ASSOCNONE               "(None)"
+    IDS_NOFILES                 "No files found."
+    IDS_NOACCESSDIR             "You do not have permission to access this directory."
+    IDS_NOACCESSFILE            "You do not have permission to access this file."
+
+    IDS_DRIVEBUSY_COPY          "Drive %c: is busy and cannot be accessed.\nFile Manager is performing a disk copy."
+    IDS_DRIVEBUSY_FORMAT        "Drive %c: is busy and cannot be accessed.\nFile Manager is formatting this disk."
+
+    IDS_COPYMOVENOTCOMPLETED    "Operation not fully completed"
+    IDS_DIRREMAINS              "Unable to finish operation on all files and directories."
+
+    IDS_TOOMANYWINDOWS          "Too many directory windows are open.\n\nClose one or more windows, and then try again."
+    IDS_FMIFSLOADERR            "Unable to load a library required for this operation."
+
+    IDS_NOSUCHDIRTITLE          "Cannot read directory"
+    IDS_NOSUCHDIR               "Directory does not exist."
+
+    IDS_BADNETNAMETITLE         "Cannot connect network drive"
+    IDS_BADNETNAME              "The network name cannot be found."
+
+    IDS_ALLFILES                "'Yes to all' affects all files, including system, hidden, read-only."
+
+    IDS_ASSOC_OPEN              "Open"
+    IDS_ASSOC_PRINT             "Print"
+
+    IDS_ADDEXTTITLE             "Add Extension"
+    IDS_ADDEXTTEXT              "The extension '%s' is currently associated with '%s.'  Continue and overwrite this association?"
+
+    IDS_EXTTITLE                "File Association Editor"
+
+    IDS_EXTADDERROR             "Unable to associate extension.  "
+    IDS_EXTDELERROR             "Unable to delete extension.  "
+    IDS_FILETYPEADDERROR        "Unable to add File Type.  "
+    IDS_FILETYPEDELERROR        "Unable to delete File Type.  "
+    IDS_FILETYPEREADERROR       "Unable to read File Type.  "
+
+    IDS_FILETYPENULLDESCERROR   "The File Type description cannot be empty.  Please type in a new File Type."
+    IDS_FILETYPEDUPDESCERROR    "Unable to generate unique identifier based on your File Type.  Please type in a new File Type."
+
+    IDS_FILETYPEDELCONFIRMTITLE "Delete File Type"
+    IDS_FILETYPEDELCONFIRMTEXT  "This will delete the File Type and all associated extensions.  Are you sure you want to delete '%s'?"
+#ifdef ASSOC
+    IDS_FILETYPEDELCONFIRMUSERTEXT "You are deleting a Personal File Type.  It will revert to the Common File Type, and all of its extensions will remain intact.  Are you sure you want to revert '%s'?"
+    IDS_FILETYPEUSERIZETEXT     "You are customizing a Common File Type.  File Manager save your changes in a Personalized File Type.  Continue?"
+#endif
+    IDS_FILETYPECOMMANDNULLTEXT "The File Type must have a command for at least one of its Actions.  Please type in an application in the command field."
+
+    IDS_NEWFILETYPETITLE        "New File Type"
+    IDS_COPYINGDISKTITLE        "Copying Disk"
+    IDS_SEARCHING               "Searching..."
+
+JAPANBEGIN
+    IDS_WRNNOSHIFTJIS           "こ�?�フォントを使用すると漢字�?�表示が\nできなくなります�?"
+JAPANEND
+
+    IDS_INITUPDATEFAIL          "Unable to initialize background update support.  File Manager will exit.  "
+    IDS_INITUPDATEFAILTITLE     "File Manager Initialization"
+
+    IDS_COMPRESSDIR             "Do you want to Compress all of the files and sub-directories in %s also?"
+    IDS_UNCOMPRESSDIR           "Do you want to Uncompress all of the files and sub-directories in %s also?"
+    IDS_COMPRESS_ATTRIB_ERR     "File Manager cannot change compress attributes for %s."
+    IDS_NTLDRCOMPRESSERR        "The file %s will not be compressed.  Compressing this file may render your system unbootable."
+    IDS_MULTICOMPRESSERR        "File Manager is currently in the process of compressing/uncompressing files.\nYou must wait until this is complete before attempting to compress/uncompress additional files."
+
+END
+#undef SUGGEST
+
+/* Help strings for the popup menus.
+*/
+STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+MH_POPUP + IDM_FILE, "Commands for working with files"
+MH_POPUP + IDM_DISK, "Commands for working with disks"
+MH_POPUP + IDM_TREE, "Commands for working in the tree window"
+MH_POPUP + IDM_VIEW, "Commands for determining how information is displayed"
+MH_POPUP + IDM_OPTIONS, "Commands for setting options"
+MH_POPUP + IDM_SECURITY, "Commands for manipulating file and directory security"
+MH_POPUP + IDM_WINDOW, "Commands for arranging windows"
+MH_POPUP + IDM_HELP, "Commands for displaying File Manager Help"
+END
+
+
+// Help strings for the "standard" toolbar items.
+
+STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+MH_MYITEMS + IDM_OPEN, "Opens selected item"
+MH_MYITEMS + IDM_EDIT, "Edits selected item using notepad.exe"
+MH_MYITEMS + IDM_MOVE, "Moves selected item"
+MH_MYITEMS + IDM_COPY, "Copies files and directories"
+MH_MYITEMS + IDM_COPYTOCLIPBOARD, "Copies one or more files to the clipboard"
+MH_MYITEMS + IDM_CUTTOCLIPBOARD, "Cuts one or more files to the clipboard"
+MH_MYITEMS + IDM_PASTE, "Paste file from clipboard to current directory"
+MH_MYITEMS + IDM_COMPRESS, "Compresses a file or directory"
+MH_MYITEMS + IDM_UNCOMPRESS, "Uncompresses a file or directory"
+MH_MYITEMS + IDM_DELETE, "Deletes files and directories"
+MH_MYITEMS + IDM_RENAME, "Renames a file or directory"
+MH_MYITEMS + IDM_ATTRIBS, "Sets file attributes and displays properties"
+MH_MYITEMS + IDM_UNDELETE, "Retrieves previously deleted files"
+MH_MYITEMS + IDM_RUN, "Starts or opens an application or document"
+MH_MYITEMS + IDM_PRINT, "Prints a document"
+MH_MYITEMS + IDM_ASSOCIATE, "Associates a file with an application"
+MH_MYITEMS + IDM_MAKEDIR, "Creates a directory"
+MH_MYITEMS + IDM_SEARCH, "Searches for files and directories"
+MH_MYITEMS + IDM_SELECT, "Selects files and directories"
+MH_MYITEMS + IDM_EXIT, "Quits File Manager"
+
+MH_MYITEMS + IDM_DISKCOPY, "Copies the contents of a floppy disk"
+MH_MYITEMS + IDM_LABEL, "Assigns or changes a disk's volume label"
+MH_MYITEMS + IDM_FORMAT, "Formats a floppy disk"
+//    MH_MYITEMS+IDM_SYSDISK,     "Copies MS-DOS files to a floppy disk"
+MH_MYITEMS + IDM_CONNECT, "Connects to a network drive"
+MH_MYITEMS + IDM_DISCONNECT, "Disconnects from a network drive"
+//    MH_MYITEMS+IDM_CONNECTIONS,       "Network Connections..."
+//    MH_MYITEMS+IDM_SHARES,    "View Shared Directories..."
+MH_MYITEMS + IDM_SHAREAS, "Shares a directory"
+MH_MYITEMS + IDM_STOPSHARE, "Stops sharing a directory"
+
+MH_MYITEMS + IDM_DRIVESMORE, "Selects a different drive"
+
+MH_MYITEMS + IDM_EXPONE, "Displays another level of a directory"
+MH_MYITEMS + IDM_EXPSUB, "Displays all levels of a directory"
+MH_MYITEMS + IDM_EXPALL, "Displays all levels of all directories"
+MH_MYITEMS + IDM_COLLAPSE, "Collapses all directories of a selected directory"
+MH_MYITEMS + IDM_ADDPLUSES, "Indicates directories that have subdirectories"
+
+MH_MYITEMS + IDM_BOTH, "Displays the directory tree and the contents of the current directory"
+MH_MYITEMS + IDM_TREEONLY, "Displays the directory tree"
+MH_MYITEMS + IDM_DIRONLY, "Displays the contents of the current directory"
+MH_MYITEMS + IDM_SPLIT, "Splits a directory window or moves the split bar"
+MH_MYITEMS + IDM_VNAME, "Shows filenames only"
+MH_MYITEMS + IDM_VDETAILS, "Shows all file details"
+MH_MYITEMS + IDM_VOTHER, "Shows partial file details"
+MH_MYITEMS + IDM_BYNAME, "Sorts files by name"
+MH_MYITEMS + IDM_BYTYPE, "Sorts files by type"
+MH_MYITEMS + IDM_BYSIZE, "Sorts files by size"
+MH_MYITEMS + IDM_BYDATE, "Sorts files by date"
+MH_MYITEMS + IDM_BYFDATE, "Sorts files by forward date"
+MH_MYITEMS + IDM_VINCLUDE, "Shows files of a specified type"
+
+MH_MYITEMS + IDM_CONFIRM, "Controls confirmation messages"
+MH_MYITEMS + IDM_FONT, "Changes the File Manager font"
+
+MH_MYITEMS + IDM_TOOLBARCUST, "Customizes the toolbar"
+MH_MYITEMS + IDM_TOOLBAR, "Displays or hides the toolbar"
+MH_MYITEMS + IDM_DRIVEBAR, "Displays or hides the drivebar"
+MH_MYITEMS + IDM_STATUSBAR, "Displays or hides the status bar"
+MH_MYITEMS + IDM_NEWWINONCONNECT, "Opens a new window when you connect"
+
+MH_MYITEMS + IDM_MINONRUN, "Reduces File Manager to an icon at startup"
+MH_MYITEMS + IDM_SAVESETTINGS, "Saves settings when you quit File Manager"
+
+MH_MYITEMS + IDM_NEWWINDOW, "Opens a new window"
+MH_MYITEMS + IDM_CASCADE, "Cascades windows"
+MH_MYITEMS + IDM_TILEHORIZONTALLY, "Tiles windows horizontally"
+MH_MYITEMS + IDM_TILE, "Tiles windows vertically"
+MH_MYITEMS + IDM_ARRANGE, "Arranges icons"
+MH_MYITEMS + IDM_REFRESH, "Updates the contents of a window"
+
+MH_MYITEMS + IDM_PERMISSIONS  "View or set permission information on the selected item(s)"
+MH_MYITEMS + IDM_AUDITING     "View or set auditing information on the selected item(s)"
+MH_MYITEMS + IDM_OWNER        "View or take ownership of the selected item(s)"
+
+MH_MYITEMS + IDM_HELPINDEX, "Displays contents for File Manager Help"
+MH_MYITEMS + IDM_HELPKEYS, "Searches for a topic in File Manager Help"
+MH_MYITEMS + IDM_HELPHELP, "Displays information about using Help"
+MH_MYITEMS + IDM_ABOUT, "Displays information about File Manager"
+END
+
+
+// Strings for menu items that may be added at init time.
+
+STRINGTABLE MOVEABLE DISCARDABLE
+BEGIN
+    IDS_CONNECT, "Connect &Network Drive..."
+    IDS_DISCONNECT, "&Disconnect Network Drive..."
+    IDS_CONNECTIONS, "&Network Connections..."
+    IDS_SHAREDDIR               "S&hared Directories..."
+    IDS_SHAREAS, "Share &As..."
+    IDS_STOPSHARE, "S&top Sharing..."
+    IDS_SHARES, "View S&hared Directories..."
+    IDS_UNDELETE, "&Undelete..."
+    IDS_NEWWINONCONNECT, "&Open New Window on Connect"
+END
+
+CANCELDLG DIALOG 77, 27, 160, 65
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formatting Disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "", IDD_TEXT1, 15, 36, 131, 8
+    CONTROL         "", IDD_GASGAUGE, "Static", SS_BLACKFRAME, 15, 10, 131, 22
+    PUSHBUTTON      "Hide", IDD_HIDE, 38, 48, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 82, 48, 40, 14
+END
+
+
+SEARCHPROGDLG DIALOG 77, 109, 174, 75
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Searching Disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+
+    CONTROL "Search for:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 5, 60, 10
+    CONTROL "", IDD_NAME, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 50, 5, 120, 10
+    CONTROL "Since:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 15, 60, 10
+    CONTROL "", IDD_DATE, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 50, 15, 120, 10
+    CONTROL "Starting from:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 25, 70, 10
+    CONTROL "", IDD_PATH, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 50, 25, 120, 10
+    CONTROL "Directories read:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 35, 60, 10
+    CONTROL "", IDD_TIME, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 66, 35, 100, 10
+    CONTROL "Matches found:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 45, 60, 10
+    CONTROL "", IDD_FOUND, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 66, 45, 100, 10
+
+    PUSHBUTTON      "Hide", IDD_HIDE, 45, 58, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 89, 58, 40, 14
+END
+
+
+FONTDLG DIALOG 13, 54, 264, 154
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Font"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Font:", stc1, 6, 3, 40, 9
+    COMBOBOX        cmb1, 6, 13, 94, 54, CBS_SIMPLE | CBS_AUTOHSCROLL |
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP | CBS_HASSTRINGS | CBS_OWNERDRAWFIXED
+    LTEXT           "Font St&yle:", stc2, 108, 3, 44, 9
+    COMBOBOX        cmb2, 108, 13, 64, 54, CBS_SIMPLE | WS_VSCROLL |
+                    WS_TABSTOP
+    LTEXT           "&Size:", stc3, 179, 3, 30, 9
+    COMBOBOX        cmb3, 179, 13, 32, 54, CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP | CBS_HASSTRINGS | CBS_OWNERDRAWFIXED | CBS_SORT
+
+    GROUPBOX        "Effects", grp1, 6, 73, 84, 61, WS_GROUP
+    CONTROL         "Stri&keout", chx1, "Button", BS_AUTOCHECKBOX |
+                    WS_TABSTOP, 10, 83, 49, 10
+    CONTROL         "&Underline", chx2, "Button", BS_AUTOCHECKBOX, 10, 95,
+                    51, 10
+
+    CONTROL         "Display &Lowercase for FAT Drives", chx3, "Button", BS_AUTOCHECKBOX |
+                    WS_TABSTOP, 6, 127, 252, 10
+
+    CONTROL         "Display Lowercase for All &Drives", chx4, "Button", BS_AUTOCHECKBOX |
+                    WS_TABSTOP, 6, 139, 252, 10
+
+    LTEXT           "&Color:", stc4, 10, 107, 30, 9
+    COMBOBOX        cmb4, 10, 117, 75, 50, CBS_DROPDOWNLIST |
+                    CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS |
+                    WS_BORDER | WS_VSCROLL
+
+    DEFPUSHBUTTON   "OK", IDOK, 218, 6, 40, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 218, 23, 40, 14, WS_GROUP
+    PUSHBUTTON      "&Apply", psh3, 218, 40, 40, 14, WS_GROUP
+    PUSHBUTTON      "&Help", pshHelp, 218, 57, 40, 14, WS_GROUP
+    GROUPBOX        "Sample", grp2, 6, 72, 252, 49, WS_GROUP
+    CTEXT           "", stc6, 10, 137, 1, 2,
+                    SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbYyZz", stc5, 10, 81, 243, 37, SS_NOPREFIX | NOT
+                    WS_VISIBLE
+END
+
+DRIVEDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 31, 201, 86
+CAPTION "Select Drive"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL "&Drives:", IDD_DRIVE1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 5, 41, 10
+    CONTROL "", IDD_DRIVE, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | LBS_USETABSTOPS | WS_BORDER | WS_VSCROLL | WS_CHILD | WS_TABSTOP, 5, 16, 140, 60
+    CONTROL "OK", IDOK, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 155, 6, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 155, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 155, 44, 40, 14
+END
+
+RUNDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 15, 12, 210, 63
+CAPTION "Run"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "", IDD_DIR, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 3, 6, 162, 10
+    CONTROL "&Command Line:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_GROUP | WS_CHILD, 3, 18, 60, 10
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 3, 29, 134, 12
+    CONTROL "Run &Minimized", IDD_LOAD, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 3, 45, 71, 12
+    CONTROL "Run as &Admin", IDD_RUNAS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 78, 45, 71, 12
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 165, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 165, 23, 40, 14
+//    CONTROL "&Browse...", IDD_BROWSE, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 165, 40, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 165, 43, 40, 14
+END
+
+SELECTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 15, 12, 116, 83
+CAPTION "Select Files"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "&File(s):", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 16, 60, 10
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 5, 29, 60, 12
+    CONTROL "&Select", IDOK, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 6, 40, 14
+    CONTROL "&Deselect", IDYES, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 23, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 40, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 63, 40, 14
+END
+
+
+
+CONFIRMREPLACE DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 245, 95
+CAPTION "Confirm File Replace"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
+    CONTROL "Replace File:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 12, 49, 10
+    CONTROL "", IDD_TO, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 75, 12, 165, 10
+    CONTROL "", IDD_DATE1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 75, 22, 170, 10
+    CONTROL "With File:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 34, 49, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 75, 34, 165, 10
+    CONTROL "", IDD_DATE2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 75, 44, 170, 10
+    CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 54, 203, 10
+    CONTROL "&Yes", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 73, 40, 14
+    CONTROL "Yes to &All", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 73, 40, 14
+    CONTROL "&No", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 73, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 73, 40, 14
+END
+
+CONFIRMDELETE DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 245, 60
+CAPTION "Confirm File Delete"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 3, 203, 10
+    CONTROL "Delete File:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 44, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 70, 18, 170, 10
+    CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
+    CONTROL "&Yes", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
+    CONTROL "Yes to &All", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
+    CONTROL "&No", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+END
+
+
+CONFIRMNOACCESS DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 260, 70
+CAPTION "Confirm: Ignore file or directory and continue"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 3, 203, 10
+    CONTROL "Access is denied, ignore:", IDD_TYPE, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 10, 203, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 108, 10, 122, 10
+    CONTROL "You do not have permission or the file is in use.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 25, 230, 10
+    CONTROL "Choose yes to ignore this file and continue operation.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 35, 180, 10
+    CONTROL "&Yes", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 52, 40, 14
+    CONTROL "Yes to &All", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 52, 40, 14
+    CONTROL "&No", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 52, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 52, 40, 14
+END
+
+
+CONFIRMNOACCESSDEST DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 245, 60
+CAPTION "Confirm: Ignore file or directory and continue"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 3, 203, 10
+    CONTROL "No access on target, ignore:", IDD_TYPE, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 13, 203, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 124, 13, 106, 10
+    CONTROL "Click yes to ignore this file and continue operation.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 23, 180, 10
+    CONTROL "&Yes", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
+    CONTROL "Yes to &All", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
+    CONTROL "&No", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+END
+
+
+CONFIRMRMDIR DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 245, 60
+CAPTION "Confirm Directory Delete"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
+    CONTROL "Delete Directory:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 55, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 80, 18, 160, 10
+    CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
+    CONTROL "&Yes", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
+    CONTROL "Yes to &All", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
+    CONTROL "&No", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+END
+
+CONFIRMMOVE DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 22, 245, 60
+CAPTION "Confirm File Move"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
+    CONTROL "Move File:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 44, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 70, 18, 170, 10
+    CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
+    CONTROL "&Yes", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
+    CONTROL "Yes to &All", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
+    CONTROL "&No", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+END
+
+CONFIRMRENAME DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 22, 245, 60
+CAPTION "Confirm File Rename"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
+    CONTROL "Rename File:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 54, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 80, 18, 160, 10
+    CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
+    CONTROL "&Yes", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
+    CONTROL "Yes to &All", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
+    CONTROL "&No", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+END
+
+
+MYPRINTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 240, 63
+CAPTION "Print"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "", IDD_DIR, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 3, 6, 193, 10
+    CONTROL "&Print:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 3, 20, 23, 10
+    CONTROL "", IDD_FROM, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 27, 18, 160, 12
+    CONTROL "",IDD_STATUS, "static", WS_CHILD | SS_LEFTNOWORDWRAP | SS_NOPREFIX, 3, 36, 190, 10
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 197, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 197, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 197, 43, 40, 14
+END
+
+
+SEARCHDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 283, 63
+CAPTION "Search"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "&Search For:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 6, 45, 12
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 52, 5, 180, 12
+    CONTROL "Sin&ce:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 21, 45, 12
+    CONTROL "", IDD_DATE, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 52, 20, 180, 12
+    CONTROL "Start &From:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 36, 45, 12
+    CONTROL "", IDD_DIR, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 52, 35, 180, 12
+    CONTROL "S&earch All Subdirectories", IDD_SEARCHALL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 52, 49, 100, 12
+    CONTROL "S&ubdirs in Results", IDD_INCLUDEDIRS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 162, 49, 80, 12
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 43, 40, 14
+END
+
+
+MOVECOPYDLG DIALOG 47, 59, 281, 64
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Move"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Current Directory: N", IDD_DIR, "Static", SS_SIMPLE | SS_NOPREFIX, 3, 6, 232, 10
+
+    CONTROL         "&To:", IDD_KK_TEXTTO, "Static", SS_LEFTNOWORDWRAP, 3, 33, 20, 10
+    EDITTEXT        IDD_TO, 37, 32, 188, 12, ES_AUTOHSCROLL
+
+    CONTROL         "", IDD_STATUS, "Static", SS_SIMPLE | SS_NOPREFIX, 3, 49, 40, 10
+    CONTROL         "", IDD_NAME, "Static", SS_SIMPLE | SS_NOPREFIX,  45, 49, 190, 10
+
+    DEFPUSHBUTTON   "OK", IDOK, 235, 6, 40, 14
+
+    PUSHBUTTON      "Cancel", IDCANCEL, 235, 23, 40, 14
+    PUSHBUTTON      "&Help", IDD_HELP, 235, 40, 40, 14
+
+    CONTROL         "&From:", IDD_KK_TEXTFROM, "Static", SS_LEFTNOWORDWRAP, 3, 19, 20, 10
+    EDITTEXT        IDD_FROM, 37, 18, 188, 12, ES_AUTOHSCROLL
+
+    CONTROL         "", IDD_DIRS, "Static", SS_LEFTNOWORDWRAP, 3, 49, 230, 10
+END
+
+
+
+DELETEDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 246, 64
+CAPTION "Delete"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "Current Directory: C", IDD_DIR, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 3, 5, 193, 10
+    CONTROL "De&lete:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 3, 20, 35, 10
+    CONTROL "", IDD_FROM, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 40, 19, 155, 12
+    CONTROL "", IDD_STATUS, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 3, 35, 35, 10
+    CONTROL "", IDD_NAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 40, 35, 155, 10
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 200, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 200, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 200, 40, 40, 14
+END
+
+MULTIPLEATTRIBSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 206, 88
+CAPTION "Properties"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "%d Files Selected", IDD_TEXT1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 5, 144, 10
+    CONTROL "Total %s bytes", IDD_TEXT2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 16, 144, 10
+    CONTROL "Attributes", -1, "button", BS_GROUPBOX | WS_CHILD, 5, 29, 120, 54
+    CONTROL "&Read Only", IDD_READONLY, "button", WS_GROUP | WS_TABSTOP | BS_AUTOCHECKBOX | WS_CHILD, 10, 40, 52, 12
+    CONTROL "H&idden", IDD_HIDDEN, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 40, 52, 12
+    CONTROL "&Archive", IDD_ARCHIVE, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 52, 52, 12
+    CONTROL "&System", IDD_SYSTEM, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 52, 52, 12
+    CONTROL "&Compressed", IDD_COMPRESSED, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 64, 52, 12
+    CONTROL "OK", 1, "button", WS_GROUP | BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 6, 50, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 23, 50, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 43, 50, 14
+END
+
+
+ATTRIBSDLG DIALOG 23, 13, 259, 229
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Properties for %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK", IDOK, 204, 6, 50, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 204, 23, 50, 14
+    PUSHBUTTON      "&Help", IDD_HELP, 204, 40, 50, 14
+
+    CONTROL         "&File Name:", IDD_NAMELABEL, "Static",
+                    SS_LEFTNOWORDWRAP, 5, 5, 55, 10
+    EDITTEXT        IDD_NAME, 72, 5, 132, 10, ES_AUTOHSCROLL | ES_READONLY |
+                    NOT WS_BORDER
+    CONTROL         "&Path:", IDD_TEXT, "Static", SS_LEFTNOWORDWRAP,
+                    5, 16, 51, 10
+    EDITTEXT        IDD_DIR, 72, 16, 132, 10, ES_AUTOHSCROLL | ES_READONLY |
+                    NOT WS_BORDER
+    CONTROL         "Last Change:", IDD_TEXT, "Static", SS_LEFTNOWORDWRAP,
+                    5, 27, 62, 10
+    CONTROL         "", IDD_DATE, "Static", SS_LEFTNOWORDWRAP, 72, 27, 132, 10
+    CONTROL         "Version:", IDD_VERLABEL, "Static", SS_LEFTNOWORDWRAP,
+                    5, 38, 45, 10
+    CONTROL         "Not marked", IDD_VERSION, "Static", SS_LEFTNOWORDWRAP |
+                    SS_NOPREFIX, 72, 38, 132, 10
+    LTEXT           "Cop&yright:", -1, 5, 49, 45, 10
+    CONTROL         "Not marked", IDD_COPYRIGHT, "Edit", ES_AUTOHSCROLL |
+                    ES_READONLY | WS_TABSTOP, 72, 49, 132, 10
+    CONTROL         "Size:", IDD_SIZELABEL, "Static", SS_LEFTNOWORDWRAP,
+                    5, 60, 45, 10
+    CONTROL         "", IDD_SIZE, "Static", SS_LEFTNOWORDWRAP, 72, 60, 132, 10
+    CONTROL         "Compressed Size:", IDD_CSIZELABEL, "Static",
+                    SS_LEFTNOWORDWRAP, 5, 71, 62, 10
+    CONTROL         "", IDD_CSIZE, "Static", SS_LEFTNOWORDWRAP, 72, 71, 132, 10
+    CONTROL         "Compression Ratio:", IDD_CRATIOLABEL, "Static",
+                    SS_LEFTNOWORDWRAP, 5, 82, 62, 10
+    CONTROL         "", IDD_CRATIO, "Static", SS_LEFTNOWORDWRAP, 72, 82, 132, 10
+    GROUPBOX        "Attributes", IDD_TEXT, 4, 96, 120, 54
+    CONTROL         "&Read Only", IDD_READONLY, "Button", BS_AUTOCHECKBOX |
+                    WS_GROUP | WS_TABSTOP, 9, 108, 52, 12
+    CONTROL         "H&idden", IDD_HIDDEN, "Button", BS_AUTOCHECKBOX,
+                    71, 108, 49, 12
+    CONTROL         "&Archive", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX,
+                    9, 120, 52, 12
+    CONTROL         "&System", IDD_SYSTEM, "Button", BS_AUTOCHECKBOX,
+                    71, 120, 49, 12
+    CONTROL         "&Compressed", IDD_COMPRESSED, "Button", BS_AUTOCHECKBOX,
+                    9, 132, 52, 12
+    GROUPBOX        "&Version Information", IDD_VERSION_FRAME, 4, 155, 250, 70
+    LISTBOX         IDD_VERSION_KEY, 9, 168, 91, 58, LBS_SORT |
+                    LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDD_VERSION_VALUE, 110, 168, 138, 58, ES_MULTILINE |
+                    ES_READONLY | WS_VSCROLL
+END
+
+
+COMPRESSPROGDLG DIALOG 123, 60, 207, 117
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Compress Files Progress"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "File being compressed:", -1, 6, 8, 79, 8
+    LTEXT           "filename.xxx", IDD_COMPRESS_FILE, 86, 8, 90, 8
+    LTEXT           "Directory:", -1, 6, 20, 39, 8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\", IDD_COMPRESS_DIR, 43, 
+                    20, 150, 8
+    LTEXT           "Directories compressed:", -1, 6, 32, 102, 8
+    LTEXT           "1,888,888,999", IDD_COMPRESS_TDIRS, 90, 32, 60, 8
+    LTEXT           "Files compressed:", -1, 6, 44, 62, 8
+    LTEXT           "1,888,888,999", IDD_COMPRESS_TFILES, 74, 44, 58, 8
+    LTEXT           "Total size of files before compression:", -1, 6, 56, 
+                    124, 8
+    LTEXT           "9,999,999,999,999", IDD_COMPRESS_USIZE, 134, 56, 68, 8
+    LTEXT           "Total size of files after compression:", -1, 6, 68, 123, 
+                    8
+    LTEXT           "9,999,999,999,999", IDD_COMPRESS_CSIZE, 134, 69, 68, 8
+    LTEXT           "File compression ratio:", -1, 6, 80, 78, 8
+    LTEXT           "100%", IDD_COMPRESS_RATIO, 91, 80, 27, 8
+    PUSHBUTTON      "Cancel", IDCANCEL, 76, 97, 55, 14
+END
+
+UNCOMPRESSPROGDLG DIALOG 114, 62, 197, 84
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Uncompress Files Progress"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "File being uncompressed:", -1, 6, 8, 83, 8
+    LTEXT           "filename.xxx", IDD_UNCOMPRESS_FILE, 93, 8, 66, 8
+    LTEXT           "Directory:", -1, 6, 20, 39, 8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\", 
+                    IDD_UNCOMPRESS_DIR, 45, 20, 144, 8
+    LTEXT           "Directories uncompressed:", -1, 6, 32, 91, 8
+    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TDIRS, 99, 32, 70, 8
+    LTEXT           "Files uncompressed:", -1, 6, 44, 86, 8
+    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TFILES, 92, 44, 78, 8
+    PUSHBUTTON      "Cancel", IDCANCEL, 74, 64, 49, 14
+END
+
+COMPRESSERRDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 245, 65
+CAPTION "Compression Error"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    ICON 32515, -1, 8, 8, 21, 20
+    LTEXT "", IDD_TEXT1, 35, 8, 190, 20
+
+    DEFPUSHBUTTON "&Ignore",     IDIGNORE,      33,  47, 40, 14, WS_TABSTOP | WS_CHILD | WS_GROUP
+    PUSHBUTTON    "I&gnore All", IDD_IGNOREALL, 79,  47, 40, 14, WS_TABSTOP | WS_CHILD
+    PUSHBUTTON    "&Retry",      IDRETRY,       125, 47, 40, 14, WS_TABSTOP | WS_CHILD
+    PUSHBUTTON    "&Abort",      IDABORT,       171, 47, 40, 14, WS_TABSTOP | WS_CHILD
+END
+
+
+
+MAKEDIRDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 200, 63
+CAPTION "Create Directory"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "", IDD_DIR, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 3, 6, 154, 10
+    CONTROL "&Name:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 3, 23, 20, 10
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 30, 22, 90, 12
+    CONTROL "",IDD_STATUS, "static", WS_CHILD | SS_NOPREFIX | SS_LEFTNOWORDWRAP, 3, 46, 150, 10
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 157, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 157, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 157, 43, 40, 14
+END
+
+
+CHOOSEDRIVEDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 157, 64
+CAPTION "Copy Disk"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "&Source In:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 8, 50, 10
+    CONTROL "", IDD_DRIVE1, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 55, 6, 40, 37
+    CONTROL "&Destination In:", IDD_FLAGS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 22, 50, 10
+    CONTROL "", IDD_DRIVE, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 55, 20, 40, 37
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 43, 40, 14
+END
+
+
+DISKCOPYPROGRESSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 30, 130, 55
+CAPTION "Copying Disk"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU | WS_VISIBLE | DS_SYSMODAL
+BEGIN
+    CONTROL "Now Copying disk in ", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 5, 130, 10
+    CONTROL "Drive A:", IDD_DRIVE, "static", SS_CENTER | WS_CHILD, 0, 15, 130, 10
+    CONTROL "Reading the source disk", IDD_PROGRESS, "static", SS_CENTER | WS_CHILD, 0, 26, 130, 10
+    CONTROL "Cancel", 2, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 44, 39, 44, 14
+END
+
+DISKLABELDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 161, 63
+CAPTION "Label Disk"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "&Label:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 15, 30, 10
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 5, 26, 100, 12
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 115, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 115, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 115, 43, 40, 14
+END
+
+FORMATDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 183, 96
+CAPTION "Format Disk"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 43, 40, 14
+    CONTROL "&Disk In:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 7, 49, 10
+    CONTROL "", IDD_DRIVE, "combobox", CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL | WS_CHILD, 55, 4, 65, 40
+    CONTROL "&Capacity:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 20, 49, 10
+    CONTROL "", IDD_HIGHCAP, "combobox", CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL | WS_CHILD, 55, 19, 65, 40
+    CONTROL "Options", 102, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 5, 39, 115, 53
+    CONTROL "&Label:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 11, 51, 39, 10
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 40, 49, 63, 12
+//    CONTROL "&Make System Disk", IDD_MAKESYS, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD | WS_DISABLED, 11, 62, 90, 12
+    CONTROL "&Quick Format", IDD_VERIFY, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 62, 90, 12
+END
+
+
+FORMATPROGRESSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 30, 150, 50
+CAPTION "Formatting Disk"
+FONT 8, "MS Shell Dlg"
+//STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU | WS_VISIBLE | DS_SYSMODAL
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU | WS_VISIBLE
+BEGIN
+    CONTROL "Now formatting disk", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 5, 150, 10
+    CONTROL "Initializing Drive...", IDD_PROGRESS, "static", SS_CENTER | WS_CHILD, 0, 17, 150, 10
+    CONTROL "Cancel", 2, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 54, 30, 44, 14
+END
+
+#if 0
+SYSDISKPROGRESSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 30, 174, 57
+CAPTION "Make System Disk"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU | WS_VISIBLE
+BEGIN
+    CONTROL "Now copying system files", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 6, 174, 8
+    CONTROL "Press Cancel if you want to abort.", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 14, 174, 8
+    CONTROL "Cancel", 2, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 66, 39, 44, 14
+END
+
+CONNECTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 12, 28, 241, 135
+CAPTION "Network Connections"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+  GROUPBOX "New Connection", -1, 5, 3, 170, 55, WS_CHILD
+
+  LTEXT "&Network Path:", -1, 10, 16, 55, 10
+  EDITTEXT, IDD_PATH, 65, 14, 100, 12, ES_AUTOHSCROLL | WS_GROUP | WS_TABSTOP
+  LTEXT "D&rive:", -1, 10, 30, 24, 10
+  COMBOBOX IDD_DRIVE, 65, 28, 40, 100, CBS_DROPDOWNLIST | WS_VSCROLL | WS_GROUP | WS_TABSTOP
+  LTEXT "Pass&word:", -1, 10, 44, 36, 10
+  EDITTEXT, IDD_PASSWORD, 65, 42, 100, 12, ES_AUTOHSCROLL | ES_PASSWORD | WS_GROUP | WS_TABSTOP
+
+  LTEXT "Current Dri&ve Connections:", -1, 5, 62, 120, 10
+  LISTBOX IDD_DRIVE1, 5, 73, 160, 60, LBS_SORT | LBS_NOTIFY | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_BORDER | WS_TABSTOP
+
+  DEFPUSHBUTTON "C&lose",  IDCANCEL, 190, 6, 45, 14, WS_GROUP | WS_TABSTOP
+  PUSHBUTTON "&Connect", IDOK, 190, 27, 45, 14, WS_TABSTOP
+  PUSHBUTTON "&Previous...", IDD_PREV, 190, 44, 45, 14, WS_TABSTOP
+  PUSHBUTTON "&Browse...", IDD_NETBROWSE, 190, 61, 45, 14, WS_GROUP | WS_TABSTOP
+  PUSHBUTTON "&Disconnect", IDD_DISCONNECT, 190, 78, 45, 14, WS_GROUP|WS_TABSTOP
+  PUSHBUTTON "&Help", IDD_HELP, 190, 95, 45, 14, WS_GROUP | WS_TABSTOP
+END
+
+PREVIOUSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 30, 231, 98
+CAPTION "Previous Network Connections"
+FONT 8 "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "Network &Paths:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 3, 3, 69, 10
+    CONTROL "", IDD_PREV, "listbox", LBS_NOTIFY | LBS_SORT | LBS_STANDARD | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 3, 15, 172, 80
+    CONTROL "&Select", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 181, 6, 44, 14
+    CONTROL "Close", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 181, 24, 44, 14
+    CONTROL "&Delete", IDD_DELETE, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 181, 41, 44, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 181, 58, 44, 14
+END
+#endif
+
+OTHERDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 174, 81
+CAPTION "Partial Details"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "Details", IDD_TEXT, "button", BS_GROUPBOX | WS_CHILD, 4, 4, 121, 74
+    CONTROL "&Size", IDD_SIZE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 15, 100, 12
+    CONTROL "Last &Modification Date", IDD_DATE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 27, 100, 12
+    CONTROL "Last Modification &Time", IDD_TIME, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 39, 100, 12
+    CONTROL "&File Attributes", IDD_FLAGS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 51, 100, 12
+    CONTROL "MS-&DOS file names", IDD_DOSNAMES, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 63, 100, 12
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 60, 40, 14
+END
+
+
+INCLUDEDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 157, 114
+CAPTION "By File Type"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "&Name:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 8, 23, 10
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 34, 6, 65, 12
+    CONTROL "File Type", IDD_TEXT, "button", BS_GROUPBOX | WS_CHILD, 5, 20, 94, 62
+    CONTROL "&Directories", IDD_DIR, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 31, 60, 12
+    CONTROL "&Programs", IDD_PROGRAMS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 43, 60, 12
+    CONTROL "Docu&ments", IDD_DOCS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 55, 60, 12
+    CONTROL "&Other Files", IDD_OTHER, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 67, 60, 12
+    CONTROL "Show Hidden/&System Files", IDD_SHOWHIDDEN, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 85, 100, 12
+    CONTROL "Show &Junction Points", IDD_SHOWJUNCTION, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 97, 100, 12
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 43, 40, 14
+END
+
+
+CONFIRMDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 214, 92
+CAPTION "Confirmation"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "Confirm On", IDD_TEXT, "button", BS_GROUPBOX | WS_TABSTOP | WS_CHILD, 5, 3, 158, 85
+    CONTROL "File &Delete", IDD_DELETE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 15, 80, 12
+    CONTROL "D&irectory Delete", IDD_SUBDEL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 27, 80, 12
+    CONTROL "File &Replace", IDD_REPLACE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 39, 80, 12
+    CONTROL "&Mouse Action", IDD_MOUSE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 51, 80, 12
+    CONTROL "Dis&k Commands", IDD_CONFIG, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 63, 80, 12
+    CONTROL "Modifying &System, Hidden, Read Only files", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 150, 12
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 6, 40, 14
+    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 23, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 44, 40, 14
+END
+
+DMSTATUSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 250, 46
+CAPTION "Moving..."
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "", IDD_STATUS, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD , 5, 5, 49, 10
+    CONTROL "", IDD_NAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 55, 5, 192, 10
+    CONTROL "To:", IDD_TOSTATUS, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 5, 15, 25, 10
+    CONTROL "", IDD_TONAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 55, 15, 192, 10
+    CONTROL "Cancel", IDCANCEL, "button", WS_CHILD | BS_DEFPUSHBUTTON, 200, 28, 40, 14
+END
+
+PRTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 120, 58
+CAPTION ""
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
+BEGIN
+    CONTROL "Printing File...", -1, "static", SS_CENTER | WS_GROUP | WS_CHILD, 4, 6, 120, 12
+    CONTROL "", IDD_TEXT, "static", SS_CENTER | SS_NOPREFIX | WS_GROUP | WS_CHILD, 4, 20, 120, 12
+    CONTROL "Cancel", 2, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 44, 40, 32, 14
+END
+
+
+LFNTOFATDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 250, 78
+CAPTION "Select Filename"
+FONT 8, "MS Shell Dlg"
+STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
+BEGIN
+    CONTROL "This path does not match the FAT format for filenames.  Please enter a new name.", 99, "static", SS_LEFT | WS_CHILD, 5, 4, 190, 24
+    CONTROL "&New Name:", -1, "static", SS_RIGHT | WS_CHILD, 5, 56, 50, 12
+    CONTROL "", IDD_TO, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 57, 55, 130, 12
+    CONTROL "Original Path:", -1, "static", SS_RIGHT | WS_CHILD, 5, 28, 50, 11
+    CONTROL "", IDD_FROM, "edit", ES_READONLY | ES_LEFT | ES_AUTOHSCROLL | WS_TABSTOP | WS_CHILD, 57, 28, 130, 12
+    CONTROL "To Directory:", -1, "static", SS_RIGHT | WS_CHILD, 5, 42, 50, 11
+    CONTROL "", IDD_DIR, "edit", ES_READONLY | ES_LEFT | ES_AUTOHSCROLL | WS_TABSTOP | WS_CHILD, 57, 42, 130, 12
+    CONTROL "OK", IDOK, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 205, 4, 40, 14
+    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 205, 20, 40, 14
+    CONTROL "&Help", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 205, 36, 40, 14
+END
+
+
+ATTRIBSDLGDIR DIALOG 23, 13, 250, 119
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Properties for %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK", IDOK, 194, 6, 50, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 194, 23, 50, 14
+    PUSHBUTTON      "&Help", IDD_HELP, 194, 43, 50, 14
+    CONTROL         "&File Name:", IDD_NAMELABEL, "Static",
+                    SS_LEFTNOWORDWRAP, 5, 5, 55, 10
+    EDITTEXT        IDD_NAME, 60, 5, 134, 10, ES_AUTOHSCROLL | ES_READONLY |
+                    NOT WS_BORDER
+    CONTROL         "&Path:", IDD_TEXT, "Static", SS_LEFTNOWORDWRAP, 5, 16,
+                    51, 10
+    EDITTEXT        IDD_DIR, 60, 16, 134, 10, ES_AUTOHSCROLL | ES_READONLY |
+                    NOT WS_BORDER
+    CONTROL         "Last Change:", IDD_TEXT, "Static", SS_LEFTNOWORDWRAP, 5,
+                    27, 62, 10
+    CONTROL         "", IDD_DATE, "Static", SS_LEFTNOWORDWRAP, 60, 27, 97,
+                    10
+    CONTROL         "Size:", IDD_SIZELABEL, "Static", SS_LEFTNOWORDWRAP, 5,
+                    38, 45, 10
+    CONTROL         "", IDD_SIZE, "Static", SS_LEFTNOWORDWRAP, 60, 38, 90,
+                    10
+    GROUPBOX        "Attributes", IDD_TEXT, 4, 52, 120, 54
+    CONTROL         "&Read Only", IDD_READONLY, "Button", BS_AUTOCHECKBOX |
+                    WS_GROUP | WS_TABSTOP, 9, 64, 52, 12
+    CONTROL         "H&idden", IDD_HIDDEN, "Button", BS_AUTOCHECKBOX, 71, 64,
+                    49, 12
+    CONTROL         "&Archive", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX, 9,
+                    76, 52, 12
+    CONTROL         "&System", IDD_SYSTEM, "Button", BS_AUTOCHECKBOX, 71, 76,
+                    49, 12
+    CONTROL         "&Compressed", IDD_COMPRESSED, "button", BS_AUTOCHECKBOX,
+                    9, 88, 52, 12
+END
+
+
+#ifdef ASSOC
+ASSOCIATEDLG DIALOG 20, 20, 255, 129
+#else
+ASSOCIATEDLG DIALOG 20, 20, 255, 118
+#endif
+
+CAPTION "Associate"
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Files with Extension:", -1, 6, 7, 68, 8
+    COMBOBOX        IDD_EXT, 76, 5, 44, 55, CBS_DROPDOWN | CBS_SORT |
+                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+
+    LTEXT           "&Associate With:", -1, 6, 30, 92, 10
+
+    EDITTEXT        IDD_COMMAND, 6, 42, 172, 12, ES_AUTOHSCROLL
+    LISTBOX         IDD_CLASSLIST, 11, 54, 167, 62, LBS_SORT | WS_VSCROLL | WS_TABSTOP
+#ifdef ASSOC
+#ifdef ASSOCHEAD
+                    | LBS_OWNERDRAWFIXED | LBS_HASSTRINGS
+#endif
+#endif
+    PUSHBUTTON      "&Browse...", IDD_BROWSE, 130, 24, 47, 14
+    DEFPUSHBUTTON   "OK", IDOK, 187, 6, 62, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 187, 23, 62, 14
+    PUSHBUTTON      "&New Type...", IDD_NEW, 187, 42, 62, 14
+    PUSHBUTTON      "&Change Type...", IDD_CONFIG, 187, 59, 62, 14
+    PUSHBUTTON      "&Delete Type", IDD_DELETE, 187, 76, 62, 14
+    PUSHBUTTON      "&Help", IDD_HELP, 187, 95, 62, 14
+
+#ifdef ASSOC
+    AUTOCHECKBOX    "&View Common File Types and Extensions only", IDD_SYSTEM,
+                    6, 117, 160, 10, WS_GROUP
+#endif
+END
+
+ASSOCIATEFILEDLG DIALOG 18, 14, 290, 224
+CAPTION "Change File Type"
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&File Type:", IDD_DESCTEXT, 5, 6, 33, 8
+    EDITTEXT        IDD_DESC, 42, 5, 95, 12, ES_AUTOHSCROLL
+    GROUPBOX        "&Action: ", -1, 5, 22, 235, 126, WS_GROUP
+    COMBOBOX        IDD_ACTION, 36, 22, 48, 33, CBS_DROPDOWNLIST |
+                    WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Command:", IDD_COMMANDTEXT, 9, 42, 38, 8
+    EDITTEXT        IDD_COMMAND, 47, 39, 111, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse...", IDD_BROWSE, 164, 38, 40, 14
+    AUTOCHECKBOX    "&Uses DDE", IDD_DDE, 10, 57, 50, 10, WS_GROUP
+    LTEXT           "DDE &Message:", IDD_DDEMESGTEXT, 22, 72, 50, 8
+    EDITTEXT        IDD_DDEMESG, 105, 70, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "DDE Message Application &Not Running:", IDD_DDENOTRUNTEXT, 22, 84, 82, 19
+    LTEXT           "(optional)", IDD_DDEOPTIONALTEXT, 207, 90, 32, 8
+    EDITTEXT        IDD_DDENOTRUN, 105, 88, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "A&pplication:", IDD_DDEAPPTEXT, 22, 109, 39, 8
+    EDITTEXT        IDD_DDEAPP, 105, 107, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "&Topic:", IDD_DDETOPICTEXT, 23, 127, 21, 8
+    EDITTEXT        IDD_DDETOPIC, 105, 125, 100, 12, ES_AUTOHSCROLL
+    LTEXT           "Ne&w Extension:", -1, 11, 184, 52, 8
+    EDITTEXT        IDD_EXT, 64, 183, 32, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "A&dd ->", IDD_ADD, 102, 174, 44, 14
+    PUSHBUTTON      "<- &Remove", IDD_DELETE, 102, 191, 44, 14
+    LTEXT           "&Extensions:", -1, 157, 162, 41, 8
+    LISTBOX         IDD_EXTLIST, 157, 172, 65, 40, LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Extensions Associated with this File Type:", IDD_EXTTEXT, 5, 154, 235, 66
+    DEFPUSHBUTTON   "OK", IDOK, 244, 6, 40, 14
+    PUSHBUTTON      "Cancel", IDCANCEL, 244, 23, 40, 14
+    PUSHBUTTON      "&Help", IDD_HELP, 244, 40, 40, 14
+END
+
+GOTODIRDLG DIALOG 13, 54, 464, 125
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Goto Directory"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Goto Directory:", -1, 6, 3, 100, 8
+    CONTROL         "", IDD_GOTODIR, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 6, 13, 406, 12
+    LISTBOX         IDD_GOTOLIST, 6, 25, 406, 95, WS_VSCROLL | WS_TABSTOP
+
+    DEFPUSHBUTTON   "OK", IDOK, 418, 13, 40, 14, WS_GROUP
+    PUSHBUTTON      "Cancel", IDCANCEL, 418, 30, 40, 14, WS_GROUP
+END
+
+ABOUTDLG DIALOG 13, 54, 250, 75
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About File Manager"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            APPICON, -1, 6, 6, 32, 32
+    LTEXT           "Windows File Manager", -1, 36, 6, 200, 8
+    CONTROL         "TO BE SET", IDD_VERTEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 36, 18, 200, 8
+    LTEXT           "Copyright (c) Microsoft Corporation. All rights reserved.", -1, 36, 30, 200, 8
+    LTEXT           "Licensed under the MIT License.", -1, 36, 42, 200, 8
+    LTEXT           "https://github.com/Microsoft/winfile", -1, 36, 54, 200, 8
+    DEFPUSHBUTTON   "OK", IDOK, 200, 50, 40, 14
+END
