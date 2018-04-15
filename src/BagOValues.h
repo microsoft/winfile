@@ -1,9 +1,9 @@
 /********************************************************************
 
-BagOValues.h
-
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the MIT License.
+  BagOValues.h
+  
+  Copyright (c) Microsoft Corporation. All rights reserved.
+  Licensed under the MIT License.
 
 ********************************************************************/
 
@@ -38,8 +38,8 @@ public:
 		this->m_spinlock.Lock();
 		wstring lowered;
 		lowered.resize(key.size());
-		transform(key.begin(), key.end(), lowered.begin(), ::tolower);
-		m_Values.push_back(make_pair(lowered, value));
+		transform(std::begin(key), std::end(key), std::begin(lowered), ::tolower);
+		m_Values.emplace_back(make_pair(std::move(lowered), value));
 
 		m_lastStr.resize(0);	// clear this after new data added
 		this->m_spinlock.Unlock();
@@ -61,7 +61,7 @@ public:
 	{
 		wstring lowered;
 		lowered.resize(query.size());
-		transform(query.begin(), query.end(), lowered.begin(), ::tolower);
+		transform(std::cbegin(query), std::cend(query), std::begin(lowered), ::tolower);
 
 		vector<TValue> results;
 		TValue val = TValue();
@@ -70,7 +70,7 @@ public:
 		this->m_spinlock.Lock();
 
 		// if last saved string/iterator is a prefix of the new string, start there
-		TVector::const_iterator itr;
+		TItr itr;
 		if (m_lastStr.size() != 0 && lowered.compare(0, m_lastStr.size(), m_lastStr) == 0)
 			itr = m_LastItr;
 		else

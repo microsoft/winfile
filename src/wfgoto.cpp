@@ -1,11 +1,11 @@
 /********************************************************************
 
-	wfgoto.cpp
-
-	This file contains code that supports the goto directory command
-
-	Copyright (c) Microsoft Corporation. All rights reserved.
-	Licensed under the MIT License.
+    wfgoto.cpp
+    
+    This file contains code that supports the goto directory command
+    
+    Copyright (c) Microsoft Corporation. All rights reserved.
+    Licensed under the MIT License.
 
 ********************************************************************/
 
@@ -101,13 +101,13 @@ vector<PDNODE> FilterBySubtree(vector<PDNODE> const& parents, vector<PDNODE>  co
 	vector<PDNODE> results;
 
 	// for each child, if parent in parents, return
-	std::copy_if(children.begin(),
-				 children.end(),
+	std::copy_if(std::cbegin(children),
+				 std::cend(children),
 				 std::back_inserter(results),
-				 [&parents](PDNODE const& child)
+				 [&parents](auto const& child)
 	{
 		PDNODE parent = child->pParent;
-		return (find(parents.begin(), parents.end(), parent) != parents.end());
+		return (find(std::cbegin(parents), std::cend(parents), parent) != std::end(parents));
 	});
 
 	return results;
@@ -116,13 +116,12 @@ vector<PDNODE> FilterBySubtree(vector<PDNODE> const& parents, vector<PDNODE>  co
 vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 {
 	vector<PDNODE> result;
-	int count = trees.size();
 
-	if (count == 0)
+	if (trees.empty())
 		return result;
 
 	// If any tree is empty, return empty
-	if (std::any_of(trees.begin(), trees.end(), [](auto& tree) { return tree.size() == 0; }))
+	if (std::any_of(std::cbegin(trees), std::cend(trees), [](auto& tree) { return tree.size() == 0; }))
 		return result;
 
 	size_t maxOutput = 0;
@@ -134,17 +133,18 @@ vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 	}
 
 	// if just one, return it (after sort above)
+	int count = trees.size();
 	if (count == 1)
-		return trees[0];
+		return trees.at(0);
 
 	// use up to two outputs and switch back and forth; lastOutput is last number output 
 	vector<PDNODE> outputA(maxOutput);
 	vector<PDNODE> outputB(maxOutput);
-	vector<PDNODE> *combined = NULL;
+	vector<PDNODE> *combined = nullptr;
 	size_t lastOutput = 0;
 
 	// first is left side of merge; changes each time through the loop
-	vector<PDNODE>* first = NULL;
+	vector<PDNODE>* first = nullptr;
 
 	// for all other result sets, merge
 	for (int i = 1; i < count; i++)
@@ -240,7 +240,7 @@ PDNODE CreateNode(PDNODE pParentNode, WCHAR *szName, DWORD dwAttribs)
 	pNode = (PDNODE)LocalAlloc(LPTR, sizeof(DNODE) + ByteCountOf(len));
 	if (!pNode)
 	{
-		return NULL;
+		return nullptr;
 	}
 
 	pNode->pParent = pParentNode;
@@ -263,7 +263,7 @@ PDNODE CreateNode(PDNODE pParentNode, WCHAR *szName, DWORD dwAttribs)
 
 #include <sstream>
 
-vector<wstring> SplitIntoWords(LPTSTR szText)
+vector<wstring> SplitIntoWords(LPCTSTR szText)
 {
 	vector<wstring> words;
 
@@ -292,11 +292,11 @@ void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes)
 	delete pbov;
 }
 
-BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, LPTSTR szRoot, PDNODE pNodeParent, DWORD scanEpoc)
+BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, LPCTSTR szRoot, PDNODE pNodeParent, DWORD scanEpoc)
 {
 	LFNDTA lfndta;
 	WCHAR szPath[MAXPATHLEN];
-	LPWSTR      szEndPath;
+	LPWSTR szEndPath;
 
 	lstrcpy(szPath, szRoot);
 	if (lstrlen(szPath) + 1 >= COUNTOF(szPath))
@@ -308,12 +308,12 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	AddBackslash(szPath);
 	szEndPath = szPath + lstrlen(szPath);
 
-	if (pNodeParent == NULL)
+	if (pNodeParent == nullptr)
 	{
 		// create first one; assume directory; "name" is full path starting with <drive>:
 		// normally name is just directory name by itself
-		pNodeParent = CreateNode(NULL, szPath, FILE_ATTRIBUTE_DIRECTORY);
-		if (pNodeParent == NULL)
+		pNodeParent = CreateNode(nullptr, szPath, FILE_ATTRIBUTE_DIRECTORY);
+		if (pNodeParent == nullptr)
 		{
 			// out of memory
 			return TRUE;
@@ -352,7 +352,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 		}
 
 		PDNODE pNodeChild = CreateNode(pNodeParent, lfndta.fd.cFileName, lfndta.fd.dwFileAttributes);
-		if (pNodeChild == NULL)
+		if (pNodeChild == nullptr)
 		{
 			// out of memory
 			break;
@@ -396,10 +396,10 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	return TRUE;
 }
 
-vector<PDNODE> GetDirectoryOptionsFromText(LPTSTR szText, BOOL *pbLimited)
+vector<PDNODE> GetDirectoryOptionsFromText(LPCTSTR szText, BOOL *pbLimited)
 {
-	if (g_pBagOCDrive == NULL)
-		return vector<PDNODE>();
+	if (g_pBagOCDrive == nullptr)
+		return vector<PDNODE>{};
 
 	vector<wstring> words = SplitIntoWords(szText);
 
@@ -464,12 +464,12 @@ VOID UpdateGotoList(HWND hDlg)
 	HWND hwndLB = GetDlgItem(hDlg, IDD_GOTOLIST);
 	SendMessage(hwndLB, LB_RESETCONTENT, 0, 0);
 
-	if (options.size() == 0)
+	if (options.empty())
 		return;
 
 	for (auto i = 0u; i < 10u && i < options.size(); i++)
 	{
-		GetTreePath(options[i], szText);
+		GetTreePath(options.at(i), szText);
 
 		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)szText);
 	}
@@ -654,7 +654,7 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 	SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
 	// TODO(Thai): Make this index all drives
-	if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), NULL, scanEpocNew))
+	if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), nullptr, scanEpocNew))
 	{
 		pBagNew->Sort();
 
@@ -662,7 +662,7 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 		pNodes = (vector<PDNODE> *)InterlockedExchangePointer((PVOID *)&g_allNodes, pNodes);
 	}
 
-	if (pBagNew != NULL)
+	if (pBagNew != nullptr)
 	{
 		FreeDirectoryBagOValues(pBagNew, pNodes);
 	}
@@ -681,12 +681,12 @@ StartBuildingDirectoryTrie()
 	//
 	// Move/Copy things.
 	//
-	hThreadCopy = CreateThread(NULL,
-							   0L,
-							   BuildDirectoryTreeBagOValues,
-							   NULL,
-							   0L,
-							   &dwIgnore);
+	hThreadCopy = CreateThread(nullptr,
+		0L,
+		BuildDirectoryTreeBagOValues,
+		nullptr,
+		0L,
+		&dwIgnore);
 
 	if (!hThreadCopy) {
 		return GetLastError();
