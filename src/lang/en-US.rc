@@ -90,6 +90,7 @@ BEGIN
     MENUITEM    "&Status Bar", IDM_STATUSBAR
     MENUITEM    SEPARATOR
     MENUITEM    "&Minimize on Use", IDM_MINONRUN
+    MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
     MENUITEM    "Save Settings on &Exit", IDM_SAVESETTINGS
 #ifdef PROGMAN
     MENUITEM    SEPARATOR
@@ -246,10 +247,10 @@ BEGIN
     IDS_FORMATSELDISK, "Select the disk to format."                                                                                               /* 128 */
 
 JAPANBEGIN
-    IDS_KK_COPYFROMSTR, "„Ç≥„Éî„?ºÂÖ?(&F):"
-    IDS_KK_COPYTOSTR, "„Ç≥„Éî„?ºÂÖ?(&T):"
-    IDS_KK_RENAMEFROMSTR, "ÂÖ?„ÅÆÂêçÂâç(&F):"
-    IDS_KK_RENAMETOSTR, "Êñ∞„Åó„ÅÑÂêçÂâç(&T):"
+    IDS_KK_COPYFROMSTR,        "ÉRÉsÅ[å≥(&F):"
+    IDS_KK_COPYTOSTR,          "ÉRÉsÅ[êÊ(&T):"
+    IDS_KK_RENAMEFROMSTR,      "å≥ÇÃñºëO(&F):"
+    IDS_KK_RENAMETOSTR,        "êVÇµÇ¢ñºëO(&T):"
 JAPANEND
 
 //    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
@@ -313,7 +314,7 @@ JAPANEND
     IDS_COPYINGTITLE            "Copying..."
 
 JAPANBEGIN
-    IDS_KK_COPY                 "„Ç≥„Éî„?ºÂÖ?:"
+    IDS_KK_COPY                 "ÉRÉsÅ[êÊ:"
 JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "Quick Formatting..."
@@ -489,7 +490,7 @@ JAPANEND
     IDS_SEARCHING               "Searching..."
 
 JAPANBEGIN
-    IDS_WRNNOSHIFTJIS           "„Åì„?Æ„Éï„Ç©„É≥„Éà„Çí‰ΩøÁî®„Åô„Çã„Å®Êº¢Â≠ó„?ÆË°®Á§∫„Åå\n„Åß„Åç„Å™„Åè„Å™„Çä„Åæ„Åô„Ä?"
+    IDS_WRNNOSHIFTJIS           "Ç±ÇÃÉtÉHÉìÉgÇégópÇ∑ÇÈÇ∆äøéöÇÃï\é¶Ç™\nÇ≈Ç´Ç»Ç≠Ç»ÇËÇ‹Ç∑ÅB"
 JAPANEND
 
     IDS_INITUPDATEFAIL          "Unable to initialize background update support.  File Manager will exit.  "
@@ -587,6 +588,7 @@ MH_MYITEMS + IDM_STATUSBAR, "Displays or hides the status bar"
 MH_MYITEMS + IDM_NEWWINONCONNECT, "Opens a new window when you connect"
 
 MH_MYITEMS + IDM_MINONRUN, "Reduces File Manager to an icon at startup"
+MH_MYITEMS + IDM_INDEXONLAUNCH, "Creates an index for Goto Directory when File Manager launches"
 MH_MYITEMS + IDM_SAVESETTINGS, "Saves settings when you quit File Manager"
 
 MH_MYITEMS + IDM_NEWWINDOW, "Opens a new window"
