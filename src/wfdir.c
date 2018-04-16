@@ -1838,7 +1838,7 @@ PutSize(
     /*
      *  Convert it into a string.
      */
-    wsprintf(szBuffer, TEXT("%lld"), pqSize->QuadPart);
+    wsprintf(szBuffer, TEXT("%I64u"), pqSize->QuadPart);
 
     /*
      *  Format the string.
