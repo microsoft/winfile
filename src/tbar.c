@@ -1304,6 +1304,8 @@ AddSep:
       extButton.fsStyle   = (BYTE)lpButton->fsStyle;
       extButton.idCommand = lpButton->idCommand + extensions[iExt].Delta;
       extButton.fsState   = TBSTATE_ENABLED;
+      extButton.dwData    = 0;
+      extButton.iString   = 0;
 
       SendMessage(hwndExtensions, TB_INSERTBUTTON, (WORD)-1,
          (LPARAM)(LPTBBUTTON)&extButton);
