@@ -1651,9 +1651,8 @@ AppCommandProc(register DWORD id)
       if (!FmifsLoaded())
          break;
 
-      // Don't use modal dialog box
-
-      FormatDiskette(hwndFrame,FALSE);
+      // Don't use modal dialog box, set hWndParent = NULL
+      DialogBox(hAppInstance, (LPTSTR)MAKEINTRESOURCE(FORMATSELECTDLG), NULL, (DLGPROC)FormatSelectDlgProc);
       break;
 
    case IDM_SHAREAS:

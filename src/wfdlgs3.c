@@ -12,10 +12,12 @@
 #include "winfile.h"
 #include "lfn.h"
 #include "wfcopy.h"
+#include <shlobj.h>
 
 #define LABEL_NTFS_MAX 32
 #define LABEL_FAT_MAX  11
 #define CCH_VERSION    40
+#define CCH_DRIVE       3
 
 VOID FormatDrive( IN PVOID ThreadParameter );
 VOID CopyDiskette( IN PVOID ThreadParameter );
@@ -725,6 +727,88 @@ DoHelp:
          return FALSE;
    }
   return TRUE;
+}
+
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*  FormatSelectDlgProc() -  DialogProc callback function for FORMATSELECTDLG */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+
+INT_PTR
+FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+{
+    HWND  hwndSelectDrive;
+    INT   driveIndex;
+    INT   comboxIndex;
+    DWORD dwFormatResult;
+    TCHAR szDrive[CCH_DRIVE] = { 0 };
+
+    switch (wMsg)
+    {
+    case WM_INITDIALOG:
+        {
+            // Build the list of drives that can be selected for formatting.
+            // Do not include remote drives or CD/DVD drives.
+            szDrive[1] = ':';
+            hwndSelectDrive = GetDlgItem(hDlg, IDD_SELECTDRIVE);
+            if (hwndSelectDrive)
+            {
+                for (driveIndex = 0; driveIndex < cDrives; driveIndex++)
+                {
+                    if (!IsRemoteDrive(rgiDrive[driveIndex]) && !IsCDRomDrive(rgiDrive[driveIndex]))
+                    {
+                        // Set the drive letter as the string and the drive index as the data.
+                        DRIVESET(szDrive, rgiDrive[driveIndex]);
+                        comboxIndex = SendMessage(hwndSelectDrive, CB_ADDSTRING, 0, (LPARAM)szDrive);
+                        SendMessage(hwndSelectDrive, CB_SETITEMDATA, comboxIndex, (LPARAM)driveIndex);
+                    }
+                }
+
+                SendMessage(hwndSelectDrive, CB_SETCURSEL, 0, 0);
+            }
+
+            return TRUE;
+        }
+    case WM_COMMAND:
+        switch (GET_WM_COMMAND_ID(wParam, lParam))
+        {
+        case IDOK:
+            {
+                // Hide this dialog window while the SHFormatDrive dialog is displayed.
+                // SHFormatDrive needs a parent window, and this dialog will serve as
+                // that parent, even if it is hidden. 
+                ShowWindow(hDlg, SW_HIDE);
+
+                // Retrieve the selected drive index and call SHFormatDrive with it.
+                comboxIndex = (INT)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETCURSEL, 0, 0);
+                driveIndex = (INT)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETITEMDATA, comboxIndex, 0);
+                dwFormatResult = SHFormatDrive(hDlg, rgiDrive[driveIndex], SHFMT_ID_DEFAULT, 0);
+
+                // If the format results in an error, show FORMATSELECTDLG again so 
+                // the user can select a different drive if needed, or cancel.
+                // Otherwise, if the format was successful, just close FORMATSELECTDLG.
+                if (dwFormatResult == SHFMT_ERROR || dwFormatResult == SHFMT_CANCEL || dwFormatResult == SHFMT_NOFORMAT)
+                {
+                    // SHFormatDrive sometimes sets the parent window title when it encounters an error.
+                    // We don't want this; set the title back before we show the dialog.
+                    // Future improvement: title text and initial title should load from the same resource string.
+                    SetWindowText(hDlg, TEXT("Format Drive"));
+                    ShowWindow(hDlg, SW_SHOW);
+                }
+                else
+                {
+                    EndDialog(hDlg, IDOK);
+                }
+
+                return TRUE;
+            }
+        case IDCANCEL:
+            EndDialog(hDlg, IDCANCEL);
+            return TRUE;
+        }
+    }
+    return FALSE;
 }
 
 /*--------------------------------------------------------------------------*/
