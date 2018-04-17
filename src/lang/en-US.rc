@@ -247,10 +247,10 @@ BEGIN
     IDS_FORMATSELDISK, "Select the disk to format."                                                                                               /* 128 */
 
 JAPANBEGIN
-    IDS_KK_COPYFROMSTR,        "ƒRƒs[Œ³(&F):"
-    IDS_KK_COPYTOSTR,          "ƒRƒs[æ(&T):"
-    IDS_KK_RENAMEFROMSTR,      "Œ³‚Ì–¼‘O(&F):"
-    IDS_KK_RENAMETOSTR,        "V‚µ‚¢–¼‘O(&T):"
+    IDS_KK_COPYFROMSTR,        "ã‚³ãƒ”ãƒ¼å…ƒ(&F):"
+    IDS_KK_COPYTOSTR,          "ã‚³ãƒ”ãƒ¼å…ˆ(&T):"
+    IDS_KK_RENAMEFROMSTR,      "å…ƒã®åå‰(&F):"
+    IDS_KK_RENAMETOSTR,        "æ–°ã—ã„åå‰(&T):"
 JAPANEND
 
 //    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
@@ -314,7 +314,7 @@ JAPANEND
     IDS_COPYINGTITLE            "Copying..."
 
 JAPANBEGIN
-    IDS_KK_COPY                 "ƒRƒs[æ:"
+    IDS_KK_COPY                 "ã‚³ãƒ”ãƒ¼å…ˆ:"
 JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "Quick Formatting..."
@@ -490,7 +490,7 @@ JAPANEND
     IDS_SEARCHING               "Searching..."
 
 JAPANBEGIN
-    IDS_WRNNOSHIFTJIS           "‚±‚ÌƒtƒHƒ“ƒg‚ðŽg—p‚·‚é‚ÆŠ¿Žš‚Ì•\Ž¦‚ª\n‚Å‚«‚È‚­‚È‚è‚Ü‚·B"
+    IDS_WRNNOSHIFTJIS           "ã“ã®ãƒ•ã‚©ãƒ³ãƒˆã‚’ä½¿ç”¨ã™ã‚‹ã¨æ¼¢å­—ã®è¡¨ç¤ºãŒ\nã§ããªããªã‚Šã¾ã™ã€‚"
 JAPANEND
 
     IDS_INITUPDATEFAIL          "Unable to initialize background update support.  File Manager will exit.  "
