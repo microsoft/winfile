@@ -741,6 +741,7 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     HWND  hwndSelectDrive;
     INT   driveIndex;
     INT   comboxIndex;
+    DRIVE drive;
     DWORD dwFormatResult;
     TCHAR szDrive[CCH_DRIVE] = { 0 };
 
@@ -756,12 +757,13 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
             {
                 for (driveIndex = 0; driveIndex < cDrives; driveIndex++)
                 {
-                    if (!IsRemoteDrive(rgiDrive[driveIndex]) && !IsCDRomDrive(rgiDrive[driveIndex]))
+                    drive = rgiDrive[driveIndex];
+                    if (!IsRemoteDrive(drive) && !IsCDRomDrive(drive))
                     {
                         // Set the drive letter as the string and the drive index as the data.
-                        DRIVESET(szDrive, rgiDrive[driveIndex]);
+                        DRIVESET(szDrive, drive);
                         comboxIndex = SendMessage(hwndSelectDrive, CB_ADDSTRING, 0, (LPARAM)szDrive);
-                        SendMessage(hwndSelectDrive, CB_SETITEMDATA, comboxIndex, (LPARAM)driveIndex);
+                        SendMessage(hwndSelectDrive, CB_SETITEMDATA, comboxIndex, (LPARAM)drive);
                     }
                 }
 
@@ -782,8 +784,8 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                 // Retrieve the selected drive index and call SHFormatDrive with it.
                 comboxIndex = (INT)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETCURSEL, 0, 0);
-                driveIndex = (INT)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETITEMDATA, comboxIndex, 0);
-                dwFormatResult = SHFormatDrive(hDlg, rgiDrive[driveIndex], SHFMT_ID_DEFAULT, 0);
+                drive = (DRIVE)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETITEMDATA, comboxIndex, 0);
+                dwFormatResult = SHFormatDrive(hDlg, drive, SHFMT_ID_DEFAULT, 0);
 
                 // If the format results in an error, show FORMATSELECTDLG again so 
                 // the user can select a different drive if needed, or cancel.
