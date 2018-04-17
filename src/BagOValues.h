@@ -38,8 +38,8 @@ public:
 		this->m_spinlock.Lock();
 		wstring lowered;
 		lowered.resize(key.size());
-		transform(key.begin(), key.end(), lowered.begin(), ::tolower);
-		m_Values.insert(m_Values.end(),  make_pair(lowered, value));
+		transform(std::begin(key), std::end(key), std::begin(lowered), ::tolower);
+		m_Values.emplace_back(make_pair(std::move(lowered), value));
 
 		m_lastStr.resize(0);	// clear this after new data added
 		this->m_spinlock.Unlock();
@@ -57,13 +57,13 @@ public:
 	// fPrefix = false means that we only return values when an entire key matches and we match substrings of the query
 	//
 	// NOTE: returns a newly allocated vector; must delete it
-	vector<TValue> *Retrieve(const wstring& query, bool fPrefix = true, unsigned maxResults = ULONG_MAX)
+	vector<TValue> Retrieve(const wstring& query, bool fPrefix = true, unsigned maxResults = ULONG_MAX)
 	{
 		wstring lowered;
 		lowered.resize(query.size());
-		transform(query.begin(), query.end(), lowered.begin(), ::tolower);
+		transform(std::cbegin(query), std::cend(query), std::begin(lowered), ::tolower);
 
-		vector<TValue> *results = NULL;
+		vector<TValue> results;
 		TValue val = TValue();
 		TPair laspair = make_pair(lowered, val);
 
@@ -93,13 +93,10 @@ public:
 					continue;
 				}
 
-				if (results == NULL)
-					results = new vector<TValue>();
-
-				if (results->size() >= maxResults)
+				if (results.size() >= maxResults)
 					break;
 
-				results->insert(results->end(), itr->second);
+				results.push_back(itr->second);
 			}
 			else if (cmp > 0)
 			{
