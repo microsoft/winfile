@@ -1632,25 +1632,6 @@ AppCommandProc(register DWORD id)
 
    case IDM_FORMAT:
 
-      if (CancelInfo.hCancelDlg) {
-         SetFocus(CancelInfo.hCancelDlg);
-         break;
-      }
-
-      if (CancelInfo.hThread) {
-         //
-         // Don't create any new worker threads
-         // Just create old dialog
-         //
-
-         CreateDialog(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CANCELDLG), hwndFrame, (DLGPROC) CancelDlgProc);
-
-         return TRUE;
-      }
-
-      if (!FmifsLoaded())
-         break;
-
       // Don't use modal dialog box, set hWndParent = NULL
       DialogBox(hAppInstance, (LPTSTR)MAKEINTRESOURCE(FORMATSELECTDLG), NULL, (DLGPROC)FormatSelectDlgProc);
       break;

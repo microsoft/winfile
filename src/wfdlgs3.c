@@ -1760,22 +1760,19 @@ LockFormatDisk(DRIVE drive1, DRIVE drive2,
    DWORD dwMessage, DWORD dwCommand, BOOL bLock)
 {
    HMENU hMenu;
-   static DWORD adwCommands[] = {
-      IDM_DISKCOPY,
-      IDM_FORMAT,
-      0
-   };
 
-   INT i=0;
-
-   // Gray out disk:{format,copy}
+   // Gray out menu item dwCommand
    hMenu = GetMenu(hwndFrame);
 
-   while (adwCommands[i]) {
-      if (dwCommand != adwCommands[i])
-         EnableMenuItem( hMenu, dwCommand ,
-         bLock ? MF_BYCOMMAND | MF_GRAYED : MF_BYCOMMAND | MF_ENABLED );
-      i++;
+   // Special case for IDM_FORMAT, as it no longer invokes FormatDiskette,
+   // it can be safely left enabled even when copying diskettes.
+   // This change is made here rather than removing the calls to 
+   // LockFormatDisk with IDM_FORMAT since LockFormatDisk also
+   // changes the state of aDriveInfo.
+   if (dwCommand != IDM_FORMAT)
+   {
+       EnableMenuItem(hMenu, dwCommand,
+           bLock ? MF_BYCOMMAND | MF_GRAYED : MF_BYCOMMAND | MF_ENABLED);
    }
 
    //
