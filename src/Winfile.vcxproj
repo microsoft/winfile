@@ -242,7 +242,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="suggest.db" />
-    <None Include="winfile.dlg" />
+    <None Include="en-US.rc" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbg.c" />
