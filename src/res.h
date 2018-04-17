@@ -15,6 +15,11 @@
 
 #define JAPANBEGIN
 #define JAPANEND
+#define KOREAJAPANBEGIN
+#define KOREAJAPANEND
+
+#define bJAPAN bJapan
+#define bKOREAJAPAN bJapan
 
 //
 // Moved from wfcopy.h
@@ -581,4 +586,3 @@ JAPANBEGIN
 #define IDS_KK_COPY                     2004
 #define IDS_WRNNOSHIFTJIS               2005
 JAPANEND
-

@@ -45,12 +45,6 @@
 // Japan markers:
 //
 
-#define KOREAJAPANBEGIN
-#define KOREAJAPANEND
-
-#define bJAPAN bJapan
-#define bKOREAJAPAN bJapan
-
 #define STKCHK()
 
 #ifdef UNICODE
