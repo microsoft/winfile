@@ -8,6 +8,7 @@
    Licensed under the MIT License.
 
 ********************************************************************/
+#pragma once
 
 #include <windows.h>
 

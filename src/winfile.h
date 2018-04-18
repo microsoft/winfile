@@ -8,6 +8,7 @@
    Licensed under the MIT License.
 
 **************************************************************************/
+#pragma once  // DBJ added 
 
 #define TOOLBAR
 #define NOCOMM
