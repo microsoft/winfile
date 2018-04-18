@@ -114,8 +114,8 @@
 #define IDM_BYNAME          404
 #define IDM_BYTYPE          405
 #define IDM_BYSIZE          406
-#define IDM_BYDATE          407	// reverse date sort
-#define IDM_BYFDATE			408	// forward date sort
+#define IDM_BYDATE          407    // reverse date sort
+#define IDM_BYFDATE         408    // forward date sort
 
 #define IDM_VINCLUDE        409
 #define IDM_REPLACE         410
