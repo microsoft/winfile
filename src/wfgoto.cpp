@@ -14,7 +14,6 @@
 #include <vector>
 #include <sstream> // wstringstream
 #include <memory>
-#include <atomic> // DBJ added
 
 extern "C"
 {
@@ -49,7 +48,9 @@ extern "C"
 
 	// incremented when a refresh is requested; old bags are discarded; 
 	// scans are aborted if epoc changes
-	static DWORD g_driveScanEpoc{};
+	// static DWORD g_driveScanEpoc{};
+	winfile::internal::guardian<DWORD> atomic_epoc;
+
 	// holds the nodes we created to make freeing them simpler 
 	// (e.g., because some are reused)
 	winfile::internal::guardian<pdnode_bag> atomic_bag;
@@ -377,7 +378,7 @@ extern "C"
 
 		while (bFound)
 		{
-			if (g_driveScanEpoc != scanEpoc)
+			if (atomic_epoc.load() != scanEpoc)
 			{
 				// new scan started; abort this one
 				WFFindClose(&lfndta);
@@ -588,7 +589,10 @@ extern "C"
 	*/
 	DWORD WINAPI BuildDirectoryTreeBagOValues(PVOID pv)
 	{
-		DWORD scanEpocNew = InterlockedIncrement(&g_driveScanEpoc);
+		//   InterlockedIncrement(&atomic_epoc);
+		DWORD scanEpocNew = atomic_epoc.store(
+			1 + atomic_epoc.load()
+		); 
 
 		pdnode_bag		pBagNew{};
 		pdnode_vector	pNodes{};
