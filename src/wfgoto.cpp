@@ -40,11 +40,13 @@ extern "C"
 		pdnode_bag pbov,
 		pdnode_vector pNodes,
 		LPCTSTR szRoot,
-		PDNODE pNodeParent,
+		PDNODE pNodeParent,                                                                                    
 		DWORD scanEpoc
 	);
 
-	static void FreeDirectoryBagOValues(pdnode_bag pbov, pdnode_vector pNodes);
+	static void FreeDirectoryBagOValues(
+		pdnode_bag const & pbov
+	);
 
 	// incremented when a refresh is requested; old bags are discarded; 
 	// scans are aborted if epoc changes
@@ -57,7 +59,7 @@ extern "C"
 	// std::atomic<pdnode_bag> atomic_bag ;
 	// holds the nodes we created to make freeing them simpler 
 	// (e.g., because some are reused)
-	winfile::internal::guardian<pdnode_vector> atomic_nodes;
+	// winfile::internal::guardian<pdnode_vector> atomic_nodes;
 
 	// compare path starting at the root; returns:
 	// 0: paths are the same length and same names
@@ -311,17 +313,20 @@ extern "C"
 		return words;
 	}
 
-// we have moved to value semantics, this this is not necessary
-// TBD
-	void FreeDirectoryBagOValues(pdnode_bag pbov, pdnode_vector pNodes)
+	void FreeDirectoryBagOValues
+	(
+		pdnode_bag const & pbov
+	)
 	{
-		// free all PDNODE in BagOValues
-		/*
-		for (PDNODE p : *pNodes)
-		{
-			LocalFree(p);
-		}
-		*/
+		// free all PDNODE's in BagOValues
+		pbov.ForEach([] (typename pdnode_bag::storage_type::value_type element ) {
+			 /*pdnode_bag::value_type*/ PDNODE val_ =  element.second;
+			 HLOCAL rez = ::LocalFree(val_);
+			 _ASSERTE(rez != NULL);
+		});
+
+		pbov.Clear();
+
 	}
 
 
@@ -606,12 +611,9 @@ extern "C"
 			// pBagNew->Sort();
 
 			atomic_bag.store(pBagNew);
-			atomic_nodes.store(pNodes);
 		}
-		/*
-		not required, no more pointers
-		if (! pBagNew.Empty())	{		FreeDirectoryBagOValues(pBagNew, pNodes);	}
-		*/
+
+		if (! pBagNew.Empty())	{	FreeDirectoryBagOValues(pBagNew);	}
 
 		UpdateMoveStatus(ReadMoveStatus());
 

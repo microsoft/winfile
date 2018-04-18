@@ -108,24 +108,36 @@ namespace winfile {
 	{
 		using lock_unlock = internal::lock_unlock;
 	public:
+		typedef TValue value_type;
 		using storage_type = std::multimap< std::wstring, TValue >;
 	private:
-		/*mutable*/ storage_type key_value_storage_{};
+		mutable storage_type key_value_storage_{};
 	public:
 		/*
 		the aim is to be able to use instances of this class as values
 		c++ compiler will generate all the things necessary 
 		we will privide the "swap" method to be used for move semantics
-
-		thus this class must be trivially copyable
-		http://en.cppreference.com/w/cpp/types/is_trivially_copyable
 		*/
 		void swap(BagOValues & other_)	noexcept
 		{	// swap contents with other_
 			this->key_value_storage_ = other_.key_value_storage_;
 		}
 		// DBJ added
-		bool Empty() const noexcept {
+		void Clear() const {
+			key_value_storage_.clear();
+		}
+		// DBJ added
+		template< typename F>
+		const auto ForEach( F callback_ ) const noexcept {
+			return
+				std::for_each(
+					this->key_value_storage_.begin(),
+					this->key_value_storage_.end(),
+					callback_
+				);
+		}
+		// DBJ added
+		const bool Empty() const noexcept {
 			return this->key_value_storage_.size() < 1;
 		}
 		// does copy the value argument on call
