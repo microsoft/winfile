@@ -31,29 +31,32 @@ extern "C"
 	using wstring_vector = vector<wstring>;
 	using pdnode_vector = vector<PDNODE>;
 	using pdnode_bag = winfile::BagOValues<PDNODE>;
-	
+	/*
+	the aim is to use value semantics, not pointers
+	-----------------------------------------------
 	using pdnode_bag_ptr = std::shared_ptr<pdnode_bag>;
 	using pdnode_vector_ptr = std::shared_ptr<pdnode_vector>;
-
+	*/
 	static BOOL BuildDirectoryBagOValues(
-		pdnode_bag_ptr pbov,
-		pdnode_vector_ptr pNodes,
+		pdnode_bag pbov,
+		pdnode_vector pNodes,
 		LPCTSTR szRoot,
 		PDNODE pNodeParent,
 		DWORD scanEpoc
 	);
 
-	static void FreeDirectoryBagOValues(pdnode_bag_ptr pbov, pdnode_vector_ptr pNodes);
+	static void FreeDirectoryBagOValues(pdnode_bag pbov, pdnode_vector pNodes);
 
 	// incremented when a refresh is requested; old bags are discarded; 
 	// scans are aborted if epoc changes
 	static DWORD g_driveScanEpoc{};
 	// holds the nodes we created to make freeing them simpler 
 	// (e.g., because some are reused)
-	std::atomic<pdnode_bag *> atomic_bag_pointer{};
+	winfile::internal::guardian<pdnode_bag> atomic_bag;
+	// std::atomic<pdnode_bag> atomic_bag ;
 	// holds the nodes we created to make freeing them simpler 
 	// (e.g., because some are reused)
-	std::atomic< pdnode_vector *> atomic_nodes_pointer{};
+	winfile::internal::guardian<pdnode_vector> atomic_nodes;
 
 	// compare path starting at the root; returns:
 	// 0: paths are the same length and same names
@@ -307,13 +310,17 @@ extern "C"
 		return words;
 	}
 
-	void FreeDirectoryBagOValues(pdnode_bag_ptr pbov, pdnode_vector_ptr pNodes)
+// we have moved to value semantics, this this is not necessary
+// TBD
+	void FreeDirectoryBagOValues(pdnode_bag pbov, pdnode_vector pNodes)
 	{
 		// free all PDNODE in BagOValues
+		/*
 		for (PDNODE p : *pNodes)
 		{
 			LocalFree(p);
 		}
+		*/
 	}
 
 
@@ -327,8 +334,8 @@ extern "C"
 	}
 
 	BOOL BuildDirectoryBagOValues(
-		pdnode_bag_ptr pbov,
-		pdnode_vector_ptr pNodes,
+		pdnode_bag pbov,
+		pdnode_vector pNodes,
 		LPCTSTR szRoot,
 		PDNODE pNodeParent,
 		DWORD scanEpoc
@@ -356,8 +363,8 @@ extern "C"
 				return TRUE;
 			}
 
-			pNodes->push_back(pNodeParent);
-			pbov->Add(szPath, pNodeParent);
+			pNodes.push_back(pNodeParent);
+			pbov.Add(szPath, pNodeParent);
 		}
 
 		// add *.* to end of path
@@ -392,7 +399,7 @@ extern "C"
 				// out of memory
 				break;
 			}
-			pNodes->push_back(pNodeChild);
+			pNodes.push_back(pNodeChild);
 
 			// if spaces, each word individually (and not the whole thing)
 			wstring_vector words = SplitIntoWords(lfndta.fd.cFileName);
@@ -400,7 +407,7 @@ extern "C"
 			for (auto word : words)
 			{
 				// TODO: how to mark which word is primary to avoid double free?
-				pbov->Add(word, pNodeChild);
+				pbov.Add(word, pNodeChild);
 			}
 
 			//
@@ -431,9 +438,9 @@ extern "C"
 
 	pdnode_vector GetDirectoryOptionsFromText(LPCTSTR szText, BOOL *pbLimited)
 	{
-		auto shared_bag_pointer = atomic_bag_pointer.load();
+		auto shared_bag = atomic_bag.load();
 
-		if (shared_bag_pointer == nullptr) return pdnode_vector{};
+		if (shared_bag.Empty()) return pdnode_vector{};
 
 		wstring_vector words = SplitIntoWords(szText);
 
@@ -461,7 +468,7 @@ extern "C"
 
 			if (pos == string::npos)
 			{
-				options = shared_bag_pointer->Retrieve(word, fPrefix, 1000);
+				options = shared_bag.Retrieve(word, fPrefix, 1000);
 
 				if (options.size() < 1) return {}; // DBJ
 
@@ -474,8 +481,8 @@ extern "C"
 				wstring first = word.substr(0, pos);
 				wstring second = word.substr(pos + 1);
 
-				pdnode_vector options1 = std::move(shared_bag_pointer->Retrieve(first, fPrefix, 1000));
-				pdnode_vector options2 = std::move(shared_bag_pointer->Retrieve(second, fPrefix, 1000));
+				pdnode_vector options1 = std::move(shared_bag.Retrieve(first, fPrefix, 1000));
+				pdnode_vector options2 = std::move(shared_bag.Retrieve(second, fPrefix, 1000));
 
 				if (options1.size() == 1000 ||
 					options2.size() == 1000)
@@ -576,29 +583,6 @@ extern "C"
 		return CallWindowProc(wpOrigEditProc, hwnd, uMsg, wParam, lParam);
 	}
 
-	inline auto interlocked_exchange (
-		  PVOID *	Destination, 
-		  PVOID		Value
-		) 
-	{
-		_ASSERTE(Destination);
-		_ASSERTE(Value);
-#if 0		
-		// why the stunt of casting to void * and then 
-		// to LONG values ?
-		PVOID retval_ = reinterpret_cast<PVOID>(
-			InterlockedExchange((LONG volatile *)Destination,
-					(LONG)Value)
-				);
-#else
-		PVOID retval_ = reinterpret_cast<PVOID>(
-			InterlockedExchangePointer(Destination,Value )
-			);
-#endif
-			_ASSERTE(retval_ != nullptr);
-	  return retval_;
-	};
-
 	/*
 	a 'worker' executed on a separate thread
 	*/
@@ -606,8 +590,8 @@ extern "C"
 	{
 		DWORD scanEpocNew = InterlockedIncrement(&g_driveScanEpoc);
 
-		pdnode_bag_ptr		pBagNew = make_shared<pdnode_bag>(); 
-		pdnode_vector_ptr	pNodes = make_shared<pdnode_vector>();
+		pdnode_bag		pBagNew{};
+		pdnode_vector	pNodes{};
 
 		SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
@@ -617,14 +601,13 @@ extern "C"
 			// which is already sorted 
 			// pBagNew->Sort();
 
-			atomic_bag_pointer.store(pBagNew.get());
-			atomic_nodes_pointer.store(pNodes.get());
+			atomic_bag.store(pBagNew);
+			atomic_nodes.store(pNodes);
 		}
-
-		if (pBagNew != nullptr)
-		{
-			FreeDirectoryBagOValues(pBagNew, pNodes);
-		}
+		/*
+		not required, no more pointers
+		if (! pBagNew.Empty())	{		FreeDirectoryBagOValues(pBagNew, pNodes);	}
+		*/
 
 		UpdateMoveStatus(ReadMoveStatus());
 
