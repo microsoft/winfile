@@ -73,9 +73,9 @@ namespace winfile {
 		// DBJ: alsways assume fPrefix is false
 		std::vector<TValue>
 			Retrieve(
-				const std::wstring & query,
-				bool fPrefix = true,
-				unsigned maxResults = ULONG_MAX
+				const		std::wstring & query,
+				bool		fPrefix = true,
+				unsigned	maxResults = ULONG_MAX
 			)
 		{
 			lock_unlock padlock{};
