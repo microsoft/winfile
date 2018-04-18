@@ -988,7 +988,8 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define IDM_SAVENOW         513
 #endif
 
-#define IDM_INDEXONLAUNCH   514
+#define IDM_INDEXONLAUNCH       514
+#define IDM_DISABLEVISUALSTYLES 515
 
 #define IDM_SECURITY        5
 #define IDM_PERMISSIONS     605      // !! WARNING HARD CODED !!
@@ -1539,6 +1540,23 @@ Extern DWORD (*lpfnGetOpenFileNameW)(LPOPENFILENAMEW);
 
 //----------------------------
 //
+//  Lazy load UxTheme support
+//
+//----------------------------
+
+#define UXTHEME_DLL TEXT("UxTheme.dll")
+Extern HANDLE hUxTheme            EQ(NULL);
+
+Extern HRESULT (*lpfnSetWindowTheme)(HWND, LPCWSTR, LPCWSTR);
+
+#define UXTHEME_SetWindowTheme "SetWindowTheme"
+
+#define SetWindowTheme         (*lpfnSetWindowTheme)
+
+BOOL LoadUxTheme(VOID);
+
+//----------------------------
+//
 //  Lazy load network support
 //
 //----------------------------
@@ -1686,9 +1704,10 @@ Extern BOOL bMinOnRun        EQ( FALSE );
 Extern BOOL bIndexOnLaunch   EQ( TRUE );
 Extern BOOL bStatusBar       EQ( TRUE );
 
-Extern BOOL bDriveBar        EQ( TRUE );
-Extern BOOL bToolbar         EQ( TRUE );
-Extern BOOL bNewWinOnConnect EQ( TRUE );
+Extern BOOL bDriveBar            EQ( TRUE );
+Extern BOOL bToolbar             EQ( TRUE );
+Extern BOOL bNewWinOnConnect     EQ( TRUE );
+Extern BOOL bDisableVisualStyles EQ( FALSE );
 
 Extern BOOL bExitWindows     EQ( FALSE );
 Extern BOOL bConfirmDelete   EQ( TRUE );
@@ -1717,6 +1736,7 @@ Extern TCHAR        szSearchClass[]         EQ( TEXT("WFS_Search") );
 Extern TCHAR        szDriveBar[]            EQ( TEXT("DriveBar") );
 Extern TCHAR        szToolbar[]             EQ( TEXT("ToolBar") );
 Extern TCHAR        szNewWinOnNetConnect[]  EQ( TEXT("NewWinOnNetConnect") );
+Extern TCHAR        szDisableVisualStyles[] EQ( TEXT("DisableVisualStyles") );
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );

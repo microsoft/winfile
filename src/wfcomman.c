@@ -2022,6 +2022,24 @@ ChangeDisplay:
     case IDM_INDEXONLAUNCH:
        bTemp = bIndexOnLaunch = !bIndexOnLaunch;
        WritePrivateProfileBool(szIndexOnLaunch, bIndexOnLaunch);
+       goto CHECK_OPTION;
+
+    case IDM_DISABLEVISUALSTYLES:
+      bTemp = bDisableVisualStyles = !bDisableVisualStyles;
+      WritePrivateProfileBool(szDisableVisualStyles, bDisableVisualStyles);
+      if (hUxTheme) {
+        if (bDisableVisualStyles) {
+          SetWindowTheme(hwndToolbar, L" ", L" ");
+          SetWindowTheme(hwndDriveList, L" ", L" ");
+        }
+        else {
+          SetWindowTheme(hwndToolbar, NULL, NULL);
+          SetWindowTheme(hwndDriveList, NULL, NULL);
+        }
+        InvalidateRect(hwndToolbar, NULL, FALSE);
+        InvalidateRect(hwndDriveBar, NULL, FALSE);
+      }
+      goto CHECK_OPTION;
 
 CHECK_OPTION:
        //

@@ -61,18 +61,18 @@ BEGIN
 
     VK_RETURN,  IDM_ATTRIBS,    NOINVERT, VIRTKEY, ALT
     VK_F2,      IDM_RENAME, NOINVERT, VIRTKEY
-	"^x",       IDM_CUTTOCLIPBOARD, NOINVERT
-	"^c",       IDM_COPYTOCLIPBOARD, NOINVERT
-	"^v",       IDM_PASTE, NOINVERT
-	"^b",       IDM_STARTBASHSHELL, NOINVERT
-	"^k",       IDM_STARTCMDSHELL, NOINVERT
-	"^p",       IDM_STARTPOWERSHELL, NOINVERT
-	"^g",       IDM_GOTODIR, NOINVERT
-	"^f",       IDM_SEARCH, NOINVERT
-	VK_LEFT,    IDM_HISTORYBACK, NOINVERT, VIRTKEY, ALT
-	VK_RIGHT,    IDM_HISTORYFWD, NOINVERT, VIRTKEY, ALT
-	VK_BROWSER_BACK,    IDM_HISTORYBACK, NOINVERT, VIRTKEY
-	VK_BROWSER_FORWARD,    IDM_HISTORYFWD, NOINVERT, VIRTKEY
+    "^x",       IDM_CUTTOCLIPBOARD, NOINVERT
+    "^c",       IDM_COPYTOCLIPBOARD, NOINVERT
+    "^v",       IDM_PASTE, NOINVERT
+    "^b",       IDM_STARTBASHSHELL, NOINVERT
+    "^k",       IDM_STARTCMDSHELL, NOINVERT
+    "^p",       IDM_STARTPOWERSHELL, NOINVERT
+    "^g",       IDM_GOTODIR, NOINVERT
+    "^f",       IDM_SEARCH, NOINVERT
+    VK_LEFT,    IDM_HISTORYBACK, NOINVERT, VIRTKEY, ALT
+    VK_RIGHT,   IDM_HISTORYFWD, NOINVERT, VIRTKEY, ALT
+    VK_BROWSER_BACK,    IDM_HISTORYBACK, NOINVERT, VIRTKEY
+    VK_BROWSER_FORWARD, IDM_HISTORYFWD, NOINVERT, VIRTKEY
 END
 
 FRAMEMENU MENU PRELOAD
@@ -80,12 +80,12 @@ BEGIN
     POPUP       "&File"
     BEGIN
     MENUITEM    "&Open\tEnter",     IDM_OPEN
-    MENUITEM    "Edit\tF12",	    IDM_EDIT
+    MENUITEM    "Edit\tF12",        IDM_EDIT
     MENUITEM    "&Move...\tF7",     IDM_MOVE
     MENUITEM    "&Copy...\tF8",     IDM_COPY
     MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
-    MENUITEM	"&Paste\tCtrl+V", 	IDM_PASTE
+    MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "&Paste\tCtrl+V",     IDM_PASTE
     MENUITEM    "&Delete...\tDel",  IDM_DELETE
     MENUITEM    "Re&name...\tF2",   IDM_RENAME
     MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
@@ -100,10 +100,10 @@ BEGIN
     MENUITEM    "Cr&eate Directory...", IDM_MAKEDIR
     MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "Select &Files...", IDM_SELECT
-	MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
-	MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
+    MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
+    MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
     MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
-	MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "E&xit",            IDM_EXIT
     END
@@ -137,11 +137,11 @@ BEGIN
     MENUITEM    "&All File Details",    IDM_VDETAILS,   CHECKED
     MENUITEM    "&Partial Details...",  IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM "&Sort by Name",   IDM_BYNAME
-    MENUITEM "Sort &by Type",   IDM_BYTYPE
-    MENUITEM "Sort by Si&ze",   IDM_BYSIZE
-    MENUITEM "Sort by &Date",   IDM_BYDATE
-    MENUITEM "Sort &forward Date",   IDM_BYFDATE
+    MENUITEM    "&Sort by Name",   IDM_BYNAME
+    MENUITEM    "Sort &by Type",   IDM_BYTYPE
+    MENUITEM    "Sort by Si&ze",   IDM_BYSIZE
+    MENUITEM    "Sort by &Date",   IDM_BYDATE
+    MENUITEM    "Sort &forward Date",   IDM_BYFDATE
     MENUITEM    SEPARATOR
     MENUITEM    "By File &Type...",     IDM_VINCLUDE
     END
@@ -157,6 +157,7 @@ BEGIN
     MENUITEM    SEPARATOR
     MENUITEM    "&Minimize on Use",     IDM_MINONRUN
     MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
+    MENUITEM    "Disable toolbar Visual Themes", IDM_DISABLEVISUALSTYLES
     MENUITEM    "Save Settings on &Exit",   IDM_SAVESETTINGS
 #ifdef PROGMAN
     MENUITEM    SEPARATOR
@@ -191,26 +192,26 @@ END
 
 CTXMENU MENU PRELOAD 
 BEGIN
-	POPUP "Dummy Popup"
-	BEGIN
-	MENUITEM    "&New Window\ton Selection",     IDM_NEWWINDOW
+    POPUP "Dummy Popup"
+    BEGIN
+    MENUITEM    "&New Window\ton Selection",     IDM_NEWWINDOW
     MENUITEM    "&Open\tEnter",     IDM_OPEN
-    MENUITEM    "Edit\tF12",	    IDM_EDIT
+    MENUITEM    "Edit\tF12",        IDM_EDIT
     MENUITEM    "&Move...\tF7",     IDM_MOVE
     MENUITEM    "&Copy...\tF8",     IDM_COPY
-	MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
-	MENUITEM	"&Paste\tCtrl+V", IDM_PASTE
-	MENUITEM    "&Delete...\tDel",  IDM_DELETE
+    MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "&Paste\tCtrl+V", IDM_PASTE
+    MENUITEM    "&Delete...\tDel",  IDM_DELETE
     MENUITEM    "Re&name...\tF2",   IDM_RENAME
     MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "&Run...",          IDM_RUN
     MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
-	MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
-	MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
-	MENUITEM    "&Goto Directory...", IDM_GOTODIR
-	MENUITEM	"About",			IDM_ABOUT
-	END
+    MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+    MENUITEM    "&Goto Directory...", IDM_GOTODIR
+    MENUITEM    "About",            IDM_ABOUT
+    END
 END
 
 
@@ -595,8 +596,8 @@ BEGIN
     MH_MYITEMS+IDM_MOVE,        "Moves selected item"
     MH_MYITEMS+IDM_COPY,        "Copies files and directories"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "Copies one or more files to the clipboard"
-	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "Cuts one or more files to the clipboard"
-    MH_MYITEMS+IDM_PASTE,		"Paste file from clipboard to current directory"
+    MH_MYITEMS+IDM_CUTTOCLIPBOARD, "Cuts one or more files to the clipboard"
+    MH_MYITEMS+IDM_PASTE,        "Paste file from clipboard to current directory"
     MH_MYITEMS+IDM_COMPRESS,    "Compresses a file or directory"
     MH_MYITEMS+IDM_UNCOMPRESS,  "Uncompresses a file or directory"
     MH_MYITEMS+IDM_DELETE,      "Deletes files and directories"
@@ -656,6 +657,7 @@ BEGIN
     MH_MYITEMS+IDM_MINONRUN,    "Reduces File Manager to an icon at startup"
     MH_MYITEMS + IDM_INDEXONLAUNCH, "Creates an index for Goto Directory when File Manager launches"
     MH_MYITEMS+IDM_SAVESETTINGS,        "Saves settings when you quit File Manager"
+    MH_MYITEMS + IDM_DISABLEVISUALSTYLES, "Disables toolbar Visual Styles, thus giving File Manager more old-style look"
 
     MH_MYITEMS+IDM_NEWWINDOW,   "Opens a new window"
     MH_MYITEMS+IDM_CASCADE,     "Cascades windows"
