@@ -331,7 +331,6 @@ namespace {
 	{
 		LFNDTA lfndta{};
 		wstring szPath{ MAXPATHLEN }; //  WCHAR szPath[MAXPATHLEN];
-		LPWSTR szEndPath{};
 
 		// lstrcpy(szPath, szRoot);
 		szPath = szRoot;
@@ -402,8 +401,6 @@ namespace {
 			//
 			// Construct the path to this new subdirectory.
 			//
-			*szEndPath = CHAR_NULL;
-
 			add_backslash(szPath);
 			// is path too long?
 			if (szPath.size() > MAXPATHLEN) return TRUE;
