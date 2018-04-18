@@ -567,18 +567,91 @@ namespace {
 		return CallWindowProc(wpOrigEditProc, hwnd, uMsg, wParam, lParam);
 	}
 
-	VOID
-		SetCurrentPathOfWindow(LPWSTR szPath)
+	template<typename D, typename V>
+	inline auto interlocked_exchange (
+		  D Destination, 
+		  V Value
+		) 
 	{
-		HWND hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+		return 
+			reinterpret_cast<PVOID>(
+				_InterlockedExchange((LONG volatile *)Destination,
+					(LONG)Value)
+				);
+	};
 
-		HWND hwndNew = CreateDirWindow(szPath, TRUE, hwndActive);
+	DWORD WINAPI
+		BuildDirectoryTreeBagOValues(PVOID pv)
+	{
+		DWORD scanEpocNew = InterlockedIncrement(&g_driveScanEpoc);
 
-		HWND hwndTree = HasTreeWindow(hwndNew);
-		if (hwndTree)
+		pdnode_bag_ptr		pBagNew = make_shared<pdnode_bag>(); 
+		pdnode_vector_ptr	pNodes = make_shared<pdnode_vector>();
+
+		SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
+
+		if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), nullptr, scanEpocNew))
 		{
-			SetFocus(hwndTree);
+			// papa's got the brand new bag, 
+			// which is already sorted 
+			// pBagNew->Sort();
+
+			pBagNew = *
+				(pdnode_bag_ptr*) (interlocked_exchange(
+				(PVOID *)&g_pBagOCDrive, 
+				(PVOID  )pBagNew.get()
+			)
+					);
+			pNodes = *
+				(pdnode_vector_ptr*)(interlocked_exchange(
+				(PVOID *)&g_allNodes, 
+				(PVOID)pNodes.operator->()
+			)
+					);
 		}
+
+		if (pBagNew != nullptr)
+		{
+			FreeDirectoryBagOValues(pBagNew, pNodes);
+		}
+
+		UpdateMoveStatus(ReadMoveStatus());
+
+		return ERROR_SUCCESS;
+	}
+
+} // nspace
+
+    /*
+	----------------------------------------------------------------------------------------------
+	declared in winfile.h
+	*/
+	// We're building a Trie structure (not just a directory tree)
+	DWORD
+		StartBuildingDirectoryTrie()
+	{
+		HANDLE hThreadCopy;
+		DWORD dwIgnore;
+
+		//
+		// Move/Copy things.
+		//
+		hThreadCopy = CreateThread(nullptr,
+			0L,
+			BuildDirectoryTreeBagOValues,
+			nullptr,
+			0L,
+			&dwIgnore);
+
+		if (!hThreadCopy) {
+			return GetLastError();
+		}
+
+		SetThreadPriority(hThreadCopy, THREAD_PRIORITY_BELOW_NORMAL);
+
+		CloseHandle(hThreadCopy);
+
+		return 0;
 	}
 
 	INT_PTR
@@ -674,84 +747,16 @@ namespace {
 		return TRUE;
 	}
 
-	template<typename D, typename V>
-	inline auto interlocked_exchange (
-		  D Destination, 
-		  V Value
-		) 
+	VOID
+		SetCurrentPathOfWindow(LPWSTR szPath)
 	{
-		return 
-			reinterpret_cast<PVOID>(
-				_InterlockedExchange((LONG volatile *)Destination,
-					(LONG)Value)
-				);
-	};
+		HWND hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
 
-	DWORD WINAPI
-		BuildDirectoryTreeBagOValues(PVOID pv)
-	{
-		DWORD scanEpocNew = InterlockedIncrement(&g_driveScanEpoc);
+		HWND hwndNew = CreateDirWindow(szPath, TRUE, hwndActive);
 
-		pdnode_bag_ptr		pBagNew = make_shared<pdnode_bag>(); 
-		pdnode_vector_ptr	pNodes = make_shared<pdnode_vector>();
-
-		SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
-
-		if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), nullptr, scanEpocNew))
+		HWND hwndTree = HasTreeWindow(hwndNew);
+		if (hwndTree)
 		{
-			// papa's got the brand new bag, 
-			// which is already sorted 
-			// pBagNew->Sort();
-
-			pBagNew = *
-				(pdnode_bag_ptr*) (interlocked_exchange(
-				(PVOID *)&g_pBagOCDrive, 
-				(PVOID  )pBagNew.get()
-			)
-					);
-			pNodes = *
-				(pdnode_vector_ptr*)(interlocked_exchange(
-				(PVOID *)&g_allNodes, 
-				(PVOID)pNodes.operator->()
-			)
-					);
+			SetFocus(hwndTree);
 		}
-
-		if (pBagNew != nullptr)
-		{
-			FreeDirectoryBagOValues(pBagNew, pNodes);
-		}
-
-		UpdateMoveStatus(ReadMoveStatus());
-
-		return ERROR_SUCCESS;
 	}
-
-	// We're building a Trie structure (not just a directory tree)
-	DWORD
-		StartBuildingDirectoryTrie()
-	{
-		HANDLE hThreadCopy;
-		DWORD dwIgnore;
-
-		//
-		// Move/Copy things.
-		//
-		hThreadCopy = CreateThread(nullptr,
-			0L,
-			BuildDirectoryTreeBagOValues,
-			nullptr,
-			0L,
-			&dwIgnore);
-
-		if (!hThreadCopy) {
-			return GetLastError();
-		}
-
-		SetThreadPriority(hThreadCopy, THREAD_PRIORITY_BELOW_NORMAL);
-
-		CloseHandle(hThreadCopy);
-
-		return 0;
-	}
-} // nspace
