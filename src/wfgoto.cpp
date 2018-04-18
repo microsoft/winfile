@@ -33,8 +33,8 @@ namespace {
 	using pdnode_vector = vector<PDNODE>;
 	using pdnode_bag = winfile::BagOValues<PDNODE>;
 	
-	using pdnode_bag_ptr = std::unique_ptr<pdnode_bag>;
-	using pdnode_vector_ptr = std::unique_ptr<pdnode_vector>;
+	using pdnode_bag_ptr = std::shared_ptr<pdnode_bag>;
+	using pdnode_vector_ptr = std::shared_ptr<pdnode_vector>;
 
 	static BOOL BuildDirectoryBagOValues(
 		pdnode_bag_ptr pbov,
@@ -43,6 +43,7 @@ namespace {
 		PDNODE pNodeParent,
 		DWORD scanEpoc
 	);
+
 	static void FreeDirectoryBagOValues(pdnode_bag_ptr pbov, pdnode_vector_ptr pNodes);
 
 	DWORD g_driveScanEpoc;				// incremented when a refresh is requested; old bags are discarded; scans are aborted if epoc changes
@@ -310,6 +311,16 @@ namespace {
 		}
 	}
 
+
+	inline auto
+		add_backslash(wstring path_)
+	{
+		if (path_.back() != CHAR_BACKSLASH) {
+			path_.append(wstring{ CHAR_BACKSLASH });
+		}
+			return path_.size();
+	}
+
 	BOOL BuildDirectoryBagOValues(
 		pdnode_bag_ptr pbov,
 		pdnode_vector_ptr pNodes,
@@ -318,25 +329,24 @@ namespace {
 		DWORD scanEpoc
 	)
 	{
-		LFNDTA lfndta;
-		WCHAR szPath[MAXPATHLEN];
-		LPWSTR szEndPath;
+		LFNDTA lfndta{};
+		wstring szPath{ MAXPATHLEN }; //  WCHAR szPath[MAXPATHLEN];
+		LPWSTR szEndPath{};
 
-		lstrcpy(szPath, szRoot);
-		if (lstrlen(szPath) + 1 >= COUNTOF(szPath))
-		{
-			// path too long
-			return TRUE;
-		}
+		// lstrcpy(szPath, szRoot);
+		szPath = szRoot;
+		// is path too long?
+		if (szPath.size() > MAXPATHLEN) return TRUE;
 
-		AddBackslash(szPath);
-		szEndPath = szPath + lstrlen(szPath);
+		add_backslash(szPath);
+
+		// szEndPath = szPath + lstrlen(szPath);
 
 		if (pNodeParent == nullptr)
 		{
 			// create first one; assume directory; "name" is full path starting with <drive>:
 			// normally name is just directory name by itself
-			pNodeParent = CreateNode(nullptr, szPath, FILE_ATTRIBUTE_DIRECTORY);
+			pNodeParent = CreateNode(nullptr, (WCHAR*)szPath.data(), FILE_ATTRIBUTE_DIRECTORY);
 			if (pNodeParent == nullptr)
 			{
 				// out of memory
@@ -347,16 +357,13 @@ namespace {
 			pbov->Add(szPath, pNodeParent);
 		}
 
-		if (lstrlen(szPath) + lstrlen(szStarDotStar) >= COUNTOF(szPath))
-		{
-			// path too long
-			return TRUE;
-		}
-
 		// add *.* to end of path
-		lstrcat(szPath, szStarDotStar);
+		szPath.append(szStarDotStar);
+		// is path too long?
+		if (szPath.size() > MAXPATHLEN) return TRUE;
 
-		BOOL bFound = WFFindFirst(&lfndta, szPath, ATTR_DIR);
+
+		BOOL bFound = WFFindFirst(&lfndta, (WCHAR *)szPath.data(), ATTR_DIR);
 
 		while (bFound)
 		{
@@ -396,17 +403,17 @@ namespace {
 			// Construct the path to this new subdirectory.
 			//
 			*szEndPath = CHAR_NULL;
-			if (lstrlen(szPath) + 1 + lstrlen(lfndta.fd.cFileName) >= COUNTOF(szPath))
-			{
-				// path too long
-				return TRUE;
-			}
 
-			AddBackslash(szPath);
-			lstrcat(szPath, lfndta.fd.cFileName);         // cFileName is ANSI now
+			add_backslash(szPath);
+			// is path too long?
+			if (szPath.size() > MAXPATHLEN) return TRUE;
+
+			szPath.append( lfndta.fd.cFileName);
+			// is path too long?
+			if (szPath.size() > MAXPATHLEN) return TRUE;
 
 			// add directories in subdir
-			if (!BuildDirectoryBagOValues(pbov, pNodes, szPath, pNodeChild, scanEpoc))
+			if (!BuildDirectoryBagOValues(pbov, pNodes, szPath.data(), pNodeChild, scanEpoc))
 			{
 				WFFindClose(&lfndta);
 				return FALSE;
@@ -667,22 +674,47 @@ namespace {
 		return TRUE;
 	}
 
+	template<typename D, typename V>
+	inline auto interlocked_exchange (
+		  D Destination, 
+		  V Value
+		) 
+	{
+		return 
+			reinterpret_cast<PVOID>(
+				_InterlockedExchange((LONG volatile *)Destination,
+					(LONG)Value)
+				);
+	};
+
 	DWORD WINAPI
 		BuildDirectoryTreeBagOValues(PVOID pv)
 	{
 		DWORD scanEpocNew = InterlockedIncrement(&g_driveScanEpoc);
 
-		pdnode_bag *pBagNew = new pdnode_bag();
-		pdnode_vector *pNodes = new pdnode_vector();
+		pdnode_bag_ptr		pBagNew = make_shared<pdnode_bag>(); 
+		pdnode_vector_ptr	pNodes = make_shared<pdnode_vector>();
 
 		SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
 		if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), nullptr, scanEpocNew))
 		{
-			pBagNew->Sort();
+			// papa's got the brand new bag, 
+			// which is already sorted 
+			// pBagNew->Sort();
 
-			pBagNew = (pdnode_bag *)InterlockedExchangePointer((PVOID *)&g_pBagOCDrive, pBagNew);
-			pNodes = (pdnode_vector *)InterlockedExchangePointer((PVOID *)&g_allNodes, pNodes);
+			pBagNew = *
+				(pdnode_bag_ptr*) (interlocked_exchange(
+				(PVOID *)&g_pBagOCDrive, 
+				(PVOID  )pBagNew.get()
+			)
+					);
+			pNodes = *
+				(pdnode_vector_ptr*)(interlocked_exchange(
+				(PVOID *)&g_allNodes, 
+				(PVOID)pNodes.operator->()
+			)
+					);
 		}
 
 		if (pBagNew != nullptr)

@@ -41,7 +41,7 @@ namespace winfile {
 	public:
 		using storage_type = std::multimap< std::wstring, TValue >;
 	private:
-		mutable storage_type key_value_storage_{};
+		/*mutable*/ storage_type key_value_storage_{};
 	public:
 		void swap(BagOValues & other_)	noexcept
 		{	// swap contents with other_
@@ -53,7 +53,8 @@ namespace winfile {
 		{
 			lock_unlock padlock{};
 			bagovalues_internal::lowerize(key);
-			key_value_storage_.insert(key, value);
+			// key_value_storage_.emplace(key, value);
+			key_value_storage_.insert( std::make_pair(key, value) );
 		}
 
 		void Sort() noexcept
@@ -80,7 +81,15 @@ namespace winfile {
 			lock_unlock padlock{};
 			bagovalues_internal::lowerize( const_cast<std::wstring &>(query));
 			auto range = key_value_storage_.equal_range(query);
-			return vector<TValue>{ range.first, range.second };
+			std::vector<TValue> retvec{};
+
+			std::transform(
+				range.first,
+				range.second,
+				std::back_inserter(retvec),
+				[](storage_type::value_type element) { return element.second; }
+			);
+			return retvec;
 		}
 
 	};
