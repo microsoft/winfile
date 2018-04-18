@@ -46,9 +46,12 @@ namespace {
 
 	static void FreeDirectoryBagOValues(pdnode_bag_ptr pbov, pdnode_vector_ptr pNodes);
 
-	DWORD g_driveScanEpoc;				// incremented when a refresh is requested; old bags are discarded; scans are aborted if epoc changes
-	pdnode_bag *g_pBagOCDrive;	// holds the values from the scan per g_driveScanEpoc
-	pdnode_vector *g_allNodes;			// holds the nodes we created to make freeing them simpler (e.g., because some are reused)
+	// incremented when a refresh is requested; old bags are discarded; scans are aborted if epoc changes
+	static DWORD g_driveScanEpoc{};
+	// holds the nodes we created to make freeing them simpler (e.g., because some are reused)
+	static pdnode_bag * g_pBagOCDrive{};
+	// holds the nodes we created to make freeing them simpler (e.g., because some are reused)
+	static pdnode_vector * g_allNodes{};
 
 	// compare path starting at the root; returns:
 	// 0: paths are the same length and same names
@@ -570,11 +573,12 @@ namespace {
 		  V Value
 		) 
 	{
-		return 
-			reinterpret_cast<PVOID>(
+			PVOID retval_ = reinterpret_cast<PVOID>(
 				_InterlockedExchange((LONG volatile *)Destination,
 					(LONG)Value)
 				);
+			_ASSERTE(retval_);
+	  return retval_;
 	};
 
 	DWORD WINAPI
