@@ -27,16 +27,15 @@ extern "C"
 
 	using namespace std;
 
-	using wstring_vector = vector<wstring>;
-	using pdnode_vector = vector<PDNODE>;
-	using pdnode_bag = winfile::BagOValues<PDNODE>;
 	/*
 	the aim is to use value semantics, not pointers
 	-----------------------------------------------
-	using pdnode_bag_ptr = std::shared_ptr<pdnode_bag>;
-	using pdnode_vector_ptr = std::shared_ptr<pdnode_vector>;
 	*/
-	static BOOL BuildDirectoryBagOValues(
+	using wstring_vector = vector<wstring>;
+	using pdnode_vector = vector<PDNODE>;
+	using pdnode_bag = winfile::BagOValues<PDNODE>;
+
+	extern "C" BOOL BuildDirectoryBagOValues(
 		pdnode_bag pbov,
 		pdnode_vector pNodes,
 		LPCTSTR szRoot,
@@ -44,7 +43,7 @@ extern "C"
 		DWORD scanEpoc
 	);
 
-	static void FreeDirectoryBagOValues(
+	extern "C" void FreeDirectoryBagOValues(
 		pdnode_bag const & pbov
 	);
 
@@ -53,13 +52,7 @@ extern "C"
 	// static DWORD g_driveScanEpoc{};
 	winfile::internal::guardian<DWORD> atomic_epoc;
 
-	// holds the nodes we created to make freeing them simpler 
-	// (e.g., because some are reused)
-	winfile::internal::guardian<pdnode_bag> atomic_bag;
-	// std::atomic<pdnode_bag> atomic_bag ;
-	// holds the nodes we created to make freeing them simpler 
-	// (e.g., because some are reused)
-	// winfile::internal::guardian<pdnode_vector> atomic_nodes;
+	winfile::internal::guardian<pdnode_bag> shared_bag_of_nodes;
 
 	// compare path starting at the root; returns:
 	// 0: paths are the same length and same names
@@ -67,7 +60,7 @@ extern "C"
 	// -1: path a is a prefix of path b
 	// +1: path b is a prefix of path a
 	// +2: first difference in the paths has b sort lower
-	int ParentOrdering(const PDNODE& a, const PDNODE& b)
+	extern "C"  int ParentOrdering(const PDNODE& a, const PDNODE& b)
 	{
 		int wCmp;
 		if (a->nLevels == b->nLevels)
@@ -126,7 +119,7 @@ extern "C"
 	}
 
 	// returns true if a strictly less than b
-	bool CompareNodes(const PDNODE& a, const PDNODE& b)
+	extern "C" bool CompareNodes(const PDNODE& a, const PDNODE& b)
 	{
 		return ParentOrdering(a, b) < 0;
 	}
@@ -270,7 +263,7 @@ extern "C"
 		return (*combined);
 	}
 
-	PDNODE CreateNode(PDNODE pParentNode, WCHAR *szName, DWORD dwAttribs)
+	extern "C"  PDNODE CreateNode(PDNODE pParentNode, WCHAR *szName, DWORD dwAttribs)
 	{
 		PDNODE pNode;
 		DWORD len = lstrlen(szName);
@@ -313,7 +306,7 @@ extern "C"
 		return words;
 	}
 
-	void FreeDirectoryBagOValues
+	extern "C" void FreeDirectoryBagOValues
 	(
 		pdnode_bag const & pbov
 	)
@@ -330,7 +323,7 @@ extern "C"
 	}
 
 
-	inline auto
+	extern "C" inline auto
 		add_backslash(wstring path_)
 	{
 		if (path_.back() != CHAR_BACKSLASH) {
@@ -339,7 +332,7 @@ extern "C"
 			return path_.size();
 	}
 
-	BOOL BuildDirectoryBagOValues(
+	extern "C"  BOOL BuildDirectoryBagOValues(
 		pdnode_bag pbov,
 		pdnode_vector pNodes,
 		LPCTSTR szRoot,
@@ -444,7 +437,7 @@ extern "C"
 
 	pdnode_vector GetDirectoryOptionsFromText(LPCTSTR szText, BOOL *pbLimited)
 	{
-		auto shared_bag = atomic_bag.load();
+		auto shared_bag = shared_bag_of_nodes.load();
 
 		if (shared_bag.Empty()) return pdnode_vector{};
 
@@ -505,7 +498,7 @@ extern "C"
 		return final_options;
 	}
 
-	VOID UpdateGotoList(HWND hDlg)
+	extern "C"  VOID UpdateGotoList(HWND hDlg)
 	{
 		BOOL bLimited = FALSE;
 		TCHAR szText[MAXPATHLEN];
@@ -548,7 +541,7 @@ extern "C"
 	WNDPROC wpOrigEditProc;
 
 	// Subclass procedure: use arrow keys to change selection in listbox below.
-	LRESULT APIENTRY GotoEditSubclassProc(
+	extern "C" LRESULT APIENTRY GotoEditSubclassProc(
 		HWND hwnd,
 		UINT uMsg,
 		WPARAM wParam,
@@ -592,7 +585,7 @@ extern "C"
 	/*
 	a 'worker' executed on a separate thread
 	*/
-	DWORD WINAPI BuildDirectoryTreeBagOValues(PVOID pv)
+	extern "C" DWORD WINAPI BuildDirectoryTreeBagOValues(PVOID pv)
 	{
 		//   InterlockedIncrement(&atomic_epoc);
 		DWORD scanEpocNew = atomic_epoc.store(
@@ -610,7 +603,7 @@ extern "C"
 			// which is already sorted 
 			// pBagNew->Sort();
 
-			atomic_bag.store(pBagNew);
+			shared_bag_of_nodes.store(pBagNew);
 		}
 
 		if (! pBagNew.Empty())	{	FreeDirectoryBagOValues(pBagNew);	}
@@ -627,7 +620,7 @@ extern "C"
 	declared in winfile.h
 	*/
 	// We're building a Trie structure (not just a directory tree)
-	DWORD
+	extern "C"  DWORD
 		StartBuildingDirectoryTrie()
 	{
 		HANDLE hThreadCopy;
@@ -654,7 +647,7 @@ extern "C"
 		return 0;
 	}
 
-	INT_PTR
+	extern "C"  INT_PTR
 		GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 	{
 		HWND hwndEdit;
@@ -747,7 +740,7 @@ extern "C"
 		return TRUE;
 	}
 
-	VOID
+	extern "C" VOID
 		SetCurrentPathOfWindow(LPWSTR szPath)
 	{
 		HWND hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
