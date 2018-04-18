@@ -79,9 +79,12 @@ namespace winfile {
 			)
 		{
 			lock_unlock padlock{};
+			std::vector<TValue> retvec{};
+
+			if (key_value_storage_.size() < 1) return retvec;
+
 			bagovalues_internal::lowerize( const_cast<std::wstring &>(query));
 			auto range = key_value_storage_.equal_range(query);
-			std::vector<TValue> retvec{};
 
 			std::transform(
 				range.first,

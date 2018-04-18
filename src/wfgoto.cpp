@@ -14,6 +14,7 @@
 #include <vector>
 #include <sstream> // wstringstream
 #include <memory>
+#include <atomic> // DBJ added
 
 extern "C"
 {
@@ -24,8 +25,6 @@ extern "C"
 
 // for some reason this causes an error in xlocnum
 #undef abs
-
-namespace {
 
 	using namespace std;
 
@@ -46,12 +45,15 @@ namespace {
 
 	static void FreeDirectoryBagOValues(pdnode_bag_ptr pbov, pdnode_vector_ptr pNodes);
 
-	// incremented when a refresh is requested; old bags are discarded; scans are aborted if epoc changes
+	// incremented when a refresh is requested; old bags are discarded; 
+	// scans are aborted if epoc changes
 	static DWORD g_driveScanEpoc{};
-	// holds the nodes we created to make freeing them simpler (e.g., because some are reused)
-	static pdnode_bag * g_pBagOCDrive{};
-	// holds the nodes we created to make freeing them simpler (e.g., because some are reused)
-	static pdnode_vector * g_allNodes{};
+	// holds the nodes we created to make freeing them simpler 
+	// (e.g., because some are reused)
+	std::atomic<pdnode_bag *> atomic_bag_pointer{};
+	// holds the nodes we created to make freeing them simpler 
+	// (e.g., because some are reused)
+	std::atomic< pdnode_vector *> atomic_nodes_pointer{};
 
 	// compare path starting at the root; returns:
 	// 0: paths are the same length and same names
@@ -342,8 +344,6 @@ namespace {
 
 		add_backslash(szPath);
 
-		// szEndPath = szPath + lstrlen(szPath);
-
 		if (pNodeParent == nullptr)
 		{
 			// create first one; assume directory; "name" is full path starting with <drive>:
@@ -351,6 +351,7 @@ namespace {
 			pNodeParent = CreateNode(nullptr, (WCHAR*)szPath.data(), FILE_ATTRIBUTE_DIRECTORY);
 			if (pNodeParent == nullptr)
 			{
+				_ASSERTE(pNodeParent != nullptr); // DBJ 
 				// out of memory
 				return TRUE;
 			}
@@ -387,12 +388,13 @@ namespace {
 			PDNODE pNodeChild = CreateNode(pNodeParent, lfndta.fd.cFileName, lfndta.fd.dwFileAttributes);
 			if (pNodeChild == nullptr)
 			{
+				_ASSERTE(pNodeChild != nullptr);
 				// out of memory
 				break;
 			}
 			pNodes->push_back(pNodeChild);
 
-			// if spaces, each word individually (and not whole thing)
+			// if spaces, each word individually (and not the whole thing)
 			wstring_vector words = SplitIntoWords(lfndta.fd.cFileName);
 
 			for (auto word : words)
@@ -429,35 +431,42 @@ namespace {
 
 	pdnode_vector GetDirectoryOptionsFromText(LPCTSTR szText, BOOL *pbLimited)
 	{
-		if (g_pBagOCDrive == nullptr)
-			return pdnode_vector{};
+		auto shared_bag_pointer = atomic_bag_pointer.load();
+
+		if (shared_bag_pointer == nullptr) return pdnode_vector{};
 
 		wstring_vector words = SplitIntoWords(szText);
 
-		vector<pdnode_vector> options_per_word;
+		vector<pdnode_vector> options_per_word{};
 
-		for (auto word : words)
+		for (wstring word : words)
 		{
-			pdnode_vector options;
+			pdnode_vector options{};
+			bool fPrefix = true;
+
 			size_t pos = word.find_first_of(L'\\');
+
 			if (pos == word.size() - 1)
 			{
 				// '\' at end; remove
 				word = word.substr(0, pos);
 				pos = string::npos;
 			}
-			bool fPrefix = true;
+
 			if (word[0] == L'\'')
 			{
 				fPrefix = false;
 				word = word.substr(1);
 			}
+
 			if (pos == string::npos)
 			{
-				options = g_pBagOCDrive->Retrieve(word, fPrefix, 1000);
+				options = shared_bag_pointer->Retrieve(word, fPrefix, 1000);
 
-				if (options.size() == 1000)
-					*pbLimited = TRUE;
+				if (options.size() < 1) return {}; // DBJ
+
+				if (options.size() == 1000) // DBJ: what is the logic here?
+					*pbLimited = TRUE;      // what is the '1000' magic constant?
 			}
 			else
 			{
@@ -465,8 +474,8 @@ namespace {
 				wstring first = word.substr(0, pos);
 				wstring second = word.substr(pos + 1);
 
-				pdnode_vector options1 = std::move(g_pBagOCDrive->Retrieve(first, fPrefix, 1000));
-				pdnode_vector options2 = std::move(g_pBagOCDrive->Retrieve(second, fPrefix, 1000));
+				pdnode_vector options1 = std::move(shared_bag_pointer->Retrieve(first, fPrefix, 1000));
+				pdnode_vector options2 = std::move(shared_bag_pointer->Retrieve(second, fPrefix, 1000));
 
 				if (options1.size() == 1000 ||
 					options2.size() == 1000)
@@ -567,22 +576,33 @@ namespace {
 		return CallWindowProc(wpOrigEditProc, hwnd, uMsg, wParam, lParam);
 	}
 
-	template<typename D, typename V>
 	inline auto interlocked_exchange (
-		  D Destination, 
-		  V Value
+		  PVOID *	Destination, 
+		  PVOID		Value
 		) 
 	{
-			PVOID retval_ = reinterpret_cast<PVOID>(
-				_InterlockedExchange((LONG volatile *)Destination,
+		_ASSERTE(Destination);
+		_ASSERTE(Value);
+#if 0		
+		// why the stunt of casting to void * and then 
+		// to LONG values ?
+		PVOID retval_ = reinterpret_cast<PVOID>(
+			InterlockedExchange((LONG volatile *)Destination,
 					(LONG)Value)
 				);
-			_ASSERTE(retval_);
+#else
+		PVOID retval_ = reinterpret_cast<PVOID>(
+			InterlockedExchangePointer(Destination,Value )
+			);
+#endif
+			_ASSERTE(retval_ != nullptr);
 	  return retval_;
 	};
 
-	DWORD WINAPI
-		BuildDirectoryTreeBagOValues(PVOID pv)
+	/*
+	a 'worker' executed on a separate thread
+	*/
+	DWORD WINAPI BuildDirectoryTreeBagOValues(PVOID pv)
 	{
 		DWORD scanEpocNew = InterlockedIncrement(&g_driveScanEpoc);
 
@@ -597,18 +617,8 @@ namespace {
 			// which is already sorted 
 			// pBagNew->Sort();
 
-			pBagNew = *
-				(pdnode_bag_ptr*) (interlocked_exchange(
-				(PVOID *)&g_pBagOCDrive, 
-				(PVOID  )pBagNew.get()
-			)
-					);
-			pNodes = *
-				(pdnode_vector_ptr*)(interlocked_exchange(
-				(PVOID *)&g_allNodes, 
-				(PVOID)pNodes.operator->()
-			)
-					);
+			atomic_bag_pointer.store(pBagNew.get());
+			atomic_nodes_pointer.store(pNodes.get());
 		}
 
 		if (pBagNew != nullptr)
@@ -621,7 +631,7 @@ namespace {
 		return ERROR_SUCCESS;
 	}
 
-} // nspace
+
 
     /*
 	----------------------------------------------------------------------------------------------
