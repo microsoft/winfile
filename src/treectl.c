@@ -231,6 +231,7 @@ ComparePath(PDNODE p1, PDNODE p2)
 }
 
 
+static // DBJ added
 INT
 CompareNodes(PDNODE p1, PDNODE p2)
 {

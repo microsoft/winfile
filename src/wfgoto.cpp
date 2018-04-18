@@ -36,11 +36,10 @@ extern "C"
 	using pdnode_bag = winfile::BagOValues<PDNODE>;
 
 	extern "C" BOOL BuildDirectoryBagOValues(
-		pdnode_bag pbov,
-		pdnode_vector pNodes,
-		LPCTSTR szRoot,
-		PDNODE pNodeParent,                                                                                    
-		DWORD scanEpoc
+		pdnode_bag		 & pbov,
+		LPCTSTR				szRoot,
+		PDNODE				pNodeParent,                                                                                    
+		DWORD				scanEpoc
 	);
 
 	extern "C" void FreeDirectoryBagOValues(
@@ -60,7 +59,7 @@ extern "C"
 	// -1: path a is a prefix of path b
 	// +1: path b is a prefix of path a
 	// +2: first difference in the paths has b sort lower
-	extern "C"  int ParentOrdering(const PDNODE& a, const PDNODE& b)
+	extern "C"  static int ParentOrdering(const PDNODE& a, const PDNODE& b)
 	{
 		int wCmp;
 		if (a->nLevels == b->nLevels)
@@ -119,7 +118,7 @@ extern "C"
 	}
 
 	// returns true if a strictly less than b
-	extern "C" bool CompareNodes(const PDNODE& a, const PDNODE& b)
+	extern "C" static bool CompareNodes(const PDNODE& a, const PDNODE& b)
 	{
 		return ParentOrdering(a, b) < 0;
 	}
@@ -333,8 +332,7 @@ extern "C"
 	}
 
 	extern "C"  BOOL BuildDirectoryBagOValues(
-		pdnode_bag pbov,
-		pdnode_vector pNodes,
+		pdnode_bag & pbov,
 		LPCTSTR szRoot,
 		PDNODE pNodeParent,
 		DWORD scanEpoc
@@ -361,9 +359,7 @@ extern "C"
 				// out of memory
 				return TRUE;
 			}
-
-			pNodes.push_back(pNodeParent);
-			pbov.Add(szPath, pNodeParent);
+				pbov.Add(szPath, pNodeParent);
 		}
 
 		// add *.* to end of path
@@ -398,7 +394,6 @@ extern "C"
 				// out of memory
 				break;
 			}
-			pNodes.push_back(pNodeChild);
 
 			// if spaces, each word individually (and not the whole thing)
 			wstring_vector words = SplitIntoWords(lfndta.fd.cFileName);
@@ -421,7 +416,7 @@ extern "C"
 			if (szPath.size() > MAXPATHLEN) return TRUE;
 
 			// add directories in subdir
-			if (!BuildDirectoryBagOValues(pbov, pNodes, szPath.data(), pNodeChild, scanEpoc))
+			if (!BuildDirectoryBagOValues(pbov, szPath.data(), pNodeChild, scanEpoc))
 			{
 				WFFindClose(&lfndta);
 				return FALSE;
@@ -437,6 +432,8 @@ extern "C"
 
 	pdnode_vector GetDirectoryOptionsFromText(LPCTSTR szText, BOOL *pbLimited)
 	{
+		constexpr auto magic_number = 1000;
+
 		auto shared_bag = shared_bag_of_nodes.load();
 
 		if (shared_bag.Empty()) return pdnode_vector{};
@@ -467,11 +464,11 @@ extern "C"
 
 			if (pos == string::npos)
 			{
-				options = shared_bag.Retrieve(word, fPrefix, 1000);
+				options = shared_bag.Retrieve(word, fPrefix, magic_number);
 
 				if (options.size() < 1) return {}; // DBJ
 
-				if (options.size() == 1000) // DBJ: what is the logic here?
+				if (options.size() == magic_number) // DBJ: what is the logic here?
 					*pbLimited = TRUE;      // what is the '1000' magic constant?
 			}
 			else
@@ -480,11 +477,11 @@ extern "C"
 				wstring first = word.substr(0, pos);
 				wstring second = word.substr(pos + 1);
 
-				pdnode_vector options1 = std::move(shared_bag.Retrieve(first, fPrefix, 1000));
-				pdnode_vector options2 = std::move(shared_bag.Retrieve(second, fPrefix, 1000));
+				pdnode_vector options1 = std::move(shared_bag.Retrieve(first, fPrefix, magic_number));
+				pdnode_vector options2 = std::move(shared_bag.Retrieve(second, fPrefix, magic_number));
 
-				if (options1.size() == 1000 ||
-					options2.size() == 1000)
+				if (options1.size() == magic_number ||
+					options2.size() == magic_number)
 					*pbLimited = TRUE;
 
 				options = std::move(FilterBySubtree(options1, options2));
@@ -593,11 +590,10 @@ extern "C"
 		); 
 
 		pdnode_bag		pBagNew{};
-		pdnode_vector	pNodes{};
 
 		SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
-		if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), nullptr, scanEpocNew))
+		if (BuildDirectoryBagOValues(pBagNew, TEXT("c:\\"), nullptr, scanEpocNew))
 		{
 			// papa's got the brand new bag, 
 			// which is already sorted 
