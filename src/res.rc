@@ -157,7 +157,7 @@ BEGIN
     MENUITEM    SEPARATOR
     MENUITEM    "&Minimize on Use",     IDM_MINONRUN
     MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
-    MENUITEM    "Disable toolbar Visual Themes", IDM_DISABLEVISUALSTYLES
+    MENUITEM    "Disable toolbar Visual Styles", IDM_DISABLEVISUALSTYLES
     MENUITEM    "Save Settings on &Exit",   IDM_SAVESETTINGS
 #ifdef PROGMAN
     MENUITEM    SEPARATOR
