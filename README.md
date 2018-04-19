@@ -1,3 +1,7 @@
+This is [DBJDBJ](https://github.com/DBJDBJ) fork. Primary aim is to redevelop the tiny C++ part used to implement the "Goto Directory" functionality.
+
+<hr/>
+
 # ![icon](winfile.png) Windows File Manager (WinFile)
 
 The Windows File Manager lives again and runs as a native x86 and x64 desktop app

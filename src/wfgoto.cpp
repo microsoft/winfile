@@ -23,8 +23,10 @@ extern "C"
 }
 
 // for some reason this causes an error in xlocnum
+// DBJ: is this still the case?
 #undef abs
 
+namespace {
 	using namespace std;
 
 	/*
@@ -37,8 +39,8 @@ extern "C"
 
 	extern "C" BOOL BuildDirectoryBagOValues(
 		pdnode_bag		 & pbov,
-		LPCTSTR				szRoot,
-		PDNODE				pNodeParent,                                                                                    
+		const wstring &  szRoot,
+		PDNODE				pNodeParent,
 		DWORD				scanEpoc
 	);
 
@@ -49,7 +51,7 @@ extern "C"
 	// incremented when a refresh is requested; old bags are discarded; 
 	// scans are aborted if epoc changes
 	// static DWORD g_driveScanEpoc{};
-	winfile::internal::guardian<DWORD> atomic_epoc;
+	winfile::internal::guardian<DWORD> shared_epoc;
 
 	winfile::internal::guardian<pdnode_bag> shared_bag_of_nodes;
 
@@ -262,12 +264,17 @@ extern "C"
 		return (*combined);
 	}
 
+	// DBJ: there is no the opposite: DeleteNode ...
+	// which will have to call ::LocalFree() as we see in here
 	extern "C"  PDNODE CreateNode(PDNODE pParentNode, WCHAR *szName, DWORD dwAttribs)
 	{
 		PDNODE pNode;
 		DWORD len = lstrlen(szName);
 
 		pNode = (PDNODE)LocalAlloc(LPTR, sizeof(DNODE) + ByteCountOf(len));
+
+		_ASSERTE( pNode );
+
 		if (!pNode)
 		{
 			return nullptr;
@@ -305,44 +312,48 @@ extern "C"
 		return words;
 	}
 
-	extern "C" void FreeDirectoryBagOValues
-	(
+	extern "C" void FreeDirectoryBagOValues	(
 		pdnode_bag const & pbov
-	)
-	{
+	){
 		// free all PDNODE's in BagOValues
-		pbov.ForEach([] (typename pdnode_bag::storage_type::value_type element ) {
-			 /*pdnode_bag::value_type*/ PDNODE val_ =  element.second;
-			 HLOCAL rez = ::LocalFree(val_);
-			 _ASSERTE(rez != NULL);
+#if 0
+		pbov.ForEach([](typename pdnode_bag::storage_type::value_type element) {
+			/*pdnode_bag::value_type*/ PDNODE val_ = element.second;
+			_ASSERTE(val_ != nullptr);
+			HLOCAL rez = ::LocalFree(val_);
+			_ASSERTE(rez == nullptr);
 		});
-
+#endif
 		pbov.Clear();
 
 	}
 
 
 	extern "C" inline auto
-		add_backslash(wstring path_)
+		add_backslash(wstring & path_)
 	{
 		if (path_.back() != CHAR_BACKSLASH) {
 			path_.append(wstring{ CHAR_BACKSLASH });
 		}
-			return path_.size();
+		return path_.size();
 	}
 
-	extern "C"  BOOL BuildDirectoryBagOValues(
+	BOOL BuildDirectoryBagOValues(
 		pdnode_bag & pbov,
-		LPCTSTR szRoot,
+		const wstring & szRoot,
+		// nullptr when called from the 
+		// BuildDirectoryTreeBagOValues()
+		// which is a separate thread worker
 		PDNODE pNodeParent,
 		DWORD scanEpoc
 	)
 	{
 		LFNDTA lfndta{};
-		wstring szPath{ MAXPATHLEN }; //  WCHAR szPath[MAXPATHLEN];
+		wstring szPath{ szRoot }; 
 
-		// lstrcpy(szPath, szRoot);
-		szPath = szRoot;
+		// e.g. L"c:\\" is of size 3
+		_ASSERTE(szPath.size() > 2 );
+
 		// is path too long?
 		if (szPath.size() > MAXPATHLEN) return TRUE;
 
@@ -350,7 +361,9 @@ extern "C"
 
 		if (pNodeParent == nullptr)
 		{
-			// create first one; assume directory; "name" is full path starting with <drive>:
+			// create first one;  DBJ translation: means first call from the BuildDirectoryTreeBagOValues()
+			// assume directory; 
+			// "name" is full path starting with <drive>:
 			// normally name is just directory name by itself
 			pNodeParent = CreateNode(nullptr, (WCHAR*)szPath.data(), FILE_ATTRIBUTE_DIRECTORY);
 			if (pNodeParent == nullptr)
@@ -359,7 +372,7 @@ extern "C"
 				// out of memory
 				return TRUE;
 			}
-				pbov.Add(szPath, pNodeParent);
+			pbov.Add(szPath, pNodeParent);
 		}
 
 		// add *.* to end of path
@@ -372,7 +385,10 @@ extern "C"
 
 		while (bFound)
 		{
-			if (atomic_epoc.load() != scanEpoc)
+			// scanEpoc is sent as argument 
+			// in the meantime anothe thread might have started
+			// and icnrememented tha shared epoc
+			if (shared_epoc.load() != scanEpoc)
 			{
 				// new scan started; abort this one
 				WFFindClose(&lfndta);
@@ -411,7 +427,7 @@ extern "C"
 			// is path too long?
 			if (szPath.size() > MAXPATHLEN) return TRUE;
 
-			szPath.append( lfndta.fd.cFileName);
+			szPath.append(lfndta.fd.cFileName);
 			// is path too long?
 			if (szPath.size() > MAXPATHLEN) return TRUE;
 
@@ -581,35 +597,55 @@ extern "C"
 
 	/*
 	a 'worker' executed on a separate thread
+	this in essence strarts to build the list of results regarding
+	what human is pressing
 	*/
-	extern "C" DWORD WINAPI BuildDirectoryTreeBagOValues(PVOID pv)
+	extern "C" DWORD WINAPI BuildDirectoryTreeBagOValues(PVOID pv = nullptr )
 	{
-		//   InterlockedIncrement(&atomic_epoc);
-		DWORD scanEpocNew = atomic_epoc.store(
-			1 + atomic_epoc.load()
-		); 
+		//   InterlockedIncrement(&shared_epoc);
+		// if we enter another thread before this finishes
+		// scanEpocNew will be different from the one incremeneted
+		// by the next thread
+		// why is word "epoc" used here I have no clue
+		DWORD scanEpocNew = shared_epoc.store(
+			1 + shared_epoc.load()
+		);
 
 		pdnode_bag		pBagNew{};
 
 		SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
-		if (BuildDirectoryBagOValues(pBagNew, TEXT("c:\\"), nullptr, scanEpocNew))
+		// DBJ: what happens if there is no drive C: ?
+		// shoud we not get the system drive letter
+		// yes! let's do it then
+
+		const wstring sys_drive_letter_with_backslash = 
+			winfile::internal::windrive() ;
+
+		if (BuildDirectoryBagOValues(pBagNew, 
+			/*TEXT("c:\\")*/  sys_drive_letter_with_backslash ,
+			nullptr, 
+			scanEpocNew))
 		{
 			// papa's got the brand new bag, 
 			// which is already sorted 
 			// pBagNew->Sort();
 
+			//DBJ: what happens with the previous "bag of values" ?
 			shared_bag_of_nodes.store(pBagNew);
 		}
 
-		if (! pBagNew.Empty())	{	FreeDirectoryBagOValues(pBagNew);	}
+		// DBJ: so why are we deleting it here now?
+		if (!pBagNew.Empty()) { FreeDirectoryBagOValues(pBagNew); }
 
+		// DBJ: this is for "status bar" 
+		// but why is this here?
 		UpdateMoveStatus(ReadMoveStatus());
 
 		return ERROR_SUCCESS;
 	}
 
-
+} // eof namespace
 
     /*
 	----------------------------------------------------------------------------------------------
@@ -619,6 +655,7 @@ extern "C"
 	extern "C"  DWORD
 		StartBuildingDirectoryTrie()
 	{
+#ifdef ASYNC_GOTO_DIRECTORY
 		HANDLE hThreadCopy;
 		DWORD dwIgnore;
 
@@ -639,6 +676,9 @@ extern "C"
 		SetThreadPriority(hThreadCopy, THREAD_PRIORITY_BELOW_NORMAL);
 
 		CloseHandle(hThreadCopy);
+#else
+		BuildDirectoryTreeBagOValues( nullptr );
+#endif
 
 		return 0;
 	}

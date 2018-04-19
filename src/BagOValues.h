@@ -35,6 +35,30 @@ namespace winfile {
 			~lock_unlock() { spinlock_.Unlock(); }
 		};
 
+		// return e.g. L"C:\windows\system32"
+		inline const std::wstring windir()
+		{
+			lock_unlock padlock_;
+			static wchar_t  result_buf[BUFSIZ]{};
+			static auto retval = ::GetSystemDirectoryW(
+				result_buf,
+				BUFSIZ
+			);
+			_ASSERTE(retval);
+			return wstring{ result_buf};
+		}
+
+		// return .e.g. L"C:\\"
+        // the first 3 chars that is
+		inline const std::wstring windrive()
+		{
+			lock_unlock padlock_;
+			static wstring result = windir().substr( 0, 3) ;
+			_ASSERTE(result.size() == 3);
+			return result;
+		}
+
+
 		template <typename T>
 		class guardian final {
 		public:
