@@ -179,7 +179,7 @@ namespace {
 		pdnode_vector* first = nullptr;
 
 		// for all other result sets, merge
-		for (int i = 1; i < count; i++)
+		for (SIZE_T i = 1; i < count; i++)
 		{
 			size_t out = 0;			// always start writing to the beginning of the output
 
