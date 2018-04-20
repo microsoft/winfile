@@ -420,8 +420,12 @@ InitMenus()
       CheckMenuItem(hMenu, IDM_MINONRUN,  MF_BYCOMMAND | MF_CHECKED);
    if (bIndexOnLaunch)
       CheckMenuItem(hMenu, IDM_INDEXONLAUNCH, MF_BYCOMMAND | MF_CHECKED);
-   if (bDisableVisualStyles)
+
+   if (!lpfnSetWindowTheme)
+     RemoveMenu(hMenu, IDM_DISABLEVISUALSTYLES, MF_BYCOMMAND);
+   else if (bDisableVisualStyles)
      CheckMenuItem(hMenu, IDM_DISABLEVISUALSTYLES, MF_BYCOMMAND | MF_CHECKED);
+
    if (bSaveSettings)
       CheckMenuItem(hMenu, IDM_SAVESETTINGS,  MF_BYCOMMAND | MF_CHECKED);
 
