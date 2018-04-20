@@ -1790,7 +1790,8 @@ Extern TCHAR        szCurrentFileSpec[14]   EQ( TEXT("*.*") );
 Extern TCHAR        szComma[4]      EQ( TEXT(",") );
 Extern TCHAR        szDecimal[4]    EQ( TEXT(".") );
 
-Extern TCHAR        szListbox[]     EQ( TEXT("ListBox") );        // window style
+Extern TCHAR        szListbox[]        EQ( TEXT("ListBox") );        // window style
+Extern WCHAR        pwszInvalidTheme[] EQ( L" " );
 
 Extern TCHAR        szTitle[128];
 

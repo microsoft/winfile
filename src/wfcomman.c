@@ -2029,8 +2029,8 @@ ChangeDisplay:
       WritePrivateProfileBool(szDisableVisualStyles, bDisableVisualStyles);
       if (hUxTheme) {
         if (bDisableVisualStyles) {
-          SetWindowTheme(hwndToolbar, L" ", L" ");
-          SetWindowTheme(hwndDriveList, L" ", L" ");
+          SetWindowTheme(hwndToolbar, pwszInvalidTheme, pwszInvalidTheme);
+          SetWindowTheme(hwndDriveList, pwszInvalidTheme, pwszInvalidTheme);
         }
         else {
           SetWindowTheme(hwndToolbar, NULL, NULL);

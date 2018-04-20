@@ -1106,7 +1106,7 @@ CreateFMToolbar(void)
       return;
 
    if(bDisableVisualStyles)
-     SetWindowTheme(hwndToolbar, L" ", L" ");
+     SetWindowTheme(hwndToolbar, pwszInvalidTheme, pwszInvalidTheme);
 
    SendMessage (hwndToolbar, TB_SETINDENT, 8, 0);
 
@@ -1131,7 +1131,7 @@ CreateFMToolbar(void)
    }
 
    if (bDisableVisualStyles)
-     SetWindowTheme(hwndDriveList, L" ", L" ");
+     SetWindowTheme(hwndDriveList, pwszInvalidTheme, pwszInvalidTheme);
 
    SendMessage(hwndDriveList, CB_SETEXTENDEDUI, 0, 0L);
    SendMessage(hwndDriveList, WM_SETFONT, (WPARAM)hfontDriveList, MAKELPARAM(TRUE, 0));
