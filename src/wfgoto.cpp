@@ -165,7 +165,7 @@ namespace {
 		}
 
 		// if just one, return it (after sort above)
-		int count = trees.size();
+		SIZE_T count = trees.size();
 		if (count == 1)
 			return trees.at(0);
 
@@ -568,7 +568,7 @@ namespace {
 
 				if (lpmsg->message == WM_KEYDOWN && (lpmsg->wParam == VK_DOWN || lpmsg->wParam == VK_UP || lpmsg->wParam == VK_HOME || lpmsg->wParam == VK_END)) {
 					HWND hwndDlg = GetParent(hwnd);
-					DWORD iSel = SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
+					LRESULT iSel = SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
 					if (iSel == LB_ERR)
 						iSel = 0;
 					else if (lpmsg->wParam == VK_DOWN)
@@ -728,7 +728,7 @@ namespace {
 
 				EndDialog(hDlg, TRUE);
 
-				DWORD iSel = SendDlgItemMessage(hDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
+				LRESULT iSel = SendDlgItemMessage(hDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
 				if (iSel == LB_ERR)
 				{
 					if (GetDlgItemText(hDlg, IDD_GOTODIR, szPath, COUNTOF(szPath)) != 0)

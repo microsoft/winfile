@@ -240,7 +240,7 @@ namespace winfile {
 				range.first,
 				range.second,
 				std::back_inserter(retvec),
-				[](storage_type::value_type element) { return element.second; }
+				[](typename storage_type::value_type element) { return element.second; }
 			);
 			return retvec;
 		}

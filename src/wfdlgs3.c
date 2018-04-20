@@ -747,7 +747,7 @@ AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     case WM_INITDIALOG:
         if (GetProductVersion(&wMajorVersion, &wMinorVersion, &wBuildNumber, &wRevisionNumber))
         {
-            if (SUCCEEDED(StringCchPrintf(szVersion, CCH_VERSION, TEXT("Version %d.%d.%d.%d"),
+            if (SUCCEEDED(StringCchPrintf(szVersion, CCH_VERSION, TEXT("DBJDBJ Fork. Version %d.%d.%d.%d"),
                 (int)wMajorVersion, (int)wMinorVersion, (int)wBuildNumber, (int)wRevisionNumber)))
             {
                 SetDlgItemText(hDlg, IDD_VERTEXT, szVersion);
