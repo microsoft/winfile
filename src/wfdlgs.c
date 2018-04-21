@@ -742,12 +742,12 @@ INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                 case IDC_EDITOR:
                     GetOpenFileName(&ofn);
-                    wcscpy_s(szPath, MAX_PATH + 1, ofn.lpstrFile);
+                    wcscpy_s(szPath, MAX_PATH, ofn.lpstrFile);
                     SetDlgItemText(hDlg, IDD_EDIT, szPath);
                     break;
                 case IDC_VIEW:
                     GetOpenFileName(&ofn);
-                    wcscpy_s(szPath, MAX_PATH + 1, ofn.lpstrFile);
+                    wcscpy_s(szPath, MAX_PATH, ofn.lpstrFile);
                     SetDlgItemText(hDlg, IDD_VIEW, szPath);
                     break;
 
