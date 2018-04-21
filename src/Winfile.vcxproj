@@ -243,7 +243,8 @@
     <ResourceCompile Include="res_2052.rc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="suggest.db" />
+    <None Include="suggest_1033.db" />
+    <None Include="suggest_2052.db" />
     <None Include="winfile_1033.dlg" />
     <None Include="winfile_2052.dlg" />
   </ItemGroup>
