@@ -698,6 +698,85 @@ DoHelp:
   return TRUE;
 }
 
+INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+{
+    UNREFERENCED_PARAMETER(lParam);
+
+    TCHAR szTempEditPath[MAX_PATH];
+    TCHAR szTempViewPath[MAX_PATH];
+    TCHAR szFilter[MAX_PATH];
+    TCHAR szPath[MAX_PATH];
+
+    LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAX_PATH);
+
+    OPENFILENAME ofn;
+
+    ZeroMemory(&ofn, sizeof(ofn));
+    ofn.lStructSize = sizeof(ofn);
+    ofn.hwndOwner = hDlg;
+    ofn.lpstrFile = szPath;
+    ofn.lpstrFile[0] = '\0';
+    ofn.nMaxFile = sizeof(szPath);
+    ofn.lpstrFilter = szFilter;
+    ofn.nFilterIndex = 1;
+    ofn.lpstrFileTitle = NULL;
+    ofn.nMaxFileTitle = 0;
+    ofn.lpstrInitialDir = NULL;
+    ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+
+    switch (wMsg)
+    {
+        case WM_INITDIALOG:
+            GetPrivateProfileString(szSettings, TEXT("EditorPath"), NULL, szTempEditPath, MAX_PATH, szTheINIFile);
+            GetPrivateProfileString(szSettings, TEXT("ViewPath"), NULL, szTempViewPath, MAX_PATH, szTheINIFile);
+            SetDlgItemText(hDlg, IDD_EDIT, szTempEditPath);
+            SetDlgItemText(hDlg, IDD_VIEW, szTempViewPath);
+
+            break;
+        
+        case WM_COMMAND:
+            switch (GET_WM_COMMAND_ID(wParam, lParam))
+            {
+                case IDD_HELP:
+                    goto DoHelp;
+
+                case IDC_EDITOR:
+                    GetOpenFileName(&ofn);
+                    wcscpy_s(szPath, MAX_PATH + 1, ofn.lpstrFile);
+                    SetDlgItemText(hDlg, IDD_EDIT, szPath);
+                    break;
+                case IDC_VIEW:
+                    GetOpenFileName(&ofn);
+                    wcscpy_s(szPath, MAX_PATH + 1, ofn.lpstrFile);
+                    SetDlgItemText(hDlg, IDD_VIEW, szPath);
+                    break;
+
+                case IDOK:
+                    GetDlgItemText(hDlg, IDD_EDIT, szTempEditPath,MAX_PATH);
+                    GetDlgItemText(hDlg, IDD_VIEW, szTempViewPath, MAX_PATH);
+                    WritePrivateProfileString(szSettings, TEXT("EditorPath"), szTempEditPath, szTheINIFile);
+                    WritePrivateProfileString(szSettings, TEXT("ViewerPath"), szTempViewPath, szTheINIFile);
+                    EndDialog(hDlg, TRUE);
+                    break;
+
+                case IDCANCEL:
+                    EndDialog(hDlg, FALSE);
+                    break;
+                    
+            }
+        default:
+            if (wMsg == wHelpMessage) {
+DoHelp:
+                WFHelp(hDlg);
+
+                return TRUE;
+            }
+            else
+                return FALSE;
+    }
+    return TRUE;
+}
+
 
 VOID
 KillQuoteTrailSpace( LPTSTR szFile )

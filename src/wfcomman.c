@@ -690,31 +690,24 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
       // Attempt to spawn the selected file.
       //
       if (fEdit)
-      {
-          // check if notepad++ exists: %ProgramFiles%\Notepad++\notepad++.exe
-          TCHAR szToRun[MAXPATHLEN];
+      {   
 
-          DWORD cchEnv = GetEnvironmentVariable(TEXT("ProgramFiles"), szToRun, MAXPATHLEN);
-          if (cchEnv != 0)
-          {
-            // NOTE: assume ProgramFiles directory and "\\Notepad++\\notepad++.exe" never exceed MAXPATHLEN
-            lstrcat(szToRun, TEXT("\\Notepad++\\notepad++.exe"));
-            if (!PathFileExists(szToRun))
-            {
-                cchEnv = 0;
-            }
-          }
+          TCHAR szEditPath[MAX_PATH];
+          TCHAR szNotepad[MAX_PATH];
 
-          if (cchEnv == 0)
-          {
-              // NOTE: assume system directory and "\\notepad.exe" never exceed MAXPATHLEN
-              if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
-                  lstrcat(szToRun, TEXT("\\notepad.exe"));
-              else
-                  lstrcpy(szToRun, TEXT("notepad.exe"));
-          }
+          if (GetSystemDirectory(szNotepad, MAXPATHLEN) != 0)
+              lstrcat(szNotepad, TEXT("\\notepad.exe"));
+          else
+              lstrcpy(szNotepad, TEXT("notepad.exe"));
 
-          ret = ExecProgram(szToRun, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
+          GetPrivateProfileString(szSettings, TEXT("EditorPath"), szNotepad, szEditPath, MAX_PATH, szTheINIFile);
+
+          if(wcslen(szEditPath))
+             ret = ExecProgram(szEditPath, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
+          //If INI entry is empty
+          else 
+             ret = ExecProgram(szNotepad, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
+
       }
       else
       {
@@ -1912,6 +1905,10 @@ ChangeDisplay:
 
     case IDM_CONFIRM:
        DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CONFIRMDLG), hwndFrame, (DLGPROC)ConfirmDlgProc);
+       break;
+
+    case IDM_EDITOR:
+       DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(EDITDLG), hwndFrame, (DLGPROC)EditorDlgProc);
        break;
 
     case IDM_STATUSBAR:

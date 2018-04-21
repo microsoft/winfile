@@ -620,6 +620,7 @@ INT_PTR  ProgressDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  SortByDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  ConfirmDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR  EditorDlgProc(HWND hDlg, UINT wMmsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  AboutDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
@@ -983,6 +984,8 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define IDM_SAVESETTINGS    511
 
 #define IDM_TOOLBARCUST     512
+
+#define IDM_EDITOR 515
 
 #ifdef PROGMAN
 #define IDM_SAVENOW         513
@@ -1389,6 +1392,8 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define IDS_COMPRESS_ATTRIB_ERR  429
 #define IDS_NTLDRCOMPRESSERR     430
 #define IDS_MULTICOMPRESSERR     431
+
+#define IDS_EDITFILTER           432
 
 #define IDS_VERNAME_BASE          500
 #define IDS_VN_COMMENTS           (IDS_VERNAME_BASE + 0)

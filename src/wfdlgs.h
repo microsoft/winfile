@@ -31,6 +31,7 @@
 #define SORTBYDLG     31
 #define INCLUDEDLG       32
 #define CONFIRMDLG       33
+#define EDITDLG          34
 #define DMSTATUSDLG      35
 #define PRTDLG        36
 #define CHOOSENETDRIVEDLG   37
@@ -155,6 +156,11 @@
 #define IDD_RUNAS			272
 
 #define IDD_SHOWJUNCTION    273
+
+#define IDD_EDIT            274
+#define IDD_VIEW            275
+#define IDC_EDITOR          276
+#define IDC_VIEW            277
 
 
 #define IDD_NEW             300
