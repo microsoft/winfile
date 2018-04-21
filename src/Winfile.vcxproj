@@ -240,10 +240,12 @@
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <ResourceCompile Include="res_1033.rc" />
+    <ResourceCompile Include="res_2052.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="suggest.db" />
     <None Include="winfile_1033.dlg" />
+    <None Include="winfile_2052.dlg" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbg.c" />
