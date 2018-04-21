@@ -1540,7 +1540,7 @@ Extern DWORD (*lpfnGetOpenFileNameW)(LPOPENFILENAMEW);
 #define COMDLG_GetOpenFileNameW           "GetOpenFileNameW"
 
 #define ChooseFontW         (*lpfnChooseFontW)
-#define GetOpenFileNameW    (*lpfnGetOpenFileNameW)
+//#define GetOpenFileNameW    (*lpfnGetOpenFileNameW)
 
 //----------------------------
 //
