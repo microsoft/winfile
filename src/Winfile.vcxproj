@@ -239,10 +239,11 @@
       <Culture Condition="'$(Configuration)|$(Platform)'=='Release|x64'">0x0409</Culture>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
+    <ResourceCompile Include="res_1033.rc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="suggest.db" />
-    <None Include="winfile.dlg" />
+    <None Include="winfile_1033.dlg" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbg.c" />
