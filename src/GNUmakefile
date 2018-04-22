@@ -40,6 +40,7 @@ ifeq ($(OS),Windows_NT)
 TARGET := $(TARGET).exe
 endif
 
+.PHONY: all depend clean
 .SUFFIXES: .c .cpp .o .res
 
 all : $(TARGET)
@@ -59,4 +60,7 @@ res.o : res.rc
 clean :
 	rm -f $(OBJS) $(TARGET)
 
+depend:
+	gcc -E -MM -w *.c >> Makefile.depends
 
+-include Makefile.depends
