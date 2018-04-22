@@ -728,7 +728,7 @@ INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     {
         case WM_INITDIALOG:
             GetPrivateProfileString(szSettings, TEXT("EditorPath"), NULL, szTempEditPath, MAX_PATH, szTheINIFile);
-            GetPrivateProfileString(szSettings, TEXT("ViewPath"), NULL, szTempViewPath, MAX_PATH, szTheINIFile);
+            GetPrivateProfileString(szSettings, TEXT("ViewerPath"), NULL, szTempViewPath, MAX_PATH, szTheINIFile);
             SetDlgItemText(hDlg, IDD_EDIT, szTempEditPath);
             SetDlgItemText(hDlg, IDD_VIEW, szTempViewPath);
 

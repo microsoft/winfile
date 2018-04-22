@@ -594,7 +594,7 @@ INT_PTR  ProgressDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  SortByDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  ConfirmDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  EditorDlgProc(HWND hDlg, UINT wMmsg, WPARAM wParam, LPARAM lParam);
+INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  AboutDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
