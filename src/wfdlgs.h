@@ -157,10 +157,8 @@
 
 #define IDD_SHOWJUNCTION    273
 
-#define IDD_EDIT            274
-#define IDD_VIEW            275
-#define IDC_EDITOR          276
-#define IDC_VIEW            277
+#define IDD_EDITOR          274
+#define IDC_EDITOR          275
 
 
 #define IDD_NEW             300

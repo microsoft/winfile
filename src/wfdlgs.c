@@ -700,11 +700,8 @@ DoHelp:
 
 INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
-    UNREFERENCED_PARAMETER(lParam);
-
     TCHAR szTempEditPath[MAX_PATH];
-    TCHAR szTempViewPath[MAX_PATH];
-    TCHAR szFilter[MAX_PATH];
+    TCHAR szFilter[MAX_PATH] = { 0 };
     TCHAR szPath[MAX_PATH];
 
     LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAX_PATH);
@@ -728,10 +725,7 @@ INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     {
         case WM_INITDIALOG:
             GetPrivateProfileString(szSettings, TEXT("EditorPath"), NULL, szTempEditPath, MAX_PATH, szTheINIFile);
-            GetPrivateProfileString(szSettings, TEXT("ViewerPath"), NULL, szTempViewPath, MAX_PATH, szTheINIFile);
-            SetDlgItemText(hDlg, IDD_EDIT, szTempEditPath);
-            SetDlgItemText(hDlg, IDD_VIEW, szTempViewPath);
-
+            SetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath);
             break;
         
         case WM_COMMAND:
@@ -743,19 +737,12 @@ INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 case IDC_EDITOR:
                     GetOpenFileName(&ofn);
                     wcscpy_s(szPath, MAX_PATH, ofn.lpstrFile);
-                    SetDlgItemText(hDlg, IDD_EDIT, szPath);
-                    break;
-                case IDC_VIEW:
-                    GetOpenFileName(&ofn);
-                    wcscpy_s(szPath, MAX_PATH, ofn.lpstrFile);
-                    SetDlgItemText(hDlg, IDD_VIEW, szPath);
+                    SetDlgItemText(hDlg, IDD_EDITOR, szPath);
                     break;
 
                 case IDOK:
-                    GetDlgItemText(hDlg, IDD_EDIT, szTempEditPath,MAX_PATH);
-                    GetDlgItemText(hDlg, IDD_VIEW, szTempViewPath, MAX_PATH);
+                    GetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath,MAX_PATH);
                     WritePrivateProfileString(szSettings, TEXT("EditorPath"), szTempEditPath, szTheINIFile);
-                    WritePrivateProfileString(szSettings, TEXT("ViewerPath"), szTempViewPath, szTheINIFile);
                     EndDialog(hDlg, TRUE);
                     break;
 
