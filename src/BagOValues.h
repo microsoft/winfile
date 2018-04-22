@@ -48,6 +48,9 @@ namespace winfile {
 			return wstring{ result_buf};
 		}
 
+		// DBJ: what happens if there is no drive C: ?
+		// shoud we not get the system drive letter
+		// yes. let's do it then
 		// return .e.g. L"C:\\"
         // the first 3 chars that is
 		inline const std::wstring windrive()

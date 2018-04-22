@@ -44,6 +44,10 @@ namespace {
 		DWORD				scanEpoc
 	);
 
+	extern "C" DWORD WINAPI BuildDirectoryTreeBagOValues(
+		PVOID pv = nullptr
+	);
+
 	extern "C" void FreeDirectoryBagOValues(
 		pdnode_bag const & pbov
 	);
@@ -54,6 +58,29 @@ namespace {
 	winfile::internal::guardian<DWORD> shared_epoc;
 
 	winfile::internal::guardian<pdnode_bag> shared_bag_of_nodes;
+
+	// EOF declarations
+
+	extern "C" WCHAR get_current_drive_letter() {
+
+		INT nDrive = 0;
+		HWND hwndChild =
+			(HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+
+		// INT nDriveFocus = GetWindowLongPtr(hWnd, GWL_CURDRIVEFOCUS);
+
+		// child or parent HWND here?
+		INT nDriveCurrent =
+			GetWindowLongPtr(hwndChild, GWL_CURDRIVEIND);
+
+		if (hwndChild == 0)
+			nDrive = 0;
+		else
+			nDrive = GetWindowLongPtr(hwndChild, GWL_TYPE);
+
+			WCHAR wchDrive = (WCHAR)(L'A' + nDrive);
+		return wchDrive;
+	}
 
 	// compare path starting at the root; returns:
 	// 0: paths are the same length and same names
@@ -450,6 +477,10 @@ namespace {
 	{
 		constexpr auto magic_number = 1000;
 
+		// DBJ: added
+		// re-build by the current active drive
+		DWORD retval = BuildDirectoryTreeBagOValues();
+
 		auto shared_bag = shared_bag_of_nodes.load();
 
 		if (shared_bag.Empty()) return pdnode_vector{};
@@ -600,7 +631,7 @@ namespace {
 	this in essence strarts to build the list of results regarding
 	what human is pressing
 	*/
-	extern "C" DWORD WINAPI BuildDirectoryTreeBagOValues(PVOID pv = nullptr )
+	extern "C" DWORD WINAPI BuildDirectoryTreeBagOValues(PVOID pv /* = nullptr */ )
 	{
 		//   InterlockedIncrement(&shared_epoc);
 		// if we enter another thread before this finishes
@@ -610,20 +641,27 @@ namespace {
 		DWORD scanEpocNew = shared_epoc.store(
 			1 + shared_epoc.load()
 		);
-
+		{
+			// DBJ: remove what is in the shared bag of nodes
+			pdnode_bag current_bag = shared_bag_of_nodes.load();
+			if (!current_bag.Empty()) {
+				FreeDirectoryBagOValues(current_bag);
+			}
+		}
 		pdnode_bag		pBagNew{};
 
 		SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
-		// DBJ: what happens if there is no drive C: ?
-		// shoud we not get the system drive letter
-		// yes! let's do it then
+		// const wstring sys_drive_letter_with_backslash = 
+		//	winfile::internal::windrive() ;
 
-		const wstring sys_drive_letter_with_backslash = 
-			winfile::internal::windrive() ;
+		const WCHAR current_drive_char_uid = get_current_drive_letter();
+
+		wstring current_drive_letter{ current_drive_char_uid };
+		current_drive_letter.append(L":\\");
 
 		if (BuildDirectoryBagOValues(pBagNew, 
-			/*TEXT("c:\\")*/  sys_drive_letter_with_backslash ,
+			current_drive_letter,
 			nullptr, 
 			scanEpocNew))
 		{
@@ -631,11 +669,11 @@ namespace {
 			// which is already sorted 
 			// pBagNew->Sort();
 
-			//DBJ: what happens with the previous "bag of values" ?
+			// into the global shared cache
 			shared_bag_of_nodes.store(pBagNew);
 		}
 
-		// DBJ: so why are we deleting it here now?
+		// clean the local bag
 		if (!pBagNew.Empty()) { FreeDirectoryBagOValues(pBagNew); }
 
 		// DBJ: this is for "status bar" 
@@ -651,6 +689,7 @@ namespace {
 	----------------------------------------------------------------------------------------------
 	declared in winfile.h
 	*/
+#define ASYNC_GOTO_DIRECTORY
 	// We're building a Trie structure (not just a directory tree)
 	extern "C"  DWORD
 		StartBuildingDirectoryTrie()
