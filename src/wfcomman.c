@@ -695,6 +695,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
           TCHAR szEditPath[MAX_PATH];
           TCHAR szNotepad[MAX_PATH];
 
+          // NOTE: assume system directory and "\\notepad.exe" never exceed MAXPATHLEN
           if (GetSystemDirectory(szNotepad, MAXPATHLEN) != 0)
               lstrcat(szNotepad, TEXT("\\notepad.exe"));
           else

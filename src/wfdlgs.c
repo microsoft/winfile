@@ -703,8 +703,12 @@ INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     TCHAR szTempEditPath[MAX_PATH];
     TCHAR szFilter[MAX_PATH] = { 0 };
     TCHAR szPath[MAX_PATH];
+    TCHAR szErrorCaption[MAX_PATH];
+    TCHAR szErrorComdlg[MAX_PATH];
 
     LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAX_PATH);
+    LoadString(hAppInstance, IDS_EDITFILTER, szErrorCaption, MAX_PATH);
+    LoadString(hAppInstance, IDS_EDITFILTER, szErrorComdlg, MAX_PATH);
 
     OPENFILENAME ofn;
 
@@ -735,9 +739,14 @@ INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                     goto DoHelp;
 
                 case IDC_EDITOR:
-                    GetOpenFileName(&ofn);
-                    wcscpy_s(szPath, MAX_PATH, ofn.lpstrFile);
-                    SetDlgItemText(hDlg, IDD_EDITOR, szPath);
+                    if (!LoadComdlg()) {
+                        MessageBox(hDlg, szErrorComdlg, szErrorCaption, MB_OK | MB_ICONERROR);
+                    }
+                    else {
+                        (*lpfnGetOpenFileNameW)(&ofn);
+                        wcscpy_s(szPath, MAX_PATH, ofn.lpstrFile);
+                        SetDlgItemText(hDlg, IDD_EDITOR, szPath);
+                    }
                     break;
 
                 case IDOK:
