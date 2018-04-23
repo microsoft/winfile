@@ -1,118 +1,256 @@
 /********************************************************************
 
-   BagOValues.h
+BagOValues.h
 
-   Copyright (c) Microsoft Corporation. All rights reserved.
-   Licensed under the MIT License.
+Copyright (c) Microsoft Corporation. All rights reserved.
+Licensed under the MIT License.
 
 ********************************************************************/
+#pragma once
+
+// avoid min/max macros 
+#define NOMINMAX
 
 #include <map>
 #include <vector>
 #include <algorithm>
+#include <cwctype>
+#include <atomic>
 
-#include "spinlock.h"
+#include "sysinfoapi.h"
 
-using namespace std;
+namespace winfile {
 
-template <class TValue>
-class BagOValues
-{
-	typedef pair<wstring, TValue> TPair;
-	typedef vector<TPair> TVector;
-	typedef typename TVector::const_iterator TItr;
+	using namespace std;
 
-	SpinLock m_spinlock;
-	TVector m_Values;
-	wstring m_lastStr;
-	TItr m_LastItr;
+	namespace internal {
 
-public:
-	BagOValues()
-	{
-	}
+		using namespace std;
 
-	// copies the value, but doesn't assume any memory management needs be done
-	void Add(wstring key, TValue value)
-	{
-		this->m_spinlock.Lock();
-		wstring lowered;
-		lowered.resize(key.size());
-		transform(std::begin(key), std::end(key), std::begin(lowered), ::tolower);
-		m_Values.emplace_back(make_pair(std::move(lowered), value));
+		struct lock_unlock final {
+			std::atomic_flag atom_flag_ = ATOMIC_FLAG_INIT;
 
-		m_lastStr.resize(0);	// clear this after new data added
-		this->m_spinlock.Unlock();
-	}
+			lock_unlock() { atom_flag_.test_and_set(); }
+			~lock_unlock() { atom_flag_.clear(); }
+		};
 
-	void Sort()
-	{
-		this->m_spinlock.Lock();
-		sort(m_Values.begin(), m_Values.end());
-		this->m_spinlock.Unlock();
-	}
+		template <typename T>
+		class guardian final {
+		public:
+				typedef T value_type;
+			value_type load() {
+				lock_unlock locker_;
+				return treasure_;
+			}
+			value_type store(value_type new_value) {
+				lock_unlock locker_;
+				return treasure_ = new_value;
+			}
+		private:
+			value_type treasure_{};
+		};
 
-	// Retrieve with fPrefix = true means return values for the tree at the point of the query matched; 
-	//      we must consume the whole query for anything to be returned
-	// fPrefix = false means that we only return values when an entire key matches and we match substrings of the query
-	//
-	// NOTE: returns a newly allocated vector; must delete it
-	vector<TValue> Retrieve(const wstring& query, bool fPrefix = true, unsigned maxResults = ULONG_MAX)
-	{
-		wstring lowered;
-		lowered.resize(query.size());
-		transform(std::cbegin(query), std::cend(query), std::begin(lowered), ::tolower);
-
-		vector<TValue> results;
-		TValue val = TValue();
-		TPair laspair = make_pair(lowered, val);
-
-		this->m_spinlock.Lock();
-
-		// if last saved string/iterator is a prefix of the new string, start there
-		TItr itr;
-		if (m_lastStr.size() != 0 && lowered.compare(0, m_lastStr.size(), m_lastStr) == 0)
-			itr = m_LastItr;
-		else
+		// return e.g. L"C:\windows\system32"
+		inline const std::wstring windir()
 		{
-			itr = lower_bound(m_Values.begin(), m_Values.end(), laspair, CompareFirst);
-
-			m_lastStr = lowered;
-			m_LastItr = itr;
+			lock_unlock padlock_;
+			static wchar_t  result_buf[BUFSIZ]{};
+			static auto retval = ::GetSystemDirectoryW(
+				result_buf,
+				BUFSIZ
+			);
+			_ASSERTE(retval);
+			return wstring{ result_buf };
 		}
 
-		for (; itr != m_Values.end(); itr++)
+		// what happens if there is no drive C: ?
+		// shoud we not ask for the system drive letter
+		// the first 3 chars that is, e.g. L"C:\\"
+		inline const std::wstring windrive()
 		{
-			const wstring& key = itr->first;
-			int cmp = key.compare(0, lowered.size(), lowered);
-			if (cmp == 0)
-			{
-				if (!fPrefix && key.size() != lowered.size())
-				{
-					// need exact match (not just prefix); skip
-					continue;
+			lock_unlock padlock_;
+			static wstring result = windir().substr(0, 3);
+			_ASSERTE(result.size() == 3);
+			return result;
+		}
+
+		inline void lowerize(wstring & key) {
+			transform(key.begin(), key.end(), key.begin(), std::towlower);
+		};
+
+		template<class InputIt1, class InputIt2>
+		bool equal_(InputIt1 first1, InputIt1 last1, InputIt2 first2)
+		{
+			for (; first1 != last1; ++first1, ++first2) {
+				if (!(*first1 == *first2)) {
+					return false;
 				}
-
-				if (results.size() >= maxResults)
-					break;
-
-				results.push_back(itr->second);
 			}
-			else if (cmp > 0)
-			{
-				// iterated past the strings which match on the prefix
-				break;
-			}
+			return true;
 		}
 
-		this->m_spinlock.Unlock();
-		return results;
+		inline  bool  is_prefix(
+			const std::wstring & lhs, const std::wstring & rhs
+		)
+		{
+			_ASSERTE(lhs.size() > 0);
+			_ASSERTE(rhs.size() > 0);
+
+			return equal_(
+				lhs.begin(),
+				lhs.begin() + std::min(lhs.size(), rhs.size()),
+				rhs.begin());
+		}
+
 	}
 
-private:
-	static bool CompareFirst(const TPair& a, const TPair& b)
+	template <typename T>
+	class BagOValues final
 	{
-		return a.first < b.first;
-	}
-};
+		using lock_unlock = internal::lock_unlock;
+	public:
+		typedef T value_type;
+		using storage_type = std::multimap< std::wstring, value_type >;
+		using value_vector = std::vector< value_type >;
+	private:
+		mutable storage_type key_value_storage_{};
+	public:
+		/*
+		the aim is to be able to use instances of this class as values
+		c++ compiler will generate all the things necessary
+		we will privide the "swap" method to be used for move semantics
+		*/
+		void swap(BagOValues & other_)	noexcept
+		{	// swap contents with other_
+			lock_unlock padlock{};
+			this->key_value_storage_ = other_.key_value_storage_;
+		}
+		
+		/// <summary>
+		/// clear the storage held
+		/// </summary>
+		void Clear() const {
+			lock_unlock padlock{};
+			key_value_storage_.clear();
+		}
 
+		/// <summary>
+		/// the argument of the callback is the 
+		/// storage_type::value_type
+		/// which in turn is pair 
+		/// wstring is the key, T is the value
+		/// </summary>
+		template< typename F>
+		const auto ForEach(F callback_) const noexcept {
+			lock_unlock padlock{};
+			return
+				std::for_each(
+					this->key_value_storage_.begin(),
+					this->key_value_storage_.end(),
+					callback_
+				);
+		}
+		
+		/// <summary>
+		/// is the storage held empty?
+		/// </summary>
+		const bool Empty() const noexcept {
+			lock_unlock padlock{};
+			return this->key_value_storage_.size() < 1;
+		}
+		
+		/// <summary>
+		/// add's by enforcing the value semantics
+		/// </summary>
+		void Add(std::wstring key, value_type value)
+		{
+			lock_unlock padlock{};
+			internal::lowerize(key);
+			key_value_storage_.emplace(key, value);
+		}
+
+		/// <summary>
+		/// std::multimap is already sorted
+		/// </summary>
+		void Sort() noexcept
+		{
+			// no op
+		}
+
+		/// <summary>
+		/// if find_by_prefix is false the exact key match should  be performed
+		/// if true all the prexies matching are going into the result
+		/// </summary>
+		value_vector
+			Retrieve(
+				const		std::wstring & query,
+				bool		find_by_prefix = true,
+				/* currently we ignore maxResults */
+				unsigned	maxResults = ULONG_MAX
+			)
+		{
+			lock_unlock padlock{};
+			value_vector retval_{};
+			if (key_value_storage_.size() < 1)
+				return retval_;
+
+			internal::lowerize(const_cast<std::wstring &>(query));
+
+			if (true == find_by_prefix) {
+				retval_ = prefix_match_query(query);
+			}
+
+			if (false == find_by_prefix) {
+				retval_ = exact_match_query(query);
+			}
+			return retval_;
+		}
+
+	private:
+		/* do not use as public in this form */
+		value_vector
+			exact_match_query(
+				// must be lower case!
+				const	std::wstring & query
+			)
+		{
+			value_vector retvec{};
+
+			auto range = key_value_storage_.equal_range(query);
+			if (range.first == key_value_storage_.end()) return retvec;
+
+			std::transform(
+				range.first,
+				range.second,
+				std::back_inserter(retvec),
+				[](typename storage_type::value_type element) { return element.second; }
+			);
+			return retvec;
+		}
+
+		/* do not use as public in this form */
+		value_vector
+			prefix_match_query(
+				// must be lower case!
+				const	std::wstring & prefix_
+			)
+		{
+			value_vector retvec{};
+			auto walker_ = key_value_storage_.upper_bound(prefix_);
+
+			while (walker_ != key_value_storage_.end())
+			{
+				// if prefix of the current key add its value to the result
+				if (internal::is_prefix(prefix_, walker_->first)) {
+					retvec.push_back(walker_->second);
+				}
+				// advance the iterator 
+				walker_++;
+			}
+
+			return retvec;
+		}
+
+	}; // eof BagOValues 
+
+} // winfile namespace
