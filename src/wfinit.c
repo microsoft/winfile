@@ -214,10 +214,11 @@ GetSettings()
    INT bfCharset;
 
    /* Get the flags out of the INI file. */
-   bMinOnRun       = GetPrivateProfileInt(szSettings, szMinOnRun,      bMinOnRun,      szTheINIFile);
-   bIndexOnLaunch  = GetPrivateProfileInt(szSettings, szIndexOnLaunch, bIndexOnLaunch, szTheINIFile);
-   wTextAttribs    = (WORD)GetPrivateProfileInt(szSettings, szLowerCase, wTextAttribs,   szTheINIFile);
-   bStatusBar      = GetPrivateProfileInt(szSettings, szStatusBar,     bStatusBar,     szTheINIFile);
+   bMinOnRun            = GetPrivateProfileInt(szSettings, szMinOnRun,            bMinOnRun,            szTheINIFile);
+   bIndexOnLaunch       = GetPrivateProfileInt(szSettings, szIndexOnLaunch,       bIndexOnLaunch,       szTheINIFile);
+   wTextAttribs         = (WORD)GetPrivateProfileInt(szSettings, szLowerCase,     wTextAttribs,         szTheINIFile);
+   bStatusBar           = GetPrivateProfileInt(szSettings, szStatusBar,           bStatusBar,           szTheINIFile);
+   bDisableVisualStyles = GetPrivateProfileInt(szSettings, szDisableVisualStyles, bDisableVisualStyles, szTheINIFile);
 
    bDriveBar       = GetPrivateProfileInt(szSettings, szDriveBar,      bDriveBar,      szTheINIFile);
    bToolbar        = GetPrivateProfileInt(szSettings, szToolbar,       bToolbar,       szTheINIFile);
@@ -419,6 +420,7 @@ InitMenus()
       CheckMenuItem(hMenu, IDM_MINONRUN,  MF_BYCOMMAND | MF_CHECKED);
    if (bIndexOnLaunch)
       CheckMenuItem(hMenu, IDM_INDEXONLAUNCH, MF_BYCOMMAND | MF_CHECKED);
+
    if (bSaveSettings)
       CheckMenuItem(hMenu, IDM_SAVESETTINGS,  MF_BYCOMMAND | MF_CHECKED);
 
@@ -1019,6 +1021,8 @@ JAPANEND
    dxFolder = FILES_WIDTH;
    dyFolder = FILES_HEIGHT;
 
+   LoadUxTheme();
+
    if (!LoadBitmaps())
       return FALSE;
 
@@ -1600,3 +1604,54 @@ LoadFailMessage(VOID)
    return;
 }
 
+/////////////////////////////////////////////////////////////////////
+//
+// Name:     LoadUxTheme
+//
+// Synopsis: Loads function SetWindowTheme dynamically
+//
+// IN:       VOID
+//
+// Return:   BOOL  T=Success, F=FAILURE
+//
+//
+// Assumes:
+//
+// Effects:  hUxTheme, lpfnSetWindowTheme
+//
+//
+// Notes:
+//
+/////////////////////////////////////////////////////////////////////
+
+BOOL
+LoadUxTheme(VOID)
+{
+  UINT uErrorMode;
+
+  //
+  // Have we already loaded it?
+  //
+  if (hUxTheme)
+    return TRUE;
+
+  //
+  // Let the system handle errors here
+  //
+  uErrorMode = SetErrorMode(0);
+  hUxTheme = LoadLibrary(UXTHEME_DLL);
+  SetErrorMode(uErrorMode);
+
+  if (!hUxTheme)
+    return FALSE;
+
+#define GET_PROC(x) \
+   if (!(lpfn##x = (PVOID) GetProcAddress(hUxTheme, UXTHEME_##x))) \
+      return FALSE
+
+  GET_PROC(SetWindowTheme);
+
+#undef GET_PROC
+
+  return TRUE;
+}

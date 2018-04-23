@@ -1105,6 +1105,9 @@ CreateFMToolbar(void)
    if (!hwndToolbar)
       return;
 
+   if (bDisableVisualStyles)
+     SetWindowTheme(hwndToolbar, pwszInvalidTheme, pwszInvalidTheme);
+
    SendMessage (hwndToolbar, TB_SETINDENT, 8, 0);
 
    tbAddBitmap.hInst = hAppInstance;
@@ -1126,6 +1129,9 @@ CreateFMToolbar(void)
       hwndToolbar = NULL;
       return;
    }
+
+   if (bDisableVisualStyles)
+     SetWindowTheme(hwndDriveList, pwszInvalidTheme, pwszInvalidTheme);
 
    SendMessage(hwndDriveList, CB_SETEXTENDEDUI, 0, 0L);
    SendMessage(hwndDriveList, WM_SETFONT, (WPARAM)hfontDriveList, MAKELPARAM(TRUE, 0));
