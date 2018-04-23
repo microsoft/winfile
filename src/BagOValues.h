@@ -17,8 +17,6 @@ Licensed under the MIT License.
 #include <cwctype>
 #include <atomic>
 
-#include "sysinfoapi.h"
-
 namespace winfile {
 
 	using namespace std;
@@ -49,30 +47,6 @@ namespace winfile {
 		private:
 			value_type treasure_{};
 		};
-
-		// return e.g. L"C:\windows\system32"
-		inline const std::wstring windir()
-		{
-			lock_unlock padlock_;
-			static wchar_t  result_buf[BUFSIZ]{};
-			static auto retval = ::GetSystemDirectoryW(
-				result_buf,
-				BUFSIZ
-			);
-			_ASSERTE(retval);
-			return wstring{ result_buf };
-		}
-
-		// what happens if there is no drive C: ?
-		// shoud we not ask for the system drive letter
-		// the first 3 chars that is, e.g. L"C:\\"
-		inline const std::wstring windrive()
-		{
-			lock_unlock padlock_;
-			static wstring result = windir().substr(0, 3);
-			_ASSERTE(result.size() == 3);
-			return result;
-		}
 
 		inline void lowerize(wstring & key) {
 			transform(key.begin(), key.end(), key.begin(), std::towlower);
