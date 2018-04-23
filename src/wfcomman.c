@@ -1632,8 +1632,16 @@ AppCommandProc(register DWORD id)
 
    case IDM_FORMAT:
 
-      // Don't use modal dialog box, set hWndParent = NULL
-      DialogBox(hAppInstance, (LPTSTR)MAKEINTRESOURCE(FORMATSELECTDLG), NULL, (DLGPROC)FormatSelectDlgProc);
+      if (!hwndFormatSelect)
+      {
+         hwndFormatSelect = CreateDialog(hAppInstance, (LPTSTR)MAKEINTRESOURCE(FORMATSELECTDLG), 
+            hwndFrame, (DLGPROC)FormatSelectDlgProc);
+      }
+      else
+      {
+         SetActiveWindow(hwndFormatSelect);
+      }
+
       break;
 
    case IDM_SHAREAS:

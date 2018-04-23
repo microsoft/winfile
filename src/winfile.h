@@ -1851,6 +1851,7 @@ Extern HWND  hwndDriveBar      EQ( NULL );
 Extern HWND  hwndToolbar       EQ( NULL );
 Extern HWND  hwndDriveList     EQ( NULL );
 Extern HWND  hwndDropChild     EQ( NULL );  // for tree windows forwarding to drivebar
+Extern HWND  hwndFormatSelect  EQ( NULL );
 
 Extern BOOL bCancelTree;
 

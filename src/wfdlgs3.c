@@ -801,12 +801,14 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 else
                 {
                     EndDialog(hDlg, IDOK);
+                    hwndFormatSelect = NULL;
                 }
 
                 return TRUE;
             }
         case IDCANCEL:
             EndDialog(hDlg, IDCANCEL);
+            hwndFormatSelect = NULL;
             return TRUE;
         }
     }
