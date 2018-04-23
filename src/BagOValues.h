@@ -23,8 +23,6 @@ namespace winfile {
 
 	namespace internal {
 
-		using namespace std;
-
 		struct lock_unlock final {
 			std::atomic_flag atom_flag_ = ATOMIC_FLAG_INIT;
 
