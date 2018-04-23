@@ -278,6 +278,9 @@
     <ClCompile Include="winfile.c" />
     <ClCompile Include="wnetcaps.c" />
   </ItemGroup>
+  <ItemGroup>
+    <Manifest Include="winfile.exe.manifest" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
