@@ -421,11 +421,6 @@ InitMenus()
    if (bIndexOnLaunch)
       CheckMenuItem(hMenu, IDM_INDEXONLAUNCH, MF_BYCOMMAND | MF_CHECKED);
 
-   if (!lpfnSetWindowTheme || VisualStylesDisabled())
-     RemoveMenu(hMenu, IDM_DISABLEVISUALSTYLES, MF_BYCOMMAND);
-   else if (bDisableVisualStyles)
-     CheckMenuItem(hMenu, IDM_DISABLEVISUALSTYLES, MF_BYCOMMAND | MF_CHECKED);
-
    if (bSaveSettings)
       CheckMenuItem(hMenu, IDM_SAVESETTINGS,  MF_BYCOMMAND | MF_CHECKED);
 
@@ -1659,48 +1654,4 @@ LoadUxTheme(VOID)
 #undef GET_PROC
 
   return TRUE;
-}
-
-/////////////////////////////////////////////////////////////////////
-//
-// Name:     VisualStylesDisabled
-//
-// Synopsis: Checks if the Visual Styles are disabled systemwide
-//
-// IN:       VOID
-//
-// Return:   BOOL  T=Disabled, F=Not disabled
-//
-//
-// Assumes:
-//
-// Effects:  none
-//
-//
-// Notes:
-//
-/////////////////////////////////////////////////////////////////////
-
-BOOL
-VisualStylesDisabled(VOID)
-{
-  HKEY hKey;
-  static TCHAR szSubKey[] = TEXT("Control Panel\\Desktop");
-  static TCHAR szValueName[] = TEXT("UserPreferencesMask");
-  BYTE abData[8];
-  DWORD cbData = 8;
-
-  BOOL fDisabled = FALSE;
-
-  if (RegOpenKeyEx(HKEY_CURRENT_USER, szSubKey, 0, KEY_QUERY_VALUE, &hKey)
-    == ERROR_SUCCESS) {
-    if (RegQueryValueEx(hKey, szValueName, NULL, NULL, abData, &cbData)
-      == ERROR_SUCCESS) {
-      if ((*(PDWORD)abData & (1 << 17)) == 0)
-        fDisabled = TRUE;
-    }
-    RegCloseKey(hKey);
-  }
-
-  return fDisabled;
 }

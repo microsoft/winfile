@@ -2024,23 +2024,6 @@ ChangeDisplay:
        WritePrivateProfileBool(szIndexOnLaunch, bIndexOnLaunch);
        goto CHECK_OPTION;
 
-    case IDM_DISABLEVISUALSTYLES:
-      bTemp = bDisableVisualStyles = !bDisableVisualStyles;
-      WritePrivateProfileBool(szDisableVisualStyles, bDisableVisualStyles);
-      if (hUxTheme) {
-        if (bDisableVisualStyles) {
-          SetWindowTheme(hwndToolbar, pwszInvalidTheme, pwszInvalidTheme);
-          SetWindowTheme(hwndDriveList, pwszInvalidTheme, pwszInvalidTheme);
-        }
-        else {
-          SetWindowTheme(hwndToolbar, NULL, NULL);
-          SetWindowTheme(hwndDriveList, NULL, NULL);
-        }
-        InvalidateRect(hwndToolbar, NULL, FALSE);
-        InvalidateRect(hwndDriveBar, NULL, FALSE);
-      }
-      goto CHECK_OPTION;
-
 CHECK_OPTION:
        //
        // Check/Uncheck the menu item.

@@ -469,9 +469,6 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
       if (iReadLevel)
          uMenuFlags = MF_BYCOMMAND | MF_GRAYED;
 
-      if (!hUxTheme)
-        EnableMenuItem(hMenu, IDM_DISABLEVISUALSTYLES, MF_BYCOMMAND | MF_GRAYED);
-
       EnableMenuItem(hMenu, IDM_ADDPLUSES, uMenuFlags);
       EnableMenuItem(hMenu, IDM_EXPANDTREE, uMenuFlags);
 

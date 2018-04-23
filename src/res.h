@@ -150,8 +150,6 @@
 
 #define IDM_INDEXONLAUNCH   514
 
-#define IDM_DISABLEVISUALSTYLES 515
-
 #define IDM_SECURITY        5
 #define IDM_PERMISSIONS     605      // !! WARNING HARD CODED !!
 #define IDM_AUDITING        606

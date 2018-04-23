@@ -1105,7 +1105,7 @@ CreateFMToolbar(void)
    if (!hwndToolbar)
       return;
 
-   if(bDisableVisualStyles)
+   if (bDisableVisualStyles)
      SetWindowTheme(hwndToolbar, pwszInvalidTheme, pwszInvalidTheme);
 
    SendMessage (hwndToolbar, TB_SETINDENT, 8, 0);

@@ -158,7 +158,6 @@ BEGIN
     MENUITEM    SEPARATOR
     MENUITEM    "&Minimize on Use",     IDM_MINONRUN
     MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
-	MENUITEM    "Disable toolbar Visual Themes", IDM_DISABLEVISUALSTYLES
     MENUITEM    "Save Settings on &Exit",   IDM_SAVESETTINGS
 #ifdef PROGMAN
     MENUITEM    SEPARATOR
@@ -657,7 +656,6 @@ BEGIN
 
     MH_MYITEMS+IDM_MINONRUN,    "Reduces File Manager to an icon at startup"
     MH_MYITEMS + IDM_INDEXONLAUNCH, "Creates an index for Goto Directory when File Manager launches"
-	MH_MYITEMS+IDM_DISABLEVISUALSTYLES, "Disables Visual Styles in toolbar, restoring in that way its familiar old look"
     MH_MYITEMS+IDM_SAVESETTINGS,        "Saves settings when you quit File Manager"
 
     MH_MYITEMS+IDM_NEWWINDOW,   "Opens a new window"
