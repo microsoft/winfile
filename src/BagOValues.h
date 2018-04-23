@@ -10,12 +10,17 @@ Licensed under the MIT License.
 
 // avoid min/max macros 
 #define NOMINMAX
+#define WINFILE_STD_MUTEX_USE 
 
 #include <map>
 #include <vector>
 #include <algorithm>
 #include <cwctype>
+#ifndef WINFILE_STD_MUTEX_USE 
 #include <atomic>
+#else
+#include <mutex>
+#endif
 
 namespace winfile {
 
@@ -23,12 +28,22 @@ namespace winfile {
 
 	namespace internal {
 
+
+#ifndef WINFILE_STD_MUTEX_USE 
 		struct lock_unlock final {
 			std::atomic_flag atom_flag_ = ATOMIC_FLAG_INIT;
 
-			lock_unlock() { atom_flag_.test_and_set(); }
+			lock_unlock() { while(atom_flag_.test_and_set()); }
 			~lock_unlock() { atom_flag_.clear(); }
 		};
+#else
+		struct lock_unlock final {
+			std::mutex mux_;
+
+			lock_unlock() { mux_.lock(); }
+			~lock_unlock() { mux_.unlock(); }
+	};
+#endif
 
 		template <typename T>
 		class guardian final {
