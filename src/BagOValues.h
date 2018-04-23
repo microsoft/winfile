@@ -89,7 +89,8 @@ namespace winfile {
 		using lock_unlock = internal::lock_unlock;
 	public:
 		typedef T value_type;
-		using storage_type = std::multimap< std::wstring, value_type >;
+		typedef std::wstring key_type;
+		using storage_type = std::multimap< key_type, value_type >;
 		using value_vector = std::vector< value_type >;
 	private:
 		mutable storage_type key_value_storage_{};
@@ -141,7 +142,7 @@ namespace winfile {
 		/// <summary>
 		/// add's by enforcing the value semantics
 		/// </summary>
-		void Add(std::wstring key, value_type value)
+		void Add(key_type key, value_type value)
 		{
 			lock_unlock padlock{};
 			internal::lowerize(key);
@@ -162,7 +163,7 @@ namespace winfile {
 		/// </summary>
 		value_vector
 			Retrieve(
-				const		std::wstring & query,
+				const		key_type & query,
 				bool		find_by_prefix = true,
 				/* currently we ignore maxResults */
 				unsigned	maxResults = ULONG_MAX
@@ -173,7 +174,7 @@ namespace winfile {
 			if (key_value_storage_.size() < 1)
 				return retval_;
 
-			internal::lowerize(const_cast<std::wstring &>(query));
+			internal::lowerize(const_cast<key_type &>(query));
 
 			if (true == find_by_prefix) {
 				retval_ = prefix_match_query(query);
@@ -193,7 +194,7 @@ namespace winfile {
 		value_vector
 			exact_match_query(
 				// must be lower case!
-				const	std::wstring & query
+				const	key_type & query
 			)
 		{
 			value_vector retvec{};
@@ -214,7 +215,7 @@ namespace winfile {
 		value_vector
 			prefix_match_query(
 				// must be lower case!
-				const	std::wstring & prefix_
+				const	key_type & prefix_
 			)
 		{
 			value_vector retvec{};
