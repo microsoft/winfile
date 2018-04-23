@@ -61,6 +61,9 @@ namespace winfile {
 			return true;
 		}
 
+		/// <summary>
+		/// is Lhs prefix to Rhs
+		/// </summary>
 		inline  bool  is_prefix(
 			const std::wstring & lhs, const std::wstring & rhs
 		)
@@ -68,9 +71,13 @@ namespace winfile {
 			_ASSERTE(lhs.size() > 0);
 			_ASSERTE(rhs.size() > 0);
 
+			// "predefined" can not be a prefix to "pre" 
+			// opposite is true
+			if (lhs.size() > rhs.size()) return false;
+
 			return equal_(
 				lhs.begin(),
-				lhs.begin() + std::min(lhs.size(), rhs.size()),
+				lhs.end(), 
 				rhs.begin());
 		}
 
@@ -151,7 +158,7 @@ namespace winfile {
 
 		/// <summary>
 		/// if find_by_prefix is false the exact key match should  be performed
-		/// if true all the prexies matching are going into the result
+		/// if true all the keys matching are going into the result
 		/// </summary>
 		value_vector
 			Retrieve(
@@ -170,6 +177,9 @@ namespace winfile {
 
 			if (true == find_by_prefix) {
 				retval_ = prefix_match_query(query);
+
+				if (retval_.size() < 1)
+					find_by_prefix = false;
 			}
 
 			if (false == find_by_prefix) {
@@ -215,9 +225,12 @@ namespace winfile {
 				// if prefix of the current key add its value to the result
 				if (internal::is_prefix(prefix_, walker_->first)) {
 					retvec.push_back(walker_->second);
+					// advance the iterator 
+					walker_++;
 				}
-				// advance the iterator 
-				walker_++;
+				else {
+					break;
+				}
 			}
 
 			return retvec;
