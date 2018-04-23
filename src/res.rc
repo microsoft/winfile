@@ -740,3 +740,15 @@ BEGIN
         VALUE "Translation", 1033, 1200
     END
 END
+
+#ifndef RT_MANIFEST
+#define RT_MANIFEST 24
+#endif
+
+#ifndef CREATEPROCESS_MANIFEST_RESOURCE_ID
+#define CREATEPROCESS_MANIFEST_RESOURCE_ID 1
+#endif
+
+#ifdef __MINGW32__
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "winfile.exe.manifest"
+#endif
