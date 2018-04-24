@@ -19,7 +19,11 @@ extern "C"
 #include "lfn.h"
 }
 
-// using BagOValues = winfile::BagOValues<PDNODE> ;
+// Explicitly instantiate what we use in here
+template class std::vector<PDNODE>;
+namespace winfile {
+	template class BagOValues<PDNODE>;
+}
 
 using namespace std;
 

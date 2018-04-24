@@ -10,6 +10,7 @@ Licensed under the MIT License.
 
 // avoid min/max macros 
 #define NOMINMAX
+// mutex is (much) lighter on cpu vs std::atomic_flag
 #define WINFILE_STD_MUTEX_USE 
 
 #include <map>
@@ -22,12 +23,15 @@ Licensed under the MIT License.
 #include <mutex>
 #endif
 
+// the WinFile namespace
 namespace winfile {
 
 	using namespace std;
 
+	// winfile internal mechanisms
+	// available to re-use
+	// elsewhere
 	namespace internal {
-
 
 #ifndef WINFILE_STD_MUTEX_USE 
 		struct lock_unlock final {
@@ -61,10 +65,17 @@ namespace winfile {
 			value_type treasure_{};
 		};
 
+		/// <summary>
+		/// argument is a reference 
+		/// and is "lowerized" in place
+		/// </summary>
 		inline void lowerize(wstring & key) {
 			transform(key.begin(), key.end(), key.begin(), std::towlower);
 		};
 
+		// std::equal has many overloads
+		// it is leass error prone to have here
+		// and use this one we exactly need
 		template<class InputIt1, class InputIt2>
 		bool equal_(InputIt1 first1, InputIt1 last1, InputIt2 first2)
 		{
@@ -78,6 +89,7 @@ namespace winfile {
 
 		/// <summary>
 		/// is Lhs prefix to Rhs
+		/// L must be shorter than R
 		/// </summary>
 		inline  bool  is_prefix(
 			const std::wstring & lhs, const std::wstring & rhs
@@ -212,6 +224,10 @@ namespace winfile {
 				const	key_type & query
 			)
 		{
+			/// <summary>
+			/// general question is why is vector of values returned?
+			/// vector of keys is lighter
+			/// </summary>
 			value_vector retvec{};
 
 			auto range = key_value_storage_.equal_range(query);
@@ -233,6 +249,10 @@ namespace winfile {
 				const	key_type & prefix_
 			)
 		{
+			/// <summary>
+			/// general question is why is vector of values returned?
+			/// vector of keys is lighter
+			/// </summary>
 			value_vector retvec{};
 			auto walker_ = key_value_storage_.upper_bound(prefix_);
 
@@ -248,7 +268,6 @@ namespace winfile {
 					break;
 				}
 			}
-
 			return retvec;
 		}
 
