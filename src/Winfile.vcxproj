@@ -239,10 +239,10 @@
       <Culture Condition="'$(Configuration)|$(Platform)'=='Release|x64'">0x0409</Culture>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
-    <ResourceCompile Include="res_en-US.rc" />
-    <ResourceCompile Include="res_zh-CN.rc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res_en-US.rc"/>
+    <None Include="res_zh-CN.rc"/>
     <None Include="suggest_en-US.db" />
     <None Include="suggest_zh-CN.db" />
     <None Include="winfile_en-US.dlg" />
