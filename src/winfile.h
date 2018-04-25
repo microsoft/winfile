@@ -807,16 +807,17 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define ATTR_REPARSE_POINT  FILE_ATTRIBUTE_REPARSE_POINT // == 0x0400  
 #define ATTR_COMPRESSED     FILE_ATTRIBUTE_COMPRESSED   // == 0x0800
 #define ATTR_NOT_INDEXED    FILE_ATTRIBUTE_NOT_CONTENT_INDEXED // == 0x2000
-#define ATTR_USED           0x2DBF						// ATTR we use that are returned from FindFirst/NextFile
+#define ATTR_ENCRYPTED      FILE_ATTRIBUTE_ENCRYPTED    // == 0x4000
+#define ATTR_USED           0x6DBF						// ATTR we use that are returned from FindFirst/NextFile
 
 #define ATTR_PARENT         0x0040  // my hack DTA bits
-#define ATTR_LOWERCASE      0x4000
 #define ATTR_LFN           0x10000  // my hack DTA bits
 #define ATTR_JUNCTION      0x20000
 #define ATTR_SYMBOLIC      0x40000
+#define ATTR_LOWERCASE     0x80000
 
 #define ATTR_RWA            (ATTR_READWRITE | ATTR_ARCHIVE)
-#define ATTR_ALL            (ATTR_READONLY | ATTR_HIDDEN | ATTR_SYSTEM | ATTR_DIR | ATTR_ARCHIVE | ATTR_NORMAL | ATTR_COMPRESSED | ATTR_REPARSE_POINT)
+#define ATTR_ALL            (ATTR_READONLY | ATTR_HIDDEN | ATTR_SYSTEM | ATTR_DIR | ATTR_ARCHIVE | ATTR_NORMAL | ATTR_COMPRESSED | ATTR_ENCRYPTED | ATTR_REPARSE_POINT)
 #define ATTR_PROGRAMS       0x0100
 #define ATTR_DOCS           0x0200
 #define ATTR_OTHER          0x1000

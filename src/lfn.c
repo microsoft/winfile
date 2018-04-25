@@ -59,7 +59,7 @@ WFFindFirst(
 
    // add in attr_* which we want to include in the match even though the caller didn't request them.
    dwAttrFilter |= ATTR_ARCHIVE | ATTR_READONLY | ATTR_NORMAL | ATTR_REPARSE_POINT |
-	   ATTR_TEMPORARY | ATTR_COMPRESSED | ATTR_NOT_INDEXED;
+	   ATTR_TEMPORARY | ATTR_COMPRESSED | ATTR_ENCRYPTED | ATTR_NOT_INDEXED;
 
    lpFind->fd.dwFileAttributes &= ATTR_USED;
 

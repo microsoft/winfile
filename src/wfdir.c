@@ -109,7 +109,8 @@ DrawItem(
    else
    {
       //
-      //  Set Text color of Compressed items to BLUE.
+      //  Set Text color of Compressed items to BLUE and Encrypted items
+      //  to GREEN.
       //
       //  LATER:
       //  Should allow for User selection in the future.
@@ -117,6 +118,10 @@ DrawItem(
       if ((lpxdta) && (lpxdta->dwAttrs & ATTR_COMPRESSED))
       {
          rgbText = SetTextColor(hDC, RGB(0, 0, 255));
+      }
+      else if ((lpxdta) && (lpxdta->dwAttrs & ATTR_ENCRYPTED))
+      {
+         rgbText = SetTextColor(hDC, RGB(0, 192, 0));
       }
       else
       {

@@ -1587,11 +1587,16 @@ TCWP_DrawItem(
       else
       {
           //
-          //  Set Text color of Compressed items to BLUE.
+          //  Set Text color of Compressed items to BLUE and Encrypted items
+          //  to GREEN.
           //
           if (pNode->dwAttribs & ATTR_COMPRESSED)
           {
               rgbText = SetTextColor(hdc, RGB(0, 0, 255));
+          }
+          else if (pNode->dwAttribs & ATTR_ENCRYPTED)
+          {
+              rgbText = SetTextColor(hdc, RGB(0, 192, 0));
           }
           else
           {

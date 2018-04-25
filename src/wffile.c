@@ -181,7 +181,7 @@ BOOL WFSetAttr(
    //  Compression attribute is handled separately -
    //  do not try to set it here.
    //
-   dwAttr = dwAttr & ~ATTR_COMPRESSED;
+   dwAttr = dwAttr & ~(ATTR_COMPRESSED | ATTR_ENCRYPTED);
 
    bRet = SetFileAttributes(lpFile, dwAttr);
 
