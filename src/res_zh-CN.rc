@@ -36,7 +36,7 @@ BEGIN
     MENUITEM    "选定文件(&F)...", IDM_SELECT
 	MENUITEM    "打开 Bash...", IDM_STARTBASHSHELL
 	MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
-    MENUITEM    "打开PowerShell(&W)...", IDM_STARTPOWERSHELL
+    MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "转到目录(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "退出(&X)",            IDM_EXIT
@@ -141,7 +141,7 @@ BEGIN
     MENUITEM    "运行(&R)...",          IDM_RUN
     MENUITEM    "打开 Bash...", IDM_STARTBASHSHELL
 	MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
-	MENUITEM    "打开PowerShell(&W)...", IDM_STARTPOWERSHELL
+	MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "转到目录(&G)...", IDM_GOTODIR
 	MENUITEM	"关于文件管理器(&A)",			IDM_ABOUT
 	END
@@ -266,8 +266,8 @@ JAPANEND
     IDS_PRINTINGMSG,        "正在打印: %s"                  /* 32 */
 
 //    IDS_NOSUCHDRIVE,        "Drive %c does not exist."                                                                                            /* 128 */
-    IDS_DRIVENOTREADY,      "驱动器 %c 上没有磁盘。\n\n插入磁盘再试。"
-    IDS_UNFORMATTED,        "驱动器 %c 里的磁盘未被格式化。\n\n您想现在把它格式化吗？"
+    IDS_DRIVENOTREADY,      "请将磁盘插入驱动器 %c:"
+    IDS_UNFORMATTED,        "驱动器 %c 中的磁盘未被格式化。\n\n想现在格式化吗？"
 
     IDS_STATUSMSG,          "共 %d 个文件 (%s)"             /* 128 */
     IDS_STATUSMSG2,         "选择了 %d 个文件 (%s)"          /* 128 */
@@ -275,8 +275,8 @@ JAPANEND
     IDS_TREEABORT,          "显示的是不完整的目录树"     /* 128 */
     IDS_DIRSREAD,           "目录读取: %d"                   /* 32 */
     IDS_SEARCHMSG,          "找到 %d 个文件"
-    IDS_BYTES,              "%ld bytes"
-    IDS_SBYTES,             "%s bytes"
+    IDS_BYTES,              "%ld 字节"
+    IDS_SBYTES,             "%s 字节"
 
     IDS_SELECTEDFILES,      "所选文件"            /* 32 */
 
@@ -412,10 +412,10 @@ JAPANEND
     IDS_DRAG_EXECUTING          "用 %s 运行文件"
 
     IDS_ORDERB                  "%s 字节"
-    IDS_ORDERKB                 "%sKB"
-    IDS_ORDERMB                 "%sMB"
-    IDS_ORDERGB                 "%sGB"
-    IDS_ORDERTB                 "%sTB"
+    IDS_ORDERKB                 "%s KB"
+    IDS_ORDERMB                 "%s MB"
+    IDS_ORDERGB                 "%s GB"
+    IDS_ORDERTB                 "%s TB"
 
     IDS_VN_COMMENTS             "备注"
     IDS_VN_COMPANYNAME          "公司名"
