@@ -1,0 +1,628 @@
+/********************************************************************
+
+   res_en-US.rc
+
+   Copyright (c) Microsoft Corporation. All rights reserved.
+   Licensed under the MIT License.
+
+********************************************************************/
+
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+FRAMEMENU MENU PRELOAD
+BEGIN
+    POPUP       "&File"
+    BEGIN
+    MENUITEM    "&Open\tEnter",     IDM_OPEN
+    MENUITEM    "Edit\tF12",	    IDM_EDIT
+    MENUITEM    "&Move...\tF7",     IDM_MOVE
+    MENUITEM    "&Copy...\tF8",     IDM_COPY
+    MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
+	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM	"&Paste\tCtrl+V", 	IDM_PASTE
+    MENUITEM    "&Delete...\tDel",  IDM_DELETE
+    MENUITEM    "Re&name...\tF2",   IDM_RENAME
+    MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
+    MENUITEM    SEPARATOR
+    MENUITEM    "Compre&ss...",     IDM_COMPRESS
+    MENUITEM    "&Uncompress...",   IDM_UNCOMPRESS
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Run...",          IDM_RUN
+    MENUITEM    "Pr&int...",        IDM_PRINT
+    MENUITEM    "&Associate...",    IDM_ASSOCIATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "Cr&eate Directory...", IDM_MAKEDIR
+    MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
+    MENUITEM    "Select &Files...", IDM_SELECT
+	MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
+	MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    SEPARATOR
+    MENUITEM    "E&xit",            IDM_EXIT
+    END
+    POPUP       "&Disk"
+    BEGIN
+    MENUITEM    "&Copy Disk...",    IDM_DISKCOPY
+    MENUITEM    "&Label Disk...",   IDM_LABEL
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Format Disk...",  IDM_FORMAT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Select Drive...", IDM_DRIVESMORE
+    END
+    POPUP       "&Tree"
+    BEGIN
+    MENUITEM    "E&xpand One Level\t+", IDM_EXPONE
+    MENUITEM    "Expand &Branch\t*",    IDM_EXPSUB
+    MENUITEM    "Expand &All\tCtrl+*",  IDM_EXPALL
+    MENUITEM    "&Collapse Branch\t-",  IDM_COLLAPSE
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Indicate Expandable Branches",    IDM_ADDPLUSES
+    END
+    POPUP       "&View"
+    BEGIN
+    MENUITEM    "T&ree and Directory",  IDM_BOTH
+    MENUITEM    "Tr&ee Only",           IDM_TREEONLY
+    MENUITEM    "Directory &Only",      IDM_DIRONLY
+    MENUITEM    SEPARATOR
+    MENUITEM    "Sp&lit",               IDM_SPLIT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Name",                IDM_VNAME
+    MENUITEM    "&All File Details",    IDM_VDETAILS,   CHECKED
+    MENUITEM    "&Partial Details...",  IDM_VOTHER
+    MENUITEM    SEPARATOR
+    MENUITEM "&Sort by Name",   IDM_BYNAME
+    MENUITEM "Sort &by Type",   IDM_BYTYPE
+    MENUITEM "Sort by Si&ze",   IDM_BYSIZE
+    MENUITEM "Sort by &Date",   IDM_BYDATE
+    MENUITEM "Sort &forward Date",   IDM_BYFDATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "By File &Type...",     IDM_VINCLUDE
+    END
+    POPUP       "&Options"
+    BEGIN
+    MENUITEM    "&Confirmation...",     IDM_CONFIRM
+    MENUITEM    "&Font...",             IDM_FONT
+    MENUITEM    "Customize Tool&bar...", IDM_TOOLBARCUST
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Toolbar",                 IDM_TOOLBAR
+    MENUITEM    "&Drivebar",                IDM_DRIVEBAR
+    MENUITEM    "&Status Bar",              IDM_STATUSBAR
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Minimize on Use",     IDM_MINONRUN
+    MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
+    MENUITEM    "Save Settings on &Exit",   IDM_SAVESETTINGS
+#ifdef PROGMAN
+    MENUITEM    SEPARATOR
+    MENUITEM    "Save Settings &Now",       IDM_SAVENOW
+#endif
+    END
+    POPUP       "&Security"
+    BEGIN
+    MENUITEM    "&Permissions...",  IDM_PERMISSIONS
+    MENUITEM    "&Auditing...",     IDM_AUDITING
+    MENUITEM    "&Owner...",        IDM_OWNER
+    END
+    POPUP       "&Window"
+    BEGIN
+    MENUITEM    "&New Window",          IDM_NEWWINDOW
+    MENUITEM    "&Cascade\tShift+F5",   IDM_CASCADE
+    MENUITEM    "Tile &Horizontally",   IDM_TILEHORIZONTALLY
+    MENUITEM    "&Tile Vertically\tShift+F4",      IDM_TILE
+    MENUITEM    "&Arrange Icons",       IDM_ARRANGE
+    MENUITEM    "&Refresh\tF5",         IDM_REFRESH
+    END
+    POPUP       "&Help"
+    BEGIN
+    MENUITEM    "&Contents",                IDM_HELPINDEX
+    MENUITEM    "&Search for Help on...",   IDM_HELPKEYS
+    MENUITEM    "&How to Use Help",         IDM_HELPHELP
+    MENUITEM    SEPARATOR
+    MENUITEM    "&About File Manager...",   IDM_ABOUT
+    END
+
+END
+
+CTXMENU MENU PRELOAD 
+BEGIN
+	POPUP "Dummy Popup"
+	BEGIN
+	MENUITEM    "&New Window\ton Selection",     IDM_NEWWINDOW
+    MENUITEM    "&Open\tEnter",     IDM_OPEN
+    MENUITEM    "Edit\tF12",	    IDM_EDIT
+    MENUITEM    "&Move...\tF7",     IDM_MOVE
+    MENUITEM    "&Copy...\tF8",     IDM_COPY
+	MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
+	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+	MENUITEM	"&Paste\tCtrl+V", IDM_PASTE
+	MENUITEM    "&Delete...\tDel",  IDM_DELETE
+    MENUITEM    "Re&name...\tF2",   IDM_RENAME
+    MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
+    MENUITEM    "&Run...",          IDM_RUN
+    MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
+	MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
+	MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM    "&Goto Directory...", IDM_GOTODIR
+	MENUITEM	"About",			IDM_ABOUT
+	END
+END
+
+
+#define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
+/*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
+STRINGTABLE DISCARDABLE PRELOAD
+BEGIN
+//    IDS_ENDSESSION          "Exit Windows"                  /* 32 */
+//    IDS_ENDSESSIONMSG       "This will end your Windows session."                                                                                      /* 128 */
+
+    IDS_COPYDISK            "Copy Disk"                     /* 32 */
+    IDS_INSERTDEST          "Insert destination disk."                                                                                                 /* 128 */
+    IDS_INSERTSRC           "Insert source disk."                                                                                                      /* 128 */
+    IDS_INSERTSRCDEST       "Insert source and destination disks."                                                                                     /* 128 */
+    IDS_FORMATTINGDEST      "Formatting Destination Disk"                                                                                             /* 128 */
+
+    IDS_COPYDISKERR         "Copy Disk Error"               /* 32 */
+    IDS_COPYDISKERRMSG      "Unable to copy disk."                                                                                                     /* 128 */
+    IDS_COPYSRCDESTINCOMPAT "Source and destination disks are incompatible."                                                                          /* 128 */
+
+    IDS_PERCENTCOMP         "%d%% completed"                /* 32 */
+    IDS_CREATEROOT          "Creating root directory..."       /* 32 */
+    IDS_COPYSYSFILES        "Copying system files..."          /* 32 */
+    IDS_FORMATERR           "Format Disk Error"             /* 32 */
+    IDS_FORMATQUICKFAILURE  "File Manager cannot perform a quick format.\n\nContinue with normal format?"
+//    IDS_FORMATERRMSG        "Cannot format disk."                                                                                                      /* 128 */
+//    IDS_FORMATCURERR      "You cannot format the current drive."                                                                                     /* 128 */
+    IDS_FORMATCOMPLETE      "Format Complete"               /* 32 */
+    IDS_FORMATANOTHER       "%ld bytes total disk space\n%ld bytes available on disk\n\nDo you want to format another disk?"                           /* 128 */
+
+//    IDS_SYSDISK             "Make System Disk"
+//    IDS_SYSDISKRUSURE       "Are you sure you want to copy system files onto the disk in drive %c?"
+//    IDS_SYSDISKERR          "System Disk Error"
+//    IDS_SYSDISKNOFILES      "The MS-DOS startup drive does not contain system files or is not available."
+//    IDS_SYSDISKSAMEDRIVE    "Cannot copy system files to the MS-DOS startup drive."
+//    IDS_SYSDISKADDERR       "Cannot add system files to this disk.\n\nMake sure a formatted disk is present in the drive and that the drive door is closed."
+
+    IDS_NETERR              "Network Error"                 /* 32 */
+    IDS_NETDISCONWINERR     "This drive contains the Windows system files and cannot be disconnected."                                                 /* 128 */
+    IDS_NETDISCONOPEN       "File Manager cannot disconnect network drive.\n\nFiles are open on this drive."
+
+    IDS_ATTRIBERR           "File Manager cannot change attributes.  "
+    IDS_MAKEDIRERR          "File Manager cannot create directory.  "
+
+    IDS_LABELDISKERR        "File Manager cannot label disk.\n\nMake sure the disk is not write-protected, is not a network drive, and that the label is valid.\
+                             Labels cannot contain the following characters:\n[space] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+    IDS_SEARCHNOMATCHES     "No matching files were found."
+    IDS_SEARCHREFRESH       "The contents of this drive have changed. Do you want to retry the Search?"
+    IDS_LABELACCESSDENIED   "You must be logged onto this workstation as an administrator to perform this operation on hard disks."
+
+    IDS_DRIVETEMP           "Drive %c:%c"
+
+    IDS_EXECERRTITLE,       "Cannot Run Program"
+    IDS_PRINTERRTITLE,      "Cannot Print File"
+
+    IDS_UNKNOWNMSG,         "Unexpected error: %d."
+    IDS_NOMEMORYMSG,        "Not enough memory to start the specified application.\n\nQuit one or more applications, and then try again."                   /* 128 */
+    IDS_FILENOTFOUNDMSG,    "File Manager cannot find file (or one of its components).\n\nMake sure the path and filename are correct and that all required libraries are available."
+    IDS_BADPATHMSG,         "The specified path is invalid."                                                                                           /* 128 */
+//    IDS_MANYOPENFILESMSG,   "Too many files are currently in use.\n\nQuit one or more applications or increase the value of the FILES command in CONFIG.SYS, and then try again."                                    /* 128 */
+    IDS_NOASSOCMSG,         "No application is associated with this file.\n\nChoose Associate from the File menu to create an association."       /* 128 */
+    IDS_ASSOCINCOMPLETE,    "File Manager cannot open or print file.\n\nStart the application used to create this file and open or print it from there."
+//    IDS_MULTIPLEDSMSG,      "Cannot start more than one copy of the specified program."                                                                /* 128 */
+//    IDS_OS2APPMSG           "The specified application is not a Windows or MS-DOS program."                                                            /* 128 */
+//    IDS_NEWWINDOWSMSG       "This application requires a newer version of Microsoft Windows."                                                          /* 128 */
+//    IDS_PMODEONLYMSG        "This application requires Windows."                                                             /* 128 */
+    IDS_DDEFAIL             "An error occurred in sending the command to the application."                                                                /* 128 */
+//    IDS_COMPRESSEDEXE       "This program or one of its components is compressed.\n\nUse the MS-DOS expand utility to copy the file from the setup disks."
+    IDS_INVALIDDLL          "One of the library files needed to run this application is damaged. Please reinstall this application."
+    IDS_SHAREERROR          "This file is in use by some other application."
+
+    IDS_CREATELONGDIR       "File Manager may not be able to access files created in the directory '%s.'\n\nDo you want to continue?"
+    IDS_CREATELONGDIRTITLE  "Create Directory"
+
+    IDS_MOUSECONFIRM,       "Confirm Mouse Operation"       /* 32 */
+    IDS_COPYMOUSECONFIRM,   "Are you sure you want to copy the selected files or directories to %s?"
+    IDS_MOVEMOUSECONFIRM,   "Are you sure you want to move the selected files or directories to %s?"
+    IDS_EXECMOUSECONFIRM,   "Are you sure you want to start %s using %s as the initial file?"                                                          /* 128 */
+
+    IDS_WINFILE,            "File Manager"                  /* 32 */
+    IDS_TREETITLE,          "Directory Tree"                /* 32 */
+    IDS_SEARCHTITLE,        "Search Results: "              /* 32 */
+
+    IDS_READING             "Reading directory, please wait..."
+    IDS_TOOMANYTITLE,       "Too Many Files"                /* 32 */
+    IDS_OOMTITLE,           "File Manager - Out of Memory"  /* 32 */
+    IDS_OOMREADINGDIRMSG,   "Unable to read entire directory.  Only a partial listing will be displayed."                                              /* 128 */
+
+//    IDS_PRINTFNF            "The file to be printed cannot be found. Make sure the correct path and filename are specified."                                                                                  /* 128 */
+    IDS_PRINTMEMORY         "Not enough memory to print.\n\nQuit one or more applications, and then try again."                                             /* 128 */
+    IDS_PRINTDISK           "Not enough disk space to print.\n\nDelete one or more files to increase disk space, and then try again."                        /* 128 */
+    IDS_PRINTERROR          "An error has occurred while printing.\n\nMake sure the printer is properly configured and selected."             /* 128 */
+    IDS_PRINTONLYONE        "File Manager cannot print multiple files.\n\nSelect only one file, and then try again."                                               /* 128 */
+
+    IDS_CURDIRIS,           "Current Directory: %s"                                                                                                    /* 128 */
+    IDS_COPY,               "Copy"                          /* 32 */
+    IDS_RENAME,             "Rename"                        /* 32 */
+    IDS_FORMAT,             "Format Disk"                   /* 32 */
+    IDS_FORMATSELDISK,      "Select the disk to format."                                                                                               /* 128 */
+
+JAPANBEGIN
+    IDS_KK_COPYFROMSTR,        "コピー元(&F):"
+    IDS_KK_COPYTOSTR,          "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,      "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,        "新しい名前(&T):"
+JAPANEND
+
+//    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
+
+    IDS_CREATINGMSG,        "Creating:"                     /* 32 */
+    IDS_REMOVINGDIRMSG,     "Removing:"                     /* 32 */
+    IDS_REMOVINGMSG,        "Removing..."                   /* 32 */
+    IDS_COPYINGMSG,         "Copying:"                      /* 32 */
+    IDS_OPENINGMSG,         "Opening..."                    /* 32 */
+    IDS_CLOSINGMSG,         "Closing..."                    /* 32 */
+    IDS_RENAMINGMSG,        "Renaming..."                   /* 32 */
+    IDS_MOVINGMSG,          "Moving..."                     /* 32 */
+    IDS_DELETINGMSG,        "Deleting..."                   /* 32 */
+    IDS_PRINTINGMSG,        "Printing: %s"                  /* 32 */
+
+//    IDS_NOSUCHDRIVE,        "Drive %c does not exist."                                                                                            /* 128 */
+    IDS_DRIVENOTREADY,      "There is no disk in drive %c.\n\nInsert a disk, and then try again."
+    IDS_UNFORMATTED,        "The disk in drive %c is not formatted.\n\nDo you want to format it now?"
+
+    IDS_STATUSMSG,          "Total %d file(s) (%s)"             /* 128 */
+    IDS_STATUSMSG2,         "Selected %d file(s) (%s)"          /* 128 */
+    IDS_DRIVEFREE,          "%c: %s free,  %s total"            /* 128 */
+    IDS_TREEABORT,          "Incomplete directory tree displayed"     /* 128 */
+    IDS_DIRSREAD,           "Directories read: %d "                   /* 32 */
+    IDS_SEARCHMSG,          "%d file(s) found"
+    IDS_BYTES,              "%ld bytes"
+    IDS_SBYTES,             "%s bytes"
+
+    IDS_SELECTEDFILES,      "the selected files"            /* 32 */
+
+    /* These strings are used for generating error messages
+     * from the Copy, Move, and Delete code. */
+
+    IDS_COPYERROR + FUNC_COPY   "Error Copying File"
+    IDS_COPYERROR + FUNC_MOVE   "Error Moving File"
+    IDS_COPYERROR + FUNC_DELETE "Error Deleting File"
+    IDS_COPYERROR + FUNC_RENAME "Error Renaming File"
+    IDS_COPYERROR + FUNC_SETDRIVE "Error Selecting Drive"
+    IDS_COPYERROR + FUNC_EXPAND   "Error Reading Directory"
+    IDS_COPYERROR + FUNC_LABEL    "Error Labeling Disk"
+
+    /* The first %s is replaced by a file name. The second %s is replaced
+     * by one of the "reasons" below. */
+
+    IDS_VERBS + FUNC_COPY       "File Manager cannot copy %s: %s"
+    IDS_VERBS + FUNC_MOVE       "File Manager cannot move %s: %s"
+    IDS_VERBS + FUNC_DELETE     "File Manager cannot delete %s: %s"
+    IDS_VERBS + FUNC_RENAME     "File Manager cannot rename %s: %s"
+    IDS_ACTIONS + 1             "File Manager cannot create directory %s: %s"
+    IDS_ACTIONS + 2             "File Manager cannot remove directory %s: %s"
+    IDS_REPLACING               "File Manager cannot create or replace %s: %s"
+    // IDS_CREATING             "File Manager cannot create %s: %s"
+
+// include reason strings
+
+#include "suggest_en-US.db"
+
+    IDS_DESTFULL                "The destination disk is full.  Please insert another disk to continue."
+    IDS_WRITEPROTECTFILE        "This is a system, hidden, or read-only file."
+
+    IDS_COPYINGTITLE            "Copying..."
+
+JAPANBEGIN
+    IDS_KK_COPY                 "コピー先:"
+JAPANEND
+
+    IDS_QUICKFORMATTINGTITLE    "Quick Formatting..."
+
+    IDS_BUSYFORMATQUITVERIFY    "File Manager is currently formatting a disk.  Exiting File Manager will abort this operation."
+    IDS_BUSYCOPYQUITVERIFY      "File Manager is currently copying a disk.  Exiting File Manager will abort this operation."
+    IDS_PERCENTCOMPLETE         "Percent Complete"
+
+    IDS_12MB                    "1%s2 MB"
+    IDS_360KB                   "360K"
+    IDS_144MB                   "1%s44 MB"
+    IDS_720KB                   "720K"
+    IDS_288MB                   "2%s88 MB"
+    IDS_2080MB                  "20%s8 MB"
+
+#if defined(JAPAN) && defined(i386)
+/* ADD KBNES. NEC MEDIATYPE START */
+JAPANBEGIN
+    IDS_125MB                   "1%s25 MB"
+    IDS_256KB                   "256K"
+    IDS_128MB                   "128 MB"
+JAPANEND
+/* ADD KBNES. NEC MEDIATYPE END */
+
+//
+// FMR jul.21.1994 JY
+// We added 640KB/1.23MB media types.
+//
+JAPANBEGIN
+    IDS_640KB                   "640K"
+    IDS_123MB                   "1%s23 MB"
+JAPANEND
+#endif
+
+    IDS_DEVICECAP               "Drive Capacity"
+    IDS_QSUPMEDIA               "File manager cannot obtain disk information.\n\nMake sure the disk is in the drive."
+    IDS_REMOVEMED               "Unknown Disk Type"
+
+    IDS_CANTFORMATTITLE         "Unknown Disk Type"
+    IDS_CANTFORMAT              "The type of disk in drive %s can not be formatted with the File Manager.  Please use the Disk Administrator to format this disk."
+
+    IDS_FFERR_INCFS             "Incompatible file system."
+    IDS_FFERR_ACCESSDENIED      "Access denied."
+    IDS_FFERR_DISKWP            "The disk is write-protected."
+    IDS_FFERR_CANTLOCK          "File Manager cannot lock volume."
+    IDS_FFERR_CANTQUICKF        "File Manager cannot quick format disk.\n\nMake sure the disk is the correct density rating."
+    IDS_FFERR_SRCIOERR          "IO error on the source disk."
+    IDS_FFERR_DSTIOERR          "IO error on the destination disk."
+    IDS_FFERR_SRCDSTIOERR       "IO error on both the source and destination disks."
+    IDS_FFERR_GENIOERR          "An IO error has occurred."
+//    IDS_FFERR_MEDIASENSE      "This disk is capable of being formatted at a capacity of %s. Continue formatting at this capacity?"
+    IDS_FFERR                   "File Manager cannot format disk.\n\nMake sure the disk is in the drive and not write-protected, damaged, or of wrong density rating."
+    IDS_FFERR_BADLABEL          "File Manager cannot label the disk.\n\nThe specified label is invalid.  Make sure the label does not contain any of the following characters\n\
+                                [space] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+
+    IDS_FORMATCONFIRM           "Formatting will erase ALL data from your disk. Are you sure that you want to format the disk in drive %c?"
+    IDS_FORMATCONFIRMTITLE      "Confirm Format Disk"
+
+    IDS_DISKCOPYCONFIRM         "This operation will erase ALL data from the destination disk. Are you sure you want to continue?"
+    IDS_DISKCOPYCONFIRMTITLE    "Confirm Copy Disk"
+    IDS_ANDCLOSE                "&Close"        // goes on Selection dialog
+    IDS_CLOSE                   "Close"         // braindead "&Change"
+    IDS_PATHNOTTHERE            "Directory %s does not exist.\n\nDo you want to create it?"
+    IDS_PROGRAMS                "Programs#*.exe;*.pif;*.com;*.bat#All Files (*.*)#*.*#"
+
+    IDS_MENUANDITEM             "%s - %s"
+    IDS_DRIVELABEL              "Drive:"
+    IDS_STATUSMSGSINGLE         "%s, "
+
+    IDS_CONNECTHELP             "Connect network drive"
+    IDS_DISCONHELP              "Disconnect network drive"
+    IDS_CONNECTIONHELP          "Network connections"
+    IDS_SHAREASHELP             "Share directory"
+    IDS_STOPSHAREHELP           "Stop sharing directory"
+    IDS_VDETAILSHELP            "View all file details"
+    IDS_VNAMEHELP               "View name only"
+    IDS_BYNAMEHELP              "Sort by name"
+    IDS_BYTYPEHELP              "Sort by type"
+    IDS_BYSIZEHELP              "Sort by size"
+    IDS_BYDATEHELP              "Sort by date"
+    IDS_NEWWINHELP              "New window"
+    IDS_COPYHELP                "Copy files"
+    IDS_MOVEHELP                "Move files"
+    IDS_DELHELP                 "Delete files"
+
+    IDS_DIRNAMELABEL            "&Directory Name:"
+    IDS_DRIVENOTAVAILABLE       "Network drive is not available."
+
+    IDS_SHAREDAS                "Shared as %s"
+    IDS_NOTSHARED               "Not shared"
+
+    IDS_DRIVE_COMPRESSED        " - COMPRESSED"
+
+    IDS_DRAG_COPYING            "Copying files to %s"
+    IDS_DRAG_MOVING             "Moving files to %s"
+    IDS_DRAG_EXECUTING          "Running files with %s"
+
+    IDS_ORDERB                  "%s bytes"
+    IDS_ORDERKB                 "%sKB"
+    IDS_ORDERMB                 "%sMB"
+    IDS_ORDERGB                 "%sGB"
+    IDS_ORDERTB                 "%sTB"
+
+    IDS_VN_COMMENTS             "Comments"
+    IDS_VN_COMPANYNAME          "Company Name"
+    IDS_VN_FILEDESCRIPTION      "File Description"
+    IDS_VN_INTERNALNAME         "Internal Name"
+    IDS_VN_LEGALTRADEMARKS      "Legal Trademarks"
+    IDS_VN_ORIGINALFILENAME     "Original Filename"
+    IDS_VN_PRIVATEBUILD         "Private Build Description"
+    IDS_VN_PRODUCTNAME          "Product Name"
+    IDS_VN_PRODUCTVERSION       "Product Version"
+    IDS_VN_SPECIALBUILD         "Special Build Description"
+
+    IDS_VN_LANGUAGE             "Language"
+    IDS_VN_LANGUAGES            "Languages"
+
+    IDS_ASSOCIATE               "Browse"
+    IDS_RUN                     "Run"
+    IDS_WINHELPERR              "Unable to show Help information."
+    IDS_NOEXEASSOC              "Files with the extension %s are programs and cannot be associated with another application."
+    IDS_ASSOCNOTEXE             "%s is not a program and cannot be associated with a file extension."
+    IDS_ASSOCNONE               "(None)"
+    IDS_NOFILES                 "No files found."
+    IDS_NOACCESSDIR             "You do not have permission to access this directory."
+    IDS_NOACCESSFILE            "You do not have permission to access this file."
+
+    IDS_DRIVEBUSY_COPY          "Drive %c: is busy and cannot be accessed.\nFile Manager is performing a disk copy."
+    IDS_DRIVEBUSY_FORMAT        "Drive %c: is busy and cannot be accessed.\nFile Manager is formatting this disk."
+
+    IDS_COPYMOVENOTCOMPLETED    "Operation not fully completed"
+    IDS_DIRREMAINS              "Unable to finish operation on all files and directories."
+
+    IDS_TOOMANYWINDOWS          "Too many directory windows are open.\n\nClose one or more windows, and then try again."
+    IDS_FMIFSLOADERR            "Unable to load a library required for this operation."
+
+    IDS_NOSUCHDIRTITLE          "Cannot read directory"
+    IDS_NOSUCHDIR               "Directory does not exist."
+
+    IDS_BADNETNAMETITLE         "Cannot connect network drive"
+    IDS_BADNETNAME              "The network name cannot be found."
+
+    IDS_ALLFILES                "'Yes to all' affects all files, including system, hidden, read-only."
+
+    IDS_ASSOC_OPEN              "Open"
+    IDS_ASSOC_PRINT             "Print"
+
+    IDS_ADDEXTTITLE             "Add Extension"
+    IDS_ADDEXTTEXT              "The extension '%s' is currently associated with '%s.'  Continue and overwrite this association?"
+
+    IDS_EXTTITLE                "File Association Editor"
+
+    IDS_EXTADDERROR             "Unable to associate extension.  "
+    IDS_EXTDELERROR             "Unable to delete extension.  "
+    IDS_FILETYPEADDERROR        "Unable to add File Type.  "
+    IDS_FILETYPEDELERROR        "Unable to delete File Type.  "
+    IDS_FILETYPEREADERROR       "Unable to read File Type.  "
+
+    IDS_FILETYPENULLDESCERROR   "The File Type description cannot be empty.  Please type in a new File Type."
+    IDS_FILETYPEDUPDESCERROR    "Unable to generate unique identifier based on your File Type.  Please type in a new File Type."
+
+    IDS_FILETYPEDELCONFIRMTITLE "Delete File Type"
+    IDS_FILETYPEDELCONFIRMTEXT  "This will delete the File Type and all associated extensions.  Are you sure you want to delete '%s'?"
+#ifdef ASSOC
+    IDS_FILETYPEDELCONFIRMUSERTEXT "You are deleting a Personal File Type.  It will revert to the Common File Type, and all of its extensions will remain intact.  Are you sure you want to revert '%s'?"
+    IDS_FILETYPEUSERIZETEXT     "You are customizing a Common File Type.  File Manager save your changes in a Personalized File Type.  Continue?"
+#endif
+    IDS_FILETYPECOMMANDNULLTEXT "The File Type must have a command for at least one of its Actions.  Please type in an application in the command field."
+
+    IDS_NEWFILETYPETITLE        "New File Type"
+    IDS_COPYINGDISKTITLE        "Copying Disk"
+    IDS_SEARCHING               "Searching..."
+
+JAPANBEGIN
+    IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
+JAPANEND
+
+    IDS_INITUPDATEFAIL          "Unable to initialize background update support.  File Manager will exit.  "
+    IDS_INITUPDATEFAILTITLE     "File Manager Initialization"
+
+    IDS_COMPRESSDIR             "Do you want to Compress all of the files and sub-directories in %s also?"
+    IDS_UNCOMPRESSDIR           "Do you want to Uncompress all of the files and sub-directories in %s also?"
+    IDS_COMPRESS_ATTRIB_ERR     "File Manager cannot change compress attributes for %s."
+    IDS_NTLDRCOMPRESSERR        "The file %s will not be compressed.  Compressing this file may render your system unbootable."
+    IDS_MULTICOMPRESSERR        "File Manager is currently in the process of compressing/uncompressing files.\nYou must wait until this is complete before attempting to compress/uncompress additional files."
+
+END
+#undef SUGGEST
+
+/* Help strings for the popup menus.
+ */
+STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    MH_POPUP+IDM_FILE,          "Commands for working with files"
+    MH_POPUP+IDM_DISK,          "Commands for working with disks"
+    MH_POPUP+IDM_TREE,          "Commands for working in the tree window"
+    MH_POPUP+IDM_VIEW,          "Commands for determining how information is displayed"
+    MH_POPUP+IDM_OPTIONS,       "Commands for setting options"
+    MH_POPUP+IDM_SECURITY,      "Commands for manipulating file and directory security"
+    MH_POPUP+IDM_WINDOW,        "Commands for arranging windows"
+    MH_POPUP+IDM_HELP,          "Commands for displaying File Manager Help"
+END
+
+
+// Help strings for the "standard" toolbar items.
+
+STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    MH_MYITEMS+IDM_OPEN,        "Opens selected item"
+    MH_MYITEMS+IDM_EDIT,        "Edits selected item using notepad.exe"
+    MH_MYITEMS+IDM_MOVE,        "Moves selected item"
+    MH_MYITEMS+IDM_COPY,        "Copies files and directories"
+    MH_MYITEMS+IDM_COPYTOCLIPBOARD, "Copies one or more files to the clipboard"
+	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "Cuts one or more files to the clipboard"
+    MH_MYITEMS+IDM_PASTE,		"Paste file from clipboard to current directory"
+    MH_MYITEMS+IDM_COMPRESS,    "Compresses a file or directory"
+    MH_MYITEMS+IDM_UNCOMPRESS,  "Uncompresses a file or directory"
+    MH_MYITEMS+IDM_DELETE,      "Deletes files and directories"
+    MH_MYITEMS+IDM_RENAME,      "Renames a file or directory"
+    MH_MYITEMS+IDM_ATTRIBS,     "Sets file attributes and displays properties"
+    MH_MYITEMS+IDM_UNDELETE,    "Retrieves previously deleted files"
+    MH_MYITEMS+IDM_RUN, "Starts or opens an application or document"
+    MH_MYITEMS+IDM_PRINT,       "Prints a document"
+    MH_MYITEMS+IDM_ASSOCIATE,   "Associates a file with an application"
+    MH_MYITEMS+IDM_MAKEDIR,     "Creates a directory"
+    MH_MYITEMS+IDM_SEARCH,      "Searches for files and directories"
+    MH_MYITEMS+IDM_SELECT,      "Selects files and directories"
+    MH_MYITEMS+IDM_EXIT,        "Quits File Manager"
+
+    MH_MYITEMS+IDM_DISKCOPY,    "Copies the contents of a floppy disk"
+    MH_MYITEMS+IDM_LABEL,       "Assigns or changes a disk's volume label"
+    MH_MYITEMS+IDM_FORMAT,      "Formats a floppy disk"
+//    MH_MYITEMS+IDM_SYSDISK,     "Copies MS-DOS files to a floppy disk"
+    MH_MYITEMS+IDM_CONNECT,     "Connects to a network drive"
+    MH_MYITEMS+IDM_DISCONNECT,  "Disconnects from a network drive"
+//    MH_MYITEMS+IDM_CONNECTIONS,       "Network Connections..."
+//    MH_MYITEMS+IDM_SHARES,    "View Shared Directories..."
+    MH_MYITEMS+IDM_SHAREAS,     "Shares a directory"
+    MH_MYITEMS+IDM_STOPSHARE,   "Stops sharing a directory"
+
+    MH_MYITEMS+IDM_DRIVESMORE,  "Selects a different drive"
+
+    MH_MYITEMS+IDM_EXPONE,      "Displays another level of a directory"
+    MH_MYITEMS+IDM_EXPSUB,      "Displays all levels of a directory"
+    MH_MYITEMS+IDM_EXPALL,      "Displays all levels of all directories"
+    MH_MYITEMS+IDM_COLLAPSE,    "Collapses all directories of a selected directory"
+    MH_MYITEMS+IDM_ADDPLUSES,   "Indicates directories that have subdirectories"
+
+    MH_MYITEMS+IDM_BOTH,        "Displays the directory tree and the contents of the current directory"
+    MH_MYITEMS+IDM_TREEONLY,    "Displays the directory tree"
+    MH_MYITEMS+IDM_DIRONLY,     "Displays the contents of the current directory"
+    MH_MYITEMS+IDM_SPLIT,       "Splits a directory window or moves the split bar"
+    MH_MYITEMS+IDM_VNAME,       "Shows filenames only"
+    MH_MYITEMS+IDM_VDETAILS,    "Shows all file details"
+    MH_MYITEMS+IDM_VOTHER,      "Shows partial file details"
+    MH_MYITEMS+IDM_BYNAME,      "Sorts files by name"
+    MH_MYITEMS+IDM_BYTYPE,      "Sorts files by type"
+    MH_MYITEMS+IDM_BYSIZE,      "Sorts files by size"
+    MH_MYITEMS+IDM_BYDATE,      "Sorts files by date"
+    MH_MYITEMS+IDM_BYFDATE,     "Sorts files by forward date"
+    MH_MYITEMS+IDM_VINCLUDE,    "Shows files of a specified type"
+
+    MH_MYITEMS+IDM_CONFIRM,     "Controls confirmation messages"
+    MH_MYITEMS+IDM_FONT,        "Changes the File Manager font"
+
+    MH_MYITEMS+IDM_TOOLBARCUST, "Customizes the toolbar"
+    MH_MYITEMS+IDM_TOOLBAR,     "Displays or hides the toolbar"
+    MH_MYITEMS+IDM_DRIVEBAR,    "Displays or hides the drivebar"
+    MH_MYITEMS+IDM_STATUSBAR,   "Displays or hides the status bar"
+    MH_MYITEMS+IDM_NEWWINONCONNECT,     "Opens a new window when you connect"
+
+    MH_MYITEMS+IDM_MINONRUN,    "Reduces File Manager to an icon at startup"
+    MH_MYITEMS + IDM_INDEXONLAUNCH, "Creates an index for Goto Directory when File Manager launches"
+    MH_MYITEMS+IDM_SAVESETTINGS,        "Saves settings when you quit File Manager"
+
+    MH_MYITEMS+IDM_NEWWINDOW,   "Opens a new window"
+    MH_MYITEMS+IDM_CASCADE,     "Cascades windows"
+    MH_MYITEMS+IDM_TILEHORIZONTALLY,    "Tiles windows horizontally"
+    MH_MYITEMS+IDM_TILE,        "Tiles windows vertically"
+    MH_MYITEMS+IDM_ARRANGE,     "Arranges icons"
+    MH_MYITEMS+IDM_REFRESH,     "Updates the contents of a window"
+
+    MH_MYITEMS+IDM_PERMISSIONS  "View or set permission information on the selected item(s)"
+    MH_MYITEMS+IDM_AUDITING     "View or set auditing information on the selected item(s)"
+    MH_MYITEMS+IDM_OWNER        "View or take ownership of the selected item(s)"
+
+    MH_MYITEMS+IDM_HELPINDEX,   "Displays contents for File Manager Help"
+    MH_MYITEMS+IDM_HELPKEYS,    "Searches for a topic in File Manager Help"
+    MH_MYITEMS+IDM_HELPHELP,    "Displays information about using Help"
+    MH_MYITEMS+IDM_ABOUT,       "Displays information about File Manager"
+END
+
+
+// Strings for menu items that may be added at init time.
+
+STRINGTABLE MOVEABLE DISCARDABLE
+BEGIN
+    IDS_CONNECT,                "Connect &Network Drive..."
+    IDS_DISCONNECT,             "&Disconnect Network Drive..."
+    IDS_CONNECTIONS,            "&Network Connections..."
+    IDS_SHAREDDIR               "S&hared Directories..."
+    IDS_SHAREAS,                "Share &As..."
+    IDS_STOPSHARE,              "S&top Sharing..."
+    IDS_SHARES,                 "View S&hared Directories..."
+    IDS_UNDELETE,               "&Undelete..."
+    IDS_NEWWINONCONNECT,        "&Open New Window on Connect"
+END
+
+#include "winfile_en-US.dlg"
+
