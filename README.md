@@ -20,6 +20,8 @@ If you just want to download the WinFile application without worrying about comp
 
 Please select the version which you would like to download.
 
+Latest build from master: coming soon
+
 [Latest Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
 
 [Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
