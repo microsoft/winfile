@@ -502,7 +502,7 @@ JAPANEND
     IDS_COMPRESS_ATTRIB_ERR     "File Manager cannot change compress attributes for %s."
     IDS_NTLDRCOMPRESSERR        "The file %s will not be compressed.  Compressing this file may render your system unbootable."
     IDS_MULTICOMPRESSERR        "File Manager is currently in the process of compressing/uncompressing files.\nYou must wait until this is complete before attempting to compress/uncompress additional files."
-    
+
     IDS_EDITFILTER              "Programs (*.exe)\0*.exe\0"
     IDS_ERRORCAP                "Error"
     IDS_ERRORCOMDLG             "comdlg32.dll has failed to load!"
