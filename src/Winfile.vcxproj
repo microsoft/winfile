@@ -241,8 +241,12 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="suggest.db" />
-    <None Include="winfile.dlg" />
+    <None Include="lang\res_en-US.rc"/>
+    <None Include="lang\res_zh-CN.rc"/>
+    <None Include="lang\suggest_en-US.db" />
+    <None Include="lang\suggest_zh-CN.db" />
+    <None Include="lang\winfile_en-US.dlg" />
+    <None Include="lang\winfile_zh-CN.dlg" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbg.c" />
