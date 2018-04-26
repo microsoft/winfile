@@ -1163,6 +1163,7 @@ Extern TCHAR        szDriveBar[]            EQ( TEXT("DriveBar") );
 Extern TCHAR        szToolbar[]             EQ( TEXT("ToolBar") );
 Extern TCHAR        szNewWinOnNetConnect[]  EQ( TEXT("NewWinOnNetConnect") );
 Extern TCHAR        szDisableVisualStyles[] EQ( TEXT("DisableVisualStyles") );
+Extern TCHAR        szUILanguage[]          EQ( TEXT("UILanguage") );
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );
