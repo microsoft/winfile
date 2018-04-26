@@ -1908,8 +1908,8 @@ ChangeDisplay:
        DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CONFIRMDLG), hwndFrame, (DLGPROC)ConfirmDlgProc);
        break;
 
-    case IDM_EDITOR:
-       DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(EDITDLG), hwndFrame, (DLGPROC)EditorDlgProc);
+    case IDM_PREF:
+       DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(PREFDLG), hwndFrame, (DLGPROC)PrefDlgProc);
        break;
 
     case IDM_STATUSBAR:

@@ -31,7 +31,7 @@
 #define SORTBYDLG     31
 #define INCLUDEDLG       32
 #define CONFIRMDLG       33
-#define EDITDLG          34
+#define PREFDLG          34
 #define DMSTATUSDLG      35
 #define PRTDLG        36
 #define CHOOSENETDRIVEDLG   37
@@ -159,6 +159,8 @@
 
 #define IDD_EDITOR          274
 #define IDC_EDITOR          275
+#define IDC_VSTYLE          276
+#define IDC_LANGCB          277
 
 
 #define IDD_NEW             300

@@ -150,7 +150,7 @@
 
 #define IDM_INDEXONLAUNCH   514
 
-#define IDM_EDITOR          515
+#define IDM_PREF          515
 
 #define IDM_SECURITY        5
 #define IDM_PERMISSIONS     605      // !! WARNING HARD CODED !!

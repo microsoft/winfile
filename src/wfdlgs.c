@@ -698,13 +698,14 @@ DoHelp:
   return TRUE;
 }
 
-INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+INT_PTR  PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
+    /* Editor prefrence variables*/
     TCHAR szTempEditPath[MAX_PATH];
-    TCHAR szFilter[MAX_PATH] = { 0 };
     TCHAR szPath[MAX_PATH];
     TCHAR szErrorCaption[MAX_PATH];
     TCHAR szErrorComdlg[MAX_PATH];
+    TCHAR szFilter[MAX_PATH] = { 0 };
 
     LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAX_PATH);
     LoadString(hAppInstance, IDS_EDITFILTER, szErrorCaption, MAX_PATH);
@@ -725,11 +726,18 @@ INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     ofn.lpstrInitialDir = NULL;
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 
+    /* Language prefrence variables */
+    HWND hLangComboBox = GetDlgItem(hDlg, IDC_LANGCB);
+
     switch (wMsg)
     {
         case WM_INITDIALOG:
+            InitLangList(hLangComboBox);
+
             GetPrivateProfileString(szSettings, TEXT("EditorPath"), NULL, szTempEditPath, MAX_PATH, szTheINIFile);
             SetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath);
+
+            CheckDlgButton(hDlg, IDC_VSTYLE, bDisableVisualStyles);
             break;
         
         case WM_COMMAND:
@@ -750,8 +758,14 @@ INT_PTR  EditorDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                     break;
 
                 case IDOK:
+                    SaveLang(hLangComboBox);
+
                     GetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath,MAX_PATH);
                     WritePrivateProfileString(szSettings, TEXT("EditorPath"), szTempEditPath, szTheINIFile);
+
+                    bDisableVisualStyles = IsDlgButtonChecked(hDlg, IDC_VSTYLE);
+                    WritePrivateProfileBool(szDisableVisualStyles, bDisableVisualStyles);
+
                     EndDialog(hDlg, TRUE);
                     break;
 
