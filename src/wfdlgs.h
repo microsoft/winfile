@@ -161,7 +161,7 @@
 #define IDC_EDITOR          275
 #define IDC_VSTYLE          276
 #define IDC_LANGCB          277
-
+#define IDC_GOTO            278
 
 #define IDD_NEW             300
 #define IDD_DESC            301
