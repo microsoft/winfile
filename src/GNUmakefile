@@ -24,6 +24,7 @@ SRCS = \
 	wfinfo.c \
 	wfinit.c \
 	wfmem.c \
+	wfloc.c \
 	wfprint.c \
 	wfsearch.c \
 	wftree.c \
