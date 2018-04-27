@@ -144,9 +144,9 @@ WFFindNext(LPLFNDTA lpFind)
       return TRUE;
    }
 
-   Wow64RevertWow64FsRedirection(oldValue);
-
    lpFind->err = GetLastError();
+
+   Wow64RevertWow64FsRedirection(oldValue);
    return(FALSE);
 }
 
