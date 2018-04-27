@@ -325,18 +325,18 @@ BEGIN
 END
 
 MULTIPLEATTRIBSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 206, 88
-CAPTION "Properties"
+CAPTION "Właściwości"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 BEGIN
-    CONTROL "%d Files Selected", IDD_TEXT1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 5, 144, 10
-    CONTROL "Total %s bytes", IDD_TEXT2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 16, 144, 10
-    CONTROL "Attributes", -1, "button", BS_GROUPBOX | WS_CHILD, 5, 29, 120, 54
-    CONTROL "&Read Only", IDD_READONLY, "button", WS_GROUP | WS_TABSTOP | BS_AUTOCHECKBOX | WS_CHILD, 10, 40, 52, 12
-    CONTROL "H&idden", IDD_HIDDEN, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 40, 52, 12
-    CONTROL "&Archive", IDD_ARCHIVE, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 52, 52, 12
-    CONTROL "&System", IDD_SYSTEM, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 52, 52, 12
-    CONTROL "&Compressed", IDD_COMPRESSED, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 64, 52, 12
+    CONTROL "Wybranych plików: %d", IDD_TEXT1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 5, 144, 10
+    CONTROL "Całkowita liczba bajtów: %s", IDD_TEXT2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 16, 144, 10
+    CONTROL "Atrybuty", -1, "button", BS_GROUPBOX | WS_CHILD, 5, 29, 120, 54
+    CONTROL "Tylk&o do odczytu", IDD_READONLY, "button", WS_GROUP | WS_TABSTOP | BS_AUTOCHECKBOX | WS_CHILD, 10, 40, 52, 12
+    CONTROL "&Ukryty", IDD_HIDDEN, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 40, 52, 12
+    CONTROL "&Archiwalny", IDD_ARCHIVE, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 52, 52, 12
+    CONTROL "Syst&emowy", IDD_SYSTEM, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 52, 52, 12
+    CONTROL "&Skompresowany", IDD_COMPRESSED, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 64, 52, 12
     CONTROL "OK", 1, "button", WS_GROUP | BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 6, 50, 14
     CONTROL "Anuluj", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 23, 50, 14
     CONTROL "Pomo&c", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 43, 50, 14
@@ -380,7 +380,7 @@ BEGIN
                     SS_LEFTNOWORDWRAP, 5, 82, 62, 10
     CONTROL         "", IDD_CRATIO, "Static", SS_LEFTNOWORDWRAP, 72, 82, 132, 10
     GROUPBOX        "Atrybuty", IDD_TEXT, 4, 96, 120, 54
-    CONTROL         "&Tylko-do-odczytu", IDD_READONLY, "Button", BS_AUTOCHECKBOX |
+    CONTROL         "&tylko do odczytu", IDD_READONLY, "Button", BS_AUTOCHECKBOX |
                     WS_GROUP | WS_TABSTOP, 9, 108, 52, 12
     CONTROL         "Uk&ryty", IDD_HIDDEN, "Button", BS_AUTOCHECKBOX,
                     71, 108, 49, 12
@@ -472,13 +472,13 @@ END
 
 
 CHOOSEDRIVEDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 157, 64
-CAPTION "Copy Disk"
+CAPTION "Kopiuj dysk"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 BEGIN
-    CONTROL "&Source In:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 8, 50, 10
+    CONTROL "Dys&k źródłowy:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 8, 50, 10
     CONTROL "", IDD_DRIVE1, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 55, 6, 40, 37
-    CONTROL "&Destination In:", IDD_FLAGS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 22, 50, 10
+    CONTROL "Dysk &docelowy:", IDD_FLAGS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 22, 50, 10
     CONTROL "", IDD_DRIVE, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 55, 20, 40, 37
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 6, 40, 14
     CONTROL "Anuluj", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 23, 40, 14
@@ -638,7 +638,7 @@ BEGIN
     CONTROL "&Zamianę plików", IDD_REPLACE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 39, 80, 12
     CONTROL "Czy&nności z użyciem myszy", IDD_MOUSE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 51, 80, 12
     CONTROL "Polecenia &dotyczące dysku", IDD_CONFIG, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 63, 80, 12
-    CONTROL "&Modyfikację plików systemowych, ukrytych, tylko-do-odczytu", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 150, 12
+    CONTROL "&Modyfikację plików systemowych, ukrytych, tylko do odczytu", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 150, 12
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 6, 40, 14
     CONTROL "Anuluj", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 23, 40, 14
     CONTROL "Pomo&c", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 44, 40, 14

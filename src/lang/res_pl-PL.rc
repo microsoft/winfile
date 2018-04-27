@@ -110,7 +110,7 @@ BEGIN
     MENUITEM    "&Kaskada\tShift+F5",               IDM_CASCADE
     MENUITEM    "&Sąsiadująco w poziomie",          IDM_TILEHORIZONTALLY
     MENUITEM    "Sąsia&dująco w pionie\tShift+F4",  IDM_TILE
-    MENUITEM    "&Rozmieść ikony",                  IDM_ARRANGE
+    MENUITEM    "&Rozmieść zminimalizowane",        IDM_ARRANGE
     MENUITEM    "&Odśwież\tF5",                     IDM_REFRESH
     END
     POPUP       "Pomo&c"
@@ -172,7 +172,7 @@ BEGIN
     IDS_FORMATERR           "Błąd formatowania dysku"             /* 32 */
     IDS_FORMATQUICKFAILURE  "Menedżer plików nie może dokonać szybkiego formatowania. \n\nCzy kontynuować normalne formatowanie?"
 //    IDS_FORMATERRMSG        "Nie udało się sformatować dysku."                                                                                                      /* 128 */
-//    IDS_FORMATCURERR      "Nie możesz sformatować bieżacego dysku."                                                                                     /* 128 */
+//    IDS_FORMATCURERR        "Nie możesz sformatować bieżacego dysku."                                                                                     /* 128 */
     IDS_FORMATCOMPLETE      "Formatowanie zakończone"               /* 32 */
     IDS_FORMATANOTHER       "%ld bajtów całkowitego miejsca na dysku\n%ld bajtów wolnych na dysku\n\nCzy chcesz sformatować następny dysk?"                           /* 128 */
 
@@ -248,13 +248,13 @@ BEGIN
     IDS_FORMATSELDISK,      "Wybierz dysk do formatowania."                                                                                               /* 128 */
 
 JAPANBEGIN
-    IDS_KK_COPYFROMSTR, "コピー元(&F):"
-    IDS_KK_COPYTOSTR, "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR, "元の名前(&F):"
-    IDS_KK_RENAMETOSTR, "新しい名前(&T):"
+    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
+    IDS_KK_COPYTOSTR,       "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
 JAPANEND
 
-//    IDS_MAKESYSDISK,      "Utwórz dysk systemowy"              /* 32 */
+//    IDS_MAKESYSDISK,        "Utwórz dysk systemowy"              /* 32 */
 
     IDS_CREATINGMSG,        "Tworzenie:"                    /* 32 */
     IDS_REMOVINGDIRMSG,     "Usuwanie:"                     /* 32 */
@@ -310,7 +310,7 @@ JAPANEND
 #include "suggest_pl-PL.db"
 
     IDS_DESTFULL                "Dysk docelowy jest zapełniony. Aby kontynuować, proszę włożyć inny dysk."
-    IDS_WRITEPROTECTFILE        "To jest plik systemowy, ukryty lub tylko-do-odczytu."
+    IDS_WRITEPROTECTFILE        "To jest plik systemowy, ukryty lub tylko do odczytu."
 
     IDS_COPYINGTITLE            "Kopiowanie..."
 
@@ -366,7 +366,7 @@ JAPANEND
     IDS_FFERR_DSTIOERR          "Błąd We-Wy na dysku docelowym."
     IDS_FFERR_SRCDSTIOERR       "Błąd We-Wy na dysku źródłowym i docelowym."
     IDS_FFERR_GENIOERR          "Wystąpił błąd We-Wy."
-//    IDS_FFERR_MEDIASENSE      "Ten dysk można sformatować do pojemności %s. Kontynuować formatowanie do tej pojemności?"
+//    IDS_FFERR_MEDIASENSE        "Ten dysk można sformatować do pojemności %s. Kontynuować formatowanie do tej pojemności?"
     IDS_FFERR                   "Menedżer plików nie może sformatować dysku.\n\nSprawdź, czy dysk jest umieszczony w stacji i nie jest chroniony przed zapisem, uszkodzony lub czy nie ma odpowiedniej gęstości zapisu."
     IDS_FFERR_BADLABEL          "Menedżer plików nie może przypisać dyskowi etykiety.\n\nSprawdź, czy etykieta nie zawiera następujących znaków:\n\
                                  [spacja] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
@@ -459,7 +459,7 @@ JAPANEND
     IDS_BADNETNAMETITLE         "Podłączenie dysku sieciowego jest niemożliwe"
     IDS_BADNETNAME              "Odnalezienie nazwy sieci jest niemożliwe."
 
-    IDS_ALLFILES                """Tak na wszystkie"" wpływa na wszystkie pliki, włączając systemowe, ukryte i tylko-do-odczytu."
+    IDS_ALLFILES                """Tak na wszystkie"" wpływa na wszystkie pliki, włączając systemowe, ukryte i tylko do odczytu."
 
     IDS_ASSOC_OPEN              "Otwórz"
     IDS_ASSOC_PRINT             "Drukuj"
@@ -482,7 +482,7 @@ JAPANEND
     IDS_FILETYPEDELCONFIRMTEXT  "Operacja spowoduje usunięcie typu pliku i wszystkich skojarzonych rozszerzeń. Czy na pewno chcesz usunąć '%s'?"
 #ifdef ASSOC
     IDS_FILETYPEDELCONFIRMUSERTEXT "Usuwasz osobisty typ pliku. Przywróci to wspólny typ pliku, którego wszystkie rozszerzenia pozostaną nienaruszone.  Czy na pewno chcesz przywrócisz '%s'?"
-    IDS_FILETYPEUSERIZETEXT     "Modyfikujesz wspólny typ pliku. Menedżer plików zapisze zmiany w osobistym typie pliku. Kontynuować?"
+    IDS_FILETYPEUSERIZETEXT        "Modyfikujesz wspólny typ pliku. Menedżer plików zapisze zmiany w osobistym typie pliku. Kontynuować?"
 #endif
     IDS_FILETYPECOMMANDNULLTEXT "Pozycja Typ pliku musi zawierać polecenie dla przynajmniej jednej akcji. Proszę wpisać aplikację w polu poleceń."
 
@@ -528,7 +528,7 @@ END
 STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
 BEGIN
     MH_MYITEMS+IDM_OPEN,             "Otwiera zaznaczony element"
-    MH_MYITEMS+IDM_EDIT,             "Otwiera zaznaczony element w celu edycji w programie Notatnik"
+    MH_MYITEMS+IDM_EDIT,             "Otwiera zaznaczony element w celu edycji"
     MH_MYITEMS+IDM_MOVE,             "Przenosi wskazany element"
     MH_MYITEMS+IDM_COPY,             "Kopiuje pliki i katalogi"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD,  "Kopiuje jeden lub więcej plików do schowka"
@@ -559,7 +559,7 @@ BEGIN
     MH_MYITEMS+IDM_SHAREAS,          "Udostępnia katalog"
     MH_MYITEMS+IDM_STOPSHARE,        "Kończy udostępnianie katalogu"
 
-    MH_MYITEMS+IDM_DRIVESMORE,       "Selects a different drive"
+    MH_MYITEMS+IDM_DRIVESMORE,       "Wybiera inny dysk"
 
     MH_MYITEMS+IDM_EXPONE,           "Wyświetla inny poziom katalogu"
     MH_MYITEMS+IDM_EXPSUB,           "Wyświetla wszystkie poziomy katalogu"
@@ -590,15 +590,15 @@ BEGIN
     MH_MYITEMS+IDM_STATUSBAR,        "Wyświetla lub ukrywa pasek stanu"
     MH_MYITEMS+IDM_NEWWINONCONNECT,  "Otwiera nowe okno przy podłączaniu"
 
-    MH_MYITEMS+IDM_MINONRUN,         "Zmniejsza Menedżera plików do ikony przy uruchomieniu"
-    MH_MYITEMS + IDM_INDEXONLAUNCH,  "Tworzy indeks dla polecenia Skocz do katalogu, gdy Menedżer plików zostanie uruchomiony"
+    MH_MYITEMS+IDM_MINONRUN,         "Minimalizuje Menedżera plików przy uruchomieniu"
+    MH_MYITEMS+IDM_INDEXONLAUNCH,    "Tworzy indeks dla polecenia Skocz do katalogu, gdy Menedżer plików zostanie uruchomiony"
     MH_MYITEMS+IDM_SAVESETTINGS,     "Zapisuje ustawienia po zakończeniu pracy z Menedżerem plików"
 
     MH_MYITEMS+IDM_NEWWINDOW,        "Otwiera nowe okno"
     MH_MYITEMS+IDM_CASCADE,          "Rozmieszcza okna kaskadowo"
     MH_MYITEMS+IDM_TILEHORIZONTALLY, "Rozmieszcza okna sąsiadująco pionowo"
     MH_MYITEMS+IDM_TILE,             "Rozmieszcza okna sąsiadująco poziomo"
-    MH_MYITEMS+IDM_ARRANGE,          "Rozmieszcza ikony"
+    MH_MYITEMS+IDM_ARRANGE,          "Rozmieszcza zminimalizowane okna"
     MH_MYITEMS+IDM_REFRESH,          "Aktualizuje zawartość okna"
 
     MH_MYITEMS+IDM_PERMISSIONS,      "Wyświetla lub ustawia informacje o uprawnieniach wybranych elementów"
