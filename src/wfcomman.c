@@ -2010,6 +2010,7 @@ ChangeDisplay:
     case IDM_INDEXONLAUNCH:
        bTemp = bIndexOnLaunch = !bIndexOnLaunch;
        WritePrivateProfileBool(szIndexOnLaunch, bIndexOnLaunch);
+       goto CHECK_OPTION;
 
 CHECK_OPTION:
        //

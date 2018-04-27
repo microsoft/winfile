@@ -20,6 +20,8 @@ If you just want to download the WinFile application without worrying about comp
 
 Please select the version which you would like to download.
 
+Latest build from master: coming soon
+
 [Latest Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
 
 [Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
@@ -97,6 +99,7 @@ You can read the code for more details.
 
 ## Contributing
 
+### Contributor License Agreement
 As mentioned above, this project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.microsoft.com.
@@ -108,6 +111,9 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+### What Makes a Good Pull Request for WinFile?
+If you are interested in contributing and/or suggesting changes to the actual application, you might find it helpful to [read this post first](https://github.com/Microsoft/winfile/issues/88).
 
 ## License
 

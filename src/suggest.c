@@ -16,7 +16,7 @@
 //
 #define SUGGEST(id,err,flags,str) err, flags, id+IDS_SUGGESTBEGIN,
 DWORD adwSuggest[][3] = {
-#include "suggest.db"
+#include "lang\suggest_en-US.db"
    0,0,0
 };
 #undef SUGGEST
