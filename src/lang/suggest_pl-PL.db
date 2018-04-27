@@ -1,0 +1,91 @@
+
+// Suggestion database info
+// Used to automate the suggestions compiled into winfile
+//
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+//
+// Usage: Just add a new entry of the format:
+
+// SUGGEST( resource_number, error-code, flags, "your-reason-string" )
+//  resource_number = incremental number for string ID
+//  error-code = error this suggestion corresponds to
+//  "your-reason-string" string displayed for error
+//  flags: SUG_IGN_FORMATMESSAGE = prepend system FormatMessage text
+
+// Ok, so it's not perfect: your resource number can't clash
+// with any others in winfile.h.  Use 1 .. 99 (1101 to 1199)
+// resource # 0 is reserved.
+
+// What it does:
+// For system errors (defined here in winfile land as < DE_BEGIN (bit 29 off)),
+// it puts the "suggestion" below the error text (a blank line is between
+// them.
+//
+// For our errors (>= DE_BEGIN), it places the text below (1 blank line)
+// the previous string.  There is no longer any corresponding text called
+// "IDS_REASONS+DE_MYERROR" or "DE_MYERROR" in the resources.
+// Internal error messages and their reasons must be stored here in
+// the same string.
+
+#ifndef IDS_SUGGESTBEGIN
+#define IDS_SUGGESTBEGIN 1100
+#endif
+
+SUGGEST( 1, DE_SAMEFILE, 0L, \
+  "Miejsce źródłowe jest takie samo jak docelowe." )
+SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
+  "Wybierz tylko jeden plik do zmiany nazwy lub użyj symboli wieloznacznych (na przykład *.TXT), aby zmienić nazwę grupy plików o podobnych nazwach." )
+SUGGEST( 3, DE_DIFFDIR, 0L, \
+  "Zmiana nazwy na inny katalog lub dysk jest niemożliwa.\nZamiast tego użyj polecenia File Move." )
+SUGGEST( 4, DE_ROOTDIR, 0L, \
+  "Nie możesz zmienić nazwy katalogu głównego." )
+SUGGEST( 5, DE_DESTSUBTREE, 0L, \
+  "Katalog docelowy jest podkatalogiem źródła." )
+SUGGEST( 6, DE_WINDOWSFILE, 0L, \
+  "Plik jest używany w systemie Windows." )
+SUGGEST( 7, DE_MANYDEST, 0L, \
+  "W polu ""Do"" podaj tylko jeden plik lub katalog. Jeśli chcesz określić grupę plików, użyj symboli wieloznacznych (na przykład *.TXT)." )
+SUGGEST( 8, DE_RENAMREPLACE, 0L, \
+  "Plik lub katalog o tej nazwie już istnieje. W katalogu nazwy plików i katalogów muszą być unikatowe." )
+
+// This error is returned when selecting a grayed network drive and the rdr is not started
+SUGGEST( 9, ERROR_FILE_NOT_FOUND, 0L, \
+  "Sprawdź, czy podano poprawną ścieżkę i nazwę pliku." )
+SUGGEST(10, ERROR_PATH_NOT_FOUND, 0L, \
+  "Sprawdź, czy podano poprawną ścieżkę." )
+SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
+  "Zakończ działanie jednej lub więcej aplikacji, a następnie spróbuj ponownie. Możesz również ustawić opcje systemu w Panelu sterowania, tak aby zwiększyć pamięć wirtualną." )
+// 12
+SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
+  "Wyłącz ochronę przed zapisem dla tego dysku lub użyj innego dysku i spróbuj ponownie." )
+SUGGEST(14, ERROR_NETWORK_ACCESS_DENIED, 0L, \
+  "Zadbaj o to, aby mieć odpowiednie uprawnienia sieciowe do wykonania tej operacji." )
+SUGGEST(15, ERROR_DISK_FULL, 0L, \
+  "Usuń jeden lub więcej plików, aby zwiększyć ilość wolnego miejsca na dysku i spróbuj ponownie." )
+SUGGEST(16, ERROR_NO_DATA_DETECTED, SUG_IGN_FORMATMESSAGE, \
+  "Dla tego nośnika nie wykryto danych." )
+
+SUGGEST(17, DE_MAKEDIREXISTS, 0L, \
+  "Ten katalog już istnieje." )
+SUGGEST(18, DE_DIREXISTSASFILE, 0L, \
+  "Określona nazwa jest już używana przez plik." )
+#ifdef ASSOC
+SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
+  "Element można usunąć jedynie przy przeglądaniu wspólnych typów plików i rozszerzeń." )
+#endif
+
+// Block out errors that require arguments
+SUGGEST(50, ERROR_WRONG_DISK, SUG_IGN_FORMATMESSAGE, \
+  "W stacji jest zły dysk." )
+SUGGEST(51, ERROR_CHILD_NOT_COMPLETE, SUG_IGN_FORMATMESSAGE, \
+  "Tej aplikacji nie można uruchamiać w trybie Windows NT." )
+SUGGEST(52, ERROR_INVALID_ORDINAL, SUG_IGN_FORMATMESSAGE, \
+  "System operacyjny nie potrafi uruchomić tego składnika." )
+SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
+  "Tego składnika nie można uruchomić w trybie Windows NT." )
+SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
+  "Ten program nie jest prawidłową aplikacją Windows NT." )
+SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
+  "Wystąpił błąd. Dla tego błędu nie ma tekstu komunikatu." )
+

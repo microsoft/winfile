@@ -94,6 +94,15 @@
     <None Include="lang\res_ja-JP.rc">
       <Filter>lang</Filter>
     </None>
+    <None Include="lang\suggest_pl-PL.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_pl-PL.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\res_pl-PL.rc">
+      <Filter>lang</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lang">
