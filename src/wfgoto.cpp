@@ -351,6 +351,13 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 			continue;
 		}
 
+		if ((lfndta.fd.dwFileAttributes & ATTR_REPARSE_POINT) != 0)
+		{
+			// skip following reparse points in case they lead in an infinite loop
+			bFound = WFFindNext(&lfndta);
+			continue;
+		}
+
 		PDNODE pNodeChild = CreateNode(pNodeParent, lfndta.fd.cFileName, lfndta.fd.dwFileAttributes);
 		if (pNodeChild == nullptr)
 		{
