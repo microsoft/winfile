@@ -595,6 +595,7 @@ INT_PTR  ProgressDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  SortByDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  ConfirmDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR  PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  AboutDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
@@ -611,6 +612,10 @@ VOID SearchEnd(VOID);
 // WFFILE.C
 BOOL WFCheckCompress(HWND hDlg, LPTSTR szNameSpec, DWORD dwNewAttrs, BOOL bPropertyDlg, BOOL *bIgnoreAll);
 BOOL GetRootPath(LPTSTR szPath, LPTSTR szReturn);
+
+//WFLOC.C
+VOID InitLangList(HWND hCBox);
+VOID SaveLang(HWND hCBox);
 
 
 // TBAR.C
@@ -1165,6 +1170,7 @@ Extern TCHAR        szToolbar[]             EQ( TEXT("ToolBar") );
 Extern TCHAR        szNewWinOnNetConnect[]  EQ( TEXT("NewWinOnNetConnect") );
 Extern TCHAR        szDisableVisualStyles[] EQ( TEXT("DisableVisualStyles") );
 Extern TCHAR        szUILanguage[]          EQ( TEXT("UILanguage") );
+Extern TCHAR        szEditorPath[]          EQ( TEXT("EditorPath"));
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );
