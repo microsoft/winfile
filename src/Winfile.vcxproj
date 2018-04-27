@@ -207,6 +207,7 @@
     <ClInclude Include="BagOValues.h" />
     <ClInclude Include="mpr.h" />
     <ClInclude Include="numfmt.h" />
+    <ClInclude Include="res.h" />
     <ClInclude Include="spinlock.h" />
     <ClInclude Include="suggest.h" />
     <ClInclude Include="treectl.h" />
@@ -277,6 +278,7 @@
     <ClCompile Include="wfgoto.cpp" />
     <ClCompile Include="wfinfo.c" />
     <ClCompile Include="wfinit.c" />
+    <ClCompile Include="wfloc.c" />
     <ClCompile Include="wfmem.c" />
     <ClCompile Include="wfprint.c" />
     <ClCompile Include="wfsearch.c" />

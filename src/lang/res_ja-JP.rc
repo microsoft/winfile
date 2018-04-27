@@ -84,6 +84,7 @@ BEGIN
     MENUITEM    "確認(&C)...",     IDM_CONFIRM
     MENUITEM    "フォント(&F)...",             IDM_FONT
     MENUITEM    "ツールバーのカスタマイズ(&B)...", IDM_TOOLBARCUST
+    MENUITEM    "Additional &Preferences", IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "ツールバー(&T)",                 IDM_TOOLBAR
     MENUITEM    "ドライブバー(&D)",                IDM_DRIVEBAR
@@ -499,6 +500,8 @@ JAPANEND
     IDS_COMPRESS_ATTRIB_ERR     "ファイルマネージャは %s の圧縮属性を変更できません。"
     IDS_NTLDRCOMPRESSERR        "ファイル %s は圧縮されません。このファイルを圧縮するとシステムが起動しなくなるかもしれません。"
     IDS_MULTICOMPRESSERR        "ファイルマネージャは現在、ファイルを圧縮または解凍しています。\n他のファイルを圧縮するには、全てのファイルを圧縮また解凍が完了するまでお待ち下さい。"
+
+    IDS_EDITFILTER              "Programs (*.exe)\0*.exe\0"
 
 END
 #undef SUGGEST

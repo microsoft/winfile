@@ -150,6 +150,8 @@
 
 #define IDM_INDEXONLAUNCH   514
 
+#define IDM_PREF          515
+
 #define IDM_SECURITY        5
 #define IDM_PERMISSIONS     605      // !! WARNING HARD CODED !!
 #define IDM_AUDITING        606
@@ -534,6 +536,8 @@
 #define IDS_COMPRESS_ATTRIB_ERR  429
 #define IDS_NTLDRCOMPRESSERR     430
 #define IDS_MULTICOMPRESSERR     431
+
+#define IDS_EDITFILTER           432
 
 #define IDS_VERNAME_BASE          500
 #define IDS_VN_COMMENTS           (IDS_VERNAME_BASE + 0)
