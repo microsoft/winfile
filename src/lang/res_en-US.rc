@@ -46,7 +46,7 @@ BEGIN
     MENUITEM    "&Copy Disk...",    IDM_DISKCOPY
     MENUITEM    "&Label Disk...",   IDM_LABEL
     MENUITEM    SEPARATOR
-    MENUITEM    "&Format Disk...",  IDM_FORMAT
+    MENUITEM    "&Format Drive...",  IDM_FORMAT
     MENUITEM    SEPARATOR
     MENUITEM    "&Select Drive...", IDM_DRIVESMORE
     END
@@ -322,6 +322,7 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "File Manager is currently formatting a disk.  Exiting File Manager will abort this operation."
     IDS_BUSYCOPYQUITVERIFY      "File Manager is currently copying a disk.  Exiting File Manager will abort this operation."
     IDS_PERCENTCOMPLETE         "Percent Complete"
+    IDS_FORMATSELECTDLGTITLE    "Format Drive"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
@@ -547,7 +548,7 @@ BEGIN
 
     MH_MYITEMS+IDM_DISKCOPY,    "Copies the contents of a floppy disk"
     MH_MYITEMS+IDM_LABEL,       "Assigns or changes a disk's volume label"
-    MH_MYITEMS+IDM_FORMAT,      "Formats a floppy disk"
+    MH_MYITEMS+IDM_FORMAT,      "Formats a drive"
 //    MH_MYITEMS+IDM_SYSDISK,     "Copies MS-DOS files to a floppy disk"
     MH_MYITEMS+IDM_CONNECT,     "Connects to a network drive"
     MH_MYITEMS+IDM_DISCONNECT,  "Disconnects from a network drive"

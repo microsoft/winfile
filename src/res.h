@@ -477,6 +477,8 @@
 
 #define IDS_PERCENTCOMPLETE   326
 
+#define IDS_FORMATSELECTDLGTITLE 327
+
 #define IDS_DRIVEBASE       350
 #define IDS_12MB            354
 #define IDS_360KB           353

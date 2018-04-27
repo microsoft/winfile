@@ -18,6 +18,7 @@
 #define LABEL_FAT_MAX  11
 #define CCH_VERSION    40
 #define CCH_DRIVE       3
+#define CCH_DLG_TITLE  16
 
 VOID FormatDrive( IN PVOID ThreadParameter );
 VOID CopyDiskette( IN PVOID ThreadParameter );
@@ -744,6 +745,7 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     DRIVE drive;
     DWORD dwFormatResult;
     TCHAR szDrive[CCH_DRIVE] = { 0 };
+    TCHAR szDlgTitle[CCH_DLG_TITLE] = { 0 };
 
     switch (wMsg)
     {
@@ -794,8 +796,8 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 {
                     // SHFormatDrive sometimes sets the parent window title when it encounters an error.
                     // We don't want this; set the title back before we show the dialog.
-                    // Future improvement: title text and initial title should load from the same resource string.
-                    SetWindowText(hDlg, TEXT("Format Drive"));
+                    LoadString(hAppInstance, IDS_FORMATSELECTDLGTITLE, szDlgTitle, CCH_DLG_TITLE);
+                    SetWindowText(hDlg, szDlgTitle);
                     ShowWindow(hDlg, SW_SHOW);
                 }
                 else
