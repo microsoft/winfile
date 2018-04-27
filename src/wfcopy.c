@@ -2774,7 +2774,7 @@ SkipMKDir:
          //
          // On failure, restore attributes
          //
-         if (ret && (DWORD)-1 != dwAttr)
+         if (ret && INVALID_FILE_ATTRIBUTES != dwAttr)
             WFSetAttr(szSource, dwAttr);
 
          break;

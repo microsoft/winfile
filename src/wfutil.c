@@ -242,7 +242,7 @@ BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir)
         drvstr[1] = ('\0');
     }
 
-	if (GetFileAttributes(drvstr) == (DWORD)(-1))
+	if (GetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
 		return FALSE;
 
 //	if (!CheckDirExists(drvstr))

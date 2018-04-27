@@ -437,10 +437,10 @@ InsertDirectory(
    //
    //  Set the attributes for this directory.
    //
-   if (dwAttribs == (DWORD)(-1))
+   if (dwAttribs == INVALID_FILE_ATTRIBUTES)
    {
        GetTreePath(pNode, szPathName);
-       if ((pNode->dwAttribs = GetFileAttributes(szPathName)) == (DWORD)(-1))
+       if ((pNode->dwAttribs = GetFileAttributes(szPathName)) == INVALID_FILE_ATTRIBUTES)
        {
            pNode->dwAttribs = 0;
        }
@@ -1587,11 +1587,16 @@ TCWP_DrawItem(
       else
       {
           //
-          //  Set Text color of Compressed items to BLUE.
+          //  Set Text color of Compressed items to BLUE and Encrypted items
+          //  to GREEN.
           //
           if (pNode->dwAttribs & ATTR_COMPRESSED)
           {
               rgbText = SetTextColor(hdc, RGB(0, 0, 255));
+          }
+          else if (pNode->dwAttribs & ATTR_ENCRYPTED)
+          {
+              rgbText = SetTextColor(hdc, RGB(0, 192, 0));
           }
           else
           {
