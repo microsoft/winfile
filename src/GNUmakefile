@@ -54,13 +54,13 @@ $(TARGET) : $(OBJS)
 .cpp.o :
 	g++ -c $(CFLAGS) -I. $< -o $@
 
-res.o : res.rc
+res.o : res.rc lang/*.rc lang/*.dlg
 	windres -I. -i res.rc -o res.o
 
 clean :
 	rm -f $(OBJS) $(TARGET)
 
 depend:
-	gcc -E -MM -w *.c >> Makefile.depends
+	gcc -E -MM -w *.c > Makefile.depends
 
 -include Makefile.depends
