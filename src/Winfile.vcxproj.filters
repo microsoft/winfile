@@ -36,6 +36,7 @@
     <ClCompile Include="wfutil.c" />
     <ClCompile Include="winfile.c" />
     <ClCompile Include="wnetcaps.c" />
+    <ClCompile Include="wfloc.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dbg.h" />
@@ -60,6 +61,7 @@
     <ClInclude Include="winexp.h" />
     <ClInclude Include="winfile.h" />
     <ClInclude Include="wnetcaps.h" />
+    <ClInclude Include="res.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res.rc" />

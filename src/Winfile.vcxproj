@@ -207,6 +207,7 @@
     <ClInclude Include="BagOValues.h" />
     <ClInclude Include="mpr.h" />
     <ClInclude Include="numfmt.h" />
+    <ClInclude Include="res.h" />
     <ClInclude Include="spinlock.h" />
     <ClInclude Include="suggest.h" />
     <ClInclude Include="treectl.h" />
@@ -241,9 +242,9 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="lang\res_en-US.rc"/>
-    <None Include="lang\res_zh-CN.rc"/>
-    <None Include="lang\res_ja-JP.rc"/>
+    <None Include="lang\res_en-US.rc" />
+    <None Include="lang\res_zh-CN.rc" />
+    <None Include="lang\res_ja-JP.rc" />
     <None Include="lang\suggest_en-US.db" />
     <None Include="lang\suggest_zh-CN.db" />
     <None Include="lang\suggest_ja-JP.db" />
@@ -277,6 +278,7 @@
     <ClCompile Include="wfgoto.cpp" />
     <ClCompile Include="wfinfo.c" />
     <ClCompile Include="wfinit.c" />
+    <ClCompile Include="wfloc.c" />
     <ClCompile Include="wfmem.c" />
     <ClCompile Include="wfprint.c" />
     <ClCompile Include="wfsearch.c" />
