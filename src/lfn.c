@@ -57,6 +57,12 @@ WFFindFirst(
 	   lpFind->hFindFile = FindFirstFile(lpName, &lpFind->fd);
    }
 
+   if (lpFind->hFindFile == INVALID_HANDLE_VALUE) {
+       lpFind->err = GetLastError();
+   } else {
+       lpFind->err = 0;
+   }
+
    // add in attr_* which we want to include in the match even though the caller didn't request them.
    dwAttrFilter |= ATTR_ARCHIVE | ATTR_READONLY | ATTR_NORMAL | ATTR_REPARSE_POINT |
 	   ATTR_TEMPORARY | ATTR_COMPRESSED | ATTR_NOT_INDEXED;
@@ -82,18 +88,12 @@ WFFindFirst(
       lpFind->dwAttrFilter = dwAttrFilter;
       if ((~dwAttrFilter & lpFind->fd.dwFileAttributes) == 0L ||
          WFFindNext(lpFind)) {
-
-         lpFind->err = 0;
-
          return(TRUE);
       } else {
-         lpFind->err = GetLastError();
-
          WFFindClose(lpFind);
          return(FALSE);
       }
    } else {
-      lpFind->err = GetLastError();
       return(FALSE);
    }
 }
