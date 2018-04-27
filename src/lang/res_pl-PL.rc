@@ -84,8 +84,9 @@ BEGIN
     MENUITEM    "&Potwierdzanie...",                          IDM_CONFIRM
     MENUITEM    "&Czcionka...",                               IDM_FONT
     MENUITEM    "Dostosuj pasek nar&zędzi...",                IDM_TOOLBARCUST
+    MENUITEM    "&Dodatkowe preferencje",                     IDM_PREF
     MENUITEM    SEPARATOR
-    MENUITEM    "&Pasek &narzędzi",                           IDM_TOOLBAR
+    MENUITEM    "Pasek &narzędzi",                            IDM_TOOLBAR
     MENUITEM    "Pasek &dysków",                              IDM_DRIVEBAR
     MENUITEM    "Pa&sek stanu",                               IDM_STATUSBAR
     MENUITEM    SEPARATOR
@@ -153,7 +154,7 @@ END
 STRINGTABLE DISCARDABLE PRELOAD
 BEGIN
 //    IDS_ENDSESSION          "Zamknij system"                  /* 32 */
-//    IDS_ENDSESSIONMSG       "Zakańcza sesję systemu Windows."                                                                                      /* 128 */
+//    IDS_ENDSESSIONMSG       "Kończy sesję systemu Windows."                                                                                      /* 128 */
 
     IDS_COPYDISK            "Kopiuj dysk"                    /* 32 */
     IDS_INSERTDEST          "Włóż dysk docelowy."                                                                                                 /* 128 */
@@ -189,7 +190,8 @@ BEGIN
     IDS_ATTRIBERR           "Menedżer plików nie może zmienić atrybutów. "
     IDS_MAKEDIRERR          "Menedżer plików nie może utworzyć katalogu. "
 
-    IDS_LABELDISKERR        "Menedżer plików nie może przypisać dyskowi etykiety.\n\nSprawdź, czy dysk nie jest chroniony przed zapisem, nie jest dyskiem sieciowym i czy etykieta jest prawidłowa. Etykiety nie mogą zawierać znaków: \n[spacja] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    IDS_LABELDISKERR        "Menedżer plików nie może przypisać dyskowi etykiety.\n\nSprawdź, czy dysk nie jest chroniony przed zapisem, nie jest dyskiem sieciowym i czy etykieta jest prawidłowa.\
+                             Etykiety nie mogą zawierać znaków: \n[spacja] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
     IDS_SEARCHNOMATCHES     "Nie znaleziono pasujących plików."
     IDS_SEARCHREFRESH       "Zawartość tego dysku została zmieniona. Czy chcesz zaktualizować okno Wyniki szukania?"
@@ -252,7 +254,6 @@ JAPANBEGIN
     IDS_KK_RENAMETOSTR, "新しい名前(&T):"
 JAPANEND
 
-
 //    IDS_MAKESYSDISK,      "Utwórz dysk systemowy"              /* 32 */
 
     IDS_CREATINGMSG,        "Tworzenie:"                    /* 32 */
@@ -284,10 +285,10 @@ JAPANEND
     /* These strings are used for generating error messages
      * from the Copy, Move, and Delete code. */
 
-    IDS_COPYERROR + FUNC_COPY   "Błąd przy kopiowaniu pliku"
-    IDS_COPYERROR + FUNC_MOVE   "Błąd przy przenoszeniu pliku"
-    IDS_COPYERROR + FUNC_DELETE "Błąd przy usuwaniu pliku"
-    IDS_COPYERROR + FUNC_RENAME "Błąd przy zmianie nazwy pliku"
+    IDS_COPYERROR + FUNC_COPY     "Błąd przy kopiowaniu pliku"
+    IDS_COPYERROR + FUNC_MOVE     "Błąd przy przenoszeniu pliku"
+    IDS_COPYERROR + FUNC_DELETE   "Błąd przy usuwaniu pliku"
+    IDS_COPYERROR + FUNC_RENAME   "Błąd przy zmianie nazwy pliku"
     IDS_COPYERROR + FUNC_SETDRIVE "Błąd przy wyborze dysku"
     IDS_COPYERROR + FUNC_EXPAND   "Błąd przy odczycie katalogu"
     IDS_COPYERROR + FUNC_LABEL    "Błąd przy nadawaniu etykiety dysku"
@@ -367,7 +368,8 @@ JAPANEND
     IDS_FFERR_GENIOERR          "Wystąpił błąd We-Wy."
 //    IDS_FFERR_MEDIASENSE      "Ten dysk można sformatować do pojemności %s. Kontynuować formatowanie do tej pojemności?"
     IDS_FFERR                   "Menedżer plików nie może sformatować dysku.\n\nSprawdź, czy dysk jest umieszczony w stacji i nie jest chroniony przed zapisem, uszkodzony lub czy nie ma odpowiedniej gęstości zapisu."
-    IDS_FFERR_BADLABEL          "Menedżer plików nie może przypisać dyskowi etykiety.\n\nSprawdź, czy etykieta nie zawiera następujących znaków:\n[spacja] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    IDS_FFERR_BADLABEL          "Menedżer plików nie może przypisać dyskowi etykiety.\n\nSprawdź, czy etykieta nie zawiera następujących znaków:\n\
+                                 [spacja] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
 
     IDS_FORMATCONFIRM           "Formatowanie skasuje z dysku WSZYSTKIE dane. Czy na pewno chcesz sformatować dysk w stacji %c?"
@@ -500,6 +502,8 @@ JAPANEND
     IDS_COMPRESS_ATTRIB_ERR     "Menedżer plików nie może zmienić atrybutów kompresji dla %s."
     IDS_NTLDRCOMPRESSERR        "Plik %s nie zostanie skompresowany. Kompresja tego pliku może spowodować, że rozruch systemu nie będzie możliwy."
     IDS_MULTICOMPRESSERR        "Menedżer plików dokonuje obecnie kompresji/dekompresji plików.\nMusisz poczekać na zakończenie procesu przed próbą kompresji/dekompresji dalszych plików."
+      
+    IDS_EDITFILTER              "Programy (*.exe)\0*.exe\0"
 
 END
 #undef SUGGEST
