@@ -83,6 +83,15 @@
     <None Include="lang\winfile_zh-CN.dlg">
       <Filter>lang</Filter>
     </None>
+    <None Include="lang\winfile_ja-JP.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\suggest_ja-JP.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\res_ja-JP.rc">
+      <Filter>lang</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lang">
