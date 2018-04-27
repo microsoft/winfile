@@ -140,7 +140,7 @@ WFFindNext(LPLFNDTA lpFind)
       }
 
 	  Wow64RevertWow64FsRedirection(oldValue);
-
+      lpFind->err = 0;
       return TRUE;
    }
 
