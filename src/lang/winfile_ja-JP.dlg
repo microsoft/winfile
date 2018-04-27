@@ -352,7 +352,7 @@ BEGIN
     PUSHBUTTON      "キャンセル", IDCANCEL, 204, 23, 50, 14
     PUSHBUTTON      "ヘルプ(&H)", IDD_HELP, 204, 40, 50, 14
 
-    CONTROL         "文件名(&F):", IDD_NAMELABEL, "Static",
+    CONTROL         "名前(&F):", IDD_NAMELABEL, "Static",
                     SS_LEFTNOWORDWRAP, 5, 5, 55, 10
     EDITTEXT        IDD_NAME, 72, 5, 132, 10, ES_AUTOHSCROLL | ES_READONLY |
                     NOT WS_BORDER

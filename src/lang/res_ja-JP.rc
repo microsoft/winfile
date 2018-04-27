@@ -89,7 +89,7 @@ BEGIN
     MENUITEM    "ドライブバー(&D)",                IDM_DRIVEBAR
     MENUITEM    "ステータスバー(&S)",              IDM_STATUSBAR
     MENUITEM    SEPARATOR
-    MENUITEM    "起動時に最小化(&M)",     IDM_MINONRUN
+    MENUITEM    "プログラムの起動時に最小化(&M)",     IDM_MINONRUN
     MENUITEM    "起動時に移動先インデックスを作成(&G)", IDM_INDEXONLAUNCH
     MENUITEM    "終了時に設定を保存(&E)",   IDM_SAVESETTINGS
 #ifdef PROGMAN
@@ -585,7 +585,7 @@ BEGIN
     MH_MYITEMS+IDM_STATUSBAR,   "ステータスバーの表示/非表示する"
     MH_MYITEMS+IDM_NEWWINONCONNECT,     "接続時に新しいウィンドウを開く"
 
-    MH_MYITEMS+IDM_MINONRUN,    "ファイルマネージャを最小化で起動する"
+    MH_MYITEMS+IDM_MINONRUN,    "プログラムの起動時に最小化する"
     MH_MYITEMS + IDM_INDEXONLAUNCH, "ファイルマネージャの起動時に移動先インデックスを作成"
     MH_MYITEMS+IDM_SAVESETTINGS,        "ファイルマネージャの終了時に設定を保存する"
 
