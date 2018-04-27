@@ -1633,6 +1633,7 @@ AppCommandProc(register DWORD id)
       }
       else
       {
+         ShowWindow(hwndFormatSelect, SW_SHOW);
          SetActiveWindow(hwndFormatSelect);
       }
 
