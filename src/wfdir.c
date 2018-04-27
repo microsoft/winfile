@@ -17,7 +17,7 @@
 
 #include "wfdrop.h"
 
-WCHAR   szAttr[]        = L"RHSAC";
+WCHAR   szAttr[]        = L"RHSACE";
 
 typedef struct _SELINFO {
    LPWSTR pSel;
@@ -1995,6 +1995,12 @@ PutAttributes(
    if (dwAttribute & ATTR_COMPRESSED)
    {
       *pszStr++ = szAttr[4];
+      cch++;
+   }
+
+   if (dwAttribute & ATTR_ENCRYPTED)
+   {
+      *pszStr++ = szAttr[5];
       cch++;
    }
 

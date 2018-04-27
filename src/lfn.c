@@ -196,7 +196,7 @@ WFIsDir(LPTSTR lpDir)
 {
    DWORD attr = GetFileAttributes(lpDir);
 
-   if (attr & 0x8000)  // BUG: what is this constant???
+   if (attr == (DWORD)-1)
       return FALSE;
 
    if (attr & ATTR_DIR)

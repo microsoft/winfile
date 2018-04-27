@@ -163,6 +163,8 @@
 #define IDC_LANGCB          277
 #define IDC_GOTO            278
 
+#define IDD_ENCRYPTED       279
+
 #define IDD_NEW             300
 #define IDD_DESC            301
 #define IDD_DESCTEXT        302
