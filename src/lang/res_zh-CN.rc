@@ -507,14 +507,14 @@ END
  */
 STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
 BEGIN
-    MH_POPUP+IDM_FILE,          "对文件进行操作的命令"
-    MH_POPUP+IDM_DISK,          "用于对磁盘进行操作的命令"
-    MH_POPUP+IDM_TREE,          "用于在目录树窗口里进行操作的命令"
-    MH_POPUP+IDM_VIEW,          "用于决定怎样显示信息的命令"
-    MH_POPUP+IDM_OPTIONS,       "用于设置选项的命令"
+    MH_POPUP+IDM_FILE,          "控制文件的命令"
+    MH_POPUP+IDM_DISK,          "控制磁盘的命令"
+    MH_POPUP+IDM_TREE,          "控制目录窗口的命令"
+    MH_POPUP+IDM_VIEW,          "决定信息显示方式的命令"
+    MH_POPUP+IDM_OPTIONS,       "设置选项的命令"
     MH_POPUP+IDM_SECURITY,      "控制文件和目录安全的命令"
-    MH_POPUP+IDM_WINDOW,        "用于安排窗口的命令"
-    MH_POPUP+IDM_HELP,          "用于显示文件管理器帮助的命令"
+    MH_POPUP+IDM_WINDOW,        "安排窗口的命令"
+    MH_POPUP+IDM_HELP,          "显示“文件管理器帮助“的命令"
 END
 
 
