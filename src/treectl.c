@@ -437,10 +437,10 @@ InsertDirectory(
    //
    //  Set the attributes for this directory.
    //
-   if (dwAttribs == (DWORD)(-1))
+   if (dwAttribs == INVALID_FILE_ATTRIBUTES)
    {
        GetTreePath(pNode, szPathName);
-       if ((pNode->dwAttribs = GetFileAttributes(szPathName)) == (DWORD)(-1))
+       if ((pNode->dwAttribs = GetFileAttributes(szPathName)) == INVALID_FILE_ATTRIBUTES)
        {
            pNode->dwAttribs = 0;
        }

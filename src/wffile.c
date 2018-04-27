@@ -1741,7 +1741,7 @@ VOID RedrawAllTreeWindows()
                //  Set the attributes for this directory.
                //
                GetTreePath(pNode, szPathName);
-               if ((dwAttribs = GetFileAttributes(szPathName)) != (DWORD)(-1))
+               if ((dwAttribs = GetFileAttributes(szPathName)) != INVALID_FILE_ATTRIBUTES)
                {
                    pNode->dwAttribs = dwAttribs;
                }

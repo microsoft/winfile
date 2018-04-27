@@ -1761,7 +1761,7 @@ AttribsDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
             dwAttribs = GetFileAttributes(szName);
 
-            if (dwAttribs == (DWORD)-1)
+            if (dwAttribs == INVALID_FILE_ATTRIBUTES)
                goto AttributeError;
             else
                dwAttribs &= ~ATTR_DIR;

@@ -196,7 +196,7 @@ WFIsDir(LPTSTR lpDir)
 {
    DWORD attr = GetFileAttributes(lpDir);
 
-   if (attr == (DWORD)-1)
+   if (attr == INVALID_FILE_ATTRIBUTES)
       return FALSE;
 
    if (attr & ATTR_DIR)
