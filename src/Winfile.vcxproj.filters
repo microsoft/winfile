@@ -36,6 +36,7 @@
     <ClCompile Include="wfutil.c" />
     <ClCompile Include="winfile.c" />
     <ClCompile Include="wnetcaps.c" />
+    <ClCompile Include="wfloc.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dbg.h" />
@@ -60,6 +61,7 @@
     <ClInclude Include="winexp.h" />
     <ClInclude Include="winfile.h" />
     <ClInclude Include="wnetcaps.h" />
+    <ClInclude Include="res.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="res.rc" />
@@ -83,9 +85,15 @@
     <None Include="lang\winfile_zh-CN.dlg">
       <Filter>lang</Filter>
     </None>
-    <None Include="lang\res_ja-JP.rc" />
-    <None Include="lang\suggest_ja-JP.db" />
-    <None Include="lang\winfile_ja-JP.dlg" />
+    <None Include="lang\suggest_ja-JP.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_ja-JP.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\res_ja-JP.rc">
+      <Filter>lang</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lang">
