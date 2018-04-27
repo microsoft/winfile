@@ -290,6 +290,3 @@ __pycache__/
 Makefile.depends
 *.exe
 tags
-
-# PVS-Studio files
-*.PVS-Studio.*
