@@ -34,17 +34,17 @@
 SUGGEST( 1, DE_SAMEFILE, 0L, \
  "コピー元とコピー先が同じです。" )
 SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
- "リネームするファイルを1つだけ選択するか、ワイルドカード(例: *.TXT)を使用して似た名前のファイル名を変更します。" )
+ "リネームするファイルを1つだけ選択するか、ワイルド カード(例: *.TXT)を使用して似た名前のファイル名を変更します。" )
 SUGGEST( 3, DE_DIFFDIR, 0L, \
  "別のディレクトリまたはディスクに名前を変更することはできません。\n'ファイル移動' コマンドを使用して下さい。" )
 SUGGEST( 4, DE_ROOTDIR, 0L, \
- "ルートディレクトリの名前は変更できません。" )
+ "ルート ディレクトリの名前は変更できません。" )
 SUGGEST( 5, DE_DESTSUBTREE, 0L, \
  "宛先のディレクトリがサブディレクトリにあります。" )
 SUGGEST( 6, DE_WINDOWSFILE, 0L, \
  "Windows がファイルを使用しています。" )
 SUGGEST( 7, DE_MANYDEST, 0L, \
- "[宛先]に指定できるファイルまたはディレクトリは1つだけです。ファイルセットを指定する場合はワイルドカード(例: * .TXT)を使用します。" )
+ "[宛先]に指定できるファイルまたはディレクトリは1つだけです。ファイル セットを指定する場合はワイルド カード(例: * .TXT)を使用します。" )
 SUGGEST( 8, DE_RENAMREPLACE, 0L, \
  "ファイルまたはディレクトリは既に存在します。ディレクトリ内ではファイルまたはディレクトリの名前は一意である必要があります。" )
 
@@ -54,7 +54,7 @@ SUGGEST( 9, ERROR_FILE_NOT_FOUND, 0L, \
 SUGGEST(10, ERROR_PATH_NOT_FOUND, 0L, \
  "正しいパスを指定して下さい。" )
 SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
- "1つまたは複数のアプリケーションを終了してもう一度試して下さい。それでも駄目な場合はコントロールパネルの[システム]オプションで仮想メモリを増やしてください。" )
+ "1つまたは複数のアプリケーションを終了してもう一度試して下さい。それでも駄目な場合はコントロール パネルの[システム]オプションで仮想メモリを増やしてください。" )
 // 12
 SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
  "ディスクの保護を解除するか別のディスクを使用してもう一度試して下さい。" )
@@ -80,7 +80,7 @@ SUGGEST(50, ERROR_WRONG_DISK, SUG_IGN_FORMATMESSAGE, \
 SUGGEST(51, ERROR_CHILD_NOT_COMPLETE, SUG_IGN_FORMATMESSAGE, \
   "アプリケーションは Windows NT モードで実行できません。" )
 SUGGEST(52, ERROR_INVALID_ORDINAL, SUG_IGN_FORMATMESSAGE, \
-  "オペレーティングシステムはこのコンポーネントを実行できません。" )
+  "オペレーティング システムはこのコンポーネントを実行できません。" )
 SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
   "コンポーネントは Windows NT モードで実行できません。" )
 SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
