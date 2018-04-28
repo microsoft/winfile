@@ -703,6 +703,16 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
 
           GetPrivateProfileString(szSettings, szEditorPath, szNotepad, szEditPath, MAX_PATH, szTheINIFile);
 
+          if(wcschr(szPath, ' ') != NULL && szPath[0] != '"' && (wcslen(szPath) + 3) < sizeof(szPath))
+          {
+              int l = wcslen(szPath);
+              for (int i = l; i > 0; i--)
+                 szPath[i] = szPath[i-1];
+              szPath[0] = '\"';
+              szPath[l+1] = '\"';
+              szPath[l+2] = '\0';
+          }
+
           if(wcslen(szEditPath))
              ret = ExecProgram(szEditPath, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
           //If INI entry is empty
