@@ -18,6 +18,7 @@ LPCTSTR szLCIDs[] = {
     TEXT("zh-CN"),    // Chinese, Simplified
     TEXT("en-US"),    // English, United States
     TEXT("ja-JP"),    // Japanese, Japan
+    TEXT("pl-PL"),    // Polish, Poland
 };
 
 VOID InitLangList(HWND hCBox)

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Manifest Include="winfile.exe.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dbg.c" />
+    <ClCompile Include="lfn.c" />
+    <ClCompile Include="lfnmisc.c" />
+    <ClCompile Include="numfmt.c" />
+    <ClCompile Include="suggest.c" />
+    <ClCompile Include="tbar.c" />
+    <ClCompile Include="treectl.c" />
+    <ClCompile Include="wfassoc.c" />
+    <ClCompile Include="wfchgnot.c" />
+    <ClCompile Include="wfcomman.c" />
+    <ClCompile Include="wfcopy.c" />
+    <ClCompile Include="wfdir.c" />
+    <ClCompile Include="wfdirrd.c" />
+    <ClCompile Include="wfdirsrc.c" />
+    <ClCompile Include="wfdlgs.c" />
+    <ClCompile Include="wfdlgs2.c" />
+    <ClCompile Include="wfdlgs3.c" />
+    <ClCompile Include="wfdos.c" />
+    <ClCompile Include="wfdrives.c" />
+    <ClCompile Include="wfdrop.c" />
+    <ClCompile Include="wfext.c" />
+    <ClCompile Include="wffile.c" />
+    <ClCompile Include="wfgoto.cpp" />
+    <ClCompile Include="wfinfo.c" />
+    <ClCompile Include="wfinit.c" />
+    <ClCompile Include="wfmem.c" />
+    <ClCompile Include="wfprint.c" />
+    <ClCompile Include="wfsearch.c" />
+    <ClCompile Include="wftree.c" />
+    <ClCompile Include="wfutil.c" />
+    <ClCompile Include="winfile.c" />
+    <ClCompile Include="wnetcaps.c" />
+    <ClCompile Include="wfloc.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dbg.h" />
+    <ClInclude Include="fmifs.h" />
+    <ClInclude Include="lfn.h" />
+    <ClInclude Include="BagOValues.h" />
+    <ClInclude Include="mpr.h" />
+    <ClInclude Include="numfmt.h" />
+    <ClInclude Include="spinlock.h" />
+    <ClInclude Include="suggest.h" />
+    <ClInclude Include="treectl.h" />
+    <ClInclude Include="wfcopy.h" />
+    <ClInclude Include="wfdlgs.h" />
+    <ClInclude Include="wfdocb.h" />
+    <ClInclude Include="wfdrop.h" />
+    <ClInclude Include="wfext.h" />
+    <ClInclude Include="wfexti.h" />
+    <ClInclude Include="wfgwl.h" />
+    <ClInclude Include="wfhelp.h" />
+    <ClInclude Include="wfinfo.h" />
+    <ClInclude Include="wfmem.h" />
+    <ClInclude Include="winexp.h" />
+    <ClInclude Include="winfile.h" />
+    <ClInclude Include="wnetcaps.h" />
+    <ClInclude Include="res.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="lang\res_en-US.rc">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\res_zh-CN.rc">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\suggest_en-US.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\suggest_zh-CN.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_en-US.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_zh-CN.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\suggest_ja-JP.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_ja-JP.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\res_ja-JP.rc">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\suggest_pl-PL.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_pl-PL.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\res_pl-PL.rc">
+      <Filter>lang</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="lang">
+      <UniqueIdentifier>{a74d83f3-58ec-46d3-bb3d-fadca6ac5743}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

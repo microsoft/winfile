@@ -1219,6 +1219,7 @@ InitPropertiesDialog(
    INT nType = 0;
    DWORD dwFlags;
    BOOL bFileCompression = FALSE;
+   BOOL bFileEncryption = FALSE;
 
    LPTSTR lpszBuf;
    LARGE_INTEGER qSize, qCSize;
@@ -1238,6 +1239,7 @@ InitPropertiesDialog(
    if (GetVolumeInformation(NULL, NULL, 0L, NULL, NULL, &dwFlags, NULL, 0L))
    {
       bFileCompression = ((dwFlags & FS_FILE_COMPRESSION) == FS_FILE_COMPRESSION);
+      bFileEncryption = ((dwFlags & FS_FILE_ENCRYPTION) == FS_FILE_ENCRYPTION);
    }
 
    iCount = 0;
@@ -1443,6 +1445,11 @@ FullPath:
          ShowWindow(GetDlgItem(hDlg, IDD_COMPRESSED), SW_HIDE);
       }
 
+      if (!bFileEncryption)
+      {
+         ShowWindow(GetDlgItem(hDlg, IDD_ENCRYPTED), SW_HIDE);
+      }
+
       PutSize(&qSize, szNum);
       wsprintf(szTemp, szSBytes, szNum);
       SetDlgItemText(hDlg, IDD_SIZE, szTemp);
@@ -1462,6 +1469,10 @@ FullPath:
           ShowWindow(GetDlgItem(hDlg, IDD_COMPRESSED), SW_HIDE);
       }
 
+      if (!bFileEncryption)
+      {
+          ShowWindow(GetDlgItem(hDlg, IDD_ENCRYPTED), SW_HIDE);
+      }
    }
 
    //
@@ -1553,12 +1564,19 @@ FullPath:
                      GWL_STYLE,
                      WS_VISIBLE | BS_AUTO3STATE | WS_CHILD);
    }
+   if (ATTR_ENCRYPTED & dwAttribs3State)
+   {
+      SetWindowLongPtr( GetDlgItem(hDlg, IDD_ENCRYPTED),
+                     GWL_STYLE,
+                     WS_VISIBLE | BS_AUTO3STATE | WS_CHILD | WS_DISABLED);
+   }
 
    CheckAttribsDlgButton(hDlg, IDD_READONLY,   ATTR_READONLY, dwAttribs3State, dwAttribsOn);
    CheckAttribsDlgButton(hDlg, IDD_HIDDEN,     ATTR_HIDDEN, dwAttribs3State, dwAttribsOn);
    CheckAttribsDlgButton(hDlg, IDD_ARCHIVE,    ATTR_ARCHIVE, dwAttribs3State, dwAttribsOn);
    CheckAttribsDlgButton(hDlg, IDD_SYSTEM,     ATTR_SYSTEM, dwAttribs3State, dwAttribsOn);
    CheckAttribsDlgButton(hDlg, IDD_COMPRESSED, ATTR_COMPRESSED, dwAttribs3State, dwAttribsOn);
+   CheckAttribsDlgButton(hDlg, IDD_ENCRYPTED,  ATTR_ENCRYPTED, dwAttribs3State, dwAttribsOn);
 
    return nType;
 }
@@ -1743,7 +1761,7 @@ AttribsDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
             dwAttribs = GetFileAttributes(szName);
 
-            if (dwAttribs & 0x8000)     // BUG hardcoded!
+            if (dwAttribs == INVALID_FILE_ATTRIBUTES)
                goto AttributeError;
             else
                dwAttribs &= ~ATTR_DIR;
