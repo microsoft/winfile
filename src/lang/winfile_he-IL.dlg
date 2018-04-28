@@ -127,7 +127,7 @@ BEGIN
     CONTROL "&קבצים:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 16, 60, 10
     CONTROL "", IDD_NAME, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 5, 29, 60, 12
     CONTROL "&בחירה", IDOK, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 6, 40, 14
-    CONTROL "&ביטול בחירה", IDYES, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 23, 40, 14
+    CONTROL "&הסר בחירה", IDYES, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 23, 40, 14
     CONTROL "ביטול", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 40, 40, 14
     CONTROL "&עזרה", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 70, 63, 40, 14
 END
@@ -171,7 +171,7 @@ BEGIN
 END
 
 CONFIRMNOACCESS DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 10, 20, 260, 70
-CAPTION "אישור: התעלמות מקובץ או תיקייה והמשך"
+CAPTION "אישור: התעלמות או להמשיך עם קובץ או תיקייה"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 EXSTYLE WS_EX_LAYOUTRTL
@@ -189,7 +189,7 @@ BEGIN
 END
 
 CONFIRMNOACCESSDEST DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 10, 20, 245, 60
-CAPTION "אישור: התעלמות מקובץ או תיקייה והמשך"
+CAPTION "אישור: התעלמות או להמשיך עם קובץ או תיקייה"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 EXSTYLE WS_EX_LAYOUTRTL
@@ -285,8 +285,8 @@ BEGIN
     CONTROL "", IDD_DATE, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 52, 20, 180, 12
     CONTROL "ה&תחלה מ:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 36, 45, 12
     CONTROL "", IDD_DIR, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 52, 35, 180, 12
-    CONTROL "&חיפוש בכל תיקיות המשנה", IDD_SEARCHALL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 52, 49, 100, 12
-    CONTROL "תיקיות משנה בתוצאות", IDD_INCLUDEDIRS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 162, 49, 80, 12
+    CONTROL "&חיפוש בכל תיקיות המשנה", IDD_SEARCHALL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 32, 49, 100, 12
+    CONTROL "תיקיות משנה בתוצאות", IDD_INCLUDEDIRS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 142, 49, 90, 12
     CONTROL "אישור", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 6, 40, 14
     CONTROL "ביטול", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 23, 40, 14
     CONTROL "&עזרה", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 43, 40, 14
@@ -301,7 +301,7 @@ FONT 8, "MS Shell Dlg"
 BEGIN
     CONTROL         "תיקיה נוכחית: N", IDD_DIR, "Static", SS_SIMPLE | SS_NOPREFIX, 3, 6, 232, 10
 
-    CONTROL         "&לאן:", IDD_KK_TEXTTO, "Static", SS_LEFTNOWORDWRAP, 3, 33, 20, 10
+    CONTROL         "&יעד:", IDD_KK_TEXTTO, "Static", SS_LEFTNOWORDWRAP, 3, 33, 20, 10
     EDITTEXT        IDD_TO, 37, 32, 188, 12, ES_AUTOHSCROLL
 
     CONTROL         "", IDD_STATUS, "Static", SS_SIMPLE | SS_NOPREFIX, 3, 49, 40, 10
@@ -312,7 +312,7 @@ BEGIN
     PUSHBUTTON      "ביטול", IDCANCEL, 235, 23, 40, 14
     PUSHBUTTON      "&עזרה", IDD_HELP, 235, 40, 40, 14
 
-    CONTROL         "&From:", IDD_KK_TEXTFROM, "Static", SS_LEFTNOWORDWRAP, 3, 19, 20, 10
+    CONTROL         "&מקור:", IDD_KK_TEXTFROM, "Static", SS_LEFTNOWORDWRAP, 3, 19, 20, 10
     EDITTEXT        IDD_FROM, 37, 18, 188, 12, ES_AUTOHSCROLL
 
     CONTROL         "", IDD_DIRS, "Static", SS_LEFTNOWORDWRAP, 3, 49, 230, 10
@@ -345,7 +345,7 @@ BEGIN
     CONTROL "%d קבצים נבחרו", IDD_TEXT1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 5, 144, 10
     CONTROL "סך הכל %s בתים", IDD_TEXT2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 16, 144, 10
     CONTROL "תכונות", -1, "button", BS_GROUPBOX | WS_CHILD, 5, 29, 120, 54
-    CONTROL "לקריאה &בלבד", IDD_READONLY, "button", WS_GROUP | WS_TABSTOP | BS_AUTOCHECKBOX | WS_CHILD, 10, 40, 52, 12
+    CONTROL "לקריאה &בלבד", IDD_READONLY, "button", WS_GROUP | WS_TABSTOP | BS_AUTOCHECKBOX | WS_CHILD, 10, 40, 58, 12
     CONTROL "מו&סתר", IDD_HIDDEN, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 40, 52, 12
     CONTROL "&ארכיון", IDD_ARCHIVE, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 52, 52, 12
     CONTROL "מ&ערכת", IDD_SYSTEM, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 52, 52, 12
@@ -430,8 +430,8 @@ BEGIN
     LTEXT           "1,888,888,999", IDD_COMPRESS_TFILES, 74, 44, 58, 8
     LTEXT           "גודל כולל של הקבצים לפני הדחיסה:", -1, 6, 56, 
                     124, 8
-    LTEXT           "9,999,999,999,999", IDD_COMPRESS_USIZE, 134, 56, 68, 8
-    LTEXT           "גודל כולל של הקבצים אחרי הדחיסה:", -1, 6, 68, 123, 
+    LTEXT           "9,999,999,999,999", IDD_COMPRESS_USIZE, 134, 56, 85, 8
+    LTEXT           "גודל כולל של הקבצים אחרי הדחיסה:", -1, 6, 85, 123, 
                     8
     LTEXT           "9,999,999,999,999", IDD_COMPRESS_CSIZE, 134, 69, 68, 8
     LTEXT           "יחס דחיסה:", -1, 6, 80, 78, 8
@@ -445,15 +445,15 @@ EXSTYLE WS_EX_LAYOUTRTL
 CAPTION "התקדמות ביטול דחיסת קבצים"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "קובץ בתהליך ביטול דחיסה:", -1, 6, 8, 83, 8
-    LTEXT           "filename.xxx", IDD_UNCOMPRESS_FILE, 93, 8, 66, 8
+    LTEXT           "קובץ בתהליך ביטול דחיסה:", -1, 6, 8, 90, 8
+    LTEXT           "filename.xxx", IDD_UNCOMPRESS_FILE, 100, 8, 66, 8
     LTEXT           "תיקיה:", -1, 6, 20, 39, 8
     LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\", 
                     IDD_UNCOMPRESS_DIR, 45, 20, 144, 8
-    LTEXT           "תיקיות בתהליך ביטול דחיסה:", -1, 6, 32, 91, 8
-    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TDIRS, 99, 32, 70, 8
-    LTEXT           "קבצים בתהליך ביטול דחיסה:", -1, 6, 44, 86, 8
-    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TFILES, 92, 44, 78, 8
+    LTEXT           "תיקיות בתהליך ביטול דחיסה:", -1, 6, 32, 105, 8
+    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TDIRS, 113, 32, 70, 8
+    LTEXT           "קבצים בתהליך ביטול דחיסה:", -1, 6, 44, 100, 8
+    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TFILES, 110, 44, 78, 8
     PUSHBUTTON      "ביטול", IDCANCEL, 74, 64, 49, 14
 END
 
@@ -466,10 +466,10 @@ BEGIN
     ICON 32515, -1, 8, 8, 21, 20
     LTEXT "", IDD_TEXT1, 35, 8, 190, 20
 
-    DEFPUSHBUTTON "&התעלם",     IDIGNORE,      33,  47, 40, 14, WS_TABSTOP | WS_CHILD | WS_GROUP
-    PUSHBUTTON    "התעלם מה&כל", IDD_IGNOREALL, 79,  47, 40, 14, WS_TABSTOP | WS_CHILD
-    PUSHBUTTON    "&נסה שוב",      IDRETRY,       125, 47, 40, 14, WS_TABSTOP | WS_CHILD
-    PUSHBUTTON    "&בטל",      IDABORT,       171, 47, 40, 14, WS_TABSTOP | WS_CHILD
+    DEFPUSHBUTTON "&התעלם",     IDIGNORE,      25,  47, 50, 14, WS_TABSTOP | WS_CHILD | WS_GROUP
+    PUSHBUTTON    "התעלם מה&כל", IDD_IGNOREALL, 76,  47, 50, 14, WS_TABSTOP | WS_CHILD
+    PUSHBUTTON    "&נסה שוב",      IDRETRY,       127, 47, 50, 14, WS_TABSTOP | WS_CHILD
+    PUSHBUTTON    "&בטל",      IDABORT,       178, 47, 50, 14, WS_TABSTOP | WS_CHILD
 END
 
 
@@ -496,9 +496,9 @@ FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 EXSTYLE WS_EX_LAYOUTRTL
 BEGIN
-    CONTROL "&מקור מתוך:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 8, 50, 10
+    CONTROL "דיסק &מקור:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 8, 50, 10
     CONTROL "", IDD_DRIVE1, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 55, 6, 40, 37
-    CONTROL "&יעד מתוך:", IDD_FLAGS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 22, 50, 10
+    CONTROL "דיסק &יעד:", IDD_FLAGS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 22, 50, 10
     CONTROL "", IDD_DRIVE, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 55, 20, 40, 37
     CONTROL "אישור", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 6, 40, 14
     CONTROL "ביטול", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 23, 40, 14
@@ -512,9 +512,9 @@ FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU | WS_VISIBLE | DS_SYSMODAL
 EXSTYLE WS_EX_LAYOUTRTL
 BEGIN
-    CONTROL "עכשיו מעתיק דיסק מתוך", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 5, 130, 10
+    CONTROL "עכשיו מעתיק דיסק מקור", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 5, 130, 10
     CONTROL "כונן A:", IDD_DRIVE, "static", SS_CENTER | WS_CHILD, 0, 15, 130, 10
-    CONTROL "קורא דיסק מקור", IDD_PROGRESS, "static", SS_CENTER | WS_CHILD, 0, 26, 130, 10
+    CONTROL "קורא את דיסק המקור", IDD_PROGRESS, "static", SS_CENTER | WS_CHILD, 0, 26, 130, 10
     CONTROL "ביטול", 2, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 44, 39, 44, 14
 END
 
@@ -571,7 +571,7 @@ STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSME
 EXSTYLE WS_EX_LAYOUTRTL
 BEGIN
     CONTROL "מאתחל דיסק כעת", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 5, 150, 10
-    CONTROL "מתחיל כונן...", IDD_PROGRESS, "static", SS_CENTER | WS_CHILD, 0, 17, 150, 10
+    CONTROL "מאתחל כונן...", IDD_PROGRESS, "static", SS_CENTER | WS_CHILD, 0, 17, 150, 10
     CONTROL "ביטול", 2, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 54, 30, 44, 14
 END
 
@@ -629,17 +629,17 @@ END
 #endif
 
 OTHERDLG DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 20, 20, 174, 81
-CAPTION "Partial Details"
+CAPTION "נתונים חלקיים"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 EXSTYLE WS_EX_LAYOUTRTL
 BEGIN
-    CONTROL "Details", IDD_TEXT, "button", BS_GROUPBOX | WS_CHILD, 4, 4, 121, 74
-    CONTROL "&Size", IDD_SIZE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 15, 100, 12
-    CONTROL "Last &Modification Date", IDD_DATE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 27, 100, 12
-    CONTROL "Last Modification &Time", IDD_TIME, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 39, 100, 12
-    CONTROL "&File Attributes", IDD_FLAGS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 51, 100, 12
-    CONTROL "MS-&DOS file names", IDD_DOSNAMES, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 63, 100, 12
+    CONTROL "נתונים", IDD_TEXT, "button", BS_GROUPBOX | WS_CHILD, 4, 4, 121, 74
+    CONTROL "&גודל", IDD_SIZE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 15, 100, 12
+    CONTROL "&תאריך שינוי אחרון", IDD_DATE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 27, 100, 12
+    CONTROL "&זמן שינוי אחרון", IDD_TIME, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 39, 100, 12
+    CONTROL "&תכונות קובץ", IDD_FLAGS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 51, 100, 12
+    CONTROL "שמות קובץ MS-DOS", IDD_DOSNAMES, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 63, 100, 12
     CONTROL "אישור", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 6, 40, 14
     CONTROL "ביטול", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 23, 40, 14
     CONTROL "&עזרה", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 60, 40, 14
@@ -647,41 +647,41 @@ END
 
 
 INCLUDEDLG DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 20, 20, 157, 114
-CAPTION "By File Type"
+CAPTION "לפי סוג קובץ"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 EXSTYLE WS_EX_LAYOUTRTL
 BEGIN
-    CONTROL "&Name:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 8, 23, 10
+    CONTROL "&שם:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 8, 23, 10
     CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 34, 6, 65, 12
-    CONTROL "File Type", IDD_TEXT, "button", BS_GROUPBOX | WS_CHILD, 5, 20, 94, 62
-    CONTROL "&Directories", IDD_DIR, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 31, 60, 12
-    CONTROL "&Programs", IDD_PROGRAMS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 43, 60, 12
-    CONTROL "Docu&ments", IDD_DOCS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 55, 60, 12
-    CONTROL "&Other Files", IDD_OTHER, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 67, 60, 12
-    CONTROL "Show Hidden/&System Files", IDD_SHOWHIDDEN, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 85, 100, 12
-    CONTROL "Show &Junction Points", IDD_SHOWJUNCTION, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 97, 100, 12
+    CONTROL "סוג קובץ", IDD_TEXT, "button", BS_GROUPBOX | WS_CHILD, 5, 20, 94, 62
+    CONTROL "&תיקיות", IDD_DIR, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 31, 60, 12
+    CONTROL "ת&כניות", IDD_PROGRAMS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 43, 60, 12
+    CONTROL "&מסמכים", IDD_DOCS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 55, 60, 12
+    CONTROL "קבצים &אחרים", IDD_OTHER, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 67, 60, 12
+    CONTROL "הצג קבצים מוסתרים/מ&ערכת", IDD_SHOWHIDDEN, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 85, 115, 12
+    CONTROL "הצג &נקודות מפגש", IDD_SHOWJUNCTION, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 97, 100, 12
     CONTROL "אישור", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 6, 40, 14
     CONTROL "ביטול", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 23, 40, 14
     CONTROL "&עזרה", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 43, 40, 14
 END
 
-CONFIRMDLG DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 20, 20, 214, 92
+CONFIRMDLG DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 20, 20, 235, 92
 CAPTION "אישור"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 EXSTYLE WS_EX_LAYOUTRTL
 BEGIN
-    CONTROL "יידרש אישור עבור", IDD_TEXT, "button", BS_GROUPBOX | WS_TABSTOP | WS_CHILD, 5, 3, 158, 86
+    CONTROL "יידרש אישור עבור", IDD_TEXT, "button", BS_GROUPBOX | WS_TABSTOP | WS_CHILD, 5, 3, 180, 86
     CONTROL "&מחיקת קובץ", IDD_DELETE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 15, 80, 12
     CONTROL "מחיקת &תיקיה", IDD_SUBDEL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 27, 80, 12
     CONTROL "&החלפת קובץ", IDD_REPLACE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 39, 80, 12
     CONTROL "&פעולת עכבר", IDD_MOUSE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 51, 80, 12
     CONTROL "פ&קודות דיסק", IDD_CONFIG, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 63, 80, 12
-    CONTROL "&שינוי קבצים שהם קבצי מערכת, מוסתרים או לקריאה בלבד", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 150, 12
-    CONTROL "אישור", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 6, 40, 14
-    CONTROL "ביטול", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 23, 40, 14
-    CONTROL "&עזרה", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 44, 40, 14
+    CONTROL "&שינוי קבצי מערכת, מוסתרים או לקריאה בלבד", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 173, 12
+    CONTROL "אישור", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 188, 6, 40, 14
+    CONTROL "ביטול", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 188, 23, 40, 14
+    CONTROL "&עזרה", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 188, 44, 40, 14
 END
 
 DMSTATUSDLG DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 20, 20, 250, 46
@@ -707,7 +707,7 @@ BEGIN
     CONTROL "", IDD_TEXT, "static", SS_CENTER | SS_NOPREFIX | WS_GROUP | WS_CHILD, 4, 20, 120, 12
     CONTROL "ביטול", 2, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 44, 40, 32, 14
 END
-"This path does not match the FAT format for filenames.  Please enter a new name."
+
 LFNTOFATDLG DIALOGEX LOADONCALL MOVEABLE DISCARDABLE 11, 28, 250, 78
 CAPTION "בחירת שם קובץ"
 FONT 8, "MS Shell Dlg"
@@ -753,7 +753,7 @@ BEGIN
                     10
     GROUPBOX        "תכונות", IDD_TEXT, 4, 52, 120, 54
     CONTROL         "לקריאה &בלבד", IDD_READONLY, "Button", BS_AUTOCHECKBOX |
-                    WS_GROUP | WS_TABSTOP, 9, 64, 52, 12
+                    WS_GROUP | WS_TABSTOP, 9, 64, 58, 12
     CONTROL         "מ&וסתר", IDD_HIDDEN, "Button", BS_AUTOCHECKBOX, 71, 64,
                     49, 12
     CONTROL         "&ארכיון", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX, 9,
@@ -812,16 +812,16 @@ BEGIN
     LTEXT           "&סוג קובץ:", IDD_DESCTEXT, 5, 6, 33, 8
     EDITTEXT        IDD_DESC, 42, 5, 95, 12, ES_AUTOHSCROLL
     GROUPBOX        "פעולות: ", -1, 5, 22, 235, 126, WS_GROUP
-    COMBOBOX        IDD_ACTION, 36, 22, 48, 33, CBS_DROPDOWNLIST |
+    COMBOBOX        IDD_ACTION, 40, 22, 48, 33, CBS_DROPDOWNLIST |
                     WS_VSCROLL | WS_TABSTOP
     LTEXT           "&פקודה:", IDD_COMMANDTEXT, 9, 42, 38, 8
     EDITTEXT        IDD_COMMAND, 47, 39, 111, 12, ES_AUTOHSCROLL
     PUSHBUTTON      "&עיון...", IDD_BROWSE, 164, 38, 40, 14
-    AUTOCHECKBOX    "&שימוש בDDE", IDD_DDE, 10, 57, 50, 10, WS_GROUP
+    AUTOCHECKBOX    "&שימוש בDDE", IDD_DDE, 10, 57, 60, 10, WS_GROUP
     LTEXT           "&הודעת DDE:", IDD_DDEMESGTEXT, 22, 72, 50, 8
     EDITTEXT        IDD_DDEMESG, 105, 70, 100, 12, ES_AUTOHSCROLL
-    LTEXT           "DDE Message Application &Not Running:", IDD_DDENOTRUNTEXT, 22, 84, 82, 19
-    LTEXT           "(optional)", IDD_DDEOPTIONALTEXT, 207, 90, 32, 8
+    LTEXT           "הודעת DDE\nתכנית לא פועלת:", IDD_DDENOTRUNTEXT, 22, 84, 82, 19
+    LTEXT           "(אפשרי)", IDD_DDEOPTIONALTEXT, 207, 90, 32, 8
     EDITTEXT        IDD_DDENOTRUN, 105, 88, 100, 12, ES_AUTOHSCROLL
     LTEXT           "&תכנית:", IDD_DDEAPPTEXT, 22, 109, 39, 8
     EDITTEXT        IDD_DDEAPP, 105, 107, 100, 12, ES_AUTOHSCROLL
@@ -859,14 +859,14 @@ EXSTYLE WS_EX_LAYOUTRTL
 CAPTION "העדפות"
 FONT 8, "MS Shell Dlg"
 BEGIN
-   CONTROL "מיקום עורך:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 17, 37, 14
-   CONTROL "", IDD_EDITOR, "edit", ES_AUTOHSCROLL | ES_LEFT | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 54, 14, 140, 14
-   CONTROL "...", IDC_EDITOR, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 195, 14, 20, 14
-   CONTROL "הפסק סגנון ויזואלי על סרגל הכלים", IDC_VSTYLE, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 38, 119, 14
-   CONTROL "צור מפתח מעבר תיקיות בעת הפעלה", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 119, 14
+   CONTROL "מיקום עורך:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 17, 53, 14
+   CONTROL "", IDD_EDITOR, "edit", ES_AUTOHSCROLL | ES_LEFT | WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP, 60, 14, 140, 14
+   CONTROL "...", IDC_EDITOR, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 201, 14, 20, 14
+   CONTROL "הפסק סגנון ויזואלי על סרגל הכלים", IDC_VSTYLE, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 38, 180, 14
+   CONTROL "צור מפתח מעבר תיקיות בעת הפעלה", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 180, 14
    CONTROL "שפה:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
-   CONTROL "נא לשים לב ששינוים מסוימים יהיו פעילים\nפתיחה מחדש של התכנית.",
+   CONTROL "נא לשים לב ששינוים מסוימים יהיו פעילים\nרק אחרי פתיחה מחדש של התכנית.",
 			IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 90, 180, 20
    CONTROL "אישור", IDOK, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 55, 120, 40, 14
    CONTROL "ביטול", IDCANCEL, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 103, 120, 40, 14

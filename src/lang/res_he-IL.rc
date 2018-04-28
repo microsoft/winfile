@@ -91,7 +91,7 @@ BEGIN
     MENUITEM    "שורת מ&צב",              IDM_STATUSBAR
     MENUITEM    SEPARATOR
     MENUITEM    "&מזער בעת הפעלה",     IDM_MINONRUN
-    MENUITEM    "צור מפתח מעבר תיקיות בעל הפעלה", IDM_INDEXONLAUNCH
+    MENUITEM    "צור מפתח Goto בעת ההפעלה", IDM_INDEXONLAUNCH
     MENUITEM    "&שמור הגדרות ביציאה",   IDM_SAVESETTINGS
 #ifdef PROGMAN
     MENUITEM    SEPARATOR
