@@ -46,7 +46,7 @@ BEGIN
     MENUITEM    "ה&עתקת דיסק...",    IDM_DISKCOPY
     MENUITEM    "&תווית דיסק...",   IDM_LABEL
     MENUITEM    SEPARATOR
-    MENUITEM    "&איתחול דיסק...",  IDM_FORMAT
+    MENUITEM    "&איתחול כונן...",  IDM_FORMAT
     MENUITEM    SEPARATOR
     MENUITEM    "&בחירת כונן...", IDM_DRIVESMORE
     END
@@ -323,6 +323,7 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "מנהל הקבצים מאתחל כרגע דיסק. יציאה ממנהל הקבצים תגרום לביטול הפעולה."
     IDS_BUSYCOPYQUITVERIFY      "מנהל הקבצים מעתיק כרגע דיסק. יציאה ממנהל הקבצים תגרום לביטול הפעולה."
     IDS_PERCENTCOMPLETE         "אחוז השלמה"
+    IDS_FORMATSELECTDLGTITLE    "אתחול כונן"
 
     IDS_12MB                    "1%s2 מ""ב"
     IDS_360KB                   "360K"

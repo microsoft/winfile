@@ -1,0 +1,91 @@
+
+// Suggestion database info
+// Used to automate the suggestions compiled into winfile
+//
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+//
+// Usage: Just add a new entry of the format:
+
+// SUGGEST( resource_number, error-code, flags, "your-reason-string" )
+//  resource_number = incremental number for string ID
+//  error-code = error this suggestion corresponds to
+//  "your-reason-string" string displayed for error
+//  flags: SUG_IGN_FORMATMESSAGE = prepend system FormatMessage text
+
+// Ok, so it's not perfect: your resource number can't clash
+// with any others in winfile.h.  Use 1 .. 99 (1101 to 1199)
+// resource # 0 is reserved.
+
+// What it does:
+// For system errors (defined here in winfile land as < DE_BEGIN (bit 29 off)),
+// it puts the "suggestion" below the error text (a blank line is between
+// them.
+//
+// For our errors (>= DE_BEGIN), it places the text below (1 blank line)
+// the previous string.  There is no longer any corresponding text called
+// "IDS_REASONS+DE_MYERROR" or "DE_MYERROR" in the resources.
+// Internal error messages and their reasons must be stored here in
+// the same string.
+
+#ifndef IDS_SUGGESTBEGIN
+#define IDS_SUGGESTBEGIN 1100
+#endif
+
+SUGGEST( 1, DE_SAMEFILE, 0L, \
+ "מקור ויעד הינם זהים." )
+SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
+ "בחר קובץ אחד לשינוי שם, או השתמש בתווים חופשיים (למשל , TXT.*) כדי לשנות שמות של קבצים עם שמות דומים." )
+SUGGEST( 3, DE_DIFFDIR, 0L, \
+ "לא ניתן לשנות שם לתיקיה אחרת או דיסק אחר.\nהשתמש בפקודת העברת קובץ במקום." )
+SUGGEST( 4, DE_ROOTDIR, 0L, \
+ "לא ניתן לשנות שם תיקית בסיס." )
+SUGGEST( 5, DE_DESTSUBTREE, 0L, \
+ "תיקית היעד הינה תיקית משנה בתיקית המקור." )
+SUGGEST( 6, DE_WINDOWSFILE, 0L, \
+ "הקובץ בשימוש על ידי Windows." )
+SUGGEST( 7, DE_MANYDEST, 0L, \
+ "יש לציין רק שם קובץ או תיקיה אחד בתיבת ""לאן"". או, אם ברצונכם לציין קבוצה מסוימת של קבצים, השתמש בתווים חופשיים (למשל TXT.*)." )
+SUGGEST( 8, DE_RENAMREPLACE, 0L, \
+ "שם קובץ או תיקיה כבר קיים. בתוך תיקיה, שמות קבצים ותיקיות חייבים להיות ייחודיים." )
+
+// This error is returned when selecting a grayed network drive and the rdr is not started
+SUGGEST( 9, ERROR_FILE_NOT_FOUND, 0L, \
+ "נא לוודא שנתיב ושם הקובץ המצוינים נכונים." )
+SUGGEST(10, ERROR_PATH_NOT_FOUND, 0L, \
+ "נא לוודא שהנתיב המצוין נכון." )
+SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
+ "סגור תכנית אחת או יותר, ונסה שוב. או, תשתמש באפשרות מערכת שבלוח הבקרה על מנת להגדיל את גודל הזיכרון הוירטואלי." )
+// 12
+SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
+ "יש לבטל את הגנת הכתיבה על הדיסק הזה או להשתמש בדיסק אחר, ואז לנסות שנית." )
+SUGGEST(14, ERROR_NETWORK_ACCESS_DENIED, 0L, \
+ "יש לוודא שיש לך הרשאות רשת מתאימות לביצוע פעולה זאת." )
+SUGGEST(15, ERROR_DISK_FULL, 0L, \
+  "מחק קובץ אחד או יותר כדי להגדיל שטח דיסק פנוי, ונסה שנית." )
+SUGGEST(16, ERROR_NO_DATA_DETECTED, SUG_IGN_FORMATMESSAGE, \
+  "לא זוהה מידע על האמצעי." )
+
+SUGGEST(17, DE_MAKEDIREXISTS, 0L, \
+  "התיקיה קיימת כבר." )
+SUGGEST(18, DE_DIREXISTSASFILE, 0L, \
+  "השם המצוין נמצא כבר בשימוש על ידי קובץ." )
+#ifdef ASSOC
+SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
+  "זה יכול להימחק רק דרך צפיה בסיומות קבצים נפוצות והרחבות." )
+#endif
+
+// Block out errors that require arguments
+SUGGEST(50, ERROR_WRONG_DISK, SUG_IGN_FORMATMESSAGE, \
+  "הדיסק הלא נכון נמצא בכונן." )
+SUGGEST(51, ERROR_CHILD_NOT_COMPLETE, SUG_IGN_FORMATMESSAGE, \
+  "התכנית לא יכולה לרוץ במצב Windows NT." )
+SUGGEST(52, ERROR_INVALID_ORDINAL, SUG_IGN_FORMATMESSAGE, \
+  "המערכת הפעלה לא יכולה להפעיל רכיב זה." )
+SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
+  "הרכיב אינו יכול לפעול במצב Windows NT." )
+SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
+  "התכנית אינה ישום Windows NT תקין." )
+SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
+  "שגיאה התרחשה. אין מלל לתיאור שגיאה זו." )
+
