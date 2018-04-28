@@ -94,7 +94,15 @@
     <None Include="lang\res_ja-JP.rc">
       <Filter>lang</Filter>
     </None>
-    <None Include="lang\suggest_he-IL.db">
+    <None Include="lang\suggest_pl-PL.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_pl-PL.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\res_pl-PL.rc">
+      <Filter>lang</Filter>
+      <None Include="lang\suggest_he-IL.db">
       <Filter>lang</Filter>
     </None>
     <None Include="lang\winfile_he-IL.dlg">
@@ -102,6 +110,7 @@
     </None>
     <None Include="lang\res_he-IL.rc">
       <Filter>lang</Filter>
+    </None>
     </None>
   </ItemGroup>
   <ItemGroup>

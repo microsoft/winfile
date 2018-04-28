@@ -181,7 +181,7 @@ BOOL WFSetAttr(
    //  Compression attribute is handled separately -
    //  do not try to set it here.
    //
-   dwAttr = dwAttr & ~ATTR_COMPRESSED;
+   dwAttr = dwAttr & ~(ATTR_COMPRESSED | ATTR_ENCRYPTED);
 
    bRet = SetFileAttributes(lpFile, dwAttr);
 
@@ -1741,7 +1741,7 @@ VOID RedrawAllTreeWindows()
                //  Set the attributes for this directory.
                //
                GetTreePath(pNode, szPathName);
-               if ((dwAttribs = GetFileAttributes(szPathName)) != (DWORD)(-1))
+               if ((dwAttribs = GetFileAttributes(szPathName)) != INVALID_FILE_ATTRIBUTES)
                {
                    pNode->dwAttribs = dwAttribs;
                }
