@@ -1626,28 +1626,17 @@ AppCommandProc(register DWORD id)
 
    case IDM_FORMAT:
 
-      if (CancelInfo.hCancelDlg) {
-         SetFocus(CancelInfo.hCancelDlg);
-         break;
+      if (!hwndFormatSelect)
+      {
+         hwndFormatSelect = CreateDialog(hAppInstance, (LPTSTR)MAKEINTRESOURCE(FORMATSELECTDLG),
+            hwndFrame, (DLGPROC)FormatSelectDlgProc);
+      }
+      else
+      {
+         ShowWindow(hwndFormatSelect, SW_SHOW);
+         SetActiveWindow(hwndFormatSelect);
       }
 
-      if (CancelInfo.hThread) {
-         //
-         // Don't create any new worker threads
-         // Just create old dialog
-         //
-
-         CreateDialog(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CANCELDLG), hwndFrame, (DLGPROC) CancelDlgProc);
-
-         return TRUE;
-      }
-
-      if (!FmifsLoaded())
-         break;
-
-      // Don't use modal dialog box
-
-      FormatDiskette(hwndFrame,FALSE);
       break;
 
    case IDM_SHAREAS:

@@ -588,6 +588,7 @@ INT_PTR  ExitDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  DiskLabelDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  ChooseDriveDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  FormatDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR  FormatSelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR  OtherDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
 INT_PTR  ProgressDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
@@ -1305,6 +1306,7 @@ Extern HWND  hwndDriveBar      EQ( NULL );
 Extern HWND  hwndToolbar       EQ( NULL );
 Extern HWND  hwndDriveList     EQ( NULL );
 Extern HWND  hwndDropChild     EQ( NULL );  // for tree windows forwarding to drivebar
+Extern HWND  hwndFormatSelect  EQ( NULL );
 
 Extern BOOL bCancelTree;
 
