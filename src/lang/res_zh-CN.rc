@@ -322,6 +322,7 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "文件管理器当前正在格式化软盘。退出文件管理器将会中断此项操作。"
     IDS_BUSYCOPYQUITVERIFY      "文件管理器当前正在复制软盘。退出文件管理器将会中断此项操作。"
     IDS_PERCENTCOMPLETE         "完成百分比"
+    IDS_FORMATSELECTDLGTITLE    "Format Drive"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
