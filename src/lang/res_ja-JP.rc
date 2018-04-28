@@ -7,7 +7,7 @@
 
 ********************************************************************/
 
-LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+LANGUAGE LANG_JAPANESE, SUBLANG_JAPANESE_JAPAN
 
 FRAMEMENU MENU PRELOAD
 BEGIN
