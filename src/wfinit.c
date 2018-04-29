@@ -410,7 +410,6 @@ InitMenus()
 
    if (nFloppies == 0) {
       EnableMenuItem(hMenu, IDM_DISKCOPY, MF_BYCOMMAND | MF_GRAYED);
-      EnableMenuItem(hMenu, IDM_FORMAT,   MF_BYCOMMAND | MF_GRAYED);
    }
 
 

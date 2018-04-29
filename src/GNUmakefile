@@ -56,7 +56,7 @@ $(TARGET) : $(OBJS)
 	g++ -c $(CFLAGS) -I. $< -o $@
 
 res.o : res.rc lang/*.rc lang/*.dlg
-	windres -I. -i res.rc -o res.o
+	windres -DNOWINRES -I. -i res.rc -o res.o
 
 clean :
 	rm -f $(OBJS) $(TARGET)

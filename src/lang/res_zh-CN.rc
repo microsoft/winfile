@@ -32,8 +32,8 @@ BEGIN
     MENUITEM    "关联(&A)...",    IDM_ASSOCIATE
     MENUITEM    SEPARATOR
     MENUITEM    "创建目录(&E)...", IDM_MAKEDIR
-    MENUITEM    "搜索(&C)...\tCtrl+F",       IDM_SEARCH
-    MENUITEM    "选定文件(&F)...", IDM_SELECT
+    MENUITEM    "搜索(&H)...\tCtrl+F",       IDM_SEARCH
+    MENUITEM    "选择文件(&F)...", IDM_SELECT
 	MENUITEM    "打开 Bash...", IDM_STARTBASHSHELL
 	MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
     MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
@@ -48,7 +48,7 @@ BEGIN
     MENUITEM    SEPARATOR
     MENUITEM    "格式化磁盘(&F)...",  IDM_FORMAT
     MENUITEM    SEPARATOR
-    MENUITEM    "选定驱动器(&S)...", IDM_DRIVESMORE
+    MENUITEM    "选择驱动器(&S)...", IDM_DRIVESMORE
     END
     POPUP       "目录树(&T)"
     BEGIN
@@ -68,8 +68,8 @@ BEGIN
     MENUITEM    "拆分(&L)",               IDM_SPLIT
     MENUITEM    SEPARATOR
     MENUITEM    "名称(&N)",                IDM_VNAME
-    MENUITEM    "文件的全部详细资料(&A)",    IDM_VDETAILS,   CHECKED
-    MENUITEM    "部分详细资料(&P)...",  IDM_VOTHER
+    MENUITEM    "文件的全部详细信息(&A)",    IDM_VDETAILS,   CHECKED
+    MENUITEM    "部分详细信息(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
     MENUITEM "按名称排序(&S)",   IDM_BYNAME
     MENUITEM "按类型排序(&B)",   IDM_BYTYPE
@@ -84,15 +84,15 @@ BEGIN
     MENUITEM    "确认(&C)...",     IDM_CONFIRM
     MENUITEM    "字体(&F)...",             IDM_FONT
     MENUITEM    "自定义工具栏(&B)...", IDM_TOOLBARCUST
-    MENUITEM    "Additional &Preferences", IDM_PREF
+    MENUITEM    "首选项(&P)", IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "工具栏(&T)",                 IDM_TOOLBAR
     MENUITEM    "驱动器栏(&D)",                IDM_DRIVEBAR
     MENUITEM    "状态栏(&S)",              IDM_STATUSBAR
     MENUITEM    SEPARATOR
     MENUITEM    "自动缩成图标(&M)",     IDM_MINONRUN
-    MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
-    MENUITEM    "退出时保存设置(&E)",   IDM_SAVESETTINGS
+    MENUITEM    "在启动时创建“转到目录“索引(&G)", IDM_INDEXONLAUNCH
+    MENUITEM    "退出时保存设置值(&E)",   IDM_SAVESETTINGS
 #ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Save Settings &Now",       IDM_SAVENOW
@@ -108,9 +108,9 @@ BEGIN
     BEGIN
     MENUITEM    "新建窗口(&N)",          IDM_NEWWINDOW
     MENUITEM    "层叠(&C)\tShift+F5",   IDM_CASCADE
-    MENUITEM    "横向平铺(&H)",   IDM_TILEHORIZONTALLY
+    MENUITEM    "水平平铺(&H)",   IDM_TILEHORIZONTALLY
     MENUITEM    "垂直平铺(&T)\tShift+F4",      IDM_TILE
-    MENUITEM    "重排图标(&A)",       IDM_ARRANGE
+    MENUITEM    "排列图标(&A)",       IDM_ARRANGE
     MENUITEM    "刷新(&R)\tF5",         IDM_REFRESH
     END
     POPUP       "帮助(&H)"
@@ -193,7 +193,7 @@ BEGIN
     IDS_LABELDISKERR        "文件管理器无法为软盘命名。\n\n请确认软盘未作写保护、并非网络驱动器，而且输入正确的名称。\n名称不可包含下列字符: \n[空格] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
 	IDS_SEARCHNOMATCHES     "未找到匹配的文件。"
-    IDS_SEARCHREFRESH       "这个驱动器的内容已有变化。您想更新「搜索结果」窗口吗？"
+    IDS_SEARCHREFRESH       "这个驱动器的内容已有变化。您想更新“搜索结果“窗口吗？"
     IDS_LABELACCESSDENIED   "您必须以管理员身份登录此工作站，以便在硬盘上运行此项操作。"
 
     IDS_DRIVETEMP           "驱动器 %c:%c"
@@ -206,7 +206,7 @@ BEGIN
     IDS_FILENOTFOUNDMSG,    "文件管理器无法找到文件（或其组件）。\n\n请确定路径和文件名都是正确的，且所有必要的库都是可用的。"
     IDS_BADPATHMSG,         "指定的路径无效。"                                                                                           /* 128 */
 //    IDS_MANYOPENFILESMSG,   "Too many files are currently in use.\n\nQuit one or more applications or increase the value of the FILES command in CONFIG.SYS, and then try again."                                    /* 128 */
-    IDS_NOASSOCMSG,         "没有应用程序与此文件关联。\n\n请从「文件」菜单中选择「关联」以创建关联。"       /* 128 */
+    IDS_NOASSOCMSG,         "没有应用程序与此文件关联。\n\n请从“文件“菜单中选择“关联“以创建关联。"       /* 128 */
     IDS_ASSOCINCOMPLETE,    "文件管理器无法打开或打印文件。\n\n请启动用以创建此文件的应用程序，并打开或打印该文件。"
 //    IDS_MULTIPLEDSMSG,      "Cannot start more than one copy of the specified program."                                                                /* 128 */
 //    IDS_OS2APPMSG           "The specified application is not a Windows or MS-DOS program."                                                            /* 128 */
@@ -217,7 +217,7 @@ BEGIN
     IDS_INVALIDDLL          "运行这个应用程序所需的库文件之一被毁。请重新安装这个应用程序。"
     IDS_SHAREERROR          "此文件正被其它应用程序使用。"
 
-    IDS_CREATELONGDIR       "文件管理器无法访问在「%s」目录中所创建的文件。\n\n是否继续？"
+    IDS_CREATELONGDIR       "文件管理器无法访问在“%s“目录中所创建的文件。\n\n是否继续？"
     IDS_CREATELONGDIRTITLE  "创建目录"
 
     IDS_MOUSECONFIRM,       "确认鼠标操作"       /* 32 */
@@ -322,6 +322,7 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "文件管理器当前正在格式化软盘。退出文件管理器将会中断此项操作。"
     IDS_BUSYCOPYQUITVERIFY      "文件管理器当前正在复制软盘。退出文件管理器将会中断此项操作。"
     IDS_PERCENTCOMPLETE         "完成百分比"
+    IDS_FORMATSELECTDLGTITLE    "Format Drive"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
@@ -378,14 +379,14 @@ JAPANEND
     IDS_ANDCLOSE                "关闭(&C)"        // goes on Selection dialog
     IDS_CLOSE                   "关闭"         // braindead "&Change"
     IDS_PATHNOTTHERE            "%s 目录并不存在。\n\n是否创建该目录？"
-    IDS_PROGRAMS                "程序#*.exe;*.pif;*.com;*.bat#所有文件 (*.*)#*.*#"
+    IDS_PROGRAMS                "程序 (*.exe;*.pif;*.com;*.bat)#*.exe;*.pif;*.com;*.bat#所有文件 (*.*)#*.*#"
 
     IDS_MENUANDITEM             "%s - %s"
     IDS_DRIVELABEL              "驱动器:"
     IDS_STATUSMSGSINGLE         "%s, "
 
-    IDS_CONNECTHELP             "连接网络驱动器"
-    IDS_DISCONHELP              "断开网络驱动器连接"
+    IDS_CONNECTHELP             "连接到网络驱动器"
+    IDS_DISCONHELP              "断开网络驱动器"
     IDS_CONNECTIONHELP          "网络连接"
     IDS_SHAREASHELP             "共享目录"
     IDS_STOPSHAREHELP           "停止共享目录"
@@ -434,7 +435,7 @@ JAPANEND
 
     IDS_ASSOCIATE               "浏览"
     IDS_RUN                     "运行"
-    IDS_WINHELPERR              "不能显示「帮助」信息。"
+    IDS_WINHELPERR              "不能显示“帮助“信息。"
     IDS_NOEXEASSOC              "有扩展名 %s 的文件是程序，不能与另一个应用程序相关联。"
     IDS_ASSOCNOTEXE             "%s 不是一个程序，不能与一个文件扩展名相关联。"
     IDS_ASSOCNONE               "(无)"
@@ -457,13 +458,13 @@ JAPANEND
     IDS_BADNETNAMETITLE         "无法连接网络驱动器"
     IDS_BADNETNAME              "找不到该网络名称。"
 
-    IDS_ALLFILES                "「全部确定」会作用到所有文件，包括系统、隐藏和\n只读文件。"
+    IDS_ALLFILES                "“全部确定“会作用到所有文件，包括系统、隐藏和\n只读文件。"
 
     IDS_ASSOC_OPEN              "打开"
     IDS_ASSOC_PRINT             "打印"
 
     IDS_ADDEXTTITLE             "加入扩展名"
-    IDS_ADDEXTTEXT              "「%s」扩展名当前关联到「%s」。是否替换原有关联？"
+    IDS_ADDEXTTEXT              "“%s“扩展名当前关联到“%s“。是否替换原有关联？"
 
     IDS_EXTTITLE                "文件关联编辑器"
 
@@ -477,7 +478,7 @@ JAPANEND
     IDS_FILETYPEDUPDESCERROR    "无法根据文件类型产生唯一的标识号。请键入新的文件类型。"
 
     IDS_FILETYPEDELCONFIRMTITLE "删除文件类型"
-    IDS_FILETYPEDELCONFIRMTEXT  "如此将会删除文件类型及所有相关的扩展名。是否确定要删除「%s」？"
+    IDS_FILETYPEDELCONFIRMTEXT  "如此将会删除文件类型及所有相关的扩展名。是否确定要删除“%s“？"
 #ifdef ASSOC
     IDS_FILETYPEDELCONFIRMUSERTEXT "You are deleting a Personal File Type.  It will revert to the Common File Type, and all of its extensions will remain intact.  Are you sure you want to revert '%s'?"
     IDS_FILETYPEUSERIZETEXT     "You are customizing a Common File Type.  File Manager save your changes in a Personalized File Type.  Continue?"
@@ -501,7 +502,7 @@ JAPANEND
     IDS_NTLDRCOMPRESSERR        "%s 文件将不被压缩。如果压缩这个文件，系统可能无法启动。"
     IDS_MULTICOMPRESSERR        "文件管理器当前正在压缩或解压缩文件。/n您必须先压缩完所有的文件，才能再压缩其它的文件。"
 
-    IDS_EDITFILTER              "Programs (*.exe)\0*.exe\0"
+    IDS_EDITFILTER              "程序 (*.exe)\0*.exe\0"
 
 END
 #undef SUGGEST
@@ -510,14 +511,14 @@ END
  */
 STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
 BEGIN
-    MH_POPUP+IDM_FILE,          "对文件进行操作的命令"
-    MH_POPUP+IDM_DISK,          "用于对磁盘进行操作的命令"
-    MH_POPUP+IDM_TREE,          "用于在目录树窗口里进行操作的命令"
-    MH_POPUP+IDM_VIEW,          "用于决定怎样显示信息的命令"
-    MH_POPUP+IDM_OPTIONS,       "用于设置选项的命令"
+    MH_POPUP+IDM_FILE,          "控制文件的命令"
+    MH_POPUP+IDM_DISK,          "控制磁盘的命令"
+    MH_POPUP+IDM_TREE,          "控制目录窗口的命令"
+    MH_POPUP+IDM_VIEW,          "决定信息显示方式的命令"
+    MH_POPUP+IDM_OPTIONS,       "设置选项的命令"
     MH_POPUP+IDM_SECURITY,      "控制文件和目录安全的命令"
-    MH_POPUP+IDM_WINDOW,        "用于安排窗口的命令"
-    MH_POPUP+IDM_HELP,          "用于显示文件管理器帮助的命令"
+    MH_POPUP+IDM_WINDOW,        "安排窗口的命令"
+    MH_POPUP+IDM_HELP,          "显示“文件管理器帮助“的命令"
 END
 
 
@@ -526,32 +527,32 @@ END
 STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
 BEGIN
     MH_MYITEMS+IDM_OPEN,        "打开所选项目"
-    MH_MYITEMS+IDM_EDIT,        "Edits selected item using notepad.exe"
-    MH_MYITEMS+IDM_MOVE,        "移动所选项目"
-    MH_MYITEMS+IDM_COPY,        "复制文件和目录"
+    MH_MYITEMS+IDM_EDIT,        "使用记事本编辑所选项目"
+    MH_MYITEMS+IDM_MOVE,        "移动所选的项目"
+    MH_MYITEMS+IDM_COPY,        "复制文件及目录"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "复制文件到剪贴板"
-	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "Cuts one or more files to the clipboard"
-    MH_MYITEMS+IDM_PASTE,		"Paste file from clipboard to current directory"
+	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "剪切一个或多个文件到剪贴板"
+    MH_MYITEMS+IDM_PASTE,		"粘贴剪切板中的文件到当前目录"
     MH_MYITEMS+IDM_COMPRESS,    "压缩文件或目录"
     MH_MYITEMS+IDM_UNCOMPRESS,  "解压缩文件或目录"
-    MH_MYITEMS+IDM_DELETE,      "删除文件和目录"
-    MH_MYITEMS+IDM_RENAME,      "重命名一个文件或目录"
-    MH_MYITEMS+IDM_ATTRIBS,     "设置文件及显示属性"
+    MH_MYITEMS+IDM_DELETE,      "删除文件及目录"
+    MH_MYITEMS+IDM_RENAME,      "重命名文件或目录"
+    MH_MYITEMS+IDM_ATTRIBS,     "设置文件属性及显示属性"
     MH_MYITEMS+IDM_UNDELETE,    "检索先前删除的文件"
-    MH_MYITEMS+IDM_RUN, "启动或打开一个应用程序或文档"
-    MH_MYITEMS+IDM_PRINT,       "打印一份文档"
-    MH_MYITEMS+IDM_ASSOCIATE,   "将一份文件与一个应用程序相关联"
+    MH_MYITEMS+IDM_RUN, "启动或打开应用程序或文档"
+    MH_MYITEMS+IDM_PRINT,       "打印文档"
+    MH_MYITEMS+IDM_ASSOCIATE,   "将文件与应用程序产生关联"
     MH_MYITEMS+IDM_MAKEDIR,     "创建目录"
-    MH_MYITEMS+IDM_SEARCH,      "搜索文件和目录"
-    MH_MYITEMS+IDM_SELECT,      "选择文件和目录"
+    MH_MYITEMS+IDM_SEARCH,      "搜索文件及目录"
+    MH_MYITEMS+IDM_SELECT,      "选择文件及目录"
     MH_MYITEMS+IDM_EXIT,        "退出文件管理器"
 
-    MH_MYITEMS+IDM_DISKCOPY,    "复制一个软盘的内容"
+    MH_MYITEMS+IDM_DISKCOPY,    "复制软盘的内容"
     MH_MYITEMS+IDM_LABEL,       "指定或改变磁盘的卷标"
     MH_MYITEMS+IDM_FORMAT,      "格式化软盘"
 //    MH_MYITEMS+IDM_SYSDISK,     "Copies MS-DOS files to a floppy disk"
-    MH_MYITEMS+IDM_CONNECT,     "映射网络驱动器"
-    MH_MYITEMS+IDM_DISCONNECT,  "断开网络驱动器的连接"
+    MH_MYITEMS+IDM_CONNECT,     "连接到网络驱动器"
+    MH_MYITEMS+IDM_DISCONNECT,  "断开网络驱动器"
 //    MH_MYITEMS+IDM_CONNECTIONS,       "Network Connections..."
 //    MH_MYITEMS+IDM_SHARES,    "View Shared Directories..."
     MH_MYITEMS+IDM_SHAREAS,     "共享一个目录"
@@ -559,10 +560,10 @@ BEGIN
 
     MH_MYITEMS+IDM_DRIVESMORE,  "选择一个不同的驱动器"
 
-    MH_MYITEMS+IDM_EXPONE,      "显示一个目录的另一级"
-    MH_MYITEMS+IDM_EXPSUB,      "显示一个目录的全部级别"
-    MH_MYITEMS+IDM_EXPALL,      "显示全部目录的全部级别"
-    MH_MYITEMS+IDM_COLLAPSE,    "折叠一个所选目录的全部目录"
+    MH_MYITEMS+IDM_EXPONE,      "显示目录的另一级"
+    MH_MYITEMS+IDM_EXPSUB,      "显示目录的所有子目录"
+    MH_MYITEMS+IDM_EXPALL,      "显示所有目录的全部子目录"
+    MH_MYITEMS+IDM_COLLAPSE,    "折叠所选目录的全部目录"
     MH_MYITEMS+IDM_ADDPLUSES,   "指出有子目录的目录"
 
     MH_MYITEMS+IDM_BOTH,        "显示目录树及当前目录的内容"
@@ -576,24 +577,24 @@ BEGIN
     MH_MYITEMS+IDM_BYTYPE,      "按类型排列文件"
     MH_MYITEMS+IDM_BYSIZE,      "按大小排列文件"
     MH_MYITEMS+IDM_BYDATE,      "按日期排列文件"
-    MH_MYITEMS+IDM_BYFDATE,     "Sorts files by forward date"
-    MH_MYITEMS+IDM_VINCLUDE,    "显示一个指定类型的文件"
+    MH_MYITEMS+IDM_BYFDATE,     "按先前日期排列文件"
+    MH_MYITEMS+IDM_VINCLUDE,    "显示指定类型的文件"
 
     MH_MYITEMS+IDM_CONFIRM,     "控制确认信息"
-    MH_MYITEMS+IDM_FONT,        "改变文件管理器字体"
+    MH_MYITEMS+IDM_FONT,        "更改文件管理器的字体"
 
     MH_MYITEMS+IDM_TOOLBARCUST, "自定义工具栏"
     MH_MYITEMS+IDM_TOOLBAR,     "显示或隐藏工具栏"
-    MH_MYITEMS+IDM_DRIVEBAR,    "显示或隐藏驱动器显示"
+    MH_MYITEMS+IDM_DRIVEBAR,    "显示或隐藏驱动器栏"
     MH_MYITEMS+IDM_STATUSBAR,   "显示或隐藏状态栏"
-    MH_MYITEMS+IDM_NEWWINONCONNECT,     "在您连接时打开一个新窗口"
+    MH_MYITEMS+IDM_NEWWINONCONNECT,     "连接时打开新建的窗口"
 
-    MH_MYITEMS+IDM_MINONRUN,    "在启动时将文件管理器缩成一个图标"
-    MH_MYITEMS + IDM_INDEXONLAUNCH, "Creates an index for Goto Directory when File Manager launches"
-    MH_MYITEMS+IDM_SAVESETTINGS,        "在您退出文件管理器时保存设置"
+    MH_MYITEMS+IDM_MINONRUN,    "启动时将文件管理器缩成一个图标"
+    MH_MYITEMS + IDM_INDEXONLAUNCH, "在文件管理器启动时为“转到目录“创建索引"
+    MH_MYITEMS+IDM_SAVESETTINGS,        "退出文件管理器时保存设置"
 
-    MH_MYITEMS+IDM_NEWWINDOW,   "打开一个新窗口"
-    MH_MYITEMS+IDM_CASCADE,     "重叠显示窗口"
+    MH_MYITEMS+IDM_NEWWINDOW,   "打开新建窗口"
+    MH_MYITEMS+IDM_CASCADE,     "层叠显示窗口"
     MH_MYITEMS+IDM_TILEHORIZONTALLY,    "水平平铺窗口"
     MH_MYITEMS+IDM_TILE,        "垂直平铺窗口"
     MH_MYITEMS+IDM_ARRANGE,     "排列图标"
@@ -603,9 +604,9 @@ BEGIN
     MH_MYITEMS+IDM_AUDITING     "查看或设置指定项目的审核信息"
     MH_MYITEMS+IDM_OWNER        "查看或取得指定项目的所有权"
 
-    MH_MYITEMS+IDM_HELPINDEX,   "显示文件管理器的帮助内容"
-    MH_MYITEMS+IDM_HELPKEYS,    "在「文件管理器帮助」里搜索一个主题"
-    MH_MYITEMS+IDM_HELPHELP,    "显示关于使用「帮助」的信息"
+    MH_MYITEMS+IDM_HELPINDEX,   "显示文件管理器的“帮助”内容"
+    MH_MYITEMS+IDM_HELPKEYS,    "在“文件管理器帮助“里搜索一个主题"
+    MH_MYITEMS+IDM_HELPHELP,    "显示关于使用“帮助“的信息"
     MH_MYITEMS+IDM_ABOUT,       "显示关于文件管理器的信息"
 END
 
@@ -615,7 +616,7 @@ END
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
     IDS_CONNECT,                "映射网络驱动器(&N)..."
-    IDS_DISCONNECT,             "断开网络驱动器的连接(&C)..."
+    IDS_DISCONNECT,             "断开网络驱动器(&D)..."
     IDS_CONNECTIONS,            "网络连接(&N)..."
     IDS_SHAREDDIR               "共享目录(&H)..."
     IDS_SHAREAS,                "共享为(&A)..."

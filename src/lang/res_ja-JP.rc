@@ -7,7 +7,7 @@
 
 ********************************************************************/
 
-LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+LANGUAGE LANG_JAPANESE, SUBLANG_JAPANESE_JAPAN
 
 FRAMEMENU MENU PRELOAD
 BEGIN
@@ -322,6 +322,7 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "現在ファイル マネージャーはフロッピー ディスクをフォーマットしています。ファイル マネージャーを終了すると、この操作が中断されます。"
     IDS_BUSYCOPYQUITVERIFY      "現在ファイル マネージャーはフロッピー ディスクをコピーしています。ファイル マネージャーを終了すると、この操作が中断されます。"
     IDS_PERCENTCOMPLETE         "完了の割合"
+    IDS_FORMATSELECTDLGTITLE    "Format Drive"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"

@@ -12,10 +12,13 @@
 #include "winfile.h"
 #include "lfn.h"
 #include "wfcopy.h"
+#include <shlobj.h>
 
 #define LABEL_NTFS_MAX 32
 #define LABEL_FAT_MAX  11
 #define CCH_VERSION    40
+#define CCH_DRIVE       3
+#define CCH_DLG_TITLE  16
 
 VOID FormatDrive( IN PVOID ThreadParameter );
 VOID CopyDiskette( IN PVOID ThreadParameter );
@@ -725,6 +728,93 @@ DoHelp:
          return FALSE;
    }
   return TRUE;
+}
+
+/*----------------------------------------------------------------------------*/
+/*                                                                            */
+/*  FormatSelectDlgProc() -  DialogProc callback function for FORMATSELECTDLG */
+/*                                                                            */
+/*----------------------------------------------------------------------------*/
+
+INT_PTR
+FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+{
+    HWND  hwndSelectDrive;
+    INT   driveIndex;
+    INT   comboxIndex;
+    DRIVE drive;
+    DWORD dwFormatResult;
+    TCHAR szDrive[CCH_DRIVE] = { 0 };
+    TCHAR szDlgTitle[CCH_DLG_TITLE] = { 0 };
+
+    switch (wMsg)
+    {
+    case WM_INITDIALOG:
+        {
+            // Build the list of drives that can be selected for formatting.
+            // Do not include remote drives or CD/DVD drives.
+            szDrive[1] = ':';
+            hwndSelectDrive = GetDlgItem(hDlg, IDD_SELECTDRIVE);
+            if (hwndSelectDrive)
+            {
+                for (driveIndex = 0; driveIndex < cDrives; driveIndex++)
+                {
+                    drive = rgiDrive[driveIndex];
+                    if (!IsRemoteDrive(drive) && !IsCDRomDrive(drive))
+                    {
+                        // Set the drive letter as the string and the drive index as the data.
+                        DRIVESET(szDrive, drive);
+                        comboxIndex = SendMessage(hwndSelectDrive, CB_ADDSTRING, 0, (LPARAM)szDrive);
+                        SendMessage(hwndSelectDrive, CB_SETITEMDATA, comboxIndex, (LPARAM)drive);
+                    }
+                }
+
+                SendMessage(hwndSelectDrive, CB_SETCURSEL, 0, 0);
+            }
+
+            return TRUE;
+        }
+    case WM_COMMAND:
+        switch (GET_WM_COMMAND_ID(wParam, lParam))
+        {
+        case IDOK:
+            {
+                // Hide this dialog window while the SHFormatDrive dialog is displayed.
+                // SHFormatDrive needs a parent window, and this dialog will serve as
+                // that parent, even if it is hidden.
+                ShowWindow(hDlg, SW_HIDE);
+
+                // Retrieve the selected drive index and call SHFormatDrive with it.
+                comboxIndex = (INT)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETCURSEL, 0, 0);
+                drive = (DRIVE)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETITEMDATA, comboxIndex, 0);
+                dwFormatResult = SHFormatDrive(hDlg, drive, SHFMT_ID_DEFAULT, 0);
+
+                // If the format results in an error, show FORMATSELECTDLG again so
+                // the user can select a different drive if needed, or cancel.
+                // Otherwise, if the format was successful, just close FORMATSELECTDLG.
+                if (dwFormatResult == SHFMT_ERROR || dwFormatResult == SHFMT_CANCEL || dwFormatResult == SHFMT_NOFORMAT)
+                {
+                    // SHFormatDrive sometimes sets the parent window title when it encounters an error.
+                    // We don't want this; set the title back before we show the dialog.
+                    LoadString(hAppInstance, IDS_FORMATSELECTDLGTITLE, szDlgTitle, CCH_DLG_TITLE);
+                    SetWindowText(hDlg, szDlgTitle);
+                    ShowWindow(hDlg, SW_SHOW);
+                }
+                else
+                {
+                    DestroyWindow(hDlg);
+                    hwndFormatSelect = NULL;
+                }
+
+                return TRUE;
+            }
+        case IDCANCEL:
+            DestroyWindow(hDlg);
+            hwndFormatSelect = NULL;
+            return TRUE;
+        }
+    }
+    return FALSE;
 }
 
 /*--------------------------------------------------------------------------*/
@@ -1674,22 +1764,19 @@ LockFormatDisk(DRIVE drive1, DRIVE drive2,
    DWORD dwMessage, DWORD dwCommand, BOOL bLock)
 {
    HMENU hMenu;
-   static DWORD adwCommands[] = {
-      IDM_DISKCOPY,
-      IDM_FORMAT,
-      0
-   };
 
-   INT i=0;
-
-   // Gray out disk:{format,copy}
+   // Gray out menu item dwCommand
    hMenu = GetMenu(hwndFrame);
 
-   while (adwCommands[i]) {
-      if (dwCommand != adwCommands[i])
-         EnableMenuItem( hMenu, dwCommand ,
-         bLock ? MF_BYCOMMAND | MF_GRAYED : MF_BYCOMMAND | MF_ENABLED );
-      i++;
+   // Special case for IDM_FORMAT, as it no longer invokes FormatDiskette,
+   // it can be safely left enabled even when copying diskettes.
+   // This change is made here rather than removing the calls to
+   // LockFormatDisk with IDM_FORMAT since LockFormatDisk also
+   // changes the state of aDriveInfo.
+   if (dwCommand != IDM_FORMAT)
+   {
+       EnableMenuItem(hMenu, dwCommand,
+           bLock ? MF_BYCOMMAND | MF_GRAYED : MF_BYCOMMAND | MF_ENABLED);
    }
 
    //

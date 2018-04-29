@@ -1311,6 +1311,9 @@ bDialogMessage(PMSG pMsg)
       !CancelInfo.bModal &&
       IsDialogMessage(CancelInfo.hCancelDlg, pMsg)) ||
 
+      (hwndFormatSelect &&
+      IsDialogMessage(hwndFormatSelect, pMsg)) ||
+
       (SearchInfo.hSearchDlg &&
       IsDialogMessage(SearchInfo.hSearchDlg, pMsg)))
 
