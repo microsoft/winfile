@@ -223,6 +223,7 @@
     <ClInclude Include="wfmem.h" />
     <ClInclude Include="winexp.h" />
     <ClInclude Include="winfile.h" />
+    <ClInclude Include="winfile_internals.h" />
     <ClInclude Include="wnetcaps.h" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +289,7 @@
     <ClCompile Include="wftree.c" />
     <ClCompile Include="wfutil.c" />
     <ClCompile Include="winfile.c" />
+    <ClCompile Include="winfile_internals.c" />
     <ClCompile Include="wnetcaps.c" />
   </ItemGroup>
   <ItemGroup>
