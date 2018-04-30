@@ -130,7 +130,7 @@
       <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_X86_;_M_IX86;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;WINVER=0x0400;_WIN32_WINNT=0x601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_X86_;_M_IX86;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;WINVER=0x0601;_WIN32_WINNT=0x601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
