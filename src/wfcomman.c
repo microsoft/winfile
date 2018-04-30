@@ -601,7 +601,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
    DWORD ret;
    HCURSOR hCursor;
 
-   WCHAR szPath[MAXPATHLEN];
+   WCHAR szPath[MAXPATHLEN+2];  // +2 for quotes if needed
 
    HWND hwndTree, hwndDir, hwndFocus;
 
@@ -648,7 +648,8 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
    if (!p)
       goto OpenExit;
 
-   if (!GetNextFile(p, szPath, COUNTOF(szPath)) || !szPath[0])
+   // less 2 characters in case we need to add quotes below
+   if (!GetNextFile(p, szPath, COUNTOF(szPath)-2) || !szPath[0])
       goto OpenFreeExit;
 
    if (bDir) {
@@ -691,7 +692,6 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
       //
       if (fEdit)
       {
-
           TCHAR szEditPath[MAX_PATH];
           TCHAR szNotepad[MAX_PATH];
 
@@ -702,6 +702,8 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
               lstrcpy(szNotepad, TEXT("notepad.exe"));
 
           GetPrivateProfileString(szSettings, szEditorPath, szNotepad, szEditPath, MAX_PATH, szTheINIFile);
+
+          CheckEsc(szPath);     // add quotes if necessary; reserved space for them above
 
           if(wcslen(szEditPath))
              ret = ExecProgram(szEditPath, szPath, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
