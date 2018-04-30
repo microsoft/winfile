@@ -965,7 +965,7 @@ InitFileManager(
        LCID lcidUI = LocaleNameToLCID(szTemp, 0);
        if (lcidUI != 0)
        {
-           SetThreadUILanguage(lcidUI);
+           SetThreadUILanguage((LANGID)lcidUI);
 
            // update to current local used for dispaly
            SetThreadLocale(lcidUI);
