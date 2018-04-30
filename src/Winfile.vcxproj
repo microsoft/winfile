@@ -246,14 +246,17 @@
     <None Include="lang\res_en-US.rc" />
     <None Include="lang\res_zh-CN.rc" />
     <None Include="lang\res_ja-JP.rc" />
+    <None Include="lang\res_he-IL.rc" />
     <None Include="lang\suggest_en-US.db" />
     <None Include="lang\suggest_pl-PL.db" />
     <None Include="lang\suggest_zh-CN.db" />
     <None Include="lang\suggest_ja-JP.db" />
+    <None Include="lang\suggest_he-IL.db" />
     <None Include="lang\winfile_en-US.dlg" />
     <None Include="lang\winfile_pl-PL.dlg" />
     <None Include="lang\winfile_zh-CN.dlg" />
     <None Include="lang\winfile_ja-JP.dlg" />
+    <None Include="lang\winfile_he-IL.dlg" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbg.c" />
