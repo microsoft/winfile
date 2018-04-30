@@ -102,6 +102,7 @@
     </None>
     <None Include="lang\res_pl-PL.rc">
       <Filter>lang</Filter>
+    </None>
     <None Include="lang\suggest_he-IL.db">
       <Filter>lang</Filter>
     </None>
@@ -110,7 +111,6 @@
     </None>
     <None Include="lang\res_he-IL.rc">
       <Filter>lang</Filter>
-    </None>
     </None>
   </ItemGroup>
   <ItemGroup>
