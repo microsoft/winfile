@@ -219,6 +219,7 @@ GetSettings()
    wTextAttribs         = (WORD)GetPrivateProfileInt(szSettings, szLowerCase,     wTextAttribs,         szTheINIFile);
    bStatusBar           = GetPrivateProfileInt(szSettings, szStatusBar,           bStatusBar,           szTheINIFile);
    bDisableVisualStyles = GetPrivateProfileInt(szSettings, szDisableVisualStyles, bDisableVisualStyles, szTheINIFile);
+   bDisableMirroring    = GetPrivateProfileInt(szSettings, szDisableMirroring,    bDisableMirroring,    szTheINIFile);
 
    bDriveBar       = GetPrivateProfileInt(szSettings, szDriveBar,      bDriveBar,      szTheINIFile);
    bToolbar        = GetPrivateProfileInt(szSettings, szToolbar,       bToolbar,       szTheINIFile);
@@ -1023,6 +1024,8 @@ JAPANEND
    // Read WINFILE.INI and set the appropriate variables.
    //
    GetSettings();
+
+   MirrorUI();
 
    dyBorder = GetSystemMetrics(SM_CYBORDER);
    dyBorderx2 = dyBorder * 2;

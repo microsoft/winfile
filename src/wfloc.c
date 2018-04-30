@@ -55,3 +55,26 @@ VOID SaveLang(HWND hCBox)
 
     WritePrivateProfileString(szSettings, szUILanguage, szLCIDs[iIndex], szTheINIFile);
 }
+
+VOID MirrorUI(VOID)
+{
+    switch (PRIMARYLANGID(LANGIDFROMLCID(lcid)))
+    {
+        /* Additional Languages can be added */
+        case LANG_HEBREW:
+            if (!bDisableMirroring)
+                SetProcessDefaultLayout(LAYOUT_RTL);
+            break;
+        default:
+            break;
+    }
+}
+
+VOID MirrorHDC(HDC hdc)
+{
+    DWORD dwLayout;
+    GetProcessDefaultLayout(&dwLayout);
+
+    if (dwLayout == LAYOUT_RTL) 
+        SetLayout(hdc, LAYOUT_RTL | LAYOUT_BITMAPORIENTATIONPRESERVED);
+}

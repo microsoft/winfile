@@ -829,6 +829,7 @@ BEGIN
    CONTROL "...", IDC_EDITOR, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 195, 14, 20, 14
    CONTROL "Disable toolbar visual styling", IDC_VSTYLE, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 38, 119, 14
    CONTROL "Create &Goto Index on Launch", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 119, 14
+// CONTROL "Disable application layout mirroring", IDC_MIRR, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 119, 14 //Should be only used on RTL locales 
    CONTROL "Language:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
    CONTROL "Please note that some changes will only activate \nupon reopening the program.",
