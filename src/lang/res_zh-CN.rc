@@ -322,7 +322,7 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "文件管理器当前正在格式化软盘。退出文件管理器将会中断此项操作。"
     IDS_BUSYCOPYQUITVERIFY      "文件管理器当前正在复制软盘。退出文件管理器将会中断此项操作。"
     IDS_PERCENTCOMPLETE         "完成百分比"
-    IDS_FORMATSELECTDLGTITLE    "Format Drive"
+    IDS_FORMATSELECTDLGTITLE    "格式化磁盘"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
@@ -549,7 +549,7 @@ BEGIN
 
     MH_MYITEMS+IDM_DISKCOPY,    "复制软盘的内容"
     MH_MYITEMS+IDM_LABEL,       "指定或改变磁盘的卷标"
-    MH_MYITEMS+IDM_FORMAT,      "格式化软盘"
+    MH_MYITEMS+IDM_FORMAT,      "格式化磁盘"
 //    MH_MYITEMS+IDM_SYSDISK,     "Copies MS-DOS files to a floppy disk"
     MH_MYITEMS+IDM_CONNECT,     "连接到网络驱动器"
     MH_MYITEMS+IDM_DISCONNECT,  "断开网络驱动器"
