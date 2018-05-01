@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<SignConfigXML>
+ <job platform="x86" certSubject="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" configuration="Release" dest="__OUTPATHROOT__\Release\signed" jobname="Sign WinFile x86" approvers="">
+   <file src="__INPATHROOT__\Release\winfile.exe" signType="135020002" dest="__OUTPATHROOT__\Release\signed\winfile.exe" />
+ </job>
+ <job platform="x64" certSubject="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" configuration="Release" dest="__OUTPATHROOT__\x64\Release\signed" jobname="Sign WinFile x64" approvers="">
+   <file src="__INPATHROOT__\x64\Release\winfile.exe" signType="135020002" dest="__OUTPATHROOT__\x64\Release\signed\winfile.exe" />
+ </job>
+</SignConfigXML>
