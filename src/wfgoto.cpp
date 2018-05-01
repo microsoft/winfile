@@ -19,11 +19,19 @@ extern "C"
 #include "lfn.h"
 }
 
-void BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, LPTSTR szRoot, PDNODE pNode);
-void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov);
+// Explicitly instantiate what we use in here
+template class std::vector<PDNODE>;
+namespace winfile {
+	template class BagOValues<PDNODE>;
+}
+
+using namespace std;
+
+void BuildDirectoryBagOValues(winfile::BagOValues<PDNODE> *pbov, LPTSTR szRoot, PDNODE pNode);
+void FreeDirectoryBagOValues(winfile::BagOValues<PDNODE> *pbov);
 
 DWORD g_driveScanEpoc;				// incremented when a refresh is requested; old bags are discarded; scans are aborted if epoc changes
-BagOValues<PDNODE> *g_pBagOCDrive;	// holds the values from the scan per g_driveScanEpoc
+winfile::BagOValues<PDNODE> *g_pBagOCDrive;	// holds the values from the scan per g_driveScanEpoc
 vector<PDNODE> *g_allNodes;			// holds the nodes we created to make freeing them simpler (e.g., because some are reused)
 
 // compare path starting at the root; returns:
@@ -279,20 +287,20 @@ vector<wstring> SplitIntoWords(LPCTSTR szText)
 	return words;
 }
 
-void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes)
+void FreeDirectoryBagOValues(winfile::BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes)
 {
-	// free all PDNODE in BagOValues
+	// free all PDNODE in winfile::BagOValues
 	for (PDNODE p : *pNodes)
 	{
 		LocalFree(p);
 	}
 
-	// free that vector and the BagOValues itself
+	// free that vector and the winfile::BagOValues itself
 	delete pNodes;
 	delete pbov;
 }
 
-BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, LPCTSTR szRoot, PDNODE pNodeParent, DWORD scanEpoc)
+BOOL BuildDirectoryBagOValues(winfile::BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, LPCTSTR szRoot, PDNODE pNodeParent, DWORD scanEpoc)
 {
 	LFNDTA lfndta;
 	WCHAR szPath[MAXPATHLEN];
@@ -343,7 +351,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 			return FALSE;
 		}
 
-		// for all directories at this level, insert into BagOValues
+		// for all directories at this level, insert into winfile::BagOValues
 
 		if ((lfndta.fd.dwFileAttributes & ATTR_DIR) == 0 || ISDOTDIR(lfndta.fd.cFileName))
 		{
@@ -648,7 +656,7 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 {
 	DWORD scanEpocNew = InterlockedIncrement(&g_driveScanEpoc);
 
-	BagOValues<PDNODE> *pBagNew = new BagOValues<PDNODE>();
+	winfile::BagOValues<PDNODE> *pBagNew = new winfile::BagOValues<PDNODE>();
 	vector<PDNODE> *pNodes = new vector<PDNODE>();
 
 	SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
@@ -657,7 +665,7 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 	{
 		pBagNew->Sort();
 
-		pBagNew = (BagOValues<PDNODE> *)InterlockedExchangePointer((PVOID *)&g_pBagOCDrive, pBagNew);
+		pBagNew = (winfile::BagOValues<PDNODE> *)InterlockedExchangePointer((PVOID *)&g_pBagOCDrive, pBagNew);
 		pNodes = (vector<PDNODE> *)InterlockedExchangePointer((PVOID *)&g_allNodes, pNodes);
 	}
 
