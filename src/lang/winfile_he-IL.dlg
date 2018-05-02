@@ -864,7 +864,7 @@ BEGIN
    CONTROL "...", IDC_EDITOR, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 201, 14, 20, 14
    CONTROL "הפסק סגנון ויזואלי על סרגל הכלים", IDC_VSTYLE, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 38, 180, 14
    CONTROL "צור מפתח מעבר תיקיות בעת הפעלה", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 180, 14
-   CONTROL "מנע יישור ממשק המשתמש מימין לשמאל", IDC_MIRR, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 62, 180, 14
+   CONTROL "מנע יישור ממשק המשתמש מימין לשמאל", IDC_DIR, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 62, 180, 14
    CONTROL "שפה:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 82, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 80, 150, 14
    CONTROL "נא לשים לב ששינוים מסוימים יהיו פעילים\nרק אחרי פתיחה מחדש של התכנית.",

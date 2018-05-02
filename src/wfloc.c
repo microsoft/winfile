@@ -62,10 +62,12 @@ VOID MirrorUI(VOID)
     {
         /* Additional Languages can be added */
         case LANG_HEBREW:
-            if (!bDisableMirroring)
+            if (!bToggleDir)
                 SetProcessDefaultLayout(LAYOUT_RTL);
             break;
         default:
+            if (bToggleDir)
+                SetProcessDefaultLayout(LAYOUT_RTL);
             break;
     }
 }

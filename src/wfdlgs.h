@@ -163,7 +163,7 @@
 #define IDC_VSTYLE          276
 #define IDC_LANGCB          277
 #define IDC_GOTO            278
-#define IDC_MIRR            280
+#define IDC_DIR            280
 
 #define IDD_ENCRYPTED       279
 

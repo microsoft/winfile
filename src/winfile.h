@@ -1142,7 +1142,7 @@ Extern BOOL bDriveBar            EQ( TRUE );
 Extern BOOL bToolbar             EQ( TRUE );
 Extern BOOL bNewWinOnConnect     EQ( TRUE );
 Extern BOOL bDisableVisualStyles EQ( FALSE );
-Extern BOOL bDisableMirroring    EQ( FALSE );
+Extern BOOL bToggleDir    EQ( FALSE );
 
 Extern BOOL bExitWindows     EQ( FALSE );
 Extern BOOL bConfirmDelete   EQ( TRUE );

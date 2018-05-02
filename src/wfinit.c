@@ -219,7 +219,7 @@ GetSettings()
    wTextAttribs         = (WORD)GetPrivateProfileInt(szSettings, szLowerCase,     wTextAttribs,         szTheINIFile);
    bStatusBar           = GetPrivateProfileInt(szSettings, szStatusBar,           bStatusBar,           szTheINIFile);
    bDisableVisualStyles = GetPrivateProfileInt(szSettings, szDisableVisualStyles, bDisableVisualStyles, szTheINIFile);
-   bDisableMirroring    = GetPrivateProfileInt(szSettings, szDisableMirroring,    bDisableMirroring,    szTheINIFile);
+   bToggleDir           = GetPrivateProfileInt(szSettings, szDisableMirroring,    bToggleDir,           szTheINIFile);
 
    bDriveBar       = GetPrivateProfileInt(szSettings, szDriveBar,      bDriveBar,      szTheINIFile);
    bToolbar        = GetPrivateProfileInt(szSettings, szToolbar,       bToolbar,       szTheINIFile);

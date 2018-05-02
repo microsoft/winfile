@@ -735,7 +735,7 @@ INT_PTR  PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
             CheckDlgButton(hDlg, IDC_VSTYLE, bDisableVisualStyles);
             CheckDlgButton(hDlg, IDC_GOTO, bIndexOnLaunch);
-            CheckDlgButton(hDlg, IDC_MIRR, bDisableMirroring);
+            CheckDlgButton(hDlg, IDC_DIR, bToggleDir);
             break;
 
         case WM_COMMAND:
@@ -763,11 +763,11 @@ INT_PTR  PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                     bDisableVisualStyles = IsDlgButtonChecked(hDlg, IDC_VSTYLE);
                     bIndexOnLaunch       = IsDlgButtonChecked(hDlg, IDC_GOTO);
-                    bDisableMirroring    = IsDlgButtonChecked(hDlg, IDC_MIRR);
+                    bToggleDir           = IsDlgButtonChecked(hDlg, IDC_DIR);
 
                     WritePrivateProfileBool(szDisableVisualStyles, bDisableVisualStyles);
                     WritePrivateProfileBool(szIndexOnLaunch, bIndexOnLaunch);
-                    WritePrivateProfileBool(szDisableMirroring, bDisableMirroring);
+                    WritePrivateProfileBool(szDisableMirroring, bToggleDir);
 
                     EndDialog(hDlg, TRUE);
                     break;
