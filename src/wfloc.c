@@ -17,6 +17,7 @@ cf. https://msdn.microsoft.com/en-us/library/cc233982.aspx
 LPCTSTR szLCIDs[] = {
     TEXT("zh-CN"),    // Chinese, Simplified
     TEXT("en-US"),    // English, United States
+    TEXT("he-IL"),    // Hebrew, Israel
     TEXT("ja-JP"),    // Japanese, Japan
     TEXT("pl-PL"),    // Polish, Poland
 };

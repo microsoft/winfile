@@ -130,7 +130,7 @@
       <CallingConvention>StdCall</CallingConvention>
     </ClCompile>
     <ResourceCompile>
-      <PreprocessorDefinitions>_X86_;_M_IX86;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;WINVER=0x0400;_WIN32_WINNT=0x601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_X86_;_M_IX86;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;WINVER=0x0601;_WIN32_WINNT=0x601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Link>
@@ -246,14 +246,17 @@
     <None Include="lang\res_en-US.rc" />
     <None Include="lang\res_zh-CN.rc" />
     <None Include="lang\res_ja-JP.rc" />
+    <None Include="lang\res_he-IL.rc" />
     <None Include="lang\suggest_en-US.db" />
     <None Include="lang\suggest_pl-PL.db" />
     <None Include="lang\suggest_zh-CN.db" />
     <None Include="lang\suggest_ja-JP.db" />
+    <None Include="lang\suggest_he-IL.db" />
     <None Include="lang\winfile_en-US.dlg" />
     <None Include="lang\winfile_pl-PL.dlg" />
     <None Include="lang\winfile_zh-CN.dlg" />
     <None Include="lang\winfile_ja-JP.dlg" />
+    <None Include="lang\winfile_he-IL.dlg" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbg.c" />

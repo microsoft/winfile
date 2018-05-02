@@ -1,0 +1,632 @@
+/********************************************************************
+
+   res_he-IL.rc
+
+   Copyright (c) Microsoft Corporation. All rights reserved.
+   Licensed under the MIT License.
+
+********************************************************************/
+
+LANGUAGE LANG_HEBREW, SUBLANG_HEBREW_ISRAEL
+
+FRAMEMENU MENU PRELOAD
+BEGIN
+    POPUP       "&קובץ"
+    BEGIN
+    MENUITEM    "&פתח\tEnter",     IDM_OPEN
+    MENUITEM    "ערוך\tF12",	    IDM_EDIT
+    MENUITEM    "העברה...\tF7",     IDM_MOVE
+    MENUITEM    "ה&עתקה...\tF8",     IDM_COPY
+    MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
+	MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM	"&הדבק\tCtrl+V", 	IDM_PASTE
+    MENUITEM    "&מחיקה...\tDel",  IDM_DELETE
+    MENUITEM    "שינוי שם...\tF2",   IDM_RENAME
+    MENUITEM    "מאפיינים...\tAlt+Enter",IDM_ATTRIBS
+    MENUITEM    SEPARATOR
+    MENUITEM    "&דחיסה...",     IDM_COMPRESS
+    MENUITEM    "&חילוץ...",   IDM_UNCOMPRESS
+    MENUITEM    SEPARATOR
+    MENUITEM    "הפעלה...",          IDM_RUN
+    MENUITEM    "&הדפסה...",        IDM_PRINT
+    MENUITEM    "&שיוך...",    IDM_ASSOCIATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "&יצירת תיקיה...", IDM_MAKEDIR
+    MENUITEM    "&חיפוש...\tCtrl+F",       IDM_SEARCH
+    MENUITEM    "&בחירת קבצים...", IDM_SELECT
+	MENUITEM    "הפעלת Bash Shell...", IDM_STARTBASHSHELL
+	MENUITEM    "הפעלת Cmd Shel&l...", IDM_STARTCMDSHELL
+    MENUITEM    "הפעלת Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM    "עבור לתיקיה...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    SEPARATOR
+    MENUITEM    "י&ציאה",            IDM_EXIT
+    END
+    POPUP       "&דיסק"
+    BEGIN
+    MENUITEM    "ה&עתקת דיסק...",    IDM_DISKCOPY
+    MENUITEM    "&תווית דיסק...",   IDM_LABEL
+    MENUITEM    SEPARATOR
+    MENUITEM    "&איתחול כונן...",  IDM_FORMAT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&בחירת כונן...", IDM_DRIVESMORE
+    END
+    POPUP       "&עץ"
+    BEGIN
+    MENUITEM    "הרחב &רמה אחת\t+", IDM_EXPONE
+    MENUITEM    "הר&חב ענף\t*",    IDM_EXPSUB
+    MENUITEM    "הרחב &הכל\tCtrl+*",  IDM_EXPALL
+    MENUITEM    "כוו&ץ ענף\t-",  IDM_COLLAPSE
+    MENUITEM    SEPARATOR
+    MENUITEM    "&סמן ענפים הניתנים להרחבה",    IDM_ADDPLUSES
+    END
+    POPUP       "&תצוגה"
+    BEGIN
+    MENUITEM    "&עץ וספריה",  IDM_BOTH
+    MENUITEM    "עץ &בלבד",           IDM_TREEONLY
+    MENUITEM    "&ספריה בלבד",      IDM_DIRONLY
+    MENUITEM    SEPARATOR
+    MENUITEM    "&פצל",               IDM_SPLIT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&שם",                IDM_VNAME
+    MENUITEM    "&כל נתוני הקובץ",    IDM_VDETAILS,   CHECKED
+    MENUITEM    "&נתונים חלקיים...",  IDM_VOTHER
+    MENUITEM    SEPARATOR
+    MENUITEM    "מיין לפי ש&ם",   IDM_BYNAME
+    MENUITEM    "מיין לפי ס&וג",   IDM_BYTYPE
+    MENUITEM    "מיין לפי גוד&ל",   IDM_BYSIZE
+    MENUITEM    "מיין לפי תארי&ך",   IDM_BYDATE
+    MENUITEM    "מיון לפי תאריך ה&עברה",   IDM_BYFDATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "לפי סוג &קובץ...",     IDM_VINCLUDE
+    END
+    POPUP       "&אפשרויות"
+    BEGIN
+    MENUITEM    "א&ישור...",     IDM_CONFIRM
+    MENUITEM    "&גופן...",             IDM_FONT
+    MENUITEM    "סרגל כלים...", IDM_TOOLBARCUST
+    MENUITEM    "ה&עדפות נוספות", IDM_PREF
+    MENUITEM    SEPARATOR
+    MENUITEM    "&סרגל כלים",                 IDM_TOOLBAR
+    MENUITEM    "שורת &כוננים",                IDM_DRIVEBAR
+    MENUITEM    "שורת מ&צב",              IDM_STATUSBAR
+    MENUITEM    SEPARATOR
+    MENUITEM    "&מזער בעת הפעלה",     IDM_MINONRUN
+    MENUITEM    "צור מפתח Goto בעת ההפעלה", IDM_INDEXONLAUNCH
+    MENUITEM    "&שמור הגדרות ביציאה",   IDM_SAVESETTINGS
+#ifdef PROGMAN
+    MENUITEM    SEPARATOR
+    MENUITEM    "שמירת הגדרות &עכשיו",       IDM_SAVENOW
+#endif
+    END
+    POPUP       "&אבטחה"
+    BEGIN
+    MENUITEM    "&הרשאות...",  IDM_PERMISSIONS
+    MENUITEM    "&ביקורת...",     IDM_AUDITING
+    MENUITEM    "&בעלות...",        IDM_OWNER
+    END
+    POPUP       "&חלון"
+    BEGIN
+    MENUITEM    "ח&לון חדש",          IDM_NEWWINDOW
+    MENUITEM    "&מדורג\tShift+F5",   IDM_CASCADE
+    MENUITEM    "פרוש &אופקית",   IDM_TILEHORIZONTALLY
+    MENUITEM    "&פרוש אנכית\tShift+F4",      IDM_TILE
+    MENUITEM    "&סדר סמלים",       IDM_ARRANGE
+    MENUITEM    "&רענון\tF5",         IDM_REFRESH
+    END
+    POPUP       "ע&זרה"
+    BEGIN
+    MENUITEM    "&תוכן",                IDM_HELPINDEX
+    MENUITEM    "&חיפוש עזרה לגבי...",   IDM_HELPKEYS
+    MENUITEM    "&כיצד להשתמש בעזרה",         IDM_HELPHELP
+    MENUITEM    SEPARATOR
+    MENUITEM    "&אודות מנהל הקבצים...",   IDM_ABOUT
+    END
+
+END
+
+CTXMENU MENU PRELOAD 
+BEGIN
+	POPUP "Dummy Popup"
+	BEGIN
+	MENUITEM    "&חלון חדש\tעל בחירה",     IDM_NEWWINDOW
+    MENUITEM    "&פתח\tEnter",     IDM_OPEN
+    MENUITEM    "ערוך\tF12",	    IDM_EDIT
+    MENUITEM    "העברה...\tF7",     IDM_MOVE
+    MENUITEM    "ה&עתקה...\tF8",     IDM_COPY
+	MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
+	MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
+	MENUITEM	"&הדבק\tCtrl+V", IDM_PASTE
+	MENUITEM    "&מחיקה...\tDel",  IDM_DELETE
+    MENUITEM    "שינוי שם...\tF2",   IDM_RENAME
+    MENUITEM    "מאפיינים...\tAlt+Enter",IDM_ATTRIBS
+    MENUITEM    "הפעלה...",          IDM_RUN
+    MENUITEM    "הפעלת Bash Shell...", IDM_STARTBASHSHELL
+	MENUITEM    "הפעלת Cmd She&ll...", IDM_STARTCMDSHELL
+	MENUITEM    "הפעלת Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM    "&עבור לתיקיה...", IDM_GOTODIR
+	MENUITEM	"אודות",			IDM_ABOUT
+	END
+END
+
+
+#define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
+/*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
+STRINGTABLE DISCARDABLE PRELOAD
+BEGIN
+//    IDS_ENDSESSION          "יציאת מחלונות"                  
+//    IDS_ENDSESSIONMSG       "פעולה זאת תסגור את פעילות החלונות שלך."          
+
+    IDS_COPYDISK            "העתקת תוכן של דיסק/תקליטון"                     /* 32 */
+    IDS_INSERTDEST          "הכנס דיסק יעד."                                                                                                 /* 128 */
+    IDS_INSERTSRC           "הכנס דיסק מקור."                                                                                                      /* 128 */
+    IDS_INSERTSRCDEST       "הכנס דיסקי מקור ויעד."                                                                                     /* 128 */
+    IDS_FORMATTINGDEST      "מאתחל דיסק יעד"                                                                                             /* 128 */
+
+    IDS_COPYDISKERR         "שגיאת העתקת דיסק"               /* 32 */
+    IDS_COPYDISKERRMSG      "לא ניתן לעתיק דיסק."                                                                                                     /* 128 */
+    IDS_COPYSRCDESTINCOMPAT "דיסקי מקור ויעד לא תואמים."                                                                          /* 128 */
+
+    IDS_PERCENTCOMP         "%d%% הושלם"                /* 32 */
+    IDS_CREATEROOT          "יוצר תיקיית בסיס..."       /* 32 */
+    IDS_COPYSYSFILES        "מעתיק קבצי מערכת..."          /* 32 */
+    IDS_FORMATERR           "שגיאת אתחול דיסק"             /* 32 */
+    IDS_FORMATQUICKFAILURE  "מנהל הקבצים לא יכול לבצע אתחול מהיר.\n\nלהמשיך עם אתחול רגיל?"
+//    IDS_FORMATERRMSG        "לא ניתן לאתחל דיסק."        
+//    IDS_FORMATCURERR      "לא ניתן לאתחל את הכונן הנוכחי."                                                                                     
+    IDS_FORMATCOMPLETE      "אתחול הושלם"               /* 32 */
+    IDS_FORMATANOTHER       "שטח דיסק כולל:%ld בתים\n%ld בתים זמינים בדיסק\n\nהאם ברצונך לאתחל דיסק נוסף?"                           /* 128 */
+
+//    IDS_SYSDISK             "יצירת דיסק מערכת"
+//    IDS_SYSDISKRUSURE       "Are you sure you want to copy system files onto the disk in drive %c?"
+//    IDS_SYSDISKERR          "שגיאת דיסק מערכת"
+//    IDS_SYSDISKNOFILES      "The MS-DOS startup drive does not contain system files or is not available."
+//    IDS_SYSDISKSAMEDRIVE    "Cannot copy system files to the MS-DOS startup drive."
+//    IDS_SYSDISKADDERR       "Cannot add system files to this disk.\n\nMake sure a formatted disk is present in the drive and that the drive door is closed."
+
+    IDS_NETERR              "שגיאת רשת"                 /* 32 */
+    IDS_NETDISCONWINERR     "כונן זה מכיל את קבצי המערכת של Windows ולא ניתן לנתק אותו."                                                 /* 128 */
+    IDS_NETDISCONOPEN       "מנהל הקבצים לא יכול לנתק את כונן הרשת.\n\nיש קבצים פתוחים על הכונן."
+
+    IDS_ATTRIBERR           "מנהל הקבצים אינו יכול לשנות ערכים."
+    IDS_MAKEDIRERR          "מנהל הקבצים אינו יכול ליצור תיקיה."
+
+    IDS_LABELDISKERR        "מנהל הקבצים לא יכל ליצור תווית לדיסק.\n\nנא לוודא שהדיסק אינו מוגן מכתיבה, לא כונן רשת ושהתווית תקינה.\
+                             תווית אינה יכול להכיל את התווים הבאים:\n[רווח] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+    IDS_SEARCHNOMATCHES     "לא נמצאו קבצים מתאימים."
+    IDS_SEARCHREFRESH       "התוכן של הכונן השתנה. האם לנסות את החיפוש מחדש?"
+    IDS_LABELACCESSDENIED   "המשתמש הנוכחי חייב להיות מחובר לעמדה זו בתור מנהל מערכת על מנת לבצע פעולה זו על הכוננים הקשיחים."
+
+    IDS_DRIVETEMP           "כונן %c:%c"
+
+    IDS_EXECERRTITLE,       "לא ניתן להריץ תכנית"
+    IDS_PRINTERRTITLE,      "לא ניתן להדפיס קובץ"
+
+    IDS_UNKNOWNMSG,         "שגיאה לא צפויה: %d."
+    IDS_NOMEMORYMSG,        "אין מספיק זיכרון בשביל להפעיל את התכנית.\n\nסגור תכנית אחת או יותר, ונסה שוב."                   /* 128 */
+    IDS_FILENOTFOUNDMSG,    "מנהל הקבצים לא יכול למצוא את הקובץ (או את אחד מרכיביו).\n\nנא לוודא שהנתיב ושם הקובץ נכונים ושכל הספריות הנדרשות זמינות."
+    IDS_BADPATHMSG,         "הנתיב המצוין אינו תקין."                                                                                           /* 128 */
+//    IDS_MANYOPENFILESMSG,   "Too many files are currently in use.\n\nQuit one or more applications or increase the value of the FILES command in CONFIG.SYS, and then try again."                                    /* 128 */
+    IDS_NOASSOCMSG,         "אין תכנית שמשוייכת עם סוג הקובץ הזה.\n\nבחר ""שיוך"" מתפריט קובץ כדי ליצור שיוך."       /* 128 */
+    IDS_ASSOCINCOMPLETE,    "מנהל הקבצים אינו יכול לפתוח או להדפיס את הקובץ.\n\nהפעל את התכנית שיצרה את הקובץ ופתח או הדפס אותו משם."
+//    IDS_MULTIPLEDSMSG,      "Cannot start more than one copy of the specified program."                                                                /* 128 */
+//    IDS_OS2APPMSG           "The specified application is not a Windows or MS-DOS program."                                                            /* 128 */
+//    IDS_NEWWINDOWSMSG       "This application requires a newer version of Microsoft Windows."                                                          /* 128 */
+//    IDS_PMODEONLYMSG        "This application requires Windows."                                                             /* 128 */
+    IDS_DDEFAIL             "שגיאה התרחשה בשליחת הפקודה לתכנית."                                                                /* 128 */
+//    IDS_COMPRESSEDEXE       "This program or one of its components is compressed.\n\nUse the MS-DOS expand utility to copy the file from the setup disks."
+    IDS_INVALIDDLL          "אחד מקבצי הספריות שנדרשות להפעלת תכנית זו לא תקין. יש להתקין את התכנית מחדש."
+    IDS_SHAREERROR          "הקובץ בשימוש אצל תכנית אחרת."
+
+    IDS_CREATELONGDIR       "יכול להיות שמנהל הקבצים לא יוכל לגשת לקבצים שנוצרו בתיקיה '%s.'\n\nהאם להמשיך?"
+    IDS_CREATELONGDIRTITLE  "יצירת תיקיה"
+
+    IDS_MOUSECONFIRM,       "אישור פעולת עכבר"       /* 32 */
+    IDS_COPYMOUSECONFIRM,   "האם אתה בטוח להעתיק את הקבצים או התיקיות הנבחרים ל%s?"
+    IDS_MOVEMOUSECONFIRM,   "האם אתה בטוח להעביר את הקבצים או התיקיות הנבחרים ל%s?"
+    IDS_EXECMOUSECONFIRM,   "הם אתה בטוח להפעיל %s באמצעות %s בתור הקובץ ההתחלתי?"                                                   /* 128 */
+
+    IDS_WINFILE,            "מנהל הקבצים"                  /* 32 */
+    IDS_TREETITLE,          "עץ תיקיות"                /* 32 */
+    IDS_SEARCHTITLE,        "תוצאות חיפוש: "              /* 32 */
+
+    IDS_READING             "קורא תיקיה, נא להמתין..."
+    IDS_TOOMANYTITLE,       "יותר מידי קבצים"                /* 32 */
+    IDS_OOMTITLE,           "מנהל הקבצים - נגמר זיכרון"  /* 32 */
+    IDS_OOMREADINGDIRMSG,   "לא היה ניתן לקרוא את התיקיה בשלמותה.  רק רישום חלקי יוצג."                                              /* 128 */
+
+//    IDS_PRINTFNF            "לא ניתן למצוא את הקובץ להדפסה. נא לוודא שהנתיב ושם קובץ נכונים."       
+    IDS_PRINTMEMORY         "אין מספיק זיכרון כדי להדפיס.\n\nסגור מתכנית אחת או יותר, ונסה שוב."                                      /* 128 */
+    IDS_PRINTDISK           "אין מספיק שטח דיסק כדי להדפיס.\n\nמחק קובץ אחד או יותר כדי להגדיל שטח דיסק פנוי ונסה שוב."             /* 128 */
+    IDS_PRINTERROR          "התרחשה שגיאה בזמן ההדפסה.\n\nנא לוודא שהמדפסת מוגדרת כפי שצריך ושבחרת אותה."                            /* 128 */
+    IDS_PRINTONLYONE        "מנהל הקבצים אינו יכול להדפיס קבצים מרובים.\n\nבחר קובץ אחד בלבד ונסה שוב."                             /* 128 */
+
+    IDS_CURDIRIS,           "תיקיה נוכחית: %s"                                                                                       /* 128 */
+    IDS_COPY,               "העתקה"                                                                                                  /* 32 */
+    IDS_RENAME,             "שינוי שם"                                                                                               /* 32 */
+    IDS_FORMAT,             "אתחול דיסק/תקליטון"                                                                                     /* 32 */
+    IDS_FORMATSELDISK,      "בחר את הדיסק לאתחול."                                                                                   /* 128 */
+
+JAPANBEGIN
+    IDS_KK_COPYFROMSTR,        "コピー元(&F):"
+    IDS_KK_COPYTOSTR,          "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,      "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,        "新しい名前(&T):"
+JAPANEND
+
+//    IDS_MAKESYSDISK,      "יצירת דיסק מערכת"             
+
+    IDS_CREATINGMSG,        "יוצר:"                     /* 32 */
+    IDS_REMOVINGDIRMSG,     "מסיר:"                     /* 32 */
+    IDS_REMOVINGMSG,        "מסיר..."                   /* 32 */
+    IDS_COPYINGMSG,         "מעתיק:"                      /* 32 */
+    IDS_OPENINGMSG,         "פותח..."                    /* 32 */
+    IDS_CLOSINGMSG,         "סוגר..."                    /* 32 */
+    IDS_RENAMINGMSG,        "משנה שם..."                   /* 32 */
+    IDS_MOVINGMSG,          "מעביר..."                     /* 32 */
+    IDS_DELETINGMSG,        "מוחק..."                   /* 32 */
+    IDS_PRINTINGMSG,        "מדפיס: %s"                  /* 32 */
+
+//    IDS_NOSUCHDRIVE,        "כונן %c אינו קיים"                                                        /* 128 */
+    IDS_DRIVENOTREADY,      "אין דיסק בכונן %c.\n\nהכנס דיסק, ונסה שוב."
+    IDS_UNFORMATTED,        "הדיסק בכונן %c אינו מאותחל.\n\nהאם ברצונך לאתחל אותו עכשיו?"
+
+    IDS_STATUSMSG,          "סך הכל %d קבצים (%s)"             /* 128 */
+    IDS_STATUSMSG2,         "%d קבצים נבחרו (%s)"          /* 128 */
+    IDS_DRIVEFREE,          "%c: %s פנוי,  %s סך הכל"            /* 128 */
+    IDS_TREEABORT,          "עץ התיקיות לא מוצג במלואו"     /* 128 */
+    IDS_DIRSREAD,           "תיקיות נקראו: %d "                   /* 32 */
+    IDS_SEARCHMSG,          "%d קבצים נמצאו"
+    IDS_BYTES,              "%ld בתים"
+    IDS_SBYTES,             "%s בתים"
+
+    IDS_SELECTEDFILES,      "הקבצים הנבחרים"            /* 32 */
+
+    /* These strings are used for generating error messages
+     * from the Copy, Move, and Delete code. */
+
+    IDS_COPYERROR + FUNC_COPY   "שגיאה בהעתקת קובץ"
+    IDS_COPYERROR + FUNC_MOVE   "שגיאה בהעברת קובץ"
+    IDS_COPYERROR + FUNC_DELETE "שגיאה במחיקת קובץ"
+    IDS_COPYERROR + FUNC_RENAME "שגיאה בשינוי שם קובץ"
+    IDS_COPYERROR + FUNC_SETDRIVE "שגיאה בבחירת כונן"
+    IDS_COPYERROR + FUNC_EXPAND   "שגיאה בקריאת תיקיה"
+    IDS_COPYERROR + FUNC_LABEL    "שגיאה בכתיבת תווית לכונן"
+
+    /* The first %s is replaced by a file name. The second %s is replaced
+     * by one of the "reasons" below. */
+
+    IDS_VERBS + FUNC_COPY       "מנהל הקבצים אינו יכול להעתיק %s: %s"
+    IDS_VERBS + FUNC_MOVE       "מנהל הקבצים אינו יכול להעביר %s: %s"
+    IDS_VERBS + FUNC_DELETE     "מנהל הקבצים אינו יכול למחוק %s: %s"
+    IDS_VERBS + FUNC_RENAME     "מנהל הקבצים אינו יכול לשנות שם %s: %s"
+    IDS_ACTIONS + 1             "מנהל הקבצים אינו יכול ליצור תיקיה %s: %s"
+    IDS_ACTIONS + 2             "מנהל הקבצים אינו יכול להסיר תיקיה %s: %s"
+    IDS_REPLACING               "מנהל הקבצים אינו יכול ליצור או להחליף %s: %s"
+    // IDS_CREATING             "מנהל הקבצים אינו יכול ליצור %s: %s"
+
+// include reason strings
+
+#include "suggest_he-IL.db"
+
+    IDS_DESTFULL                "דיסק היעד מלא.  בבקשה הכנס דיסק נוסף כדי להמשיך."
+    IDS_WRITEPROTECTFILE        "הקובץ הינו קובץ מערכת, מוחבא, או לקריאה בלבד."
+
+    IDS_COPYINGTITLE            "מעתיק..."
+
+JAPANBEGIN
+    IDS_KK_COPY                 "コピー先:"
+JAPANEND
+
+    IDS_QUICKFORMATTINGTITLE    "אתחול מהיר..."
+
+    IDS_BUSYFORMATQUITVERIFY    "מנהל הקבצים מאתחל כרגע דיסק. יציאה ממנהל הקבצים תגרום לביטול הפעולה."
+    IDS_BUSYCOPYQUITVERIFY      "מנהל הקבצים מעתיק כרגע דיסק. יציאה ממנהל הקבצים תגרום לביטול הפעולה."
+    IDS_PERCENTCOMPLETE         "אחוז השלמה"
+    IDS_FORMATSELECTDLGTITLE    "אתחול כונן"
+
+    IDS_12MB                    "1%s2 מ""ב"
+    IDS_360KB                   "360K"
+    IDS_144MB                   "1%s44 מ""ב"
+    IDS_720KB                   "720K"
+    IDS_288MB                   "2%s88 מ""ב"
+    IDS_2080MB                  "20%s8 מ""ב"
+
+#if defined(JAPAN) && defined(i386)
+/* ADD KBNES. NEC MEDIATYPE START */
+JAPANBEGIN
+    IDS_125MB                   "1%s25 מ""ב"
+    IDS_256KB                   "256K"
+    IDS_128MB                   "128 מ""ב"
+JAPANEND
+/* ADD KBNES. NEC MEDIATYPE END */
+
+//
+// FMR jul.21.1994 JY
+// We added 640KB/1.23MB media types.
+//
+JAPANBEGIN
+    IDS_640KB                   "640K"
+    IDS_123MB                   "1%s23 מ""ב"
+JAPANEND
+#endif
+
+    IDS_DEVICECAP               "קיבולת כונן"
+    IDS_QSUPMEDIA               "מנהל הקבצים לא יכול להשיג מידע לגבי הדיסק.\n\nנא לוודא שיש דיסק בתוך הכונן."
+    IDS_REMOVEMED               "סוג דיסק לא ידוע"
+
+    IDS_CANTFORMATTITLE         "סוג דיסק לא ידוע"
+    IDS_CANTFORMAT              "סוג הדיסק בכונן %s לא יכול להיות מאותחל באמצעות מנהל הקבצים. השתמש במנהל הדיסק כדי לאתחל דיסק זה."
+
+    IDS_FFERR_INCFS             "מערכת קבצים לא מתאימה."
+    IDS_FFERR_ACCESSDENIED      "גישה נדחתה."
+    IDS_FFERR_DISKWP            "הדיסק מוגן מפני כתיבה."
+    IDS_FFERR_CANTLOCK          "מנהל הקבצים לא יכול לנעול כונן."
+    IDS_FFERR_CANTQUICKF        "מנהל הקבצים לא יכול לבצע אתחול מהיר בדיסק.\n\nנא לוודא שרמת הדחיסות של הדיסק מתאימה."
+    IDS_FFERR_SRCIOERR          "שגיאת IO בדיסק המקור."
+    IDS_FFERR_DSTIOERR          "שגיאת IO בדיסק היעד."
+    IDS_FFERR_SRCDSTIOERR       "שגיאת IO בדיסק המקור ובדיסק היעד."
+    IDS_FFERR_GENIOERR          "שגיאת IO התרחשה."
+//    IDS_FFERR_MEDIASENSE      "This disk is capable of being formatted at a capacity of %s. Continue formatting at this capacity?"
+    IDS_FFERR                   "מנהל הקבצים אינו יכול לאתחל דיסק.\n\nנא לוודא שהדיסק בכונן ולא מוגן מפני כתיבה, ניזוק או בדרגת הדחיסות הנכונה."
+    IDS_FFERR_BADLABEL          "מנהל הקבצים אינו יכול ליצור תווית לדיסק.\n\nהתווית המצוינת אינה תקינה.  נא לוודא שהתווית אינה מכילה את התווים הבאים\n\
+                                [רווח] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+
+    IDS_FORMATCONFIRM           "אתחול הדיסק ימחוק את כל המידע מהדיסק. האם אתה בטוח לאתחל את הדיסק בכונן %c?"
+    IDS_FORMATCONFIRMTITLE      "אישור אתחול דיסק"
+
+    IDS_DISKCOPYCONFIRM         "הפעולה תגרום למחיקת כל המידע בדיסק היעד. האם להמשיך?"
+    IDS_DISKCOPYCONFIRMTITLE    "אישור העתקת דיסק"
+    IDS_ANDCLOSE                "&סגור"        // goes on Selection dialog
+    IDS_CLOSE                   "סגור"         // braindead "&Change"
+    IDS_PATHNOTTHERE            "תיקיה %s אינה קיימת.\n\nהאם ברצונך ליצור אותה?"
+    IDS_PROGRAMS                "תכניות#*.exe;*.pif;*.com;*.bat#כל הקבצים (*.*)#*.*#"
+
+    IDS_MENUANDITEM             "%s - %s"
+    IDS_DRIVELABEL              "כונן:"
+    IDS_STATUSMSGSINGLE         "%s, "
+
+    IDS_CONNECTHELP             "חיבור כונן רשת"
+    IDS_DISCONHELP              "ניתוק כונן רשת"
+    IDS_CONNECTIONHELP          "חיבורי רשת"
+    IDS_SHAREASHELP             "שיתוף תיקיה"
+    IDS_STOPSHAREHELP           "הפסקת שיתוף תיקיה"
+    IDS_VDETAILSHELP            "הראה את כל פרטי הקבצים"
+    IDS_VNAMEHELP               "הראה שמות בלבד"
+    IDS_BYNAMEHELP              "מיון לפי שם"
+    IDS_BYTYPEHELP              "מיון לפי סוג"
+    IDS_BYSIZEHELP              "מיון לפי גודל"
+    IDS_BYDATEHELP              "מיון לפי תאריך"
+    IDS_NEWWINHELP              "חלון חדש"
+    IDS_COPYHELP                "העתקת קבצים"
+    IDS_MOVEHELP                "העברת קבצים"
+    IDS_DELHELP                 "מחיקת קבצים"
+
+    IDS_DIRNAMELABEL            "&שם תיקיה:"
+    IDS_DRIVENOTAVAILABLE       "כונן הרשת אינו זמין."
+
+    IDS_SHAREDAS                "משותף כ- %s"
+    IDS_NOTSHARED               "לא משותף"
+
+    IDS_DRIVE_COMPRESSED        " - דחוס"
+
+    IDS_DRAG_COPYING            "מעתיק קבצים ל%s"
+    IDS_DRAG_MOVING             "מעביר קבצים ל%s"
+    IDS_DRAG_EXECUTING          "מפעיל קבצים עם %s"
+
+    IDS_ORDERB                  "%s בתים"
+    IDS_ORDERKB                 "%s ק""ב"
+    IDS_ORDERMB                 "%s מ""ב"
+    IDS_ORDERGB                 "%s ג""ב"
+    IDS_ORDERTB                 "%s ט""ב"
+
+    IDS_VN_COMMENTS             "תגובות"
+    IDS_VN_COMPANYNAME          "חברה"
+    IDS_VN_FILEDESCRIPTION      "תיאור קובץ"
+    IDS_VN_INTERNALNAME         "שם פנימי"
+    IDS_VN_LEGALTRADEMARKS      "סימנים מסחריים"
+    IDS_VN_ORIGINALFILENAME     "שם קובץ מקורי"
+    IDS_VN_PRIVATEBUILD         "תיאור בנייה פרטי"
+    IDS_VN_PRODUCTNAME          "שם מוצר"
+    IDS_VN_PRODUCTVERSION       "גרסת מוצר"
+    IDS_VN_SPECIALBUILD         "תיאור בנייה מיוחד"
+
+    IDS_VN_LANGUAGE             "שפה"
+    IDS_VN_LANGUAGES            "שפות"
+
+    IDS_ASSOCIATE               "עיון"
+    IDS_RUN                     "הפעלה"
+    IDS_WINHELPERR              "לא ניתן להציג את מידע העזרה."
+    IDS_NOEXEASSOC              "קבצים עם סיומת %s הינם תכניות ולא ניתנים לשיוך עם תכנית אחרת."
+    IDS_ASSOCNOTEXE             "%s לא תכנית ולא ניתן לשייך איתו סיומת קובץ."
+    IDS_ASSOCNONE               "(ללא)"
+    IDS_NOFILES                 "לא נמצאו קבצים."
+    IDS_NOACCESSDIR             "אין לך הרשאת גישה לתיקיה זו."
+    IDS_NOACCESSFILE            "אין לך הרשאת גישה לקובץ זה."
+
+    IDS_DRIVEBUSY_COPY          "כונן %c: הכונן עסוק ולא ניתן לגשת אליו.\nמנהל הקבצים מבצע העתקת דיסק."
+    IDS_DRIVEBUSY_FORMAT        "כונן %c: הכונן עסוק ולא ניתן לגשת אליו.\nמנהל הקבצים מבצע אתחול בדיסק זה."
+
+    IDS_COPYMOVENOTCOMPLETED    "הפעולה עוד לא הסתיימה"
+    IDS_DIRREMAINS              "לא ניתן היה להשלים את הפעולה על כל הקבצים והתיקיות."
+
+    IDS_TOOMANYWINDOWS          "יותר מידי חלונות תיקיה פתוחים.\n\nסגור חלון אחד או יותר ונסה שוב."
+    IDS_FMIFSLOADERR            "לא היה ניתן לטעון את הספריה הדרושה לפעולה."
+
+    IDS_NOSUCHDIRTITLE          "לא ניתן לקרוא תיקיה"
+    IDS_NOSUCHDIR               "תיקיה אינה קיימת."
+
+    IDS_BADNETNAMETITLE         "לא ניתן להתחבר לכונן רשת"
+    IDS_BADNETNAME              "לא ניתן למצוא את שם הרשת."
+
+    IDS_ALLFILES                """כן לכולם"" ישפיע על כל הקבצים, כולל קבצי מערכת, קבצים מוחבאים וקבצים לקריאה בלבד."
+
+    IDS_ASSOC_OPEN              "פתיחה"
+    IDS_ASSOC_PRINT             "הדפסה"
+
+    IDS_ADDEXTTITLE             "הוספת הרחבה"
+    IDS_ADDEXTTEXT              "ההרחבה '%s' כרגע משוייכת עם '%s.' להמשיך ולשכתב את השיוך?"
+
+    IDS_EXTTITLE                "עורך שיוכי קבצים"
+
+    IDS_EXTADDERROR             "לא ניתן לשייך הרחבה.  "
+    IDS_EXTDELERROR             "לא ניתן למחוק הרחבה.  "
+    IDS_FILETYPEADDERROR        "לא ניתן להוסיף סוג קובץ.  "
+    IDS_FILETYPEDELERROR        "לא ניתן למחוק סוג קובץ.  "
+    IDS_FILETYPEREADERROR       "לא ניתן לקרוא סוג קובץ.  "
+
+    IDS_FILETYPENULLDESCERROR   "תיאור סוג הקובץ אינו יכול להיות ריק. בבקשה הקלד סוג קובץ חדש."
+    IDS_FILETYPEDUPDESCERROR    "לא היה ניתן ליצור מזהה יחודי אשר מבוסס על סוג הקובץ שלך. בבקשה הקלד סוג קובץ חדש."
+
+    IDS_FILETYPEDELCONFIRMTITLE "מחיקת סוג קובץ"
+    IDS_FILETYPEDELCONFIRMTEXT  "פעולה זו תמחוק את סוג הקובץ ואת כל ההרחבות המשויכות.  אם אתה בטוח למחוק את '%s'?"
+#ifdef ASSOC
+    IDS_FILETYPEDELCONFIRMUSERTEXT "אתה כרגע מוחק סוג קובץ מותאם אישית. זה יגרום לסוג לחזור לסוג הקובץ הנפוץ, וכל ההרחבות שלו ישארו בשלמותן.האם ברצונך להחזיר לאחור את '%s'?"
+    IDS_FILETYPEUSERIZETEXT     "אתה כרגע מתאים אישית סוג קובץ נפוץ.  מנהל הקבצים ישמור את השינויים שלך בתור סוג קובץ מותאם.  להמשיך?"
+#endif
+    IDS_FILETYPECOMMANDNULLTEXT "סוג הקובץ צריך להכיל פקודה לפחות לאחת מהפעולות שלו. בבקשה הקלד תכנית בשדה ""פקודה""."
+
+    IDS_NEWFILETYPETITLE        "סוג קובץ חדש"
+    IDS_COPYINGDISKTITLE        "מעתיק דיסק"
+    IDS_SEARCHING               "מחפש..."
+
+JAPANBEGIN
+    IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
+JAPANEND
+
+    IDS_INITUPDATEFAIL          "לא היה ניתן לאתחל תמיכה בעדכון ברקע. מנהל הקבצים ייסגר עכשיו.  "
+    IDS_INITUPDATEFAILTITLE     "אתחול מנהל הקבצים"
+
+    IDS_COMPRESSDIR             "האם ברצונך גם לדחוס את כל הקבצים ותיקיות המשנה ב%s?"
+    IDS_UNCOMPRESSDIR           "האם ברצונך גם לבטל את הדחיסה בכל הקבצים ותיקיות המשנה ב%s?"
+    IDS_COMPRESS_ATTRIB_ERR     "מנהל הקבצים לא יכול לשנות את ערכי הדחיסה עבור %s"
+    IDS_NTLDRCOMPRESSERR        "הקובץ %s לא ידחס.  דחיסת קובץ זה עלול לגרום למערכת לא לעלות."
+    IDS_MULTICOMPRESSERR        "מנהל הקבצים כרגע בתהליך דחיסת/ביטול דחיסת קבצים.\nנא להמתין עד סוף הפעולה לפני לנסות דחיסה/ביטול דחיסה של קבצים נוספים"
+
+    IDS_EDITFILTER              "תכניות (*.exe)\0*.exe\0"
+
+END
+#undef SUGGEST
+
+/* Help strings for the popup menus.
+ */
+STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    MH_POPUP+IDM_FILE,          "פקודות לעבודה עם קבצים"
+    MH_POPUP+IDM_DISK,          "פקודות לעבודה עם דיסקים"
+    MH_POPUP+IDM_TREE,          "פקודות לעבודה בעץ התיקיות"
+    MH_POPUP+IDM_VIEW,          "פקודות להגדרת כיצד מידע מוצג"
+    MH_POPUP+IDM_OPTIONS,       "פקודות להגדרת אפשרויות"
+    MH_POPUP+IDM_SECURITY,      "פקודות לתפעול אבטחת קבצים ותיקיות"
+    MH_POPUP+IDM_WINDOW,        "פקודות לסידור חלונות"
+    MH_POPUP+IDM_HELP,          "פקודות להצגת מידע העזרה של מנהל הקבצים"
+END
+
+
+// Help strings for the "standard" toolbar items.
+
+STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    MH_MYITEMS+IDM_OPEN,        "פתיחת פריט נבחר"
+    MH_MYITEMS+IDM_EDIT,        "עריכת פריט נבחר עם פנקס הרשימות"
+    MH_MYITEMS+IDM_MOVE,        "העברת פריט נבחר"
+    MH_MYITEMS+IDM_COPY,        "העתקת קבצים ותיקיות"
+    MH_MYITEMS+IDM_COPYTOCLIPBOARD, "מעתיק קובץ אחד או יותר ללוח העתקה"
+	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "גוזר קובץ אחד או יותר ללוח העתקה"
+    MH_MYITEMS+IDM_PASTE,		"מדביק קובץ מלוח ההעתקה לתיקיה הנוכחית"
+    MH_MYITEMS+IDM_COMPRESS,    "דחיסת קובץ או תיקיה"
+    MH_MYITEMS+IDM_UNCOMPRESS,  "ביטול דחיסת קובץ או תיקיה"
+    MH_MYITEMS+IDM_DELETE,      "מחיקת קבצים ותיקיות"
+    MH_MYITEMS+IDM_RENAME,      "שינוי שם קובץ או תיקיה"
+    MH_MYITEMS+IDM_ATTRIBS,     "הגדרה והצגה של תכונות קובץ"
+    MH_MYITEMS+IDM_UNDELETE,    "שחזור קבצים שנמחקו"
+    MH_MYITEMS+IDM_RUN, "הפעלה או פתיחה של תכנית או מסמך"
+    MH_MYITEMS+IDM_PRINT,       "הדפסת מסמך"
+    MH_MYITEMS+IDM_ASSOCIATE,   "שיוך קובץ לתכנית"
+    MH_MYITEMS+IDM_MAKEDIR,     "יצירת תיקיה"
+    MH_MYITEMS+IDM_SEARCH,      "חיפוש קבצים ותיקיות"
+    MH_MYITEMS+IDM_SELECT,      "בחירת קבצים ותיקיות"
+    MH_MYITEMS+IDM_EXIT,        "יציאה ממנהל הקבצים"
+
+    MH_MYITEMS+IDM_DISKCOPY,    "העתקת תוכן של תקליטון"
+    MH_MYITEMS+IDM_LABEL,       "מתן תווית לדיסק או שינויה"
+    MH_MYITEMS+IDM_FORMAT,      "אתחול תקליטון"
+//    MH_MYITEMS+IDM_SYSDISK,     "העתקת קבצי MS-DOS לתקליטון"
+    MH_MYITEMS+IDM_CONNECT,     "התחברות לכונן רשת"
+    MH_MYITEMS+IDM_DISCONNECT,  "התנתקות מכונן רשת"
+//    MH_MYITEMS+IDM_CONNECTIONS,       "חיבורי רשת..."
+//    MH_MYITEMS+IDM_SHARES,    "הצגת תיקיות משותפות..."
+    MH_MYITEMS+IDM_SHAREAS,     "שיתוף תיקיה"
+    MH_MYITEMS+IDM_STOPSHARE,   "הפסקת שיתוף תיקיה"
+
+    MH_MYITEMS+IDM_DRIVESMORE,  "בחירת כונן אחר"
+
+    MH_MYITEMS+IDM_EXPONE,      "הצגה רמה נוספת של התיקיה"
+    MH_MYITEMS+IDM_EXPSUB,      "הצגת כל הרמות של התיקיה"
+    MH_MYITEMS+IDM_EXPALL,      "הצגת של הרמות של כל התיקיות"
+    MH_MYITEMS+IDM_COLLAPSE,    "כיווץ כל הספריות של התיקיה הנבחרת"
+    MH_MYITEMS+IDM_ADDPLUSES,   "ציון תיקיות בעלות תיקיות משנה"
+
+    MH_MYITEMS+IDM_BOTH,        "הצגת עץ התיקיות ותוכן התיקיה הנוכחית"
+    MH_MYITEMS+IDM_TREEONLY,    "הצגת עץ התיקיות"
+    MH_MYITEMS+IDM_DIRONLY,     "הצגת תוכן התיקיה הנוכחית"
+    MH_MYITEMS+IDM_SPLIT,       "פיצול חלון התיקיות או הזזת פס הפיצול"
+    MH_MYITEMS+IDM_VNAME,       "הצגת שמות קובץ בלבד"
+    MH_MYITEMS+IDM_VDETAILS,    "הצגת פרטי קובץ מלאיםs"
+    MH_MYITEMS+IDM_VOTHER,      "הצגת פרטי קובץ חלקיים"
+    MH_MYITEMS+IDM_BYNAME,      "מיון קבצים לפי שם"
+    MH_MYITEMS+IDM_BYTYPE,      "מיון קבצים לפי סוג"
+    MH_MYITEMS+IDM_BYSIZE,      "מיון קבצים לפי גודל"
+    MH_MYITEMS+IDM_BYDATE,      "מיון קבצים לפי תאריך"
+    MH_MYITEMS+IDM_BYFDATE,     "מיון קבצים לפי תאריך העברה"
+    MH_MYITEMS+IDM_VINCLUDE,    "הצגת קבצים מסוג מסויים"
+
+    MH_MYITEMS+IDM_CONFIRM,     "בקרת הודעות אישור"
+    MH_MYITEMS+IDM_FONT,        "שינוי הגופן בו משתמש מנהל הקבצים"
+
+    MH_MYITEMS+IDM_TOOLBARCUST, "התאמה אישית של סרגל הכלים"
+    MH_MYITEMS+IDM_TOOLBAR,     "הצגה או הסתרה של סרגל הכלים"
+    MH_MYITEMS+IDM_DRIVEBAR,    "הצגה או הסתרה של שורת הכוננים"
+    MH_MYITEMS+IDM_STATUSBAR,   "הצגה או הסתרה של שורת המצב"
+    MH_MYITEMS+IDM_NEWWINONCONNECT,     "פתיחת חלון חדש בעת חיבור"
+
+    MH_MYITEMS+IDM_MINONRUN,    "הקטנת מנהל הקבצים לסמל בעת ההפעלה"
+    MH_MYITEMS + IDM_INDEXONLAUNCH, "יוצר מפתח מעברי תיקיות מתי שמנהל הקבצים מופעל"
+    MH_MYITEMS+IDM_SAVESETTINGS,        "שמירת הגדרות ביציאה ממנהל הקבצים"
+
+    MH_MYITEMS+IDM_NEWWINDOW,   "פתיחת חלון חדש"
+    MH_MYITEMS+IDM_CASCADE,     "סידור חלונות באופן מדורג"
+    MH_MYITEMS+IDM_TILEHORIZONTALLY,    "פריסת חלונות באופן אופקי"
+    MH_MYITEMS+IDM_TILE,        "פריסת חלונות באופן אנכי"
+    MH_MYITEMS+IDM_ARRANGE,     "סידור סמלים"
+    MH_MYITEMS+IDM_REFRESH,     "עדכון תוכן של חלון"
+
+    MH_MYITEMS+IDM_PERMISSIONS  "תצוגה וקביעת מידע הרשאות עבור הפריטים הנבחרים"
+    MH_MYITEMS+IDM_AUDITING     "תצוגה וקביעת מידע ביקורת עבור הפריטים הנבחרים"
+    MH_MYITEMS+IDM_OWNER        "תצוגה וקביעת בעלות עבור הפריטים הנבחרים"
+
+    MH_MYITEMS+IDM_HELPINDEX,   "הצגת תוכן העזרה של מנהל הקבצים"
+    MH_MYITEMS+IDM_HELPKEYS,    "חיפוש נושא בעזרה עבור מנהל הקבצים"
+    MH_MYITEMS+IDM_HELPHELP,    "הצגת מידע אודות השימוש בעזרה"
+    MH_MYITEMS+IDM_ABOUT,       "הצגת מידע אודות מנהל הקבצים"
+END
+
+
+// Strings for menu items that may be added at init time.
+
+STRINGTABLE MOVEABLE DISCARDABLE
+BEGIN
+    IDS_CONNECT,                "חיבור כונן &רשת..."
+    IDS_DISCONNECT,             "&ניתוק כונן רשת..."
+    IDS_CONNECTIONS,            "&חיבורי רשת..."
+    IDS_SHAREDDIR               "תיקיות &משותפות..."
+    IDS_SHAREAS,                "&שיתוף בתור..."
+    IDS_STOPSHARE,              "ה&פסקת שיתוף..."
+    IDS_SHARES,                 "הצגת תיקיות מ&שותפות..."
+    IDS_UNDELETE,               "שחזור..."
+    IDS_NEWWINONCONNECT,        "&פתיחת חלון חדש בעת חיבור"
+END
+
+#include "winfile_he-IL.dlg"
+
