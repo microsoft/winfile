@@ -831,7 +831,7 @@ BEGIN
    CONTROL "Create &Goto Index on Launch", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 119, 14
    CONTROL "Language:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
-   CONTROL "Please note that some changes will only activate \nupon reopening the program.",
+   CONTROL "Please note that some settings require you to restart the\napplication in order to take effect.",
 			IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 90, 180, 20
    CONTROL "OK", IDOK, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 55, 120, 40, 14
    CONTROL "Cancel", IDCANCEL, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 103, 120, 40, 14
