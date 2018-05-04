@@ -144,7 +144,6 @@ BEGIN
 	MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
 	MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
 	MENUITEM    "&Goto Directory...", IDM_GOTODIR
-	MENUITEM	"About",			IDM_ABOUT
 	END
 END
 

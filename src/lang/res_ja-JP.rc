@@ -144,7 +144,6 @@ BEGIN
 	MENUITEM    "Cmd シェルを起動(&L)...", IDM_STARTCMDSHELL
 	MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "別のディレクトリーへ移動(&G)...", IDM_GOTODIR
-	MENUITEM	"ファイル マネージャーについて(&A)",			IDM_ABOUT
 	END
 END
 
