@@ -481,6 +481,7 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
 
 
 LRESULT
+CALLBACK
 FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    RECT     rc;
@@ -1145,9 +1146,12 @@ DoDefault:
 }
 
 
-INT
-MessageFilter(INT nCode, WPARAM wParam, LPMSG lpMsg)
+LRESULT
+CALLBACK 
+MessageFilter(INT nCode, WPARAM wParam, LPARAM lParam)
 {
+   LPMSG lpMsg = (LPMSG)lParam;
+
    if (nCode < 0)
       goto DefHook;
 

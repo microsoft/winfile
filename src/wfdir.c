@@ -400,7 +400,7 @@ CreateLBLine(register DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
 }
 
 
-LRESULT DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     switch (wMsg)
     {
@@ -412,6 +412,7 @@ LRESULT DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 }
 
 LRESULT
+CALLBACK
 DirWndProc(
    HWND hwnd,
    UINT uMsg,

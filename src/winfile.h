@@ -480,7 +480,7 @@ DWORD  WFPrint(LPTSTR szFile);
 // WINFILE.C
 
 BOOL InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive);
-INT  MessageFilter(INT nCode, WPARAM wParam, LPMSG lParam);
+LRESULT CALLBACK MessageFilter(INT nCode, WPARAM wParam, LPARAM lParam);
 
 
 // WFTREE.C
@@ -516,7 +516,7 @@ DWORD StartBuildingDirectoryTrie();
 
 DWORD  DMMoveCopyHelper(LPTSTR pFrom, LPTSTR pTo, BOOL bCopy);
 DWORD  WFMoveCopyDriver(PCOPYINFO pCopyInfo);
-VOID   WFMoveCopyDriverThread(PCOPYINFO pCopyInfo);
+DWORD WINAPI WFMoveCopyDriverThread(LPVOID lpParameter);
 
 BOOL  IsDirectory(LPTSTR pPath);
 BOOL  IsTheDiskReallyThere(HWND hwnd, register LPTSTR pPath, DWORD wFunc, BOOL bModal);
@@ -556,55 +556,55 @@ VOID  GetDriveRect(DRIVEIND driveInd, PRECT prc);
 
 // Wnd Procs
 
-LRESULT FrameWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK FrameWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
 BOOL  AppCommandProc(DWORD id);
-LRESULT TreeWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
-LRESULT DriveWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
-LRESULT DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
-LRESULT VolumeWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
-LRESULT TreeChildWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
-LRESULT TreeControlWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
-LRESULT DirWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK TreeWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK DriveWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK VolumeWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK TreeChildWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK TreeControlWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK DirWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
-LRESULT SearchWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
-LRESULT DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK SearchWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
+LRESULT CALLBACK DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam);
 VOID (*lpfnFormat)(PWSTR,FMIFS_MEDIA_TYPE,PWSTR,PWSTR,BOOLEAN,FMIFS_CALLBACK);
 VOID (*lpfnDiskCopy)(PWSTR,PWSTR,BOOLEAN,FMIFS_CALLBACK);
 BOOLEAN (*lpfnSetLabel)(PWSTR,PWSTR);
 BOOLEAN (*lpfnQuerySupportedMedia)(PWSTR,PFMIFS_MEDIA_TYPE,DWORD,PDWORD);
 BOOL Callback_Function(FMIFS_PACKET_TYPE PacketType, DWORD PacketLength, PVOID PacketData);
 
-BOOL CancelDlgProc  (HWND, UINT, WPARAM, LPARAM);
-INT_PTR  DrivesDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  AssociateDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  SearchDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  RunDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  SelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  FontDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  SuperDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  AttribsDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  MakeDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  ExitDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  DiskLabelDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  ChooseDriveDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  FormatDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  FormatSelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  OtherDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK CancelDlgProc  (HWND, UINT, WPARAM, LPARAM);
+INT_PTR CALLBACK DrivesDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK AssociateDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK SearchDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK RunDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK SelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK FontDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK SuperDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK AttribsDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK MakeDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK ExitDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK DiskLabelDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK ChooseDriveDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK FormatDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK FormatSelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK OtherDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
-INT_PTR  ProgressDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  SortByDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  ConfirmDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  AboutDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR  GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK ProgressDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK SortByDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK ConfirmDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK AboutDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
 VOID SetCurrentPathOfWindow(LPWSTR szPath);
 
 // WFSEARCH.C
 
 VOID GetSearchPath(HWND hwnd, LPWSTR szTemp);
-LRESULT CALLBACK SearchProgDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK SearchProgDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 VOID UpdateSearchStatus(HWND hwndLB, INT nCount);
 VOID SearchEnd(VOID);
 
@@ -1341,7 +1341,7 @@ Extern WCHAR wszWinfileHelp[] EQ( L"WINFILE.HLP" );
 Extern INT iNumExtensions     EQ( 0 );
 Extern EXTENSION extensions[MAX_EXTENSIONS];
 
-Extern DWORD (*lpfpUndelete)(HWND, LPTSTR) EQ( NULL );
+Extern DWORD (APIENTRY *lpfpUndelete)(HWND, LPTSTR) EQ( NULL );
 
 #ifdef UNICODE
 Extern BOOL  bUndeleteUnicode EQ( FALSE );

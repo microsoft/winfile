@@ -45,7 +45,7 @@ CRITICAL_SECTION CriticalSectionDirRead;
 //
 // Prototypes
 //
-VOID DirReadServer(LPVOID lpvParm);
+DWORD WINAPI DirReadServer(LPVOID lpvParm);
 LPXDTALINK CreateDTABlockWorker(HWND hwnd, HWND hwndDir);
 LPXDTALINK StealDTABlock(HWND hwndCur, LPWSTR pPath, DWORD dwAttribs);
 BOOL IsNetDir(LPWSTR pPath, LPWSTR pName);
@@ -76,7 +76,7 @@ Error:
 
    hThreadDirRead = CreateThread(NULL,
                                  0L,
-                                 (LPTHREAD_START_ROUTINE)DirReadServer,
+                                 DirReadServer,
                                  NULL,
                                  0L,
                                  &dwIgnore);
@@ -577,7 +577,8 @@ Return:
 ********************************************************************/
 
 
-VOID
+DWORD
+WINAPI
 DirReadServer(
    LPVOID lpvParm)
 {
@@ -637,6 +638,8 @@ Restart:
          }
       }
    }
+
+   return 0;
 }
 
 
