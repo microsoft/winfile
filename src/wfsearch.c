@@ -825,7 +825,7 @@ SearchWndProc(
          SearchInfo.bCancel = FALSE;
 
          // Create our dialog!  (modeless)
-         CreateDialog(hAppInstance, (LPWSTR) MAKEINTRESOURCE(SEARCHPROGDLG), hwndFrame, (DLGPROC) SearchProgDlgProc);
+         CreateDialog(hAppInstance, (LPWSTR) MAKEINTRESOURCE(SEARCHPROGDLG), hwndFrame, SearchProgDlgProc);
 
       }  // ELSE from wParam == CD_VIEW
 
@@ -924,7 +924,7 @@ SearchWndProc(
       //
       // Create our dialog!  (modeless)
       //
-      CreateDialog(hAppInstance, (LPWSTR) MAKEINTRESOURCE(SEARCHPROGDLG), hwndFrame, (DLGPROC) SearchProgDlgProc);
+      CreateDialog(hAppInstance, (LPWSTR) MAKEINTRESOURCE(SEARCHPROGDLG), hwndFrame, SearchProgDlgProc);
 
       break;
    }
@@ -1233,7 +1233,7 @@ SearchProgDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
       if (!SearchInfo.hThread) {
          SearchInfo.hThread = CreateThread( NULL,        // Security
             0L,                                          // Stack Size
-            (LPTHREAD_START_ROUTINE)SearchDrive,
+            SearchDrive,
             NULL,
             0L,
             &dwIgnore );

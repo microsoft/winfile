@@ -831,7 +831,7 @@ BOOL WFCheckCompress(
                                        hAppInstance,
                                        MAKEINTRESOURCE(COMPRESSPROGDLG),
                                        hwndFrame,
-                                       (DLGPROC)CompressProgDlg);
+                                       CompressProgDlg);
 
                     ShowWindow(hDlgProgress, SW_SHOW);
                 }
@@ -925,7 +925,7 @@ BOOL WFCheckCompress(
                                        hAppInstance,
                                        MAKEINTRESOURCE(UNCOMPRESSPROGDLG),
                                        hwndFrame,
-                                       (DLGPROC) UncompressProgDlg);
+                                       UncompressProgDlg);
 
                     ShowWindow(hDlgProgress, SW_SHOW);
                 }
@@ -1779,7 +1779,7 @@ int CompressErrMessageBox(
     rc = DialogBoxParam( hAppInstance,
                          (LPTSTR) MAKEINTRESOURCE(COMPRESSERRDLG),
                          hwndFrame,
-                         (DLGPROC)CompressErrDialogProc,
+                         CompressErrDialogProc,
                          (LPARAM)szFile );
 
     //

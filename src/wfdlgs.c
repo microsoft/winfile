@@ -514,7 +514,7 @@ NewFont()
    cf.lpLogFont      = &lf;
    cf.hInstance      = hAppInstance;
    cf.lpTemplateName = (LPTSTR) MAKEINTRESOURCE(FONTDLG);
-   cf.lpfnHook       = (LPCFHOOKPROC) FontHookProc;
+   cf.lpfnHook       = FontHookProc;
    cf.nSizeMin       = 4;
    cf.nSizeMax       = 36;
 

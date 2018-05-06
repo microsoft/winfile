@@ -76,7 +76,7 @@ Error:
 
    hThreadDirRead = CreateThread(NULL,
                                  0L,
-                                 (LPTHREAD_START_ROUTINE)DirReadServer,
+                                 DirReadServer,
                                  NULL,
                                  0L,
                                  &dwIgnore);
