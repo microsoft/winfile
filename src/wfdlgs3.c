@@ -47,6 +47,7 @@ typedef enum {
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 ChooseDriveDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szDrive[5];
@@ -155,6 +156,7 @@ DoHelp:
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 DiskLabelDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szNewVol[MAXPATHLEN];
@@ -510,6 +512,7 @@ FillDriveCapacity(HWND hDlg, INT nDrive, FMIFS_MEDIA_TYPE fmSelect, BOOL fDoPopu
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 FormatDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szBuf[128];
@@ -737,6 +740,7 @@ DoHelp:
 /*----------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     HWND  hwndSelectDrive;
@@ -824,6 +828,7 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     WORD wMajorVersion   = 0;
@@ -1088,7 +1093,8 @@ Callback_Function(FMIFS_PACKET_TYPE   PacketType,
  *
  */
 
-BOOL
+INT_PTR
+CALLBACK
 CancelDlgProc(HWND hDlg,
    UINT message,
    WPARAM wParam,
@@ -1299,6 +1305,7 @@ CancelDlgProc(HWND hDlg,
 /////////////////////////////////////////////////////////////////////
 
 INT_PTR
+CALLBACK
 ProgressDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    static PCOPYINFO pCopyInfo;
@@ -1526,6 +1533,7 @@ UpdateConnections(BOOL bUpdateDriveList)
 }
 
 INT_PTR
+CALLBACK
 DrivesDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    DRIVEIND driveInd;

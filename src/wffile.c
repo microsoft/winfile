@@ -93,7 +93,7 @@ CompressErrMessageBox(
     LPTSTR szFile,
     PHANDLE phFile);
 
-BOOL CALLBACK
+INT_PTR CALLBACK
 CompressErrDialogProc(
     HWND hDlg,
     UINT uMsg,
@@ -379,10 +379,10 @@ VOID DisplayUncompressProgress(
 //
 /////////////////////////////////////////////////////////////////////////////
 
-BOOL APIENTRY UncompressProgDlg(
+INT_PTR CALLBACK UncompressProgDlg(
     HWND hDlg,
     UINT nMsg,
-    DWORD wParam,
+    WPARAM wParam,
     LPARAM lParam)
 {
     TCHAR szTemp[120];
@@ -598,10 +598,10 @@ void DisplayCompressProgress(
 //
 /////////////////////////////////////////////////////////////////////////////
 
-BOOL APIENTRY CompressProgDlg(
+INT_PTR CALLBACK CompressProgDlg(
     HWND hDlg,
     UINT nMsg,
-    DWORD wParam,
+    WPARAM wParam,
     LPARAM lParam)
 {
     TCHAR szTemp[120];
@@ -1823,7 +1823,7 @@ int CompressErrMessageBox(
 //
 /////////////////////////////////////////////////////////////////////////////
 
-BOOL CALLBACK CompressErrDialogProc(
+INT_PTR CALLBACK CompressErrDialogProc(
     HWND hDlg,
     UINT uMsg,
     WPARAM wParam,

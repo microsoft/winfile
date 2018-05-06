@@ -590,6 +590,7 @@ UpdateSearchStatus(HWND hwndLB, INT nCount)
 
 
 LRESULT
+CALLBACK
 SearchWndProc(
    register HWND hwnd,
    UINT uMsg,
@@ -1146,7 +1147,7 @@ UnlockSearchFile()
 }
 
 
-LRESULT CALLBACK
+INT_PTR CALLBACK
 SearchProgDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
    DWORD dwIgnore;

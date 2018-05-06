@@ -131,6 +131,7 @@ DO_AGAIN:
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 OtherDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
   DWORD          dwView;
@@ -222,6 +223,7 @@ DoHelp:
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
   DWORD dwAttribs;
@@ -326,6 +328,7 @@ DoHelp:
 
 
 INT_PTR
+CALLBACK
 SelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
         HWND hwndActive, hwnd;
@@ -400,8 +403,9 @@ DoHelp:
 }
 
 
-BOOL
-FontHookProc(HWND hDlg, WORD wMsg, WPARAM wParam, LPARAM lParam)
+UINT_PTR
+CALLBACK
+FontHookProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
 KOREAJAPANBEGIN
    // Steal from PBrush source to remove @font in the list - SangilJ
@@ -636,6 +640,7 @@ NewFont()
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 ConfirmDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
   UNREFERENCED_PARAMETER(lParam);
@@ -698,7 +703,7 @@ DoHelp:
   return TRUE;
 }
 
-INT_PTR  PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     /* Editor prefrence variables*/
     TCHAR szTempEditPath[MAX_PATH];
