@@ -2175,9 +2175,11 @@ WFMoveCopyDriver(PCOPYINFO pCopyInfo)
 //
 /////////////////////////////////////////////////////////////////////
 
-VOID
-WFMoveCopyDriverThread(PCOPYINFO pCopyInfo)
+DWORD
+WINAPI
+WFMoveCopyDriverThread(LPVOID lpParameter)
 {
+   PCOPYINFO pCopyInfo = lpParameter;
    DWORD ret = 0;                     // Return value from WFMoveCopyDriver
    LPWSTR pSpec;                      // Pointer to file spec
    DWORD dwAttr;                      // File attributes
@@ -3207,6 +3209,8 @@ ExitLoop:
    LocalFree(pCopyInfo->pFrom);
    LocalFree(pCopyInfo->pTo);
    LocalFree(pCopyInfo);
+
+   return 0;
 }
 
 

@@ -20,8 +20,8 @@
 #define CCH_DRIVE       3
 #define CCH_DLG_TITLE  16
 
-VOID FormatDrive( IN PVOID ThreadParameter );
-VOID CopyDiskette( IN PVOID ThreadParameter );
+DWORD WINAPI FormatDrive( IN PVOID ThreadParameter );
+DWORD WINAPI CopyDiskette( IN PVOID ThreadParameter );
 VOID SwitchToSafeDrive(VOID);
 VOID MDIClientSizeChange(HWND hwndActive, INT iFlags);
 
@@ -856,7 +856,8 @@ AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     return FALSE;
 }
 
-VOID
+DWORD
+WINAPI
 FormatDrive( IN PVOID ThreadParameter )
 {
    WCHAR wszDrive[3];
@@ -880,9 +881,12 @@ FormatDrive( IN PVOID ThreadParameter )
    } while (CancelInfo.Info.Format.fFlags & FF_RETRY);
 
    CancelDlgQuit();
+
+   return 0;
 }
 
-VOID
+DWORD
+WINAPI
 CopyDiskette( IN PVOID ThreadParameter )
 {
   BOOL fVerify = FALSE;
@@ -904,6 +908,8 @@ CopyDiskette( IN PVOID ThreadParameter )
                   (FMIFS_CALLBACK)&Callback_Function);
 
    CancelDlgQuit();
+
+   return 0;
 }
 
 

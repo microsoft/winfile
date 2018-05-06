@@ -148,7 +148,7 @@ INT NetCon_UpdateAltName(DRIVE drive, DWORD dwRetVal);
 
 BOOL NetLoad(VOID);
 
-VOID UpdateInit(PVOID ThreadParameter);
+DWORD WINAPI UpdateInit(PVOID ThreadParameter);
 DWORD  WFGetConnection(DRIVE,LPTSTR*,BOOL,DWORD);
 DWORD GetVolShare(DRIVE drive, LPTSTR* ppszVolShare, DWORD dwType);
 VOID UpdateDriveListComplete(VOID);
