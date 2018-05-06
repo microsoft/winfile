@@ -34,7 +34,7 @@ SRCS = \
 
 OBJS = $(subst .c,.o,$(SRCS)) wfgoto.o res.o
 
-CFLAGS = -DUNICODE -DFASTMOVE -DSTRSAFE_NO_DEPRECATE
+CFLAGS = -DUNICODE -DFASTMOVE -DSTRSAFE_NO_DEPRECATE -DWINVER=0x0600
 LIBS = -mwindows -lgdi32 -lcomctl32 -lole32 -lshlwapi -loleaut32 -lversion
 TARGET = winfile
 ifeq ($(OS),Windows_NT)
