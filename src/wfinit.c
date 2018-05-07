@@ -929,6 +929,7 @@ InitFileManager(
 
    HANDLE        hThread;
    DWORD         dwRetval;
+   DWORD         dwExStyle = 0L;
 
    hThread = GetCurrentThread();
 
@@ -1025,7 +1026,7 @@ JAPANEND
    //
    GetSettings();
 
-   MirrorUI();
+   dwExStyle = MirrorUI();
 
    dyBorder = GetSystemMetrics(SM_CYBORDER);
    dyBorderx2 = dyBorder * 2;
@@ -1294,7 +1295,7 @@ JAPANEND
    }
 
 
-   if (!CreateWindowEx(0L, szFrameClass, szTitle, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
+   if (!CreateWindowEx(dwExStyle, szFrameClass, szTitle, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
       win.rc.left, win.rc.top, win.rc.right, win.rc.bottom,
       NULL, NULL, hInstance, NULL)) {
 

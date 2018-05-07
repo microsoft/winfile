@@ -56,27 +56,30 @@ VOID SaveLang(HWND hCBox)
     WritePrivateProfileString(szSettings, szUILanguage, szLCIDs[iIndex], szTheINIFile);
 }
 
-VOID MirrorUI(VOID)
+DWORD MirrorUI()
 {
+    DWORD exStyle = 0L;
+
     switch (PRIMARYLANGID(LANGIDFROMLCID(lcid)))
     {
         /* Additional Languages can be added */
         case LANG_HEBREW:
             if (!bToggleDir)
-                SetProcessDefaultLayout(LAYOUT_RTL);
+                exStyle |= WS_EX_LAYOUTRTL;
+            else /* Classy Win3.11 look */
+                exStyle |= (WS_EX_LAYOUTRTL | WS_EX_NOINHERITLAYOUT);
             break;
         default:
             if (bToggleDir)
-                SetProcessDefaultLayout(LAYOUT_RTL);
+                exStyle |= WS_EX_LAYOUTRTL;
             break;
     }
+
+    return exStyle;
 }
 
 VOID MirrorHDC(HDC hdc)
 {
-    DWORD dwLayout;
-    GetProcessDefaultLayout(&dwLayout);
-
-    if (dwLayout == LAYOUT_RTL) 
+    if (GetLayout(hdc) == LAYOUT_RTL)
         SetLayout(hdc, LAYOUT_RTL | LAYOUT_BITMAPORIENTATIONPRESERVED);
 }

@@ -616,7 +616,7 @@ BOOL GetRootPath(LPTSTR szPath, LPTSTR szReturn);
 //WFLOC.C
 VOID InitLangList(HWND hCBox);
 VOID SaveLang(HWND hCBox);
-VOID MirrorUI(VOID);
+DWORD MirrorUI(VOID);
 VOID MirrorHDC(HDC hdc);
 
 // TBAR.C
