@@ -31,7 +31,7 @@ BEGIN
     MENUITEM    "Pr&int...",        IDM_PRINT
     MENUITEM    "&Associate...",    IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "Cr&eate Directory...", IDM_MAKEDIR
+    MENUITEM    "Cr&eate Directory...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "Select &Files...", IDM_SELECT
 	MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
