@@ -61,7 +61,7 @@ public:
 	{
 		wstring lowered;
 		lowered.resize(query.size());
-		transform(std::cbegin(query), std::cend(query), std::begin(lowered), ::tolower);
+		transform(std::begin(query), std::end(query), std::begin(lowered), ::tolower);
 
 		vector<TValue> results;
 		TValue val = TValue();
