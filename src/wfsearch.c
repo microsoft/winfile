@@ -780,9 +780,10 @@ SearchWndProc(
             return 0L;
 
          if (wParam == CD_SEARCHUPDATE) {
+            int msg;
             LoadString(hAppInstance, IDS_SEARCHTITLE, szTitle, COUNTOF(szTitle));
             LoadString(hAppInstance, IDS_SEARCHREFRESH, szMessage, COUNTOF(szMessage));
-			int msg = MessageBox(hwnd, szMessage, szTitle, MB_ABORTRETRYIGNORE | MB_ICONQUESTION);
+			msg = MessageBox(hwnd, szMessage, szTitle, MB_ABORTRETRYIGNORE | MB_ICONQUESTION);
 
 			if (msg == IDABORT)
 			{
