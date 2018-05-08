@@ -144,7 +144,6 @@ BEGIN
 	MENUITEM    "הפעלת Cmd She&ll...", IDM_STARTCMDSHELL
 	MENUITEM    "הפעלת Po&werShell...", IDM_STARTPOWERSHELL
 	MENUITEM    "&עבור לתיקיה...", IDM_GOTODIR
-	MENUITEM	"אודות",			IDM_ABOUT
 	END
 END
 
