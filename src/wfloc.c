@@ -24,8 +24,9 @@ LPCTSTR szLCIDs[] = {
 
 VOID InitLangList(HWND hCBox)
 {
+    UINT i = 0;
     // Propogate the list
-    for (UINT i = 0; i <= (COUNTOF(szLCIDs) - 1); i++)
+    for (i = 0; i <= (COUNTOF(szLCIDs) - 1); i++)
     {
         TCHAR szLangName[MAX_PATH] = { 0 };
         LCID lcidTemp = LocaleNameToLCID(szLCIDs[i], 0);
