@@ -2117,15 +2117,15 @@ TreeControlWndProc(
 #define fDontSelChange  HIWORD(wParam)
 #define szDir           (LPTSTR)lParam  // NULL -> default == window text.
 
+	   RECT rc;
+	   DWORD i;
+	   PDNODE    pNode;
+
 	   //
 	   // Don't do anything while the tree is being built.
 	   //
 	   if (GetWindowLongPtr(hwnd, GWL_READLEVEL))
 		   break;
-
-	   RECT rc;
-	   DWORD i;
-	   PDNODE    pNode;
 
 	   // do the same as TC_SETDIRECTORY above for the simple case
 	   if (FindItemFromPath(hwndLB, (LPTSTR)lParam, 0, &i, &pNode))
