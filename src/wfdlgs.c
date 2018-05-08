@@ -705,14 +705,15 @@ DoHelp:
 
 INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
+    OPENFILENAME ofn;
+    HWND hLangComboBox;
+
     /* Editor prefrence variables*/
     TCHAR szTempEditPath[MAX_PATH];
     TCHAR szPath[MAX_PATH];
     TCHAR szFilter[MAX_PATH] = { 0 };
 
     LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAX_PATH);
-
-    OPENFILENAME ofn;
 
     ZeroMemory(&ofn, sizeof(ofn));
     ofn.lStructSize = sizeof(ofn);
@@ -728,7 +729,7 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
 
     /* Language prefrence variables */
-    HWND hLangComboBox = GetDlgItem(hDlg, IDC_LANGCB);
+    hLangComboBox = GetDlgItem(hDlg, IDC_LANGCB);
 
     switch (wMsg)
     {
