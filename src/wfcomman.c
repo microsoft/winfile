@@ -532,10 +532,12 @@ CreateDirWindow(
    // Are we replacing the contents of the currently active child?
    //
    if (bReplaceOpen) {
+       INT i = 0;
+       DRIVE drive;
 	   CharUpperBuff(szPath, 1);     // make sure
 
-	   DRIVE drive = DRIVEID(szPath);
-	   for (INT i = 0; i<cDrives; i++)
+	   drive = DRIVEID(szPath);
+	   for (i = 0; i<cDrives; i++)
 	   {
 		   if (drive == rgiDrive[i])
 		   {
@@ -792,6 +794,7 @@ FmifsLoaded()
 BOOL
 GetPowershellExePath(LPTSTR szPSPath)
 {
+    int ikey = 0;
     HKEY hkey;
     if (ERROR_SUCCESS != RegOpenKey(HKEY_LOCAL_MACHINE, TEXT("SOFTWARE\\Microsoft\\PowerShell"), &hkey))
     {
@@ -800,7 +803,7 @@ GetPowershellExePath(LPTSTR szPSPath)
 
     szPSPath[0] = TEXT('\0');
 
-    for (int ikey = 0; ikey < 5; ikey++)
+    for (ikey = 0; ikey < 5; ikey++)
     {
         TCHAR         szSub[10];    // just the "1" or "3"
 
