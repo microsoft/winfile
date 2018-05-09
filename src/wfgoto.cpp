@@ -99,7 +99,7 @@ bool CompareNodes(const PDNODE& a, const PDNODE& b)
 vector<PDNODE> FilterBySubtree(vector<PDNODE> const& parents, vector<PDNODE>  const& children)
 {
 	vector<PDNODE> results;
-
+#if 0
 	// for each child, if parent in parents, return
 	std::copy_if(std::cbegin(children),
 				 std::cend(children),
@@ -109,7 +109,15 @@ vector<PDNODE> FilterBySubtree(vector<PDNODE> const& parents, vector<PDNODE>  co
 		PDNODE parent = child->pParent;
 		return (find(std::cbegin(parents), std::cend(parents), parent) != std::end(parents));
 	});
-
+#else
+	vector<PDNODE>::const_iterator it;
+	for(it=children.begin(); it!=children.end(); it++) {
+		PDNODE parent = (*it)->pParent;
+		if (find(std::begin(parents), std::end(parents), parent) != std::end(parents)) {
+			results.push_back(parent);
+		}
+	}
+#endif
 	return results;
 }
 
@@ -121,12 +129,14 @@ vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 		return result;
 
 	// If any tree is empty, return empty
-	if (std::any_of(std::cbegin(trees), std::cend(trees), [](auto& tree) { return tree.size() == 0; }))
+	if (std::any_of(std::begin(trees), std::end(trees), [](vector<PDNODE>& tree) { return tree.size() == 0; }))
 		return result;
 
 	size_t maxOutput = 0;
-	for (auto& tree : trees)
+	vector<vector<PDNODE> >::iterator it;
+	for (it=trees.begin(); it!=trees.end(); it++) // (auto& tree : trees)
 	{
+		vector<PDNODE>& tree = *it;
 		sort(tree.begin(), tree.end(), CompareNodes);
 		if (tree.size() > maxOutput)
 			maxOutput = tree.size();
@@ -282,8 +292,10 @@ vector<wstring> SplitIntoWords(LPCTSTR szText)
 void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes)
 {
 	// free all PDNODE in BagOValues
-	for (PDNODE p : *pNodes)
+	vector<PDNODE>::iterator it;
+	for (it=(*pNodes).begin(); it!=(*pNodes).end(); it++) // (PDNODE p : *pNodes)
 	{
+		PDNODE p = *it;
 		LocalFree(p);
 	}
 
@@ -361,9 +373,10 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 
 		// if spaces, each word individually (and not whole thing)
 		vector<wstring> words = SplitIntoWords(lfndta.fd.cFileName);
-
-		for (auto word : words)
+		vector<wstring>::iterator it;
+		for (it=words.begin(); it!=words.end(); it++) // (auto word : words)
 		{
+			wstring &word = *it;
 			// TODO: how to mark which word is primary to avoid double free?
 			pbov->Add(word, pNodeChild);
 		}
@@ -399,14 +412,16 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 vector<PDNODE> GetDirectoryOptionsFromText(LPCTSTR szText, BOOL *pbLimited)
 {
 	if (g_pBagOCDrive == nullptr)
-		return vector<PDNODE>{};
+		return vector<PDNODE>();
 
 	vector<wstring> words = SplitIntoWords(szText);
 
 	vector<vector<PDNODE>> options_per_word;
 
-	for (auto word : words)
+	vector<wstring>::iterator it;
+	for (it=words.begin(); it!=words.end(); it++) // (auto word : words)
 	{
+		wstring &word = *it;
 		vector<PDNODE> options;
 		size_t pos = word.find_first_of(L'\\');
 		if (pos == word.size() - 1)
