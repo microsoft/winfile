@@ -31,7 +31,7 @@ BEGIN
     MENUITEM    "打印(&P)...",        IDM_PRINT
     MENUITEM    "关联(&A)...",    IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "创建目录(&E)...", IDM_MAKEDIR
+    MENUITEM    "创建目录(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "搜索(&H)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "选择文件(&F)...", IDM_SELECT
 	MENUITEM    "打开 Bash...", IDM_STARTBASHSHELL
@@ -144,7 +144,6 @@ BEGIN
 	MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
 	MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "转到目录(&G)...", IDM_GOTODIR
-	MENUITEM	"关于文件管理器(&A)",			IDM_ABOUT
 	END
 END
 

@@ -1099,7 +1099,7 @@ JAPANEND
    wHelpMessage = RegisterWindowMessage(TEXT("ShellHelp"));
    wBrowseMessage = RegisterWindowMessage(TEXT("commdlg_help"));
 
-   hhkMsgFilter = SetWindowsHook(WH_MSGFILTER, (HOOKPROC)MessageFilter);
+   hhkMsgFilter = SetWindowsHook(WH_MSGFILTER, MessageFilter);
 
    hcurArrow = LoadCursor(NULL, IDC_ARROW);
 
@@ -1319,7 +1319,7 @@ JAPANEND
 
    hThreadUpdate = CreateThread( NULL,
       0L,
-      (LPTHREAD_START_ROUTINE)UpdateInit,
+      UpdateInit,
       NULL,
       0L,
       &Ignore);

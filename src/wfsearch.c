@@ -102,7 +102,7 @@ INT  SearchList(
    INT iFileCount,
    BOOL bRoot);
 VOID ClearSearchLB(BOOL bWorkerCall);
-INT SearchDrive();
+DWORD WINAPI SearchDrive(LPVOID lpParameter);
 
 #define SEARCH_FILE_WIDTH_DEFAULT 50
 
@@ -590,6 +590,7 @@ UpdateSearchStatus(HWND hwndLB, INT nCount)
 
 
 LRESULT
+CALLBACK
 SearchWndProc(
    register HWND hwnd,
    UINT uMsg,
@@ -824,7 +825,7 @@ SearchWndProc(
          SearchInfo.bCancel = FALSE;
 
          // Create our dialog!  (modeless)
-         CreateDialog(hAppInstance, (LPWSTR) MAKEINTRESOURCE(SEARCHPROGDLG), hwndFrame, (DLGPROC) SearchProgDlgProc);
+         CreateDialog(hAppInstance, (LPWSTR) MAKEINTRESOURCE(SEARCHPROGDLG), hwndFrame, SearchProgDlgProc);
 
       }  // ELSE from wParam == CD_VIEW
 
@@ -923,7 +924,7 @@ SearchWndProc(
       //
       // Create our dialog!  (modeless)
       //
-      CreateDialog(hAppInstance, (LPWSTR) MAKEINTRESOURCE(SEARCHPROGDLG), hwndFrame, (DLGPROC) SearchProgDlgProc);
+      CreateDialog(hAppInstance, (LPWSTR) MAKEINTRESOURCE(SEARCHPROGDLG), hwndFrame, SearchProgDlgProc);
 
       break;
    }
@@ -1146,7 +1147,7 @@ UnlockSearchFile()
 }
 
 
-LRESULT CALLBACK
+INT_PTR CALLBACK
 SearchProgDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
    DWORD dwIgnore;
@@ -1232,7 +1233,7 @@ SearchProgDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
       if (!SearchInfo.hThread) {
          SearchInfo.hThread = CreateThread( NULL,        // Security
             0L,                                          // Stack Size
-            (LPTHREAD_START_ROUTINE)SearchDrive,
+            SearchDrive,
             NULL,
             0L,
             &dwIgnore );
@@ -1352,8 +1353,9 @@ CloseWindow:
    }
 }
 
-INT
-SearchDrive()
+DWORD
+WINAPI
+SearchDrive(LPVOID lpParameter)
 {
    maxExtLast = SEARCH_FILE_WIDTH_DEFAULT;
 
