@@ -44,7 +44,7 @@ BEGIN
     POPUP       "磁盘(&D)"
     BEGIN
     MENUITEM    "复制磁盘(&C)...",    IDM_DISKCOPY
-    MENUITEM    "标注磁盘(&L)...",   IDM_LABEL
+    MENUITEM    "设置磁盘卷标(&L)...",   IDM_LABEL
     MENUITEM    SEPARATOR
     MENUITEM    "格式化磁盘(&F)...",  IDM_FORMAT
     MENUITEM    SEPARATOR
@@ -57,7 +57,7 @@ BEGIN
     MENUITEM    "展开全部(&A)\tCtrl+*",  IDM_EXPALL
     MENUITEM    "折叠分支(&C)\t-",  IDM_COLLAPSE
     MENUITEM    SEPARATOR
-    MENUITEM    "表明可展开的分支(&I)",    IDM_ADDPLUSES
+    MENUITEM    "标记可展开的分支(&I)",    IDM_ADDPLUSES
     END
     POPUP       "查看(&V)"
     BEGIN
@@ -71,11 +71,11 @@ BEGIN
     MENUITEM    "文件的全部详细信息(&A)",    IDM_VDETAILS,   CHECKED
     MENUITEM    "部分详细信息(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM "按名称排序(&S)",   IDM_BYNAME
-    MENUITEM "按类型排序(&B)",   IDM_BYTYPE
-    MENUITEM "按大小排序(&Z)",   IDM_BYSIZE
-    MENUITEM "按日期排序(&D)",   IDM_BYDATE
-    MENUITEM "按先前日期排序(&F)",   IDM_BYFDATE
+    MENUITEM    "按名称排序(&S)",   IDM_BYNAME
+    MENUITEM    "按类型排序(&B)",   IDM_BYTYPE
+    MENUITEM    "按大小排序(&Z)",   IDM_BYSIZE
+    MENUITEM    "按日期排序(&D)",   IDM_BYDATE
+    MENUITEM    "按先前日期排序(&F)",   IDM_BYFDATE
     MENUITEM    SEPARATOR
     MENUITEM    "按文件类型(&T)...",     IDM_VINCLUDE
     END
