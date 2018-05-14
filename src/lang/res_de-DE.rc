@@ -143,7 +143,6 @@ BEGIN
   MENUITEM    "Starte Cmd She&ll...",                             IDM_STARTCMDSHELL
   MENUITEM    "Starte Po&werShell...",                            IDM_STARTPOWERSHELL
   MENUITEM    "&Gehe ins Verzeichnis...",                         IDM_GOTODIR
-  MENUITEM    "Über Datei-Manager",                               IDM_ABOUT
   END
 END
 
