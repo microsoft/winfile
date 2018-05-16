@@ -55,3 +55,44 @@ VOID SaveLang(HWND hCBox)
 
     WritePrivateProfileString(szSettings, szUILanguage, szLCIDs[iIndex], szTheINIFile);
 }
+
+// returns whether the current language is default RTL; ARABIC, HEBREW: true; else false;
+// ideally this would call GetLocalInfoEx with LOCALE_IREADINGLAYOUT, but that API was >=  Win7
+BOOL DefaultLayoutRTL()
+{
+    switch (PRIMARYLANGID(LANGIDFROMLCID(lcid)))
+    {
+    /* Additional Languages can be added */
+    case LANG_ARABIC:
+    case LANG_HEBREW:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+// returns the extended style bits for the main window;
+// if bMirrorContent, essentially reverses the RTL setting (but not the main layout in RTL langauges)
+DWORD MainWindowExStyle()
+{
+    DWORD exStyle = 0L;
+
+    if (DefaultLayoutRTL())
+    {
+        exStyle = WS_EX_LAYOUTRTL;
+        if (!bMirrorContent)
+            exStyle |= WS_EX_NOINHERITLAYOUT;
+    }
+    else
+    {
+        exStyle = bMirrorContent ? WS_EX_LAYOUTRTL : 0;
+    }
+
+    return exStyle;
+}
+
+VOID PreserveBitmapInRTL(HDC hdc)
+{
+    if (GetLayout(hdc) == LAYOUT_RTL)
+        SetLayout(hdc, LAYOUT_RTL | LAYOUT_BITMAPORIENTATIONPRESERVED);
+}

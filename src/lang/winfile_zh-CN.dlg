@@ -829,6 +829,7 @@ BEGIN
    CONTROL "...", IDC_EDITOR, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 195, 14, 20, 14
    CONTROL "禁用工具栏的可视化风格", IDC_VSTYLE, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 38, 119, 14
    CONTROL "在启动时创建“转到目录“索引(&G)", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 119, 14
+   CONTROL "Mirror application content", IDC_MIRROR, "button", BS_AUTOCHECKBOX | WS_CHILD /* | WS_VISIBLE | WS_TABSTOP */, 0, 0, 0, 0    // invisible, not a tabsop; here to satisfy VerifyResources tool.
    CONTROL "语言：", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
    CONTROL "请注意某些更改仅在重新打开程序后生效。",
