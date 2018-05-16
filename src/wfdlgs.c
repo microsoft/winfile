@@ -740,6 +740,7 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
             CheckDlgButton(hDlg, IDC_VSTYLE, bDisableVisualStyles);
             CheckDlgButton(hDlg, IDC_GOTO, bIndexOnLaunch);
+            CheckDlgButton(hDlg, IDC_DIR, bToggleDir);
             break;
 
         case WM_COMMAND:
@@ -766,9 +767,12 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                     WritePrivateProfileString(szSettings, szEditorPath, szTempEditPath, szTheINIFile);
 
                     bDisableVisualStyles = IsDlgButtonChecked(hDlg, IDC_VSTYLE);
-                    bIndexOnLaunch = IsDlgButtonChecked(hDlg, IDC_GOTO);
+                    bIndexOnLaunch       = IsDlgButtonChecked(hDlg, IDC_GOTO);
+                    bToggleDir           = IsDlgButtonChecked(hDlg, IDC_DIR);
+
                     WritePrivateProfileBool(szDisableVisualStyles, bDisableVisualStyles);
                     WritePrivateProfileBool(szIndexOnLaunch, bIndexOnLaunch);
+                    WritePrivateProfileBool(szDisableMirroring, bToggleDir);
 
                     EndDialog(hDlg, TRUE);
                     break;

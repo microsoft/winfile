@@ -67,6 +67,8 @@ DrawItem(
 
    HDC hDC = lpLBItem->hDC;
 
+   MirrorHDC(hDC);
+
    HWND hwndListParms = (HWND)GetWindowLongPtr(hwnd, GWL_LISTPARMS);
    BOOL bLower;
 
