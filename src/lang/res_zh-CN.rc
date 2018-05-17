@@ -169,7 +169,7 @@ BEGIN
     IDS_CREATEROOT          "正在创建根目录..."       /* 32 */
     IDS_COPYSYSFILES        "正在复制系统文件..."          /* 32 */
     IDS_FORMATERR           "格式化磁盘错误"             /* 32 */
-    IDS_FORMATQUICKFAILURE  "文件管理器不能进行快速格式化。\n\n以正常格式化继续吗？"
+    IDS_FORMATQUICKFAILURE  "文件管理器不能进行快速格式化。\n\n执行正常格式化？"
 //    IDS_FORMATERRMSG        "Cannot format disk."                                                                                                      /* 128 */
 //    IDS_FORMATCURERR      "You cannot format the current drive."                                                                                     /* 128 */
     IDS_FORMATCOMPLETE      "格式化完成"               /* 32 */
@@ -213,16 +213,16 @@ BEGIN
 //    IDS_PMODEONLYMSG        "This application requires Windows."                                                             /* 128 */
     IDS_DDEFAIL             "在将命令发送到应用程序时发生错误。"                                                                /* 128 */
 //    IDS_COMPRESSEDEXE       "This program or one of its components is compressed.\n\nUse the MS-DOS expand utility to copy the file from the setup disks."
-    IDS_INVALIDDLL          "运行这个应用程序所需的库文件之一被毁。请重新安装这个应用程序。"
+    IDS_INVALIDDLL          "运行该应用程序所需的库文件之一损坏。请重新安装该应用程序。"
     IDS_SHAREERROR          "此文件正被其它应用程序使用。"
 
     IDS_CREATELONGDIR       "文件管理器无法访问在“%s“目录中所创建的文件。\n\n是否继续？"
     IDS_CREATELONGDIRTITLE  "创建目录"
 
     IDS_MOUSECONFIRM,       "确认鼠标操作"       /* 32 */
-    IDS_COPYMOUSECONFIRM,   "您肯定是想把所选文件或目录复制到 %s 吗？"
-    IDS_MOVEMOUSECONFIRM,   "您肯定是想把所选文件或目录移动到 %s 吗？"
-    IDS_EXECMOUSECONFIRM,   "是否确定要启动 %s,使用 %s 来作为起始文件？"                                                          /* 128 */
+    IDS_COPYMOUSECONFIRM,   "确定把所选文件或目录复制到 %s ？"
+    IDS_MOVEMOUSECONFIRM,   "确定把所选文件或目录移动到 %s ？"
+    IDS_EXECMOUSECONFIRM,   "确定要使用 %s 打开 %s ？"                                                          /* 128 */
 
     IDS_WINFILE,            "文件管理器"                  /* 32 */
     IDS_TREETITLE,          "目录树"                /* 32 */
@@ -234,10 +234,10 @@ BEGIN
     IDS_OOMREADINGDIRMSG,   "无法读取整个目录。仅显示部分列表。"                                              /* 128 */
 
 //    IDS_PRINTFNF            "The file to be printed cannot be found. Make sure the correct path and filename are specified."                                                                                  /* 128 */
-    IDS_PRINTMEMORY         "没有足够的内存空间可供打印。\n\n请退出使用一个或数个应用程序，然后再试一次。"                                             /* 128 */
-    IDS_PRINTDISK           "没有足够的磁盘空间可供打印。\n\n请删除一个或数个文件以增加磁盘空间，然后再试一次。"                        /* 128 */
-    IDS_PRINTERROR          "打印时出现错误。\n\n请确定打印机是否配置正确，是否选择正确。"             /* 128 */
-    IDS_PRINTONLYONE        "文件管理器不能同时打印多份文件。\n\n只选择一份文件，然后再试。"                                               /* 128 */
+    IDS_PRINTMEMORY         "没有足够的内存空间可供打印。\n\n请退出一些应用程序，然后重试。"                                             /* 128 */
+    IDS_PRINTDISK           "没有足够的磁盘空间可供打印。\n\n请删除一些文件以释放磁盘空间，然后重试。"                        /* 128 */
+    IDS_PRINTERROR          "打印时出现错误。\n\n请确认选择了正确的打印机，并检查打印机配置是否正确。"             /* 128 */
+    IDS_PRINTONLYONE        "文件管理器不能同时打印多份文件。\n\n只选择一份文件，然后重试。"                                               /* 128 */
 
     IDS_CURDIRIS,           "当前目录: %s"                                                                                                    /* 128 */
     IDS_COPY,               "复制"                          /* 32 */
@@ -265,7 +265,7 @@ BEGIN
     IDS_STATUSMSG,          "共 %d 个文件 (%s)"             /* 128 */
     IDS_STATUSMSG2,         "选择了 %d 个文件 (%s)"          /* 128 */
     IDS_DRIVEFREE,          "%c: %s 可用空间，%s 全部空间"            /* 128 */
-    IDS_TREEABORT,          "显示的是不完整的目录树"     /* 128 */
+    IDS_TREEABORT,          "目录树未完整显示"     /* 128 */
     IDS_DIRSREAD,           "目录读取: %d"                   /* 32 */
     IDS_SEARCHMSG,          "找到 %d 个文件"
     IDS_BYTES,              "%ld 字节"
@@ -282,18 +282,18 @@ BEGIN
     IDS_COPYERROR + FUNC_RENAME "重命名文件出错"
     IDS_COPYERROR + FUNC_SETDRIVE "选择驱动器出错"
     IDS_COPYERROR + FUNC_EXPAND   "读取目录出错"
-    IDS_COPYERROR + FUNC_LABEL    "标注磁盘出错"
+    IDS_COPYERROR + FUNC_LABEL    "设置磁盘卷标出错"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
 
-    IDS_VERBS + FUNC_COPY       "文件管理器不能复制 %s: %s"
-    IDS_VERBS + FUNC_MOVE       "文件管理不能移动 %s: %s"
-    IDS_VERBS + FUNC_DELETE     "文件管理器不能删除 %s: %s"
-    IDS_VERBS + FUNC_RENAME     "文件管理器不能重命名 %s: %s"
-    IDS_ACTIONS + 1             "文件管理器不能创建目录 %s: %s"
-    IDS_ACTIONS + 2             "文件管理器不能删除目录 %s: %s"
-    IDS_REPLACING               "文件管理器不能创建或替换 %s: %s"
+    IDS_VERBS + FUNC_COPY       "文件管理器无法复制 %s: %s"
+    IDS_VERBS + FUNC_MOVE       "文件管理器无法移动 %s: %s"
+    IDS_VERBS + FUNC_DELETE     "文件管理器无法删除 %s: %s"
+    IDS_VERBS + FUNC_RENAME     "文件管理器无法重命名 %s: %s"
+    IDS_ACTIONS + 1             "文件管理器无法创建目录 %s: %s"
+    IDS_ACTIONS + 2             "文件管理器无法删除目录 %s: %s"
+    IDS_REPLACING               "文件管理器无法创建或替换 %s: %s"
     // IDS_CREATING             "File Manager cannot create %s: %s"
 
 // include reason strings
@@ -301,14 +301,14 @@ BEGIN
 #include "suggest_zh-CN.db"
 
     IDS_DESTFULL                "目标软盘已满。请插入另一软盘以继续。"
-    IDS_WRITEPROTECTFILE        "这是一个系统、隐藏、或只读性文件。"
+    IDS_WRITEPROTECTFILE        "这是一个系统、隐藏或只读文件。"
 
     IDS_COPYINGTITLE            "正在复制..."
 
     IDS_QUICKFORMATTINGTITLE    "快速格式化..."
 
-    IDS_BUSYFORMATQUITVERIFY    "文件管理器当前正在格式化软盘。退出文件管理器将会中断此项操作。"
-    IDS_BUSYCOPYQUITVERIFY      "文件管理器当前正在复制软盘。退出文件管理器将会中断此项操作。"
+    IDS_BUSYFORMATQUITVERIFY    "文件管理器正在格式化软盘。退出文件管理器将会中断该操作。"
+    IDS_BUSYCOPYQUITVERIFY      "文件管理器正在复制软盘。退出文件管理器将会中断该操作。"
     IDS_PERCENTCOMPLETE         "完成百分比"
     IDS_FORMATSELECTDLGTITLE    "格式化磁盘"
 
@@ -348,7 +348,7 @@ JAPANEND
     IDS_FFERR_INCFS             "不兼容的文件系统。"
     IDS_FFERR_ACCESSDENIED      "禁止访问。"
     IDS_FFERR_DISKWP            "磁盘写保护。"
-    IDS_FFERR_CANTLOCK          "文件管理器无法锁定磁盘卷。"
+    IDS_FFERR_CANTLOCK          "文件管理器无法锁定磁盘。"
     IDS_FFERR_CANTQUICKF        "文件管理器无法快速格式化软盘。\n\n请确定软盘的密度是正确的。"
     IDS_FFERR_SRCIOERR          "源软盘上的 IO 错误。"
     IDS_FFERR_DSTIOERR          "目标软盘上的 IO 错误。"
@@ -356,13 +356,13 @@ JAPANEND
     IDS_FFERR_GENIOERR          "发生 IO 错误。"
 //    IDS_FFERR_MEDIASENSE      "This disk is capable of being formatted at a capacity of %s. Continue formatting at this capacity?"
     IDS_FFERR                   "文件管理器无法格式化软盘。\n\n请确定软盘位于驱动器内，且未写保护、损坏或密度错误。"
-    IDS_FFERR_BADLABEL          "文件管理器无法为驱动器命名。\n\n指定的磁盘卷标无效。请确认卷标并未包含任何下列字符\n\n[空格] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    IDS_FFERR_BADLABEL          "文件管理器无法为驱动器命名。\n\n指定的磁盘卷标无效。请确认卷标没有下列字符\n\n[空格] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
 
-    IDS_FORMATCONFIRM           "格式化会清除软盘中的所有数据。是否确定要格式化 %c 驱动器内的软盘？"
+    IDS_FORMATCONFIRM           "格式化会清除软盘中的所有数据。确定格式化 %c 驱动器内的软盘？"
     IDS_FORMATCONFIRMTITLE      "确认格式化磁盘"
 
-    IDS_DISKCOPYCONFIRM         "此操作将清除目标盘上的所有数据。继续吗？"
+    IDS_DISKCOPYCONFIRM         "此操作将清除目标盘上的所有数据。继续？"
     IDS_DISKCOPYCONFIRMTITLE    "确定复制磁盘"
     IDS_ANDCLOSE                "关闭(&C)"        // goes on Selection dialog
     IDS_CLOSE                   "关闭"         // braindead "&Change"
@@ -428,8 +428,8 @@ JAPANEND
     IDS_ASSOCNOTEXE             "%s 不是一个程序，不能与一个文件扩展名相关联。"
     IDS_ASSOCNONE               "(无)"
     IDS_NOFILES                 "未找到文件。"
-    IDS_NOACCESSDIR             "您并没有访问此目录的权限。"
-    IDS_NOACCESSFILE            "您并没有访问此文件的权限。"
+    IDS_NOACCESSDIR             "您当前无权访问该目录。"
+    IDS_NOACCESSFILE            "您当前无权访问该文件。"
 
     IDS_DRIVEBUSY_COPY          "%c: 驱动器在使用中，无法访问。\n文件管理器正在复制磁盘。"
     IDS_DRIVEBUSY_FORMAT        "%c: 驱动器在使用中，无法访问。\n文件管理器正在格式化磁盘。"
@@ -437,8 +437,8 @@ JAPANEND
     IDS_COPYMOVENOTCOMPLETED    "操作未全部完成"
     IDS_DIRREMAINS              "无法完成文件和目录上所有的操作。"
 
-    IDS_TOOMANYWINDOWS          "打开太多目录窗口。\n\n请关闭一或数个窗口，然后重试。"
-    IDS_FMIFSLOADERR            "不能为这项操作加载所需的一个库。"
+    IDS_TOOMANYWINDOWS          "目录窗口过多。\n\n请关闭一或数个窗口，然后重试。"
+    IDS_FMIFSLOADERR            "无法为该操作加载所需的一个库。"
 
     IDS_NOSUCHDIRTITLE          "无法读取目录"
     IDS_NOSUCHDIR               "目录不存在。"
@@ -456,22 +456,22 @@ JAPANEND
 
     IDS_EXTTITLE                "文件关联编辑器"
 
-    IDS_EXTADDERROR             "无法与扩展名产生关联。"
+    IDS_EXTADDERROR             "无法设置扩展名关联。"
     IDS_EXTDELERROR             "无法删除扩展名。"
     IDS_FILETYPEADDERROR        "无法添加文件类型。"
     IDS_FILETYPEDELERROR        "无法删除文件类型。"
     IDS_FILETYPEREADERROR       "无法读取文件类型。"
 
-    IDS_FILETYPENULLDESCERROR   "文件类型说明不能是空的。请键入新的文件类型。"
+    IDS_FILETYPENULLDESCERROR   "文件类型说明不能为空。请键入新的文件类型。"
     IDS_FILETYPEDUPDESCERROR    "无法根据文件类型产生唯一的标识号。请键入新的文件类型。"
 
     IDS_FILETYPEDELCONFIRMTITLE "删除文件类型"
-    IDS_FILETYPEDELCONFIRMTEXT  "如此将会删除文件类型及所有相关的扩展名。是否确定要删除“%s“？"
+    IDS_FILETYPEDELCONFIRMTEXT  "如此将删除文件类型及所有相关的扩展名。是否确定要删除“%s“？"
 #ifdef ASSOC
     IDS_FILETYPEDELCONFIRMUSERTEXT "You are deleting a Personal File Type.  It will revert to the Common File Type, and all of its extensions will remain intact.  Are you sure you want to revert '%s'?"
     IDS_FILETYPEUSERIZETEXT     "You are customizing a Common File Type.  File Manager save your changes in a Personalized File Type.  Continue?"
 #endif
-    IDS_FILETYPECOMMANDNULLTEXT "文件类型的操作至少必需有一个命令与其搭配。请在命令字段键入应用程序。"
+    IDS_FILETYPECOMMANDNULLTEXT "文件类型操作必需有至少一个命令与其匹配。请在命令字段键入应用程序。"
 
     IDS_NEWFILETYPETITLE        "新文件类型"
     IDS_COPYINGDISKTITLE        "正在复制磁盘"
@@ -484,7 +484,7 @@ JAPANEND
     IDS_UNCOMPRESSDIR           "要同时解压缩 %s 中所有的文件及子目录?"
     IDS_COMPRESS_ATTRIB_ERR     "文件管理器无法更改 %s 的压缩属性。"
     IDS_NTLDRCOMPRESSERR        "%s 文件将不被压缩。如果压缩这个文件，系统可能无法启动。"
-    IDS_MULTICOMPRESSERR        "文件管理器当前正在压缩或解压缩文件。/n您必须先压缩完所有的文件，才能再压缩其它的文件。"
+    IDS_MULTICOMPRESSERR        "文件管理器当前正在压缩或解压缩文件。/n待操作完成后，才能压缩/解压缩其它文件。"
 
     IDS_EDITFILTER              "程序 (*.exe)\0*.exe\0"
 
@@ -502,7 +502,7 @@ BEGIN
     MH_POPUP+IDM_OPTIONS,       "设置选项的命令"
     MH_POPUP+IDM_SECURITY,      "控制文件和目录安全的命令"
     MH_POPUP+IDM_WINDOW,        "安排窗口的命令"
-    MH_POPUP+IDM_HELP,          "显示“文件管理器帮助“的命令"
+    MH_POPUP+IDM_HELP,          "显示“文件管理器帮助”的命令"
 END
 
 
