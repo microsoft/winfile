@@ -79,7 +79,7 @@ BEGIN
     GROUPBOX        "Beispiel", grp2, 6, 72, 252, 64, WS_GROUP
     CTEXT           "", stc6, 6, 137, 8, 8,
                     SS_NOPREFIX | NOT WS_GROUP
-    CTEXT           "AaBbYyZz", stc5, 93, 81, 160, 50, SS_NOPREFIX | NOT
+    CTEXT           "AaBbYyZz", stc5, 10, 81, 243, 37, SS_NOPREFIX | NOT
                     WS_VISIBLE
 END
 
@@ -643,7 +643,7 @@ BEGIN
     CONTROL "Ü&berschreiben von Dateien", IDD_REPLACE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 39, 214, 12
     CONTROL "Ausführen von &Mausaktionen", IDD_MOUSE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 51, 214, 12
     CONTROL "Ausführen von Da&tenträgerbefehlen", IDD_CONFIG, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 63, 214, 12
-    CONTROL "Ändern von &System-, versteckten, schreibgeschützten Dateien", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 150, 12
+    CONTROL "Ändern von &System-, versteckten, schreibgeschützten Dateien", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 218, 12
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 239, 6, 40, 14
     CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 239, 23, 40, 14
     CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 239, 44, 40, 14
