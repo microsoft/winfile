@@ -243,14 +243,7 @@ BEGIN
     IDS_COPY,               "复制"                          /* 32 */
     IDS_RENAME,             "重命名"                        /* 32 */
     IDS_FORMAT,             "格式化磁盘"                   /* 32 */
-    IDS_FORMATSELDISK,      "选择要格式化的磁盘。"                                                                                               /* 128 */
-
-JAPANBEGIN
-    IDS_KK_COPYFROMSTR,        "コピー元(&F):"
-    IDS_KK_COPYTOSTR,          "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,      "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,        "新しい名前(&T):"
-JAPANEND
+    IDS_FORMATSELDISK,      "选择要格式化的磁盘。"
 
 //    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
 
@@ -311,10 +304,6 @@ JAPANEND
     IDS_WRITEPROTECTFILE        "这是一个系统、隐藏、或只读性文件。"
 
     IDS_COPYINGTITLE            "正在复制..."
-
-JAPANBEGIN
-    IDS_KK_COPY                 "コピー先:"
-JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "快速格式化..."
 
@@ -487,10 +476,6 @@ JAPANEND
     IDS_NEWFILETYPETITLE        "新文件类型"
     IDS_COPYINGDISKTITLE        "正在复制磁盘"
     IDS_SEARCHING               "正在搜索..."
-
-JAPANBEGIN
-    IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
-JAPANEND
 
     IDS_INITUPDATEFAIL          "无法初始化后台更新支持。文件管理器将会退出。"
     IDS_INITUPDATEFAILTITLE     "文件管理器初始化"
