@@ -829,6 +829,7 @@ BEGIN
    CONTROL "...", IDC_EDITOR, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 205, 14, 20, 14
    CONTROL "Wyłącz &kompozycje paska narzędzi", IDC_VSTYLE, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 38, 210, 14
    CONTROL "Twórz indeks katalogów przy &uruchomieniu", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 210, 14
+   CONTROL "Mirror application content", IDC_MIRROR, "button", BS_AUTOCHECKBOX | WS_CHILD /* | WS_VISIBLE | WS_TABSTOP */, 0, 0, 0, 0    // invisible, not a tabsop; here to satisfy VerifyResources tool.
    CONTROL "Język:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 160, 13
    CONTROL "Proszę pamiętać, że część zmian zostanie wprowadzona \npo ponownym uruchomieniu programu.",

@@ -461,6 +461,8 @@ PaintDriveLine(DRAWITEMSTRUCT FAR *lpdis)
    DWORD clrBackground;
    RECT rc2;
 
+   PreserveBitmapInRTL(hdc);
+
    //
    // Check rectangle: if > 1 line and dwLines > 1 then use multiline
    // else use abbreviated
