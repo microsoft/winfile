@@ -1,0 +1,629 @@
+/********************************************************************
+
+   res_de-DE.rc
+
+   Copyright (c) Microsoft Corporation. All rights reserved.
+   Licensed under the MIT License.
+
+********************************************************************/
+
+LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
+
+FRAMEMENU MENU PRELOAD
+BEGIN
+    POPUP       "&Datei"
+    BEGIN
+    MENUITEM    "Ö&ffnen\tEingabetaste",                          IDM_OPEN
+    MENUITEM    "Bearbeiten\tF12",                                IDM_EDIT
+    MENUITEM    "&Verschieben...\tF7",                            IDM_MOVE
+    MENUITEM    "&Kopieren...\tF8",                               IDM_COPY
+    MENUITEM    "&In Zwischenablage...\tUmschalt+C",              IDM_COPYTOCLIPBOARD
+    MENUITEM    "Ausschneiden in Zwischenablage...\tUmschalt+X",  IDM_CUTTOCLIPBOARD
+    MENUITEM    "&Einfügen\tUmschalt+V",                          IDM_PASTE
+    MENUITEM    "&Löschen...\tEntf",                              IDM_DELETE
+    MENUITEM    "&Umbenennen...\tF2",                             IDM_RENAME
+    MENUITEM    "Ei&genschaften...\tAlt+Eingabetaste",            IDM_ATTRIBS
+    MENUITEM    SEPARATOR
+    MENUITEM    "K&omprimieren...",                               IDM_COMPRESS
+    MENUITEM    "Deko&mprimieren...",                             IDM_UNCOMPRESS
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Ausführen...",                                  IDM_RUN
+    MENUITEM    "&Drucken...",                                    IDM_PRINT
+    MENUITEM    "Zuord&nen...",                                   IDM_ASSOCIATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+N",          IDM_MAKEDIR
+    MENUITEM    "&Suchen...\tUmschalt+F",                         IDM_SEARCH
+    MENUITEM    "Dateien aus&wählen...",                          IDM_SELECT
+    MENUITEM    "Starte Bash Shell...",                           IDM_STARTBASHSHELL
+    MENUITEM    "Starte Cmd Shel&l...",                           IDM_STARTCMDSHELL
+    MENUITEM    "Starte Po&werShell...",                          IDM_STARTPOWERSHELL
+    MENUITEM    "&Gehe ins Verzeichnis...\tUmschalt+G",           IDM_GOTODIR
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Beenden",                                       IDM_EXIT
+    END
+    POPUP       "Da&tenträger"
+    BEGIN
+    MENUITEM    "Datenträger &kopieren...",                       IDM_DISKCOPY
+    MENUITEM    "Datenträger &benennen...",                       IDM_LABEL
+    MENUITEM    SEPARATOR
+    MENUITEM    "Datenträger &formatieren...",                    IDM_FORMAT
+    MENUITEM    SEPARATOR
+    MENUITEM    "Laufwerk aus&wählen...",                         IDM_DRIVESMORE
+    END
+    POPUP       "&Verzeichnisse"
+    BEGIN
+    MENUITEM    "&Nächste Ebene einblenden\t+",                   IDM_EXPONE
+    MENUITEM    "&Zweig einblenden\t*",                           IDM_EXPSUB
+    MENUITEM    "Alle &Ebenen einblenden\tUmschalt+*",            IDM_EXPALL
+    MENUITEM    "Zweig &ausblenden\t-",                           IDM_COLLAPSE
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Verzweigungen kennzeichnen",                    IDM_ADDPLUSES
+    END
+    POPUP       "&Ansicht"
+    BEGIN
+    MENUITEM    "Struktur &und Verzeichnis",                      IDM_BOTH
+    MENUITEM    "Nur &Struktur",                                  IDM_TREEONLY
+    MENUITEM    "Nur &Verzeichnis",                               IDM_DIRONLY
+    MENUITEM    SEPARATOR
+    MENUITEM    "Tei&len",                                        IDM_SPLIT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Name",                                          IDM_VNAME
+    MENUITEM    "Alle &Dateiangaben",                             IDM_VDETAILS, CHECKED
+    MENUITEM    "&Bestimmte Dateiangaben...",                     IDM_VOTHER
+    MENUITEM    SEPARATOR
+    MENUITEM    "Nach N&ame",                                     IDM_BYNAME
+    MENUITEM    "Nach &Typ",                                      IDM_BYTYPE
+    MENUITEM    "Nach &Größe",                                    IDM_BYSIZE
+    MENUITEM    "Nach Datu&m",                                    IDM_BYDATE
+    MENUITEM    "Nach Datum v&orwärts",                           IDM_BYFDATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "Angaben aus&wählen...",                          IDM_VINCLUDE
+    END
+    POPUP       "&Optionen"
+    BEGIN
+    MENUITEM    "&Bestätigen...",                                 IDM_CONFIRM
+    MENUITEM    "Schrift&art...",                                 IDM_FONT
+    MENUITEM    "Symbolleiste &definieren...",                    IDM_TOOLBARCUST
+    MENUITEM    "Zusätzliche E&instellungen...",                 IDM_PREF
+    MENUITEM    SEPARATOR
+    MENUITEM    "Sy&mbolleiste",                                  IDM_TOOLBAR
+    MENUITEM    "Lauf&werkleiste",                                IDM_DRIVEBAR
+    MENUITEM    "Status&leiste",                                  IDM_STATUSBAR
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Symbol nach Programmstart",                     IDM_MINONRUN
+    MENUITEM    "Beim Starten &Goto-Index erstellen",             IDM_INDEXONLAUNCH
+    MENUITEM    "&Einstellungen beim Beenden speichern",          IDM_SAVESETTINGS
+#ifdef PROGMAN
+    MENUITEM    SEPARATOR
+    MENUITEM    "Einstellungen jetzt speicher&n",                 IDM_SAVENOW
+#endif
+    END
+    POPUP       "&Sicherheit"
+    BEGIN
+    MENUITEM    "&Berechtigungen...",                             IDM_PERMISSIONS
+    MENUITEM    "Über&wachen...",                                 IDM_AUDITING
+    MENUITEM    "Besi&tzer...",                                   IDM_OWNER
+    END
+    POPUP       "&Fenster"
+    BEGIN
+    MENUITEM    "Neues &Fenster",                                 IDM_NEWWINDOW
+    MENUITEM    "Über&lappend\tUmschalt+F5",                      IDM_CASCADE
+    MENUITEM    "&Untereinander",                                 IDM_TILEHORIZONTALLY
+    MENUITEM    "&Nebeneinander\tUmschalt+F4",                    IDM_TILE
+    MENUITEM    "&Symbole anordnen",                              IDM_ARRANGE
+    MENUITEM    "&Aktualisieren\tF5",                             IDM_REFRESH
+    END
+    POPUP       "&Hilfe"
+    BEGIN
+    MENUITEM    "&Hilfethemen",                                   IDM_HELPINDEX
+    MENUITEM    "&Suchen...",                                     IDM_HELPKEYS
+    MENUITEM    "&Hilfe &verwenden",                              IDM_HELPHELP
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Über Datei-Manager",                            IDM_ABOUT
+    END
+END
+
+CTXMENU MENU PRELOAD 
+BEGIN
+  POPUP "Dummy Popup"
+  BEGIN
+  MENUITEM    "&Neues Fenster\tbeim Markieren",                   IDM_NEWWINDOW
+  MENUITEM    "Öffnen\tEnter",                                   IDM_OPEN
+  MENUITEM    "Bearbeiten\tF12",	                                IDM_EDIT
+  MENUITEM    "&Verschieben...\tF7",                              IDM_MOVE
+  MENUITEM    "&Kopieren...\tF8",                                 IDM_COPY
+  MENUITEM    "&In Zwischenablage...\tUmschalt+C",                IDM_COPYTOCLIPBOARD
+  MENUITEM    "Ausschneiden in Zwischenablage...\tUmschalt+X",    IDM_CUTTOCLIPBOARD
+  MENUITEM    "&Einfügen\tUmschalt+V",                            IDM_PASTE
+  MENUITEM    "&Löschen...\tEntf",                                IDM_DELETE
+  MENUITEM    "&Umbenennen...\tF2",                               IDM_RENAME
+  MENUITEM    "&Eigenschaften...\tAlt+Eingabetaste",              IDM_ATTRIBS
+  MENUITEM    "&Ausführen...",                                    IDM_RUN
+  MENUITEM    "Starte Bash Shell...",                             IDM_STARTBASHSHELL
+  MENUITEM    "Starte Cmd She&ll...",                             IDM_STARTCMDSHELL
+  MENUITEM    "Starte Po&werShell...",                            IDM_STARTPOWERSHELL
+  MENUITEM    "&Gehe ins Verzeichnis...",                         IDM_GOTODIR
+  END
+END
+
+#define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
+/*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
+STRINGTABLE DISCARDABLE PRELOAD
+BEGIN
+//    IDS_ENDSESSION          "Exit Windows"                                                          /* 32 */
+//    IDS_ENDSESSIONMSG       "This will end your Windows session."                                   /* 128 */
+
+    IDS_COPYDISK            "Datenträger kopieren"                                                    /* 32 */
+    IDS_INSERTDEST          "Legen Sie den Zieldatenträger ein."                                      /* 128 */
+    IDS_INSERTSRC           "Legen Sie den Quelldatenträger ein."                                     /* 128 */
+    IDS_INSERTSRCDEST       "Legen Sie den Quell- und den Zieldatenträger ein."                       /* 128 */
+    IDS_FORMATTINGDEST      "Formatiert den Zieldatenträger."                                         /* 128 */
+
+    IDS_COPYDISKERR         "Fehler beim Kopieren"                                                    /* 32 */
+    IDS_COPYDISKERRMSG      "Das Kopieren des Datenträgers ist nicht möglich."                        /* 128 */
+    IDS_COPYSRCDESTINCOMPAT "Das Quell- und das Ziellaufwerk sind zueinander inkompatibel."           /* 128 */
+
+    IDS_PERCENTCOMP         "%d %% bearbeitet"                                                        /* 32 */
+    IDS_CREATEROOT          "Das Stammverzeichnis wird angelegt..."                                   /* 32 */
+    IDS_COPYSYSFILES        "Die Systemdateien werden kopiert..."                                     /* 32 */
+    IDS_FORMATERR           "Fehler beim Formatieren"                                                 /* 32 */
+    IDS_FORMATQUICKFAILURE  "Datei-Manager kann keinen Quick-Format durchführen.\n\nMit normaler Formatierung weitermachen?"
+//    IDS_FORMATERRMSG      "Kann den Datenträger nicht formatieren."                                 /* 128 */
+//    IDS_FORMATCURERR      "Sie können den aktuellen Datenträger nicht formatieren."                 /* 128 */
+    IDS_FORMATCOMPLETE      "Formatieren abgeschlossen"                                               /* 32 */
+    IDS_FORMATANOTHER       "%ld Bytes Speicherplatz insgesamt\n%ld Bytes Speicherplatz frei\n\nMöchten Sie eine weitere Diskette formatieren?"    /* 128 */
+
+//    IDS_SYSDISK             "Erstelle Systemdatenträger"
+//    IDS_SYSDISKRUSURE       "Sind Sie sicher, dass Sie Systemdateien auf die Festplatte im Laufwerk %c kopieren wollen?"
+//    IDS_SYSDISKERR          "Fehler auf dem Systemdatenträger"
+//    IDS_SYSDISKNOFILES      "Das MS-DOS-Startlaufwerk enthält keine Systemdateien oder ist nicht verfügbar."
+//    IDS_SYSDISKSAMEDRIVE    "Systemdateien können nicht auf das MS-DOS-Startlaufwerk kopiert werden."
+//    IDS_SYSDISKADDERR       "Kann keine Systemdateien zu dieser Platte hinzufügen.\n\nStellen Sie sicher, dass eine formatierte Platte im Laufwerk vorhanden ist und dass die Laufwerksklappe geschlossen ist."
+
+    IDS_NETERR              "Netzwerkfehler"                                                          /* 32 */
+    IDS_NETDISCONWINERR     "Dieses Laufwerk enthält die Windows-Systemdateien und kann nicht getrennt werden."                                                 /* 128 */
+    IDS_NETDISCONOPEN       "Datei-Manager kann das Netzlaufwerk nicht trennen.\n\nEs sind noch Dateien auf dem Laufwerk geöffnet."
+
+    IDS_ATTRIBERR           "Attribute können nicht geändert werden. "
+    IDS_MAKEDIRERR          "Verzeichnis kann nicht erstellt werden. "
+
+    IDS_LABELDISKERR        "Datenträger kann nicht benannt werden.\n\nStellen Sie sicher, daß der Datenträger nicht schreibgeschützt, kein Netzlaufwerk und die Bezeichnung gültig ist.\
+                             Bezeichnungen dürfen die folgenden Zeichen nicht enthalten:\n[Leerzeichen] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+    IDS_SEARCHNOMATCHES     "Es wurden keine entsprechenden Dateien gefunden."
+    IDS_SEARCHREFRESH       "Der Inhalt des Laufwerks wurde geändert. Möchten Sie eine Aktualisierung des Suchergebnisses?"
+    IDS_LABELACCESSDENIED   "Sie müssen als Administrator an die Arbeitsstation angemeldet sein, um diesen Vorgang auszuführen."
+
+    IDS_DRIVETEMP           "Laufwerk %c:%c"
+
+    IDS_EXECERRTITLE,       "Programmausführungsfehler"
+    IDS_PRINTERRTITLE,      "Kann Datei nicht drucken"
+
+    IDS_UNKNOWNMSG,         "Unerwarteter Fehler: %d."
+    IDS_NOMEMORYMSG,        "Nicht genügend Arbeitsspeicher, um die ausgewählte Anwendung zu starten.\n\nSchließen Sie eine oder mehrere Anwendungen, und versuchen Sie es dann erneut."                   /* 128 */
+    IDS_FILENOTFOUNDMSG,    "Datei bzw. Komponente nicht gefunden.\n\nÜberprüfen Sie, ob Pfad- und Dateiname richtig und alle Bibliotheken verfügbar sind."
+    IDS_BADPATHMSG,         "Der angegebene Pfad ist ungültig."                                                                                           /* 128 */
+//    IDS_MANYOPENFILESMSG,   "Zu viele Dateien werden derzeit verwendet.\n\nBeenden Sie eine oder mehrere Anwendungen oder erhöhen Sie den Wert des Wertes FILES in der CONFIG.SYS, und versuchen Sie es dann erneut."                                    /* 128 */
+    IDS_NOASSOCMSG,         "Dieser Datendatei ist keine Anwendung zugeordnet.\n\nKlicken Sie im Menü 'Datei' auf den Befehl 'Zuordnen', um eine Zuordnung zu erstellen."       /* 128 */
+    IDS_ASSOCINCOMPLETE,    "Die Datei kann nicht geöffnet oder gedruckt werden.\n\nVerwenden Sie die Anwendung, mit der die Datei erstellt wurde."
+//    IDS_MULTIPLEDSMSG,      "Kann nicht mehr als eine Instanz der angegebenen Anwendung starten."                                                                /* 128 */
+//    IDS_OS2APPMSG           "Die angegebene Anwendung ist kein Windows- or MS-DOS-Program."                                                            /* 128 */
+//    IDS_NEWWINDOWSMSG       "Diese Anwendung benötigt eine neuere Version von Microsoft Windows."                                                          /* 128 */
+//    IDS_PMODEONLYMSG        "Diese Anwendung benötigt Windows."                                                             /* 128 */
+    IDS_DDEFAIL             "Ein Fehler ist während des Senden des Befehls zur Anwendung aufgetreten."                                                                /* 128 */
+//    IDS_COMPRESSEDEXE       "Dies Anwendung oder einer ihrer Komponenten ist komprimiert.\n\nBenutzen sie das MS-DOS expand tool um die Datei vom Setup-Datenträger zu kopieren."
+    IDS_INVALIDDLL          "Eine Bibliotheksdatei, die zum Betrieb der gewählten Anwendung benötigt wird ist defekt. Bitte installieren Sie sie Anwendung erneut."
+    IDS_SHAREERROR          "Diese Datei wird von einer anderen Anwednung verwendet."
+
+    IDS_CREATELONGDIR       "Datei-Manager kann auf die Datei im Verzeichnis '%s' nicht zugreifen.\n\nMöchten Sie weitermachen?"
+    IDS_CREATELONGDIRTITLE  "Erstelle Verzeichnis"
+
+    IDS_MOUSECONFIRM,       "Mausaktion bestätigen"       /* 32 */
+    IDS_COPYMOUSECONFIRM,   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s kopieren möchten?"
+    IDS_MOVEMOUSECONFIRM,   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s verschieben möchten?"
+    IDS_EXECMOUSECONFIRM,   "Sind Sie sicher, daß Sie %s mit %s als Dokument ausführen möchten?"                                                          /* 128 */
+
+    IDS_WINFILE,            "Datei-Manager"                  /* 32 */
+    IDS_TREETITLE,          "Verzeichnisstruktur"                /* 32 */
+    IDS_SEARCHTITLE,        "Suchergebnis: "              /* 32 */
+
+    IDS_READING             "Lese Verzeichnis, bitte warten..."
+    IDS_TOOMANYTITLE,       "Zu viele Dateien"                /* 32 */
+    IDS_OOMTITLE,           "Datei-Manager - Zu wenig freier Speicherplatz"  /* 32 */
+    IDS_OOMREADINGDIRMSG,   "Kann nicht das genze Verzeichnis lesen. Nur ein Teil wird angezeigt."                                              /* 128 */
+
+//    IDS_PRINTFNF            "Die zu druckende Datei kan nicht gefunden werden. Stellen Sie sicher, dass sie den richtigen Pfad und Dateinamen angegeben haben."                                                                                  /* 128 */
+    IDS_PRINTMEMORY         "Nicht genug Speicher zum Drucken.\n\nSchließen Sie eine oder mehrere Anwendungen und versuchen Sie es erneut."                                             /* 128 */
+    IDS_PRINTDISK           "Nicht genug freier Speicherplatz zum Drucken.\n\nLöschen Sie eine oder mehrere Dateien um Speicherplatz frei zu machen und versuchen Sie es erneut."                        /* 128 */
+    IDS_PRINTERROR          "Während des Druckens ist ein Fehler aufgetreten.\n\nStellen Sie sicher, dass der Drucker richtig konfiguriert und der richtige ausgewählt ist."             /* 128 */
+    IDS_PRINTONLYONE        "Datei-Manager kann nicht mehrere Dateien drucken.\n\nWählen Sie eine Datei aus und versuchen Sie es erneut."                                               /* 128 */
+
+    IDS_CURDIRIS,           "Aktuelles Verzeichnis: %s"                                                                                                    /* 128 */
+    IDS_COPY,               "Kopieren"                          /* 32 */
+    IDS_RENAME,             "Umbenennen"                        /* 32 */
+    IDS_FORMAT,             "Datenträger formatieren"                   /* 32 */
+    IDS_FORMATSELDISK,      "Wählen Sie den Datenträger aus, den Sie formatieren möchten."                                                                                               /* 128 */
+
+JAPANBEGIN
+    IDS_KK_COPYFROMSTR,        "コピー元(&F):"
+    IDS_KK_COPYTOSTR,          "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,      "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,        "新しい名前(&T):"
+JAPANEND
+
+//    IDS_MAKESYSDISK,      "Erstelle Systemdatenträger"  /* 32 */
+
+    IDS_CREATINGMSG,        "Legt an:"                    /* 32 */
+    IDS_REMOVINGDIRMSG,     "Löscht:"                     /* 32 */
+    IDS_REMOVINGMSG,        "Löscht..."                   /* 32 */
+    IDS_COPYINGMSG,         "Kopiert:"                    /* 32 */
+    IDS_OPENINGMSG,         "Öffnet..."                   /* 32 */
+    IDS_CLOSINGMSG,         "Schließt..."                 /* 32 */
+    IDS_RENAMINGMSG,        "Benennt um..."               /* 32 */
+    IDS_MOVINGMSG,          "Verschiebt..."               /* 32 */
+    IDS_DELETINGMSG,        "Löscht..."                   /* 32 */
+    IDS_PRINTINGMSG,        "Druckt: %s"                  /* 32 */
+
+//    IDS_NOSUCHDRIVE,        "Datenträger %c existiert nicht."                                                                                            /* 128 */
+    IDS_DRIVENOTREADY,      "In Laufwerk %c: ist kein Datenträger eingelegt.\n\nLegen Sie einen Datenträger ein, und versuchen Sie es erneut."
+    IDS_UNFORMATTED,        "Der Datenträger in Laufwerk %c: ist nicht formatiert.\n\nMöchten Sie ihn jetzt formatieren?"
+
+    IDS_STATUSMSG,          "%d Datei(en) (%s)"             /* 128 */
+    IDS_STATUSMSG2,         "%d Datei(en) (%s) ausgewählt"          /* 128 */
+    IDS_DRIVEFREE,          "%c: %s von  %s frei"            /* 128 */
+    IDS_TREEABORT,          "Unvollständiger Verzeichnisbaum wird angezeigt"     /* 128 */
+    IDS_DIRSREAD,           "%d Verzeichnisse gelesen"                   /* 32 */
+    IDS_SEARCHMSG,          "%d Datei(en) gefunden"
+    IDS_BYTES,              "%ld bytes"
+    IDS_SBYTES,             "%s bytes"
+
+    IDS_SELECTEDFILES,      "die ausgewählten Dateien"            /* 32 */
+
+    /* These strings are used for generating error messages
+     * from the Copy, Move, and Delete code. */
+
+    IDS_COPYERROR + FUNC_COPY     "Fehler beim Kopieren einer Datei"
+    IDS_COPYERROR + FUNC_MOVE     "Fehler beim Verschieben einer Datei"
+    IDS_COPYERROR + FUNC_DELETE   "Fehler beim Löschen einer Datei"
+    IDS_COPYERROR + FUNC_RENAME   "Fehler beim Umbenennen einer Datei"
+    IDS_COPYERROR + FUNC_SETDRIVE "Fehler beim Auswählen des Laufwerks"
+    IDS_COPYERROR + FUNC_EXPAND   "Fehler beim Lesen eines Verzeichnisses"
+    IDS_COPYERROR + FUNC_LABEL    "Fehler beim Benennen des Datenträgers"
+
+    /* The first %s is replaced by a file name. The second %s is replaced
+     * by one of the "reasons" below. */
+
+    IDS_VERBS + FUNC_COPY       "%s kann nicht kopiert werden.\n%s"
+    IDS_VERBS + FUNC_MOVE       "%s kann nicht verschoben werden.\n%s"
+    IDS_VERBS + FUNC_DELETE     "%s kann nicht gelöscht werden.\n%s"
+    IDS_VERBS + FUNC_RENAME     "%s kann nicht umbenannt werden.\n%s"
+    IDS_ACTIONS + 1             "Verzeichnis %s kann nicht erzeugt werden.\n%s"
+    IDS_ACTIONS + 2             "Verzeichnis %s kann nicht gelöscht werden.\n%s"
+    IDS_REPLACING               "%s kann nicht erstellt oder ersetzt werden.\n%s"
+    // IDS_CREATING             "Datei-Manager kann %s nicht erstellen: %s"
+
+// include reason strings
+
+#include "suggest_de-DE.db"
+
+    IDS_DESTFULL                "Die Speicherkapazität des Ziellaufwerks ist erschöpft. Legen Sie einen neuen Datenträger ein, um fortzusetzen."
+    IDS_WRITEPROTECTFILE        "Dies ist eine System-, eine versteckte oder eine schreibgeschützte Datei."
+
+    IDS_COPYINGTITLE            "Kopiere..."
+
+JAPANBEGIN
+    IDS_KK_COPY                 "コピー先:"
+JAPANEND
+
+    IDS_QUICKFORMATTINGTITLE    "Schnell-Formatierung..."
+
+    IDS_BUSYFORMATQUITVERIFY    "Momentan wird ein Datenträger vom Datei-Manager formatiert. Wenn Sie den Datei-Manager beenden, wird dieser Vorgang abgebrochen."
+    IDS_BUSYCOPYQUITVERIFY      "Momentan wird ein Datenträger vom Datei-Manager kopiert. Wenn Sie den Datei-Manager beenden, wird dieser Vorgang abgebrochen."
+    IDS_PERCENTCOMPLETE         "Prozent bearbeitet"
+    IDS_FORMATSELECTDLGTITLE    "Formatiere Laufwerk"
+
+    IDS_12MB                    "1%s2 MB"
+    IDS_360KB                   "360K"
+    IDS_144MB                   "1%s44 MB"
+    IDS_720KB                   "720K"
+    IDS_288MB                   "2%s88 MB"
+    IDS_2080MB                  "20%s8 MB"
+
+#if defined(JAPAN) && defined(i386)
+/* ADD KBNES. NEC MEDIATYPE START */
+JAPANBEGIN
+    IDS_125MB                   "1%s25 MB"
+    IDS_256KB                   "256K"
+    IDS_128MB                   "128 MB"
+JAPANEND
+/* ADD KBNES. NEC MEDIATYPE END */
+
+//
+// FMR jul.21.1994 JY
+// We added 640KB/1.23MB media types.
+//
+JAPANBEGIN
+    IDS_640KB                   "640K"
+    IDS_123MB                   "1%s23 MB"
+JAPANEND
+#endif
+
+    IDS_DEVICECAP               "Laufwerkkapazität"
+    IDS_QSUPMEDIA               "Datenträgerinformationen sind nicht lesbar.\n\nVergewissern Sie sich, daß eine Diskette im Laufwerk ist."
+    IDS_REMOVEMED               "Unbekannter Datenträgertyp"
+
+    IDS_CANTFORMATTITLE         "Unbekannter Datenträgertyp"
+    IDS_CANTFORMAT              "Die Art von Datenträgern in Laufwerk %s: kann mit Datei-Manager nicht formatiert werden. Verwenden Sie den Festplatten-Manager."
+
+    IDS_FFERR_INCFS             "Inkompatibles Dateisystem."
+    IDS_FFERR_ACCESSDENIED      "Der Zugriff wird verweigert."
+    IDS_FFERR_DISKWP            "Der Datenträger ist schreibgeschützt."
+    IDS_FFERR_CANTLOCK          "Datenträger kann nicht gesperrt werden."
+    IDS_FFERR_CANTQUICKF        "Quick-Format kann nicht durchgeführt werden.\n\nStellen Sie sicher, daß die richtige Speicherkapazität angegeben ist."
+    IDS_FFERR_SRCIOERR          "Ein-/Ausgabefehler auf der Quelldiskette"
+    IDS_FFERR_DSTIOERR          "Ein-/Ausgabefehler auf der Zieldiskette"
+    IDS_FFERR_SRCDSTIOERR       "Ein-/Ausgabefehler sowohl auf der Quell- als auch auf der Zieldiskette"
+    IDS_FFERR_GENIOERR          "Eingabe/Ausgabe (E/A)-Fehler"
+//    IDS_FFERR_MEDIASENSE      "Diese Platte kann mit einer Kapazität von %s formatiert werden. Mit dieser Kapazität weiter formatieren?"
+    IDS_FFERR                   "Der Datenträger kann nicht formatiert werden.\n\nVergewissern Sie sich, daß der Datenträger eingelegt und nicht schreibgeschützt oder beschädigt ist, und nicht die falsche Speicherdichte angegeben wurde."
+    IDS_FFERR_BADLABEL          "Der Datenträger kann nicht benannt werden.\n\nDie angegebene Bezeichnung ist ungültig. Stellen Sie sicher, daß die Bezeichnung keine der folgenden Zeichen enthält\n\
+                                [Leerzeichen] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+
+    IDS_FORMATCONFIRM           "Beim Formatieren werden ALLE Daten von der Festplatte gelöscht. Sind Sie sicher, dass Sie die Festplatte im Laufwerk %c formatieren wollen?"
+    IDS_FORMATCONFIRMTITLE      "Datenträgerformatierung bestätigen"
+
+    IDS_DISKCOPYCONFIRM         "Dieser Vorgang löscht ALLE Daten auf der Zieldiskette.\nSind Sie sicher, daß Sie fortsetzen möchten?"
+    IDS_DISKCOPYCONFIRMTITLE    "Datenträgerkopieren bestätigen"
+    IDS_ANDCLOSE                "&Schließen"        // goes on Selection dialog
+    IDS_CLOSE                   "Schließen"         // braindead "&Change"
+    IDS_PATHNOTTHERE            "Verzeichnis %s existiert nicht.\n\nMöchten Sie es erzeugen?"
+    IDS_PROGRAMS                "Programme#*.exe;*.pif;*.com;*.bat#Alle Dateien (*.*)#*.*#"
+
+    IDS_MENUANDITEM             "%s - %s"
+    IDS_DRIVELABEL              "Laufwerk:"
+    IDS_STATUSMSGSINGLE         "%s, "
+
+    IDS_CONNECTHELP             "Netzlaufwerk verbinden"
+    IDS_DISCONHELP              "Netzlaufwerk trennen"
+    IDS_CONNECTIONHELP          "Netzwerkverbindungen"
+    IDS_SHAREASHELP             "Verzeichnis freigeben"
+    IDS_STOPSHAREHELP           "Verzeichnisfreigabe beenden"
+    IDS_VDETAILSHELP            "Alle Dateiangaben anzeigen"
+    IDS_VNAMEHELP               "Nur den Dateinamen anzeigen"
+    IDS_BYNAMEHELP              "Nach Name"
+    IDS_BYTYPEHELP              "Nach Typ"
+    IDS_BYSIZEHELP              "Nach Größe"
+    IDS_BYDATEHELP              "Nach Datum"
+    IDS_NEWWINHELP              "Neues Fenster"
+    IDS_COPYHELP                "Dateien kopieren"
+    IDS_MOVEHELP                "Dateien verschieben"
+    IDS_DELHELP                 "Dateien löschen"
+
+    IDS_DIRNAMELABEL            "Ver&zeichnisname:"
+    IDS_DRIVENOTAVAILABLE       "Netzwerklaufwerk ist nicht verfügbar."
+
+    IDS_SHAREDAS                "Freigegeben als %s"
+    IDS_NOTSHARED               "Nicht freigegeben"
+
+    IDS_DRIVE_COMPRESSED        " - KOMPRIMIERT"
+
+    IDS_DRAG_COPYING            "Datei(en) kopieren nach %s"
+    IDS_DRAG_MOVING             "Datei(en) verschieben nach %s"
+    IDS_DRAG_EXECUTING          "Starten von Datei(en) mit %s"
+
+    IDS_ORDERB                  "%s Bytes"
+    IDS_ORDERKB                 "%s KB"
+    IDS_ORDERMB                 "%s MB"
+    IDS_ORDERGB                 "%s GB"
+    IDS_ORDERTB                 "%s TB"
+
+    IDS_VN_COMMENTS             "Kommentare"
+    IDS_VN_COMPANYNAME          "Firmenname"
+    IDS_VN_FILEDESCRIPTION      "Dateibeschreibung"
+    IDS_VN_INTERNALNAME         "Interner Name"
+    IDS_VN_LEGALTRADEMARKS      "Geschützte Marken"
+    IDS_VN_ORIGINALFILENAME     "Originaler Dateiname"
+    IDS_VN_PRIVATEBUILD         "Beschreibung"
+    IDS_VN_PRODUCTNAME          "Produktname"
+    IDS_VN_PRODUCTVERSION       "Produktversion"
+    IDS_VN_SPECIALBUILD         "Spezielle Beschreibung"
+
+    IDS_VN_LANGUAGE             "Sprache"
+    IDS_VN_LANGUAGES            "Sprachen"
+
+    IDS_ASSOCIATE               "Durchsuchen"
+    IDS_RUN                     "Ausführen"
+    IDS_WINHELPERR              "Die Hilfeinformation kann nicht angezeigt werden."
+    IDS_NOEXEASSOC              "Dateien mit der Dateinamenerweiterung %s sind Programme und können nicht einer anderen Anwendung zugeordnet werden."
+    IDS_ASSOCNOTEXE             "%s ist kein Programm und kann nicht einer Dateinamenerweiterung zugeordnet werden."
+    IDS_ASSOCNONE               "(Keine)"
+    IDS_NOFILES                 "Keine Dateien gefunden."
+    IDS_NOACCESSDIR             "Sie haben keine Berechtigung auf dieses Verzeichnis zuzugreifen."
+    IDS_NOACCESSFILE            "Sie haben keine Berechtigung auf diese Datei zuzugreifen."
+
+    IDS_DRIVEBUSY_COPY          "Auf Laufwerk %c: kann nicht zugegriffen werden, da es beschäftigt ist.\nEs wird eine Diskette kopiert."
+    IDS_DRIVEBUSY_FORMAT        "Auf Laufwerk %c: kann nicht zugegriffen werden, da es beschäftigt ist.\nEs wird eine Diskette formatiert."
+
+    IDS_COPYMOVENOTCOMPLETED    "Funktion nicht vollständig ausgeführt"
+    IDS_DIRREMAINS              "Vorgang kann nicht für alle Dateien und Verzeichnisse ausgeführt werden."
+
+    IDS_TOOMANYWINDOWS          "Es sind zu viele Verzeichnisfenster geöffnet.\n\nSchließen Sie ein oder mehrere Fenster, und versuchen Sie es erneut."
+    IDS_FMIFSLOADERR            "Eine für diese Funktion benötigte Bibliothek ist nicht verfügbar."
+
+    IDS_NOSUCHDIRTITLE          "Verzeichnis kann nicht gelesen werden"
+    IDS_NOSUCHDIR               "Verzeichnis existiert nicht."
+
+    IDS_BADNETNAMETITLE         "Netzlaufwerk kann nicht verbunden werden."
+    IDS_BADNETNAME              "Netzwerkname kann nicht gefunden werden."
+
+    IDS_ALLFILES                "'Alle...' betrifft auch System-, versteckte und schreibgeschützte Dateien."
+
+    IDS_ASSOC_OPEN              "Öffnen"
+    IDS_ASSOC_PRINT             "Drucken"
+
+    IDS_ADDEXTTITLE             "Erweiterung hinzufügen"
+    IDS_ADDEXTTEXT              "Die Erweiterung '%s' ist momentan '%s.' zugeordnet. Fortsetzen und diese Zuordnung überschreiben?"
+
+    IDS_EXTTITLE                "Dateizuordnungs-Editor"
+
+    IDS_EXTADDERROR             "Erweiterung kann nicht zugeordnet werden."
+    IDS_EXTDELERROR             "Erweiterung konnte nicht gelöscht werden."
+    IDS_FILETYPEADDERROR        "Dateityp kann nicht hinzugefügt werden."
+    IDS_FILETYPEDELERROR        "Dateityp kann nicht gelöscht werden."
+    IDS_FILETYPEREADERROR       "Dateityp kann nicht gelesen werden."
+
+    IDS_FILETYPENULLDESCERROR   "Die Beschreibung darf nicht leer sein. Bitte geben Sie eine Beschreibung ein."
+    IDS_FILETYPEDUPDESCERROR    "Es konnte keine einmalige ID unter Verwendung Ihrer Beschreibung erzeugt werden. Bitte geben Sie eine neue Beschreibung ein."
+
+    IDS_FILETYPEDELCONFIRMTITLE "Dateityp löschen"
+    IDS_FILETYPEDELCONFIRMTEXT  "Hiermit löschen Sie den Dateityp und alle zugeordneten Erweiterungen. Sind Sie sicher, daß Sie '%s' löschen möchten?"
+#ifdef ASSOC
+    IDS_FILETYPEDELCONFIRMUSERTEXT "Sie löschen einen persönlichen Dateityp. Es wird auf den gemeinsamen Dateityp zurückgesetzt, und alle seine Erweiterungen bleiben erhalten.  Sind Sie sicher, dass Sie'%s' rückgängig machen wollen?"
+    IDS_FILETYPEUSERIZETEXT     "Sie passen einen gemeinsamen Dateityp an. Datei-Manager speichert Ihre Änderungen in einem personalisierten Dateityp. Weitermachen?"
+#endif
+    IDS_FILETYPECOMMANDNULLTEXT "Für einen Dateityp muß mindestens ein Befehl für einen Vorgang angegeben sein. Bitte geben Sie den Namen einer Anwendung ein."
+
+    IDS_NEWFILETYPETITLE        "Dateitypeditor"
+    IDS_COPYINGDISKTITLE        "Datenträger wird kopiert"
+    IDS_SEARCHING               "Suche..."
+
+JAPANBEGIN
+    IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
+JAPANEND
+
+    IDS_INITUPDATEFAIL          "Hintergrundaktualisierung konnte nicht initialisiert werden. Der Datei-Manager wird beendet."
+    IDS_INITUPDATEFAILTITLE     "Initialisierung des Datei-Managers"
+
+    IDS_COMPRESSDIR             "Möchten Sie alle Dateien und Unterverzeichnisse in %s auch komprimieren?"
+    IDS_UNCOMPRESSDIR           "Möchten Sie alle Dateien und Unterverzeichnisse in %s auch dekomprimieren?"
+    IDS_COMPRESS_ATTRIB_ERR     "Komprimierungsattribut von '%s' kann nicht geändert werden."
+    IDS_NTLDRCOMPRESSERR        "Die Datei '%s' wird nicht komprimiert. Komprimieren dieser Datei könnte Ihr System unstartbar machen."
+    IDS_MULTICOMPRESSERR        "Der Datei-Manager komprimiert bzw. dekomprimiert momentan Dateien.\nWarten Sie bitte, bis dieser Vorgang beendet ist, bevor Sie weitere Dateien komprimieren bzw. dekomprimieren."
+
+    IDS_EDITFILTER              "Programme (*.exe)\0*.exe\0"
+
+END
+#undef SUGGEST
+
+/* Help strings for the popup menus.
+ */
+STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    MH_POPUP+IDM_FILE,          "Befehle zum Arbeiten mit Dateien"
+    MH_POPUP+IDM_DISK,          "Befehle zum Arbeiten mit Datenträgern"
+    MH_POPUP+IDM_TREE,          "Befehle zum Arbeiten in dem Strukturfenster"
+    MH_POPUP+IDM_VIEW,          "Befehle zum Bestimmen der Informationsanzeige"
+    MH_POPUP+IDM_OPTIONS,       "Befehle zum Einstellen von Optionen"
+    MH_POPUP+IDM_SECURITY,      "Befehle zum Einstellen der Datei- und Verzeichnissicherheit"
+    MH_POPUP+IDM_WINDOW,        "Befehle zum Anordnen der Fenster"
+    MH_POPUP+IDM_HELP,          "Befehle zum Anzeigen der Hilfe zu Datei-Manager"
+END
+
+
+// Help strings for the "standard" toolbar items.
+
+STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    MH_MYITEMS+IDM_OPEN,            "Ausgewähltes Objekt öffnen"
+    MH_MYITEMS+IDM_EDIT,            "Bearbeiten des ausgewählten Elements mit Notepad.exe"
+    MH_MYITEMS+IDM_MOVE,            "Verschieben des ausgewählten Objekts"
+    MH_MYITEMS+IDM_COPY,            "Kopieren von Dateien und Verzeichnissen"
+    MH_MYITEMS+IDM_COPYTOCLIPBOARD, "Kopieren einer Datei in die Zwischenablage"
+	MH_MYITEMS+IDM_CUTTOCLIPBOARD,  "Schneidet eine oder mehrere Dateien in die Zwischenablage aus"
+    MH_MYITEMS+IDM_PASTE,           "Datei aus der Zwischenablage in das aktuelle Verzeichnis einfügen"
+    MH_MYITEMS+IDM_COMPRESS,        "Komprimieren einer Datei oder eines Verzeichnisses"
+    MH_MYITEMS+IDM_UNCOMPRESS,      "Dekomprimieren einer Datei oder eines Verzeichnisses"
+    MH_MYITEMS+IDM_DELETE,          "Löschen von Dateien und Verzeichnissen"
+    MH_MYITEMS+IDM_RENAME,          "Umbenennen von Dateien und Verzeichnissen"
+    MH_MYITEMS+IDM_ATTRIBS,         "Anzeige der Eigenschaften und Setzen von Dateiattributen"
+    MH_MYITEMS+IDM_UNDELETE,        "Ruft zuvor gelöschte Dateien ab"
+    MH_MYITEMS+IDM_RUN,             "Startet oder öffnet eine Anwendung oder ein Dokument"
+    MH_MYITEMS+IDM_PRINT,           "Drucken eines Dokuments"
+    MH_MYITEMS+IDM_ASSOCIATE,       "Zuordnen einer Datei zu einer Anwendung"
+    MH_MYITEMS+IDM_MAKEDIR,         "Erstellen eines Verzeichnisses"
+    MH_MYITEMS+IDM_SEARCH,          "Suchen nach Dateien und Verzeichnissen"
+    MH_MYITEMS+IDM_SELECT,          "Auswählen einer Datei oder eines Verzeichnisses"
+    MH_MYITEMS+IDM_EXIT,            "Beenden von Datei-Manager"
+
+    MH_MYITEMS+IDM_DISKCOPY,        "Inhalt eines Datenträgers kopieren"
+    MH_MYITEMS+IDM_LABEL,           "Zuweisen oder Ändern der Datenträgerbezeichnung"
+    MH_MYITEMS+IDM_FORMAT,          "Formatieren einer Diskette/eines Laufwerks"
+//    MH_MYITEMS+IDM_SYSDISK,         "Kopiere MS-DOS-Dateien auf eine Diskette"
+    MH_MYITEMS+IDM_CONNECT,         "Verbinden zu einem Netzlaufwerk"
+    MH_MYITEMS+IDM_DISCONNECT,      "Netzlaufwerk trennen"
+//    MH_MYITEMS+IDM_CONNECTIONS,     "Netzwerk-Verbindungen..."
+//    MH_MYITEMS+IDM_SHARES,          "Freigegebene Verzeichnisse &anzeigen..."
+    MH_MYITEMS+IDM_SHAREAS,         "Freigeben eines Verzeichnisses"
+    MH_MYITEMS+IDM_STOPSHARE,       "Freigabe eines Verzeichnisses beenden"
+
+    MH_MYITEMS+IDM_DRIVESMORE,  "Auswählen eines Laufwerks"
+
+    MH_MYITEMS+IDM_EXPONE,      "Zeigt eine andere Ebene eines Verzeichnisses an"
+    MH_MYITEMS+IDM_EXPSUB,      "Zeigt alle Ebenen eines Verzeichnisses an"
+    MH_MYITEMS+IDM_EXPALL,      "Zeigt alle Ebenen aller Verzeichnisse an"
+    MH_MYITEMS+IDM_COLLAPSE,    "Klappt alle Verzeichnisse eines ausgewählten Verzeichnisses zusammen"
+    MH_MYITEMS+IDM_ADDPLUSES,   "Zeigt Verzeichnisse an, die Unterverzeichnisse haben"
+
+    MH_MYITEMS+IDM_BOTH,        "Verzeichnisstruktur und Inhalt des aktuellen Verzeichnisses anzeigen"
+    MH_MYITEMS+IDM_TREEONLY,    "Nur Struktur anzeigen"
+    MH_MYITEMS+IDM_DIRONLY,     "Inhalt des aktuellen Verzeichnisses anzeigen"
+    MH_MYITEMS+IDM_SPLIT,       "Teilen des Verzeichnisfensters oder bewegen der Teilungsleiste"
+    MH_MYITEMS+IDM_VNAME,       "Nur Anzeige der Dateinamen"
+    MH_MYITEMS+IDM_VDETAILS,    "Anzeige aller Dateiangaben"
+    MH_MYITEMS+IDM_VOTHER,      "Anzeige bestimmter Dateiangaben"
+    MH_MYITEMS+IDM_BYNAME,      "Nach Name sortiert"
+    MH_MYITEMS+IDM_BYTYPE,      "Nach Typ sortiert"
+    MH_MYITEMS+IDM_BYSIZE,      "Nach Größe sortiert"
+    MH_MYITEMS+IDM_BYDATE,      "Nach Datum sortiert"
+    MH_MYITEMS+IDM_BYFDATE,     "Dateien nach aufsteigendem Datum sortieren"
+    MH_MYITEMS+IDM_VINCLUDE,    "Nur Dateien des ausgewählten Typs anzeigen"
+
+    MH_MYITEMS+IDM_CONFIRM,     "Steuert Bestätigungsmeldungen"
+    MH_MYITEMS+IDM_FONT,        "Ändert die Schriftart des Datei-Managers"
+
+    MH_MYITEMS+IDM_TOOLBARCUST,       "Definieren des Aussehens der Symbolleiste"
+    MH_MYITEMS+IDM_TOOLBAR,           "Ein- oder Ausblenden der Symbolleiste"
+    MH_MYITEMS+IDM_DRIVEBAR,          "Ein- oder Ausblenden der Laufwerksleiste"
+    MH_MYITEMS+IDM_STATUSBAR,         "Ein- oder Ausblenden der Statusleiste"
+    MH_MYITEMS+IDM_NEWWINONCONNECT,   "Neues Fenster beim Verbinden öffnen"
+
+    MH_MYITEMS+IDM_MINONRUN,          "Minimiert den Datei-Manager zum Symbol nach Programmstart"
+    MH_MYITEMS + IDM_INDEXONLAUNCH,   "Erstellt beim Starten des Datei-Managers einen Goto Verzeichnis-Index"
+    MH_MYITEMS+IDM_SAVESETTINGS,      "Einstellungen beim Beenden von Datei-Manager speichern"
+
+    MH_MYITEMS+IDM_NEWWINDOW,         "Öffnen eines neuen Fensters"
+    MH_MYITEMS+IDM_CASCADE,           "Anordnen der Fenster überlappend"
+    MH_MYITEMS+IDM_TILEHORIZONTALLY,  "Anordnen der Fenster horizontal"
+    MH_MYITEMS+IDM_TILE,              "Anordnen der Fenster vertikal"
+    MH_MYITEMS+IDM_ARRANGE,           "Symbole anordnen"
+    MH_MYITEMS+IDM_REFRESH,           "Aktualisieren des Fensterinhalts"
+
+    MH_MYITEMS+IDM_PERMISSIONS        "Anzeigen und Ändern der Berechtigungen für ausgewählte Elemente"
+    MH_MYITEMS+IDM_AUDITING           "Anzeigen und Ändern der Überwachungseinstellungen für ausgewählte Elemente"
+    MH_MYITEMS+IDM_OWNER              "Anzeigen und Ändern des Besitzers für ausgewählte Elemente"
+
+    MH_MYITEMS+IDM_HELPINDEX,         "Inhalt der Hilfe anzeigen"
+    MH_MYITEMS+IDM_HELPKEYS,          "Suche nach einem Begriff in der Datei-Manager-Hilfe"
+    MH_MYITEMS+IDM_HELPHELP,          "Hilfe über Benutzen von Hilfe"
+    MH_MYITEMS+IDM_ABOUT,             "Anzeige von Informationen über Datei-Manager"
+END
+
+
+// Strings for menu items that may be added at init time.
+
+STRINGTABLE MOVEABLE DISCARDABLE
+BEGIN
+    IDS_CONNECT,                "Netzlaufwerk &verbinden..."
+    IDS_DISCONNECT,             "Netzlaufwerk &trennen..."
+    IDS_CONNECTIONS,            "&Netzwerk-Verbindungen"
+    IDS_SHAREDDIR               "Freigege&bene Verzeichnisse..."
+    IDS_SHAREAS,                "F&reigeben als..."
+    IDS_STOPSHARE,              "Freigabe been&den..."
+    IDS_SHARES,                 "Freigegeben Verzeichnisse &anzeigen..."
+    IDS_UNDELETE,               "&Wiederherstellen..."
+    IDS_NEWWINONCONNECT,        "Neues Fenster beim &Verbinden öffnen"
+END
+
+#include "winfile_de-DE.dlg"
+
