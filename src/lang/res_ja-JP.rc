@@ -46,7 +46,7 @@ BEGIN
     MENUITEM    "ディスクのコピー(&C)...",    IDM_DISKCOPY
     MENUITEM    "ディスクのボリューム ラベル(&L)...",   IDM_LABEL
     MENUITEM    SEPARATOR
-    MENUITEM    "ディスクのフォーマット(&F)...",  IDM_FORMAT
+    MENUITEM    "ドライブのフォーマット(&F)...",  IDM_FORMAT
     MENUITEM    SEPARATOR
     MENUITEM    "ドライブを選択(&S)...", IDM_DRIVESMORE
     END
@@ -144,6 +144,7 @@ BEGIN
 	MENUITEM    "Cmd シェルを起動(&L)...", IDM_STARTCMDSHELL
 	MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "別のディレクトリーへ移動(&G)...", IDM_GOTODIR
+	MENUITEM	"ファイル マネージャーについて(&A)",			IDM_ABOUT
 	END
 END
 
@@ -321,7 +322,7 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "現在ファイル マネージャーはフロッピー ディスクをフォーマットしています。ファイル マネージャーを終了すると、この操作が中断されます。"
     IDS_BUSYCOPYQUITVERIFY      "現在ファイル マネージャーはフロッピー ディスクをコピーしています。ファイル マネージャーを終了すると、この操作が中断されます。"
     IDS_PERCENTCOMPLETE         "完了の割合"
-    IDS_FORMATSELECTDLGTITLE    "Format Drive"
+    IDS_FORMATSELECTDLGTITLE    "ドライブのフォーマット"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
@@ -548,7 +549,7 @@ BEGIN
 
     MH_MYITEMS+IDM_DISKCOPY,    "ディスクをコピーする"
     MH_MYITEMS+IDM_LABEL,       "ディスクのボリューム ラベルを変更する"
-    MH_MYITEMS+IDM_FORMAT,      "ディスクのフォーマット"
+    MH_MYITEMS+IDM_FORMAT,      "ドライブのフォーマット"
 //    MH_MYITEMS+IDM_SYSDISK,     "Copies MS-DOS files to a floppy disk"
     MH_MYITEMS+IDM_CONNECT,     "ネットワーク ドライブの接続する"
     MH_MYITEMS+IDM_DISCONNECT,  "ネットワーク ドライブの切断する"
