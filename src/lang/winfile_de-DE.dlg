@@ -17,7 +17,7 @@ BEGIN
     CTEXT           "", IDD_TEXT1, 15, 36, 131, 8
     CONTROL         "", IDD_GASGAUGE, "Static", SS_BLACKFRAME, 15, 10, 131, 22
     PUSHBUTTON      "Ausblenden", IDD_HIDE, 38, 48, 40, 14
-    PUSHBUTTON      "Abbrechen", IDCANCEL, 82, 48, 40, 14
+    PUSHBUTTON      "Abbrechen", IDCANCEL, 83, 48, 40, 14
 END
 
 
@@ -33,17 +33,16 @@ BEGIN
     CONTROL "", IDD_DATE, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 50, 15, 120, 10
     CONTROL "Beginne bei:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 25, 70, 10
     CONTROL "", IDD_PATH, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 50, 25, 120, 10
-    CONTROL "Verzeichnisse gelesen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 35, 60, 10
-    CONTROL "", IDD_TIME, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 66, 35, 100, 10
-    CONTROL "Übereinstimmungen gefunden:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 45, 60, 10
-    CONTROL "", IDD_FOUND, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 66, 45, 100, 10
+    CONTROL "Verzeichnisse gelesen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 35, 74, 10
+    CONTROL "", IDD_TIME, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 66, 35, 56, 10
+    CONTROL "Übereinstimmungen gefunden:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 45, 102, 10
+    CONTROL "", IDD_FOUND, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 112, 45, 54, 10
 
-    PUSHBUTTON      "Ausblenden", IDD_HIDE, 45, 58, 40, 14
-    PUSHBUTTON      "Abbrechen", IDCANCEL, 89, 58, 40, 14
+    PUSHBUTTON      "Ausblenden", IDD_HIDE, 45, 58, 45, 14
+    PUSHBUTTON      "Abbrechen", IDCANCEL, 91, 58, 40, 14
 END
 
-
-FONTDLG DIALOG 13, 54, 264, 154
+FONTDLG DIALOG 13, 54, 265, 172
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "Schriftarten"
 FONT 8, "MS Shell Dlg"
@@ -58,16 +57,14 @@ BEGIN
     COMBOBOX        cmb3, 179, 13, 32, 54, CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP | CBS_HASSTRINGS | CBS_OWNERDRAWFIXED | CBS_SORT
 
     GROUPBOX        "Effekte", grp1, 6, 73, 84, 61, WS_GROUP
-    CONTROL         "&Durchgestrichen", chx1, "Button", BS_AUTOCHECKBOX |
-                    WS_TABSTOP, 10, 83, 49, 10
-    CONTROL         "&Unterstrichen", chx2, "Button", BS_AUTOCHECKBOX, 10, 95,
-                    51, 10
+    CONTROL         "&Durchgestrichen", chx1, "Button", BS_AUTOCHECKBOX | WS_TABSTOP, 10, 83, 75, 10
+    CONTROL         "&Unterstrichen", chx2, "Button", BS_AUTOCHECKBOX, 10, 95, 75, 10
 
     CONTROL         "Zeige Kleinbuchstaben für &FAT-Laufwerke an", chx3, "Button", BS_AUTOCHECKBOX |
-                    WS_TABSTOP, 6, 127, 252, 10
+                    WS_TABSTOP, 6, 147, 252, 10
 
     CONTROL         "Zeige K&leinbuchstaben für alle L&aufwerke an", chx4, "Button", BS_AUTOCHECKBOX |
-                    WS_TABSTOP, 6, 139, 252, 10
+                    WS_TABSTOP, 6, 159, 252, 10
 
     LTEXT           "&Farbe:", stc4, 10, 107, 30, 9
     COMBOBOX        cmb4, 10, 117, 75, 50, CBS_DROPDOWNLIST |
@@ -78,8 +75,8 @@ BEGIN
     PUSHBUTTON      "Abbrechen", IDCANCEL, 218, 23, 40, 14, WS_GROUP
     PUSHBUTTON      "&Anwenden", psh3, 218, 40, 40, 14, WS_GROUP
     PUSHBUTTON      "&Hilfe", pshHelp, 218, 57, 40, 14, WS_GROUP
-    GROUPBOX        "Beispiel", grp2, 6, 72, 252, 49, WS_GROUP
-    CTEXT           "", stc6, 10, 137, 1, 2,
+    GROUPBOX        "Beispiel", grp2, 6, 72, 252, 64, WS_GROUP
+    CTEXT           "", stc6, 6, 137, 8, 8,
                     SS_NOPREFIX | NOT WS_GROUP
     CTEXT           "AaBbYyZz", stc5, 10, 81, 243, 37, SS_NOPREFIX | NOT
                     WS_VISIBLE
@@ -97,16 +94,16 @@ BEGIN
     CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 155, 44, 40, 14
 END
 
-RUNDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 15, 12, 210, 63
+RUNDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 15, 12, 211, 73
 CAPTION "Ausführen"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 BEGIN
     CONTROL "", IDD_DIR, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 3, 6, 162, 10
     CONTROL "&Kommandozeile:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_GROUP | WS_CHILD, 3, 18, 60, 10
-    CONTROL "", IDD_NAME, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 3, 29, 134, 12
-    CONTROL "&Minimiert ausführen", IDD_LOAD, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 3, 45, 71, 12
-    CONTROL "Als &Administrator ausführen", IDD_RUNAS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 78, 45, 71, 12
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 3, 29, 158, 12
+    CONTROL "&Minimiert ausführen", IDD_LOAD, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 3, 45, 158, 12
+    CONTROL "Als &Administrator ausführen", IDD_RUNAS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 3, 58, 159, 12
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 165, 6, 40, 14
     CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 165, 23, 40, 14
 //    CONTROL "&Suche...", IDD_BROWSE, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 165, 40, 40, 14
@@ -135,10 +132,10 @@ STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POP
 BEGIN
     CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Dateien ersetzen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 12, 49, 10
-    CONTROL "", IDD_TO, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 75, 12, 165, 10
+    CONTROL "Dateien ersetzen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 12, 58, 11
+    CONTROL "", IDD_TO, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 89, 12, 151, 10
     CONTROL "", IDD_DATE1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 75, 22, 170, 10
-    CONTROL "With File:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 34, 49, 10
+    CONTROL "With File:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 34, 44, 10
     CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 75, 34, 165, 10
     CONTROL "", IDD_DATE2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 75, 44, 170, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 54, 203, 10
@@ -153,33 +150,33 @@ CAPTION "Dateilöschung bestätigen"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
-    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 20, 20
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Dateien löschen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 44, 10
-    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 70, 18, 170, 10
+    CONTROL "Dateien löschen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 58, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 86, 18, 154, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
     CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
-    CONTROL "&Alle löschen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
-    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+    CONTROL "&Alle löschen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 77, 42, 44, 14
+    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 127, 42, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 173, 42, 40, 14
 END
 
 
-CONFIRMNOACCESS DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 260, 70
+CONFIRMNOACCESS DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 261, 71
 CAPTION "Bestätigen: Ignoriere Datei oder Verzeichnis und fahre fort"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
-    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 21, 20
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Zugriff verweigert, Ignorieren:", IDD_TYPE, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 10, 203, 10
-    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 108, 10, 122, 10
-    CONTROL "Sie haben keine ausreichenden Berechtigungen oder die Datei\nist in Verwendung.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 25, 230, 10
-    CONTROL "Klicken Sie auf 'Ja', um diese Datei zu ignorieren und fortzusetzen.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 35, 180, 10
+    CONTROL "Zugriff verweigert, Ignorieren:", IDD_TYPE, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 10, 104, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 128, 10, 127, 10
+    CONTROL "Sie haben keine ausreichenden Berechtigungen oder die Datei\nist in Verwendung.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 24, 24, 227, 17
+    CONTROL "Klicken Sie auf 'Ja', um diese Datei zu ignorieren und fortzusetzen.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 40, 220, 10
     CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 52, 40, 14
-    CONTROL "&Alle ignorieren", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 52, 40, 14
+    CONTROL "&Alle ignorieren", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 80, 52, 53, 14
     CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 52, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 52, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 185, 52, 40, 14
 END
 
 
@@ -188,15 +185,15 @@ CAPTION "Bestätigen: Ignoriere Datei oder Verzeichnis und fahre fort"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
-    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 20, 20
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Kein Zugriff auf Ziel, ignoriere:", IDD_TYPE, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 13, 203, 10
-    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 124, 13, 106, 10
-    CONTROL "Klicken Sie auf 'Ja', um diese Datei zu ignorieren und fortzusetzen.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 23, 180, 10
-    CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
-    CONTROL "&Alle bestätigen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
-    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+    CONTROL "Kein Zugriff auf Ziel, ignoriere:", IDD_TYPE, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 13, 101, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 129, 13, 101, 10
+    CONTROL "Klicken Sie auf 'Ja', um diese Datei zu ignorieren und fortzusetzen.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 23, 214, 10
+    CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 25, 42, 40, 14
+    CONTROL "&Alle bestätigen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 52, 14
+    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 131, 42, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 177, 42, 40, 14
 END
 
 
@@ -205,15 +202,15 @@ CAPTION "Verzeichnis löschen bestätigen"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
-    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 20, 20
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Lösche Verzeichnis:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 55, 10
-    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 80, 18, 160, 10
+    CONTROL "Lösche Verzeichnis:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 65, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 98, 18, 145, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
     CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
-    CONTROL "&Alle löschen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
-    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+    CONTROL "&Alle löschen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 77, 42, 43, 14
+    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 126, 42, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 172, 42, 40, 14
 END
 
 CONFIRMMOVE DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 22, 245, 60
@@ -221,15 +218,15 @@ CAPTION "Datei verschieben bestätigen"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
-    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 20, 20
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Verschiebe Datei:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 44, 10
-    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 70, 18, 170, 10
+    CONTROL "Verschiebe Datei:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 60, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 85, 18, 155, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
-    CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
-    CONTROL "&Alle verschieben", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
-    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+    CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 24, 42, 40, 14
+    CONTROL "&Alle verschieben", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 69, 42, 59, 14
+    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 134, 42, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 180, 42, 40, 14
 END
 
 CONFIRMRENAME DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 22, 245, 60
@@ -237,15 +234,15 @@ CAPTION "Datei umbenennen bestätigen"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
-    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
+    CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 21, 20
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Datei umbenennen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 54, 10
-    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 80, 18, 160, 10
+    CONTROL "Datei umbenennen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 63, 10
+    CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 89, 18, 151, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
-    CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
-    CONTROL "&Alle umbenennen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 40, 14
-    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 42, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 171, 42, 40, 14
+    CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 23, 42, 40, 14
+    CONTROL "&Alle umbenennen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 68, 42, 40, 14
+    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 136, 42, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 182, 42, 40, 14
 END
 
 
@@ -255,16 +252,16 @@ FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 BEGIN
     CONTROL "", IDD_DIR, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 3, 6, 193, 10
-    CONTROL "&Drucken:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 3, 20, 23, 10
-    CONTROL "", IDD_FROM, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 27, 18, 160, 12
-    CONTROL "",IDD_STATUS, "static", WS_CHILD | SS_LEFTNOWORDWRAP | SS_NOPREFIX, 3, 36, 190, 10
+    CONTROL "&Drucken:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 10, 31, 10
+    CONTROL "", IDD_FROM, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 4, 23, 186, 12
+    CONTROL "",IDD_STATUS, "static", WS_CHILD | SS_LEFTNOWORDWRAP | SS_NOPREFIX, 4, 39, 190, 10
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 197, 6, 40, 14
     CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 197, 23, 40, 14
     CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 197, 43, 40, 14
 END
 
 
-SEARCHDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 283, 63
+SEARCHDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 283, 76
 CAPTION "Suchen"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
@@ -275,8 +272,8 @@ BEGIN
     CONTROL "", IDD_DATE, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 52, 20, 180, 12
     CONTROL "&Beginnen in:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 36, 45, 12
     CONTROL "", IDD_DIR, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 52, 35, 180, 12
-    CONTROL "All&e Unterverzeichnisse durchsuchen", IDD_SEARCHALL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 52, 49, 100, 12
-    CONTROL "&Unterverzeichnisse im Ergebnis", IDD_INCLUDEDIRS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 162, 49, 80, 12
+    CONTROL "All&e Unterverzeichnisse durchsuchen", IDD_SEARCHALL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 52, 49, 179, 12
+    CONTROL "&Unterverzeichnisse im Ergebnis", IDD_INCLUDEDIRS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 52, 62, 179, 12
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 6, 40, 14
     CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 23, 40, 14
     CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 237, 43, 40, 14
@@ -331,7 +328,7 @@ STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSME
 BEGIN
     CONTROL "%d Dateien ausgewählt", IDD_TEXT1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 5, 144, 10
     CONTROL "Gesamt %s bytes", IDD_TEXT2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 16, 144, 10
-    CONTROL "Attribute", -1, "button", BS_GROUPBOX | WS_CHILD, 5, 29, 120, 54
+    CONTROL "Attribute", -1, "button", BS_GROUPBOX | WS_CHILD, 5, 29, 130, 54
     CONTROL "&Nur Lesen", IDD_READONLY, "button", WS_GROUP | WS_TABSTOP | BS_AUTOCHECKBOX | WS_CHILD, 10, 40, 52, 12
     CONTROL "V&ersteckt", IDD_HIDDEN, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 40, 52, 12
     CONTROL "&Archiv", IDD_ARCHIVE, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 52, 52, 12
@@ -367,16 +364,16 @@ BEGIN
     CONTROL         "Version:", IDD_VERLABEL, "Static", SS_LEFTNOWORDWRAP,
                     5, 38, 45, 10
     CONTROL         "Nicht markiert", IDD_VERSION, "Static", SS_LEFTNOWORDWRAP |
-                    SS_NOPREFIX, 72, 38, 132, 10
+                    SS_NOPREFIX, 74, 38, 124, 10
     LTEXT           "Cop&yright:", -1, 5, 49, 45, 10
     CONTROL         "Nicht markiert", IDD_COPYRIGHT, "Edit", ES_AUTOHSCROLL |
-                    ES_READONLY | WS_TABSTOP, 72, 49, 132, 10
+                    ES_READONLY | WS_TABSTOP, 74, 38, 124, 10
     CONTROL         "Größe:", IDD_SIZELABEL, "Static", SS_LEFTNOWORDWRAP,
-                    5, 60, 45, 10
-    CONTROL         "", IDD_SIZE, "Static", SS_LEFTNOWORDWRAP, 72, 60, 132, 10
+                    5, 49, 45, 10
+    CONTROL         "", IDD_SIZE, "Static", SS_LEFTNOWORDWRAP, 72, 49, 132, 10
     CONTROL         "Komprimierte Größe:", IDD_CSIZELABEL, "Static",
-                    SS_LEFTNOWORDWRAP, 5, 71, 62, 10
-    CONTROL         "", IDD_CSIZE, "Static", SS_LEFTNOWORDWRAP, 72, 71, 132, 10
+                    SS_LEFTNOWORDWRAP, 5, 60, 45, 10
+    CONTROL         "", IDD_CSIZE, "Static", SS_LEFTNOWORDWRAP, 72, 60, 132, 10
     CONTROL         "Kompressionsrate:", IDD_CRATIOLABEL, "Static",
                     SS_LEFTNOWORDWRAP, 5, 82, 62, 10
     CONTROL         "", IDD_CRATIO, "Static", SS_LEFTNOWORDWRAP, 72, 82, 132, 10
@@ -404,23 +401,20 @@ STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
 CAPTION "Komprimierungsstatus"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "Datei:", -1, 6, 8, 79, 8
-    LTEXT           "filename.xxx", IDD_COMPRESS_FILE, 86, 8, 90, 8
+    LTEXT           "Datei:", -1, 6, 8, 25, 8
+    LTEXT           "filename.xxx", IDD_COMPRESS_FILE, 50, 8, 152, 8
     LTEXT           "Verzeichnis:", -1, 6, 20, 39, 8
-    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\", IDD_COMPRESS_DIR, 43, 
-                    20, 150, 8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\", IDD_COMPRESS_DIR, 50, 20, 150, 8
     LTEXT           "Verzeichnisse komprimiert:", -1, 6, 32, 102, 8
-    LTEXT           "1,888,888,999", IDD_COMPRESS_TDIRS, 90, 32, 60, 8
-    LTEXT           "Dateien komprimiert:", -1, 6, 44, 62, 8
-    LTEXT           "1,888,888,999", IDD_COMPRESS_TFILES, 74, 44, 58, 8
-    LTEXT           "Gesamtgröße vor Komprimierung:", -1, 6, 56, 
-                    124, 8
-    LTEXT           "9,999,999,999,999", IDD_COMPRESS_USIZE, 134, 56, 68, 8
-    LTEXT           "Gesamtgröße nach Komprimierung:", -1, 6, 68, 123, 
-                    8
-    LTEXT           "9,999,999,999,999", IDD_COMPRESS_CSIZE, 134, 69, 68, 8
+    LTEXT           "1,888,888,999", IDD_COMPRESS_TDIRS, 93, 32, 60, 8
+    LTEXT           "Dateien komprimiert:", -1, 6, 44, 76, 8
+    LTEXT           "1,888,888,999", IDD_COMPRESS_TFILES, 93, 44, 58, 8
+    LTEXT           "Gesamtgröße vor Komprimierung:", -1, 6, 56, 115, 8
+    LTEXT           "9,999,999,999,999", IDD_COMPRESS_USIZE, 124, 69, 68, 8
+    LTEXT           "Gesamtgröße nach Komprimierung:", -1, 6, 80, 87, 8
+    LTEXT           "9,999,999,999,999", IDD_COMPRESS_CSIZE, 124, 69, 68, 8
     LTEXT           "Dateikomprimierungsrate:", -1, 6, 80, 78, 8
-    LTEXT           "100%", IDD_COMPRESS_RATIO, 91, 80, 27, 8
+    LTEXT           "100%", IDD_COMPRESS_RATIO, 123, 80, 27, 8
     PUSHBUTTON      "Abbrechen", IDCANCEL, 76, 97, 55, 14
 END
 
@@ -429,15 +423,14 @@ STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
 CAPTION "Dekomprimierungsstatus"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "Datei:", -1, 6, 8, 83, 8
-    LTEXT           "filename.xxx", IDD_UNCOMPRESS_FILE, 93, 8, 66, 8
+    LTEXT           "Datei:", -1, 6, 8, 39, 8
+    LTEXT           "filename.xxx", IDD_UNCOMPRESS_FILE, 51, 8, 143, 8
     LTEXT           "Verzeichnis:", -1, 6, 20, 39, 8
-    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\", 
-                    IDD_UNCOMPRESS_DIR, 45, 20, 144, 8
-    LTEXT           "Verzeichnisse dekomprimiert:", -1, 6, 32, 91, 8
-    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TDIRS, 99, 32, 70, 8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",  IDD_UNCOMPRESS_DIR, 51, 20, 144, 8
+    LTEXT           "Verzeichnisse dekomprimiert:", -1, 6, 32, 109, 8
+    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TDIRS, 104, 32, 87, 8
     LTEXT           "Dateien dekomprimiert:", -1, 6, 44, 86, 8
-    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TFILES, 92, 44, 78, 8
+    LTEXT           "1,999,999,999", IDD_UNCOMPRESS_TFILES, 104, 44, 78, 8
     PUSHBUTTON      "Abbrechen", IDCANCEL, 74, 64, 49, 14
 END
 
@@ -446,13 +439,13 @@ CAPTION "Komprimierungsfehler"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 BEGIN
-    ICON 32515, -1, 8, 8, 21, 20
+    ICON 32515, -1, 8, 8, 20, 20
     LTEXT "", IDD_TEXT1, 35, 8, 190, 20
 
-    DEFPUSHBUTTON "&Ignorieren",     IDIGNORE,      33,  47, 40, 14, WS_TABSTOP | WS_CHILD | WS_GROUP
-    PUSHBUTTON    "A&lles ignorieren", IDD_IGNOREALL, 79,  47, 40, 14, WS_TABSTOP | WS_CHILD
-    PUSHBUTTON    "&Wiederholen",      IDRETRY,       125, 47, 40, 14, WS_TABSTOP | WS_CHILD
-    PUSHBUTTON    "&Abbrechen",      IDABORT,       171, 47, 40, 14, WS_TABSTOP | WS_CHILD
+    DEFPUSHBUTTON "&Ignorieren",     IDIGNORE,      25, 47, 40, 14, WS_TABSTOP | WS_CHILD | WS_GROUP
+    PUSHBUTTON    "A&lles ignorieren", IDD_IGNOREALL, 68,  47, 56, 14, WS_TABSTOP | WS_CHILD
+    PUSHBUTTON    "&Wiederholen",      IDRETRY,       130, 47, 45, 14, WS_TABSTOP | WS_CHILD
+    PUSHBUTTON    "&Abbrechen",      IDABORT,       179, 47, 40, 14, WS_TABSTOP | WS_CHILD
 END
 
 
@@ -464,7 +457,7 @@ STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSME
 BEGIN
     CONTROL "", IDD_DIR, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 3, 6, 154, 10
     CONTROL "&Name:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 3, 23, 20, 10
-    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 30, 22, 90, 12
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 30, 22, 121, 12
     CONTROL "",IDD_STATUS, "static", WS_CHILD | SS_NOPREFIX | SS_LEFTNOWORDWRAP, 3, 46, 150, 10
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 157, 6, 40, 14
     CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 157, 23, 40, 14
@@ -510,7 +503,7 @@ BEGIN
     CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 115, 43, 40, 14
 END
 
-FORMATDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 183, 96
+FORMATDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 183, 82
 CAPTION "Formatiere Datenträger"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | DS_MODALFRAME | WS_POPUP
@@ -522,22 +515,22 @@ BEGIN
     CONTROL "", IDD_DRIVE, "combobox", CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL | WS_CHILD, 55, 4, 65, 40
     CONTROL "&Kapazität:", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 20, 49, 10
     CONTROL "", IDD_HIGHCAP, "combobox", CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL | WS_CHILD, 55, 19, 65, 40
-    CONTROL "Optionen", 102, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 5, 39, 115, 53
+    CONTROL "Optionen", 102, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 5, 39, 115, 40
     CONTROL "&Name:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 11, 51, 39, 10
-    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 40, 49, 63, 12
+    CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 40, 49, 75, 12
 //    CONTROL "&Erstelle Systemdatenträger", IDD_MAKESYS, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD | WS_DISABLED, 11, 62, 90, 12
-    CONTROL "&Schnellformatierung (Quick Format)", IDD_VERIFY, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 62, 90, 12
+    CONTROL "&Quick-Format", IDD_VERIFY, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 62, 90, 12
 END
 
-FORMATSELECTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 183, 44
+FORMATSELECTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 157, 45
 CAPTION "Formatiere Datenträger"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | DS_MODALFRAME | WS_POPUP
 BEGIN
-    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 6, 40, 14
-    CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 23, 40, 14
-    CONTROL "&Datenträger zu formatieren:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 7, 49, 10
-    CONTROL "", IDD_SELECTDRIVE, "combobox", CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL | WS_CHILD, 55, 4, 65, 40
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 109, 6, 40, 14
+    CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 109, 23, 40, 14
+    CONTROL "&Datenträger zu formatieren:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 7, 94, 10
+    CONTROL "", IDD_SELECTDRIVE, "combobox", CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL | WS_CHILD, 5, 17, 65, 40
 END
 
 FORMATPROGRESSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 30, 30, 150, 50
@@ -548,7 +541,7 @@ STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSME
 BEGIN
     CONTROL "Formatiere Datenträger", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 5, 150, 10
     CONTROL "Datenträger initialisieren...", IDD_PROGRESS, "static", SS_CENTER | WS_CHILD, 0, 17, 150, 10
-    CONTROL "Abbrechen", 2, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 54, 30, 44, 14
+    CONTROL "Abbrechen", 2, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 53, 30, 44, 14
 END
 
 #if 0
@@ -601,20 +594,20 @@ BEGIN
 END
 #endif
 
-OTHERDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 174, 81
+OTHERDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 193, 82
 CAPTION "Teildetails"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 BEGIN
-    CONTROL "Details", IDD_TEXT, "button", BS_GROUPBOX | WS_CHILD, 4, 4, 121, 74
-    CONTROL "&Größe", IDD_SIZE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 15, 100, 12
-    CONTROL "Datu&m der letzten Änderung", IDD_DATE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 27, 100, 12
-    CONTROL "Zeitpunk&t der letzten Änderung", IDD_TIME, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 39, 100, 12
-    CONTROL "&Dateiattribute", IDD_FLAGS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 51, 100, 12
-    CONTROL "MS-&DOS Dateinamen", IDD_DOSNAMES, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 63, 100, 12
-    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 6, 40, 14
-    CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 23, 40, 14
-    CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 60, 40, 14
+    CONTROL "Details", IDD_TEXT, "button", BS_GROUPBOX | WS_CHILD, 4, 4, 136, 74
+    CONTROL "&Größe", IDD_SIZE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 15, 125, 12
+    CONTROL "Datu&m der letzten Änderung", IDD_DATE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 27, 125, 12
+    CONTROL "Zeitpunk&t der letzten Änderung", IDD_TIME, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 39, 127, 12
+    CONTROL "&Dateiattribute", IDD_FLAGS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 51, 124, 12
+    CONTROL "MS-&DOS Dateinamen", IDD_DOSNAMES, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 63, 124, 12
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 146, 6, 40, 14
+    CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 146, 23, 40, 14
+    CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 146, 60, 40, 14
 END
 
 
@@ -630,29 +623,29 @@ BEGIN
     CONTROL "&Programme", IDD_PROGRAMS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 43, 60, 12
     CONTROL "Doku&mente", IDD_DOCS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 55, 60, 12
     CONTROL "&Andere Dateien", IDD_OTHER, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 67, 60, 12
-    CONTROL "Zeige Versteckte/&Systemdateien", IDD_SHOWHIDDEN, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 85, 100, 12
-    CONTROL "Zeige Symbolische l&inks", IDD_SHOWJUNCTION, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 97, 100, 12
+    CONTROL "Zeige Versteckte/&Systemdateien", IDD_SHOWHIDDEN, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 85, 145, 12
+    CONTROL "Zeige Symbolische l&inks", IDD_SHOWJUNCTION, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 5, 97, 147, 12
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 6, 40, 14
     CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 23, 40, 14
     CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 110, 43, 40, 14
 END
 
 
-CONFIRMDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 214, 92
+CONFIRMDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 283, 93
 CAPTION "Bestätigen"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 BEGIN
-    CONTROL "Bestätigung einholen vor", IDD_TEXT, "button", BS_GROUPBOX | WS_TABSTOP | WS_CHILD, 5, 3, 158, 86
-    CONTROL "Löschen von &Dateien", IDD_DELETE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 15, 80, 12
-    CONTROL "Löschen von &Verzeichnissen", IDD_SUBDEL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 27, 80, 12
-    CONTROL "Ü&berschreiben von Dateien", IDD_REPLACE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 39, 80, 12
-    CONTROL "Ausführen von &Mausaktionen", IDD_MOUSE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 51, 80, 12
-    CONTROL "Ausführen von Da&tenträgerbefehlen", IDD_CONFIG, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 63, 80, 12
-    CONTROL "Ändern von &System-, versteckten, schreibgeschützten Dateien", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 150, 12
-    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 6, 40, 14
-    CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 23, 40, 14
-    CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 168, 44, 40, 14
+    CONTROL "Bestätigung einholen vor", IDD_TEXT, "button", BS_GROUPBOX | WS_TABSTOP | WS_CHILD, 5, 3, 223, 86
+    CONTROL "Löschen von &Dateien", IDD_DELETE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 15, 214, 12
+    CONTROL "Löschen von &Verzeichnissen", IDD_SUBDEL, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 27, 214, 12
+    CONTROL "Ü&berschreiben von Dateien", IDD_REPLACE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 39, 214, 12
+    CONTROL "Ausführen von &Mausaktionen", IDD_MOUSE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 51, 214, 12
+    CONTROL "Ausführen von Da&tenträgerbefehlen", IDD_CONFIG, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 63, 214, 12
+    CONTROL "Ändern von &System-, versteckten, schreibgeschützten Dateien", IDD_READONLY, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 10, 75, 218, 12
+    CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 239, 6, 40, 14
+    CONTROL "Abbrechen", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 239, 23, 40, 14
+    CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 239, 44, 40, 14
 END
 
 DMSTATUSDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 20, 20, 250, 46
@@ -663,7 +656,7 @@ BEGIN
     CONTROL "", IDD_STATUS, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD , 5, 5, 49, 10
     CONTROL "", IDD_NAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 55, 5, 192, 10
     CONTROL "Nach:", IDD_TOSTATUS, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 5, 15, 25, 10
-    CONTROL "", IDD_TONAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 55, 15, 192, 10
+    CONTROL "", IDD_TONAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 43, 15, 204, 10
     CONTROL "Abbrechen", IDCANCEL, "button", WS_CHILD | BS_DEFPUSHBUTTON, 200, 28, 40, 14
 END
 
@@ -674,22 +667,22 @@ STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSME
 BEGIN
     CONTROL "Datei wird gedruckt...", -1, "static", SS_CENTER | WS_GROUP | WS_CHILD, 4, 6, 120, 12
     CONTROL "", IDD_TEXT, "static", SS_CENTER | SS_NOPREFIX | WS_GROUP | WS_CHILD, 4, 20, 120, 12
-    CONTROL "Abbrechen", 2, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 44, 40, 32, 14
+    CONTROL "Abbrechen", 2, "button", BS_DEFPUSHBUTTON | WS_GROUP | WS_TABSTOP | WS_CHILD, 38, 40, 43, 14
 END
 
 
-LFNTOFATDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 250, 78
+LFNTOFATDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 251, 76
 CAPTION "Dateiname auswählen"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
     CONTROL "Der Pfad entspricht nicht den Richtlinien für Dateinamen im FAT-Format. Geben Sie bitte einen neuen Namen ein.", 99, "static", SS_LEFT | WS_CHILD, 5, 4, 190, 24
-    CONTROL "&Neuer Dateiname:", -1, "static", SS_RIGHT | WS_CHILD, 5, 56, 50, 12
-    CONTROL "", IDD_TO, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 57, 55, 130, 12
-    CONTROL "Ursprungspfad:", -1, "static", SS_RIGHT | WS_CHILD, 5, 28, 50, 11
-    CONTROL "", IDD_FROM, "edit", ES_READONLY | ES_LEFT | ES_AUTOHSCROLL | WS_TABSTOP | WS_CHILD, 57, 28, 130, 12
-    CONTROL "Nach Verzeichnis:", -1, "static", SS_RIGHT | WS_CHILD, 5, 42, 50, 11
-    CONTROL "", IDD_DIR, "edit", ES_READONLY | ES_LEFT | ES_AUTOHSCROLL | WS_TABSTOP | WS_CHILD, 57, 42, 130, 12
+    CONTROL "&Neuer Dateiname:", -1, "static", SS_RIGHT | WS_CHILD, 5, 56, 61, 19
+    CONTROL "", IDD_TO, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 68, 55, 130, 12
+    CONTROL "Ursprungspfad:", -1, "static", SS_RIGHT | WS_CHILD, 15, 28, 50, 11
+    CONTROL "", IDD_FROM, "edit", ES_READONLY | ES_LEFT | ES_AUTOHSCROLL | WS_TABSTOP | WS_CHILD, 68, 28, 130, 12
+    CONTROL "Nach Verzeichnis:", -1, "static", SS_RIGHT | WS_CHILD, 6, 42, 59, 11
+    CONTROL "", IDD_DIR, "edit", ES_READONLY | ES_LEFT | ES_AUTOHSCROLL | WS_TABSTOP | WS_CHILD, 68, 42, 130, 12
     CONTROL "OK", IDOK, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 205, 4, 40, 14
     CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 205, 20, 40, 14
     CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 205, 36, 40, 14
@@ -704,33 +697,20 @@ BEGIN
     DEFPUSHBUTTON   "OK", IDOK, 194, 6, 50, 14, WS_GROUP
     PUSHBUTTON      "Abbrechen", IDCANCEL, 194, 23, 50, 14
     PUSHBUTTON      "&Hilfe", IDD_HELP, 194, 43, 50, 14
-    CONTROL         "&Dateiname:", IDD_NAMELABEL, "Static",
-                    SS_LEFTNOWORDWRAP, 5, 5, 55, 10
-    EDITTEXT        IDD_NAME, 60, 5, 134, 10, ES_AUTOHSCROLL | ES_READONLY |
-                    NOT WS_BORDER
-    CONTROL         "&Pfad:", IDD_TEXT, "Static", SS_LEFTNOWORDWRAP, 5, 16,
-                    51, 10
-    EDITTEXT        IDD_DIR, 60, 16, 134, 10, ES_AUTOHSCROLL | ES_READONLY |
-                    NOT WS_BORDER
-    CONTROL         "Letzte Änderung:", IDD_TEXT, "Static", SS_LEFTNOWORDWRAP, 5,
-                    27, 62, 10
-    CONTROL         "", IDD_DATE, "Static", SS_LEFTNOWORDWRAP, 60, 27, 97,
-                    10
-    CONTROL         "Größe:", IDD_SIZELABEL, "Static", SS_LEFTNOWORDWRAP, 5,
-                    38, 45, 10
-    CONTROL         "", IDD_SIZE, "Static", SS_LEFTNOWORDWRAP, 60, 38, 90,
-                    10
+    CONTROL         "&Dateiname:", IDD_NAMELABEL, "Static", SS_LEFTNOWORDWRAP, 5, 5, 55, 10
+    EDITTEXT        IDD_NAME, 60, 5, 130, 10, ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Pfad:", IDD_TEXT, "Static", SS_LEFTNOWORDWRAP, 5, 16, 51, 10
+    EDITTEXT        IDD_DIR, 60, 16, 130, 10, ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Letzte Änderung:", IDD_TEXT, "Static", SS_LEFTNOWORDWRAP, 5, 27, 62, 10
+    CONTROL         "", IDD_DATE, "Static", SS_LEFTNOWORDWRAP, 60, 27, 130, 10
+    CONTROL         "Größe:", IDD_SIZELABEL, "Static", SS_LEFTNOWORDWRAP, 5, 38, 45, 10
+    CONTROL         "", IDD_SIZE, "Static", SS_LEFTNOWORDWRAP, 60, 38, 128, 10
     GROUPBOX        "Attribute", IDD_TEXT, 4, 52, 120, 54
-    CONTROL         "&Schreibschutz", IDD_READONLY, "Button", BS_AUTOCHECKBOX |
-                    WS_GROUP | WS_TABSTOP, 9, 64, 52, 12
-    CONTROL         "V&ersteckt", IDD_HIDDEN, "Button", BS_AUTOCHECKBOX, 71, 64,
-                    49, 12
-    CONTROL         "&Archiv", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX, 9,
-                    76, 52, 12
-    CONTROL         "&System", IDD_SYSTEM, "Button", BS_AUTOCHECKBOX, 71, 76,
-                    49, 12
-    CONTROL         "&Komprimiert", IDD_COMPRESSED, "button", BS_AUTOCHECKBOX,
-                    9, 88, 52, 12
+    CONTROL         "&Schreibschutz", IDD_READONLY, "Button", BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP, 9, 64, 52, 12
+    CONTROL         "V&ersteckt", IDD_HIDDEN, "Button", BS_AUTOCHECKBOX, 71, 64, 49, 12
+    CONTROL         "&Archiv", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX, 9, 76, 52, 12
+    CONTROL         "&System", IDD_SYSTEM, "Button", BS_AUTOCHECKBOX, 71, 76, 49, 12
+    CONTROL         "&Komprimiert", IDD_COMPRESSED, "button", BS_AUTOCHECKBOX, 9, 88, 52, 12
 END
 
 
@@ -744,14 +724,11 @@ CAPTION "Zuordnen"
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "Dateien mit &Erweiterung:", -1, 6, 7, 68, 8
-    COMBOBOX        IDD_EXT, 76, 5, 44, 55, CBS_DROPDOWN | CBS_SORT |
-                    CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
-
-    LTEXT           "&Zuordnen zu Dateityp:", -1, 6, 30, 92, 10
-
+    LTEXT           "Dateien mit &Erweiterung:", -1, 6, 7, 81, 10
+    COMBOBOX        IDD_EXT, 90, 5, 44, 55, CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Zuordnen zu Dateityp:", -1, 6, 30, 108, 10
     EDITTEXT        IDD_COMMAND, 6, 42, 172, 12, ES_AUTOHSCROLL
-    LISTBOX         IDD_CLASSLIST, 11, 54, 167, 62, LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDD_CLASSLIST, 10, 55, 167, 62, LBS_SORT | WS_VSCROLL | WS_TABSTOP
 #ifdef ASSOC
 #ifdef ASSOCHEAD
                     | LBS_OWNERDRAWFIXED | LBS_HASSTRINGS
@@ -779,12 +756,11 @@ BEGIN
     LTEXT           "Datei&typ:", IDD_DESCTEXT, 5, 6, 33, 8
     EDITTEXT        IDD_DESC, 42, 5, 95, 12, ES_AUTOHSCROLL
     GROUPBOX        "&Vorgang: ", -1, 5, 22, 235, 126, WS_GROUP
-    COMBOBOX        IDD_ACTION, 36, 22, 48, 33, CBS_DROPDOWNLIST |
-                    WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDD_ACTION, 46, 22, 48, 33, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
     LTEXT           "&Befehl:", IDD_COMMANDTEXT, 9, 42, 38, 8
     EDITTEXT        IDD_COMMAND, 47, 39, 111, 12, ES_AUTOHSCROLL
-    PUSHBUTTON      "Durch&suchen...", IDD_BROWSE, 164, 38, 40, 14
-    AUTOCHECKBOX    "Verwendet &DDE", IDD_DDE, 10, 57, 50, 10, WS_GROUP
+    PUSHBUTTON      "Durch&suchen...", IDD_BROWSE, 164, 38, 57, 14
+    AUTOCHECKBOX    "Verwendet &DDE", IDD_DDE, 10, 57, 63, 10, WS_GROUP
     LTEXT           "DDE-Na&chricht:", IDD_DDEMESGTEXT, 22, 72, 50, 8
     EDITTEXT        IDD_DDEMESG, 105, 70, 100, 12, ES_AUTOHSCROLL
     LTEXT           "DDE Anwendung &nicht gestartet:", IDD_DDENOTRUNTEXT, 22, 84, 82, 19
@@ -794,12 +770,12 @@ BEGIN
     EDITTEXT        IDD_DDEAPP, 105, 107, 100, 12, ES_AUTOHSCROLL
     LTEXT           "The&ma:", IDD_DDETOPICTEXT, 23, 127, 21, 8
     EDITTEXT        IDD_DDETOPIC, 105, 125, 100, 12, ES_AUTOHSCROLL
-    LTEXT           "Neue E&rweiterung:", -1, 11, 184, 52, 8
-    EDITTEXT        IDD_EXT, 64, 183, 32, 12, ES_AUTOHSCROLL
-    PUSHBUTTON      "Hin&zufügen ->", IDD_ADD, 102, 174, 44, 14
-    PUSHBUTTON      "<- &Entfernen", IDD_DELETE, 102, 191, 44, 14
-    LTEXT           "Er&weiterung:", -1, 157, 162, 41, 8
-    LISTBOX         IDD_EXTLIST, 157, 172, 65, 40, LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Neue E&rweiterung:", -1, 11, 179, 46, 19
+    EDITTEXT        IDD_EXT, 60, 183, 36, 12, ES_AUTOHSCROLL
+    PUSHBUTTON      "Hin&zufügen ->", IDD_ADD, 101, 174, 53, 14
+    PUSHBUTTON      "<- &Entfernen", IDD_DELETE, 101, 191, 53, 14
+    LTEXT           "Er&weiterung:", -1, 161, 162, 41, 8
+    LISTBOX         IDD_EXTLIST, 161, 172, 65, 40, LBS_SORT | WS_VSCROLL | WS_TABSTOP
     GROUPBOX        "Diesem Dateityp zugeordnete Erweiterungen:", IDD_EXTTEXT, 5, 154, 235, 66
     DEFPUSHBUTTON   "OK", IDOK, 244, 6, 40, 14
     PUSHBUTTON      "Abbrechen", IDCANCEL, 244, 23, 40, 14
@@ -814,7 +790,6 @@ BEGIN
     LTEXT           "&Gehe zu Verzeichnis:", -1, 6, 3, 100, 8
     CONTROL         "", IDD_GOTODIR, "edit", ES_LEFT | ES_AUTOHSCROLL | WS_BORDER | WS_TABSTOP | WS_CHILD, 6, 13, 406, 12
     LISTBOX         IDD_GOTOLIST, 6, 25, 406, 95, WS_VSCROLL | WS_TABSTOP
-
     DEFPUSHBUTTON   "OK", IDOK, 418, 13, 40, 14, WS_GROUP
     PUSHBUTTON      "Abbrechen", IDCANCEL, 418, 30, 40, 14, WS_GROUP
 END
@@ -833,9 +808,9 @@ BEGIN
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
    CONTROL "Einige Einstellungen werden nur durch erneutes Starten\ndes Programmes wirksam.",
 			IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 90, 180, 20
-   CONTROL "OK", IDOK, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 55, 120, 40, 14
-   CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 103, 120, 40, 14
-   CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 149, 120, 40, 14
+   CONTROL "OK", IDOK, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 47, 120, 40, 14
+   CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 95, 120, 40, 14
+   CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 143, 120, 40, 14
 END
 
 ABOUTDLG DIALOG 13, 54, 250, 75
