@@ -616,7 +616,9 @@ BOOL GetRootPath(LPTSTR szPath, LPTSTR szReturn);
 //WFLOC.C
 VOID InitLangList(HWND hCBox);
 VOID SaveLang(HWND hCBox);
-
+BOOL DefaultLayoutRTL();
+DWORD MainWindowExStyle(VOID);
+VOID PreserveBitmapInRTL(HDC hdc);
 
 // TBAR.C
 
@@ -1141,6 +1143,7 @@ Extern BOOL bDriveBar            EQ( TRUE );
 Extern BOOL bToolbar             EQ( TRUE );
 Extern BOOL bNewWinOnConnect     EQ( TRUE );
 Extern BOOL bDisableVisualStyles EQ( FALSE );
+Extern BOOL bMirrorContent    EQ( FALSE );
 
 Extern BOOL bExitWindows     EQ( FALSE );
 Extern BOOL bConfirmDelete   EQ( TRUE );
@@ -1172,6 +1175,7 @@ Extern TCHAR        szNewWinOnNetConnect[]  EQ( TEXT("NewWinOnNetConnect") );
 Extern TCHAR        szDisableVisualStyles[] EQ( TEXT("DisableVisualStyles") );
 Extern TCHAR        szUILanguage[]          EQ( TEXT("UILanguage") );
 Extern TCHAR        szEditorPath[]          EQ( TEXT("EditorPath"));
+Extern TCHAR        szMirrorContent[]       EQ( TEXT("MirrorContent") );
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );
