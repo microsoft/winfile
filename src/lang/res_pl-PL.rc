@@ -31,7 +31,7 @@ BEGIN
     MENUITEM    "D&rukuj...",                     IDM_PRINT
     MENUITEM    "&Skojarz...",                    IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "U&twórz katalog...",             IDM_MAKEDIR
+    MENUITEM    "U&twórz katalog...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "Szuk&aj...\tCtrl+F",             IDM_SEARCH
     MENUITEM    "&Zaznacz pliki...",              IDM_SELECT
     MENUITEM    "Uruchom powłokę Bash...",        IDM_STARTBASHSHELL

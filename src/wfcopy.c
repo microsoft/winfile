@@ -39,7 +39,7 @@ VOID DialogEnterFileStuff(register HWND hwnd);
 DWORD SafeFileRemove(LPTSTR szFileOEM);
 BOOL IsWindowsFile(LPTSTR szFileOEM);
 
-INT_PTR ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
 
 BOOL
@@ -940,6 +940,7 @@ SetDlgItemPath(HWND hDlg, INT id, LPTSTR pszPath)
 
 
 INT_PTR
+CALLBACK
 ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    WCHAR szMessage[MAXMESSAGELEN];
@@ -1059,7 +1060,7 @@ ConfirmDialog(
 
    if ( CONFIRMNOACCESS == dlg || CONFIRMNOACCESSDEST == dlg) {
       params.bNoAccess = TRUE;
-      nRetVal = DialogBoxParam(hAppInstance, (LPTSTR)MAKEINTRESOURCE(dlg), hDlg, (DLGPROC)ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
+      nRetVal = DialogBoxParam(hAppInstance, (LPTSTR)MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
 
    } else if (plfndtaDest->fd.dwFileAttributes & (ATTR_READONLY | ATTR_SYSTEM | ATTR_HIDDEN)) {
 
@@ -1069,7 +1070,7 @@ ConfirmDialog(
          nRetVal = IDYES;
       } else {
          params.bWriteProtect = TRUE;
-         nRetVal = DialogBoxParam(hAppInstance, (LPTSTR)MAKEINTRESOURCE(dlg), hDlg, (DLGPROC)ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
+         nRetVal = DialogBoxParam(hAppInstance, (LPTSTR)MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
       }
 
       if (nRetVal == IDYES) {
@@ -1085,7 +1086,7 @@ ConfirmDialog(
       nRetVal = IDYES;
    } else {
 
-      nRetVal = DialogBoxParam(hAppInstance, (LPTSTR) MAKEINTRESOURCE(dlg), hDlg, (DLGPROC)ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
+      nRetVal = DialogBoxParam(hAppInstance, (LPTSTR) MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
    }
 
    if (nRetVal == -1)
@@ -1339,7 +1340,7 @@ GetNameDialog(DWORD dwOp, LPTSTR pFrom, LPTSTR pTo)
    pszDialogTo = pTo;
 
    dwRet = (DWORD)DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(LFNTOFATDLG),
-      hdlgProgress, (DLGPROC) GetNameDlgProc);
+      hdlgProgress, GetNameDlgProc);
 
    dwContext = dwSave;
    return dwRet;
@@ -2118,7 +2119,7 @@ WFMoveCopyDriver(PCOPYINFO pCopyInfo)
    //
    hThreadCopy = CreateThread( NULL,
       0L,
-      (LPTHREAD_START_ROUTINE)WFMoveCopyDriverThread,
+      WFMoveCopyDriverThread,
       pCopyInfo,
       0L,
       &dwIgnore);
@@ -2175,9 +2176,11 @@ WFMoveCopyDriver(PCOPYINFO pCopyInfo)
 //
 /////////////////////////////////////////////////////////////////////
 
-VOID
-WFMoveCopyDriverThread(PCOPYINFO pCopyInfo)
+DWORD
+WINAPI
+WFMoveCopyDriverThread(LPVOID lpParameter)
 {
+   PCOPYINFO pCopyInfo = lpParameter;
    DWORD ret = 0;                     // Return value from WFMoveCopyDriver
    LPWSTR pSpec;                      // Pointer to file spec
    DWORD dwAttr;                      // File attributes
@@ -3207,6 +3210,8 @@ ExitLoop:
    LocalFree(pCopyInfo->pFrom);
    LocalFree(pCopyInfo->pTo);
    LocalFree(pCopyInfo);
+
+   return 0;
 }
 
 
@@ -3317,7 +3322,7 @@ Error:
    dwStatus = DialogBoxParam(hAppInstance,
                             (LPTSTR) MAKEINTRESOURCE(DMSTATUSDLG),
                             hwndFrame,
-                            (DLGPROC)ProgressDlgProc,
+                            ProgressDlgProc,
                             (LPARAM)pCopyInfo);
 
    return dwStatus;

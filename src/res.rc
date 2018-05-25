@@ -38,6 +38,7 @@ BEGIN
     VK_ESCAPE,  IDM_ESCAPE,     NOINVERT, VIRTKEY
     VK_RETURN,  IDM_OPEN,       NOINVERT, VIRTKEY
     VK_RETURN,  IDM_OPEN,       NOINVERT, VIRTKEY, SHIFT
+    "N",        IDM_MAKEDIR,    VIRTKEY, SHIFT, CONTROL, NOINVERT
     VK_F12,     IDM_EDIT,       VIRTKEY
     VK_F7,      IDM_MOVE,       VIRTKEY
     VK_F8,      IDM_COPY,       VIRTKEY
@@ -81,10 +82,10 @@ END
 #define VER_PRODUCTNAME_STR         "File Manager"
 #define VER_LEGALCOPYRIGHT_STR      "Copyright (c) Microsoft Corporation. All rights reserved."
 
-#define VER_FILEVERSION             10,0,1804,0
-#define VER_FILEVERSION_STR         "10.0.1804.0\0"
-#define VER_PRODUCTVERSION          10,0,1804,0
-#define VER_PRODUCTVERSION_STR      "10.0.1804.0\0"
+#define VER_FILEVERSION             10,0,1805,1
+#define VER_FILEVERSION_STR         "10.0.1805.1\0"
+#define VER_PRODUCTVERSION          10,0,1805,1
+#define VER_PRODUCTVERSION_STR      "10.0.1805.1\0"
 
 #ifndef DEBUG
 #define VER_DEBUG                   0
@@ -140,3 +141,4 @@ CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "winfile.exe.manifest"
 #include "lang\res_ja-JP.rc"
 #include "lang\res_pl-PL.rc"
 #include "lang\res_he-IL.rc"
+#include "lang\res_de-DE.rc"

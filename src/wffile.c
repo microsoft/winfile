@@ -93,7 +93,7 @@ CompressErrMessageBox(
     LPTSTR szFile,
     PHANDLE phFile);
 
-BOOL CALLBACK
+INT_PTR CALLBACK
 CompressErrDialogProc(
     HWND hDlg,
     UINT uMsg,
@@ -379,10 +379,10 @@ VOID DisplayUncompressProgress(
 //
 /////////////////////////////////////////////////////////////////////////////
 
-BOOL APIENTRY UncompressProgDlg(
+INT_PTR CALLBACK UncompressProgDlg(
     HWND hDlg,
     UINT nMsg,
-    DWORD wParam,
+    WPARAM wParam,
     LPARAM lParam)
 {
     TCHAR szTemp[120];
@@ -598,10 +598,10 @@ void DisplayCompressProgress(
 //
 /////////////////////////////////////////////////////////////////////////////
 
-BOOL APIENTRY CompressProgDlg(
+INT_PTR CALLBACK CompressProgDlg(
     HWND hDlg,
     UINT nMsg,
-    DWORD wParam,
+    WPARAM wParam,
     LPARAM lParam)
 {
     TCHAR szTemp[120];
@@ -831,7 +831,7 @@ BOOL WFCheckCompress(
                                        hAppInstance,
                                        MAKEINTRESOURCE(COMPRESSPROGDLG),
                                        hwndFrame,
-                                       (DLGPROC)CompressProgDlg);
+                                       CompressProgDlg);
 
                     ShowWindow(hDlgProgress, SW_SHOW);
                 }
@@ -925,7 +925,7 @@ BOOL WFCheckCompress(
                                        hAppInstance,
                                        MAKEINTRESOURCE(UNCOMPRESSPROGDLG),
                                        hwndFrame,
-                                       (DLGPROC) UncompressProgDlg);
+                                       UncompressProgDlg);
 
                     ShowWindow(hDlgProgress, SW_SHOW);
                 }
@@ -1779,7 +1779,7 @@ int CompressErrMessageBox(
     rc = DialogBoxParam( hAppInstance,
                          (LPTSTR) MAKEINTRESOURCE(COMPRESSERRDLG),
                          hwndFrame,
-                         (DLGPROC)CompressErrDialogProc,
+                         CompressErrDialogProc,
                          (LPARAM)szFile );
 
     //
@@ -1823,7 +1823,7 @@ int CompressErrMessageBox(
 //
 /////////////////////////////////////////////////////////////////////////////
 
-BOOL CALLBACK CompressErrDialogProc(
+INT_PTR CALLBACK CompressErrDialogProc(
     HWND hDlg,
     UINT uMsg,
     WPARAM wParam,

@@ -219,6 +219,7 @@ GetSettings()
    wTextAttribs         = (WORD)GetPrivateProfileInt(szSettings, szLowerCase,     wTextAttribs,         szTheINIFile);
    bStatusBar           = GetPrivateProfileInt(szSettings, szStatusBar,           bStatusBar,           szTheINIFile);
    bDisableVisualStyles = GetPrivateProfileInt(szSettings, szDisableVisualStyles, bDisableVisualStyles, szTheINIFile);
+   bMirrorContent       = GetPrivateProfileInt(szSettings, szMirrorContent,    DefaultLayoutRTL(), szTheINIFile);
 
    bDriveBar       = GetPrivateProfileInt(szSettings, szDriveBar,      bDriveBar,      szTheINIFile);
    bToolbar        = GetPrivateProfileInt(szSettings, szToolbar,       bToolbar,       szTheINIFile);
@@ -928,6 +929,7 @@ InitFileManager(
 
    HANDLE        hThread;
    DWORD         dwRetval;
+   DWORD         dwExStyle = 0L;
 
    hThread = GetCurrentThread();
 
@@ -1024,6 +1026,8 @@ JAPANEND
    //
    GetSettings();
 
+   dwExStyle = MainWindowExStyle();
+
    dyBorder = GetSystemMetrics(SM_CYBORDER);
    dyBorderx2 = dyBorder * 2;
    dxFrame = GetSystemMetrics(SM_CXFRAME) - dyBorder;
@@ -1099,7 +1103,7 @@ JAPANEND
    wHelpMessage = RegisterWindowMessage(TEXT("ShellHelp"));
    wBrowseMessage = RegisterWindowMessage(TEXT("commdlg_help"));
 
-   hhkMsgFilter = SetWindowsHook(WH_MSGFILTER, (HOOKPROC)MessageFilter);
+   hhkMsgFilter = SetWindowsHook(WH_MSGFILTER, MessageFilter);
 
    hcurArrow = LoadCursor(NULL, IDC_ARROW);
 
@@ -1291,7 +1295,7 @@ JAPANEND
    }
 
 
-   if (!CreateWindowEx(0L, szFrameClass, szTitle, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
+   if (!CreateWindowEx(dwExStyle, szFrameClass, szTitle, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
       win.rc.left, win.rc.top, win.rc.right, win.rc.bottom,
       NULL, NULL, hInstance, NULL)) {
 
@@ -1319,7 +1323,7 @@ JAPANEND
 
    hThreadUpdate = CreateThread( NULL,
       0L,
-      (LPTHREAD_START_ROUTINE)UpdateInit,
+      UpdateInit,
       NULL,
       0L,
       &Ignore);

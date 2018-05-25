@@ -67,6 +67,8 @@ DrawItem(
 
    HDC hDC = lpLBItem->hDC;
 
+   PreserveBitmapInRTL(hDC);
+
    HWND hwndListParms = (HWND)GetWindowLongPtr(hwnd, GWL_LISTPARMS);
    BOOL bLower;
 
@@ -400,7 +402,7 @@ CreateLBLine(register DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
 }
 
 
-LRESULT DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     switch (wMsg)
     {
@@ -412,6 +414,7 @@ LRESULT DirListBoxWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 }
 
 LRESULT
+CALLBACK
 DirWndProc(
    HWND hwnd,
    UINT uMsg,

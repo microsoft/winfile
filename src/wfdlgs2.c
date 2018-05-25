@@ -103,6 +103,7 @@ StarFilename(LPTSTR pszPath)
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
   LPTSTR     p;
@@ -270,6 +271,7 @@ DoHelp:
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 RunDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
   LPTSTR p,pDir,pFile,pPar;
@@ -429,6 +431,7 @@ MessWithRenameDirPath(LPTSTR pszPath)
 // calling DialogBox() to indicate which function is being used.
 
 INT_PTR
+CALLBACK
 SuperDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    UINT          len;
@@ -1589,6 +1592,7 @@ FullPath:
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 AttribsDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    LPTSTR p, pSel;
@@ -1844,6 +1848,7 @@ DoHelp:
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 MakeDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    //

@@ -343,7 +343,7 @@ DrawDrive(HDC hdc, INT x, INT y, DRIVEIND driveInd, BOOL bCurrent, BOOL bFocus)
    SetTextColor(hdc, rgb);
 
    BitBlt(hdc, x + 4*dyBorder, y + (dyDrive - dyDriveBitmap) / 2, dxDriveBitmap, dyDriveBitmap,
-      hdcMem, aDriveInfo[drive].iOffset, 2 * dyFolder, SRCCOPY);
+      hdcMem, aDriveInfo[drive].iOffset, 2 * dyFolder, SRCCOPY | NOMIRRORBITMAP);
 }
 
 
@@ -681,6 +681,7 @@ DrivesSetDrive(
 /*--------------------------------------------------------------------------*/
 
 LRESULT
+CALLBACK
 DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
   INT nDrive, nDriveCurrent, nDriveFocus;

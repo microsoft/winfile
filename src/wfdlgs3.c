@@ -20,8 +20,8 @@
 #define CCH_DRIVE       3
 #define CCH_DLG_TITLE  16
 
-VOID FormatDrive( IN PVOID ThreadParameter );
-VOID CopyDiskette( IN PVOID ThreadParameter );
+DWORD WINAPI FormatDrive( IN PVOID ThreadParameter );
+DWORD WINAPI CopyDiskette( IN PVOID ThreadParameter );
 VOID SwitchToSafeDrive(VOID);
 VOID MDIClientSizeChange(HWND hwndActive, INT iFlags);
 
@@ -47,6 +47,7 @@ typedef enum {
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 ChooseDriveDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szDrive[5];
@@ -118,7 +119,7 @@ ChooseDriveDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                EndDialog(hDlg, TRUE);
 
-               CreateDialog(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CANCELDLG), hwndFrame, (DLGPROC) CancelDlgProc);
+               CreateDialog(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CANCELDLG), hwndFrame, CancelDlgProc);
             } else {
                EndDialog(hDlg, TRUE);
             }
@@ -155,6 +156,7 @@ DoHelp:
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 DiskLabelDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szNewVol[MAXPATHLEN];
@@ -296,7 +298,7 @@ FormatDiskette(HWND hwnd, BOOL bModal)
 
     CancelInfo.bModal = bModal;
 
-    res = DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(FORMATDLG), hwnd, (DLGPROC) FormatDlgProc);
+    res = DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(FORMATDLG), hwnd, FormatDlgProc);
 
     dwContext = dwSave;
 }
@@ -510,6 +512,7 @@ FillDriveCapacity(HWND hDlg, INT nDrive, FMIFS_MEDIA_TYPE fmSelect, BOOL fDoPopu
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 FormatDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szBuf[128];
@@ -706,9 +709,9 @@ FormatDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
          // use a modal box.
 
          if (CancelInfo.bModal) {
-            DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CANCELDLG), hwndFrame, (DLGPROC) CancelDlgProc);
+            DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CANCELDLG), hwndFrame, CancelDlgProc);
          } else {
-            CreateDialog(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CANCELDLG), hwndFrame, (DLGPROC) CancelDlgProc);
+            CreateDialog(hAppInstance, (LPTSTR) MAKEINTRESOURCE(CANCELDLG), hwndFrame, CancelDlgProc);
          }
 
          break;
@@ -737,6 +740,7 @@ DoHelp:
 /*----------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     HWND  hwndSelectDrive;
@@ -824,6 +828,7 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 /*--------------------------------------------------------------------------*/
 
 INT_PTR
+CALLBACK
 AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     WORD wMajorVersion   = 0;
@@ -856,7 +861,8 @@ AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     return FALSE;
 }
 
-VOID
+DWORD
+WINAPI
 FormatDrive( IN PVOID ThreadParameter )
 {
    WCHAR wszDrive[3];
@@ -880,9 +886,12 @@ FormatDrive( IN PVOID ThreadParameter )
    } while (CancelInfo.Info.Format.fFlags & FF_RETRY);
 
    CancelDlgQuit();
+
+   return 0;
 }
 
-VOID
+DWORD
+WINAPI
 CopyDiskette( IN PVOID ThreadParameter )
 {
   BOOL fVerify = FALSE;
@@ -904,6 +913,8 @@ CopyDiskette( IN PVOID ThreadParameter )
                   (FMIFS_CALLBACK)&Callback_Function);
 
    CancelDlgQuit();
+
+   return 0;
 }
 
 
@@ -1082,7 +1093,8 @@ Callback_Function(FMIFS_PACKET_TYPE   PacketType,
  *
  */
 
-BOOL
+INT_PTR
+CALLBACK
 CancelDlgProc(HWND hDlg,
    UINT message,
    WPARAM wParam,
@@ -1149,7 +1161,7 @@ CancelDlgProc(HWND hDlg,
             case CANCEL_FORMAT:
                CancelInfo.hThread = CreateThread( NULL,      // Security
                   0L,                                        // Stack Size
-                  (LPTHREAD_START_ROUTINE)FormatDrive,
+                  FormatDrive,
                   NULL,
                   0L,
                   &Ignore );
@@ -1157,7 +1169,7 @@ CancelDlgProc(HWND hDlg,
             case CANCEL_COPY:
               CancelInfo.hThread = CreateThread( NULL,      // Security
                   0L,                                        // Stack Size
-                  (LPTHREAD_START_ROUTINE)CopyDiskette,
+                  CopyDiskette,
                   NULL,
                   0L,
                   &Ignore );
@@ -1293,6 +1305,7 @@ CancelDlgProc(HWND hDlg,
 /////////////////////////////////////////////////////////////////////
 
 INT_PTR
+CALLBACK
 ProgressDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    static PCOPYINFO pCopyInfo;
@@ -1520,6 +1533,7 @@ UpdateConnections(BOOL bUpdateDriveList)
 }
 
 INT_PTR
+CALLBACK
 DrivesDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    DRIVEIND driveInd;

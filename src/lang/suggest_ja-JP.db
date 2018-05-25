@@ -71,7 +71,7 @@ SUGGEST(18, DE_DIREXISTSASFILE, 0L, \
   "指定された名前は既に別のファイルで使用されています。" )
 #ifdef ASSOC
 SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
-  "This can only be deleted when viewing Common File Types and extensions." )
+  "一般的なファイルの種類と拡張子を表示する場合にのみ削除できます。" )
 #endif
 
 // Block out errors that require arguments

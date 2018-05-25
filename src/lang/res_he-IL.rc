@@ -31,7 +31,7 @@ BEGIN
     MENUITEM    "&הדפסה...",        IDM_PRINT
     MENUITEM    "&שיוך...",    IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "&יצירת תיקיה...", IDM_MAKEDIR
+    MENUITEM    "&יצירת תיקיה...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "&חיפוש...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "&בחירת קבצים...", IDM_SELECT
 	MENUITEM    "הפעלת Bash Shell...", IDM_STARTBASHSHELL

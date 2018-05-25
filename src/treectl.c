@@ -1519,6 +1519,8 @@ TCWP_DrawItem(
   hdc = lpLBItem->hDC;
   pNode = (PDNODE)lpLBItem->itemData;
 
+  PreserveBitmapInRTL(hdc);
+
   /*
    *  Save the real extent.
    */
@@ -1959,6 +1961,7 @@ ExpandLevel(HWND hWnd, WPARAM wParam, INT nIndex, LPTSTR szPath)
 /////////////////////////////////////////////////////////////////////
 
 LRESULT
+CALLBACK
 TreeControlWndProc(
    register HWND hwnd,
    UINT uMsg,
