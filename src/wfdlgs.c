@@ -840,6 +840,7 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 {
 	DWORD cmd, item;
 	POINT pt;
+	BOOL bDir = FALSE;
 
 	HMENU hMenu = GetSubMenu(LoadMenu(hAppInstance, TEXT("CTXMENU")), 0);
 
@@ -875,12 +876,17 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 				// tree control; do selection differently
 				SendMessage(hwndLB, LB_SETCURSEL, (WPARAM)item, 0L);
 				SendMessage(hwnd, WM_COMMAND, GET_WM_COMMAND_MPS(0, hwndLB, LBN_SELCHANGE));
+				// we only show files in the tree control.
+				bDir = TRUE;
 			}
 			else {
 				SendMessage(hwndLB, LB_SETSEL, (WPARAM)FALSE, (LPARAM)-1);
 				SendMessage(hwndLB, LB_SETSEL, (WPARAM)TRUE, (LPARAM)item);
+				SendMessage(hwnd, FS_GETSELECTION, 5, (LPARAM)&bDir);
 			}
-
+			
+			if (bDir)
+				EnableMenuItem(hMenu, IDM_EDIT, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
 		}
 	}
 
