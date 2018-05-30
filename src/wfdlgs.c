@@ -879,8 +879,12 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 			else {
 				SendMessage(hwndLB, LB_SETSEL, (WPARAM)FALSE, (LPARAM)-1);
 				SendMessage(hwndLB, LB_SETSEL, (WPARAM)TRUE, (LPARAM)item);
-			}
 
+                BOOL bDir = FALSE;
+                SendMessage(hwnd, FS_GETSELECTION, 5, (LPARAM)&bDir);
+                if (bDir)
+                    EnableMenuItem(hMenu, IDM_EDIT, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
+            }
 		}
 	}
 
