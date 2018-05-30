@@ -1519,6 +1519,8 @@ TCWP_DrawItem(
   hdc = lpLBItem->hDC;
   pNode = (PDNODE)lpLBItem->itemData;
 
+  PreserveBitmapInRTL(hdc);
+
   /*
    *  Save the real extent.
    */
