@@ -1,0 +1,90 @@
+
+// Suggestion database info
+// Used to automate the suggestions compiled into winfile
+//
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+//
+// Usage: Just add a new entry of the format:
+
+// SUGGEST( resource_number, error-code, flags, "your-reason-string" )
+//  resource_number = incremental number for string ID
+//  error-code = error this suggestion corresponds to
+//  "your-reason-string" string displayed for error
+//  flags: SUG_IGN_FORMATMESSAGE = prepend system FormatMessage text
+
+// Ok, so it's not perfect: your resource number can't clash
+// with any others in winfile.h.  Use 1 .. 99 (1101 to 1199)
+// resource # 0 is reserved.
+
+// What it does:
+// For system errors (defined here in winfile land as < DE_BEGIN (bit 29 off)),
+// it puts the "suggestion" below the error text (a blank line is between
+// them.
+//
+// For our errors (>= DE_BEGIN), it places the text below (1 blank line)
+// the previous string.  There is no longer any corresponding text called
+// "IDS_REASONS+DE_MYERROR" or "DE_MYERROR" in the resources.
+// Internal error messages and their reasons must be stored here in
+// the same string.
+
+#ifndef IDS_SUGGESTBEGIN
+#define IDS_SUGGESTBEGIN 1100
+#endif
+
+SUGGEST( 1, DE_SAMEFILE, 0L, \
+ "Quelle und Ziel sind gleich." )
+SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
+ "Wählen Sie nur eine Datei zum Umbenennen oder verwenden Sie Platzhalter (z.B. *.TXT), um eine Gruppe von Dateien mit ähnlichen Namen umzubenennen." )
+SUGGEST( 3, DE_DIFFDIR, 0L, \
+ "Kann nicht in ein anderes Verzeichnis oder eine andere Festplatte umbenennen.\nVerwenden Sie stattdessen den Befehl Datei verschieben." )
+SUGGEST( 4, DE_ROOTDIR, 0L, \
+ "Sie können das Wurzelverzeichnis nicht umbenennen." )
+SUGGEST( 5, DE_DESTSUBTREE, 0L, \
+ "Das Zielverzeichnis ist ein Unterverzeichnis der Quelle." )
+SUGGEST( 6, DE_WINDOWSFILE, 0L, \
+ "Von Windows verwendete Datei." )
+SUGGEST( 7, DE_MANYDEST, 0L, \
+ "Geben Sie im Feld 'An' nur eine Datei oder ein Verzeichnis an. Oder, wenn Sie eine Gruppe von Dateien angeben möchten, verwenden Sie Wildcards (z.B. *.TXT)." )
+SUGGEST( 8, DE_RENAMREPLACE, 0L, \
+ "Eine Datei oder ein Verzeichnis mit diesem Namen existiert bereits.  Innerhalb eines Verzeichnisses müssen Datei- und Verzeichnisnamen eindeutig sein." )
+
+// This error is returned when selecting a grayed network drive and the rdr is not started
+SUGGEST( 9, ERROR_FILE_NOT_FOUND, 0L, \
+ "Stellen Sie sicher, dass der richtige Pfad und Dateiname angegeben sind." )
+SUGGEST(10, ERROR_PATH_NOT_FOUND, 0L, \
+ "Stellen Sie sicher, dass der richtige Pfad angegeben ist." )
+SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
+ "Beenden Sie eine oder mehrere Anwendungen und versuchen Sie es erneut.  Oder verwenden Sie die Option Systeme in der Systemsteuerung, um Ihren virtuellen Speicher zu vergrößern." )
+// 12
+SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
+ "Deaktivieren Sie den Schreibschutz auf dieser Platte oder verwenden Sie eine andere Platte, und versuchen Sie es dann erneut." )
+SUGGEST(14, ERROR_NETWORK_ACCESS_DENIED, 0L, \
+ "Stellen Sie sicher, dass Sie über die richtigen Netzwerkberechtigungen verfügen, um diesen Vorgang auszuführen." )
+SUGGEST(15, ERROR_DISK_FULL, 0L, \
+ "Löschen Sie eine oder mehrere Dateien, um den Speicherplatz zu vergrößern, und versuchen Sie es dann erneut." )
+SUGGEST(16, ERROR_NO_DATA_DETECTED, SUG_IGN_FORMATMESSAGE, \
+ "Keine Daten auf diesem Medium gefunden." )
+
+SUGGEST(17, DE_MAKEDIREXISTS, 0L, \
+  "Dieses Verzeichnis existiert bereits." )
+SUGGEST(18, DE_DIREXISTSASFILE, 0L, \
+  "Der angegebene Name wird bereits von einer Datei verwendet." )
+#ifdef ASSOC
+SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
+  "Dies kann nur gelöscht werden, wenn Sie die allgemeinen Dateitypen und -erweiterungen anzeigen." )
+#endif
+
+// Block out errors that require arguments
+SUGGEST(50, ERROR_WRONG_DISK, SUG_IGN_FORMATMESSAGE, \
+ "Die falsche Diskette ist im Laufwerk." )
+SUGGEST(51, ERROR_CHILD_NOT_COMPLETE, SUG_IGN_FORMATMESSAGE, \
+ "Die Anwendung kann nicht im Windows NT-Modus ausgeführt werden." )
+SUGGEST(52, ERROR_INVALID_ORDINAL, SUG_IGN_FORMATMESSAGE, \
+ "Das Betriebssystem kann diese Komponente nicht ausführen." )
+SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
+ "Die Komponente kann nicht im Windows NT-Modus ausgeführt werden." )
+SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
+ "Dieses Programm ist keine gültige Windows NT-Anwendung." )
+SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
+ "Ein Fehler ist aufgetreten. Es gibt keinen Meldungstext für diesen Fehler." )

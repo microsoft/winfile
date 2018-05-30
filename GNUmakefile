@@ -1,38 +1,38 @@
 SRCS = \
-	dbg.c \
-	lfn.c \
-	lfnmisc.c \
-	numfmt.c \
-	suggest.c \
-	tbar.c \
-	treectl.c \
-	wfassoc.c \
-	wfchgnot.c \
-	wfcomman.c \
-	wfcopy.c \
-	wfdir.c \
-	wfdirrd.c \
-	wfdirsrc.c \
-	wfdlgs.c \
-	wfdlgs2.c \
-	wfdlgs3.c \
-	wfdos.c \
-	wfdrives.c \
-	wfdrop.c \
-	wfext.c \
-	wffile.c \
-	wfinfo.c \
-	wfinit.c \
-	wfmem.c \
-	wfloc.c \
-	wfprint.c \
-	wfsearch.c \
-	wftree.c \
-	wfutil.c \
-	winfile.c \
-	wnetcaps.c
+	src/dbg.c \
+	src/lfn.c \
+	src/lfnmisc.c \
+	src/numfmt.c \
+	src/suggest.c \
+	src/tbar.c \
+	src/treectl.c \
+	src/wfassoc.c \
+	src/wfchgnot.c \
+	src/wfcomman.c \
+	src/wfcopy.c \
+	src/wfdir.c \
+	src/wfdirrd.c \
+	src/wfdirsrc.c \
+	src/wfdlgs.c \
+	src/wfdlgs2.c \
+	src/wfdlgs3.c \
+	src/wfdos.c \
+	src/wfdrives.c \
+	src/wfdrop.c \
+	src/wfext.c \
+	src/wffile.c \
+	src/wfinfo.c \
+	src/wfinit.c \
+	src/wfmem.c \
+	src/wfloc.c \
+	src/wfprint.c \
+	src/wfsearch.c \
+	src/wftree.c \
+	src/wfutil.c \
+	src/winfile.c \
+	src/wnetcaps.c
 
-OBJS = $(subst .c,.o,$(SRCS)) wfgoto.o res.o
+OBJS = $(subst .c,.o,$(SRCS)) src/wfgoto.o src/res.o
 
 CFLAGS = -DUNICODE -DFASTMOVE -DSTRSAFE_NO_DEPRECATE -DWINVER=0x0600
 LIBS = -mwindows -lgdi32 -lcomctl32 -lole32 -lshlwapi -loleaut32 -lversion
@@ -55,13 +55,13 @@ $(TARGET) : $(OBJS)
 .cpp.o :
 	g++ -c $(CFLAGS) -I. $< -o $@
 
-res.o : res.rc lang/*.rc lang/*.dlg
-	windres -DNOWINRES -I. -i res.rc -o res.o
+src/res.o : src/res.rc src/lang/*.rc src/lang/*.dlg
+	windres -DNOWINRES -I. -i src/res.rc -o src/res.o
 
 clean :
 	rm -f $(OBJS) $(TARGET)
 
 depend:
-	gcc -E -MM -w *.c > Makefile.depends
+	gcc -E -MM -w src/*.c > Makefile.depends
 
 -include Makefile.depends
