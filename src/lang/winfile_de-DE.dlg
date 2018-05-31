@@ -34,14 +34,13 @@ BEGIN
     CONTROL "Beginne bei:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 25, 70, 10
     CONTROL "", IDD_PATH, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 50, 25, 120, 10
     CONTROL "Verzeichnisse gelesen:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 35, 74, 10
-    CONTROL "", IDD_TIME, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 66, 35, 56, 10
+    CONTROL "", IDD_TIME, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 112, 35, 56, 10
     CONTROL "Übereinstimmungen gefunden:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 45, 102, 10
     CONTROL "", IDD_FOUND, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 112, 45, 54, 10
 
     PUSHBUTTON      "Ausblenden", IDD_HIDE, 45, 58, 45, 14
     PUSHBUTTON      "Abbrechen", IDCANCEL, 91, 58, 40, 14
 END
-
 
 FONTDLG DIALOG 13, 54, 265, 172
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
@@ -176,8 +175,8 @@ BEGIN
     CONTROL "Klicken Sie auf 'Ja', um diese Datei zu ignorieren und fortzusetzen.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 40, 220, 10
     CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 52, 40, 14
     CONTROL "&Alle ignorieren", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 80, 52, 53, 14
-    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 125, 52, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 185, 52, 40, 14
+    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 52, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 187, 52, 40, 14
 END
 
 
@@ -192,9 +191,9 @@ BEGIN
     CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 129, 13, 101, 10
     CONTROL "Klicken Sie auf 'Ja', um diese Datei zu ignorieren und fortzusetzen.", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 23, 214, 10
     CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 25, 42, 40, 14
-    CONTROL "&Alle bestätigen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 79, 42, 52, 14
+    CONTROL "&Alle bestätigen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 72, 42, 52, 14
     CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 131, 42, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 177, 42, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 178, 42, 40, 14
 END
 
 
@@ -241,9 +240,9 @@ BEGIN
     CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 89, 18, 151, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
     CONTROL "&Ja", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 23, 42, 40, 14
-    CONTROL "&Alle umbenennen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 68, 42, 40, 14
-    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 136, 42, 40, 14
-    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 182, 42, 40, 14
+    CONTROL "&Alle umbenennen", IDD_YESALL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 69, 42, 59, 14
+    CONTROL "&Nein", IDNO, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 134, 42, 40, 14
+    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 180, 42, 40, 14
 END
 
 
@@ -373,7 +372,7 @@ BEGIN
                     5, 49, 45, 10
     CONTROL         "", IDD_SIZE, "Static", SS_LEFTNOWORDWRAP, 72, 49, 132, 10
     CONTROL         "Komprimierte Größe:", IDD_CSIZELABEL, "Static",
-                    SS_LEFTNOWORDWRAP, 5, 60, 45, 10
+                    SS_LEFTNOWORDWRAP, 5, 60, 65, 10
     CONTROL         "", IDD_CSIZE, "Static", SS_LEFTNOWORDWRAP, 72, 60, 132, 10
     CONTROL         "Kompressionsrate:", IDD_CRATIOLABEL, "Static",
                     SS_LEFTNOWORDWRAP, 5, 82, 62, 10
@@ -657,7 +656,7 @@ BEGIN
     CONTROL "", IDD_STATUS, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD , 5, 5, 49, 10
     CONTROL "", IDD_NAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 55, 5, 192, 10
     CONTROL "Nach:", IDD_TOSTATUS, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 5, 15, 25, 10
-    CONTROL "", IDD_TONAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 43, 15, 204, 10
+    CONTROL "", IDD_TONAME, "static", WS_CHILD | SS_SIMPLE | SS_NOPREFIX, 55, 15, 192, 10
     CONTROL "Abbrechen", IDCANCEL, "button", WS_CHILD | BS_DEFPUSHBUTTON, 200, 28, 40, 14
 END
 
