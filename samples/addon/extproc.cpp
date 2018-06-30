@@ -16,7 +16,8 @@ WORD wMenuDelta;
 BOOL fToggle = FALSE; 
 
 /*
-LONG CALLBACK FMExtensionProcW(HWND hwnd, WORD wMsg, LONG lParam);
+LONG CALLBACK FMExtensionProc(HWND hwnd, WORD wMsg, LONG lParam)        -- ANSI
+LONG CALLBACK FMExtensionProcW(HWND hwnd, WORD wMsg, LONG lParam)       -- UNICODE
 
 Parameters:
 	
@@ -60,6 +61,15 @@ Parameters:
 
 	Return value	Type: LONG
 	Returns a value dependent upon the wMsg parameter message.
+
+    Usage: in order for Windows File Manager to load this dll, add a section to winfile.ini (located in %USERPROFILE%\Roaming\Microsoft\Winfile):
+
+        [Addons]
+        ext1=<path to dll>
+
+    The key names ('ext1' in the example) don't matter, but must all be unique within the [Addons] section.  Specifying anything but a full path
+    results in undefined behavior currently.
+
 */
 LONG APIENTRY FMExtensionProcW(HWND hwnd, WPARAM wEvent, LPARAM lParam)
 {
