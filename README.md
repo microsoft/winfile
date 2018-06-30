@@ -42,9 +42,9 @@ Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded
 
 ## Changes in original_plus
 
-The source code provided here (in the src directory) was copied from the Windows NT 4 source tree in November
+The source code provided here (in the `src` directory) was copied from the Windows NT 4 source tree in November
 2007.  The tag named original_plus contains a very limited set of  modifications
-from the original sources to enable WinFile.exe to run on current Windows.
+from the original sources to enable `WinFile.exe` to run on current Windows.
 The most significant changes are:
 
 1. converted to Visual Studio solution; works on VS 2015 and 2017
@@ -56,10 +56,10 @@ The most significant changes are:
 
 The help directory contains both winfile.hlp and winfile.chm.  Winfile.hlp was in the NT4
 source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from 
-a regular installation of Windows 98 and works on Windows 10.  As is, WinFile.exe 
+a regular installation of Windows 98 and works on Windows 10.  As is, `WinFile.exe` 
 tries to launch winfile.hlp which fails.
 
-To create your own local branch referring to this release, run "git checkout -b <your branch> original_plus".
+To create your own local branch referring to this release, run `git checkout -b <your branch> original_plus`.
 
 ## Changes in master v10.0 after original_plus
 
@@ -75,22 +75,22 @@ was created.  For changes post v10.0, see the commit and release history.
 In summary v10.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
-2. control characters (e.g., ctrl+C) map to current short cut (e.g., ctrl+c -> copy)
+2. control characters (e.g., ctrl+C) map to current short cut (e.g., `ctrl+c` -> `copy`)
 instead of changing drives
-3. cut (ctrl+X) followed by paste (ctrl+V) translates into a file move as one would expect
+3. cut (`ctrl+X`) followed by paste (`ctrl+V`) translates into a file move as one would expect
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer
 5. added context menus in both panes
 6. improved the means by which icons are displayed for files
 7. F12 runs notepad or notepad++ on the selected file
-8. moved the ini file location to %AppData%\Roaming\Microsoft\WinFile
+8. moved the ini file location to `%AppData%\Roaming\Microsoft\WinFile`
 9. File.Search can include a date which limits the files returned to those after the date provided;
 the output is also sorted by the date instead of by the name
 10. File.Search includes an option as to whether to include sub-directories
-11. ctrl+K starts a command shell (ConEmu if installed) in the current directory; shift+ctrl+K
-starts an elevated command shell (cmd.exe only)
-12. File.Goto (ctrl+G) enables one to type a few words of a path and get a list of directories;
+11. `ctrl+K` starts a command shell (ConEmu if installed) in the current directory; `shift+ctrl+K`
+starts an elevated command shell (`cmd.exe` only)
+12. File.Goto (`ctrl+G`) enables one to type a few words of a path and get a list of directories;
 selecting one changes to that directory.  Only drive c: is indexed.
-13. UI shows  reparse points (e.g., Junction points) as such
+13. UI shows reparse points (e.g., Junction points) as such
 14. added simple forward / back navigation (probably needs to be improved)
 15. View command has a new option to sort by date forward (oldest on top);
 normal date sorting is newest on top
