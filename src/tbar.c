@@ -627,20 +627,9 @@ LoadDesc(UINT uID, LPTSTR lpDesc)
    TCHAR szItem[MAXDESCLEN-COUNTOF(szMenu)];
    LPTSTR lpIn;
 
-   HWND hwndActive;
-
    hMenu = GetMenu(hwndFrame);
 
-   uMenu = uID/100 - 1;
-   if (uMenu > IDM_EXTENSIONS)
-      uMenu -= MAX_EXTENSIONS - iNumExtensions;
-
-   // Add 1 if MDI is maximized.
-
-   hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-
-   if (hwndActive && GetWindowLongPtr(hwndActive, GWL_STYLE) & WS_MAXIMIZE)
-      uMenu++;
+   uMenu = MapIDMToMenuPos(uID);
 
    GetMenuString(hMenu, uMenu, szMenu, COUNTOF(szMenu), MF_BYPOSITION);
    if (GetMenuString(hMenu, uID, szItem, COUNTOF(szItem), MF_BYCOMMAND) <= 0) {

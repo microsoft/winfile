@@ -505,6 +505,8 @@ BOOL  CreateSavedWindows(VOID);
 VOID  InitExtensions(VOID);
 INT   GetDriveOffset(register DRIVE drive);
 VOID  InitMenus(VOID);
+UINT  MapIDMToMenuPos(UINT idm);
+UINT  MapMenuPosToIDM(UINT pos);
 VOID  LoadFailMessage(VOID);
 UINT  FillDocType(PPDOCBUCKET ppDoc, LPCWSTR pszSection, LPCWSTR pszDefault);
 BOOL  CheckDirExists(LPWSTR szDir);
@@ -1079,6 +1081,7 @@ Extern DWORD (*lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
 
 
 Extern FM_EXT_PROC lpfnAcledit;
+Extern BOOL        bSecMenuDeleted;
 
 Extern HANDLE hVersion             EQ( NULL );
 Extern HANDLE hMPR                 EQ( NULL );

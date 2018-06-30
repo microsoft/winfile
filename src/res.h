@@ -158,7 +158,12 @@
 #define IDM_OWNER           607
 
 #define IDM_EXTENSIONS      6
+// iExt 0, command ids 700-799
+// iExt 1, command ids 800-899
+// etc.
+// iExt 9, command ids 1600-1699
 
+// NOTE: IDM_WINDOW is IDM_EXTENSIONS (6) + MAX_EXTENSIONS (10)
 #define IDM_WINDOW           16
 #define IDM_CASCADE          1701
 #define IDM_TILE             1702
