@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VerifyResources", "tools\Ve
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FileSignatureInfo", "tools\FileSignatureInfo\FileSignatureInfo.vcxproj", "{24D8E2A7-CD5A-423B-AEB4-CAA277BD0A0F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinFile-AddOn", "samples\addon\AddOnSample.vcxproj", "{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -47,6 +49,16 @@ Global
 		{24D8E2A7-CD5A-423B-AEB4-CAA277BD0A0F}.Release|Win32.ActiveCfg = Release|Win32
 		{24D8E2A7-CD5A-423B-AEB4-CAA277BD0A0F}.Release|Win32.Build.0 = Release|Win32
 		{24D8E2A7-CD5A-423B-AEB4-CAA277BD0A0F}.Release|x64.ActiveCfg = Release|x64
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Debug|ARM.ActiveCfg = Debug|Win32
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Debug|Win32.Build.0 = Debug|Win32
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Debug|x64.ActiveCfg = Debug|x64
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Debug|x64.Build.0 = Debug|x64
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Release|ARM.ActiveCfg = Release|Win32
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Release|Win32.ActiveCfg = Release|Win32
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Release|Win32.Build.0 = Release|Win32
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Release|x64.ActiveCfg = Release|x64
+		{B46F5F82-52A4-45CC-9AA3-ADF9EE8E51A3}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
