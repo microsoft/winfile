@@ -724,16 +724,12 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
          // Store the Frame's hwnd.
          hwndFrame = hwnd;
 
-         // Fill up this array with some popup menus.
-
          hMenu2 = GetMenu(hwnd);
-         dwMenuIDs[3] = (DWORD)GetSubMenu(hMenu2, IDM_EXTENSIONS);
-         dwMenuIDs[5] = (DWORD)GetSubMenu(hMenu2, IDM_EXTENSIONS+1);
 
          // the extensions haven't been loaded yet so the window
          // menu is in the position of the first extensions menu
 
-         ccs.hWindowMenu = (HWND)dwMenuIDs[3];
+         ccs.hWindowMenu = (HWND)GetSubMenu(hMenu2, IDM_EXTENSIONS);
          ccs.idFirstChild = IDM_CHILDSTART;
 
          // create the MDI client at approximate size to make sure

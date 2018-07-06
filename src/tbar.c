@@ -789,6 +789,11 @@ ExtensionHelp:
             }
          }
 
+         // NormalHelp with MF_POPUP case; fix up ids to workaround some bugs in MenuHelp
+         INT idm = MapMenuPosToIDM(uItem);
+         dwMenuIDs[MHPOP_CURRENT] = MH_POPUP + idm;
+         dwMenuIDs[MHPOP_CURRENT+1] = uItem;
+
 NormalHelp:
          MenuHelp((WORD)uMsg, wParam, lParam, GetMenu(hwndFrame),
             hAppInstance, hwndStatus, (LPUINT)dwMenuIDs);

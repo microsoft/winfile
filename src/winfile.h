@@ -1364,11 +1364,20 @@ Extern TCHAR szFmifsDll[]    EQ( TEXT("fmifs.dll") );
 Extern   CANCEL_INFO CancelInfo;
 Extern   SEARCH_INFO SearchInfo;
 
+// this value is an index into dwMenuIDs and used to workaround a bug
+#define MHPOP_CURRENT 2
+
 #ifdef _GLOBALS
    DWORD dwMenuIDs[] = {
-      MH_MYITEMS, MH_POPUP,
-      MH_POPUP+IDM_WINDOW, 0,   // The 0's are placeholders for menu handles
-      MH_POPUP+IDM_HELP, 0,
+      // three distinct cases: 1: popups (search), 2: popups (position), 3: non-popups
+
+      MH_MYITEMS,               // case 3: used for all non-popups; IDM from WM_MENUSELECT (loword of wParam) is added to this
+      MH_POPUP,                 // case 2: used for all popups; position value of top level menu is added to this.
+      // NOTE: the check in MenuHelp to determine if the MDI child is maximized doesn't work and the code display the WRONG help in that case
+
+      // case 1: these are searched in pairs only for popups;
+      // the second value of which is the position of the menu in question (not the menu handle)
+      MH_POPUP, 0,              // always setup explicitly for popups due to the bug related to maximization
       0, 0                      // We need to NULL terminate this list
    };
 #else

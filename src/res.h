@@ -579,6 +579,8 @@
 #define IDS_UNDELETE          (MS_EXTRA+6)
 #define IDS_NEWWINONCONNECT   (MS_EXTRA+7)
 
+// TODO: there should be NUMEXTRACOMMANDS strings above; see usage in tbar.c in LoadDesc().
+
 #define IDS_COPYERROR       1000
 #define IDS_VERBS           1010
 #define IDS_ACTIONS         1020

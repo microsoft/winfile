@@ -491,6 +491,11 @@ UINT  MapMenuPosToIDM(UINT pos)
         idm++;
     }
 
+    if (idm >= IDM_EXTENSIONS + iNumExtensions)
+    {
+        idm += MAX_EXTENSIONS - iNumExtensions;
+    }
+
     return idm;
 }
 
