@@ -19,9 +19,10 @@ typedef struct _EXTENSION {                                     /* ;Internal */
         WORD     Delta;                                         /* ;Internal */
         HANDLE   hModule;                                       /* ;Internal */
         HMENU    hMenu;                                         /* ;Internal */
-        DWORD    dwFlags;                                       /* ;Internal */
         HBITMAP  hbmButtons;                                    /* ;Internal */
         WORD     idBitmap;                                      /* ;Internal */
+        WORD     iStartBmp;                                     /* ;Internal */
+        BOOL     bRestored;                                     /* ;Internal */
         BOOL     bUnicode;                                      /* ;Internal */
 } EXTENSION;                                                    /* ;Internal */
 

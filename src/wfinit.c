@@ -168,6 +168,12 @@ InitExtensions()
                extensions[iNumExtensions].hMenu = hMenu;
                extensions[iNumExtensions].bUnicode = bUnicode;
 
+               // these are set when FMEVENT_TOOLBARLOAD is called
+               extensions[iNumExtensions].hbmButtons = NULL;
+               extensions[iNumExtensions].idBitmap = 0;
+               extensions[iNumExtensions].iStartBmp = 0;
+               extensions[iNumExtensions].bRestored = FALSE;
+
                if (hMenu) {
                   BiasMenu(hMenu, bias);
 
