@@ -1012,19 +1012,19 @@ BOOL LoadUxTheme(VOID);
 #define WAITNET_TYPELOADED  bNetTypeLoad
 #define WAITNET_SHARELOADED bNetShareLoad
 
-Extern DWORD (*lpfnWNetCloseEnum)(HANDLE);
-Extern DWORD (*lpfnWNetConnectionDialog2)(HWND, DWORD, LPWSTR, UINT);
-Extern DWORD (*lpfnWNetDisconnectDialog2)(HWND, UINT, LPWSTR, UINT);
-Extern DWORD (*lpfnWNetEnumResourceW)(HANDLE, LPDWORD, LPVOID, LPDWORD);
-Extern DWORD (*lpfnWNetGetConnection2W)(LPWSTR, WNET_CONNECTIONINFO *, LPDWORD);
-Extern DWORD (*lpfnWNetGetDirectoryTypeW)(LPWSTR, LPDWORD, BOOL);
-Extern DWORD (*lpfnWNetGetLastErrorW)(LPDWORD, LPWSTR, DWORD, LPWSTR, DWORD);
-Extern DWORD (*lpfnWNetGetPropertyTextW)(WORD, WORD, LPWSTR, LPWSTR, WORD, WORD);
-Extern DWORD (*lpfnWNetOpenEnumW)(DWORD, DWORD, DWORD, LPNETRESOURCE, LPHANDLE);
-Extern DWORD (*lpfnWNetPropertyDialogW)(HWND, WORD, WORD, LPWSTR, WORD);
-Extern DWORD (*lpfnWNetRestoreConnectionW)(HWND, LPWSTR);
-Extern DWORD (*lpfnWNetRestoreSingleConnectionW)(HWND, LPWSTR, BOOL);
-Extern DWORD (*lpfnWNetFormatNetworkNameW)(
+Extern DWORD (CALLBACK *lpfnWNetCloseEnum)(HANDLE);
+Extern DWORD (CALLBACK *lpfnWNetConnectionDialog2)(HWND, DWORD, LPWSTR, UINT);
+Extern DWORD (CALLBACK *lpfnWNetDisconnectDialog2)(HWND, UINT, LPWSTR, UINT);
+Extern DWORD (CALLBACK *lpfnWNetEnumResourceW)(HANDLE, LPDWORD, LPVOID, LPDWORD);
+Extern DWORD (CALLBACK *lpfnWNetGetConnection2W)(LPWSTR, WNET_CONNECTIONINFO *, LPDWORD);
+Extern DWORD (CALLBACK *lpfnWNetGetDirectoryTypeW)(LPWSTR, LPDWORD, BOOL);
+Extern DWORD (CALLBACK *lpfnWNetGetLastErrorW)(LPDWORD, LPWSTR, DWORD, LPWSTR, DWORD);
+Extern DWORD (CALLBACK *lpfnWNetGetPropertyTextW)(WORD, WORD, LPWSTR, LPWSTR, WORD, WORD);
+Extern DWORD (CALLBACK *lpfnWNetOpenEnumW)(DWORD, DWORD, DWORD, LPNETRESOURCE, LPHANDLE);
+Extern DWORD (CALLBACK *lpfnWNetPropertyDialogW)(HWND, WORD, WORD, LPWSTR, WORD);
+Extern DWORD (CALLBACK *lpfnWNetRestoreConnectionW)(HWND, LPWSTR);
+Extern DWORD (CALLBACK *lpfnWNetRestoreSingleConnectionW)(HWND, LPWSTR, BOOL);
+Extern DWORD (CALLBACK *lpfnWNetFormatNetworkNameW)(
                     LPCWSTR  lpProvider,
                     LPCWSTR  lpRemoteName,
                     LPWSTR   lpFormattedName,
@@ -1032,11 +1032,11 @@ Extern DWORD (*lpfnWNetFormatNetworkNameW)(
                     DWORD    dwFlags,
                     DWORD    dwAveCharPerLine
                     );
-Extern DWORD (*lpfnShareCreate)(HWND);
-Extern DWORD (*lpfnShareStop)(HWND);
+Extern DWORD (CALLBACK *lpfnShareCreate)(HWND);
+Extern DWORD (CALLBACK *lpfnShareStop)(HWND);
 
 #ifdef NETCHECK
-Extern DWORD (*lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
+Extern DWORD (CALLBACK *lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
 #endif
 
 #define NETWORK_WNetCloseEnum          "WNetCloseEnum"
