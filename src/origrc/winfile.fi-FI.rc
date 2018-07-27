@@ -1,0 +1,1468 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Finnish (Finland) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FIN)
+LANGUAGE LANG_FINNISH, SUBLANG_DEFAULT
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "&Tiedosto"
+    BEGIN
+        MENUITEM "&Avaa\tEnter",                101
+        MENUITEM "Siirr&‰...\tF7",              106
+        MENUITEM "&Kopioi...\tF8",              107
+        MENUITEM "Kop&ioi Leikepˆyd‰lle...\tF9", 118
+        MENUITEM "Pois&ta...\tDel",             108
+        MENUITEM "&Nime‰ uudelleen...",         109
+        MENUITEM "O&minaisuudet...\tAlt+Enter", 110
+        MENUITEM SEPARATOR
+        MENUITEM "&Pakkaa...",                  119
+        MENUITEM "Pu&ra pakkaus...",            120
+        MENUITEM SEPARATOR
+        MENUITEM "&Suorita...",                 105
+        MENUITEM "Tul&osta...",                 102
+        MENUITEM "K&ytke...",                   103
+        MENUITEM SEPARATOR
+        MENUITEM "L&uo kansio...",              111
+        MENUITEM "&Etsi...",                    104
+        MENUITEM "&Valitse tiedostot...",       116
+        MENUITEM SEPARATOR
+        MENUITEM "&Lopeta",                     115
+    END
+    POPUP "&Levy"
+    BEGIN
+        MENUITEM "&Kopioi levyke...",           201
+        MENUITEM "&Nime‰ levy...",              202
+        MENUITEM SEPARATOR
+        MENUITEM "&Alusta levyke...",           203
+        MENUITEM SEPARATOR
+        MENUITEM "Va&litse asema...",           251
+    END
+    POPUP "&Kansiopuu"
+    BEGIN
+        MENUITEM "Laajenna &yksi taso\t+",      301
+        MENUITEM "&Laajenna haara\t*",          302
+        MENUITEM "Laajenna &kaikki\tCtrl+*",    303
+        MENUITEM "Kutista &haara\t-",           304
+        MENUITEM SEPARATOR
+        MENUITEM "&Merkitse laajennettavat haarat", 505
+    END
+    POPUP "&N‰yt‰"
+    BEGIN
+        MENUITEM "&Puu ja kansio",              413
+        MENUITEM "&Vain puu",                   411
+        MENUITEM "V&ain kansio",                412
+        MENUITEM SEPARATOR
+        MENUITEM "&Jaa",                        414
+        MENUITEM SEPARATOR
+        MENUITEM "&Nimi",                       401
+        MENUITEM "&Kaikki tiedostotiedot",      402, CHECKED
+        MENUITEM "&Osittaiset tiedot...",       403
+        MENUITEM SEPARATOR
+        MENUITEM "Laj&ittele nimen mukaan",     404
+        MENUITEM "Laji&ttele tyypin mukaan",    405
+        MENUITEM "Lajittele koon &mukaan",      406
+        MENUITEM "Lajittele p&‰iv‰yksen mukaan", 407
+        MENUITEM SEPARATOR
+        MENUITEM "Tiedostot&yypin mukaan...",   409
+    END
+    POPUP "&Asetukset"
+    BEGIN
+        MENUITEM "&Vahvistus...",               501
+        MENUITEM "&Fontti...",                  510
+        MENUITEM "&Mukauta tyˆkalurivi...",     512
+        MENUITEM SEPARATOR
+        MENUITEM "T&yˆkalurivi",                508
+        MENUITEM "A&semarivi",                  507
+        MENUITEM "T&ilarivi",                   503
+        MENUITEM SEPARATOR
+        MENUITEM "&Pienenn‰ k‰ytett‰ess‰",      504
+        MENUITEM "&Tallenna asetukset lopetettaessa", 511
+    END
+    POPUP "&Suojaus"
+    BEGIN
+        MENUITEM "&K‰yttˆoikeudet...",          605
+        MENUITEM "&Valvonta...",                606
+        MENUITEM "&Omistaja...",                607
+    END
+    POPUP "&Ikkuna"
+    BEGIN
+        MENUITEM "&Uusi ikkuna",                1706
+        MENUITEM "&Limitt‰in\tVaihto+F5",       1701
+        MENUITEM "&Allekkain",                  1703
+        MENUITEM "&Vierekk‰in\tVaihto+F4",      1702
+        MENUITEM "&J‰rjest‰ kuvakkeet",         1705
+        MENUITEM "P&‰ivit‰\tF5",                1704
+    END
+    POPUP "&Ohje"
+    BEGIN
+        MENUITEM "&Sis‰llys",                   1801
+        MENUITEM "&Etsi ohje aiheesta...",      30
+        MENUITEM "&Ohjeen k‰yttˆ",              1802
+        MENUITEM SEPARATOR
+        MENUITEM "&Tietoja Tiedostonhallinnasta...", 1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 210, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Suorita"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,162,10
+    CONTROL         "&Komentorivi:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,60,10
+    EDITTEXT        201,3,29,134,12,ES_AUTOHSCROLL
+    CONTROL         "&Suorita kuvakkeena",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,45,87,12
+    DEFPUSHBUTTON   "OK",1,165,6,40,14
+    PUSHBUTTON      "Peruuta",2,165,23,40,14
+    PUSHBUTTON      "&Ohje",254,165,43,40,14
+END
+
+11 DIALOG 20, 20, 240, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tulosta"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,193,10
+    CONTROL         "&Tulosta:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,28,10
+    EDITTEXT        102,35,18,154,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,36,190,10
+    DEFPUSHBUTTON   "OK",1,197,6,40,14
+    PUSHBUTTON      "Peruuta",2,197,23,40,14
+    PUSHBUTTON      "&Ohje",254,197,43,40,14
+END
+
+12 DIALOG 20, 20, 255, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Kytke"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Tiedostot, joiden tunniste on:",-1,6,7,103,8
+    COMBOBOX        315,133,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Kytke sovellukseen:",-1,6,30,92,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Selaa...",318,130,24,47,14
+    DEFPUSHBUTTON   "OK",1,187,6,62,14,WS_GROUP
+    PUSHBUTTON      "Peruuta",2,187,23,62,14
+    PUSHBUTTON      "&Uusi tyyppi...",300,187,42,62,14
+    PUSHBUTTON      "&Muuta tyyppi...",251,187,59,62,14
+    PUSHBUTTON      "&Poista tyyppi",219,187,76,62,14
+    PUSHBUTTON      "&Ohje",254,187,95,62,14
+END
+
+13 DIALOG 20, 20, 263, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Etsi"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Etsitt‰v‰:",-1,"Static",SS_LEFTNOWORDWRAP,5,6,45,12
+    EDITTEXT        201,52,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "&Aloita mist‰:",-1,"Static",SS_LEFTNOWORDWRAP,5,21,45,12
+    EDITTEXT        101,52,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "Etsi &kaikista alikansioista",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,34,105,12
+    DEFPUSHBUTTON   "OK",1,217,6,40,14
+    PUSHBUTTON      "Peruuta",2,217,23,40,14
+    PUSHBUTTON      "&Ohje",254,217,43,40,14
+END
+
+14 DIALOG 47, 59, 231, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Siirr‰"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Nykyinen kansio: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,180,10
+    CONTROL         "Mi&hin:",2001,"Static",SS_LEFTNOWORDWRAP,3,33,20,10
+    EDITTEXT        103,37,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,172,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,75,49,108,10
+    DEFPUSHBUTTON   "OK",1,185,6,40,14
+    PUSHBUTTON      "Peruuta",2,185,23,40,14
+    PUSHBUTTON      "&Ohje",254,185,40,40,14
+    CONTROL         "&Mist‰:",2002,"Static",SS_LEFTNOWORDWRAP,3,19,20,10
+    EDITTEXT        102,37,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Poista"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Nykyinen kansio: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Poista:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,35,10
+    EDITTEXT        102,40,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,192,14
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,45,35,150,10
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "Peruuta",2,200,23,40,14
+    PUSHBUTTON      "&Ohje",254,200,40,40,14
+END
+
+16 DIALOG 23, 13, 260, 233
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tiedoston %s ominaisuudet"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,204,6,50,14,WS_GROUP
+    PUSHBUTTON      "Peruuta",2,204,23,50,14
+    PUSHBUTTON      "&Ohje",254,204,40,50,14
+    CONTROL         "Tiedosto&nimi:",261,"Static",SS_LEFTNOWORDWRAP,5,5,44,10
+    EDITTEXT        201,67,5,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Polku:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,22,10
+    EDITTEXT        101,67,16,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Viimeisin muutos:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,57,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,67,27,134,10
+    CONTROL         "Versio:",258,"Static",SS_LEFTNOWORDWRAP,5,38,24,10
+    CONTROL         "Ei merkitty",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,67,38,134,10
+    LTEXT           "&Tekij‰noikeus:",-1,5,49,49,12
+    EDITTEXT        265,67,49,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Koko:",260,"Static",SS_LEFTNOWORDWRAP,5,60,20,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,67,60,134,10
+    CONTROL         "Pakattu koko:",268,"Static",SS_LEFTNOWORDWRAP,5,71,47,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,67,71,90,10
+    CONTROL         "Pakkaussuhde:",270,"Static",SS_LEFTNOWORDWRAP,5,82,51,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,67,82,90,10
+    GROUPBOX        "M‰‰ritteet",-1,4,97,120,54
+    CONTROL         "&Vain luku",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,109,52,12
+    CONTROL         "P&iilotettu",216,"Button",BS_AUTOCHECKBOX,71,109,49,12
+    CONTROL         "&Arkisto",217,"Button",BS_AUTOCHECKBOX,9,122,52,12
+    CONTROL         "&J‰rjestelm‰",218,"Button",BS_AUTOCHECKBOX,71,122,49,12
+    CONTROL         "Pa&kattu",267,"Button",BS_AUTOCHECKBOX,9,135,52,12
+    GROUPBOX        "Ve&rsiotiedot",262,4,158,252,72
+    LISTBOX         263,9,169,96,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,108,169,143,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 200, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Luo kansio"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,154,10
+    CONTROL         "&Nimi:",-1,"Static",SS_LEFTNOWORDWRAP,3,23,20,10
+    EDITTEXT        201,25,22,95,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "OK",1,157,6,40,14
+    PUSHBUTTON      "Peruuta",2,157,23,40,14
+    PUSHBUTTON      "&Ohje",254,157,43,40,14
+END
+
+19 DIALOG 20, 20, 157, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopioi levyke"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&L‰hde:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,23,10
+    COMBOBOX        245,55,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Kohde:",206,"Static",SS_LEFTNOWORDWRAP,5,22,24,10
+    COMBOBOX        222,55,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Peruuta",2,110,23,40,14
+    PUSHBUTTON      "&Ohje",254,110,43,40,14
+END
+
+22 DIALOG 30, 30, 130, 55
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopioidaan levy‰"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Kopioidaan levy‰ asemassa ",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "Asema A:",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "Luetaan l‰hdelevy‰",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Peruuta",2,44,39,44,14
+END
+
+23 DIALOG 20, 20, 161, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Nime‰ levy"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Levyn nimi:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,38,10
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,115,6,40,14
+    PUSHBUTTON      "Peruuta",2,115,23,40,14
+    PUSHBUTTON      "&Ohje",254,115,43,40,14
+END
+
+24 DIALOG 11, 28, 183, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Alusta levyke"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,140,6,40,14
+    PUSHBUTTON      "Peruuta",2,140,23,40,14
+    PUSHBUTTON      "&Ohje",254,140,43,40,14
+    CONTROL         "&Levyasema:",-1,"Static",SS_LEFTNOWORDWRAP,5,7,49,10
+    COMBOBOX        222,55,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Levy&koko:",-1,"Static",SS_LEFTNOWORDWRAP,5,22,35,10
+    COMBOBOX        241,55,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Asetukset",102,5,39,115,53,WS_GROUP
+    CONTROL         "Levyn &nimi:",-1,"Static",SS_LEFTNOWORDWRAP,10,51,39,10
+    EDITTEXT        201,50,49,65,12
+    CONTROL         "&Pika-alustus",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,62,90,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Alustetaan levyke"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Alustetaan levyke",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "Valmistellaan asemaa...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Peruuta",2,54,30,44,14
+END
+
+30 DIALOG 20, 20, 195, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Osittaiset tiedot"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Tiedot",-1,4,4,131,74
+    CONTROL         "&Koko",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,30,12
+    CONTROL         "Viimeisimm‰n muutoksen &p‰iv‰ys",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,119,12
+    CONTROL         "Viimeisimm‰n muutoksen &aika",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,108,12
+    CONTROL         "&Tiedostom‰‰ritteet",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,79,12
+    CONTROL         "&MS-DOS-tiedostonimet",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,86,12
+    DEFPUSHBUTTON   "OK",1,150,6,40,14
+    PUSHBUTTON      "Peruuta",2,150,23,40,14
+    PUSHBUTTON      "&Ohje",254,150,60,40,14
+END
+
+32 DIALOG 20, 20, 157, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tiedostotyypin mukaan"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Nimi:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,23,10
+    EDITTEXT        201,34,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "Tiedostotyyppi",-1,5,20,94,62
+    CONTROL         "&Kansiot",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,60,12
+    CONTROL         "Ohj&elmat",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,60,12
+    CONTROL         "&Tiedostot",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,60,12
+    CONTROL         "&Muut tiedostot",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,60,12
+    CONTROL         "N&‰yt‰ piilo- ja j‰rjestelm‰tiedostot",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,144,14
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Peruuta",2,110,23,40,14
+    PUSHBUTTON      "&Ohje",254,110,43,40,14
+END
+
+33 DIALOG 20, 20, 254, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vahvistus"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Vahvista",-1,5,3,195,85,WS_TABSTOP
+    CONTROL         "&Tiedoston poisto",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,80,12
+    CONTROL         "&Kansion poisto",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,80,12
+    CONTROL         "Tie&doston korvaus",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,80,12
+    CONTROL         "Hii&ritoiminnot",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,80,12
+    CONTROL         "&Levykomennot",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,80,12
+    CONTROL         "&J‰rjestelm‰-, piilo- ja vain luku -tiedostojen muokkaus",215,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,75,186,12
+    DEFPUSHBUTTON   "OK",1,208,6,40,14
+    PUSHBUTTON      "Peruuta",2,208,23,40,14
+    PUSHBUTTON      "&Ohje",254,208,44,40,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Siirret‰‰n..."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "Mihin:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,25,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "Peruuta",2,200,28,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 120, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Tulostetaan tiedostoa...",-1,0,6,120,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "Peruuta",2,43,40,34,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 248, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ominaisuudet"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "%d tiedostoa valittu",100,"Static",SS_LEFTNOWORDWRAP,5,5,184,20
+    CONTROL         "Yhteens‰ %s tavua",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "M‰‰ritteet",-1,5,28,120,55
+    CONTROL         "&Vain luku",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,39,52,12
+    CONTROL         "P&iilotettu",216,"Button",BS_AUTOCHECKBOX,72,39,52,12
+    CONTROL         "&Arkisto",217,"Button",BS_AUTOCHECKBOX,10,51,52,12
+    CONTROL         "&J‰rjestelm‰",218,"Button",BS_AUTOCHECKBOX,72,51,52,12
+    CONTROL         "&Pakattu",267,"Button",BS_AUTOCHECKBOX,10,64,52,12
+    DEFPUSHBUTTON   "OK",1,190,6,50,14,WS_GROUP
+    PUSHBUTTON      "Peruuta",2,190,23,50,14
+    PUSHBUTTON      "&Ohje",254,190,43,50,14
+END
+
+39 DIALOG 10, 20, 270, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vahvista tiedoston korvaus"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,223,10
+    CONTROL         "Korvaa tiedosto:",-1,"Static",SS_LEFTNOWORDWRAP,25,17,57,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,95,17,170,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,95,28,170,10
+    CONTROL         "Tiedostolla:",-1,"Static",SS_LEFTNOWORDWRAP,25,47,49,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,95,47,170,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,95,58,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,79,223,18
+    DEFPUSHBUTTON   "&Kyll‰",6,26,98,40,14
+    PUSHBUTTON      "Kyll‰ k&aikkiin",107,80,98,53,14
+    PUSHBUTTON      "&Ei",7,148,98,40,14
+    PUSHBUTTON      "Peruuta",2,204,98,40,14
+END
+
+40 DIALOG 10, 20, 255, 76
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vahvista tiedoston poisto"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,27,3,213,10
+    CONTROL         "Poista tiedosto:",-1,"Static",SS_LEFTNOWORDWRAP,27,18,52,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,82,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,27,30,213,22
+    DEFPUSHBUTTON   "&Kyll‰",6,11,56,50,14
+    PUSHBUTTON      "Kyll‰ k&aikkiin",107,72,56,50,14
+    PUSHBUTTON      "&Ei",7,133,56,50,14
+    PUSHBUTTON      "Peruuta",2,194,56,50,14
+END
+
+41 DIALOG 10, 20, 257, 72
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vahvista kansion poisto"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,27,3,213,10
+    CONTROL         "Poista kansio:",-1,"Static",SS_LEFTNOWORDWRAP,27,18,61,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,92,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,27,30,213,19
+    DEFPUSHBUTTON   "&Kyll‰",6,12,53,50,14
+    PUSHBUTTON      "Kyll‰ k&aikkiin",107,73,53,50,14
+    PUSHBUTTON      "&Ei",7,134,53,50,14
+    PUSHBUTTON      "Peruuta",2,195,53,50,14
+END
+
+42 DIALOG 10, 22, 255, 72
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vahvista tiedoston siirto"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,27,3,213,10
+    CONTROL         "Siirr‰ tiedosto:",-1,"Static",SS_LEFTNOWORDWRAP,27,18,52,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,82,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,27,29,213,20
+    DEFPUSHBUTTON   "&Kyll‰",6,11,54,50,14
+    PUSHBUTTON      "Kyll‰ k&aikkiin",107,72,54,50,14
+    PUSHBUTTON      "&Ei",7,133,54,50,14
+    PUSHBUTTON      "Peruuta",2,194,54,50,14
+END
+
+43 DIALOG 10, 22, 255, 72
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vahvista tiedoston nimen vaihto"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,27,3,213,10
+    CONTROL         "Nime‰ uudelleen tiedosto:",-1,"Static",SS_LEFTNOWORDWRAP,27,18,54,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,82,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,27,30,213,19
+    DEFPUSHBUTTON   "&Kyll‰",6,11,54,50,14
+    PUSHBUTTON      "Kyll‰ k&aikkiin",107,72,54,50,14
+    PUSHBUTTON      "&Ei",7,133,54,50,14
+    PUSHBUTTON      "Peruuta",2,194,54,50,14
+END
+
+44 DIALOG 15, 12, 136, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Valitse tiedostot"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Tiedosto(t):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Valitse",1,70,6,60,14
+    PUSHBUTTON      "&Peruuta valinta",6,70,23,60,14
+    PUSHBUTTON      "Peruuta",2,70,40,60,14
+    PUSHBUTTON      "&Ohje",254,70,63,60,14
+END
+
+45 DIALOG 11, 31, 201, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Valitse asema"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Asemat:",245,"Static",SS_LEFTNOWORDWRAP,5,5,41,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,155,6,40,14
+    PUSHBUTTON      "Peruuta",2,155,23,40,14
+    PUSHBUTTON      "&Ohje",254,155,44,40,14
+END
+
+46 DIALOG 11, 28, 270, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Valitse tiedostonimi"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Polku ei ole hyv‰ksytt‰v‰ FAT-nimi. Anna uusi nimi.",99,5,5,210,24,NOT WS_GROUP
+    RTEXT           "&Uusi nimi:",-1,24,56,50,12,NOT WS_GROUP
+    EDITTEXT        103,80,55,130,12
+    RTEXT           "Alkuper‰inen polku:",-1,5,28,69,12,NOT WS_GROUP
+    EDITTEXT        102,80,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "Kansioon:",-1,5,42,69,11,NOT WS_GROUP
+    EDITTEXT        101,80,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",1,225,4,40,14
+    PUSHBUTTON      "Peruuta",2,225,20,40,14
+    PUSHBUTTON      "&Ohje",254,225,36,40,14
+END
+
+48 DIALOG 23, 13, 260, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tiedoston %s ominaisuudet"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,204,6,50,14,WS_GROUP
+    PUSHBUTTON      "Peruuta",2,204,23,50,14
+    PUSHBUTTON      "&Ohje",254,204,43,50,14
+    CONTROL         "Tiedosto&nimi:",261,"Static",SS_LEFTNOWORDWRAP,5,5,57,10
+    EDITTEXT        201,67,5,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Polku:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,67,16,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Viimeisin muutos:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,59,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,67,27,134,10
+    CONTROL         "Koko:",260,"Static",SS_LEFTNOWORDWRAP,5,38,57,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,67,38,134,10
+    GROUPBOX        "M‰‰ritteet",-1,4,52,120,54
+    CONTROL         "&Vain luku",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,52,12
+    CONTROL         "P&iilotettu",216,"Button",BS_AUTOCHECKBOX,71,64,49,12
+    CONTROL         "&Arkisto",217,"Button",BS_AUTOCHECKBOX,9,76,52,12
+    CONTROL         "&J‰rjestelm‰",218,"Button",BS_AUTOCHECKBOX,71,76,49,12
+    CONTROL         "Pa&kattu",267,"Button",BS_AUTOCHECKBOX,9,88,52,12
+END
+
+49 DIALOG 13, 54, 295, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Fontti"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Fontti:",1088,4,3,40,9
+    COMBOBOX        1136,4,13,112,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Tyyli:",1089,123,3,44,9
+    COMBOBOX        1137,122,13,75,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Koko:",1090,204,3,30,9
+    COMBOBOX        1138,205,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Korostus",1072,4,72,112,61,WS_GROUP
+    CONTROL         "&Yliviivattu",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,83,49,10
+    CONTROL         "&Alleviivattu",1041,"Button",BS_AUTOCHECKBOX,8,95,51,10
+    CONTROL         "&N‰yt‰ FAT-asemien tiedot pienin kirjaimin",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,4,127,252,10
+    CONTROL         "N‰yt‰ kaikki&en asemien tiedot pienin kirjaimin",1043,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,4,139,252,10
+    LTEXT           "&V‰ri:",1091,8,107,30,9
+    COMBOBOX        1139,8,117,96,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",1,246,6,40,14,WS_GROUP
+    PUSHBUTTON      "Peruuta",2,246,23,40,14,WS_GROUP
+    PUSHBUTTON      "K&‰yt‰",1026,246,40,40,14,WS_GROUP
+    PUSHBUTTON      "&Ohje",1038,246,57,40,14,WS_GROUP
+    GROUPBOX        "Malli",1073,4,72,281,49,WS_GROUP
+    CTEXT           "",1093,157,127,8,8,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbƒ‰÷ˆ",1092,8,81,272,37,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Alustetaan levyke"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "Piilota",110,38,48,40,14
+    PUSHBUTTON      "Peruuta",2,82,48,40,14
+END
+
+51 DIALOG 10, 20, 260, 80
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vahvista: Ohita tiedosto tai kansio ja jatka"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "K‰yttˆ estetty, ohita:",202,"Static",SS_LEFTNOWORDWRAP,25,18,68,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,108,18,122,10
+    CONTROL         "Sinulla ei ole tarvittavia oikeuksia, tai tiedosto on k‰ytˆss‰.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,33,230,10
+    CONTROL         "Ohita tiedosto ja jatka toimintoa valitsemalla Kyll‰.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,43,232,10
+    DEFPUSHBUTTON   "&Kyll‰",6,12,60,50,14
+    PUSHBUTTON      "Kyll‰ k&aikkiin",107,74,60,50,14
+    PUSHBUTTON      "&Ei",7,136,60,50,14
+    PUSHBUTTON      "Peruuta",2,198,60,50,14
+END
+
+52 DIALOG 10, 20, 264, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vahvista: Ohita tiedosto tai kansio ja jatka"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Kohteen k‰yttˆ estetty, ohita:",202,"Static",SS_LEFTNOWORDWRAP,25,18,95,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,126,18,106,10
+    CONTROL         "Ohita tiedosto ja jatka toimintoa valitsemalla Kyll‰.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,28,213,10
+    DEFPUSHBUTTON   "&Kyll‰",6,14,50,50,14
+    PUSHBUTTON      "Kyll‰ k&aikkiin",107,76,50,50,14
+    PUSHBUTTON      "&Ei",7,138,50,50,14
+    PUSHBUTTON      "Peruuta",2,200,50,50,14
+END
+
+53 DIALOG 77, 109, 210, 70
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Etsit‰‰n levylt‰"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Etsitt‰v‰:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,60,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,81,5,120,10
+    CONTROL         "Aloituskansio:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,70,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,81,15,120,10
+    CONTROL         "Luettuja kansioita:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,72,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,81,25,120,10
+    CONTROL         "Lˆydetty:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,38,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,81,35,120,10
+    PUSHBUTTON      "Piilota",110,57,53,40,14
+    PUSHBUTTON      "Peruuta",2,113,53,40,14
+END
+
+54 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopioi Leikepˆyd‰lle"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Nykyinen kansio: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Kopioi Leikepˆyd‰lle:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,71,10
+    EDITTEXT        102,76,19,120,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "Peruuta",2,200,23,40,14
+    PUSHBUTTON      "&Ohje",254,200,43,40,14
+END
+
+55 DIALOG 18, 14, 314, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Muuta tiedostotyyppi"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Tiedostotyyppi:",302,5,6,51,8
+    EDITTEXT        301,58,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "To&iminto: ",-1,5,22,255,126,WS_GROUP
+    COMBOBOX        306,58,22,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Ko&mento:",313,9,42,38,8
+    EDITTEXT        304,58,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Selaa...",318,176,38,40,14
+    CONTROL         "K&‰ytt‰‰ DDE:t‰",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,57,66,10
+    LTEXT           "&DDE-komento:",320,21,72,50,8
+    EDITTEXT        309,112,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "DD&E-komento, jos sovellus ei ole k‰ynniss‰:",322,21,85,85,19
+    LTEXT           "(valinnainen)",324,214,90,44,8
+    EDITTEXT        311,112,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "So&vellus:",321,21,109,39,8
+    EDITTEXT        310,112,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Aihe:",323,22,127,21,8
+    EDITTEXT        312,112,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Uusi tunniste:",-1,11,184,50,8
+    EDITTEXT        315,64,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Lis‰‰ ->",303,105,174,44,14
+    PUSHBUTTON      "<- &Poista",219,105,191,44,14
+    LTEXT           "Tu&nnisteet:",-1,159,162,41,8
+    LISTBOX         317,159,172,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Tiedostotyyppiin kytketyt tunnisteet",316,5,152,255,66
+    DEFPUSHBUTTON   "OK",1,267,6,40,14
+    PUSHBUTTON      "Peruuta",2,267,23,40,14
+    PUSHBUTTON      "&Ohje",254,267,40,40,14
+END
+
+57 DIALOG 123, 60, 207, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Tiedostojen pakkaus k‰ynniss‰"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Pakattava tiedosto:",-1,6,8,65,8
+    LTEXT           "filename.xxx",341,77,8,90,8
+    LTEXT           "Kansio:",-1,6,20,38,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,50,20,150,8
+    LTEXT           "Kansioita pakattu:",-1,6,32,70,8
+    LTEXT           "1,888,888,999",343,84,32,60,8
+    LTEXT           "Tiedostoja pakattu:",-1,6,44,64,8
+    LTEXT           "1,888,888,999",344,77,44,58,8
+    LTEXT           "Tiedostojen koko ennen pakkausta:",-1,6,56,118,8
+    LTEXT           "9,999,999,999,999",345,137,56,68,8
+    LTEXT           "Tiedostojen koko pakkauksen j‰lkeen:",-1,6,68,127,8
+    LTEXT           "9,999,999,999,999",346,137,69,68,8
+    LTEXT           "Pakkaussuhde:",-1,6,80,51,8
+    LTEXT           "100%",347,67,80,27,8
+    PUSHBUTTON      "Peruuta",2,76,97,55,14
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Tiedostojen pakkauksen purkaminen k‰ynniss‰"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Purettava tiedosto:",-1,6,8,63,8
+    LTEXT           "filename.xxx",351,78,8,66,8
+    LTEXT           "Kansio:",-1,6,20,38,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,52,20,144,8
+    LTEXT           "Kansioita purettu:",-1,6,32,68,8
+    LTEXT           "1,999,999,999",353,85,32,70,8
+    LTEXT           "Tiedostoja purettu:",-1,6,44,63,8
+    LTEXT           "1,999,999,999",354,78,44,78,8
+    PUSHBUTTON      "Peruuta",2,74,64,49,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pakkausvirhe"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,190,32
+    DEFPUSHBUTTON   "&Ohita",5,32,47,40,14,WS_GROUP
+    PUSHBUTTON      "Ohita &kaikki",112,78,47,45,14
+    PUSHBUTTON      "&Uudelleen",4,129,47,40,14
+    PUSHBUTTON      "K&eskeyt‰",3,175,47,40,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,318
+ PRODUCTVERSION 4,0,1381,318
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040B04B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "Tiedostonhallinta"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Microsoft(R) Windows NT(TM) -k‰yttˆj‰rjestelm‰"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40b, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "Kopioi levyke"
+    51                      "Aseta kohdelevyke asemaan."
+    52                      "Aseta l‰hdelevyke asemaan."
+    53                      "Aseta kohde- ja l‰hdelevykkeet asemiin."
+    54                      "Alustetaan kohdelevyke"
+    55                      "Levykkeen kopiointivirhe"
+    56                      "Levykett‰ ei voi kopioida."
+    58                      "L‰hde- ja kohdelevykkeet ovat erilaisia."
+    60                      "%d %% valmiina"
+    61                      "Luodaan p‰‰kansiota..."
+    62                      "Kopioidaan j‰rjestelm‰tiedostoja..."
+    63                      "Levykkeen alustusvirhe"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "Alustus suoritettu"
+    67                      "Yhteens‰ %ld tavua levytilaa\n%ld tavua k‰ytett‰viss‰ levyll‰\n\nHaluatko alustaa toisen levykkeen?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "Verkkovirhe"
+    83                      "Asema sis‰lt‰‰ Windowsin j‰rjestelm‰tiedostot, eik‰ yhteytt‰ siihen voi katkaista."
+    91                      "M‰‰ritteit‰ ei voi muuttaa. "
+    92                      "Ei voi luoda kansiota. "
+    93                      "Levy‰ ei voi nimet‰.\n\nVarmista, ett‰ levy ei ole kirjoitussuojattu, ettei se ole verkkoasema ja ett‰ annettava nimi on oikean muotoinen. Levynimiss‰ ei saa olla seuraavia merkkej‰:\n[v‰li] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "M‰‰ritettyj‰ tiedostoja ei lˆytynyt."
+END
+
+STRINGTABLE
+BEGIN
+    97                      "Aseman sis‰llys on muuttunut. Haluatko p‰ivitt‰‰ Etsinn‰n tulokset -ikkunan?"
+    98                      "Sinun on kirjauduttava tyˆaseman valvojana, ennen kuin voit suorittaa t‰m‰n toiminnon kiintolevylle."
+    101                     "Asema %c:%c"
+    110                     "Ohjelmaa ei voi suorittaa"
+    111                     "Odottamaton virhe: %d."
+END
+
+STRINGTABLE
+BEGIN
+    112                     "Liian v‰h‰n muistia m‰‰ritetyn sovelluksen k‰ynnist‰miseen.\n\nLopeta sovelluksia ja yrit‰ uudelleen."
+    113                     "Tiedostoa (tai jotakin sen osaa) ei lˆydy.\n\nVarmista, ett‰ kansiopolku ja tiedostonimi ovat oikein ja ett‰ kaikki tarvittavat kirjastotiedostot ovat k‰ytett‰viss‰."
+    114                     "M‰‰ritetty polku ei kelpaa."
+    116                     "Tiedostoon ei ole kytkettyn‰ mit‰‰n sovellusta.\n\nLuo yhteys sovellukseen valitsemalla Tiedosto-valikosta Kytke."
+    118                     "Tiedostoa ei voi avata tai tulostaa.\n\nK‰ynnist‰ tiedoston luomiseen k‰ytetty sovellus ja avaa tai tulosta tiedosto siit‰."
+    120                     "Vahvista hiiritoiminto"
+    121                     "Haluatko varmasti kopioida valitut tiedostot tai kansiot kansioon %s?"
+    122                     "Haluatko varmasti siirt‰‰ valitut tiedostot tai kansiot kansioon %s?"
+    123                     "Haluatko varmasti k‰ynnist‰‰ ohjelman %s k‰ytt‰en tiedostoa %s ensimm‰iseksi?"
+    124                     "Tiedostonhallinta"
+    126                     "Kansiopuu"
+    127                     "Etsinn‰n tulokset: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "Liian monta tiedostoa"
+    133                     "Tiedostonhallinta - Muisti lopussa."
+    134                     "Koko kansiota ei voi lukea. Luettelosta esitet‰‰n vain osa."
+    140                     "Nykyinen kansio: %s"
+    141                     "Kopioi"
+    143                     "Nime‰ uudelleen"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "Alusta levyke"
+    146                     "Valitse alustettava levyke."
+    150                     "Luodaan:"
+    151                     "Poistetaan..."
+    152                     "Kopioidaan:"
+    153                     "Nimet‰‰n uudelleen..."
+    154                     "Siirret‰‰n..."
+    155                     "Poistetaan..."
+    156                     "Tulostetaan: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "Kopioidaan..."
+    170                     "Poistetaan:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "Yhteens‰ %d tiedosto(a) (%s)"
+    181                     "Luetut kansiot: %d "
+    182                     "%c: %s vapaana, %s yhteens‰"
+    183                     "%d tiedosto(a) lˆydetty"
+    185                     "valitut tiedostot"
+    186                     "Yhteytt‰ verkkoasemaan ei voi katkaista.\n\nAsemassa on avoimia tiedostoja."
+    187                     "Valittu %d tiedosto(a) (%s)"
+    188                     "Asemassa %c ei ole levy‰.\n\nAseta levy asemaan ja yrit‰ uudelleen."
+    189                     "Levy‰ asemassa %c ei ole alustettu.\n\nHaluatko alustaa sen nyt?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "Liian v‰h‰n levytilaa tulostukseen.\n\nVapauta levytilaa poistamalla tiedostoja ja yrit‰ uudelleen."
+    193                     "Liian v‰h‰n muistia tulostamiseen.\n\nLopeta sovelluksia ja yrit‰ uudelleen."
+    194                     "Virhe tulostuksessa.\n\nVarmista, ett‰ kirjoitinasetukset ovat oikein ja ett‰ kirjoitin on valittu."
+    195                     "Kansiopuu ei n‰y kokonaisuudessaan"
+    197                     "Kohdeasema on t‰ynn‰. Jatka asettamalla uusi levyke asemaan."
+    198                     "Tiedosto on j‰rjestelm‰-, piilo- tai vain luku -tyyppi‰."
+    199                     "Pika-alustusta ei voi suorittaa.\n\nTehd‰‰nkˆ normaalialustus?"
+    203                     "Virhe l‰hetett‰ess‰ komentoa sovellukselle."
+    204                     "T‰m‰n toiminnon tarvitsemaa kirjastoa ei voi ladata."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "&Jaetut kansiot..."
+    210                     "Alustus poistaa KAIKKI tiedot levylt‰. Haluatko varmasti alustaa levyn asemassa %c?"
+    211                     "Vahvista levykkeen alustus"
+    212                     "Toiminto poistaa KAIKKI tiedot kohdelevylt‰. Haluatko varmasti jatkaa?"
+    213                     "Vahvista levykkeen kopiointi"
+    214                     "&Sulje"
+    215                     "Sulje"
+    218                     "Kansiota %s ei ole olemassa.\n\nLuodaanko kansio?"
+    219                     "Ohjelmat#*.exe;*.pif;*.com;*.bat#Kaikki tiedostot (*.*)#*.*#"
+    220                     "Selaa"
+    221                     "Suorita"
+    222                     "Tiedostoa ei voi tulostaa"
+    223                     "Ohjetietoja ei voi n‰ytt‰‰."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "Tiedostot, joiden tunniste on %s, ovat ohjelmia eik‰ niit‰ voi kytke‰ toisiin sovelluksiin."
+    225                     "%s ei ole ohjelma eik‰ sit‰ voi kytke‰ tunnisteeseen."
+    226                     "(Ei mit‰‰n)"
+    227                     "Ei tiedostoja."
+    228                     "Ei voi tulostaa useita tiedostoja.\n\nValitse yksi tiedosto ja yrit‰ uudelleen."
+    230                     "Jokin sovelluksen k‰ytt‰mist‰ kirjastotiedostoista on vioittunut. Asenna sovellus uudelleen."
+    231                     "Tiedosto on toisen sovelluksen k‰ytˆss‰."
+    232                     "Kansioon '%s' luodut tiedostot eiv‰t ehk‰ ole k‰ytett‰viss‰ Tiedostonhallinnasta.\n\nHaluatko jatkaa?"
+    233                     "Luo kansio"
+    234                     "%ld tavua"
+    235                     "%s tavua"
+    236                     "Ei voi kopioida useita tiedostoja tai kansioita Leikepˆyd‰lle.\n\nValitse yksi tiedosto ja yrit‰ uudelleen."
+    237                     "%s - %s"
+    238                     "Asema:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "Yhdist‰ verkkoasemaan"
+    241                     "Katkaise yhteys verkkoasemaan"
+    242                     "Verkkoyhteydet"
+    243                     "Jaa kansio"
+    244                     "Lopeta kansion jakaminen"
+    245                     "N‰yt‰ kaikki tiedoston tiedot"
+    246                     "N‰yt‰ vain nimi"
+    247                     "Lajittele nimen mukaan"
+    248                     "Lajittele tyypin mukaan"
+    249                     "Lajittele koon mukaan"
+    250                     "Lajittele p‰iv‰yksen mukaan"
+    251                     "Uusi ikkuna"
+    252                     "Kopioi tiedostot"
+    253                     "Siirr‰ tiedostot"
+    254                     "&Kansionimi:"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "Verkkoasema ei ole k‰ytett‰viss‰."
+    259                     "Jaettu nimell‰ %s"
+    260                     "Ei jaettu"
+    261                     "Poista tiedostot"
+    262                     " - TIIVISTETTY"
+    263                     "Kopioidaan tiedostoja kansioon %s."
+    264                     "Siirret‰‰n tiedostoja kansioon %s."
+    265                     "Suoritetaan tiedostoja ohjelmalla %s."
+    266                     "%s tavua"
+    267                     "%s kt"
+    268                     "%s Mt"
+    269                     "%s Gt"
+    270                     "%s Tt"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "Sinulla ei ole oikeuksia t‰m‰n kansion k‰ytt‰miseen."
+    281                     "Sinulla ei ole oikeuksia t‰m‰n tiedoston k‰ytt‰miseen."
+    283                     "Asema %c: on varattu eik‰ sit‰ voi k‰ytt‰‰.\nTiedostonhallinta kopioi levy‰."
+    284                     "Asema %c: on varattu eik‰ sit‰ voi k‰ytt‰‰.\nTiedostonhallinta alustaa levy‰."
+    285                     "Toimintoa ei ole saatettu loppuun"
+    286                     "Toimintoa ei voi suorittaa loppuun kaikille tiedostoille ja kansioille."
+    287                     "Kansiota ei voi lukea"
+END
+
+STRINGTABLE
+BEGIN
+    288                     "Kansiota ei ole olemassa."
+    289                     "Ei voi yhdist‰‰ verkkoasemaan"
+    290                     "Verkkonime‰ ei lˆydy."
+    292                     "Valinta 'Kyll‰ kaikkiin' koskee kaikkia tiedostoja, mukaan lukien\nj‰rjestelm‰-, piilo- ja vain luku -tyyppiset tiedostot."
+    294                     "Avaa"
+    295                     "Tulosta"
+    298                     "Lis‰‰ tunniste"
+    299                     "Tunniste '%s' on kytketty ohjelmatyyppiin '%s'. Korvataanko kytkent‰?"
+    300                     "Tiedostokytkent‰editori"
+    301                     "Tunnistetta ei voi kytke‰. "
+    302                     "Tunnistetta ei voi poistaa. "
+    303                     "Tiedostotyyppi‰ ei voi lis‰t‰. "
+END
+
+STRINGTABLE
+BEGIN
+    304                     "Tiedostotyyppi‰ ei voi poistaa. "
+    305                     "Tiedostotyyppi‰ ei voi lukea. "
+    306                     "Tiedostotyyppi ei voi olla tyhj‰. Anna uusi tiedostotyyppi."
+    307                     "Ei voi luoda yksilˆllist‰ tunnistinta annetun tiedostotyypin perusteella. Anna uusi tiedostotyyppi."
+    308                     "Poista tiedostotyyppi"
+    309                     "Toiminto poistaa tiedostotyypin ja kaikki kytketyt tunnisteet. Haluatko varmasti poistaa tiedostotyypin '%s'?"
+    312                     "Ainakin yhteen tiedostotyypin toimintoon t‰ytyy liitty‰ komento. Kirjoita sovelluksen nimi Komento-ruutuun."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "Uusi tiedostotyyppi"
+    321                     "Kopioidaan levy‰"
+    322                     "Etsit‰‰n..."
+    324                     "Tiedostonhallinta alustaa levykett‰. Jos lopetat Tiedostonhallinnan, alustus keskeytet‰‰n."
+    325                     "Tiedostonhallinta kopioi levykett‰. Jos lopetat Tiedostonhallinnan, kopiointi keskeytet‰‰n."
+    326                     "% valmiina"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360 kt"
+    354                     "1%s2 Mt"
+    355                     "720 kt"
+    356                     "1%s44 Mt"
+    357                     "2%s88 Mt"
+    358                     "Levykoko"
+    359                     "Levyn tietoja ei voida lukea.\n\nVarmista, ett‰ levy on asemassa."
+    360                     "20%s8 Mt"
+    361                     "Tuntematon levytyyppi"
+    362                     "Tuntematon levytyyppi"
+    363                     "Asemassa %s olevaa levytyyppi‰ ei voida alustaa Tiedostonhallinnassa. K‰yt‰ Levynhallintaa t‰m‰n levyn alustamiseen."
+END
+
+STRINGTABLE
+BEGIN
+    400                     "Tiedostoj‰rjestelm‰ ei ole yhteensopiva."
+    401                     "K‰yttˆ estetty."
+    402                     "Levy on kirjoitussuojattu."
+    403                     "Levy‰ ei voi lukita."
+    404                     "Levy‰ ei voi pika-alustaa.\n\nVarmista, ett‰ levyn tiheys on oikea."
+    405                     "I/O-virhe l‰hdelevyll‰."
+    406                     "I/O-virhe kohdelevyll‰."
+    407                     "I/O-virhe sek‰ l‰hde- ett‰ kohdelevyll‰."
+    408                     "I/O-virhe."
+    411                     "Levy‰ ei voi alustaa.\n\nVarmista, ett‰ levy on asemassa, vahingoittumaton ja tiheydelt‰‰n oikea ja ett‰ sit‰ ei ole kirjoitussuojattu."
+    412                     "Levy‰ ei voi nimet‰.\n\nM‰‰ritetty nimi ei ole kelvollinen. Levynimess‰ ei saa olla seuraavia merkkej‰:\n[v‰li] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "Avataan..."
+    421                     "Suljetaan..."
+    422                     "Liian monta kansioikkunaa avoinna.\n\nSulje ikkunoita ja yrit‰ uudelleen."
+    423                     "Pika-alustetaan..."
+    424                     "Tukea taustap‰ivitykselle ei voi alustaa. Tiedostonhallinta lopetetaan. "
+    425                     "Tiedostonhallinnan alustus"
+    426                     "Odota, luetaan kansio..."
+    427                     "Haluatko pakata myˆs kaikki tiedostot ja alikansiot kansiossa %s?"
+    428                     "Haluatko purkaa myˆs kaikkien tiedostojen ja alikansioiden pakkauksen kansiossa %s?"
+    429                     "Tiedostonhallinta ei voi muuttaa tiedoston %s pakkausm‰‰ritteit‰."
+    430                     "Tiedostoa %s ei pakata, sill‰ sen pakkaaminen saattaa est‰‰ j‰rjestelm‰n k‰ynnist‰misen uudelleen."
+    431                     "Tiedostonhallinta pakkaa tiedostoja tai purkaa niiden pakkausta.\nOdota kunnes toiminto on suoritettu loppuun, ennen kuin pakkaat tai purat lis‰‰ tiedostoja."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "Kommentit"
+    501                     "Yrityksen nimi"
+    502                     "Tiedostokuvaus"
+    503                     "Sis‰inen nimi"
+    504                     "Lailliset tavaramerkit"
+    505                     "Alkuper‰inen tiedostonimi"
+    506                     "Yksityinen koontik‰‰nnˆskuvaus"
+    507                     "Tuotenimi"
+    508                     "Tuoteversio"
+    509                     "Erityinen koontik‰‰nnˆskuvaus"
+    510                     "Kieli"
+    511                     "Kielet"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "&Yhdist‰ verkkoasemaan..."
+    801                     "Katkaise yhteys &verkkoasemaan..."
+    802                     "&Verkkoyhteydet..."
+    803                     "&Jaa nimell‰..."
+    804                     "L&opeta jakaminen..."
+    805                     "&N‰yt‰ jaetut kansiot..."
+    806                     "&Palauta tiedosto..."
+    807                     "Avaa &uusi ikkuna yhdistett‰ess‰"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "Virhe tiedoston siirrossa"
+    1002                    "Virhe tiedoston kopioinnissa"
+    1003                    "Virhe tiedoston poistossa"
+    1004                    "Virhe tiedoston uudelleennime‰misess‰"
+    1005                    "Virhe aseman valinnassa"
+    1006                    "Virhe luettaessa kansiota"
+    1007                    "Virhe levyn nime‰misess‰"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "Ei voi siirt‰‰ tiedostoa %s: %s"
+    1012                    "Ei voi kopioida tiedostoa %s: %s"
+    1013                    "Ei voi poistaa tiedostoa %s: %s"
+    1014                    "Ei voi nimet‰ uudelleen tiedostoa %s: %s"
+    1021                    "Ei voi luoda kansiota %s: %s"
+    1022                    "Ei voi poistaa kansiota %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "Ei voi luoda tai korvata tiedostoa %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "L‰hde ja kohde ovat samat."
+    1102                    "Valitse vain yksi tiedosto nimett‰v‰ksi uudelleen tai anna useille tiedostoille samankaltainen nimi k‰ytt‰m‰ll‰ yleismerkkej‰ (esimerkiksi *.TXT)."
+    1103                    "Ei voi nimet‰ uudelleen toiseen kansioon tai levylle.\nK‰yt‰ Tiedosto Siirr‰ -komentoa."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "P‰‰kansiota ei voi nimet‰ uudelleen."
+    1105                    "Kohdekansio on l‰hteen alikansio."
+    1106                    "Tiedosto on Windowsin k‰ytˆss‰."
+    1107                    "M‰‰rit‰ vain yksi tiedosto tai kansio Mihin-ruutuun. Jos haluat m‰‰ritt‰‰ useita tiedostoja, k‰yt‰ yleismerkkej‰ (esimerkiksi *.TXT)."
+    1108                    "M‰‰ritetty tiedosto tai kansio on jo olemassa. Kansion tiedostojen ja kansioiden nimien on oltava yksilˆllisi‰."
+    1109                    "Varmista, ett‰ kansiopolku ja tiedostonimi ovat oikein."
+    1110                    "Varmista, ett‰ kansiopolku on oikein."
+    1111                    "Lopeta sovelluksia ja yrit‰ uudelleen tai lis‰‰ n‰enn‰ismuistin m‰‰r‰‰ Ohjauspaneelista."
+    1113                    "Poista levyn kirjoitussuojaus tai k‰yt‰ toista levy‰ ja yrit‰ uudelleen."
+    1114                    "Varmista, ett‰ sinulla on oikeat verkko-oikeudet t‰m‰n toiminnon suorittamiseen."
+    1115                    "Vapauta levytilaa poistamalla tiedostoja ja yrit‰ uudelleen."
+    1116                    "Laitteella ei havaittu dataa."
+    1117                    "Kansio on jo olemassa."
+    1118                    "M‰‰ritetty nimi on jo tiedoston k‰ytˆss‰."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "Asemassa on v‰‰r‰ levyke."
+    1151                    "Sovellusta ei voi suorittaa Windows NT -tilassa."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "K‰yttˆj‰rjestelm‰ ei voi suorittaa t‰t‰ komponenttia."
+    1153                    "Komponenttia ei voi suorittaa Windows NT -tilassa."
+    1154                    "Ohjelma ei ole kelvollinen Windows NT -sovellus."
+    1155                    "Virhe. T‰lle virheelle ei ole sanomaa."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ÉRÉsÅ[å≥(&F):"
+    2001                    "ÉRÉsÅ[êÊ(&T):"
+    2002                    "å≥ÇÃñºëO(&F):"
+    2003                    "êVÇµÇ¢ñºëO(&T):"
+    2004                    "ÉRÉsÅ[êÊ:"
+    2005                    "Ç±ÇÃÉtÉHÉìÉgÇ?gópÇ∑ÇÈÇ∆äø?öÇÃï\\?¶Ç™\nÇ≈Ç´Ç»Ç≠Ç»ÇËÇ‹Ç∑ÅB"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "Tiedostojen k‰sittelykomennot"
+    3985                    "Levyjen k‰sittelykomennot"
+    3986                    "Kansiopuuikkunan k‰sittelykomennot"
+    3987                    "Tietojen n‰ytˆn komennot"
+    3988                    "Asetusten komennot"
+    3989                    "Tiedostojen ja kansioiden suojauksen komennot"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "Ikkunoiden j‰rjest‰miskomennot"
+    4001                    "Tiedostonhallinnan Ohjeen komennot"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "Etsii aiheita Tiedostonhallinnan Ohjeesta."
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "Avaa valitun kohteen."
+    4102                    "Tulostaa tiedoston."
+    4103                    "Kytkee tiedoston sovellukseen."
+    4104                    "Etsii tiedostoja ja kansioita."
+    4105                    "K‰ynnist‰‰ tai avaa sovelluksen tai tiedoston."
+    4106                    "Siirt‰‰ valitun kohteen."
+    4107                    "Kopioi tiedostoja ja kansioita."
+    4108                    "Poistaa tiedostoja ja kansioita."
+    4109                    "Nime‰‰ tiedoston tai kansion uudelleen."
+    4110                    "Asettaa tiedoston m‰‰ritteet ja n‰ytt‰‰ sen ominaisuudet."
+    4111                    "Luo kansion."
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "Lopettaa Tiedostonhallinnan."
+    4116                    "Valitsee tiedostoja ja kansioita."
+    4117                    "Palauttaa aiemmin poistettuja tiedostoja."
+    4118                    "Kopioi tiedoston Leikepˆyd‰lle."
+    4119                    "Pakkaa tiedoston tai kansion."
+    4120                    "Purkaa tiedoston tai kansion pakkauksen."
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "Kopioi levykkeen sis‰llˆn."
+    4202                    "Nime‰‰ levyn tai muuttaa levyn nimen."
+    4203                    "Alustaa levykkeen."
+    4205                    "Luo yhteyden verkkoasemaan."
+    4206                    "Katkaisee yhteyden verkkoasemaan."
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "Valitsee aseman."
+    4254                    "Jakaa kansion verkossa."
+    4255                    "Lopettaa kansion jakamisen."
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "N‰ytt‰‰ kansion seuraavan tason."
+    4302                    "N‰ytt‰‰ kansion kaikki tasot."
+    4303                    "N‰ytt‰‰ kaikkien kansioiden kaikki tasot."
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "Piilottaa kaikkien kansioiden kaikki tasot."
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "N‰ytt‰‰ vain tiedostonimet."
+    4402                    "N‰ytt‰‰ kaikki tiedot tiedostoista."
+    4403                    "N‰ytt‰‰ osittaiset tiedot tiedostoista."
+    4404                    "J‰rjest‰‰ tiedostot nimen mukaan."
+    4405                    "J‰rjest‰‰ tiedostot tyypin mukaan."
+    4406                    "J‰rjest‰‰ tiedostot koon mukaan."
+    4407                    "J‰rjest‰‰ tiedostot p‰iv‰yksen mukaan."
+    4409                    "N‰ytt‰‰ m‰‰ritetyn tyyppiset tiedostot."
+    4411                    "N‰ytt‰‰ kansiopuun."
+    4412                    "N‰ytt‰‰ nykyisen kansion sis‰llˆn."
+    4413                    "N‰ytt‰‰ kansiopuun ja nykyisen kansion sis‰llˆn."
+    4414                    "Jakaa kansioikkunan tai siirt‰‰ jakopalkkia."
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "Muuttaa vahvistussanomien asetuksia."
+    4503                    "N‰ytt‰‰ tai piilottaa tilarivin."
+    4504                    "Pienent‰‰ Tiedostonhallinnan kuvakkeeksi k‰ynnistett‰ess‰."
+    4505                    "Osoittaa kansiot, joilla on alikansioita."
+    4507                    "N‰ytt‰‰ tai piilottaa asemarivin."
+    4508                    "N‰ytt‰‰ tai piilottaa tyˆkalurivin."
+    4509                    "Avaa uuden ikkunan yhdistett‰ess‰ verkkoasemaan."
+    4510                    "Muuttaa Tiedostonhallinnan fontin."
+    4511                    "Tallentaa asetukset Tiedostonhallinnan lopetuksen yhteydess‰."
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "Mukauttaa tyˆkalurivin."
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "N‰ytt‰‰ tai asettaa valittujen kohteiden k‰yttˆoikeusasetukset."
+    4606                    "N‰ytt‰‰ tai asettaa valittujen kohteiden valvonnan asetukset."
+    4607                    "N‰ytt‰‰ valittujen kohteiden omistustiedot tai ottaa kohteet omistukseen."
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "J‰rjest‰‰ ikkunat limitt‰in."
+    5702                    "J‰rjest‰‰ ikkunat vierekk‰in."
+    5703                    "J‰rjest‰‰ ikkunat allekkain."
+    5704                    "P‰ivitt‰‰ ikkunan sis‰llˆn."
+    5705                    "J‰rjest‰‰ kuvakkeet."
+    5706                    "Avaa uuden ikkunan."
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "N‰ytt‰‰ Tiedostonhallinnan Ohjeen sis‰llˆn."
+    5802                    "Antaa tietoja Ohjeen k‰ytˆst‰."
+    5803                    "N‰ytt‰‰ tietoja Tiedostonhallinnasta."
+END
+
+#endif    // Finnish (Finland) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,1467 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Czech (Czech Republic) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CSY)
+LANGUAGE LANG_CZECH, SUBLANG_DEFAULT
+#pragma code_page(1250)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "&Soubor"
+    BEGIN
+        MENUITEM "&Otevøít\tEnter",             101
+        MENUITEM "&Pøesunout...\tF7",           106
+        MENUITEM "&Kopírovat...\tF8",           107
+        MENUITEM "&Zkopírovat do schránky...\tF9", 118
+        MENUITEM "Od&stranit...\tDel",          108
+        MENUITEM "Pøej&menovat...",             109
+        MENUITEM "&Vlastnosti...\tAlt+Enter",   110
+        MENUITEM SEPARATOR
+        MENUITEM "Komp&rimovat...",             119
+        MENUITEM "&Dekomprimovat...",           120
+        MENUITEM SEPARATOR
+        MENUITEM "Sp&ustit...",                 105
+        MENUITEM "&Tisk...",                    102
+        MENUITEM "Pø&idruit...",               103
+        MENUITEM SEPARATOR
+        MENUITEM "Vytvoøit &adresáø...",        111
+        MENUITEM "&Hledat...",                  104
+        MENUITEM "Vy&brat soubory...",          116
+        MENUITEM SEPARATOR
+        MENUITEM "Kon&ec",                      115
+    END
+    POPUP "&Disk"
+    BEGIN
+        MENUITEM "&Zkopírovat disketu...",      201
+        MENUITEM "&Jmenovka disku...",          202
+        MENUITEM SEPARATOR
+        MENUITEM "&Formátovat...",              203
+        MENUITEM SEPARATOR
+        MENUITEM "&Vybrat jednotku...",         251
+    END
+    POPUP "S&trom"
+    BEGIN
+        MENUITEM "&Rozbalit jednu úroveò\t+",   301
+        MENUITEM "Rozbalit &vìtev\t*",          302
+        MENUITEM "Rozbalit vš&e\tCtrl+*",       303
+        MENUITEM "&Sbalit vìtev\t-",            304
+        MENUITEM SEPARATOR
+        MENUITEM "&Indikovat rozbalitelné vìtve", 505
+    END
+    POPUP "&Zobrazit"
+    BEGIN
+        MENUITEM "Stro&m a adresáø",            413
+        MENUITEM "J&en strom",                  411
+        MENUITEM "Jen &adresáø",                412
+        MENUITEM SEPARATOR
+        MENUITEM "&Rozdìlit",                   414
+        MENUITEM SEPARATOR
+        MENUITEM "Ná&zev",                      401
+        MENUITEM "Úplné &informace o souboru",  402, CHECKED
+        MENUITEM "Èásteèné detai&ly...",        403
+        MENUITEM SEPARATOR
+        MENUITEM "Seøadit podle &názvu",        404
+        MENUITEM "Seøadi&t podle typu",         405
+        MENUITEM "Seøadit podle &velikosti",    406
+        MENUITEM "Seøa&dit podle data",         407
+        MENUITEM SEPARATOR
+        MENUITEM "Podle typu &souboru...",      409
+    END
+    POPUP "&Monosti"
+    BEGIN
+        MENUITEM "Potvr&zování...",             501
+        MENUITEM "&Písmo...",                   510
+        MENUITEM "Up&ravit panel nástrojù...",  512
+        MENUITEM SEPARATOR
+        MENUITEM "Pa&nel nástrojù",             508
+        MENUITEM "P&anel jednotek",             507
+        MENUITEM "&Stavovı øádek",              503
+        MENUITEM SEPARATOR
+        MENUITEM "&Minimalizovat pøi pouití",  504
+        MENUITEM "&Uloit nastavení pøi ukonèení", 511
+    END
+    POPUP "Za&bezpeèení"
+    BEGIN
+        MENUITEM "Op&rávnìní...",               605
+        MENUITEM "&Provést audit...",           606
+        MENUITEM "&Vlastník...",                607
+    END
+    POPUP "&Okno"
+    BEGIN
+        MENUITEM "Nové o&kno",                  1706
+        MENUITEM "&Na sebe\tShift+F5",          1701
+        MENUITEM "Nad se&be vodorovnì",         1703
+        MENUITEM "&Vedle sebe svisle\tShift+F4", 1702
+        MENUITEM "&Seøadit ikony",              1705
+        MENUITEM "&Obnovit\tF5",                1704
+    END
+    POPUP "Nápo&vìda"
+    BEGIN
+        MENUITEM "&Obsah",                      1801
+        MENUITEM "&Hledat nápovìdu...",         30
+        MENUITEM "&Jak pouívat nápovìdu",      1802
+        MENUITEM SEPARATOR
+        MENUITEM "O &aplikaci Správce souborù...", 1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 210, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Spustit"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,162,10
+    CONTROL         "&Pøíkazovı øádek:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,60,10
+    EDITTEXT        201,3,29,134,12,ES_AUTOHSCROLL
+    CONTROL         "&Spustit minimalizovanì",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,45,86,12
+    DEFPUSHBUTTON   "OK",1,165,6,40,14
+    PUSHBUTTON      "Storno",2,165,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,165,43,40,14
+END
+
+11 DIALOG 20, 20, 240, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tisk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,193,10
+    CONTROL         "&Tisk:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,23,10
+    EDITTEXT        102,27,18,160,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,36,190,10
+    DEFPUSHBUTTON   "OK",1,197,6,40,14
+    PUSHBUTTON      "Storno",2,197,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,197,43,40,14
+END
+
+12 DIALOG 20, 20, 255, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Pøidruit"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Soubory s pøíponou:",-1,6,7,68,8
+    COMBOBOX        315,76,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Pøi&druit k aplikaci:",-1,6,30,92,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Procházet...",318,130,24,47,14
+    DEFPUSHBUTTON   "OK",1,187,6,62,14,WS_GROUP
+    PUSHBUTTON      "Storno",2,187,23,62,14
+    PUSHBUTTON      "&Novı typ...",300,187,42,62,14
+    PUSHBUTTON      "&Zmìnit typ...",251,187,59,62,14
+    PUSHBUTTON      "&Odstranit typ",219,187,76,62,14
+    PUSHBUTTON      "Nápo&vìda",254,187,95,62,14
+END
+
+13 DIALOG 20, 20, 263, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Hledat"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Hledat:",-1,"Static",SS_LEFTNOWORDWRAP,5,6,45,12
+    EDITTEXT        201,52,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "&Kde zaèít:",-1,"Static",SS_LEFTNOWORDWRAP,5,21,45,12
+    EDITTEXT        101,52,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "H&ledat ve všech podadresáøích",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,34,115,12
+    DEFPUSHBUTTON   "OK",1,217,6,40,14
+    PUSHBUTTON      "Storno",2,217,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,217,43,40,14
+END
+
+14 DIALOG 47, 59, 231, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pøesunout"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Aktuální adresáø: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,182,10
+    CONTROL         "&Kam:",2001,"Static",SS_LEFTNOWORDWRAP,3,33,20,10
+    EDITTEXT        103,37,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,40,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,45,49,140,10
+    DEFPUSHBUTTON   "OK",1,185,6,40,14
+    PUSHBUTTON      "Storno",2,185,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,185,40,40,14
+    CONTROL         "&Odkud:",2002,"Static",SS_LEFTNOWORDWRAP,3,19,25,10
+    EDITTEXT        102,37,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Odstranit"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Aktuální adresáø: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Odstranit:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,35,10
+    EDITTEXT        102,40,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,35,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,40,35,155,10
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "Storno",2,200,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,200,40,40,14
+END
+
+16 DIALOG 23, 13, 259, 229
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s - vlastnosti"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,204,6,50,14,WS_GROUP
+    PUSHBUTTON      "Storno",2,204,23,50,14
+    PUSHBUTTON      "Nápo&vìda",254,204,40,50,14
+    CONTROL         "&Název souboru:",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,72,5,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Cest&a:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,72,16,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Poslední zmìna:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,62,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,72,27,132,10
+    CONTROL         "Verze:",258,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "nevyznaèeno",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,72,38,132,10
+    LTEXT           "Auto&rská práva:",-1,5,49,53,10
+    EDITTEXT        265,72,49,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Velikost:",260,"Static",SS_LEFTNOWORDWRAP,5,60,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,72,60,132,10
+    CONTROL         "Komprim. velikost:",268,"Static",SS_LEFTNOWORDWRAP,5,71,62,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,76,71,132,10
+    CONTROL         "Kompresní pomìr:",270,"Static",SS_LEFTNOWORDWRAP,5,82,62,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,72,82,132,10
+    GROUPBOX        "Atributy",-1,4,96,120,54
+    CONTROL         "j&en èíst",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,52,12
+    CONTROL         "&skrytı",216,"Button",BS_AUTOCHECKBOX,71,108,49,12
+    CONTROL         "ar&chivovat",217,"Button",BS_AUTOCHECKBOX,9,120,47,12
+    CONTROL         "sys&témovı",218,"Button",BS_AUTOCHECKBOX,71,120,49,12
+    CONTROL         "&komprimovanı",267,"Button",BS_AUTOCHECKBOX,9,132,59,12
+    GROUPBOX        "&Informace o verzi",262,4,155,250,70
+    LISTBOX         263,9,168,91,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,110,168,138,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 200, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vytvoøit adresáø"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,154,10
+    CONTROL         "&Název:",-1,"Static",SS_LEFTNOWORDWRAP,3,23,24,10
+    EDITTEXT        201,41,22,90,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "OK",1,157,6,40,14
+    PUSHBUTTON      "Storno",2,157,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,157,43,40,14
+END
+
+19 DIALOG 20, 20, 157, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopírovat disketu"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Zdroj:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,50,10
+    COMBOBOX        245,55,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Cíl:",206,"Static",SS_LEFTNOWORDWRAP,5,22,50,10
+    COMBOBOX        222,55,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Storno",2,110,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,110,43,40,14
+END
+
+22 DIALOG 30, 30, 130, 55
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopíruje se disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Kopíruje se disk ",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "v jednotce A:",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "Ète se zdrojovı disk",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Storno",2,44,39,44,14
+END
+
+23 DIALOG 20, 20, 161, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Jmenovka disku"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Jmenovka:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,36,10
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,115,6,40,14
+    PUSHBUTTON      "Storno",2,115,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,115,43,40,14
+END
+
+24 DIALOG 11, 28, 183, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Naformátovat disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,140,6,40,14
+    PUSHBUTTON      "Storno",2,140,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,140,43,40,14
+    CONTROL         "Je&dnotka:",-1,"Static",SS_LEFTNOWORDWRAP,5,7,49,10
+    COMBOBOX        222,55,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Kapacita:",-1,"Static",SS_LEFTNOWORDWRAP,5,20,49,10
+    COMBOBOX        241,55,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Monosti",102,5,39,115,53,WS_GROUP
+    CONTROL         "j&menovka:",-1,"Static",SS_LEFTNOWORDWRAP,11,51,39,10
+    EDITTEXT        201,50,49,63,12
+    CONTROL         "&rychlé formátování",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,62,90,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formátuje se disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Formátuje se disk",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "Inicializuje se ovladaè...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Storno",2,54,30,44,14
+END
+
+30 DIALOG 20, 20, 174, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Èásteènı popis"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Detaily",-1,4,4,121,74
+    CONTROL         "ve&likost",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,100,12
+    CONTROL         "&datum poslední zmìny",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,100,12
+    CONTROL         "èa&s poslední zmìny",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,100,12
+    CONTROL         "&atributy souboru",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,100,12
+    CONTROL         "&názvy souborù pro MS-DOS",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,100,12
+    DEFPUSHBUTTON   "OK",1,130,6,40,14
+    PUSHBUTTON      "Storno",2,130,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,130,60,40,14
+END
+
+32 DIALOG 20, 20, 157, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Podle typu souboru"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Název:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,23,10
+    EDITTEXT        201,34,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "Typy souboru",-1,5,20,94,62
+    CONTROL         "&adresáøe",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,60,12
+    CONTROL         "&programy",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,60,12
+    CONTROL         "&dokumenty",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,60,12
+    CONTROL         "jiné &soubory",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,60,12
+    CONTROL         "&Zobrazit skryté a systémové soubory",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,131,12
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Storno",2,110,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,110,43,40,14
+END
+
+33 DIALOG 20, 20, 247, 92
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Potvrzování"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Potvrzovat",-1,5,3,188,85,WS_TABSTOP
+    CONTROL         "od&stranìní souboru",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,80,12
+    CONTROL         "odst&ranìní adresáøe",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,80,12
+    CONTROL         "pøepsá&ní souboru",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,80,12
+    CONTROL         "operace &myší",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,80,12
+    CONTROL         "&diskové pøíkazy",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,80,12
+    CONTROL         "&zmìnu souborù systémovıch, skrytıch a jen ke ètení",215,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,75,182,12
+    DEFPUSHBUTTON   "OK",1,199,6,40,14
+    PUSHBUTTON      "Storno",2,199,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,199,44,40,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Pøesouvá se..."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "Kam:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,25,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "Storno",2,200,28,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 120, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Soubor se tiskne...",-1,4,6,120,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "Storno",2,44,40,32,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 206, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vlastnosti"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Vybráno %d souborù",100,"Static",SS_LEFTNOWORDWRAP,5,5,144,10
+    CONTROL         "Celkem %s bajtù",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "Atributy",-1,5,29,120,54
+    CONTROL         "je&n ke ètení",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,52,12
+    CONTROL         "&skrytı",216,"Button",BS_AUTOCHECKBOX,72,40,52,12
+    CONTROL         "&archivovat",217,"Button",BS_AUTOCHECKBOX,10,52,52,12
+    CONTROL         "sys&témovı",218,"Button",BS_AUTOCHECKBOX,72,52,52,12
+    CONTROL         "&komprimovanı",267,"Button",BS_AUTOCHECKBOX,10,64,59,12
+    DEFPUSHBUTTON   "OK",1,150,6,50,14,WS_GROUP
+    PUSHBUTTON      "Storno",2,150,23,50,14
+    PUSHBUTTON      "Nápo&vìda",254,150,43,50,14
+END
+
+39 DIALOG 10, 20, 245, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Potvrdit nahrazení souboru"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Nahradit:",-1,"Static",SS_LEFTNOWORDWRAP,25,12,49,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,12,165,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,75,22,170,10
+    CONTROL         "Souborem:",-1,"Static",SS_LEFTNOWORDWRAP,25,34,49,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,34,165,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,75,44,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,54,203,10
+    DEFPUSHBUTTON   "&Ano",6,33,73,40,14
+    PUSHBUTTON      "Ano vš&em",107,79,73,40,14
+    PUSHBUTTON      "&Ne",7,125,73,40,14
+    PUSHBUTTON      "Storno",2,171,73,40,14
+END
+
+40 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Potvrdit odstranìní souboru"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Odstranit:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Ano",6,33,42,40,14
+    PUSHBUTTON      "Ano vš&em",107,79,42,40,14
+    PUSHBUTTON      "&Ne",7,125,42,40,14
+    PUSHBUTTON      "Storno",2,171,42,40,14
+END
+
+41 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Potvrdit odstranìní adresáøe"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Odstranit adresáø:",-1,"Static",SS_LEFTNOWORDWRAP,23,18,60,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Ano",6,33,42,40,14
+    PUSHBUTTON      "Ano vš&em",107,79,42,40,14
+    PUSHBUTTON      "&Ne",7,125,42,40,14
+    PUSHBUTTON      "Storno",2,171,42,40,14
+END
+
+42 DIALOG 10, 22, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Potvrdit pøesun souboru"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Pøesunout:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Ano",6,33,42,40,14
+    PUSHBUTTON      "Ano vš&em",107,79,42,40,14
+    PUSHBUTTON      "&Ne",7,125,42,40,14
+    PUSHBUTTON      "Storno",2,171,42,40,14
+END
+
+43 DIALOG 10, 22, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Potvrdit pøejmenování souboru"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Pøejmenovat:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,54,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Ano",6,33,42,40,14
+    PUSHBUTTON      "Ano vš&em",107,79,42,40,14
+    PUSHBUTTON      "&Ne",7,125,42,40,14
+    PUSHBUTTON      "Storno",2,171,42,40,14
+END
+
+44 DIALOG 15, 12, 116, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vybrat soubory"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Soubory:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Vy&brat",1,70,6,43,14
+    PUSHBUTTON      "Zr&ušit vıbìr",6,70,23,43,14
+    PUSHBUTTON      "Storno",2,70,40,43,14
+    PUSHBUTTON      "Nápo&vìda",254,70,63,43,14
+END
+
+45 DIALOG 11, 31, 201, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vybrat disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Je&dnotky:",245,"Static",SS_LEFTNOWORDWRAP,5,5,41,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,155,6,40,14
+    PUSHBUTTON      "Storno",2,155,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,155,44,40,14
+END
+
+46 DIALOG 11, 28, 250, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vybrat název souboru"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Cesta se liší od formátu názvù souborù ve FAT. Prosím napište novı název.",99,5,4,190,24,NOT WS_GROUP
+    RTEXT           "&Novı název:",-1,5,56,50,12,NOT WS_GROUP
+    EDITTEXT        103,57,55,130,12
+    RTEXT           "Pùvodní cesta:",-1,5,28,50,11,NOT WS_GROUP
+    EDITTEXT        102,57,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "Do adresáøe:",-1,5,42,50,11,NOT WS_GROUP
+    EDITTEXT        101,57,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",1,205,4,40,14
+    PUSHBUTTON      "Storno",2,205,20,40,14
+    PUSHBUTTON      "Nápo&vìda",254,205,36,40,14
+END
+
+48 DIALOG 23, 13, 250, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s - vlastnosti"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,194,6,50,14,WS_GROUP
+    PUSHBUTTON      "Storno",2,194,23,50,14
+    PUSHBUTTON      "Nápo&vìda",254,194,43,50,14
+    CONTROL         "&Název souboru:",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,60,5,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Cesta:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,60,16,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Poslední zmìna:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,62,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,60,27,97,10
+    CONTROL         "Velikost:",260,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,60,38,90,10
+    GROUPBOX        "Atributy",-1,4,52,120,54
+    CONTROL         "j&en ke ètení",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,52,12
+    CONTROL         "&skrytı",216,"Button",BS_AUTOCHECKBOX,71,64,49,12
+    CONTROL         "&archivovat",217,"Button",BS_AUTOCHECKBOX,9,76,52,12
+    CONTROL         "sys&témovı",218,"Button",BS_AUTOCHECKBOX,71,76,49,12
+    CONTROL         "&komprimovanı",267,"Button",BS_AUTOCHECKBOX,9,88,59,12
+END
+
+49 DIALOG 13, 54, 264, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Písmo"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Písmo:",1088,6,3,40,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Øe&z písma:",1089,108,3,44,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Veliko&st:",1090,179,3,30,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Styl",1072,6,73,84,61,WS_GROUP
+    CONTROL         "Pøeš&krtnuté",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,49,10
+    CONTROL         "Pod&trené",1041,"Button",BS_AUTOCHECKBOX,10,95,51,10
+    CONTROL         "Jednotky FAT zobrazit &malımi písmeny",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,127,252,10
+    CONTROL         "Vše&chny jednotky zobrazit malımi písmeny",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,139,252,10
+    LTEXT           "&Barva:",1091,10,107,30,9
+    COMBOBOX        1139,10,117,75,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",1,218,6,40,14,WS_GROUP
+    PUSHBUTTON      "Storno",2,218,23,40,14,WS_GROUP
+    PUSHBUTTON      "P&ouít",1026,218,40,40,14,WS_GROUP
+    PUSHBUTTON      "Nápo&vìda",1038,218,57,40,14,WS_GROUP
+    GROUPBOX        "Vzorek",1073,6,72,252,49,WS_GROUP
+    CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "ÁáBbÈèYy",1092,10,81,243,37,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formátuje se disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "Skrıt",110,38,48,40,14
+    PUSHBUTTON      "Storno",2,82,48,40,14
+END
+
+51 DIALOG 10, 20, 260, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Potvrïte: ignorovat soubor nebo adresáø a pokraèovat"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Pøístup odmítnut, ignorovat:",202,"Static",SS_LEFTNOWORDWRAP,25,10,203,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,119,10,122,10
+    CONTROL         "Nemáte oprávnìní k pøístupu nebo je soubor pouíván.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,25,230,10
+    CONTROL         "Stisknutím Ano se ignoruje tento soubor a pokraèuje v operaci.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,35,206,10
+    DEFPUSHBUTTON   "&Ano",6,33,52,40,14
+    PUSHBUTTON      "Ano vš&em",107,79,52,40,14
+    PUSHBUTTON      "&Ne",7,125,52,40,14
+    PUSHBUTTON      "Storno",2,171,52,40,14
+END
+
+52 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Potvrïte: ignorovat soubor nebo adresáø a pokraèovat"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Cíl není pøístupnı, ignorovat:",202,"Static",SS_LEFTNOWORDWRAP,25,13,203,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,124,13,106,10
+    CONTROL         "Stisknutím Ano se ignoruje tento soubor a pokraèuje v operaci.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,23,215,10
+    DEFPUSHBUTTON   "&Ano",6,33,42,40,14
+    PUSHBUTTON      "Ano vš&em",107,79,42,40,14
+    PUSHBUTTON      "&Ne",7,125,42,40,14
+    PUSHBUTTON      "Storno",2,171,42,40,14
+END
+
+53 DIALOG 77, 109, 174, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Prohledává se disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Hledat:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,60,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,50,5,120,10
+    CONTROL         "Zahájit od:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,70,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,50,15,120,10
+    CONTROL         "Pøeètené adresáøe:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,64,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,66,25,100,10
+    CONTROL         "Nalezeno celkem:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,60,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,66,35,100,10
+    PUSHBUTTON      "Skrıt",110,45,48,40,14
+    PUSHBUTTON      "Storno",2,89,48,40,14
+END
+
+54 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Zkopírovat do schránky"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Souèasnı adresáø: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Zkopírovat\ndo schránky:",-1,"Static",SS_LEFTNOWORDWRAP,3,17,43,16
+    EDITTEXT        102,55,23,141,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,200,6,42,14
+    PUSHBUTTON      "Storno",2,200,23,42,14
+    PUSHBUTTON      "Nápo&vìda",254,200,43,42,14
+END
+
+55 DIALOG 18, 14, 290, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Zmìnit typ souboru"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Typ souboru:",302,5,6,44,8
+    EDITTEXT        301,54,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "Ak&ce: ",-1,5,22,235,126,WS_GROUP
+    COMBOBOX        306,32,22,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Pøí&kaz:",313,9,42,38,8
+    EDITTEXT        304,47,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "P&rocházet...",318,164,38,49,14
+    CONTROL         "pouívá &DDE",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,57,56,10
+    LTEXT           "&zpráva DDE:",320,22,72,50,8
+    EDITTEXT        309,105,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "n&ení-li zobrazování zpráv DDE spuštìno:",322,22,84,82,19
+    LTEXT           "(volitelné)",324,206,90,32,8
+    EDITTEXT        311,105,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "ap&likace:",321,22,109,39,8
+    EDITTEXT        310,105,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "té&ma:",323,23,127,21,8
+    EDITTEXT        312,105,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "nová pøípon&a:",-1,11,184,52,8
+    EDITTEXT        315,64,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Pøidat ->",303,102,174,44,14
+    PUSHBUTTON      "<- &Odebrat",219,102,191,44,14
+    LTEXT           "pøípo&ny:",-1,157,162,41,8
+    LISTBOX         317,157,172,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Pøípony pøidruené tomuto typu souboru:",316,5,154,235,66
+    DEFPUSHBUTTON   "OK",1,244,6,40,14
+    PUSHBUTTON      "Storno",2,244,23,40,14
+    PUSHBUTTON      "Nápo&vìda",254,244,40,40,14
+END
+
+57 DIALOG 123, 60, 218, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Prùbìh komprese souborù"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Komprimovanı soubor:",-1,6,8,79,8
+    LTEXT           "filename.xxx",341,86,8,127,8
+    LTEXT           "Adresáø:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,43,20,150,8
+    LTEXT           "Komprimované adresáøe:",-1,6,32,102,8
+    LTEXT           "1,888,888,999",343,90,32,60,8
+    LTEXT           "Komprimované soubory:",-1,6,44,78,8
+    LTEXT           "1,888,888,999",344,90,44,58,8
+    LTEXT           "Celková velikost souborù pøed komprimací:",-1,6,56,142,8
+    LTEXT           "9,999,999,999,999",345,150,56,68,8
+    LTEXT           "Celková velikost souborù po komprimaci:",-1,6,68,134,8
+    LTEXT           "9,999,999,999,999",346,150,69,68,8
+    LTEXT           "Kompresní pomìr souboru:",-1,6,80,87,8
+    LTEXT           "100%",347,98,80,27,8
+    PUSHBUTTON      "Storno",2,76,97,55,14
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Prùbìh dekomprimace souborù"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Dekomprimovanı soubor:",-1,6,8,83,8
+    LTEXT           "filename.xxx",351,93,8,96,8
+    LTEXT           "Adresáø:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,45,20,144,8
+    LTEXT           "Nekomprimované adresáøe:",-1,6,32,91,8
+    LTEXT           "1,999,999,999",353,99,32,70,8
+    LTEXT           "Dekomprimované soubory:",-1,6,44,86,8
+    LTEXT           "1,999,999,999",354,99,44,78,8
+    PUSHBUTTON      "Storno",2,74,64,49,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Chyba komprimace"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,190,20
+    DEFPUSHBUTTON   "&Ignorovat",5,5,47,54,14,WS_GROUP
+    PUSHBUTTON      "Ignorovat vš&e",112,65,47,54,14
+    PUSHBUTTON      "&Znovu",4,125,47,54,14
+    PUSHBUTTON      "&Pøerušit",3,185,47,54,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,91
+ PRODUCTVERSION 4,0,1381,91
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040504B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "Správce souborù"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Operaèní systém Microsoft(R) Windows NT(TM)"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x405, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "Kopírovat disketu"
+    51                      "Vlote cílovou disketu."
+    52                      "Vlote zdrojovou disketu."
+    53                      "Vlote zdrojovou a cílovou disketu."
+    54                      "Cílová disketa se formátuje"
+    55                      "Chyba pøi kopírování diskety"
+    56                      "Nelze zkopírovat disketu."
+    58                      "Zdrojovı a cílovı disk spolu nemohou pracovat."
+    60                      "Hotovo %d%%"
+    61                      "Vytváøí se koøenovı adresáø..."
+    62                      "Kopírují se systémové soubory..."
+    63                      "Chyba pøi formátování diskety"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "Formátování dokonèeno"
+    67                      "Celkem místa: %ld\nVolné místo: %ld\n\nChcete naformátovat další?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "Síová chyba"
+    83                      "Jednotka obsahuje systémové soubory Windows a nelze ji odpojit."
+    91                      "Správce souborù nemùe zmìnit atributy.  "
+    92                      "Správce souborù nemùe vytvoøit adresáø.  "
+    93                      "Správce souborù nemùe oznaèit disketu jmenovkou.\n\nPøesvìdète se, není-li disketa chránìna proti zápisu, zda nejde o síovou jednotku a je-li jmenovka pøípustná. Jmenovka nesmí obsahovat znaky\n[mezera] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "Nenalezeny ádné vyhovující soubory."
+END
+
+STRINGTABLE
+BEGIN
+    97                      "Obsah jednotky se zmìnil. Má se zaktualizovat okno s vısledky hledání souborù?"
+    98                      "Operaci na pevném disku lze provést pouze kdy se na pracovní stanici pøihlásíte jako správce."
+    101                     "Jednotka %c: %c"
+    110                     "Program nelze spustit"
+    111                     "Neoèekávaná chyba: %d."
+END
+
+STRINGTABLE
+BEGIN
+    112                     "Ke spuštìní urèené aplikace není dost pamìti.\n\nZvìtšete volnou pamì ukonèením nìkolika aplikací a zkuste to znovu."
+    113                     "Správce souborù nemùe najít soubor (nebo nìkterou jeho komponentu). \n\nUjistìte se, e cesta a název souboru jsou správné a všechny poadované knihovny jsou k dispozici."
+    114                     "Zadaná cesta není platná."
+    116                     "ádná aplikace není pøidruena k tomuto souboru.\n\nPøidruení vytvoøíte pøíkazem „Pøidruit“ v nabídce Soubor."
+    118                     "Správce souborù nemùe otevøít ani tisknout soubor.\n\nSpuste aplikaci, která soubor vytvoøila, a otevøete ho nebo vytisknìte odsud."
+    120                     "Potvrdit operaci provedenou myší"
+    121                     "Opravdu chcete zkopírovat vybrané soubory nebo adresáøe do %s?"
+    122                     "Opravdu chcete pøesunout vybrané soubory nebo adresáøe do %s?"
+    123                     "Opravdu chcete %s pouívat jako inicializaèní soubor místo souboru %s?"
+    124                     "Správce souborù"
+    126                     "Adresáøovı strom"
+    127                     "Vısledky hledání: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "Pøíliš mnoho souborù"
+    133                     "Správce souborù - nedostatek pamìti"
+    134                     "Nedá se pøeèíst celı adresáø. Zobrazí se jen èásteènı seznam."
+    140                     "Aktuální adresáø: %s"
+    141                     "Kopírovat"
+    143                     "Pøejmenovat"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "Naformátovat disk"
+    146                     "Vyberte disk, kterı se má naformátovat."
+    150                     "Vytváøí se:"
+    151                     "Odebírá se..."
+    152                     "Kopíruje se:"
+    153                     "Pøejmenovává se..."
+    154                     "Pøesouvá se..."
+    155                     "Odstraòuje se..."
+    156                     "Tiskne se: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "Kopíruje se..."
+    170                     "Odebírá se:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "Celkem souborù %d (%s)"
+    181                     "Pøeètenıch adresáøù: %d "
+    182                     "%c: %s volnıch,  %s celkem"
+    183                     "Nalezeno souborù: %d"
+    185                     "vybrané soubory"
+    186                     "Správce souborù nemùe odpojit síovou jednotku.\n\nNa této jednotce jsou otevøené soubory."
+    187                     "Vybráno souborù: %d (%s)"
+    188                     "V jednotce %c není disketa.\n\nVlote disketu a zkuste to znovu."
+    189                     "Disketa v jednotce %c není naformátovaná.\n\nChcete ji naformátovat?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "Na disku není dost místa k tisku.\n\nUvolnìte místo odstranìním jednoho nebo více souborù a zkuste to znovu."
+    193                     "Není dost pamìti k tisku.\n\nZavøete nìkteré aplikace a zkuste to znovu."
+    194                     "Pøi tisku došlo k chybì.\n\nPøesvìdète se, je-li tiskárna vybraná a správnì nakonfigurovaná."
+    195                     "Zobrazen neúplnı adresáøovı strom"
+    197                     "Cílová disketa je plná. Pokraèujte vloením další diskety."
+    198                     "Tento soubor je systémovı, skrytı nebo jen ke ètení."
+    199                     "Správce souborù nemùe provést rychlé formátování.\n\nPokraèovat normálním formátováním?"
+    203                     "Pøi odesílání pøíkazu aplikaci došlo k chybì."
+    204                     "Nelze zavést knihovnu poadovanou pro tuto operaci."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "&Sdílené adresáøe..."
+    210                     "Formátování smae všechna data z diskety. Urèitì chcete naformátovat disketu v jednotce %c?"
+    211                     "Potvrdit naformátování disku"
+    212                     "Tato operace vymae VŠECHNA data z cílového disku. Opravdu chcete pokraèovat?"
+    213                     "Potvrdit zkopírování disku"
+    214                     "&Zavøít"
+    215                     "Zavøít"
+    218                     "Adresáø %s neexistuje.\n\nChcete jej vytvoøit?"
+    219                     "programy#*.exe;*.pif;*.com;*.bat#všechny soubory (*.*)#*.*#"
+    220                     "Procházet"
+    221                     "Spustit"
+    222                     "Soubor nelze vytisknout"
+    223                     "Nápovìdu nelze zobrazit."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "Soubory s pøíponou %s jsou programy a nemohou se pøidruovat k aplikaci."
+    225                     "%s není program a nemùe se k nìmu pøidruit pøípona souboru."
+    226                     "(není)"
+    227                     "ádné soubory nenalezeny."
+    228                     "Správce souborù nemùe tisknout více souborù najednou.\n\nVyberte z nich pouze jeden a pak to zkuste znovu."
+    230                     "Jeden z knihovních souborù potøebnıch pro bìh aplikace je znièen. Nainstalujte tuto aplikaci znovu."
+    231                     "Tento soubor je pouíván jinou aplikací."
+    232                     "Soubory v adresáøi „%s“ moná nebudou pøístupné.\n\nMá se pokraèovat?"
+    233                     "Vytvoøit adresáø"
+    234                     "%ld bajtù"
+    235                     "%s bajtù"
+    236                     "Správce souborù nemùe zkopírovat více souborù nebo adresáøù do schránky.\n\nVyberte jeden soubor a zkuste to znovu."
+    237                     "%s - %s"
+    238                     "Jednotka:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "Pøipojit síovou jednotku"
+    241                     "Odpojit síovou jednotku"
+    242                     "Síová pøipojení"
+    243                     "Sdílet adresáø"
+    244                     "Ukonèit sdílení adresáøe"
+    245                     "Zobrazit všechny detaily souboru"
+    246                     "Zobrazit jen názvy"
+    247                     "Seøadit podle názvu"
+    248                     "Seøadit podle typu"
+    249                     "Seøadit podle velikosti"
+    250                     "Seøadit podle data"
+    251                     "Nové okno"
+    252                     "Kopírovat soubory"
+    253                     "Pøesunout soubory"
+    254                     "&Název adresáøe:"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "Síová jednotka není k dispozici."
+    259                     "Sdílí se jako %s"
+    260                     "Nesdílí se"
+    261                     "Odstranit soubory"
+    262                     " - KOMPRIMOVÁNO"
+    263                     "Kopírují se soubory do %s"
+    264                     "Pøesouvají se soubory do %s"
+    265                     "Soubor se otevírá programem %s"
+    266                     "%s bajtù"
+    267                     "%s kB"
+    268                     "%s MB"
+    269                     "%s GB"
+    270                     "%s TB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "Nemáte oprávnìní k pøístupu do tohoto adresáøe."
+    281                     "Nemáte oprávnìní k pøístupu do tohoto souboru."
+    283                     "Jednotka %c: je zaneprázdnìna a není k ní monı pøístup.\nSprávce souborù disk právì kopíruje."
+    284                     "Jednotka %c: je zaneprázdnìna a není k ní monı pøístup.\nSprávce souborù disk právì formátuje."
+    285                     "Operace nebyla zcela dokonèena"
+    286                     "Nelze dokonèit operaci u všech souborù akce adresáøù."
+    287                     "Adresáø nelze èíst"
+END
+
+STRINGTABLE
+BEGIN
+    288                     "Adresáø neexistuje."
+    289                     "Síovou jednotku nelze pøipojit"
+    290                     "Síovı název nelze najít."
+    292                     "„Ano všem“ ovlivní všechny soubory, vèetnì systémovıch, skrytıch a urèenıch jen ke ètení."
+    294                     "Otevøít"
+    295                     "Tisk"
+    298                     "Pøidat pøíponu"
+    299                     "Pøípona „%s“ je u pøiøazena k „%s“. Má se pokraèovat a zmìnit toto pøiøazení?"
+    300                     "Editor pøidruení souborù"
+    301                     "Nelze pøidruit pøíponu.  "
+    302                     "Nelze odstranit pøíponu.  "
+    303                     "Nelze pøidat typ souboru.  "
+END
+
+STRINGTABLE
+BEGIN
+    304                     "Nelze odstranit typ souboru.  "
+    305                     "Nedá se zjistit typ souboru.  "
+    306                     "Popis typu souboru nelze nechat prázdnı. Zadejte novı typ souboru."
+    307                     "Nelze vygenerovat jednoznaènı identifikátor zaloenı na typu souboru. Zadejte novı typ souboru."
+    308                     "Odstranit typ souboru"
+    309                     "Typ souboru a všechny pøidruené pøípony budou odstranìny. Urèitì chcete odstranit „%s“?"
+    312                     "Typ souboru musí mít nejménì pro jednu akci zadanı pøíkaz. Zadejte v pøíkazovém poli aplikaci."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "Novı typ souboru"
+    321                     "Kopíruje se disk"
+    322                     "Hledá se..."
+    324                     "Správce souborù momentálnì formátuje disketu. Ukonèení správce pøeruší kopírování."
+    325                     "Správce souborù momentálnì kopíruje disketu. Ukonèení správce pøeruší kopírování."
+    326                     "Celkem procent"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360 kB"
+    354                     "1%s2 MB"
+    355                     "720 kB"
+    356                     "1%s44 MB"
+    357                     "2%s88 MB"
+    358                     "Kapacita jednotky"
+    359                     "Správce souborù nemùe zjistit informace o disketì.\n\nUjistìte se, e disketa je v jednotce."
+    360                     "20%s8 MB"
+    361                     "Neznámı typ disku"
+    362                     "Neznámı typ disku"
+    363                     "Správce souborù nemùe naformátovat disketu v jednotce %s. K naformátování diskety takového typu pouijte Správce disku."
+END
+
+STRINGTABLE
+BEGIN
+    400                     "Nesluèitelnı systém souborù."
+    401                     "Pøístup odmítnut."
+    402                     "Disk je chránìn proti zápisu."
+    403                     "Svazek se nedá zamknout."
+    404                     "Správce souborù nemùe naformátovat rychle disketu.\n\nUjistìte se, e disketa má správnou hustotu."
+    405                     "Chyba V/V na zdrojové jednotce."
+    406                     "Chyba V/V na cílové jednotce."
+    407                     "Chyba V/V jak na zdrojové, tak na cílové jednotce."
+    408                     "Došlo k chybì V/V."
+    411                     "Správce souborù nemùe naformátovat disketu.\n\nUjistìte se, e disketa je v jednotce a není chránìna proti zápisu, poškozena nebo se špatnou hustotou."
+    412                     "Správce souborù nemùe oznaèit disketu jmenovkou.\nUvedená jmenovka není pøípustná.\nJmenovka nesmí obsahovat znaky\n[mezera] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "Otevírá se..."
+    421                     "Zavírá se..."
+    422                     "Je otevøeno pøíliš mnoho oken adresáøù.\n\nZavøete nìkterá okna a zkuste to znovu."
+    423                     "Rychle se formátuje..."
+    424                     "Slubu pro aktualizaci pozadí nelze inicializovat. Správce souborù se ukonèí.  "
+    425                     "Inicializace Správce souborù"
+    426                     "Ète se adresáø, poèkejte prosím..."
+    427                     "Chcete komprimovat i všechny soubory a podadresáøe v %s?"
+    428                     "Pøejete si dekomprimovat všechny soubory a podadresáøe v %s?"
+    429                     "Správce souborù nemùe zmìnit atributy komprese pro %s."
+    430                     "Soubor %s se nedá zkomprimovat. Zkomprimování tohoto souboru mùe zpùsobit nespustitelnost tohoto systému."
+    431                     "Správce souborù momentálnì komprimuje nebo dekomprimuje soubory.\nChcete-li komprimovat nebo nekomprimovat další soubory, musíte poèkat."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "komentáøe"
+    501                     "název firmy"
+    502                     "popis souboru"
+    503                     "vnitøní název"
+    504                     "ochranné známky"
+    505                     "pùvodní název souboru"
+    506                     "popis interního sestavení"
+    507                     "název produktu"
+    508                     "verze produktu"
+    509                     "popis zvláštního sestavení"
+    510                     "jazyk"
+    511                     "jazyky"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "&Pøipojit síovou jednotku..."
+    801                     "O&dpojit síovou jednotku..."
+    802                     "&Síová pøipojení..."
+    803                     "Sdí&let jako..."
+    804                     "Kone&c sdílení..."
+    805                     "&Zobrazit sdílené adresáøe..."
+    806                     "&Zpìt odstranit..."
+    807                     "Pøi pøip&ojení otevøít nové okno"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "Chyba pøi pøesouvání souboru"
+    1002                    "Chyba pøi kopírování souboru"
+    1003                    "Chyba pøi odstraòování souboru"
+    1004                    "Chyba pøi pøejmenovávání souboru"
+    1005                    "Chyba pøi vıbìru jednotky"
+    1006                    "Chyba pøi ètení adresáøe"
+    1007                    "Chyba pøi oznaèování disku jmenovkou"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "„%s“ se nedá pøesunout: %s"
+    1012                    "„%s“ se nedá zkopírovat: %s"
+    1013                    "„%s“ se nedá odstranit: %s"
+    1014                    "„%s“ se nedá pøejmenovat: %s"
+    1021                    "Adresáø „%s“ se nedá vytvoøit: %s"
+    1022                    "Adresáø „%s“ se nedá odstranit: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "„%s“ se nedá vytvoøit ani pøesunout: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "Zdroj a cíl jsou stejné."
+    1102                    "Zvolte jen jeden soubor k pøejmenování. Mùete ale také pouít syntaxi systému MS-DOS a zadat více souborù pomocí ”*” a ”?” (napøíklad *.TXT), a pøejmenovat tak skupinu souborù s podobnımi názvy."
+    1103                    "Pøi pøejmenování nelze zároveò pøesouvat do jiného adresáøe nebo na jinı disk.\nMísto toho pouijte pøíkaz pro pøesun souboru."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "Koøenovı adresáø nelze pøejmenovat."
+    1105                    "Cílovı adresáø je podadresáøem zdroje."
+    1106                    "Soubor je pouíván systémem Windows."
+    1107                    "Uveïte jen jeden soubor nebo adresáø v poli Kam. Nebo, jestli chcete zadat skupinu souborù, pouijte ""*"" nebo ""?"" (napø. *.TXT)."
+    1108                    "Soubor nebo adresáø s tímto názvem ji existuje. V jednom adresáøi se všechny názvy souborù a adresáøù mohou vyskytnout pouze jednou."
+    1109                    "Ujistìte se, e zadaná cesta a název souboru jsou správné."
+    1110                    "Ujistìte se, e zadaná cesta je správnì."
+    1111                    "Ukonèete nìkteré aplikace a pak to zkuste znovu. Nebo zvìtšete virtuální pamì v ovládacím panelu Systém."
+    1113                    "Zrušte ochranu proti zápisu na disketì nebo pouijte jinou disketu a zkuste znovu."
+    1114                    "Ujistìte se, e máte pøidìlena pro provedení operace dostaèující síová oprávnìní."
+    1115                    "Uvolnìte místo na disku odstranìním jednoho nebo více souborù a zkuste znovu."
+    1116                    "Na médiu nebyla zjištìna ádná data."
+    1117                    "Adresáø u existuje."
+    1118                    "Soubor u uvedenı název pouívá."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "V jednotce je špatná disketa."
+    1151                    "Tuto aplikaci nelze spustit v reimu Windows NT."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "Operaèní systém nemùe spustit tuto souèást."
+    1153                    "Souèást nelze spustit v reimu Windows NT."
+    1154                    "Tento program není platnou aplikací systému Windows NT."
+    1155                    "Došlo k chybì. K této chybì neexistuje popis."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ƒRƒs[Œ³(&F):"
+    2001                    "ƒRƒs[æ(&T):"
+    2002                    "Œ³‚Ì–¼‘O(&F):"
+    2003                    "V‚µ‚¢–¼‘O(&T):"
+    2004                    "ƒRƒs[æ:"
+    2005                    "‚±‚ÌƒtƒHƒ“ƒg‚ğg—p‚·‚é‚ÆŠ¿š‚Ì•\\¦‚ª\n‚Å‚«‚È‚­‚È‚è‚Ü‚·B"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "Pøíkazy pro práci se soubory"
+    3985                    "Pøíkazy pro práci s disky"
+    3986                    "Pøíkazy pro práci v oknì stromu"
+    3987                    "Pøíkazy pro nastavování zpùsobu zobrazení informací"
+    3988                    "Pøíkazy pro nastavování moností"
+    3989                    "Pøíkazy pro práci se zabezpeèením souborù a adresáøù"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "Pøíkazy pro práci s okny"
+    4001                    "Pøíkazy pro vyvolávání nápovìdy k Správci souborù"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "Vyhledá téma v nápovìdì Správce souborù"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "Otevøe vybranou poloku"
+    4102                    "Vytiskne dokument"
+    4103                    "Pøidruí soubor k aplikaci"
+    4104                    "Hledá soubory a adresáøe"
+    4105                    "Spustí aplikaci nebo otevøe dokument"
+    4106                    "Pøesune vybranou poloku"
+    4107                    "Kopíruje soubory a adresáøe"
+    4108                    "Odstraòuje soubory a adresáøe"
+    4109                    "Pøejmenuje soubor nebo adresáø"
+    4110                    "Nastaví atributy souborù a zobrazí vlastnosti"
+    4111                    "Vytvoøí adresáø"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "Ukonèí Správce souborù"
+    4116                    "Vybere soubory a adresáøe"
+    4117                    "Obnoví døíve odstranìné soubory"
+    4118                    "Zkopíruje soubor do schránky"
+    4119                    "Komprimovat a soubor nebo adresáø"
+    4120                    "Dekomprimuje soubor nebo adresáø"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "Zkopíruje obsah diskety"
+    4202                    "Pøiøadí nebo zmìní jmenovku diskovému svazku"
+    4203                    "Naformátuje disketu"
+    4205                    "Pøipojí síovou jednotku"
+    4206                    "Odpojí síovou jednotku"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "Vybere jinou jednotku"
+    4254                    "Nastaví sdílení adresáøe"
+    4255                    "Ukonèí sdílení adresáøe"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "Zobrazí jinou úroveò adresáøe"
+    4302                    "Zobrazí všechny úrovnì adresáøe"
+    4303                    "Zobrazí všechny úrovnì všech adresáøù"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "Sbalí všechny podadresáøe vybraného adresáøe"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "Zobrazí pouze názvy souborù"
+    4402                    "Zobrazí všechny informace o souboru"
+    4403                    "Zobrazí èásteèné informace o souborech"
+    4404                    "Seøadí soubory podle názvu"
+    4405                    "Seøadí soubory podle typu"
+    4406                    "Seøadí soubory podle velikosti"
+    4407                    "Seøadí soubory podle data"
+    4409                    "Zobrazí soubory urèitého typu"
+    4411                    "Zobrazí adresáøovı strom"
+    4412                    "Zobrazí obsah aktuálního adresáøe"
+    4413                    "Zobrazí adresáøovı strom a obsah aktuálního adresáøe"
+    4414                    "Rozdìlí adresáøové okno nebo posune pøíèku"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "Øídí potvrzovací zprávy"
+    4503                    "Zobrazí nebo skryje stavovı øádek"
+    4504                    "Po spuštìní zmenší Správce souborù do ikony"
+    4505                    "Oznaèí adresáøe, které obsahují podadresáøe"
+    4507                    "Zobrazí nebo skryje panel jednotek"
+    4508                    "Zobrazí nebo skryje panel nástrojù"
+    4509                    "Pøi pøipojení otevøe nové okno"
+    4510                    "Zmìní písmo ve Správci souborù"
+    4511                    "Pøi ukonèení Správce souborù uloí nastavení"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "Pøizpùsobí pruh nástrojù"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "Zobrazí nebo nastaví informaci o oprávnìní u vybranıch poloek"
+    4606                    "Zobrazí nebo nastaví informace o auditu u vybranıch poloek"
+    4607                    "Zobrazí nebo pøevezme vlastnictví pro vybrané poloky"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "Okna na sebe"
+    5702                    "Okna vedle sebe svisle"
+    5703                    "Okna nad sebe vodorovnì"
+    5704                    "Aktualizuje obsah okna"
+    5705                    "Srovná ikony"
+    5706                    "Otevøe nové okno"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "Zobrazí obsah nápovìdy pro Správce souborù"
+    5802                    "Zobrazí informace o pouívání nápovìdy"
+    5803                    "Zobrazí informace o Správci souborù"
+END
+
+#endif    // Czech (Czech Republic) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

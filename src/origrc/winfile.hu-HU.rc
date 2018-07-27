@@ -1,0 +1,1467 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Hungarian (Hungary) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_HUN)
+LANGUAGE LANG_HUNGARIAN, SUBLANG_DEFAULT
+#pragma code_page(1250)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "&Fájl"
+    BEGIN
+        MENUITEM "Me&gnyitás\tEnter",           101
+        MENUITEM "Át&helyezés...\tF7",          106
+        MENUITEM "&Másolás...\tF8",             107
+        MENUITEM "Másolás a &Vágólapra...\tF9", 118
+        MENUITEM "&Törlés...\tDel",             108
+        MENUITEM "Át&nevezés...",               109
+        MENUITEM "T&ulajdonságok...\tAlt+Enter", 110
+        MENUITEM SEPARATOR
+        MENUITEM "Tömöríté&s...",               119
+        MENUITEM "Ki&bontás...",                120
+        MENUITEM SEPARATOR
+        MENUITEM "&Futtatás...",                105
+        MENUITEM "N&yomtatás...",               102
+        MENUITEM "Tá&rsítás...",                103
+        MENUITEM SEPARATOR
+        MENUITEM "Könyvtár létreho&zása...",    111
+        MENUITEM "&Keresés...",                 104
+        MENUITEM "Fá&jlok kijelölése...",       116
+        MENUITEM SEPARATOR
+        MENUITEM "Kilé&pés",                    115
+    END
+    POPUP "&Lemez"
+    BEGIN
+        MENUITEM "Leme&zmásolás...",            201
+        MENUITEM "Lemez &címkézése...",         202
+        MENUITEM SEPARATOR
+        MENUITEM "Lemez&formázás...",           203
+        MENUITEM SEPARATOR
+        MENUITEM "Lemezmegh&ajtó...",           251
+    END
+    POPUP "&Könyvtárfa"
+    BEGIN
+        MENUITEM "&Egy szint kibontása\t+",     301
+        MENUITEM "Ág &kibontása\t*",            302
+        MENUITEM "&Mindet kibontja\tCtrl+*",    303
+        MENUITEM "Ág &bezárása\t-",             304
+        MENUITEM SEPARATOR
+        MENUITEM "Kib&ontható ágak jelölése",   505
+    END
+    POPUP "&Nézet"
+    BEGIN
+        MENUITEM "&Fa és tartalom",             413
+        MENUITEM "&Csak a fa",                  411
+        MENUITEM "C&sak könyvtárat",            412
+        MENUITEM SEPARATOR
+        MENUITEM "&Kettéosztás",                414
+        MENUITEM SEPARATOR
+        MENUITEM "Né&v",                        401
+        MENUITEM "&Minden adat",                402, CHECKED
+        MENUITEM "Az adatok egy &része...",     403
+        MENUITEM SEPARATOR
+        MENUITEM "&Név szerinti rendezés",      404
+        MENUITEM "&Típus szerinti rendezés",    405
+        MENUITEM "Méret s&zerinti rendezés",    406
+        MENUITEM "&Dátum szerinti rendezés",    407
+        MENUITEM SEPARATOR
+        MENUITEM "M&utatott fájltípusok...",    409
+    END
+    POPUP "&Beállítások"
+    BEGIN
+        MENUITEM "&Jóváhagyás...",              501
+        MENUITEM "&Betûtípus...",               510
+        MENUITEM "Eszköz&tár testreszabása...", 512
+        MENUITEM SEPARATOR
+        MENUITEM "&Eszköztár",                  508
+        MENUITEM "&Lemezmeghajtósor",           507
+        MENUITEM "Állapot&sor",                 503
+        MENUITEM SEPARATOR
+        MENUITEM "Kis méretû &használat",       504
+        MENUITEM "Állapot &mentése kilépéskor", 511
+    END
+    POPUP "A&datbiztonság"
+    BEGIN
+        MENUITEM "&Engedélyek...",              605
+        MENUITEM "&Naplózás...",                606
+        MENUITEM "&Tulajdonos...",              607
+    END
+    POPUP "&Ablak"
+    BEGIN
+        MENUITEM "Új &ablak",                   1706
+        MENUITEM "&Lépcsõzetes elrendezés\tShift+F5", 1701
+        MENUITEM "&Vízszintes mozaik elrendezés", 1703
+        MENUITEM "Függõleges &mozaik elrendezés\tShift+F4", 1702
+        MENUITEM "&Ikonok elrendezése",         1705
+        MENUITEM "&Frissítés\tF5",              1704
+    END
+    POPUP "&Súgó"
+    BEGIN
+        MENUITEM "&Tartalom",                   1801
+        MENUITEM "Téma&körök keresése...",      30
+        MENUITEM "&Használat",                  1802
+        MENUITEM SEPARATOR
+        MENUITEM "&Névjegy...",                 1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 210, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Futtatás"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,162,10
+    CONTROL         "&Parancssor:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,60,10
+    EDITTEXT        201,3,29,134,12,ES_AUTOHSCROLL
+    CONTROL         "&Indítás kis méretben",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,45,86,12
+    DEFPUSHBUTTON   "OK",1,165,6,40,14
+    PUSHBUTTON      "Mégse",2,165,23,40,14
+    PUSHBUTTON      "&Súgó",254,165,43,40,14
+END
+
+11 DIALOG 20, 20, 275, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Nyomtatás"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,218,10
+    CONTROL         "&Nyomtatandó fájl:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,59,10
+    EDITTEXT        102,62,18,160,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,38,36,190,10
+    DEFPUSHBUTTON   "OK",1,232,6,40,14
+    PUSHBUTTON      "Mégse",2,232,23,40,14
+    PUSHBUTTON      "&Súgó",254,232,43,40,14
+END
+
+12 DIALOG 20, 20, 280, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Társítás"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Adott kiterjesztésû &fájlok:",-1,6,7,85,8
+    COMBOBOX        315,93,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Társított &alkalmazás:",-1,6,30,92,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Tallózás...",318,130,24,47,14
+    DEFPUSHBUTTON   "OK",1,187,6,87,14,WS_GROUP
+    PUSHBUTTON      "Mégse",2,187,23,87,14
+    PUSHBUTTON      "Új típ&us...",300,187,42,87,14
+    PUSHBUTTON      "Típus &megváltoztatása...",251,187,59,87,14
+    PUSHBUTTON      "Típus tö&rlése",219,187,76,87,14
+    PUSHBUTTON      "&Súgó",254,187,95,87,14
+END
+
+13 DIALOG 20, 20, 269, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Keresés"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Fájlnév:",-1,"Static",SS_LEFTNOWORDWRAP,4,6,45,12
+    EDITTEXT        201,58,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "&Kezdõ könyvtár:",-1,"Static",SS_LEFTNOWORDWRAP,4,21,53,12
+    EDITTEXT        101,58,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "&Alkönyvtárakban is keres",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,58,34,107,12
+    DEFPUSHBUTTON   "OK",1,223,6,40,14
+    PUSHBUTTON      "Mégse",2,223,23,40,14
+    PUSHBUTTON      "&Súgó",254,223,43,40,14
+END
+
+14 DIALOG 47, 59, 231, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Áthelyezés"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Aktuális könyvtár: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,182,10
+    CONTROL         "&Cél:",2001,"Static",SS_LEFTNOWORDWRAP,3,33,20,10
+    EDITTEXT        103,37,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,40,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,45,49,140,10
+    DEFPUSHBUTTON   "OK",1,185,6,40,14
+    PUSHBUTTON      "Mégse",2,185,23,40,14
+    PUSHBUTTON      "&Súgó",254,185,40,40,14
+    CONTROL         "&Forrás:",2002,"Static",SS_LEFTNOWORDWRAP,3,19,26,10
+    EDITTEXT        102,37,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Törlés"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Aktuális könyvtár: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Törlendõ:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,35,10
+    EDITTEXT        102,40,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,35,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,40,35,155,10
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "Mégse",2,200,23,40,14
+    PUSHBUTTON      "&Súgó",254,200,40,40,14
+END
+
+16 DIALOG 23, 13, 268, 229
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s tulajdonságai"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,214,6,50,14,WS_GROUP
+    PUSHBUTTON      "Mégse",2,214,23,50,14
+    PUSHBUTTON      "&Súgó",254,214,40,50,14
+    CONTROL         "&Fájlnév:",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,78,5,126,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "E&lérési út:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,78,16,126,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Legutóbbi módosítás:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,68,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,78,27,126,10
+    CONTROL         "Verzió:",258,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "Nincs megjelölve",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,78,38,132,10
+    LTEXT           "&Copyright:",-1,5,49,45,10
+    EDITTEXT        265,78,49,132,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Méret:",260,"Static",SS_LEFTNOWORDWRAP,5,60,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,78,60,132,10
+    CONTROL         "Tömörített méret:",268,"Static",SS_LEFTNOWORDWRAP,5,71,62,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,78,71,132,10
+    CONTROL         "Tömörítési arány:",270,"Static",SS_LEFTNOWORDWRAP,5,82,62,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,78,82,132,10
+    GROUPBOX        "Attribútumok",-1,4,96,120,54
+    CONTROL         "Írás&védett",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,52,12
+    CONTROL         "&Rejtett",216,"Button",BS_AUTOCHECKBOX,71,108,49,12
+    CONTROL         "&Archiválandó",217,"Button",BS_AUTOCHECKBOX,9,120,56,12
+    CONTROL         "R&endszer",218,"Button",BS_AUTOCHECKBOX,71,120,49,12
+    CONTROL         "&Tömörítve",267,"Button",BS_AUTOCHECKBOX,9,132,52,12
+    GROUPBOX        "Verz&ióinformáció",262,4,155,250,70
+    LISTBOX         263,9,168,91,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,110,168,138,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 200, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Könyvtár létrehozása"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,154,10
+    CONTROL         "&Név:",-1,"Static",SS_LEFTNOWORDWRAP,3,23,20,10
+    EDITTEXT        201,30,22,90,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "OK",1,157,6,40,14
+    PUSHBUTTON      "Mégse",2,157,23,40,14
+    PUSHBUTTON      "&Súgó",254,157,43,40,14
+END
+
+19 DIALOG 20, 20, 157, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lemezmásolás"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Forráslemez:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,50,10
+    COMBOBOX        245,55,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Céllemez:",206,"Static",SS_LEFTNOWORDWRAP,5,22,50,10
+    COMBOBOX        222,55,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Mégse",2,110,23,40,14
+    PUSHBUTTON      "&Súgó",254,110,43,40,14
+END
+
+22 DIALOG 30, 30, 130, 55
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Lemez másolása"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Másolás alatt: ",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "A: lemezmeghajtó",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "Forráslemez olvasása.",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Mégse",2,44,39,44,14
+END
+
+23 DIALOG 20, 20, 161, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lemez címkézése"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Címke:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,30,10
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,115,6,40,14
+    PUSHBUTTON      "Mégse",2,115,23,40,14
+    PUSHBUTTON      "&Súgó",254,115,43,40,14
+END
+
+24 DIALOG 11, 28, 183, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Lemezformázás"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,140,6,40,14
+    PUSHBUTTON      "Mégse",2,140,23,40,14
+    PUSHBUTTON      "&Súgó",254,140,43,40,14
+    CONTROL         "&Lemezmeghajtó:",-1,"Static",SS_LEFTNOWORDWRAP,6,7,55,10
+    COMBOBOX        222,62,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Kapacitás:",-1,"Static",SS_LEFTNOWORDWRAP,6,20,49,10
+    COMBOBOX        241,62,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Beállítások",102,6,39,115,53,WS_GROUP
+    CONTROL         "&Címke:",-1,"Static",SS_LEFTNOWORDWRAP,12,51,23,10
+    EDITTEXT        201,41,49,63,12
+    CONTROL         "&Gyors formázás",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,62,90,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Lemez formázása"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Lemez formázása folyamatban...",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "A meghajtó inicializálása...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Mégse",2,54,30,44,14
+END
+
+30 DIALOG 20, 20, 174, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Részleges adatok"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Részletek",-1,4,4,121,74
+    CONTROL         "&Méret",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,100,12
+    CONTROL         "Legutóbbi mó&dosítás dátuma",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,109,12
+    CONTROL         "Legutóbb&i módosítás idõpontja",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,112,12
+    CONTROL         "&Fájlattribútumok",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,100,12
+    CONTROL         "M&S-DOS fájlnevek",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,100,12
+    DEFPUSHBUTTON   "OK",1,130,6,40,14
+    PUSHBUTTON      "Mégse",2,130,23,40,14
+    PUSHBUTTON      "Sú&gó",254,130,60,40,14
+END
+
+32 DIALOG 20, 20, 157, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Mutatott fájltípusok"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Név:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,23,10
+    EDITTEXT        201,34,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "Fájltípus",-1,5,20,94,62
+    CONTROL         "&Könyvtárak",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,60,12
+    CONTROL         "&Programok",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,60,12
+    CONTROL         "&Dokumentumok",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,67,12
+    CONTROL         "&Egyéb fájlok",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,60,12
+    CONTROL         "&Rejtett és rendszer fájlok megjelenítése",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,152,12
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Mégse",2,110,23,40,14
+    PUSHBUTTON      "&Súgó",254,110,43,40,14
+END
+
+33 DIALOG 20, 20, 231, 92
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Megerõsítés"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Megerõsítendõ mûveletek",-1,4,3,177,85,WS_TABSTOP
+    CONTROL         "Fájl &törlése",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,15,80,12
+    CONTROL         "&Könyvtár törlése",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,27,80,12
+    CONTROL         "Fájl &felülírása",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,39,80,12
+    CONTROL         "&Egérmûvelet",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,51,80,12
+    CONTROL         "&Lemezparancsok",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,63,80,12
+    CONTROL         "&Rendszer, rejtett és írásvédett fájlok módosítása",215,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,75,170,12
+    DEFPUSHBUTTON   "OK",1,185,6,40,14
+    PUSHBUTTON      "Mégse",2,185,23,40,14
+    PUSHBUTTON      "&Súgó",254,185,44,40,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Áthelyezés..."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "Cél:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,25,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "Mégse",2,200,28,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 120, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Fájl nyomtatása...",-1,4,6,120,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "Mégse",2,44,40,32,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 206, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tulajdonságok"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "%d fájl van kijelölve",100,"Static",SS_LEFTNOWORDWRAP,5,5,144,10
+    CONTROL         "Összesen %s bájt",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "Attribútumok",-1,5,29,120,54
+    CONTROL         "Írás&védett",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,52,12
+    CONTROL         "R&ejtett",216,"Button",BS_AUTOCHECKBOX,72,40,52,12
+    CONTROL         "&Archiválandó",217,"Button",BS_AUTOCHECKBOX,10,52,56,12
+    CONTROL         "&Rendszer",218,"Button",BS_AUTOCHECKBOX,72,52,52,12
+    CONTROL         "&Tömörített",267,"Button",BS_AUTOCHECKBOX,10,64,52,12
+    DEFPUSHBUTTON   "OK",1,150,6,50,14,WS_GROUP
+    PUSHBUTTON      "Mégse",2,150,23,50,14
+    PUSHBUTTON      "&Súgó",254,150,43,50,14
+END
+
+39 DIALOG 10, 20, 245, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Fájlcsere megerõsítése"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Cserélendõ fájl:",-1,"Static",SS_LEFTNOWORDWRAP,25,12,53,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,77,12,165,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,75,22,170,10
+    CONTROL         "Új fájl:",-1,"Static",SS_LEFTNOWORDWRAP,25,34,49,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,34,165,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,75,44,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,54,203,10
+    DEFPUSHBUTTON   "&Igen",6,25,73,46,14
+    PUSHBUTTON      "Igen, &mindet",107,77,73,46,14
+    PUSHBUTTON      "&Nem",7,129,73,46,14
+    PUSHBUTTON      "Mégse",2,181,73,46,14
+END
+
+40 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Fájltörlés megerõsítése"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Törlendõ fájl:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Igen",6,20,42,48,14
+    PUSHBUTTON      "Igen, &mindet",107,74,42,48,14
+    PUSHBUTTON      "&Nem",7,128,42,48,14
+    PUSHBUTTON      "Mégse",2,182,42,48,14
+END
+
+41 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Könyvtártörlés megerõsítése"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Törlendõ könyvtár:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,63,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,88,18,154,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Igen",6,22,42,47,14
+    PUSHBUTTON      "Igen, &mindet",107,75,42,47,14
+    PUSHBUTTON      "&Nem",7,128,42,47,14
+    PUSHBUTTON      "Mégse",2,181,42,47,14
+END
+
+42 DIALOG 10, 22, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Fájláthelyezés megerõsítése"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Áthelyezendõ fájl:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Igen",6,13,42,51,14
+    PUSHBUTTON      "Igen, &mindet",107,70,42,51,14
+    PUSHBUTTON      "&Nem",7,127,42,51,14
+    PUSHBUTTON      "Mégse",2,184,42,51,14
+END
+
+43 DIALOG 10, 22, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Fájlátnevezés megerõsítése"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Átnevezendõ fájl:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,58,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,83,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Igen",6,21,42,47,14
+    PUSHBUTTON      "Igen, &mindet",107,74,42,47,14
+    PUSHBUTTON      "&Nem",7,127,42,47,14
+    PUSHBUTTON      "Mégse",2,180,42,47,14
+END
+
+44 DIALOG 15, 12, 157, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Fájlválasztás"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Fájl(ok):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Kijelölés",1,70,6,85,14
+    PUSHBUTTON      "Kijelölés &megszüntetése",6,70,23,85,14
+    PUSHBUTTON      "Mégse",2,70,40,85,14
+    PUSHBUTTON      "&Súgó",254,70,63,85,14
+END
+
+45 DIALOG 11, 31, 201, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lemezmeghajtó választása"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Lemezmeghajtó:",245,"Static",SS_LEFTNOWORDWRAP,5,5,59,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,155,6,40,14
+    PUSHBUTTON      "Mégse",2,155,23,40,14
+    PUSHBUTTON      "&Súgó",254,155,44,40,14
+END
+
+46 DIALOG 11, 28, 254, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Fájlnév választása"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Ez az elérési út nem felel meg a FAT típusú fájlnevek formátumának. Adjon meg egy új nevet.",99,8,4,190,24,NOT WS_GROUP
+    RTEXT           "Új &név:",-1,9,56,50,12,NOT WS_GROUP
+    EDITTEXT        103,61,55,130,12
+    RTEXT           "Eredeti elérési út:",-1,2,28,57,11,NOT WS_GROUP
+    EDITTEXT        102,61,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "Célkönyvtár:",-1,9,42,50,11,NOT WS_GROUP
+    EDITTEXT        101,61,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",1,209,4,40,14
+    PUSHBUTTON      "Mégse",2,209,20,40,14
+    PUSHBUTTON      "&Súgó",254,209,36,40,14
+END
+
+48 DIALOG 23, 13, 274, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s tulajdonságai"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,217,6,50,14,WS_GROUP
+    PUSHBUTTON      "Mégse",2,217,23,50,14
+    PUSHBUTTON      "&Súgó",254,217,43,50,14
+    CONTROL         "&Fájlnév:",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,82,5,134,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "E&lérési út:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,82,16,134,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Legutóbbi módosítás:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,69,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,82,27,97,10
+    CONTROL         "Méret:",260,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,82,38,90,10
+    GROUPBOX        "Attribútumok",-1,4,52,120,54
+    CONTROL         "Írás&védett",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,52,12
+    CONTROL         "R&ejtett",216,"Button",BS_AUTOCHECKBOX,71,64,49,12
+    CONTROL         "&Archiválandó",217,"Button",BS_AUTOCHECKBOX,9,76,57,12
+    CONTROL         "&Rendszer",218,"Button",BS_AUTOCHECKBOX,71,76,49,12
+    CONTROL         "&Tömörített",267,"Button",BS_AUTOCHECKBOX,9,88,52,12
+END
+
+49 DIALOG 13, 54, 264, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Betûtípus"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Betûtípus:",1088,6,3,40,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Be&tûstílus:",1089,108,3,44,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Méret:",1090,179,3,30,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Effektusok",1072,6,73,84,61,WS_GROUP
+    CONTROL         "Át&húzás",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,49,10
+    CONTROL         "&Aláhúzás",1041,"Button",BS_AUTOCHECKBOX,10,95,51,10
+    CONTROL         "A &FAT meghajtók kisbetûsek",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,127,252,10
+    CONTROL         "Minden meghajtó &kisbetûs",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,139,252,10
+    LTEXT           "Szí&n:",1091,10,107,30,9
+    COMBOBOX        1139,10,117,75,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",1,218,6,40,14,WS_GROUP
+    PUSHBUTTON      "Mégse",2,218,23,40,14,WS_GROUP
+    PUSHBUTTON      "Alkalma&z",1026,218,40,40,14,WS_GROUP
+    PUSHBUTTON      "&Súgó",1038,218,57,40,14,WS_GROUP
+    GROUPBOX        "Minta",1073,6,72,252,49,WS_GROUP
+    CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbÕõÛû",1092,10,81,243,37,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Lemez formázása"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "Elrejtés",110,38,48,40,14
+    PUSHBUTTON      "Mégse",2,82,48,40,14
+END
+
+51 DIALOG 10, 20, 312, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Megerõsítés: Fájl vagy könyvtár figyelmen kívül hagyása és folytatás"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Hozzáférés megtagadva:",202,"Static",SS_LEFTNOWORDWRAP,25,13,203,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,135,13,122,10
+    CONTROL         "A fájl használatban van, vagy nincs hozzá hozzáférési joga.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,25,230,10
+    CONTROL         "A fájl figyelmen kívül hagyásához és a mûvelet folytatásához kattintson az Igen gombra.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,37,287,10
+    DEFPUSHBUTTON   "&Igen",6,43,52,51,14
+    PUSHBUTTON      "Igen, &mindet",107,100,52,51,14
+    PUSHBUTTON      "&Nem",7,157,52,51,14
+    PUSHBUTTON      "Mégse",2,214,52,51,14
+END
+
+52 DIALOG 10, 20, 319, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Megerõsítés: Fájl vagy könyvtár figyelmen kívül hagyása és folytatás"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "A célhoz nincs hozzáférési joga:",202,"Static",SS_LEFTNOWORDWRAP,25,13,203,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,161,13,106,10
+    CONTROL         "A fájl figyelmen kívül hagyásához és a mûvelet folytatásához kattintson az Igen gombra.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,23,294,10
+    DEFPUSHBUTTON   "&Igen",6,37,42,57,14
+    PUSHBUTTON      "Igen, &mindet",107,100,42,57,14
+    PUSHBUTTON      "&Nem",7,163,42,57,14
+    PUSHBUTTON      "Mégse",2,226,42,57,14
+END
+
+53 DIALOG 77, 109, 189, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Keresés a lemezen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Fájlnév:",-1,"Static",SS_LEFTNOWORDWRAP,4,5,60,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,65,5,120,10
+    CONTROL         "Keresés kezdete:",-1,"Static",SS_LEFTNOWORDWRAP,4,15,70,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,65,15,120,10
+    CONTROL         "Olvasott könyvtárak:",-1,"Static",SS_LEFTNOWORDWRAP,4,25,73,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,81,25,100,10
+    CONTROL         "Egyezés:",-1,"Static",SS_LEFTNOWORDWRAP,4,35,60,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,81,35,100,10
+    PUSHBUTTON      "Elrejtés",110,50,48,40,14
+    PUSHBUTTON      "Mégse",2,94,48,40,14
+END
+
+54 DIALOG 20, 20, 252, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Másolás a Vágólapra"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Aktuális könyvtár: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,4,5,197,10
+    CONTROL         "&Másolás a Vágólapra:",-1,"Static",SS_LEFTNOWORDWRAP,4,20,72,10
+    EDITTEXT        102,76,19,125,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,206,6,40,14
+    PUSHBUTTON      "Mégse",2,206,23,40,14
+    PUSHBUTTON      "&Súgó",254,206,43,40,14
+END
+
+55 DIALOG 18, 14, 304, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Fájltípus megváltóztatása"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Fájltípus:",302,4,6,33,8
+    EDITTEXT        301,41,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "&Mûvelet: ",-1,4,22,248,126,WS_GROUP
+    COMBOBOX        306,40,22,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Parancs:",313,8,42,38,8
+    EDITTEXT        304,46,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Tallózás...",318,163,38,40,14
+    CONTROL         "DDE &használata",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,57,64,10
+    LTEXT           "&DDE üzenet:",320,21,72,50,8
+    EDITTEXT        309,104,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "DDE ü&zenetküldõ alkalmazás nem fut:",322,21,84,82,19
+    LTEXT           "(választható)",324,206,90,43,8
+    EDITTEXT        311,104,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Alkalmazás:",321,21,109,39,8
+    EDITTEXT        310,104,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "Téma&kör:",323,22,127,51,8
+    EDITTEXT        312,104,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "Ú&j kiterjesztés:",-1,10,184,52,8
+    EDITTEXT        315,63,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "H&ozzáadás ->",303,108,174,57,14
+    PUSHBUTTON      "<- &Eltávolítás",219,108,191,57,14
+    LTEXT           "Kiterje&sztések:",-1,179,162,50,8
+    LISTBOX         317,179,172,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "A fájltípushoz hozzárendelt kiterjesztések:",316,4,154,248,66
+    DEFPUSHBUTTON   "OK",1,258,6,40,14
+    PUSHBUTTON      "Mégse",2,258,23,40,14
+    PUSHBUTTON      "Sú&gó",254,258,40,40,14
+END
+
+57 DIALOG 123, 60, 207, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Fájltömörítési folyamat"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Tömörítendõ fájl:",-1,6,8,79,8
+    LTEXT           "filename.xxx",341,86,8,90,8
+    LTEXT           "Könyvtár:",-1,6,20,36,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,43,20,150,8
+    LTEXT           "Tömörített könyvtárak:",-1,6,32,102,8
+    LTEXT           "1,888,888,999",343,90,32,60,8
+    LTEXT           "Tömörített fájlok:",-1,6,44,62,8
+    LTEXT           "1,888,888,999",344,74,44,58,8
+    LTEXT           "A tömörítés elõtti fájlméret:",-1,6,56,124,8
+    LTEXT           "9,999,999,999,999",345,134,56,68,8
+    LTEXT           "A tömörítés utáni fájlméret:",-1,6,68,123,8
+    LTEXT           "9,999,999,999,999",346,134,69,68,8
+    LTEXT           "Fájltömörítés aránya:",-1,6,80,78,8
+    LTEXT           "100%",347,91,80,27,8
+    PUSHBUTTON      "Mégse",2,76,97,55,14
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Fájlok kibontása folyamatban"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Kibontandó fájl:",-1,6,8,83,8
+    LTEXT           "filename.xxx",351,93,8,66,8
+    LTEXT           "Könyvtár:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,45,20,144,8
+    LTEXT           "Kibontott könyvtárak:",-1,6,32,91,8
+    LTEXT           "1,999,999,999",353,99,32,70,8
+    LTEXT           "Kibontott fájlok:",-1,6,44,86,8
+    LTEXT           "1,999,999,999",354,92,44,78,8
+    PUSHBUTTON      "Mégse",2,74,64,49,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Tömörítési hiba"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,18,20
+    LTEXT           "",100,35,8,190,33
+    DEFPUSHBUTTON   "&Tovább",5,21,47,40,14,WS_GROUP
+    PUSHBUTTON      "Mindet &kihagyja",112,67,47,59,14
+    PUSHBUTTON      "Új&ra",4,132,47,40,14
+    PUSHBUTTON      "&Megszakítás",3,178,47,48,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,318
+ PRODUCTVERSION 4,0,1381,318
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040E04B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "Fájlkezelõ"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Microsoft(R) Windows NT(TM) operációs rendszer"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40e, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "Lemezmásolás"
+    51                      "Helyezze be a céllemezt."
+    52                      "Helyezze be a forráslemezt."
+    53                      "Helyezze be a forrás- és a céllemezt."
+    54                      "Céllemez formázása"
+    55                      "Lemezmásolási hiba"
+    56                      "Nem lehet a lemezt másolni."
+    58                      "A forrás- és céllemez nem kompatíbilis."
+    60                      "%d%% kész"
+    61                      "Gyökérkönyvtár létrehozása..."
+    62                      "Rendszerfájlok másolása..."
+    63                      "Lemezformázási hiba"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "A formázás befejezõdött"
+    67                      "Teljes lemezméret: %ld bájt\nRendelkezésre álló lemezterület: %ld bájt\n\nKíván másik lemezt formázni?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "Hálózati hiba"
+    83                      "Ez a meghajtó tartalmazza a Windows rendszerfájlokat, ezért nem lehet leválasztani."
+    91                      "A Fájlkezelõ nem tudja megváltoztatni az attribútumokat. "
+    92                      "A Fájlkezelõ nem tudja létrehozni a könyvtárat. "
+    93                      "A Fájlkezelõ nem képes címkézni a lemezt. \n\nEllenõrizze, nem írásvédett-e a lemez, nem hálózati meghajtó-e, illetve hogy érvényes-e a megadott címke. A címke nem tartalmazhatja a következõ karaktereket:\n[szóköz] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > """
+    95                      "Egyetlen ilyen fájl sem található."
+END
+
+STRINGTABLE
+BEGIN
+    97                      "A meghajtó tartalma megváltozott. Kívánja frissíteni a Keresés eredménye ablakot?"
+    98                      "A mûvelet elvégzéséhez a munkaállomásra rendszergazdaként kell bejelentkezni."
+    101                     "%c:%c meghajtó"
+    110                     "A program nem futtatható."
+    111                     "Nem várt hiba: %d"
+END
+
+STRINGTABLE
+BEGIN
+    112                     "Az alkalmazás elindításához nincs elég memória.\n\nLépjen ki egy vagy több alkalmazásból, majd próbálkozzon újra."
+    113                     "A Fájlkezelõ nem találja a fájlt (vagy valamely összetevõjét).\n\nGyõzõdjön meg róla, hogy az elérési út és a fájlnév helyes, illetve a szükséges könyvtárak elérhetõk."
+    114                     "A megadott elérési út érvénytelen."
+    116                     "Ehhez a fájlhoz nem tartozik társított alkalmazás.\n\nHa szeretne hozzá alkalmazást társítani, válassza a Fájl menü Társítás parancsát."
+    118                     "A Fájlkezelõ nem tudja megnyitni vagy nyomtatni a fájlt.\n\nIndítsa el a fájl létrehozásához használt alkalmazást, és nyissa meg vagy nyomtassa onnan."
+    120                     "Egérmûvelet jóváhagyása"
+    121                     "Biztos, hogy át akarja másolni a kijelölt fájlokat vagy könyvtárakat a következõ helyre: %s?"
+    122                     "Biztos, hogy át kívánja helyezni a kijelölt fájlokat vagy könyvtárakat a következõ helyre: %s?"
+    123                     "Biztos, hogy %s indítását szeretné úgy, hogy a kezdõfájl %s?"
+    124                     "Fájlkezelõ"
+    126                     "Könyvtárfa"
+    127                     "Keresés eredménye: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "Túl sok a fájl."
+    133                     "Fájlkezelõ - kevés a memória"
+    134                     "Nem olvasható a teljes könyvtár. Csak részleges listázás jeleníthetõ meg."
+    140                     "Aktuális könyvtár: %s"
+    141                     "Másolás"
+    143                     "Átnevezés"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "Lemezformázás"
+    146                     "Jelölje ki a formázni kívánt lemezt."
+    150                     "Létrehozás:"
+    151                     "Eltávolítás..."
+    152                     "Másolás:"
+    153                     "Átnevezés..."
+    154                     "Áthelyezés..."
+    155                     "Törlés..."
+    156                     "Nyomtatás: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "Másolás..."
+    170                     "Eltávolítás:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "Összesen %d fájl (%s)"
+    181                     "Beolvasott könyvtárak: %d "
+    182                     "%c: %s szabad,  összesen: %s"
+    183                     "%d fájl"
+    185                     "a kijelölt fájlok"
+    186                     "A Fájlkezelõ nem tudja leválasztani a hálózati meghajtót.\n\nA meghajtón megnyitott fájlok vannak."
+    187                     "%d kijelölt fájl (%s)"
+    188                     "A meghajtóban (%c) nincs lemez.\n\nHelyezzen be egy lemezt, és próbálja meg újra."
+    189                     "A(z) %c: meghajtóban lévõ lemez nincs formázva.\n\nKívánja formázni?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "A lemezen nincs elegendõ hely a nyomtatáshoz.\n\nTöröljön le néhány fölösleges fájlt, és próbálja újra."
+    193                     "A nyomtatáshoz nincs elegendõ memória.\n\nLépjen ki egy vagy több alkalmazásból, majd próbálkozzon újra."
+    194                     "Hiba történt nyomtatás közben.\n\nEllenõrizze, hogy a nyomtató megfelelõen van-e beállítva és kiválasztva."
+    195                     "Nem teljes a könyvtárfa"
+    197                     "A céllemez megtelt. A folytatáshoz helyezzen be egy másik lemezt."
+    198                     "Ez a fájl rejtett, írásvédett vagy rendszerfájl."
+    199                     "A Fájlkezelõ nem tud gyorsformázást végrehajtani.\n\nFolytatja normál formázással?"
+    203                     "Hiba történt, miközben a rendszer az alkalmazáshoz továbbította a parancsot."
+    204                     "Nem lehet a mûvelethez szükséges egyik függvénytárat betölteni."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "&Megosztott könyvtárak..."
+    210                     "A formázás a lemezen lévõ összes adatot törli. Biztos benne, hogy formázni kívánja a meghajtóban (%c) lévõ lemezt?"
+    211                     "Lemezformázás jóváhagyása"
+    212                     "Ez a mûvelet MINDEN adatot töröl a céllemezrõl. Biztosan folytatja?"
+    213                     "Lemezmásolás jóváhagyása"
+    214                     "&Bezárás"
+    215                     "Bezárás"
+    218                     "A következõ könyvtár nem létezik: %s.\n\nLétre kívánja hozni?"
+    219                     "Programok#*.exe;*.pif;*.com;*.bat#Minden fájl (*.*)#*.*#"
+    220                     "Tallózás"
+    221                     "Futtatás"
+    222                     "Nem lehet a fájlt kinyomtatni."
+    223                     "Nem lehet a súgót megjeleníteni."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "A(z) %s kiterjesztésû fájlok programok, programot pedig nem lehet másik programmal társítani."
+    225                     "%s nem program, ezért nem rendelhetõ hozzá egy fájlkiterjesztéshez."
+    226                     "(Nincs)"
+    227                     "Nincsenek fájlok."
+    228                     "A Fájlkezelõ nem tud egyszerre több fájlt kinyomtatni.\n\nJelöljön ki egyetlen fájlt, majd próbálkozzon újra."
+    230                     "Az alkalmazás futtatásához szükséges egyik függvénytári fájl sérült. Telepítse újra az alkalmazást."
+    231                     "Ezt a fájlt valamelyik másik alkalmazás használja."
+    232                     "Lehet, hogy a Fájlkezelõ nem tud hozzáférni a következõ könyvtárban létrehozott fájlokhoz: %s.\n\nKívánja folytatni?"
+    233                     "Könyvtár létrehozása"
+    234                     "%ld bájt"
+    235                     "%s bájt"
+    236                     "A Fájlkezelõ nem tud egyszerre több fájlt vagy könyvtárat a Vágólapra másolni.\n\nVálasszon ki egyetlen fájlt, majd próbálja újra."
+    237                     "%s - %s"
+    238                     "Lemezmeghajtó:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "Hálózati meghajtó csatlakoztatása"
+    241                     "Hálózati lemezmeghajtó leválasztása"
+    242                     "Hálózati csatlakozások"
+    243                     "Megosztási könyvtár"
+    244                     "Könyvtármegosztás megszüntetése"
+    245                     "Minden fájlinformáció megjelenítése"
+    246                     "Csak a név megjelenítése"
+    247                     "Név szerinti rendezés"
+    248                     "Típus szerinti rendezés"
+    249                     "Méret szerinti rendezés"
+    250                     "Dátum szerinti rendezés"
+    251                     "Új ablak"
+    252                     "Fájl másolása"
+    253                     "Fájlok áthelyezése"
+    254                     "&Könyvtárnév:"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "A hálózati meghajtó nem érhetõ el."
+    259                     "Megosztva a következõként: %s"
+    260                     "Nincs megosztva"
+    261                     "Fájlok törlése"
+    262                     " - TÖMÖRÍTETT"
+    263                     "Fájlok másolása ide: %s"
+    264                     "Fájlok áthelyezése ide: %s"
+    265                     "Fájlok futtatása a következõvel: %s"
+    266                     "%s bájt"
+    267                     "%s KB"
+    268                     "%s MB"
+    269                     "%s GB"
+    270                     "%s TB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "Nincs hozzáférési jogosultsága a könyvtárhoz."
+    281                     "Nincs hozzáférési jogosultsága a fájlhoz."
+    283                     "%c meghajtó foglalt és nem hozzáférhetõ.\nA Fájlkezelõ lemezt másol."
+    284                     "%c meghajtó foglalt és nem hozzáférhetõ.\nA Fájlkezelõ lemezt formáz."
+    285                     "A mûveletet nem sikerült teljesen végrehajtani."
+    286                     "A mûveletet nem lehet minden fájlon és könyvtáron elvégezni."
+    287                     "A könyvtár nem olvasható."
+END
+
+STRINGTABLE
+BEGIN
+    288                     "Nem létezõ könyvtár."
+    289                     "Nem csatlakoztatható a hálózati meghajtó."
+    290                     "A hálózat neve nem található."
+    292                     "Az ""igen, mindet"" minden fájlt érint, így a rendszerfájlokat, rejtett és írásvédett fájlokat is."
+    294                     "Megnyitás"
+    295                     "Nyomtatás"
+    298                     "Kiterjesztés hozzáadása"
+    299                     "A kiterjesztés ('%s') jelenleg a következõvel van társítva: '%s'. Folytatja és felülírja ezt a társítást?"
+    300                     "Társításszerkesztõ"
+    301                     "Nem lehet kiterjesztést társítani. "
+    302                     "Nem lehet a kiterjesztést törölni. "
+    303                     "Nem lehet fájltípust hozzáadni. "
+END
+
+STRINGTABLE
+BEGIN
+    304                     "Nem lehet a fájltípust törölni. "
+    305                     "Nem lehet a fájltípust olvasni. "
+    306                     "A Fájltípus leírása nem lehet üres. Írjon be új fájltípust."
+    307                     "Nem lehet a fájltípus alapján egyedi azonosítót generálni. Írjon be új fájltípust."
+    308                     "Fájltípus törlése"
+    309                     "Ezzel törli a fájltípust és az összes társított kiterjesztést. Biztosan törli a következõt: %s?"
+    312                     "A Fájltípushoz kell lennie parancsnak legalább az egyik Mûveletéhez. Adjon meg a parancsmezõben egy alkalmazást."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "Új fájltípus"
+    321                     "Lemez másolása"
+    322                     "Keresés..."
+    324                     "A Fájlkezelõ épp egy lemez formázását végzi. Amennyiben kilép a Fájlkezelõbõl, a mûvelet megszakad."
+    325                     "A Fájlkezelõ épp egy lemez másolását végzi. Amennyiben kilép a Fájlkezelõbõl, a mûvelet megszakad."
+    326                     "százalék kész"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360K"
+    354                     "1%s2 MB"
+    355                     "720K"
+    356                     "1%s44 MB"
+    357                     "2%s88 MB"
+    358                     "Lemezkapacitás"
+    359                     "A Fájlkezelõ nem tudja beolvasni a  a lemez információját.\n\nGyõzõdjön meg róla, hogy a lemez a meghajtóban van."
+    360                     "20%s8 MB"
+    361                     "Ismeretlen lemeztípus"
+    362                     "Ismeretlen lemeztípus"
+    363                     "A Fájlkezelõ nem tudja formázni a meghajtóban (%s) lévõ lemeztípust. A lemez formázásához használja a Lemezkezelõt."
+END
+
+STRINGTABLE
+BEGIN
+    400                     "Nem kompatíbilis fájlrendszer"
+    401                     "A hozzáférés megtagadva."
+    402                     "A lemez írásvédett."
+    403                     "A fájlkezelõ nem tudja zárolni a kötetet."
+    404                     "A Fájlkezelõ nem tud gyorsformázást végrehajtani a lemezen.\n\nGyõzõdjön meg róla, hogy a lemez megfelelõ sûrûségû."
+    405                     "IO hiba a forráslemezen"
+    406                     "IO hiba a céllemezen"
+    407                     "IO hiba a forrás- és a céllemezen"
+    408                     "IO hiba történt."
+    411                     "A Fájlkezelõ nem tudja megformázni a lemezt.\n\nGyõzõdjön meg róla, hogy a lemez a meghajtóban van, nem írásvédett, nem sérült és megfelelõ sûrûségû."
+    412                     "A Fájlkezelõ nem tudja a lemezt megcímkézni.\n\nA megadott címke nem érvényes. Ellenõrizze, nem tartalmazza-e a címke az alábbi karakterek egyikét:\n[szóköz] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "Megnyitás..."
+    421                     "Bezárás..."
+    422                     "Túl sok könyvtárablak van megnyitva.\n\nZárjon be néhány ablakot, majd próbálja újra."
+    423                     "Gyorsformázás..."
+    424                     "Nem lehet inicializálni a háttérfrissítési támogatást. A fájlkezelõ befejezõdik. "
+    425                     "Fájlkezelõ inicializálása"
+    426                     "Könyvtár olvasása, kis türelmet..."
+    427                     "%s könyvtárban minden fájlt és alkönyvtárat tömöríteni szeretne?"
+    428                     "%s könyvtárban minden fájlt és alkönyvtárat ki szeretne bontani?"
+    429                     "A Fájlkezelõ nem tudja megváltoztatni %s tömörítési attribútumait."
+    430                     "A fájl (%s) tömörítésére nem kerül sor. A fájl tömörítése esetén a rendszer betölthetetlenné válhat."
+    431                     "A Fájlkezelõ jelenleg fájlok tömörítését/kibontását végzi.\nVárja meg a mûvelet befejeztét, mielõtt újabb fájlokat próbálna tömöríteni/kibontani."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "Megjegyzések"
+    501                     "A cég neve"
+    502                     "Fájl leírása"
+    503                     "Belsõ név"
+    504                     "Legális védjegyek"
+    505                     "Eredeti fájlnév"
+    506                     "Saját build leírás"
+    507                     "Terméknév"
+    508                     "Termék verziószáma"
+    509                     "Speciális build leírás"
+    510                     "Nyelv"
+    511                     "Nyelv"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "Hálózati meghajtó c&satlakoztatása..."
+    801                     "Há&lózati meghajtó leválasztása..."
+    802                     "&Hálózati csatlakozások..."
+    803                     "&Megosztás másként..."
+    804                     "Me&gosztás megszüntetése..."
+    805                     "&Osztott könyvtárak megtekintése..."
+    806                     "&Törlés visszavonása..."
+    807                     "Új &ablak megnyitása csatlakozáskor"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "Hiba fájl áthelyezésekor"
+    1002                    "Hiba fájl másolása során"
+    1003                    "Hiba fájl törlésekor"
+    1004                    "Hiba a fájl átnevezésekor"
+    1005                    "Hiba meghajtó kijelölésekor"
+    1006                    "Hiba könyvtár olvasásakor"
+    1007                    "Hiba lemez címkézésekor"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "%s - a Fájlkezelõ nem tudja áthelyezni: %s."
+    1012                    "A Fájlkezelõ nem tudja a fájlt (%s) átmásolni: %s."
+    1013                    "%s - a Fájlkezelõ nem tudja törölni: %s"
+    1014                    "%s - a Fájlkezelõ nem tudja átnevezni: %s."
+    1021                    "A Fájlkezelõ nem tudja a következõ könyvtárat létrehozni: %s: %s."
+    1022                    "A Fájlkezelõ nem tudja törölni a következõ könyvtárat: %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "%s - a Fájlkezelõ nem tudja létrehozni vagy lecserélni: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "Ugyanaz a forrás és a cél."
+    1102                    "Átnevezéshez csak egyetlen fájlt jelöljön ki, vagy hasonló nevû fájlok csoportjának átnevezéséhez használjon helyettesítõ karaktereket (például: *.TXT)."
+    1103                    "Másik könyvtárra vagy lemezre nem lehet átnevezni.\nHasználja a Fájl áthelyezése parancsot."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "A gyökér könyvtár nem nevezhetõ át."
+    1105                    "A célkönyvtár a forrás egy alkönyvtára."
+    1106                    "A Windows használja a fájlt."
+    1107                    "Csak egyetlen fájlt vagy mappát adjon meg a Módosítás mezõben, vagy, ha fájlok egy csoportját kívánja megadni, használjon MS-DOS helyettesítõ karaktereket (például: *.TXT)"
+    1108                    "Ilyen nevû fájl vagy könyvtár már létezik. Egy könyvtáron belül a könyvtár- és fájlneveknek egyedieknek kell lenniük."
+    1109                    "Ellenõrizze, hogy az elérési utat és a fájlnevet helyesen adta-e meg."
+    1110                    "Ellenõrizze, hogy az elérési utat helyesen adta-e meg."
+    1111                    "Lépjen ki egy vagy több alkalmazásból, és próbálja újra, vagy növelje meg a virtuális memóriát a Vezérlõpult Rendszerbeállítások alkalmazásával."
+    1113                    "Szüntesse meg a lemez írásvédettségét, vagy használjon másik lemezt, és próbálja újra."
+    1114                    "Ellenõrizze, hogy kellõ hálózati jogosultsággal rendelkezik-e a mûvelet végrehajtásához."
+    1115                    "A lemezterület növeléséhez töröljön néhány fájlt, majd próbálja újra."
+    1116                    "Ezen az adathordozón nem sikerült adatot találni."
+    1117                    "A könyvtár már létezik."
+    1118                    "A megadott nevet már használja egy fájl."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "Rossz lemez van a meghajtóban."
+    1151                    "Az alkalmazás Windows NT módban nem futtatható."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "Az operációs rendszer nem tudja futtatni ezt az összetevõt."
+    1153                    "Az összetevõ Windows NT módban nem futtatható."
+    1154                    "Ez a program nem érvényes Windows NT alkalmazás."
+    1155                    "Hiba történt. Ehhez a hibához nem tartozik üzenet."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ƒRƒs[Œ³(&F):"
+    2001                    "ƒRƒs[æ(&T):"
+    2002                    "Œ³‚Ì–¼‘O(&F):"
+    2003                    "V‚µ‚¢–¼‘O(&T):"
+    2004                    "ƒRƒs[æ:"
+    2005                    "‚±‚ÌƒtƒHƒ“ƒg‚ğg—p‚·‚é‚ÆŠ¿š‚Ì•\\¦‚ª\n‚Å‚«‚È‚­‚È‚è‚Ü‚·B"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "Parancsok fájlokkal végzett munkához"
+    3985                    "Parancsok lemezekkel végzett munkához"
+    3986                    "Parancsok a faszerkezet-ablakban való munkához"
+    3987                    "Parancsok az információ megjelenésének meghatározásához"
+    3988                    "Parancsok a beállítások elvégzéséhez"
+    3989                    "Fájlok és könyvtárak adatvédelmének kezelésére szolgáló parancsok"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "Parancsok az ablakok elrendezéséhez"
+    4001                    "Parancsok a Fájlkezelõ Súgójának megjelenítéséhez"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "Témakör keresése a Fájlkezelõ Súgójában"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "Kijelölt tétel megnyitása"
+    4102                    "Dokumentum nyomtatása"
+    4103                    "Fájl társítása alkalmazással"
+    4104                    "Fájlok és könyvtárak keresése"
+    4105                    "Alkalmazás vagy dokumentum elindítása vagy megnyitása"
+    4106                    "Kijelölt elemek áthelyezése"
+    4107                    "Fájlok és könyvtárak másolása"
+    4108                    "Fájlok és könyvtárak törlése"
+    4109                    "Fájl vagy könyvtár átnevezése"
+    4110                    "Fájlattribútumok beállítása és a tulajdonságok megjelenítése"
+    4111                    "Könyvtár létrehozása"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "Kilépés a Fájlkezelõbõl"
+    4116                    "Fájlok és könyvtárak kijelölése"
+    4117                    "Korábban törölt fájlok visszanyerése"
+    4118                    "Fájl másolása a Vágólapra"
+    4119                    "Fájl vagy könyvtár tömörítése"
+    4120                    "Fájl vagy könyvtár kibontása"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "Hajlékonylemez tartalmának másolása"
+    4202                    "Lemez kötetcímkéjének hozzárendelése vagy módosítása"
+    4203                    "Hajlékonylemez formázása"
+    4205                    "Csatlakozás hálózati meghajtóhoz"
+    4206                    "Leválasztás hálózati meghajtóról"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "Másik meghajtó kijelölése"
+    4254                    "Könyvtár megosztása"
+    4255                    "Könyvtármegosztás megszüntetése"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "Könyvtár egy másik szintjének megjelenítése"
+    4302                    "Könyvtár minden szintjének megjelenítése"
+    4303                    "Minden könyvtár minden szintjének megjelenítése"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "Kijelölt könyvtár összes könyvtárának becsukása"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "Csak fájlnevek megjelenítése"
+    4402                    "Összes fájladat megjelenítése"
+    4403                    "Fájlrészletek részleges megjelenítése"
+    4404                    "Fájlok rendezése név szerint"
+    4405                    "Fájlok rendezése típus szerint"
+    4406                    "Fájlok rendezése méret szerint"
+    4407                    "Fájlok rendezése dátum szerint"
+    4409                    "Adott típusú fájlok megjelenítése"
+    4411                    "A könyvtárfa megjelenítése"
+    4412                    "Az aktuális könyvtár tartalmának a megjelenítése"
+    4413                    "A könyvtárfa és az aktuális könyvtár tartalmának megjelenítése"
+    4414                    "Könyvtárablak szétvágása vagy a választóvonal áthelyezése"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "Jóváhagyó üzenetek szabályozása"
+    4503                    "Az állapotsor megjelenítése vagy elrejtése"
+    4504                    "A Fájlkezelõ ikonállapotban indul"
+    4505                    "Alkönyvtárakat tartalmazó könyvtárak jelzése"
+    4507                    "Lemezmeghajtósor megjelenítése vagy elrejtése"
+    4508                    "Az eszköztár megjelenítése vagy elrejtése"
+    4509                    "Új ablak megnyitása csatlakozáskor"
+    4510                    "A Fájlkezelõ betûtípusának módosítása"
+    4511                    "Beállítások mentése a Fájlkezelõbõl való kilépéskor"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "Az eszköztár testreszabása"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "Hozzáférési jogok megjelenítése és beállítása"
+    4606                    "A kiválaszott elem(ek)re vonatkozó naplózási információk megjelenítése és beállítása."
+    4607                    "A kiválasztott elem(ek) megjelenítése vagy saját tulajdonba vétele."
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "Ablakok lépcsõzetes elrendezése"
+    5702                    "Az ablakok függõleges mozaik elrendezése"
+    5703                    "Az ablakok vízszintes mozaik elrendezése"
+    5704                    "Ablak tartalmának frissítése"
+    5705                    "Ikonok elrendezése"
+    5706                    "Új ablak megnyitása"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "A Fájlkezelõ Súgó tartalomjegyzékének megjelenítése"
+    5802                    "A Súgó használatával kapcsolatos tudnivalók megjelenítése"
+    5803                    "A Fájlkezelõvel kapcsolatos tudnivalók megjelenítése"
+END
+
+#endif    // Hungarian (Hungary) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
