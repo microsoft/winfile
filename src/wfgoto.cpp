@@ -345,7 +345,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 
 		// for all directories at this level, insert into BagOValues
 
-		if ((lfndta.fd.dwFileAttributes & ATTR_DIR) == 0 || ISDOTDIR(lfndta.fd.cFileName))
+		if ((lfndta.fd.dwFileAttributes & ATTR_DIR) == 0 || ISDOTDIR(lfndta.fd.cFileName) || wcscmp(lfndta.fd.cFileName, L"") == 0)
 		{
 			bFound = WFFindNext(&lfndta);
 			continue;
