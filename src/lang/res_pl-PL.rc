@@ -171,7 +171,7 @@ BEGIN
     IDS_FORMATERR           "Błąd formatowania dysku"             /* 32 */
     IDS_FORMATQUICKFAILURE  "Menedżer plików nie może dokonać szybkiego formatowania. \n\nCzy kontynuować normalne formatowanie?"
 //    IDS_FORMATERRMSG        "Nie udało się sformatować dysku."                                                                                                      /* 128 */
-//    IDS_FORMATCURERR        "Nie możesz sformatować bieżacego dysku."                                                                                     /* 128 */
+//    IDS_FORMATCURERR        "Nie możesz sformatować bieżącego dysku."                                                                                     /* 128 */
     IDS_FORMATCOMPLETE      "Formatowanie zakończone"               /* 32 */
     IDS_FORMATANOTHER       "%ld bajtów całkowitego miejsca na dysku\n%ld bajtów wolnych na dysku\n\nCzy chcesz sformatować następny dysk?"                           /* 128 */
 
@@ -322,7 +322,7 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "Menedżer plików obecnie formatuje dysk. Zakończenie działania Menedżera plików spowoduje przerwanie tej operacji."
     IDS_BUSYCOPYQUITVERIFY      "Menedżer plików obecnie kopiuje dysk. Zakończenie działania Menedżera plików spowoduje przerwanie tej operacji."
     IDS_PERCENTCOMPLETE         "Procent ukończono"
-    IDS_FORMATSELECTDLGTITLE    "Format Drive"
+    IDS_FORMATSELECTDLGTITLE    "Sformatuj dysk"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
