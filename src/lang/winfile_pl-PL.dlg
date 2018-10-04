@@ -337,7 +337,7 @@ BEGIN
     CONTROL "&Archiwalny", IDD_ARCHIVE, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 52, 52, 12
     CONTROL "Syst&emowy", IDD_SYSTEM, "button", BS_AUTOCHECKBOX | WS_CHILD, 82, 52, 52, 12
     CONTROL "&Skompresowany", IDD_COMPRESSED, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 64, 52, 12
-    CONTROL "&Encrypted", IDD_ENCRYPTED, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_DISABLED, 72, 64, 52, 12
+    CONTROL "S&zyfrowany", IDD_ENCRYPTED, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_DISABLED, 72, 64, 52, 12
     CONTROL "OK", 1, "button", WS_GROUP | BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 6, 50, 14
     CONTROL "Anuluj", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 23, 50, 14
     CONTROL "Pomo&c", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 150, 43, 50, 14
@@ -530,13 +530,13 @@ BEGIN
 END
 
 FORMATSELECTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 183, 44
-CAPTION "Format Drive"
+CAPTION "Formatuj dysk"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | DS_MODALFRAME | WS_POPUP
 BEGIN
     CONTROL "OK", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 6, 40, 14
-    CONTROL "Cancel", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 23, 40, 14
-    CONTROL "&Drive to format:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 7, 49, 10
+    CONTROL "Anuluj", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 140, 23, 40, 14
+    CONTROL "&Dysk do sformatowania:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 7, 49, 10
     CONTROL "", IDD_SELECTDRIVE, "combobox", CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL | WS_CHILD, 55, 4, 65, 40
 END
 
@@ -829,7 +829,7 @@ BEGIN
    CONTROL "...", IDC_EDITOR, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 205, 14, 20, 14
    CONTROL "Wyłącz &kompozycje paska narzędzi", IDC_VSTYLE, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 38, 210, 14
    CONTROL "Twórz indeks katalogów przy &uruchomieniu", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 210, 14
-   CONTROL "Mirror application content", IDC_MIRROR, "button", BS_AUTOCHECKBOX | WS_CHILD /* | WS_VISIBLE | WS_TABSTOP */, 0, 0, 0, 0    // invisible, not a tabsop; here to satisfy VerifyResources tool.
+   CONTROL "Wyświetl interfejs w odbiciu &lustrzanym", IDC_MIRROR, "button", BS_AUTOCHECKBOX | WS_CHILD /* | WS_VISIBLE | WS_TABSTOP */, 0, 0, 0, 0    // invisible, not a tabsop; here to satisfy VerifyResources tool.
    CONTROL "Język:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 160, 13
    CONTROL "Proszę pamiętać, że część zmian zostanie wprowadzona \npo ponownym uruchomieniu programu.",
