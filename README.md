@@ -1,22 +1,22 @@
 # ![icon](winfile.png) Windows File Manager (WinFile)
 
 The Windows File Manager lives again and runs as a native x86 and x64 desktop app
-on all currently supported version of Windows, including Windows 10. I welcome your thoughts, comments and suggestions.
+on all currently supported version of Windows, including Windows 10. I welcome your thoughts, comments, and suggestions.
 
 There are two primary versions of the source code in the master branch:
 
 1. original_plus tag: refers to the source for WinFile as of Windows NT4 with minimal changes
 so that it compiles with Visual Studio and runs on current Windows.
 
-2. current master: contains my personal changes / additions to WinFile.
+2. current master: contains my personal changes/additions to WinFile.
 
 I will consider bugs fixes and suggestions for minor changes to the master branch.  Feel free to create a pull request or post issues as you see fit.
 
 I will not be changing the original_plus sources nor creating other branches for other purposes.
-You are welcome do that on your own.
+You are welcome to do that on your own.
 
 ## Download The App
-If you just want to download the WinFile application without worrying about compiling from the source code, we have precompiled versions available for both original_plus as well as the latest stable release for you to download. Source code for the corresponding release is also, optionally, available.
+If you just want to download the WinFile application without worrying about compiling from the source code, we have pre-compiled versions available for both original_plus as well as the latest stable release for you to download. Source code for the corresponding release is also, optionally, available.
 
 Please select the version which you would like to download.
 
@@ -31,7 +31,7 @@ To see more release binaries, including of older versions, [see the releases pag
 
 ## History
 
-The Windows File manager was originally released with Windows 3.0 in the early 1990s.  You
+The Windows File manager was initially released with Windows 3.0 in the early 1990s.  You
 can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
 
 ## What it looks like
@@ -43,7 +43,7 @@ Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded
 ## Changes in original_plus
 
 The source code provided here (in the src directory) was copied from the Windows NT 4 source tree in November
-2007.  The tag named original_plus contains a very limited set of  modifications
+2007.  The tag named original_plus contains a minimal set of modifications
 from the original sources to enable WinFile.exe to run on current Windows.
 The most significant changes are:
 
@@ -55,8 +55,7 @@ The most significant changes are:
 6. converted internal shell APIs to public APIs (the primary reason the old version would not run)
 
 The help directory contains both winfile.hlp and winfile.chm.  Winfile.hlp was in the NT4
-source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from 
-a regular installation of Windows 98 and works on Windows 10.  As is, WinFile.exe 
+source tree, but does not work on Windows 10 anymore.  Winfile.chm was copied from a regular installation of Windows 98 and works on Windows 10.  As is, WinFile.exe 
 tries to launch winfile.hlp which fails.
 
 To create your own local branch referring to this release, run "git checkout -b <your branch> original_plus".
@@ -67,15 +66,15 @@ The master branch contains changes I have made since 2007.  The changes have bee
 by my needs and personal use.  Some of the changes have limitations that fit the way I use the tool.
 For example, the path index which supports the new goto command only contains information for the c: drive.
 
-I have also not redesigned or restructured WinFile in any major way.
+I have also not redesigned or restructured WinFile in any significant way.
 
 Version v10.0 represents the entire set of changes from Nov. 2007 until this OSS project
 was created.  For changes post v10.0, see the commit and release history.
 
-In summary v10.0 has the following changes/new features compared to original_plus:
+In summary, v10.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
-2. control characters (e.g., ctrl+C) map to current short cut (e.g., ctrl+c -> copy)
+2. control characters (e.g., ctrl+C) map to current shortcut (e.g., ctrl+c -> copy)
 instead of changing drives
 3. cut (ctrl+X) followed by paste (ctrl+V) translates into a file move as one would expect
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer
