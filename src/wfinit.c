@@ -18,6 +18,8 @@
 #include <ole2.h>
 #include <shlobj.h>
 
+#include "dbg.h"
+
 typedef VOID (APIENTRY *FNPENAPP)(WORD, BOOL);
 
 VOID (APIENTRY *lpfnRegisterPenApp)(WORD, BOOL);
@@ -83,6 +85,9 @@ BiasMenu(HMENU hMenu, UINT Bias)
          // replace the item that was there with a new
          // one with the id adjusted
 
+         // makes sure id range is 0=99 first; really should assert or throw an exception
+         id %= 100;
+
          GetMenuString(hMenu, pos, szMenuString, COUNTOF(szMenuString), MF_BYPOSITION);
          DeleteMenu(hMenu, pos, MF_BYPOSITION);
          InsertMenu(hMenu, pos, MF_BYPOSITION | MF_STRING, id + Bias, szMenuString);
@@ -100,19 +105,15 @@ InitExtensions()
    HANDLE hMod;
    FM_EXT_PROC fp;
    HMENU hMenu;
-   INT iMax;
+   INT iMenuBase;
    HMENU hMenuFrame;
-   HWND  hwndActive;
    INT iMenuOffset=0;
    BOOL bUnicode;
 
    hMenuFrame = GetMenu(hwndFrame);
 
-   hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-   if (hwndActive && GetWindowLongPtr(hwndActive, GWL_STYLE) & WS_MAXIMIZE)
-      iMax = 1;
-   else
-      iMax = 0;
+   ASSERT(!bSecMenuDeleted);
+   iMenuBase = MapIDMToMenuPos(IDM_EXTENSIONS);
 
    GetPrivateProfileString(szAddons, NULL, szNULL, szBuf, COUNTOF(szBuf), szTheINIFile);
 
@@ -142,11 +143,11 @@ InitExtensions()
             // don't know about each other and may clash IDM_xx if
             // we don't.
 
-            // Our system is as follow:  IDMs 1000 - 6999 are reserved
+            // Our system is as follow:  IDMs 100 - 699 are reserved
             // for us (menus 0 - 5 inclusive).  Thus, IDMs
-            // 7000 - 1199 is reserved for extensions.
+            // 700 - 1699 is reserved for extensions.
             // This is why we added 1 in the above line to compute
-            // bias: IDMs 0000-0999 are not used for menu 0.
+            // NOTE: IDMs 0000-0099 are not used for menu 0.
 
             if (bUnicode)
                lsW.wMenuDelta = bias;
@@ -167,17 +168,23 @@ InitExtensions()
                extensions[iNumExtensions].hMenu = hMenu;
                extensions[iNumExtensions].bUnicode = bUnicode;
 
+               // these are set when FMEVENT_TOOLBARLOAD is called
+               extensions[iNumExtensions].hbmButtons = NULL;
+               extensions[iNumExtensions].idBitmap = 0;
+               extensions[iNumExtensions].iStartBmp = 0;
+               extensions[iNumExtensions].bRestored = FALSE;
+
                if (hMenu) {
                   BiasMenu(hMenu, bias);
 
                   if (bUnicode) {
                      InsertMenuW(hMenuFrame,
-                        IDM_EXTENSIONS + iMenuOffset + iMax,
+                        iMenuBase + iMenuOffset,
                         MF_BYPOSITION | MF_POPUP,
                         (UINT_PTR) hMenu, lsW.szMenuName);
                   } else {
                      InsertMenuA(hMenuFrame,
-                        IDM_EXTENSIONS + iMenuOffset + iMax,
+                        iMenuBase + iMenuOffset,
                         MF_BYPOSITION | MF_POPUP,
                         (UINT_PTR) hMenu, lsA.szMenuName);
                   }
@@ -324,18 +331,10 @@ VOID
 InitMenus()
 {
    HMENU hMenu;
-   INT iMax;
    TCHAR szValue[MAXPATHLEN];
-   HWND hwndActive;
    HMENU hMenuOptions;
 
    TCHAR szPathName[MAXPATHLEN];
-
-   hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-   if (hwndActive && GetWindowLongPtr(hwndActive, GWL_STYLE) & WS_MAXIMIZE)
-      iMax = 1;
-   else
-      iMax = 0;
 
    GetPrivateProfileString(szSettings, szUndelete, szNULL, szValue, COUNTOF(szValue), szTheINIFile);
 
@@ -360,7 +359,7 @@ InitMenus()
          }
 
          if (lpfpUndelete) {
-            hMenu = GetSubMenu(GetMenu(hwndFrame), IDM_FILE + iMax);
+            hMenu = GetSubMenu(GetMenu(hwndFrame), MapIDMToMenuPos(IDM_FILE));
             LoadString(hAppInstance, IDS_UNDELETE, szValue, COUNTOF(szValue));
             InsertMenu(hMenu, 4, MF_BYPOSITION | MF_STRING, IDM_UNDELETE, szValue);
          }
@@ -373,7 +372,7 @@ InitMenus()
    //
    // use submenu because we are doing this by position
    //
-   hMenu = GetSubMenu(GetMenu(hwndFrame), IDM_DISK + iMax);
+   hMenu = GetSubMenu(GetMenu(hwndFrame), MapIDMToMenuPos(IDM_DISK));
 
    if (WNetStat(NS_CONNECTDLG)) {  // Network Connections...
 
@@ -446,6 +445,65 @@ InitMenus()
    DrawMenuBar(hwndFrame);
 }
 
+// maps all IDM_* values, even those of submenus, into a top level menu position;
+// File menu is position 0 except when maximized in which it is position 1;
+// when the security menu is missing (due to not loading acledit.dll),
+// the menus to the right of security are shifted left by one.
+UINT
+MapIDMToMenuPos(UINT idm)
+{
+    UINT pos;
+
+    if (idm < 100)
+    {
+        // idm values < 100 are just the top level menu IDM_ value (e.g., IDM_FILE)
+        pos = idm;
+    }
+    else
+    {
+        // these are the built in or extension menu IDM_ values; IDM_OPEN is 101 and thus pos will be 0 (IDM_FILE)
+        pos = idm / 100 - 1;
+    }
+
+    // if maximized, menu position shifted one to the right
+    HWND hwndActive;
+    hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+    if (hwndActive && GetWindowLongPtr(hwndActive, GWL_STYLE) & WS_MAXIMIZE)
+        pos++;
+
+    // if pos >= IDM_EXTENSIONS, subtract one if security menu missing
+    if (pos >= IDM_EXTENSIONS && bSecMenuDeleted)
+    {
+        pos--;
+    }
+
+    return pos;
+}
+
+// opposite of the above, but only works for top level menu positions
+UINT  MapMenuPosToIDM(UINT pos)
+{
+    UINT idm = pos;
+
+    // if maximized, idm is one position to the left
+    HWND hwndActive;
+    hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+    if (hwndActive && GetWindowLongPtr(hwndActive, GWL_STYLE) & WS_MAXIMIZE)
+        idm--;
+
+    // if pos >= IDM_SECURITY, add one if security menu missing
+    if (idm >= IDM_SECURITY && bSecMenuDeleted)
+    {
+        idm++;
+    }
+
+    if (idm >= IDM_EXTENSIONS + iNumExtensions)
+    {
+        idm += MAX_EXTENSIONS - iNumExtensions;
+    }
+
+    return idm;
+}
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */

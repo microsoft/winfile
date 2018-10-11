@@ -1,0 +1,1467 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Norwegian, BokmÂl (Norway) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NOR)
+LANGUAGE LANG_NORWEGIAN, SUBLANG_NORWEGIAN_BOKMAL
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "&Fil"
+    BEGIN
+        MENUITEM "≈&pne\tEnter",                101
+        MENUITEM "&Flytt...\tF7",               106
+        MENUITEM "&Kopier...\tF8",              107
+        MENUITEM "K&opier til utklippstavlen...\tF9", 118
+        MENUITEM "Sl&ett...\tDel",              108
+        MENUITEM "&Gi nytt navn...",            109
+        MENUITEM "Ege&nskaper...\tAlt+Enter",   110
+        MENUITEM SEPARATOR
+        MENUITEM "Kompr&imer...",               119
+        MENUITEM "&Dekomprimer...",             120
+        MENUITEM SEPARATOR
+        MENUITEM "Kj¯&r...",                    105
+        MENUITEM "Skriv &ut...",                102
+        MENUITEM "&Tilknytt...",                103
+        MENUITEM SEPARATOR
+        MENUITEM "&Lag katalog...",             111
+        MENUITEM "&S¯k...",                     104
+        MENUITEM "&Merk filer...",              116
+        MENUITEM SEPARATOR
+        MENUITEM "&Avslutt",                    115
+    END
+    POPUP "&Disk"
+    BEGIN
+        MENUITEM "&Kopier diskett...",          201
+        MENUITEM "&Sett navn pÂ disk...",       202
+        MENUITEM SEPARATOR
+        MENUITEM "&Formater diskett...",        203
+        MENUITEM SEPARATOR
+        MENUITEM "&Velg stasjon...",            251
+    END
+    POPUP "&Tre"
+    BEGIN
+        MENUITEM "Utvid &ett nivÂ\t+",          301
+        MENUITEM "&Utvid gren\t*",              302
+        MENUITEM "Utvid &alt\tCtrl+*",          303
+        MENUITEM "&Skjul gren\t-",              304
+        MENUITEM SEPARATOR
+        MENUITEM "&Vis utvidbare grener",       505
+    END
+    POPUP "&Vis"
+    BEGIN
+        MENUITEM "&Tre og katalog",             413
+        MENUITEM "&Bare tre",                   411
+        MENUITEM "Bare &katalog",               412
+        MENUITEM SEPARATOR
+        MENUITEM "&Del",                        414
+        MENUITEM SEPARATOR
+        MENUITEM "&Navn",                       401
+        MENUITEM "&All filinformasjon",         402, CHECKED
+        MENUITEM "De&lvis filinformasjon...",   403
+        MENUITEM SEPARATOR
+        MENUITEM "&Sorter etter navn",          404
+        MENUITEM "Sort&er etter type",          405
+        MENUITEM "So&rter etter st¯rrelse",     406
+        MENUITEM "S&orter etter dato",          407
+        MENUITEM SEPARATOR
+        MENUITEM "&Filtype...",                 409
+    END
+    POPUP "&Alternativer"
+    BEGIN
+        MENUITEM "&Bekreftelse...",             501
+        MENUITEM "&Skrift...",                  510
+        MENUITEM "&Tilpass verkt¯ylinje ...",   512
+        MENUITEM SEPARATOR
+        MENUITEM "&Verkt¯ylinje",               508
+        MENUITEM "Stasj&onslinje",              507
+        MENUITEM "St&atuslinje",                503
+        MENUITEM SEPARATOR
+        MENUITEM "&Minimer ved bruk",           504
+        MENUITEM "&Lagre endringer ved avslutning", 511
+    END
+    POPUP "&Sikkerhet"
+    BEGIN
+        MENUITEM "&Tillatelser...",             605
+        MENUITEM "&Kontroll...",                606
+        MENUITEM "&Eier...",                    607
+    END
+    POPUP "Vi&ndu"
+    BEGIN
+        MENUITEM "&Nytt vindu",                 1706
+        MENUITEM "Over&lappet\tSkift+F5",       1701
+        MENUITEM "&Side ved side vannrett",     1703
+        MENUITEM "Side &ved side loddrett\tSkift+F4", 1702
+        MENUITEM "Ordne &ikoner",               1705
+        MENUITEM "&Oppdater\tF5",               1704
+    END
+    POPUP "&Hjelp"
+    BEGIN
+        MENUITEM "&Innhold",                    1801
+        MENUITEM "&S¯k etter hjelp om...",      30
+        MENUITEM "&Hvordan bruke Hjelp",        1802
+        MENUITEM SEPARATOR
+        MENUITEM "&Om Filbehandling...",        1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 210, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kj¯r"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,162,10
+    CONTROL         "K&ommandolinje:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,60,10
+    EDITTEXT        201,3,29,134,12,ES_AUTOHSCROLL
+    CONTROL         "&Kj¯r minimert",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,45,54,12
+    DEFPUSHBUTTON   "OK",1,165,6,40,14
+    PUSHBUTTON      "Avbryt",2,165,23,40,14
+    PUSHBUTTON      "&Hjelp",254,165,43,40,14
+END
+
+11 DIALOG 20, 20, 240, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Skriv ut"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,193,10
+    CONTROL         "&Skriv ut:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,29,10
+    EDITTEXT        102,34,18,153,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,36,190,10
+    DEFPUSHBUTTON   "OK",1,197,6,40,14
+    PUSHBUTTON      "Avbryt",2,197,23,40,14
+    PUSHBUTTON      "&Hjelp",254,197,43,40,14
+END
+
+12 DIALOG 20, 20, 255, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Tilknytt"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Filer med filtypen:",-1,6,7,65,8
+    COMBOBOX        315,76,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Tilknytt:",-1,6,30,36,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Bla gjennom...",318,122,24,55,14
+    DEFPUSHBUTTON   "OK",1,187,6,62,14,WS_GROUP
+    PUSHBUTTON      "Avbryt",2,187,23,62,14
+    PUSHBUTTON      "&Ny filtype...",300,187,42,62,14
+    PUSHBUTTON      "&Endre filtype...",251,187,59,62,14
+    PUSHBUTTON      "&Slett filtype",219,187,76,62,14
+    PUSHBUTTON      "&Hjelp",254,187,95,62,14
+END
+
+13 DIALOG 20, 20, 263, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "S¯k"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&S¯k etter:",-1,"Static",SS_LEFTNOWORDWRAP,5,6,45,12
+    EDITTEXT        201,52,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "Start &ved:",-1,"Static",SS_LEFTNOWORDWRAP,5,21,41,12
+    EDITTEXT        101,52,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "S¯k gjennom &alle underkataloger",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,34,119,12
+    DEFPUSHBUTTON   "OK",1,217,6,40,14
+    PUSHBUTTON      "Avbryt",2,217,23,40,14
+    PUSHBUTTON      "&Hjelp",254,217,43,40,14
+END
+
+14 DIALOG 47, 59, 231, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Flytt"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Gjeldende katalog: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,176,10
+    CONTROL         "&Til:",2001,"Static",SS_LEFTNOWORDWRAP,3,33,12,10
+    EDITTEXT        103,37,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,40,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,45,49,140,10
+    DEFPUSHBUTTON   "OK",1,185,6,40,14
+    PUSHBUTTON      "Avbryt",2,185,23,40,14
+    PUSHBUTTON      "&Hjelp",254,185,40,40,14
+    CONTROL         "&Fra:",2002,"Static",SS_LEFTNOWORDWRAP,3,19,14,10
+    EDITTEXT        102,37,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Slett"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Gjeldende katalog: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Slett:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,35,10
+    EDITTEXT        102,40,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,35,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,40,35,155,10
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "Avbryt",2,200,23,40,14
+    PUSHBUTTON      "&Hjelp",254,200,40,40,14
+END
+
+16 DIALOG 23, 13, 250, 229
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Egenskaper for %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,194,6,50,14,WS_GROUP
+    PUSHBUTTON      "Avbryt",2,194,23,50,14
+    PUSHBUTTON      "&Hjelp",254,194,40,50,14
+    CONTROL         "&Filnavn:",261,"Static",SS_LEFTNOWORDWRAP,5,5,52,10
+    EDITTEXT        201,60,5,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Bane:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,52,10
+    EDITTEXT        101,60,16,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Siste endring:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,50,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,60,27,130,10
+    CONTROL         "Versjon:",258,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "Ikke angitt",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,60,38,129,10
+    LTEXT           "&Copyright:",-1,5,49,45,11
+    EDITTEXT        265,60,49,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "St¯rrelse:",260,"Static",SS_LEFTNOWORDWRAP,5,60,44,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,60,60,93,10
+    CONTROL         "Komprimert st¯rrelse:",268,"Static",SS_LEFTNOWORDWRAP,5,71,73,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,80,71,90,10
+    CONTROL         "Komprimeringsforhold:",270,"Static",SS_LEFTNOWORDWRAP,5,82,73,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,80,80,90,10
+    GROUPBOX        "Attributter",-1,4,96,120,54
+    CONTROL         "Skri&vebeskyttet",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,67,12
+    CONTROL         "&Skjult",216,"Button",BS_AUTOCHECKBOX,81,108,39,12
+    CONTROL         "&Arkiv",217,"Button",BS_AUTOCHECKBOX,9,120,68,12
+    CONTROL         "Sys&tem",218,"Button",BS_AUTOCHECKBOX,81,120,39,12
+    CONTROL         "&Komprimert",267,"Button",BS_AUTOCHECKBOX,9,132,68,12
+    GROUPBOX        "V&ersjonsinformasjon",262,4,155,242,72
+    LISTBOX         263,9,166,91,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,103,166,138,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 200, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lag katalog"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,154,10
+    CONTROL         "&Navn:",-1,"Static",SS_LEFTNOWORDWRAP,3,23,20,10
+    EDITTEXT        201,30,22,90,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "OK",1,157,6,40,14
+    PUSHBUTTON      "Avbryt",2,157,23,40,14
+    PUSHBUTTON      "&Hjelp",254,157,43,40,14
+END
+
+19 DIALOG 20, 20, 157, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopier diskett"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Kilde i:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,24,10
+    COMBOBOX        245,55,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&MÂl i:",206,"Static",SS_LEFTNOWORDWRAP,5,22,19,10
+    COMBOBOX        222,55,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Avbryt",2,110,23,40,14
+    PUSHBUTTON      "&Hjelp",254,110,43,40,14
+END
+
+22 DIALOG 30, 30, 130, 55
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopierer diskett"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Kopierer disketten i ",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "stasjon A:",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "Leser kildedisketten.",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Avbryt",2,44,39,44,14
+END
+
+23 DIALOG 20, 20, 161, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sett navn pÂ disk"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Navn:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,30,10
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,115,6,40,14
+    PUSHBUTTON      "Avbryt",2,115,23,40,14
+    PUSHBUTTON      "&Hjelp",254,115,43,40,14
+END
+
+24 DIALOG 11, 28, 183, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formater diskett"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,140,6,40,14
+    PUSHBUTTON      "Avbryt",2,140,23,40,14
+    PUSHBUTTON      "&Hjelp",254,140,43,40,14
+    CONTROL         "&Diskett i:",-1,"Static",SS_LEFTNOWORDWRAP,5,7,31,10
+    COMBOBOX        222,55,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Kapasitet:",-1,"Static",SS_LEFTNOWORDWRAP,5,20,49,10
+    COMBOBOX        241,55,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Alternativer",102,5,39,115,53,WS_GROUP
+    CONTROL         "&Navn:",-1,"Static",SS_LEFTNOWORDWRAP,11,51,39,10
+    EDITTEXT        201,40,49,63,12
+    CONTROL         "H&urtigformatering",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,62,68,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formaterer diskett"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Formaterer diskett",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "Forbereder stasjon...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Avbryt",2,54,30,44,14
+END
+
+30 DIALOG 20, 20, 174, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Delvis filinformasjon"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Detaljer",-1,4,4,121,74
+    CONTROL         "St¯&rrelse",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,42,12
+    CONTROL         "&Siste endringsdato",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,73,12
+    CONTROL         "Sist&e endringstidspunkt",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,88,12
+    CONTROL         "&Filattributter",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,52,12
+    CONTROL         "&MS-DOS-filnavn",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,64,12
+    DEFPUSHBUTTON   "OK",1,130,6,40,14
+    PUSHBUTTON      "Avbryt",2,130,23,40,14
+    PUSHBUTTON      "&Hjelp",254,130,60,40,14
+END
+
+32 DIALOG 20, 20, 157, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Filtype"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Navn:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,23,10
+    EDITTEXT        201,34,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "Filtype",-1,5,20,94,62
+    CONTROL         "&Kataloger",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,44,12
+    CONTROL         "&Programmer",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,51,12
+    CONTROL         "&Dokumenter",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,52,12
+    CONTROL         "&Andre filer",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,46,12
+    CONTROL         "Vis systemfiler og &skjulte filer",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,107,12
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Avbryt",2,110,23,40,14
+    PUSHBUTTON      "&Hjelp",254,110,43,40,14
+END
+
+33 DIALOG 20, 20, 241, 94
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekreftelse"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Bekreftelse ved",-1,5,3,190,85,WS_TABSTOP
+    CONTROL         "&Sletting av fil",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,56,12
+    CONTROL         "Slett k&atalog",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,77,12
+    CONTROL         "&Erstatting av fil",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,62,12
+    CONTROL         "&Bruk av mus",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,53,12
+    CONTROL         "&Diskkommandoer",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,68,12
+    CONTROL         "E&ndring av system-, skjulte og skrivebeskyttede filer",215,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,75,182,12
+    DEFPUSHBUTTON   "OK",1,199,6,40,14
+    PUSHBUTTON      "Avbryt",2,199,23,40,14
+    PUSHBUTTON      "&Hjelp",254,199,44,40,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Flytter..."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "Til:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,12,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "Avbryt",2,200,28,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 120, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Skriver ut filen...",-1,31,6,56,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "Avbryt",2,44,40,32,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 206, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Egenskaper"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "%d filer er merket.",100,"Static",SS_LEFTNOWORDWRAP,5,5,144,10
+    CONTROL         "%s byte totalt.",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "Attributter",-1,5,29,120,54
+    CONTROL         "Skri&vebeskyttet",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,63,12
+    CONTROL         "&Skjult",216,"Button",BS_AUTOCHECKBOX,80,40,31,12
+    CONTROL         "&Arkiver",217,"Button",BS_AUTOCHECKBOX,10,52,36,12
+    CONTROL         "Sys&tem",218,"Button",BS_AUTOCHECKBOX,80,52,36,12
+    CONTROL         "&Komprimert",267,"Button",BS_AUTOCHECKBOX,10,64,52,12
+    DEFPUSHBUTTON   "OK",1,150,6,50,14,WS_GROUP
+    PUSHBUTTON      "Avbryt",2,150,23,50,14
+    PUSHBUTTON      "&Hjelp",254,150,43,50,14
+END
+
+39 DIALOG 10, 20, 245, 103
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekreft erstatting av fil(er)"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Erstatt filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,12,41,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,12,165,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,75,22,170,10
+    CONTROL         "Med filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,34,34,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,34,165,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,75,44,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,54,203,21
+    DEFPUSHBUTTON   "&Ja",6,33,82,40,14
+    PUSHBUTTON      "Ja &til alt",107,79,82,40,14
+    PUSHBUTTON      "&Nei",7,125,82,40,14
+    PUSHBUTTON      "Avbryt",2,171,82,40,14
+END
+
+40 DIALOG 10, 20, 245, 79
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekreft sletting av fil(er)"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,29,3,203,10
+    CONTROL         "Slett filen:",-1,"Static",SS_LEFTNOWORDWRAP,29,18,35,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,64,18,174,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,29,32,203,25
+    DEFPUSHBUTTON   "&Ja",6,33,61,40,14
+    PUSHBUTTON      "Ja &til alt",107,79,61,40,14
+    PUSHBUTTON      "&Nei",7,125,61,40,14
+    PUSHBUTTON      "Avbryt",2,171,61,40,14
+END
+
+41 DIALOG 10, 20, 245, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekreft Slett katalog"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Slett katalogen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,53,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,25
+    DEFPUSHBUTTON   "&Ja",6,33,61,40,14
+    PUSHBUTTON      "Ja &til alt",107,79,61,40,14
+    PUSHBUTTON      "&Nei",7,125,61,40,14
+    PUSHBUTTON      "Avbryt",2,171,61,40,14
+END
+
+42 DIALOG 10, 22, 245, 76
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekreft Flytt fil"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Flytt filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,34,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,20
+    DEFPUSHBUTTON   "&Ja",6,33,55,40,14
+    PUSHBUTTON      "Ja &til alt",107,79,55,40,14
+    PUSHBUTTON      "&Nei",7,125,55,40,14
+    PUSHBUTTON      "Avbryt",2,171,55,40,14
+END
+
+43 DIALOG 10, 22, 245, 76
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekreft Gi nytt navn til fil"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Gi nytt navn til filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,67,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,93,18,147,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,23
+    DEFPUSHBUTTON   "&Ja",6,33,54,40,14
+    PUSHBUTTON      "Ja &til alt",107,79,54,40,14
+    PUSHBUTTON      "&Nei",7,125,54,40,14
+    PUSHBUTTON      "Avbryt",2,171,54,40,14
+END
+
+44 DIALOG 15, 12, 124, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Merk filer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Fil(er):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,22,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Merk",1,70,6,51,14
+    PUSHBUTTON      "Fj&ern merking",6,70,23,51,14
+    PUSHBUTTON      "Avbryt",2,70,40,51,14
+    PUSHBUTTON      "&Hjelp",254,70,63,51,14
+END
+
+45 DIALOG 11, 31, 201, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Velg stasjon"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Stasjoner:",245,"Static",SS_LEFTNOWORDWRAP,5,5,34,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,155,6,40,14
+    PUSHBUTTON      "Avbryt",2,155,23,40,14
+    PUSHBUTTON      "&Hjelp",254,155,44,40,14
+END
+
+46 DIALOG 11, 28, 266, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Merk filnavn"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Denne banen har ikke gyldig FAT-format for filnavn. Skriv inn et nytt navn.",99,11,5,171,19,NOT WS_GROUP
+    RTEXT           "&Nytt navn:",-1,5,56,67,12,NOT WS_GROUP
+    EDITTEXT        103,75,55,130,12
+    RTEXT           "Opprinnelig bane:",-1,5,28,67,12,NOT WS_GROUP
+    EDITTEXT        102,75,28,119,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "Til katalog:",-1,5,42,67,11,NOT WS_GROUP
+    EDITTEXT        101,75,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",1,219,4,40,14
+    PUSHBUTTON      "Avbryt",2,219,20,40,14
+    PUSHBUTTON      "&Hjelp",254,219,36,40,14
+END
+
+48 DIALOG 23, 13, 250, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Egenskaper for %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,194,6,50,14,WS_GROUP
+    PUSHBUTTON      "Avbryt",2,194,23,50,14
+    PUSHBUTTON      "&Hjelp",254,194,43,50,14
+    CONTROL         "&Filnavn:",261,"Static",SS_LEFTNOWORDWRAP,5,5,51,10
+    EDITTEXT        201,60,5,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Bane:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,60,16,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Siste endring:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,50,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,60,27,97,10
+    CONTROL         "St¯rrelse:",260,"Static",SS_LEFTNOWORDWRAP,5,38,50,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,60,38,90,10
+    GROUPBOX        "Attributter",-1,4,52,120,54
+    CONTROL         "Skri&vebeskyttet",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,63,12
+    CONTROL         "&Skjult",216,"Button",BS_AUTOCHECKBOX,77,64,31,12
+    CONTROL         "&Arkiver",217,"Button",BS_AUTOCHECKBOX,9,76,36,12
+    CONTROL         "Sys&tem",218,"Button",BS_AUTOCHECKBOX,77,76,36,12
+    CONTROL         "&Komprimert",267,"Button",BS_AUTOCHECKBOX,9,88,52,12
+END
+
+49 DIALOG 13, 54, 264, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Skrift"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Skrift:",1088,6,3,21,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "S&kriftstil:",1089,108,3,30,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "S&t¯rrelse:",1090,179,3,32,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Effekter",1072,6,73,84,61,WS_GROUP
+    CONTROL         "Gjenn&omstreking",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,67,10
+    CONTROL         "&Understreking",1041,"Button",BS_AUTOCHECKBOX,10,95,58,10
+    CONTROL         "&Vis smÂ bokstaver for FAT-stasjoner",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,127,130,10
+    CONTROL         "Vis smÂ bokstaver for &alle stasjoner",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,139,128,10
+    LTEXT           "&Farge:",1091,10,107,22,9
+    COMBOBOX        1139,10,117,75,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",1,218,6,40,14,WS_GROUP
+    PUSHBUTTON      "Avbryt",2,218,23,40,14,WS_GROUP
+    PUSHBUTTON      "&Bruk",1026,218,40,40,14,WS_GROUP
+    PUSHBUTTON      "&Hjelp",1038,218,57,40,14,WS_GROUP
+    GROUPBOX        "Eksempel",1073,6,72,252,49,WS_GROUP
+    CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbÿ¯≈Â",1092,10,81,243,37,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formaterer diskett"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "Skjul",110,38,48,40,14
+    PUSHBUTTON      "Avbryt",2,82,48,40,14
+END
+
+51 DIALOG 10, 20, 260, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekreft: Ignorer fil eller katalog og fortsett"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,18,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,2,203,10
+    CONTROL         "Tilgang nektes. Ignorer:",202,"Static",SS_LEFTNOWORDWRAP,25,11,203,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,108,11,122,10
+    CONTROL         "Du har ikke riktig tillatelse, eller filen er i bruk.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,25,230,10
+    CONTROL         "Klikk Ja hvis du vil ignorere denne filen og fortsette operasjonen.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,35,214,10
+    DEFPUSHBUTTON   "&Ja",6,33,52,40,14
+    PUSHBUTTON      "Ja &til alt",107,79,52,40,14
+    PUSHBUTTON      "&Nei",7,125,52,40,14
+    PUSHBUTTON      "Avbryt",2,171,52,40,14
+END
+
+52 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekreft: Ignorer fil eller katalog og fortsett"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,18,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Ikke tilgang til mÂl. Ignorer:",202,"Static",SS_LEFTNOWORDWRAP,25,13,203,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,124,13,106,10
+    CONTROL         "Klikk Ja hvis du vil  ignorere denne filen og fortsette operasjonen.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,24,215,10
+    DEFPUSHBUTTON   "&Ja",6,33,42,40,14
+    PUSHBUTTON      "Ja &til alt",107,79,42,40,14
+    PUSHBUTTON      "&Nei",7,125,42,40,14
+    PUSHBUTTON      "Avbryt",2,171,42,40,14
+END
+
+53 DIALOG 77, 109, 174, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "S¯k pÂ disken"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "S¯k etter:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,60,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,53,5,117,10
+    CONTROL         "Fra:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,43,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,53,15,117,10
+    CONTROL         "Kataloger lest:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,48,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,53,25,117,10
+    CONTROL         "Filer funnet:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,40,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,53,35,117,10
+    PUSHBUTTON      "Skjul",110,45,49,40,14
+    PUSHBUTTON      "Avbryt",2,89,49,40,14
+END
+
+54 DIALOG 20, 20, 260, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopier til utklippstavlen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Gjeldende katalog: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,4,5,193,10
+    CONTROL         "&Kopier til utklippstavlen:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,80,10
+    EDITTEXT        102,85,19,125,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,214,6,40,14
+    PUSHBUTTON      "Avbryt",2,214,23,40,14
+    PUSHBUTTON      "&Hjelp",254,214,43,40,14
+END
+
+55 DIALOG 18, 14, 290, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Endre filtype"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Filtype:",302,5,6,25,8
+    EDITTEXT        301,42,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "H&andling: ",-1,5,20,235,128,WS_GROUP
+    COMBOBOX        306,47,21,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Kommando:",313,9,42,39,8
+    EDITTEXT        304,47,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Bla gjennom...",318,164,38,57,14
+    CONTROL         "Br&uker DDE",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,57,51,10
+    LTEXT           "&DDE-melding:",320,21,72,62,8
+    EDITTEXT        309,105,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "DDE-&meldingsprogrammet kj¯rer ikke:",322,21,86,84,19
+    LTEXT           "(valgfritt)",324,207,90,31,8
+    EDITTEXT        311,105,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Program:",321,21,109,61,8
+    EDITTEXT        310,105,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Emne:",323,21,127,54,8
+    EDITTEXT        312,105,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Ny filtype:",-1,11,184,34,8
+    EDITTEXT        315,64,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Legg til ->",303,102,174,44,14
+    PUSHBUTTON      "<- Fje&rn",219,102,191,44,14
+    LTEXT           "Fil&typer:",-1,157,162,27,8
+    LISTBOX         317,157,172,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Filtype tilknyttet denne typen filer:",316,5,154,235,66
+    DEFPUSHBUTTON   "OK",1,244,6,40,14
+    PUSHBUTTON      "Avbryt",2,244,23,40,14
+    PUSHBUTTON      "&Hjelp",254,244,40,40,14
+END
+
+57 DIALOG 123, 60, 207, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Komprimerer filer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Fil som komprimeres: ",-1,6,8,79,8
+    LTEXT           "filename.xxx",341,86,8,90,8
+    LTEXT           "Katalog:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,43,20,150,8
+    LTEXT           "Komprimerte kataloger:",-1,6,32,80,8
+    LTEXT           "1 888 888 999",343,90,32,60,8
+    LTEXT           "Komprimerte filer:",-1,6,44,62,8
+    LTEXT           "1 888 888 999",344,74,44,58,8
+    LTEXT           "Total filst¯rrelse f¯r komprimering:",-1,6,56,124,8
+    LTEXT           "9 999 999 999 999",345,134,56,68,8
+    LTEXT           "Total filst¯rrelse etter komprimering:",-1,6,68,123,8
+    LTEXT           "9 999 999 999 999",346,134,69,68,8
+    LTEXT           "Filkomprimeringsforhold:",-1,6,80,78,8
+    LTEXT           "100%",347,91,80,27,8
+    PUSHBUTTON      "Avbryt",2,76,97,55,14
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Dekomprimerer filer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Fil som dekomprimeres: ",-1,6,8,83,8
+    LTEXT           "filename.xxx",351,93,8,66,8
+    LTEXT           "Katalog:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,45,20,144,8
+    LTEXT           "Dekomprimerte kataloger:",-1,6,32,91,8
+    LTEXT           "1 999 999 999",353,99,32,70,8
+    LTEXT           "Dekomprimerte filer:",-1,6,44,86,8
+    LTEXT           "1 999 999 999",354,92,44,78,8
+    PUSHBUTTON      "Avbryt",2,74,64,49,14
+END
+
+59 DIALOG 11, 28, 282, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Komprimeringsfeil"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,190,20
+    DEFPUSHBUTTON   "&Ignorer",5,6,45,63,14,WS_GROUP
+    PUSHBUTTON      "Ign&orer alle",112,75,45,63,14
+    PUSHBUTTON      "&Pr¯v pÂ nytt",4,144,45,63,14
+    PUSHBUTTON      "&Avbryt",3,213,45,63,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,318
+ PRODUCTVERSION 4,0,1381,318
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041404B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "Filbehandling"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Microsoft(R) Windows NT(TM) operativsystem"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x414, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "Kopier diskett"
+    51                      "Sett inn mÂldiskett."
+    52                      "Sett inn kildediskett."
+    53                      "Sett inn kilde- og mÂldiskett."
+    54                      "Formaterer mÂldiskett"
+    55                      "Feil ved kopiering av diskett"
+    56                      "Kan ikke kopiere diskett."
+    58                      "Kilde- og mÂldiskettene er ikke kompatible."
+    60                      "%d%% ferdig"
+    61                      "Lager rotkatalog..."
+    62                      "Kopierer systemfiler..."
+    63                      "Feil ved formatering av diskett"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "Formateringen ferdig."
+    67                      "%ld byte total diskplass.\n%ld byte tilgjengelig pÂ disken.\n\nVil du formatere flere disketter?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "Nettverksfeil"
+    83                      "Denne stasjonen inneholder Windows-systemfiler og kan ikke frakobles."
+    91                      "Filbehandling kan ikke endre attributtene.  "
+    92                      "Filbehandling kan ikke lage katalog.  "
+    93                      "Filbehandling kan ikke sette navn pÂ disken.\n\nKontroller at disken ikke er skrivebeskyttet, ikke er en nettverksstasjon og at navnet er gyldig.\nNavnet kan ikke inneholde disse tegnene:\n[mellomrom] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "Fant ikke filen."
+END
+
+STRINGTABLE
+BEGIN
+    97                      "Innholdet pÂ denne stasjonen er endret. Vil du oppdatere vinduet Resultat av s¯k?"
+    98                      "Du mÂ vÊre logget pÂ som administrator for en arbeidsstasjon for Â kunne gi navn til harddisker."
+    101                     "Stasjon %c:%c"
+    110                     "Kan ikke kj¯re programmet."
+    111                     "Uventet feil: %d"
+END
+
+STRINGTABLE
+BEGIN
+    112                     "Ikke nok minne til Â starte angitt program.\n\nLukk ett eller flere programmer, og pr¯v igjen."
+    113                     "Filbehandling finner ikke filen (eller en av delene).\n\nKontroller at banen og filnavnet er riktig og at alle biblioteker som kreves, er tilgjengelige."
+    114                     "Den angitte banen er ugyldig."
+    116                     "Ingen programmer er knyttet til denne filen.\n\nVelg Tilknytt fra Fil-menyen for Â lage en tilknytning."
+    118                     "Filbehandling kan ikke Âpne eller skrive ut filen.\n\nStart programmet som ble brukt til Â lage denne filen, og Âpne eller skriv filen ut i dette programmet."
+    120                     "Bekreft bruk av mus"
+    121                     "Er du sikker pÂ at du vil kopiere merkede filer til %s?"
+    122                     "Er du sikker pÂ at du vil flytte merkede filer eller kataloger til %s?"
+    123                     "Er du sikker pÂ at du vil starte %s ved Â bruke %s som initialiseringsfil?"
+    124                     "Filbehandling"
+    126                     "Katalogtre"
+    127                     "Resultat av s¯k: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "For mange filer"
+    133                     "Filbehandling - Ikke nok minne"
+    134                     "Kan ikke lese hele katalogen. Bare deler vil bli vist."
+    140                     "Gjeldende katalog: %s"
+    141                     "Kopier"
+    143                     "Gi nytt navn"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "Formater diskett"
+    146                     "Velg disketten som skal formateres."
+    150                     "Lager:"
+    151                     "Fjerner..."
+    152                     "Kopierer:"
+    153                     "Gir nytt navn..."
+    154                     "Flytter..."
+    155                     "Sletter..."
+    156                     "Skriver ut: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "Kopierer..."
+    170                     "Fjerner:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "Totalt %d fil(er) (%s)"
+    181                     "Leste kataloger: %d "
+    182                     "%c: %s ledig, %s totalt"
+    183                     "%d fil(er) funnet"
+    185                     "valgte filer"
+    186                     "Filbehandling kan ikke koble fra nettverksstasjonen.\n\nDet er Âpne filer pÂ denne stasjonen."
+    187                     "Merket %d fil(er) (%s)"
+    188                     "Det er ingen diskett i stasjon %c.\n\nSett inn en diskett, og pr¯v igjen."
+    189                     "Disketter i stasjon %c er ikke formatert.\n\nVil du formatere den nÂ?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "Ikke nok diskplass til Â skrive ut.\n\nSlett Èn eller flere filer for Â ¯ke ledig diskplass, og pr¯v igjen."
+    193                     "Ikke nok minne til Â skrive ut.\n\nLukk ett eller flere programmer, og pr¯v igjen."
+    194                     "Det oppstod en feil under utskrift.\n\nKontroller at skriveren er konfigurert og koblet til."
+    195                     "Hele katalogtreet vises ikke"
+    197                     "MÂldisketten er full. Sett inn en ny diskett for Â fortsette."
+    198                     "Dette er en systemfil, skjult fil eller skrivebeskyttet fil."
+    199                     "Filbehandling kan ikke utf¯re hurtigformatering.\n\nFortsett med vanlig format?"
+    203                     "Det oppstod en feil da kommandoen ble sendt til programmet."
+    204                     "Kan ikke laste inn biblioteket som trengs til denne operasjonen."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "&Delte kataloger..."
+    210                     "Formatering vil slette ALLE data fra disketten. Er du sikker pÂ at du vil fortsette Â formatere disketten i stasjon %c?"
+    211                     "Bekreft formatering av diskett."
+    212                     "Denne operasjonen vil slette ALLE data fra mÂldisken. Er du sikker pÂ at du vil fortsette?"
+    213                     "Bekreft kopiering av diskett"
+    214                     "&Lukk"
+    215                     "Lukk"
+    218                     "Katalog %s finnes ikke.\n\nEr du sikker pÂ at du vil lage den?"
+    219                     "Programmer#*.exe;*.pif;*.com;*.bat#Alle filer (*.*)#*.*#"
+    220                     "Bla gjennom"
+    221                     "Kj¯r"
+    222                     "Kan ikke skrive filen"
+    223                     "Kan ikke vise hjelpeinformasjon."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "Filer med filtypen %s er programmer og kan ikke knyttes til andre programmer."
+    225                     "%s er ikke et program og kan ikke tilknyttes en filtype."
+    226                     "(Ingen)"
+    227                     "Finner ingen filer."
+    228                     "Filbehandling kan ikke skrive ut flere filer.\n\nVelg bare Èn fil, og pr¯v igjen."
+    230                     "En av bibliotekfilene som trengs for Â kj¯re dette programmet, er skadet. Installer programmet pÂ nytt."
+    231                     "Denne filen er i bruk i et annet program."
+    232                     "Filbehandling fÂr kanskje ikke tilgang til filer som lages i katalogen %s.\n\nVil du fortsette?"
+    233                     "Lag katalog"
+    234                     "%ld byte"
+    235                     "%s byte"
+    236                     "Filbehandling kan ikke kopiere flere filer eller kataloger til utklippstavlen om gangen.\n\nMerk Èn fil, og pr¯v igjen."
+    237                     "%s - %s"
+    238                     "Stasjon:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "Koble til nettverksstasjon"
+    241                     "Koble fra nettverksstasjon"
+    242                     "Nettverkstilkoblinger"
+    243                     "Del katalog"
+    244                     "Avslutt deling av katalog"
+    245                     "Vis all filinformasjon"
+    246                     "Vis bare navn"
+    247                     "Sorter etter navn"
+    248                     "Sorter etter type"
+    249                     "Sorter etter st¯rrelse"
+    250                     "Sorter etter dato"
+    251                     "Nytt vindu"
+    252                     "Kopier filer"
+    253                     "Flytt filer"
+    254                     "&Katalognavn:"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "Nettverksstasjonen er ikke tilgjengelig."
+    259                     "Delt som %s"
+    260                     "Ikke delt"
+    261                     "Slett filer"
+    262                     " - COMPRESSED"
+    263                     "Kopierer filer til %s"
+    264                     "Flytter filer til %s"
+    265                     "Kj¯rer filer med %s"
+    266                     "%s byte"
+    267                     "%skB"
+    268                     "%sMB"
+    269                     "%sGB"
+    270                     "%sTB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "Du har ikke tillatelse som gir deg tilgang til denne katalogen."
+    281                     "Du har ikke tillatelse som gir deg tilgang til denne filen."
+    283                     "Stasjon %c er opptatt.\n\nFilbehandling kopierer diskett."
+    284                     "Stasjon %c opptatt.\n\nFilbehandling kopierer disk."
+    285                     "Operasjonen er ikke ferdig"
+    286                     "Kan ikke fullf¯re operasjonen pÂ alle filer og kataloger."
+    287                     "Kan ikke lese katalogen."
+END
+
+STRINGTABLE
+BEGIN
+    288                     "Katalogen finnes ikke."
+    289                     "Kan ikke koble til nettverksstasjonen."
+    290                     "Finner ikke nettverksnavnet."
+    292                     "Ja til alt ber¯rer alle filer, systemfiler, skjulte filer\n og skrivebeskyttede filer."
+    294                     "≈pne"
+    295                     "Skriv ut"
+    298                     "Legg til filtype"
+    299                     "Filtypen %s er knyttet til %s. Fortsette og skrive over tilknytningen?"
+    300                     "Redigerer for filtilknytning"
+    301                     "Kan ikke knytte til filtypen.  "
+    302                     "Kan ikke slette filtypen.  "
+    303                     "Kan ikke legge til filtypen.  "
+END
+
+STRINGTABLE
+BEGIN
+    304                     "Kan ikke slette filtypen.  "
+    305                     "Kan ikke lese filtypen.  "
+    306                     "Filtypebeskrivelsen kan ikke vÊre tom. Skriv inn en ny filtype."
+    307                     "Kan ikke lage en entydig identifikator pÂ grunnlag av filtypen. Skriv inn en ny filtype."
+    308                     "Slett filtypen"
+    309                     "Filtypen og alle tilknyttede filtyper vil bli slettet. Er du sikker pÂ at du vil slette %s?"
+    312                     "Filtypen mÂ ha minst Èn kommando for minst en handling. Skriv et programnavn i kommandofeltet."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "Ny filtype"
+    321                     "Kopierer diskett"
+    322                     "S¯ker..."
+    324                     "Filbehandling formaterer en disk. Hvis du avslutter Filbehandling, avbrytes denne operasjonen."
+    325                     "Filbehandling kopierer en disk. Hvis du avslutter Filbehandling, avbrytes denne operasjonen ."
+    326                     "prosent ferdig"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360 kB"
+    354                     "1%s2 MB"
+    355                     "720 kB"
+    356                     "1%s44 MB"
+    357                     "2%s88 MB"
+    358                     "Stasjonskapasitet"
+    359                     "Filbehandling finner ikke informasjon om disketten.\n\nKontroller at disketten stÂr i stasjonen."
+    360                     "20%s8 MB"
+    361                     "Ukjent disktype"
+    362                     "Ukjent disktype"
+    363                     "Diskstasjontypen i stasjon %s kan ikke formateres med Filbehandling. Bruk Diskbehandling til Â formatere denne disken."
+END
+
+STRINGTABLE
+BEGIN
+    400                     "Filsystemet er ikke kompatibelt."
+    401                     "Tilgang nektes."
+    402                     "Disketten er skrivebeskyttet."
+    403                     "Filbehandling kan ikke lÂse volumet."
+    404                     "Filbehandling kan ikke hurtigformatere disken.\n\nKontroller at disken har riktig tetthet."
+    405                     "IU-feil pÂ kildedisketten."
+    406                     "IU-feil pÂ mÂldisketten."
+    407                     "IU-feil pÂ bÂde kilde- og mÂldisketter."
+    408                     "Det har oppstÂtt en IU-feil."
+    411                     "Filbehandling kan ikke formatere disketten.\n\nKontroller at disketten stÂr i stasjonen, at den ikke er skrivebeskyttet eller har feil tetthet."
+    412                     "Filbehandling kan ikke gi navn til disken.\n\nAngitt navn er ugyldig. Kontroller at navnet ikke inneholder f¯lgende tegn: \n[mellomrom] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "≈pner..."
+    421                     "Lukker..."
+    422                     "For mange Âpne katalogvinduer.\n\nLukk et eller flere vinduer, og pr¯v igjen."
+    423                     "Hurtigformatering..."
+    424                     "Kan ikke initialisere oppdateringsst¯tte for bakgrunn. Filbehandling avslutter.  "
+    425                     "Initialiser Filbehandling"
+    426                     "Leser katalogen. Vent..."
+    427                     "Vil du ogsÂ komprimere alle filer og underkataloger i %s?"
+    428                     "Vil du ogsÂ dekomprimere alle filer og underkataloger i %s ogsÂ?"
+    429                     "Filbehandling kan ikke endre komprimeringsattributter for %s."
+    430                     "Filen %s komprimeres ikke. Systemet vil ikke kunne starte om denne filen komprimeres."
+    431                     "Filbehandling holder allerede pÂ med komprimeringdekomprimering av filer.\nDu mÂ vente til operasjonen er fullf¯rt f¯r flere filer kan komprimeres/dekomprimeres."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "Kommentarer"
+    501                     "Firmanavn"
+    502                     "Filbeskrivelse"
+    503                     "Internt navn"
+    504                     "Lovlige varemerker"
+    505                     "Opprinnelig filnavn"
+    506                     "Beskrivelse av egen versjon"
+    507                     "Produktnavn"
+    508                     "Produktversjon"
+    509                     "Beskrivelse av spesialversjon"
+    510                     "SprÂk"
+    511                     "SprÂk"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "Koble &til nettverksstasjon..."
+    801                     "Koble fra &nettverksstasjon..."
+    802                     "&Nettverkstilkoblinger..."
+    803                     "&Del som..."
+    804                     "&Avslutt deling..."
+    805                     "&Vis delte kataloger..."
+    806                     "Angre &sletting..."
+    807                     "&≈pne nytt vindu ved tilkobling"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "Det oppstod en feil nÂr filen skulle flyttes."
+    1002                    "Det oppstod en feil nÂr filen skulle kopieres."
+    1003                    "Det oppstod en feil nÂr filen skulle slettes."
+    1004                    "Det oppstod en feil nÂr det skulle gis nytt navn til filen"
+    1005                    "Det oppstod en feil nÂr en stasjon skulle velges"
+    1006                    "Det oppstod en feil nÂr katalogen skulle lese"
+    1007                    "Det oppstod en feil nÂr det skulle gis navn til disken"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "Filbehandling kan ikke flytte %s: %s"
+    1012                    "Filbehandling kan ikke kopiere %s: %s"
+    1013                    "Filbehandling kan ikke slette %s: %s"
+    1014                    "Filbehandling kan ikke gi nytt navn til %s: %s"
+    1021                    "Filbehandling kan ikke lage katalogen %s: %s"
+    1022                    "Filbehandling kan ikke fjerne katalogen %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "Filbehandling kan ikke lage eller fjerne %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "Samme kilde og mÂl."
+    1102                    "Merk filen du vil gi nytt navn, eller bruk  jokertegn (for eksempel *.TXT) nÂr du skal gi nytt navn til en gruppe filer med navn som er delvis like."
+    1103                    "Kan ikke gi nytt navn til en annen katalog eller disk.\nBruk kommandoen Flytt fil."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "Du kan ikke gi nytt navn til rotkatalogen."
+    1105                    "MÂlkatalogen er en underkatalog av kilden."
+    1106                    "Filen brukes av Windows."
+    1107                    "Angi bare en fil eller katalog i boksen Til. Hvis du vil angi en gruppe filer, bruker du jokertegn (for eksempel *.TXT)."
+    1108                    "En fil eller katalog med dette navnet finnes allerede. Fil- og katalognavn mÂ vÊre unike i en katalog."
+    1109                    "Kontroller at du har oppgitt riktig bane og filnavn."
+    1110                    "Kontroller at du har oppgitt riktig bane."
+    1111                    "Avslutt ett eller flere programmer og pr¯v igjen, eller bruk System i Kontrollpanel til Â ¯ke virtuelt minne."
+    1113                    "Fjern skrivebeskyttelsen pÂ disketten, eller bruk en annen diskett og pr¯v igjen."
+    1114                    "Kontroller at du har riktig nettverkstillatelse for denne operasjonen."
+    1115                    "Slett Èn eller flere filer for Â ¯ke diskplassen, og pr¯v igjen."
+    1116                    "Fant ikke data."
+    1117                    "Katalogen finnes allerede."
+    1118                    "Angitt filnavn er allerede brukt pÂ en fil."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "Feil diskett i stasjonen."
+    1151                    "Programmet kan ikke kj¯res i Windows NT-modus."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "Operativsystemet kan ikke kj¯re denne komponenten."
+    1153                    "Komponenten kan ikke kj¯res i Windows NT-modus."
+    1154                    "Dette programmet er ikke et gyldig Windows NT-program."
+    1155                    "Det har oppstÂtt en feil. Det finnes ingen melding for feilen."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ÉRÉsÅ[å≥(&F):"
+    2001                    "ÉRÉsÅ[êÊ(&T):"
+    2002                    "å≥ÇÃñºëO(&F):"
+    2003                    "êVÇµÇ¢ñºëO(&T):"
+    2004                    "ÉRÉsÅ[êÊ:"
+    2005                    "Ç±ÇÃÉtÉHÉìÉgÇ?gópÇ∑ÇÈÇ∆äø?öÇÃï\\?¶Ç™\nÇ≈Ç´Ç»Ç≠Ç»ÇËÇ‹Ç∑ÅB"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "Kommandoer for Â arbeide med filer"
+    3985                    "Kommandoer for Â arbeide med disker"
+    3986                    "Kommandoer for Â arbeide i katalogtrevinduet"
+    3987                    "Kommandoer som bestemmer hvordan informasjon skal vises"
+    3988                    "Kommandoer for Â angi alternativer"
+    3989                    "Kommandoer for Â endre fil- og katalogsikkerhet"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "Kommandoer for Â vise Hjelp i Filbehandling"
+    4001                    "Kommandoer for Â vise Hjelp i Filbehandling"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "S¯ker etter et emne i Hjelp i Filbehandling"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "≈pner merket objekt"
+    4102                    "Skriver ut et dokument"
+    4103                    "Knytter en fil til et program"
+    4104                    "S¯ker etter filer og kataloger"
+    4105                    "Starter eller Âpner et program eller dokument"
+    4106                    "Flytter merkede objekter"
+    4107                    "Kopierer filer og kataloger"
+    4108                    "Sletter filer og kataloger"
+    4109                    "Gir nytt navn til en fil eller katalog"
+    4110                    "Setter filattributter og viser filinformasjon"
+    4111                    "Lager en katalog"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "Avslutter Filbehandling"
+    4116                    "Merker filer og kataloger"
+    4117                    "Henter frem igjen filer som er blitt slettet"
+    4118                    "Kopierer en fil til utklippstavlen"
+    4119                    "Komprimerer en fil eller katalog"
+    4120                    "Dekomprimerer en fil eller katalog"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "Kopierer en diskett"
+    4202                    "Tilordner eller endrer volumnavnet til en diskett"
+    4203                    "Formaterer en diskett"
+    4205                    "Kobler til en nettverksstasjon"
+    4206                    "Kobler fra en nettverksstasjon"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "Velger en annen stasjon"
+    4254                    "Deler en katalog"
+    4255                    "Avslutter delingen av en katalog"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "Viser et annet nivÂ i katalogen"
+    4302                    "Viser alle nivÂer i en katalog"
+    4303                    "Viser alle nivÂer i alle kataloger"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "Skjuler alle kataloger i merket katalog"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "Viser bare filnavn"
+    4402                    "Viser all filinformasjon"
+    4403                    "Viser delvis filinformasjon"
+    4404                    "Sorterer filer etter navn"
+    4405                    "Sorterer filer etter filtype"
+    4406                    "Sorterer filer etter st¯rrelse"
+    4407                    "Sorterer filer etter dato"
+    4409                    "Viser alle filer med angitt filtype"
+    4411                    "Viser katalogtreet"
+    4412                    "Viser innholdet i gjeldende katalog"
+    4413                    "Viser katalogtreet og innholdet i gjeldende katalog"
+    4414                    "Deler et katalogvindu, eller flytter delelinjen"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "Kontrollerer bekreftelsesmeldinger"
+    4503                    "Viser eller skjuler statuslinjen"
+    4504                    "Reduserer Filbehandling til et ikon ved oppstart"
+    4505                    "Viser hvilke kataloger som har underkataloger"
+    4507                    "Viser eller skjuler stasjonslinjen"
+    4508                    "Viser eller skjuler verkt¯ylinjen"
+    4509                    "≈pner et nytt vindu nÂr du kobler deg til"
+    4510                    "Endrer skriften i Filbehandling"
+    4511                    "Lagrer innstillingene nÂr du avslutter Filbehandling"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "Tilpasser verkt¯ylinjen"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "Vis eller angi informasjon om tillatelser for merkede objekter"
+    4606                    "Vis eller angi kontrollinformasjon for merkede objekter"
+    4607                    "Vis eller bli eier av merkede objekter"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "Overlapper vinduer"
+    5702                    "Flislegger vinduene vertikalt"
+    5703                    "Flislegger vinduene horisontalt"
+    5704                    "Oppdaterer innholdet i et vindu"
+    5705                    "Ordner ikoner"
+    5706                    "≈pner et nytt vindu"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "Viser innholdet i Hjelp i Filbehandling"
+    5802                    "Viser informasjon om hvordan du bruker Hjelp"
+    5803                    "Viser informasjon om Filbehandling"
+END
+
+#endif    // Norwegian, BokmÂl (Norway) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,1472 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (Simplified, PRC) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "文件(&F)"
+    BEGIN
+        MENUITEM "打开(&O)\tEnter",               101
+        MENUITEM "移动(&M)...\tF7",               106
+        MENUITEM "复制(&C)...\tF8",               107
+        MENUITEM "复制到剪贴板(&B)...\tF9",           118
+        MENUITEM "删除(&D)...\tDel",              108
+        MENUITEM "重命名(&N)...",                  109
+        MENUITEM "属性(&T)...\tAlt+Enter",        110
+        MENUITEM SEPARATOR
+        MENUITEM "压缩(&S)...",                   119
+        MENUITEM "解压缩(&U)...",                  120
+        MENUITEM SEPARATOR
+        MENUITEM "运行(&R)...",                   105
+        MENUITEM "打印(&P)...",                   102
+        MENUITEM "关联(&A)...",                   103
+        MENUITEM SEPARATOR
+        MENUITEM "创建目录(&E)...",                 111
+        MENUITEM "搜索(&C)...",                   104
+        MENUITEM "选定文件(&F)...",                 116
+        MENUITEM SEPARATOR
+        MENUITEM "退出(&X)",                      115
+    END
+    POPUP "磁盘(&D)"
+    BEGIN
+        MENUITEM "复制磁盘(&C)...",                 201
+        MENUITEM "标注磁盘(&L)...",                 202
+        MENUITEM SEPARATOR
+        MENUITEM "格式化磁盘(&F)...",                203
+        MENUITEM SEPARATOR
+        MENUITEM "选定驱动器(&S)...",                251
+    END
+    POPUP "目录树(&T)"
+    BEGIN
+        MENUITEM "展开一层(&X)\t+",                 301
+        MENUITEM "展开分支(&B)\t*",                 302
+        MENUITEM "展开全部(&A)\tCtrl+*",            303
+        MENUITEM "折叠分支(&C)\t-",                 304
+        MENUITEM SEPARATOR
+        MENUITEM "表明可展开的分支(&I)",                505
+    END
+    POPUP "查看(&V)"
+    BEGIN
+        MENUITEM "目录树与目录(&R)",                  413
+        MENUITEM "目录树(&E)",                     411
+        MENUITEM "目录(&O)",                      412
+        MENUITEM SEPARATOR
+        MENUITEM "拆分(&L)",                      414
+        MENUITEM SEPARATOR
+        MENUITEM "名称(&N)",                      401
+        MENUITEM "文件的全部详细资料(&A)",               402, CHECKED
+        MENUITEM "部分详细资料(&P)...",               403
+        MENUITEM SEPARATOR
+        MENUITEM "按名称排序(&S)",                   404
+        MENUITEM "按类型排序(&B)",                   405
+        MENUITEM "按大小排序(&Z)",                   406
+        MENUITEM "按日期排序(&D)",                   407
+        MENUITEM SEPARATOR
+        MENUITEM "按文件类型(&T)...",                409
+    END
+    POPUP "选项(&O)"
+    BEGIN
+        MENUITEM "确认(&C)...",                   501
+        MENUITEM "字体(&F)...",                   510
+        MENUITEM "自定义工具栏(&B)...",               512
+        MENUITEM SEPARATOR
+        MENUITEM "工具栏(&T)",                     508
+        MENUITEM "驱动器栏(&D)",                    507
+        MENUITEM "状态栏(&S)",                     503
+        MENUITEM SEPARATOR
+        MENUITEM "自动缩成图标(&M)",                  504
+        MENUITEM "退出时保存设置(&E)",                 511
+    END
+    POPUP "安全(&S)"
+    BEGIN
+        MENUITEM "权限(&P)...",                   605
+        MENUITEM "审核(&A)...",                   606
+        MENUITEM "所有者(&O)...",                  607
+    END
+    POPUP "窗口(&W)"
+    BEGIN
+        MENUITEM "新建窗口(&N)",                    1706
+        MENUITEM "层叠(&C)\tShift+F5",            1701
+        MENUITEM "横向平铺(&H)",                    1703
+        MENUITEM "垂直平铺(&T)\tShift+F4",          1702
+        MENUITEM "重排图标(&A)",                    1705
+        MENUITEM "刷新(&R)\tF5",                  1704
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "目录(&C)",                      1801
+        MENUITEM "查找帮助主题(&S)...",               30
+        MENUITEM "帮助使用方法(&H)",                  1802
+        MENUITEM SEPARATOR
+        MENUITEM "关于文件管理器(&A)...",              1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 223, 68
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "运行"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,162,10
+    CONTROL         "命令行(&C):",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,21,60,10
+    EDITTEXT        201,3,34,134,12,ES_AUTOHSCROLL
+    CONTROL         "运行时最小化(&M)",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,50,71,12
+    DEFPUSHBUTTON   "确定",1,173,6,40,14
+    PUSHBUTTON      "取消",2,173,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,173,43,40,14
+END
+
+11 DIALOG 20, 20, 242, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "打印"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,189,10
+    CONTROL         "打印(&P):",-1,"Static",SS_LEFTNOWORDWRAP,3,23,38,10
+    EDITTEXT        102,44,21,149,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,39,190,10
+    DEFPUSHBUTTON   "确定",1,197,6,40,14
+    PUSHBUTTON      "取消",2,197,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,197,43,40,14
+END
+
+12 DIALOG 20, 20, 254, 120
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "关联"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "文件的扩展名(&F):",-1,6,7,68,8
+    COMBOBOX        315,79,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "关联(&A):",-1,6,27,92,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "浏览(&B)...",318,130,24,47,14
+    DEFPUSHBUTTON   "确定",1,187,6,62,14,WS_GROUP
+    PUSHBUTTON      "取消",2,187,23,62,14
+    PUSHBUTTON      "新建类型(&N)...",300,187,42,62,14
+    PUSHBUTTON      "更改类型(&C)...",251,187,59,62,14
+    PUSHBUTTON      "删除类型(&D)",219,187,76,62,14
+    PUSHBUTTON      "帮助(&H)",254,187,95,62,14
+END
+
+13 DIALOG 20, 20, 269, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "搜索"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "搜索目标(&S):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,51,12
+    EDITTEXT        201,58,7,160,12,ES_AUTOHSCROLL
+    CONTROL         "起始于(&F):",-1,"Static",SS_LEFTNOWORDWRAP,5,23,49,12
+    EDITTEXT        101,58,22,160,12,ES_AUTOHSCROLL
+    CONTROL         "搜索全部子目录(&E)",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,58,39,100,12
+    DEFPUSHBUTTON   "确定",1,223,6,40,14
+    PUSHBUTTON      "取消",2,223,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,223,41,40,14
+END
+
+14 DIALOG 47, 59, 265, 68
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "移动"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "当前目录: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,5,173,10
+    CONTROL         "到(&T):",2001,"Static",SS_LEFTNOWORDWRAP,3,33,53,10
+    EDITTEXT        103,64,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,52,40,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,47,52,134,10
+    DEFPUSHBUTTON   "确定",1,216,6,40,14
+    PUSHBUTTON      "取消",2,216,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,216,40,40,14
+    CONTROL         "从(&F):",2002,"Static",SS_LEFTNOWORDWRAP,3,19,53,10
+    EDITTEXT        102,64,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 257, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "删除"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "当前目录: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "删除(&L):",-1,"Static",SS_LEFTNOWORDWRAP,3,20,41,10
+    EDITTEXT        102,48,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,41,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,48,35,155,10
+    DEFPUSHBUTTON   "确定",1,212,6,40,14
+    PUSHBUTTON      "取消",2,212,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,212,40,40,14
+END
+
+16 DIALOG 23, 13, 275, 246
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s 的属性"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "确定",1,215,6,54,14,WS_GROUP
+    PUSHBUTTON      "取消",2,215,23,54,14
+    PUSHBUTTON      "帮助(&H)",254,215,40,54,14
+    CONTROL         "文件名(&F):",261,"Static",SS_LEFTNOWORDWRAP,5,5,47,10
+    EDITTEXT        201,57,5,147,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "路径(&P):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,47,10
+    EDITTEXT        101,57,16,147,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "上次修改:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,47,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,57,27,147,10
+    CONTROL         "版本:",258,"Static",SS_LEFTNOWORDWRAP,5,38,47,10
+    CONTROL         "未标记",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,57,38,147,10
+    LTEXT           "版权(&Y):",-1,5,49,47,10
+    EDITTEXT        265,57,49,147,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "大小:",260,"Static",SS_LEFTNOWORDWRAP,5,60,47,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,57,60,147,10
+    CONTROL         "压缩的大小:",268,"Static",SS_LEFTNOWORDWRAP,5,71,47,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,57,71,147,10
+    CONTROL         "压缩比:",270,"Static",SS_LEFTNOWORDWRAP,5,82,47,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,57,82,147,10
+    GROUPBOX        "属性",-1,4,96,150,54
+    CONTROL         "只读(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,14,108,52,12
+    CONTROL         "隐藏(&I)",216,"Button",BS_AUTOCHECKBOX,85,108,49,12
+    CONTROL         "档案(&A)",217,"Button",BS_AUTOCHECKBOX,14,120,52,12
+    CONTROL         "系统(&S)",218,"Button",BS_AUTOCHECKBOX,85,120,49,12
+    CONTROL         "压缩(&C)",267,"Button",BS_AUTOCHECKBOX,14,132,52,12
+    GROUPBOX        "版本信息(&V)",262,4,155,261,80
+    LISTBOX         263,9,168,104,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,121,168,138,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 212, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "创建目录"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,154,10
+    CONTROL         "名称(&N):",-1,"Static",SS_LEFTNOWORDWRAP,3,23,39,10
+    EDITTEXT        201,47,22,105,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "确定",1,167,6,40,14
+    PUSHBUTTON      "取消",2,167,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,167,43,40,14
+END
+
+19 DIALOG 20, 20, 154, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "复制磁盘"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "源盘(&S):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,46,10
+    COMBOBOX        245,55,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "目标盘(&D):",206,"Static",SS_LEFTNOWORDWRAP,5,22,46,10
+    COMBOBOX        222,55,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "确定",1,110,6,40,14
+    PUSHBUTTON      "取消",2,110,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,110,43,40,14
+END
+
+22 DIALOG 30, 30, 144, 63
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "正在复制磁盘"
+FONT 9, "宋体"
+BEGIN
+    CTEXT           "正在复制",-1,7,5,130,10,NOT WS_GROUP
+    CTEXT           "驱动器 A: 中的磁盘",222,7,16,130,10,NOT WS_GROUP
+    CTEXT           "读取源磁盘",243,7,27,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "取消",2,50,44,44,14
+END
+
+23 DIALOG 20, 20, 161, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "标注磁盘"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "卷标(&L):",-1,"Static",SS_LEFTNOWORDWRAP,5,15,56,10
+    EDITTEXT        201,5,27,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确定",1,115,6,40,14
+    PUSHBUTTON      "取消",2,115,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,115,43,40,14
+END
+
+24 DIALOG 11, 28, 184, 101
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "格式化磁盘"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "确定",1,140,6,40,14
+    PUSHBUTTON      "取消",2,140,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,140,43,40,14
+    CONTROL         "磁盘位置(&D):",-1,"Static",SS_LEFTNOWORDWRAP,5,7,47,10
+    COMBOBOX        222,55,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "磁盘容量(&C):",-1,"Static",SS_LEFTNOWORDWRAP,5,20,47,10
+    COMBOBOX        241,55,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "选项",102,5,39,115,53,WS_GROUP
+    CONTROL         "卷标(&L):",-1,"Static",SS_LEFTNOWORDWRAP,11,51,39,10
+    EDITTEXT        201,53,49,63,12
+    CONTROL         "快速格式化(&Q)",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,66,90,12
+END
+
+26 DIALOG 30, 30, 154, 53
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "正在格式化磁盘"
+FONT 9, "宋体"
+BEGIN
+    CTEXT           "正在格式化磁盘",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "初始化驱动器...",243,0,18,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "取消",2,55,33,44,14
+END
+
+30 DIALOG 20, 20, 174, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "部分详细资料"
+FONT 9, "宋体"
+BEGIN
+    GROUPBOX        "详细资料",-1,4,4,121,74
+    CONTROL         "大小(&S)",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,100,12
+    CONTROL         "上次修改日期(&M)",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,100,12
+    CONTROL         "上次修改时间(&T)",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,100,12
+    CONTROL         "文件属性(&F)",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,100,12
+    CONTROL         "MS-DOS 文件名(&D)",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,100,12
+    DEFPUSHBUTTON   "确定",1,130,6,40,14
+    PUSHBUTTON      "取消",2,130,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,130,60,40,14
+END
+
+32 DIALOG 20, 20, 172, 100
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "按文件类型"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "名称(&N):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,37,10
+    EDITTEXT        201,45,6,79,12,ES_AUTOHSCROLL
+    GROUPBOX        "文件类型",-1,5,20,94,62
+    CONTROL         "目录(&D)",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,60,12
+    CONTROL         "程序(&P)",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,60,12
+    CONTROL         "文档(&M)",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,60,12
+    CONTROL         "其他文件(&O)",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,60,12
+    CONTROL         "显示隐含/系统文件(&S)",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,101,12
+    DEFPUSHBUTTON   "确定",1,127,6,40,14
+    PUSHBUTTON      "取消",2,127,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,127,43,40,14
+END
+
+33 DIALOG 20, 20, 212, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "确认"
+FONT 9, "宋体"
+BEGIN
+    GROUPBOX        "确认",-1,5,5,160,87,WS_TABSTOP
+    CONTROL         "文件删除(&D)",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,80,12
+    CONTROL         "目录删除(&I)",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,80,12
+    CONTROL         "文件替换(&R)",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,80,12
+    CONTROL         "鼠标操作(&M)",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,80,12
+    CONTROL         "磁盘操作命令(&K)",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,80,12
+    CONTROL         "修改系统、隐藏、只读文件(&S)",215,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,75,150,12
+    DEFPUSHBUTTON   "确定",1,168,6,40,14
+    PUSHBUTTON      "取消",2,168,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,168,44,40,14
+END
+
+35 DIALOG 20, 20, 256, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "正在移动..."
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,45,8
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,56,5,192,10
+    CONTROL         "到(&T):",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,18,40,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,56,18,192,10
+    DEFPUSHBUTTON   "取消",2,212,33,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 128, 59
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 9, "宋体"
+BEGIN
+    CTEXT           "正在打印文件...",-1,4,6,120,12
+    CTEXT           "",-1,4,21,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "取消",2,47,41,32,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 206, 91
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "属性"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "选择 %d 个文件",100,"Static",SS_LEFTNOWORDWRAP,5,5,140,10
+    CONTROL         "总共 %s 字节",111,"Static",SS_LEFTNOWORDWRAP,5,16,139,10
+    GROUPBOX        "属性",-1,5,29,123,54
+    CONTROL         "只读(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,52,12
+    CONTROL         "隐藏(&I)",216,"Button",BS_AUTOCHECKBOX,72,40,52,12
+    CONTROL         "档案(&A)",217,"Button",BS_AUTOCHECKBOX,10,52,52,12
+    CONTROL         "系统(&S)",218,"Button",BS_AUTOCHECKBOX,72,52,52,12
+    CONTROL         "压缩(&C)",267,"Button",BS_AUTOCHECKBOX,10,64,52,12
+    DEFPUSHBUTTON   "确定",1,150,6,50,14,WS_GROUP
+    PUSHBUTTON      "取消",2,150,23,50,14
+    PUSHBUTTON      "帮助(&H)",254,150,43,50,14
+END
+
+39 DIALOG 10, 20, 257, 136
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "确认文件取代"
+FONT 9, "宋体"
+BEGIN
+    ICON            32515,-1,3,12,21,21
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,221,10
+    CONTROL         "替换文件:",-1,"Static",SS_LEFTNOWORDWRAP,25,17,49,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,17,171,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,75,34,171,10
+    CONTROL         "被替换为:",-1,"Static",SS_LEFTNOWORDWRAP,25,50,49,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,50,171,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,75,66,171,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,29,84,217,23
+    DEFPUSHBUTTON   "是(&Y)",6,38,116,40,14
+    PUSHBUTTON      "全是(&A)",107,84,116,40,14
+    PUSHBUTTON      "否(&N)",7,130,116,40,14
+    PUSHBUTTON      "取消",2,176,116,40,14
+END
+
+40 DIALOG 10, 20, 247, 89
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "确认文件删除"
+FONT 9, "宋体"
+BEGIN
+    ICON            32515,-1,3,12,21,21
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "删除文件:",-1,"Static",SS_LEFTNOWORDWRAP,25,21,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,71,21,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,36,203,22
+    DEFPUSHBUTTON   "是(&Y)",6,34,67,40,14
+    PUSHBUTTON      "全是(&A)",107,80,67,40,14
+    PUSHBUTTON      "否(&N)",7,126,67,40,14
+    PUSHBUTTON      "取消",2,172,67,40,14
+END
+
+41 DIALOG 10, 20, 247, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "确认目录删除"
+FONT 9, "宋体"
+BEGIN
+    ICON            32515,-1,3,12,21,21
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,34,3,203,10
+    CONTROL         "删除目录:",-1,"Static",SS_LEFTNOWORDWRAP,34,18,39,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,34,35,203,23
+    DEFPUSHBUTTON   "是(&Y)",6,34,66,40,14
+    PUSHBUTTON      "全是(&A)",107,80,66,40,14
+    PUSHBUTTON      "否(&N)",7,126,66,40,14
+    PUSHBUTTON      "取消",2,172,66,40,14
+END
+
+42 DIALOG 10, 22, 246, 69
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "确认文件移动"
+FONT 9, "宋体"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "移动文件:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,42,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,32,203,10
+    DEFPUSHBUTTON   "是(&Y)",6,34,50,40,14
+    PUSHBUTTON      "全部(&A)",107,80,50,40,14
+    PUSHBUTTON      "否(&N)",7,126,50,40,14
+    PUSHBUTTON      "取消",2,172,50,40,14
+END
+
+43 DIALOG 10, 22, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "确认文件重命名"
+FONT 9, "宋体"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "重命名文件:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,50,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,81,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,33,203,10
+    DEFPUSHBUTTON   "是(&Y)",6,33,48,40,14
+    PUSHBUTTON      "全部(&A)",107,79,48,40,14
+    PUSHBUTTON      "否(&N)",7,125,48,40,14
+    PUSHBUTTON      "取消",2,171,48,40,14
+END
+
+44 DIALOG 15, 12, 141, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "选定文件"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "文件(&F):",-1,"Static",SS_LEFTNOWORDWRAP,5,14,60,10
+    EDITTEXT        201,5,29,75,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "选定(&S)",1,85,6,51,14
+    PUSHBUTTON      "撤消选定(&D)",6,85,23,51,14
+    PUSHBUTTON      "取消",2,85,40,51,14
+    PUSHBUTTON      "帮助(&H)",254,85,63,51,14
+END
+
+45 DIALOG 11, 31, 198, 77
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "选定驱动器"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "驱动器(&D):",245,"Static",SS_LEFTNOWORDWRAP,5,5,41,10
+    LISTBOX         222,5,17,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "确定",1,153,6,40,14
+    PUSHBUTTON      "取消",2,153,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,153,44,40,14
+END
+
+46 DIALOG 11, 28, 249, 77
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "选定文件名称"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "此路径不符合 FAT 文件名格式，请输入新的名称。",99,5,4,190,20,NOT WS_GROUP
+    RTEXT           "新名称(&N):",-1,5,58,50,12,NOT WS_GROUP
+    EDITTEXT        103,62,57,130,12
+    RTEXT           "原路径:",-1,5,28,50,11,NOT WS_GROUP
+    EDITTEXT        102,63,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "目的目录:",-1,5,44,50,11,NOT WS_GROUP
+    EDITTEXT        101,63,43,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "确定",1,203,4,40,14
+    PUSHBUTTON      "取消",2,203,20,40,14
+    PUSHBUTTON      "帮助(&H)",254,203,36,40,14
+END
+
+48 DIALOG 23, 13, 253, 114
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s 的属性"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "确定",1,197,6,50,14,WS_GROUP
+    PUSHBUTTON      "取消",2,197,23,50,14
+    PUSHBUTTON      "帮助(&H)",254,197,43,50,14
+    CONTROL         "文件名(&F):",261,"Static",SS_LEFTNOWORDWRAP,5,5,49,10
+    EDITTEXT        201,60,5,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "路径(&P):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,49,10
+    EDITTEXT        101,60,16,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "上次修改:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,49,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,60,27,130,10
+    CONTROL         "大小:",260,"Static",SS_LEFTNOWORDWRAP,5,38,49,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,60,38,130,10
+    GROUPBOX        "属性",-1,4,52,120,54
+    CONTROL         "只读(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,52,12
+    CONTROL         "隐藏(&I)",216,"Button",BS_AUTOCHECKBOX,71,64,49,12
+    CONTROL         "档案(&A)",217,"Button",BS_AUTOCHECKBOX,9,76,52,12
+    CONTROL         "系统(&S)",218,"Button",BS_AUTOCHECKBOX,71,76,49,12
+    CONTROL         "压缩(&C)",267,"Button",BS_AUTOCHECKBOX,9,88,52,12
+END
+
+49 DIALOG 13, 54, 264, 168
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "字体"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "字体(&F):",1088,6,3,47,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "字形(&Y):",1089,108,3,44,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "大小(&S):",1090,179,3,36,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "效果",1072,6,73,112,87,WS_GROUP
+    CONTROL         "加删除线(&K)",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,67,10
+    CONTROL         "下划线(&U)",1041,"Button",BS_AUTOCHECKBOX,10,95,52,10
+    CONTROL         "FAT 驱动器以小写显示(&L)",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,107,104,10
+    CONTROL         "所有驱动器以小写显示(&D)",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,120,104,10
+    LTEXT           "颜色(&C):",1091,11,135,44,9
+    COMBOBOX        1139,63,133,43,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "确定",1,218,6,40,14,WS_GROUP
+    PUSHBUTTON      "取消",2,218,23,40,14,WS_GROUP
+    PUSHBUTTON      "应用(&A)",1026,218,40,40,14,WS_GROUP
+    PUSHBUTTON      "帮助(&H)",1038,218,57,40,14,WS_GROUP
+    GROUPBOX        "示例",1073,128,74,127,64,WS_GROUP
+    CTEXT           "",1093,131,144,123,16,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbYyZz",1092,137,89,110,39,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "正在格式化磁盘"
+FONT 9, "宋体"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "隐藏",110,38,48,40,14
+    PUSHBUTTON      "取消",2,82,48,40,14
+END
+
+51 DIALOG 10, 20, 245, 74
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "确认: 忽略文件或目录，然后继续"
+FONT 9, "宋体"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "访问被拒绝，忽略:",202,"Static",SS_LEFTNOWORDWRAP,25,16,79,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,111,14,122,10
+    CONTROL         "您没有使用权限或者文件正在使用中。",-1,"Static",SS_LEFTNOWORDWRAP,25,29,139,10
+    CONTROL         "请选择「是」略过该文件，然后继续操作。",-1,"Static",SS_LEFTNOWORDWRAP,25,41,180,10
+    DEFPUSHBUTTON   "是(&Y)",6,33,56,40,14
+    PUSHBUTTON      "全是(&A)",107,79,56,40,14
+    PUSHBUTTON      "否(&N)",7,125,56,40,14
+    PUSHBUTTON      "取消",2,171,56,40,14
+END
+
+52 DIALOG 10, 20, 237, 62
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "确认: 忽略文件或目录，然后继续"
+FONT 9, "宋体"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "无法访问目标位置，忽略:",202,"Static",SS_LEFTNOWORDWRAP,25,16,95,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,125,15,106,10
+    CONTROL         "选择「是」，即可忽略此文件，并且继续操作。",-1,"Static",SS_LEFTNOWORDWRAP,25,29,180,10
+    DEFPUSHBUTTON   "是(&Y)",6,30,44,40,14
+    PUSHBUTTON      "全是(&A)",107,76,44,40,14
+    PUSHBUTTON      "否(&N)",7,122,44,40,14
+    PUSHBUTTON      "取消",2,168,44,40,14
+END
+
+53 DIALOG 77, 109, 209, 82
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "搜索磁盘"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "搜索:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,60,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,73,5,120,10
+    CONTROL         "搜索起点:",-1,"Static",SS_LEFTNOWORDWRAP,5,18,60,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,73,17,120,10
+    CONTROL         "读取目录:",-1,"Static",SS_LEFTNOWORDWRAP,5,31,60,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,73,29,120,10
+    CONTROL         "找到的匹配:",-1,"Static",SS_LEFTNOWORDWRAP,5,45,60,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,73,43,120,10
+    PUSHBUTTON      "隐藏",110,62,64,40,14
+    PUSHBUTTON      "取消",2,106,64,40,14
+END
+
+54 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "复制到剪贴板"
+FONT 9, "宋体"
+BEGIN
+    CONTROL         "当前目录: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "复制到剪贴板(&B):",-1,"Static",SS_LEFTNOWORDWRAP,3,20,67,10
+    EDITTEXT        102,71,19,125,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确定",1,200,6,40,14
+    PUSHBUTTON      "取消",2,200,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,200,43,40,14
+END
+
+55 DIALOG 18, 14, 289, 230
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "更改文件类型"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "文件类型(&F):",302,5,6,51,8
+    EDITTEXT        301,59,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "操作(&A):",-1,5,22,235,126,WS_GROUP
+    COMBOBOX        306,165,5,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "命令(&C):",313,9,41,38,8
+    EDITTEXT        304,51,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "浏览(&B)...",318,166,38,46,14
+    CONTROL         "使用 DDE(&U)",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,57,69,10
+    LTEXT           "DDE 消息(&D):",320,22,72,64,8
+    EDITTEXT        309,105,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "应用程序未运行时的 DDE 消息(&N):",322,22,84,77,19
+    LTEXT           "(可选)",324,209,90,26,8
+    EDITTEXT        311,105,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "应用程序(&C):",321,22,109,65,8
+    EDITTEXT        310,105,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "题目(&T):",323,23,127,50,8
+    EDITTEXT        312,105,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "新扩展名(&W):",-1,11,184,51,8
+    EDITTEXT        315,66,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "添加(&D) ->",303,102,174,51,14
+    PUSHBUTTON      "<-  删除(&R)",219,102,191,51,14
+    LTEXT           "扩展名(&E):",-1,157,162,51,8
+    LISTBOX         317,157,173,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "与本文件类型相关的扩展名:",316,5,154,235,66
+    DEFPUSHBUTTON   "确定",1,244,6,40,14
+    PUSHBUTTON      "取消",2,244,23,40,14
+    PUSHBUTTON      "帮助(&H)",254,244,40,40,14
+END
+
+57 DIALOG 123, 60, 244, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "进行文件压缩"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "正在压缩的文件:",-1,6,8,71,8
+    LTEXT           "filename.xxx",341,87,8,147,8
+    LTEXT           "目录:",-1,6,20,71,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,87,20,151,8
+    LTEXT           "正在压缩的目录:",-1,6,32,71,8
+    LTEXT           "1,888,888,999",343,87,32,153,8
+    LTEXT           "已经压缩的文件:",-1,6,44,71,8
+    LTEXT           "1,888,888,999",344,87,44,150,8
+    LTEXT           "压缩前文件的大小:",-1,6,56,71,8
+    LTEXT           "9,999,999,999,999",345,87,56,146,8
+    LTEXT           "压缩后文件大小:",-1,6,68,71,8
+    LTEXT           "9,999,999,999,999",346,87,69,150,8
+    LTEXT           "文件压缩比:",-1,6,80,71,8
+    LTEXT           "100%",347,87,80,154,8
+    PUSHBUTTON      "取消",2,94,97,55,14
+END
+
+58 DIALOG 114, 62, 238, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "进行文件解压缩"
+FONT 9, "宋体"
+BEGIN
+    LTEXT           "正在解压缩的文件:",-1,6,8,74,8
+    LTEXT           "filename.xxx",351,88,8,139,8
+    LTEXT           "目录:",-1,6,20,74,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,88,20,144,8
+    LTEXT           "已经解压缩的文件:",-1,6,32,74,8
+    LTEXT           "1,999,999,999",353,88,32,111,8
+    LTEXT           "已经解压缩的文件:",-1,6,44,74,8
+    LTEXT           "1,999,999,999",354,88,44,114,8
+    PUSHBUTTON      "取消",2,94,64,49,14
+END
+
+59 DIALOG 11, 28, 233, 68
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "压缩错误"
+FONT 9, "宋体"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,190,20
+    DEFPUSHBUTTON   "忽略(&I)",5,19,47,45,14,WS_GROUP
+    PUSHBUTTON      "全部忽略(&G)",112,69,47,45,14
+    PUSHBUTTON      "重试(&R)",4,119,47,45,14
+    PUSHBUTTON      "放弃(&A)",3,169,47,45,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,52
+ PRODUCTVERSION 4,0,1381,52
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "File Manager"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Microsoft(R) Windows NT(TM) Operating System"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "复制磁盘"
+    51                      "插入目标盘。"
+    52                      "插入源磁盘。"
+    53                      "插入源磁盘及目标盘。"
+    54                      "格式化目标软盘"
+    55                      "复制磁盘错误"
+    56                      "不能复制磁盘。"
+    58                      "源软盘与目标软盘不兼容。"
+    60                      "完成了%d%%"
+    61                      "正在创建根目录..."
+    62                      "正在复制系统文件..."
+    63                      "格式化磁盘错误"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "格式化完成"
+    67                      "全部磁盘空间 %ld 字节\n磁盘上还有%ld 字节可用\n\n您想格式化另一个磁盘吗？"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "网络错误"
+    83                      "驱动器包含 Windows 系统文件，不能被断开。"
+    91                      "文件管理器无法更改属性。"
+    92                      "文件管理器无法创建目录。"
+    93                      "文件管理器无法为软盘命名。\n\n请确认软盘未作写保护、并非网络驱动器，而且输入正确的名称。\n名称不可包含下列字符: \n[空格] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "未找到匹配的文件。"
+END
+
+STRINGTABLE
+BEGIN
+    97                      "这个驱动器的内容已有变化。您想更新「搜索结果」窗口吗？"
+    98                      "您必须以管理员身份登录此工作站，以便在硬盘上运行此项操作。"
+    101                     "驱动器 %c:%c"
+    110                     "不能运行程序"
+    111                     "意外错误: %d。"
+END
+
+STRINGTABLE
+BEGIN
+    112                     "没有足够的内存可启动指定的应用程序。\n\n请退出使用一或数个应用程序，然后再试。"
+    113                     "文件管理器无法找到文件（或其组件）。\n\n请确定路径和文件名都是正确的，且所有必要的库都是可用的。"
+    114                     "指定的路径无效。"
+    116                     "没有应用程序与此文件有关。\n\n请从「文件」菜单中选择「关联」以创建关联。"
+    118                     "文件管理器无法打开或打印文件。\n\n请启动用以创建此文件的应用程序，并打开或打印该文件。"
+    120                     "确认鼠标操作"
+    121                     "您肯定是想把所选文件或目录复制到 %s 吗？"
+    122                     "您肯定是想把所选文件或目录移动到 %s 吗？"
+    123                     "是否确定要启动 %s,使用 %s 来作为起始文件？"
+    124                     "文件管理器"
+    126                     "目录树"
+    127                     "搜索结果:"
+END
+
+STRINGTABLE
+BEGIN
+    132                     "太多文件"
+    133                     "文件管理器 - 内存用尽"
+    134                     "无法读取整个目录。仅显示部分列表。"
+    140                     "当前目录: %s"
+    141                     "复制"
+    143                     "重命名"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "格式化磁盘"
+    146                     "选择要格式化的磁盘。"
+    150                     "创建:"
+    151                     "正在删除..."
+    152                     "正在复制:"
+    153                     "正在重命名..."
+    154                     "正在移动..."
+    155                     "正在删除..."
+    156                     "正在打印: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "正在复制..."
+    170                     "删除:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "共 %d 个文件 (%s)"
+    181                     "目录读取: %d"
+    182                     "%c: %s 可用空间，%s 全部空间"
+    183                     "找到 %d 个文件"
+    185                     "所选文件"
+    186                     "文件管理器无法切断网络驱动器的连接。\n\n在此驱动器上打开了数个文件。"
+    187                     "选择了 %d 个文件 (%s)"
+    188                     "驱动器 %c 上没有磁盘。\n\n插入磁盘再试。"
+    189                     "驱动器 %c 里的磁盘未被格式化。\n\n您想现在把它格式化吗？"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "没有足够的磁盘空间可供打印。\n\n请删除一个或数个文件以增加磁盘空间，然后再试一次。"
+    193                     "没有足够的内存可供打印。\n\n请退出使用一个或数个应用程序，然后再试一次。"
+    194                     "打印时出现错误。\n\n请确定打印机是否配置正确，是否选择正确。"
+    195                     "显示的是不完整的目录树"
+    197                     "目标软盘已满。请插入另一软盘以继续。"
+    198                     "这是一个系统、隐含、或只读性文件。"
+    199                     "文件管理器不能进行快速格式化。\n\n以正常格式继续吗？"
+    203                     "在将命令送到应用程序时发生错误。"
+    204                     "不能为这项操作加载所需的一个库。"
+END
+
+STRINGTABLE
+BEGIN
+    209                     "共享目录(&H)..."
+    210                     "格式化会清除软盘中的所有数据。是否确定要格式化 %c 驱动器内的软盘？"
+    211                     "确认格式化磁盘"
+    212                     "此操作将清除目标盘上的所有数据。继续吗？"
+    213                     "确定复制磁盘"
+    214                     "关闭(&C)"
+    215                     "关闭"
+    218                     "%s 目录并不存在。\n\n是否创建该目录？"
+    219                     "程序#*.exe;*.pif;*.com;*.bat#所有文件 (*.*)#*.*#"
+    220                     "浏览"
+    221                     "运行"
+    222                     "不能打印文件"
+    223                     "不能显示「帮助」信息。"
+END
+
+STRINGTABLE
+BEGIN
+    224                     "有扩展名 %s 的文件是程序，不能与另一个应用程序相关联。"
+    225                     "%s 不是一个程序，不能与一个文件扩展名相关联。"
+    226                     "(无)"
+    227                     "没找到文件。"
+    228                     "文件管理器不能同时打印多份文件。\n\n只选择一份文件，然后再试。"
+    230                     "运行这个应用程序所需的库文件之一被毁。请重新安装这个应用程序。"
+    231                     "此文件正被其它应用程序使用。"
+    232                     "文件管理器无法访问在「%s」目录中所创建的文件。\n\n是否继续？"
+    233                     "创建目录"
+    234                     "%ld 字节"
+    235                     "%s 字节"
+    236                     "文件管理器无法将多个文件或目录复制到剪贴板中。\n\n请只选择一个文件，然后再试。"
+    237                     "%s - %s"
+    238                     "驱动器:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "连接网络驱动器"
+    241                     "切断网络驱动器连接"
+    242                     "网络连接"
+    243                     "共享目录"
+    244                     "停止共享目录"
+    245                     "查看文件的所有详细资料"
+    246                     "仅查看名称"
+    247                     "依名称排序"
+    248                     "依类型排序"
+    249                     "依大小排序"
+    250                     "依日期排序"
+    251                     "新建窗口"
+    252                     "复制文件"
+    253                     "移动文件"
+    254                     "目录名(&D):"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "无法使用网络驱动器。"
+    259                     "共享为 %s"
+    260                     "未共享"
+    261                     "删除文件"
+    262                     " - COMPRESSED"
+    263                     "将文件复制到 %s"
+    264                     "将文件移动到 %s"
+    265                     "用 %s 运行文件"
+    266                     "%s 字节"
+    267                     "%sKB"
+    268                     "%sMB"
+    269                     "%sGB"
+    270                     "%sTB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "您并没有访问此目录的权限。"
+    281                     "您并没有访问此文件的权限。"
+    283                     "%c: 驱动器在使用中，无法访问。\n文件管理器正在复制磁盘。"
+    284                     "%c: 驱动器在使用中，无法访问。\n文件管理器正在格式化磁盘。"
+    285                     "未完全完成操作"
+    286                     "无法完成文件和目录上所有的操作。"
+    287                     "无法读取目录"
+END
+
+STRINGTABLE
+BEGIN
+    288                     "目录并不存在。"
+    289                     "无法连接网络驱动器"
+    290                     "找不到该网络名称。"
+    292                     "「全部确定」会作用到所有文件，包括系统、隐藏和\n只读文件。"
+    294                     "打开"
+    295                     "打印"
+    298                     "加入扩展名"
+    299                     "「%s」扩展名当前关联到「%s」。是否替换原有关联？"
+    300                     "文件关联编辑器"
+    301                     "无法与扩展名产生关联。"
+    302                     "无法删除扩展名。"
+    303                     "无法添加文件类型。"
+END
+
+STRINGTABLE
+BEGIN
+    304                     "无法删除文件类型。"
+    305                     "无法读取文件类型。"
+    306                     "文件类型说明不能是空的。请键入新的文件类型。"
+    307                     "无法根据文件类型产生唯一的标识号。请键入新的文件类型。"
+    308                     "删除文件类型"
+    309                     "如此将会删除文件类型及所有相关的扩展名。是否确定要删除「%s」？"
+    312                     "文件类型的操作至少必需有一个命令与其搭配。请在命令字段键入应用程序。"
+END
+
+STRINGTABLE
+BEGIN
+    320                     "新文件类型"
+    321                     "正在复制磁盘"
+    322                     "搜索"
+    324                     "文件管理器当前正在格式化软盘。退出文件管理器将会中断此项操作。"
+    325                     "文件管理器当前正在复制软盘。退出文件管理器将会中断此项操作。"
+    326                     "完成百分比"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360K"
+    354                     "1%s2 MB"
+    355                     "720K"
+    356                     "1%s44 MB"
+    357                     "2%s88 MB"
+    358                     "驱动器容量"
+    359                     "文件管理器无法取得软盘信息。\n\n请确定软盘位于驱动器中。"
+    360                     "20%s8 MB"
+    361                     "未知的磁盘类型"
+    362                     "未知的磁盘类型"
+    363                     "文件管理器无法格式化驱动器 %s 中的磁盘类型。请使用磁盘管理器来格式化这个磁盘。"
+END
+
+STRINGTABLE
+BEGIN
+    370                     "128 MB"
+    371                     "230 MB"
+    375                     "1%s23 MB"
+    376                     "640K"
+    377                     "1%s25 MB"
+    378                     "256K"
+END
+
+STRINGTABLE
+BEGIN
+    400                     "不兼容的文件系统。"
+    401                     "禁止访问。"
+    402                     "磁盘写保护。"
+    403                     "文件管理器无法锁定磁盘卷。"
+    404                     "文件管理器无法快速格式化软盘。\n\n请确定软盘的密度是正确的。"
+    405                     "源软盘上的 IO 错误。"
+    406                     "目标软盘上的 IO 错误。"
+    407                     "源软盘和目标软盘上的 IO 错误。"
+    408                     "发生 IO 错误。"
+    411                     "文件管理器无法格式化软盘。\n\n请确定软盘位于驱动器内，且未写保护、损坏或密度错误。"
+    412                     "文件管理器无法为驱动器命名。\n\n指定的磁盘卷标无效。请确认卷标并未包含任何下列字符\n\n[空格] * ? / \\ | . , ; : +  = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "打开..."
+    421                     "关闭..."
+    422                     "打开太多目录窗口。\n\n请关闭一或数个窗口，然后重试。"
+    423                     "快速格式化..."
+    424                     "无法初始化背景更新支持。文件管理器会退出。"
+    425                     "文件管理器出始化"
+    426                     "正在读取目录，请稍候..."
+    427                     "要同时压缩 %s 中所有的文件及子目录?"
+    428                     "要同时解压缩 %s 中所有的文件及子目录?"
+    429                     "文件管理器无法更改 %s 的压缩属性。"
+    430                     "%s 文件将不被压缩。如果压缩这个文件，系统可能就无法启动。"
+    431                     "文件管理器当前正在压缩或解压缩文件。/n您必须先压缩完所有的文件，才能再压缩其它的文件。"
+END
+
+STRINGTABLE
+BEGIN
+    500                     "备注"
+    501                     "公司名"
+    502                     "文件说明"
+    503                     "内部名称"
+    504                     "合法商标"
+    505                     "原始文件名"
+    506                     "内部版本说明"
+    507                     "产品名称"
+    508                     "产品版本"
+    509                     "特殊版本说明"
+    510                     "语言"
+    511                     "语言"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "连接网络驱动器(&N)..."
+    801                     "断开网络驱动器(&D)..."
+    802                     "网络连接(&N)..."
+    803                     "共享为(&A)..."
+    804                     "停止共享(&T)..."
+    805                     "查看共享目录(&H)..."
+    806                     "恢复删除(&U)..."
+    807                     "在连接时打开新窗口(&O)"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "移动文件出错"
+    1002                    "复制文件错误"
+    1003                    "删除文件出错"
+    1004                    "重命名文件出错"
+    1005                    "选择驱动器出错"
+    1006                    "读取目录出错"
+    1007                    "标注磁盘出错"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "文件管理不能移动 %s: %s"
+    1012                    "文件管理器不能复制 %s: %s"
+    1013                    "文件管理器不能删除 %s: %s"
+    1014                    "文件管理器不能重命名 %s: %s"
+    1021                    "文件管理器不能创建目录 %s: %s"
+    1022                    "文件管理器不能删除目录 %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "文件管理器不能创建或替换 %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "源和目标相同。"
+    1102                    "仅选择一个文件更名，或使用通配字符（例如 *.TXT）为一组具有类似名称的文件更名。"
+    1103                    "无法重命名为不同的目录或磁盘。\n请改用「文件移动」命令。"
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "无法为根目录重命名。"
+    1105                    "目标目录为源的子目录。"
+    1106                    "Windows 正在使用文件。"
+    1107                    "「到」框中仅指定一个文件或目录。若要指定一组文件，请使用通配字符（例如 *.TXT）。"
+    1108                    "已经有使用这个名称的文件或目录存在。在目录中，文件和目录的名称都必须是唯一的。"
+    1109                    "请确保是否指定正确的路径和文件名。"
+    1110                    "请确保是否指定正确的路径。"
+    1111                    "请退出使用一或数个应用程序，然后再试。或使用控制面板的「系统」选项，增加虚拟内存。"
+    1113                    "取消此磁盘的写保护或使用另一磁盘，然后再试一次。"
+    1114                    "请确定您拥有正确的网络授权以便运行此项操作。"
+    1115                    "请删除一个或数个文件以增加磁盘空间，然后再试一次。"
+    1116                    "在此媒体上未检测到任何数据。"
+    1117                    "目录已经存在。"
+    1118                    "指定的名称已由另一个文件所使用。"
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "驱动器中是错误的软盘。"
+    1151                    "应用程序无法在 Windows NT 方式下运行。"
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "操作系统无法运行此组件。"
+    1153                    "此组件无法在 Windows NT 方式下运行。"
+    1154                    "此程序并非有效的 Windows NT 应用程序。"
+    1155                    "出错。没有任何关于此错误的消息文字。"
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "复制来源(&F):"
+    2001                    "复制到(&T):"
+    2002                    "原文件名(&F):"
+    2003                    "新文件名(&T):"
+    2004                    "如果设置该字体，将无法显示汉字。"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "对文件进行操作的命令"
+    3985                    "用于对磁盘进行操作的命令"
+    3986                    "用于在目录树窗口里进行操作的命令"
+    3987                    "用于决定怎样显示信息的命令"
+    3988                    "用于设置选项的命令"
+    3989                    "控制文件和目录安全的命令"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "用于安排窗口的命令"
+    4001                    "用于显示文件管理器帮助的命令"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "在「文件管理帮助」里搜索一个主题"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "打开所选项目"
+    4102                    "打印一份文档"
+    4103                    "将一份文件与一个应用程序相关联"
+    4104                    "搜索文件和目录"
+    4105                    "启动或打开一个应用程序或文档"
+    4106                    "移动所选项目"
+    4107                    "复制文件和目录"
+    4108                    "删除文件和目录"
+    4109                    "重命名一份文件或目录"
+    4110                    "设置文件属性及显示特性"
+    4111                    "创建目录"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "退出文件管理器"
+    4116                    "选择文件和目录"
+    4117                    "检索先前删除的文件"
+    4118                    "复制文件到剪贴板"
+    4119                    "压缩文件或目录"
+    4120                    "解压缩文件或目录"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "复制一个软盘的内容"
+    4202                    "指定或改变磁盘的卷标"
+    4203                    "格式化软盘"
+    4205                    "连接到一个网络驱动器上"
+    4206                    "断开一个网络驱动器"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "选择一个不同的驱动器"
+    4254                    "共享一个目录"
+    4255                    "停止共享一个目录"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "显示一个目录的另一级"
+    4302                    "显示一个目录的全部级别"
+    4303                    "显示全部目录的全部级别"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "折叠一个所选目录的全部目录"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "只显示文件名"
+    4402                    "显示全部文件细节"
+    4403                    "显示部分文件细节"
+    4404                    "按名称排列文件"
+    4405                    "按类型排列文件"
+    4406                    "按大小排列文件"
+    4407                    "按日期排列文件"
+    4409                    "显示一个指定类型的文件"
+    4411                    "显示目录树"
+    4412                    "显示当前目录的内容"
+    4413                    "显示目录树及当前目录的内容"
+    4414                    "拆分一个目录窗口或移动拆分条"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "控制确认信息"
+    4503                    "显示或隐藏状态栏"
+    4504                    "在启动时将文件管理器缩成一个图标"
+    4505                    "指出有子目录的目录"
+    4507                    "显示或隐藏驱动器显示"
+    4508                    "显示或隐藏工具栏"
+    4509                    "在您连接时打开一个新窗口"
+    4510                    "改变文件管理器字体"
+    4511                    "在您退出文件管理器时保存设置"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "自定义工具栏"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "查看或设置指定项目的授权信息"
+    4606                    "查看或设置指定项目的审核信息"
+    4607                    "查看或取得指定项目的所有权"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "重叠显示窗口"
+    5702                    "垂直平铺窗口"
+    5703                    "水平平铺窗口"
+    5704                    "更新窗口的内容"
+    5705                    "安排图标"
+    5706                    "打开一个新窗口"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "显示文件管理器的帮助内容"
+    5802                    "显示关于使用「帮助」的信息"
+    5803                    "显示关于文件管理器的信息"
+END
+
+#endif    // Chinese (Simplified, PRC) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

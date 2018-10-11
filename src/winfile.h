@@ -505,6 +505,8 @@ BOOL  CreateSavedWindows(VOID);
 VOID  InitExtensions(VOID);
 INT   GetDriveOffset(register DRIVE drive);
 VOID  InitMenus(VOID);
+UINT  MapIDMToMenuPos(UINT idm);
+UINT  MapMenuPosToIDM(UINT pos);
 VOID  LoadFailMessage(VOID);
 UINT  FillDocType(PPDOCBUCKET ppDoc, LPCWSTR pszSection, LPCWSTR pszDefault);
 BOOL  CheckDirExists(LPWSTR szDir);
@@ -1010,19 +1012,19 @@ BOOL LoadUxTheme(VOID);
 #define WAITNET_TYPELOADED  bNetTypeLoad
 #define WAITNET_SHARELOADED bNetShareLoad
 
-Extern DWORD (*lpfnWNetCloseEnum)(HANDLE);
-Extern DWORD (*lpfnWNetConnectionDialog2)(HWND, DWORD, LPWSTR, UINT);
-Extern DWORD (*lpfnWNetDisconnectDialog2)(HWND, UINT, LPWSTR, UINT);
-Extern DWORD (*lpfnWNetEnumResourceW)(HANDLE, LPDWORD, LPVOID, LPDWORD);
-Extern DWORD (*lpfnWNetGetConnection2W)(LPWSTR, WNET_CONNECTIONINFO *, LPDWORD);
-Extern DWORD (*lpfnWNetGetDirectoryTypeW)(LPWSTR, LPDWORD, BOOL);
-Extern DWORD (*lpfnWNetGetLastErrorW)(LPDWORD, LPWSTR, DWORD, LPWSTR, DWORD);
-Extern DWORD (*lpfnWNetGetPropertyTextW)(WORD, WORD, LPWSTR, LPWSTR, WORD, WORD);
-Extern DWORD (*lpfnWNetOpenEnumW)(DWORD, DWORD, DWORD, LPNETRESOURCE, LPHANDLE);
-Extern DWORD (*lpfnWNetPropertyDialogW)(HWND, WORD, WORD, LPWSTR, WORD);
-Extern DWORD (*lpfnWNetRestoreConnectionW)(HWND, LPWSTR);
-Extern DWORD (*lpfnWNetRestoreSingleConnectionW)(HWND, LPWSTR, BOOL);
-Extern DWORD (*lpfnWNetFormatNetworkNameW)(
+Extern DWORD (CALLBACK *lpfnWNetCloseEnum)(HANDLE);
+Extern DWORD (CALLBACK *lpfnWNetConnectionDialog2)(HWND, DWORD, LPWSTR, UINT);
+Extern DWORD (CALLBACK *lpfnWNetDisconnectDialog2)(HWND, UINT, LPWSTR, UINT);
+Extern DWORD (CALLBACK *lpfnWNetEnumResourceW)(HANDLE, LPDWORD, LPVOID, LPDWORD);
+Extern DWORD (CALLBACK *lpfnWNetGetConnection2W)(LPWSTR, WNET_CONNECTIONINFO *, LPDWORD);
+Extern DWORD (CALLBACK *lpfnWNetGetDirectoryTypeW)(LPWSTR, LPDWORD, BOOL);
+Extern DWORD (CALLBACK *lpfnWNetGetLastErrorW)(LPDWORD, LPWSTR, DWORD, LPWSTR, DWORD);
+Extern DWORD (CALLBACK *lpfnWNetGetPropertyTextW)(WORD, WORD, LPWSTR, LPWSTR, WORD, WORD);
+Extern DWORD (CALLBACK *lpfnWNetOpenEnumW)(DWORD, DWORD, DWORD, LPNETRESOURCE, LPHANDLE);
+Extern DWORD (CALLBACK *lpfnWNetPropertyDialogW)(HWND, WORD, WORD, LPWSTR, WORD);
+Extern DWORD (CALLBACK *lpfnWNetRestoreConnectionW)(HWND, LPWSTR);
+Extern DWORD (CALLBACK *lpfnWNetRestoreSingleConnectionW)(HWND, LPWSTR, BOOL);
+Extern DWORD (CALLBACK *lpfnWNetFormatNetworkNameW)(
                     LPCWSTR  lpProvider,
                     LPCWSTR  lpRemoteName,
                     LPWSTR   lpFormattedName,
@@ -1030,11 +1032,11 @@ Extern DWORD (*lpfnWNetFormatNetworkNameW)(
                     DWORD    dwFlags,
                     DWORD    dwAveCharPerLine
                     );
-Extern DWORD (*lpfnShareCreate)(HWND);
-Extern DWORD (*lpfnShareStop)(HWND);
+Extern DWORD (CALLBACK *lpfnShareCreate)(HWND);
+Extern DWORD (CALLBACK *lpfnShareStop)(HWND);
 
 #ifdef NETCHECK
-Extern DWORD (*lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
+Extern DWORD (CALLBACK *lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
 #endif
 
 #define NETWORK_WNetCloseEnum          "WNetCloseEnum"
@@ -1079,6 +1081,7 @@ Extern DWORD (*lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
 
 
 Extern FM_EXT_PROC lpfnAcledit;
+Extern BOOL        bSecMenuDeleted;
 
 Extern HANDLE hVersion             EQ( NULL );
 Extern HANDLE hMPR                 EQ( NULL );
@@ -1361,11 +1364,20 @@ Extern TCHAR szFmifsDll[]    EQ( TEXT("fmifs.dll") );
 Extern   CANCEL_INFO CancelInfo;
 Extern   SEARCH_INFO SearchInfo;
 
+// this value is an index into dwMenuIDs and used to workaround a bug
+#define MHPOP_CURRENT 2
+
 #ifdef _GLOBALS
    DWORD dwMenuIDs[] = {
-      MH_MYITEMS, MH_POPUP,
-      MH_POPUP+IDM_WINDOW, 0,   // The 0's are placeholders for menu handles
-      MH_POPUP+IDM_HELP, 0,
+      // three distinct cases: 1: popups (search), 2: popups (position), 3: non-popups
+
+      MH_MYITEMS,               // case 3: used for all non-popups; IDM from WM_MENUSELECT (loword of wParam) is added to this
+      MH_POPUP,                 // case 2: used for all popups; position value of top level menu is added to this.
+      // NOTE: the check in MenuHelp to determine if the MDI child is maximized doesn't work and the code display the WRONG help in that case
+
+      // case 1: these are searched in pairs only for popups;
+      // the second value of which is the position of the menu in question (not the menu handle)
+      MH_POPUP, 0,              // always setup explicitly for popups due to the bug related to maximization
       0, 0                      // We need to NULL terminate this list
    };
 #else

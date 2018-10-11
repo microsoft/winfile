@@ -1,0 +1,1468 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// French (France) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_FRA)
+LANGUAGE LANG_FRENCH, SUBLANG_FRENCH
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "&Fichier"
+    BEGIN
+        MENUITEM "&Ouvrir\tEntrée",             101
+        MENUITEM "&Déplacer...\tF7",            106
+        MENUITEM "&Copier...\tF8",              107
+        MENUITEM "Copier vers le &Presse-papiers...\tF9", 118
+        MENUITEM "Suppri&mer...\tSuppr",        108
+        MENUITEM "Re&nommer...",                109
+        MENUITEM "Proprié&tés...\tAlt+Entrée",  110
+        MENUITEM SEPARATOR
+        MENUITEM "Compre&sser...",              119
+        MENUITEM "D&écompresser...",            120
+        MENUITEM SEPARATOR
+        MENUITEM "E&xécuter...",                105
+        MENUITEM "&Imprimer...",                102
+        MENUITEM "&Associer...",                103
+        MENUITEM SEPARATOR
+        MENUITEM "Cré&er un répertoire...",     111
+        MENUITEM "&Rechercher...",              104
+        MENUITEM "Sélectionner des &fichiers...", 116
+        MENUITEM SEPARATOR
+        MENUITEM "&Quitter",                    115
+    END
+    POPUP "&Disque"
+    BEGIN
+        MENUITEM "&Copier une disquette...",    201
+        MENUITEM "&Nommer le volume...",        202
+        MENUITEM SEPARATOR
+        MENUITEM "&Formater une disquette...",  203
+        MENUITEM SEPARATOR
+        MENUITEM "&Sélectionner un lecteur...", 251
+    END
+    POPUP "Ar&bre"
+    BEGIN
+        MENUITEM "Développer u&n niveau\t+",    301
+        MENUITEM "Développer une &branche\t*",  302
+        MENUITEM "Développer &tout\tCtrl+*",    303
+        MENUITEM "&Réduire une branche\t-",     304
+        MENUITEM SEPARATOR
+        MENUITEM "&Indiquer l'arborescence",    505
+    END
+    POPUP "&Affichage"
+    BEGIN
+        MENUITEM "Arbor&escence et répertoire", 413
+        MENUITEM "&Arborescence seulement",     411
+        MENUITEM "&Répertoire seulement",       412
+        MENUITEM SEPARATOR
+        MENUITEM "&Fractionner",                414
+        MENUITEM SEPARATOR
+        MENUITEM "&Nom",                        401
+        MENUITEM "Détail&s des fichiers",       402, CHECKED
+        MENUITEM "A&utres détails...",          403
+        MENUITEM SEPARATOR
+        MENUITEM "Trier par n&om",              404
+        MENUITEM "&Trier par type",             405
+        MENUITEM "Trier par tai&lle",           406
+        MENUITEM "Trier par &date",             407
+        MENUITEM SEPARATOR
+        MENUITEM "&Par type de fichier...",     409
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&Confirmation...",            501
+        MENUITEM "&Police...",                  510
+        MENUITEM "Per&sonnaliser la barre d'outils...", 512
+        MENUITEM SEPARATOR
+        MENUITEM "Barre d'&outils",             508
+        MENUITEM "Barre de &lecteurs",          507
+        MENUITEM "&Barre d'état",               503
+        MENUITEM SEPARATOR
+        MENUITEM "&Réduire à l'utilisation",    504
+        MENUITEM "&Enregistrer la configuration en quittant", 511
+    END
+    POPUP "&Sécurité"
+    BEGIN
+        MENUITEM "&Permissions...",             605
+        MENUITEM "&Audit...",                   606
+        MENUITEM "P&ropriétaire...",            607
+    END
+    POPUP "Fe&nêtre"
+    BEGIN
+        MENUITEM "&Nouvelle fenêtre",           1706
+        MENUITEM "&Cascade\tMaj+F5",            1701
+        MENUITEM "Mosaïque &horizontale",       1703
+        MENUITEM "Mosaïque &verticale\tMaj+F4", 1702
+        MENUITEM "&Réorganiser les icônes",     1705
+        MENUITEM "&Actualiser\tF5",             1704
+    END
+    POPUP "&?"
+    BEGIN
+        MENUITEM "Somma&ire",                   1801
+        MENUITEM "Aide su&r...",                30
+        MENUITEM "Comment &utiliser l'aide",    1802
+        MENUITEM SEPARATOR
+        MENUITEM "&A propos du Gestionnaire de fichiers...", 1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 210, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Exécuter"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,149,10
+    CONTROL         "&Ligne de commande :",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,71,10
+    EDITTEXT        201,3,29,149,12,ES_AUTOHSCROLL
+    CONTROL         "Réd&uire à l'utilisation",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,45,149,12
+    DEFPUSHBUTTON   "OK",1,165,6,40,14
+    PUSHBUTTON      "Annuler",2,165,23,40,14
+    PUSHBUTTON      "&Aide",254,165,43,40,14
+END
+
+11 DIALOG 20, 20, 240, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Imprimer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,185,10
+    CONTROL         "&Imprimer :",-1,"Static",SS_LEFTNOWORDWRAP,2,20,33,10
+    EDITTEXT        102,36,19,151,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,39,190,10
+    DEFPUSHBUTTON   "OK",1,197,6,40,14
+    PUSHBUTTON      "Annuler",2,197,23,40,14
+    PUSHBUTTON      "&Aide",254,197,43,40,14
+END
+
+12 DIALOG 20, 20, 257, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Associer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Fichiers avec extension :",-1,3,8,83,8
+    COMBOBOX        315,88,6,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Ass&ocier à :",-1,6,30,92,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Parcourir...",318,130,24,47,14
+    DEFPUSHBUTTON   "OK",1,187,6,66,14,WS_GROUP
+    PUSHBUTTON      "Annuler",2,187,23,66,14
+    PUSHBUTTON      "&Nouveau type...",300,187,42,66,14
+    PUSHBUTTON      "&Modifier le type...",251,187,59,66,14
+    PUSHBUTTON      "&Supprimer le type",219,187,76,66,14
+    PUSHBUTTON      "&Aide",254,187,95,66,14
+END
+
+13 DIALOG 20, 20, 263, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Rechercher"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Rechercher :",-1,"Static",SS_LEFTNOWORDWRAP,5,6,45,12
+    EDITTEXT        201,52,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "A par&tir de :",-1,"Static",SS_LEFTNOWORDWRAP,5,21,45,12
+    EDITTEXT        101,52,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "Rechercher dans tous les &sous-répertoires",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,34,160,12
+    DEFPUSHBUTTON   "OK",1,217,6,40,14
+    PUSHBUTTON      "Annuler",2,217,23,40,14
+    PUSHBUTTON      "&Aide",254,217,43,40,14
+END
+
+14 DIALOG 47, 59, 231, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Déplacer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Répertoire courant : N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,172,10
+    CONTROL         "&Vers :",2001,"Static",SS_LEFTNOWORDWRAP,3,33,20,10
+    EDITTEXT        103,37,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,40,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,45,49,140,10
+    DEFPUSHBUTTON   "OK",1,185,6,40,14
+    PUSHBUTTON      "Annuler",2,185,23,40,14
+    PUSHBUTTON      "&Aide",254,185,40,40,14
+    CONTROL         "&De :",2002,"Static",SS_LEFTNOWORDWRAP,3,19,20,10
+    EDITTEXT        102,37,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Supprimer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Répertoire courant : C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Supprimer :",-1,"Static",SS_LEFTNOWORDWRAP,1,20,38,10
+    EDITTEXT        102,40,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,51,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,54,35,141,10
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "Annuler",2,200,23,40,14
+    PUSHBUTTON      "&Aide",254,200,40,40,14
+END
+
+16 DIALOG 23, 13, 274, 228
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Propriétés pour  %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,222,6,50,14,WS_GROUP
+    PUSHBUTTON      "Annuler",2,222,23,50,14
+    PUSHBUTTON      "&Aide",254,222,40,50,14
+    CONTROL         "&Nom du fichier :",261,"Static",SS_LEFTNOWORDWRAP,5,5,74,10
+    EDITTEXT        201,82,5,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "C&hemin d'accès :",-1,"Static",SS_LEFTNOWORDWRAP,5,15,74,10
+    EDITTEXT        101,82,15,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Dernière modification :",-1,"Static",SS_LEFTNOWORDWRAP,5,25,75,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,82,25,134,10
+    CONTROL         "Version :",258,"Static",SS_LEFTNOWORDWRAP,5,35,74,10
+    CONTROL         "Non indiquée",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,82,35,134,10
+    LTEXT           "Copy&right :",-1,5,45,74,11
+    EDITTEXT        265,82,45,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Taille :",260,"Static",SS_LEFTNOWORDWRAP,5,56,74,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,82,55,134,10
+    CONTROL         "Taille compressée :",268,"Static",SS_LEFTNOWORDWRAP,5,66,74,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,82,65,134,10
+    CONTROL         "Ratio de compression :",270,"Static",SS_LEFTNOWORDWRAP,5,76,76,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,82,75,134,10
+    GROUPBOX        "Attributs",-1,4,88,136,54
+    CONTROL         "&Lecture seule",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,100,57,12
+    CONTROL         "&Fichier caché",216,"Button",BS_AUTOCHECKBOX,75,100,57,12
+    CONTROL         "Fichier archi&ves",217,"Button",BS_AUTOCHECKBOX,9,112,64,12
+    CONTROL         "Fichier &système",218,"Button",BS_AUTOCHECKBOX,75,112,63,12
+    CONTROL         "&Compressé",267,"Button",BS_AUTOCHECKBOX,9,124,52,12
+    GROUPBOX        "&Informations sur la version",262,4,146,242,76
+    LISTBOX         263,9,158,91,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,103,158,138,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 200, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Création d'un répertoire"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,152,10
+    CONTROL         "&Nom :",-1,"Static",SS_LEFTNOWORDWRAP,3,23,22,10
+    EDITTEXT        201,30,22,90,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "OK",1,157,6,40,14
+    PUSHBUTTON      "Annuler",2,157,23,40,14
+    PUSHBUTTON      "&Aide",254,157,43,40,14
+END
+
+19 DIALOG 20, 20, 157, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Copier une disquette"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Source :",-1,"Static",SS_LEFTNOWORDWRAP,5,8,50,10
+    COMBOBOX        245,55,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Destination :",206,"Static",SS_LEFTNOWORDWRAP,5,22,50,10
+    COMBOBOX        222,55,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Annuler",2,110,23,40,14
+    PUSHBUTTON      "&Aide",254,110,43,40,14
+END
+
+22 DIALOG 30, 30, 130, 59
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Copie de la disquette en cours"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Copie de la disquette en cours dans ",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "Lecteur A:",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "Lecture du disque source",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Annuler",2,43,40,44,14
+END
+
+23 DIALOG 20, 20, 161, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Nommer un volume"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Nom de volume :",-1,"Static",SS_LEFTNOWORDWRAP,5,15,56,10
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,115,6,40,14
+    PUSHBUTTON      "Annuler",2,115,23,40,14
+    PUSHBUTTON      "&Aide",254,115,43,40,14
+END
+
+24 DIALOG 11, 28, 185, 85
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formater une disquette"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,139,6,40,14
+    PUSHBUTTON      "Annuler",2,139,23,40,14
+    PUSHBUTTON      "&Aide",254,139,43,40,14
+    CONTROL         "&Disquette :",-1,"Static",SS_LEFTNOWORDWRAP,5,7,37,10
+    COMBOBOX        222,46,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Capacité :",-1,"Static",SS_LEFTNOWORDWRAP,5,20,35,10
+    COMBOBOX        241,46,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Options",102,5,39,128,41,WS_GROUP
+    CONTROL         "&Nom de volume :",-1,"Static",SS_LEFTNOWORDWRAP,9,51,56,10
+    EDITTEXT        201,66,49,63,12
+    CONTROL         "&Formatage rapide",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,9,62,90,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formatage du disque en cours"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Formatage en cours",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "Formatage du lecteur en cours...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Annuler",2,54,30,44,14
+END
+
+30 DIALOG 20, 20, 183, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Autres détails"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Détails",-1,4,4,130,74
+    CONTROL         "Tai&lle",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,15,120,12
+    CONTROL         "Date de la dernière &modification",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,27,120,12
+    CONTROL         "Heure de la dernière modifica&tion",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,39,120,12
+    CONTROL         "Attributs de &fichier",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,51,120,12
+    CONTROL         "&Noms de fichier MS-DOS",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,8,63,120,12
+    DEFPUSHBUTTON   "OK",1,139,6,40,14
+    PUSHBUTTON      "Annuler",2,139,23,40,14
+    PUSHBUTTON      "&Aide",254,139,60,40,14
+END
+
+32 DIALOG 20, 20, 157, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Par type de fichier"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Nom :",-1,"Static",SS_LEFTNOWORDWRAP,5,8,23,10
+    EDITTEXT        201,34,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "Type de fichier",-1,5,20,94,62
+    CONTROL         "&Répertoires",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,60,12
+    CONTROL         "&Programmes",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,60,12
+    CONTROL         "Docu&ments",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,60,12
+    CONTROL         "A&utres fichiers",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,60,12
+    CONTROL         "Vi&sualisation des fichiers système/cachés",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,150,12
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Annuler",2,110,23,40,14
+    PUSHBUTTON      "&Aide",254,110,43,40,14
+END
+
+33 DIALOG 20, 20, 254, 92
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirmation"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Confirmer",-1,5,3,198,85,WS_TABSTOP
+    CONTROL         "&Suppression de fichiers",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,189,12
+    CONTROL         "S&uppression de répertoires",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,189,12
+    CONTROL         "&Remplacements de fichiers",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,189,12
+    CONTROL         "&Opération de la souris",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,189,12
+    CONTROL         "&Commandes disque",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,189,12
+    CONTROL         "&Modification de fichiers système, cachés, lecture seule",215,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,75,191,12
+    DEFPUSHBUTTON   "OK",1,208,6,40,14
+    PUSHBUTTON      "Annuler",2,208,23,40,14
+    PUSHBUTTON      "&Aide",254,208,44,40,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Déplacement..."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "Vers :",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,16,25,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,16,192,10
+    DEFPUSHBUTTON   "Annuler",2,200,28,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 125, 56
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Impression du fichier en cours...",-1,4,6,120,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "Annuler",2,42,36,40,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 219, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Propriétés"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "%d fichiers sélectionnés",100,"Static",SS_LEFTNOWORDWRAP,5,5,153,10
+    CONTROL         "Total %s octets",111,"Static",SS_LEFTNOWORDWRAP,5,17,153,10
+    GROUPBOX        "Attributs",-1,4,28,143,50
+    CONTROL         "&Lecture seule",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,39,64,12
+    CONTROL         "&Fichier caché",216,"Button",BS_AUTOCHECKBOX,79,39,64,12
+    CONTROL         "Fichier archi&ves",217,"Button",BS_AUTOCHECKBOX,9,51,64,12
+    CONTROL         "Fichier &système",218,"Button",BS_AUTOCHECKBOX,79,51,64,12
+    CONTROL         "&Compressé",267,"Button",BS_AUTOCHECKBOX,9,63,52,12
+    DEFPUSHBUTTON   "OK",1,163,6,50,14,WS_GROUP
+    PUSHBUTTON      "Annuler",2,163,23,50,14
+    PUSHBUTTON      "&Aide",254,163,43,50,14
+END
+
+39 DIALOG 10, 20, 245, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirmation du remplacement du fichier"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Remplacer :",-1,"Static",SS_LEFTNOWORDWRAP,34,12,40,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,12,165,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,75,22,170,10
+    CONTROL         "Par :",-1,"Static",SS_LEFTNOWORDWRAP,34,34,39,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,34,165,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,75,44,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,56,177,18
+    DEFPUSHBUTTON   "&Oui",6,33,79,40,14
+    PUSHBUTTON      "&Tout",107,79,79,40,14
+    PUSHBUTTON      "&Non",7,125,79,40,14
+    PUSHBUTTON      "Annuler",2,171,79,40,14
+END
+
+40 DIALOG 10, 20, 245, 71
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirmation de la suppression du fichier"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Supprimer :",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,30,178,18
+    DEFPUSHBUTTON   "&Oui",6,33,53,40,14
+    PUSHBUTTON      "&Tout",107,79,53,40,14
+    PUSHBUTTON      "&Non",7,125,53,40,14
+    PUSHBUTTON      "Annuler",2,171,53,40,14
+END
+
+41 DIALOG 10, 20, 245, 71
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirmation de la suppression du répertoire"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Supprimer :",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,30,178,18
+    DEFPUSHBUTTON   "&Oui",6,33,53,40,14
+    PUSHBUTTON      "&Tout",107,79,53,40,14
+    PUSHBUTTON      "&Non",7,125,53,40,14
+    PUSHBUTTON      "Annuler",2,171,53,40,14
+END
+
+42 DIALOG 10, 22, 245, 71
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirmation du déplacement de fichier"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Déplacer :",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,30,178,18
+    DEFPUSHBUTTON   "&Oui",6,33,53,40,14
+    PUSHBUTTON      "&Tout",107,79,53,40,14
+    PUSHBUTTON      "&Non",7,125,53,40,14
+    PUSHBUTTON      "Annuler",2,171,53,40,14
+END
+
+43 DIALOG 10, 22, 245, 71
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirmation du nouveau nom du fichier"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Renommer :",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,30,178,18
+    DEFPUSHBUTTON   "&Oui",6,33,53,40,14
+    PUSHBUTTON      "&Tout",107,79,53,40,14
+    PUSHBUTTON      "&Non",7,125,53,40,14
+    PUSHBUTTON      "Annuler",2,171,53,40,14
+END
+
+44 DIALOG 15, 12, 131, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sélectionner"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Fichier(s) :",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Sélectionner",1,70,6,58,14
+    PUSHBUTTON      "&Désélectionner",6,70,23,58,14
+    PUSHBUTTON      "Annuler",2,70,40,58,14
+    PUSHBUTTON      "&Aide",254,70,63,58,14
+END
+
+45 DIALOG 11, 31, 201, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sélectionner un lecteur"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Lecteurs :",245,"Static",SS_LEFTNOWORDWRAP,5,5,41,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,155,6,40,14
+    PUSHBUTTON      "Annuler",2,155,23,40,14
+    PUSHBUTTON      "&Aide",254,155,44,40,14
+END
+
+46 DIALOG 11, 28, 256, 67
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Sélectionner le nom de fichier"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Ce chemin ne correspond pas à un nom de fichier FAT. Entrez un nouveau nom.",99,5,4,190,17,NOT WS_GROUP
+    RTEXT           "&Nouveau nom :",-1,5,24,51,11,NOT WS_GROUP
+    EDITTEXT        103,68,23,130,12
+    RTEXT           "Chemin d'origine :",-1,5,38,59,11,NOT WS_GROUP
+    EDITTEXT        102,68,38,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "Vers le répertoire :",-1,5,51,62,11,NOT WS_GROUP
+    EDITTEXT        101,68,51,130,11,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",1,211,4,40,14
+    PUSHBUTTON      "Annuler",2,211,20,40,14
+    PUSHBUTTON      "&Aide",254,211,36,40,14
+END
+
+48 DIALOG 23, 13, 258, 110
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Propriétés pour %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,202,6,50,14,WS_GROUP
+    PUSHBUTTON      "Annuler",2,202,23,50,14
+    PUSHBUTTON      "&Aide",254,202,43,50,14
+    CONTROL         "&Nom du fichier :",261,"Static",SS_LEFTNOWORDWRAP,3,5,65,10
+    EDITTEXT        201,78,5,119,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "C&hemin d'accès :",-1,"Static",SS_LEFTNOWORDWRAP,3,16,57,10
+    EDITTEXT        101,78,16,119,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Dernière modification :",-1,"Static",SS_LEFTNOWORDWRAP,3,27,75,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,78,27,119,10
+    CONTROL         "Taille :",260,"Static",SS_LEFTNOWORDWRAP,3,38,26,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,78,38,119,10
+    GROUPBOX        "Attributs",-1,4,52,140,52
+    CONTROL         "&Lecture seule",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,59,12
+    CONTROL         "&Fichier caché",216,"Button",BS_AUTOCHECKBOX,76,64,59,12
+    CONTROL         "Fichier archi&ves",217,"Button",BS_AUTOCHECKBOX,9,76,63,12
+    CONTROL         "Fichier &système",218,"Button",BS_AUTOCHECKBOX,76,76,65,12
+    CONTROL         "&Compressé",267,"Button",BS_AUTOCHECKBOX,9,88,52,12
+END
+
+49 DIALOG 13, 54, 264, 163
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Police"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Police :",1088,6,3,40,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Style de police :",1089,108,3,57,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Taille :",1090,179,3,30,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Effets",1072,6,72,91,61,WS_GROUP
+    CONTROL         "&Barré",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,84,80,10
+    CONTROL         "So&uligné",1041,"Button",BS_AUTOCHECKBOX,13,95,80,10
+    CONTROL         "Affichage des lecteurs &FAT en minuscules",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,136,254,10
+    CONTROL         "Affichage de t&ous les lecteurs en minuscules",1043,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,150,254,10
+    LTEXT           "&Couleur :",1091,13,106,80,9
+    COMBOBOX        1139,13,117,80,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",1,218,6,40,14,WS_GROUP
+    PUSHBUTTON      "Annuler",2,218,23,40,14,WS_GROUP
+    PUSHBUTTON      "App&liquer",1026,218,40,40,14,WS_GROUP
+    PUSHBUTTON      "&Aide",1038,218,57,40,14,WS_GROUP
+    GROUPBOX        "Exemple",1073,6,72,252,49,WS_GROUP
+    CTEXT           "",1093,4,69,1,1,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbYyZz",1092,9,82,244,34,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 73
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formatage de la disquette en cours"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,50,38,59,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "Masquer",110,32,53,40,14
+    PUSHBUTTON      "Annuler",2,88,53,40,14
+END
+
+51 DIALOG 10, 20, 260, 80
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirmation : Ignorer le fichier ou le répertoire et continuer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Accès refusé, ignorer :",202,"Static",SS_LEFTNOWORDWRAP,27,11,227,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,100,11,156,10
+    CONTROL         "Vous n'avez pas les permissions appropriées ou le fichier\n est en cours d'utilisation.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,27,26,227,17
+    CONTROL         "Choisissez Oui pour ignorer ce fichier et continuer l'opération.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,27,44,227,10
+    DEFPUSHBUTTON   "&Oui",6,26,60,40,14
+    PUSHBUTTON      "&Tout",107,82,60,40,14
+    PUSHBUTTON      "&Non",7,138,60,40,14
+    PUSHBUTTON      "Annuler",2,194,60,40,14
+END
+
+52 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Confirmation : Ignorer le fichier ou le répertoire et continuer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Aucun accès sur cible, ignorer :",202,"Static",SS_LEFTNOWORDWRAP,24,13,105,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,124,13,106,10
+    CONTROL         "Choisissez Oui pour ignorer ce fichier et continuer l'opération.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,24,24,207,10
+    DEFPUSHBUTTON   "&Oui",6,33,42,40,14
+    PUSHBUTTON      "&Tout",107,79,42,40,14
+    PUSHBUTTON      "&Non",7,125,42,40,14
+    PUSHBUTTON      "Annuler",2,171,42,40,14
+END
+
+53 DIALOG 77, 109, 185, 69
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Recherche sur le disque"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Rechercher :",-1,"Static",SS_LEFTNOWORDWRAP,5,5,44,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,53,5,128,10
+    CONTROL         "A partir de :",-1,"Static",SS_LEFTNOWORDWRAP,5,15,40,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,49,15,135,10
+    CONTROL         "Répertoires lus :",-1,"Static",SS_LEFTNOWORDWRAP,5,25,55,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,63,25,116,10
+    CONTROL         "Occurrences trouvées :",-1,"Static",SS_LEFTNOWORDWRAP,5,35,78,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,86,35,96,10
+    PUSHBUTTON      "Masquer",110,44,49,40,14
+    PUSHBUTTON      "Annuler",2,100,49,40,14
+END
+
+54 DIALOG 20, 20, 254, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Copie vers le Presse-papiers"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Répertoire courant : C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,2,5,202,10
+    CONTROL         "&Vers le Presse-papiers :",-1,"Static",SS_LEFTNOWORDWRAP,3,20,78,10
+    EDITTEXT        102,82,19,122,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,208,6,40,14
+    PUSHBUTTON      "Annuler",2,208,23,40,14
+    PUSHBUTTON      "&Aide",254,208,43,40,14
+END
+
+55 DIALOG 18, 14, 290, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Modification du type de fichier"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Type de fichier :",302,5,6,55,8
+    EDITTEXT        301,62,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "Act&ion : ",-1,5,22,235,126,WS_GROUP
+    COMBOBOX        306,37,22,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Commande :",313,9,42,41,8
+    EDITTEXT        304,51,39,110,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Parcourir...",318,167,38,47,14
+    CONTROL         "&Utiliser le DDE",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,57,65,10
+    LTEXT           "&Message DDE :",320,18,72,52,8
+    EDITTEXT        309,97,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "L'application Message DDE &ne s'exécute pas :",322,18,84,78,19
+    LTEXT           "(optionnel)",324,200,90,36,8
+    EDITTEXT        311,97,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "App&lication :",321,18,109,42,8
+    EDITTEXT        310,97,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Sujet :",323,19,127,23,8
+    EDITTEXT        312,97,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "Nouvelle e&xtension :",-1,9,184,68,8
+    EDITTEXT        315,78,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Aj&outer ->",303,113,174,50,14
+    PUSHBUTTON      "<- Supp&rimer",219,113,191,50,14
+    LTEXT           "&Extensions :",-1,167,162,41,8
+    LISTBOX         317,167,172,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Extensions associées avec ce type de fichier :",316,5,154,235,66
+    DEFPUSHBUTTON   "OK",1,244,6,40,14
+    PUSHBUTTON      "Annuler",2,244,23,40,14
+    PUSHBUTTON      "&Aide",254,244,40,40,14
+END
+
+57 DIALOG 123, 60, 224, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Avancement de la compression de fichiers"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Fichier en cours de compression :",-1,6,8,111,8
+    LTEXT           "nom_de_fichier.xxx",341,118,8,90,8
+    LTEXT           "Répertoire :",-1,6,20,40,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,51,20,165,8
+    LTEXT           "Répertoires compressés :",-1,6,31,83,8
+    LTEXT           "1,888,888,999",343,93,31,128,8
+    LTEXT           "Fichiers compressés :",-1,6,43,71,8
+    LTEXT           "1,888,888,999",344,83,43,127,8
+    LTEXT           "Taille totale des fichiers avant compression :",-1,6,56,147,8
+    LTEXT           "9,999,999,999,999",345,156,56,68,8
+    LTEXT           "Taille totale des fichiers après compression :",-1,6,68,146,8
+    LTEXT           "9,999,999,999,999",346,156,69,68,8
+    LTEXT           "Ratio de compression de fichier :",-1,6,80,108,8
+    LTEXT           "100%",347,118,80,27,8
+    PUSHBUTTON      "Annuler",2,84,97,55,14
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Avancement de la décompression de fichiers"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Fichier en cours de décompression :",-1,6,8,119,8
+    LTEXT           "nom_de_fichier.xxx",351,126,8,66,8
+    LTEXT           "Répertoire :",-1,6,20,40,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",352,47,20,144,8
+    LTEXT           "Répertoires décompressés :",-1,6,32,91,8
+    LTEXT           "1,999,999,999",353,99,32,96,8
+    LTEXT           "Fichiers décompressés :",-1,6,44,86,8
+    LTEXT           "1,999,999,999",354,99,44,96,8
+    PUSHBUTTON      "Annuler",2,74,64,49,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Erreur de compression"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,202,32
+    DEFPUSHBUTTON   "&Ignorer",5,4,47,57,14,WS_GROUP
+    PUSHBUTTON      "Ignorer &tout",112,64,47,57,14
+    PUSHBUTTON      "&Recommencer",4,124,47,57,14
+    PUSHBUTTON      "A&bandonner",3,184,47,57,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,318
+ PRODUCTVERSION 4,0,1381,318
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040C04B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "Gestionnaire de fichiers"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Système d'exploitation Microsoft(R) Windows NT(TM)"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x40c, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "Copier une disquette"
+    51                      "Insérez la disquette destination."
+    52                      "Insérez la disquette source."
+    53                      "Insérez les disquettes source et destination."
+    54                      "Formatage de la disquette destination"
+    55                      "Erreur de copie de disquette"
+    56                      "Impossible de copier la disquette."
+    58                      "Les disquettes source et destination sont incompatibles."
+    60                      "%d%% effectués"
+    61                      "Création du répertoire racine..."
+    62                      "Copie des fichiers système..."
+    63                      "Erreur de formatage de disquette"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "Formatage terminé"
+    67                      "%ld octets sur la disquette.\n%ld octets disponibles.\n\nVoulez-vous formater une autre disquette ?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "Erreur réseau"
+    83                      "Ce lecteur contient les fichiers système Windows NT et ne peut être déconnecté."
+    91                      "Impossible de modifier les attributs.  "
+    92                      "Impossible de créer le répertoire.  "
+    93                      "Le gestionnaire de fichiers n'a pas pu nommer le disque.\n\nVérifiez qu'il n'est pas protégé en écriture, que ce n'est pas un lecteur réseau, et que le nom est valide.\nLes caractères interdits sont :\n[espace] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "Aucun fichier n'a été trouvé."
+END
+
+STRINGTABLE
+BEGIN
+    97                      "Le contenu de ce lecteur a changé. Voulez-vous mettre à jour la fenêtre Résultats de la recherche ?"
+    98                      "Vous devez conduire une session en tant qu'Administrateur pour accomplir cette opération sur les disques durs."
+    101                     "Lecteur %c:%c"
+    110                     "Impossible d'exécuter le programme"
+    111                     "Erreur inattendue : %d."
+END
+
+STRINGTABLE
+BEGIN
+    112                     "Mémoire insuffisante pour lancer l'application spécifiée.\n\nQuittez une ou plusieurs applications et essayez à nouveau."
+    113                     "Impossible de trouver le fichier (ou l'un de ses composants).\n\nVérifiez que le chemin d'accès et le nom du fichier sont corrects et que toutes les bibliothèques sont disponibles."
+    114                     "Le chemin d'accès spécifié n'est pas valide."
+    116                     "Aucune application n'est associée avec ce fichier.\n\nChoisissez la commande Associer du menu Fichier pour créer une association."
+    118                     "Impossible d'ouvrir ou d'imprimer le fichier.\n\nLancez l'application utilisée pour créer ce fichier, et ouvrez-le ou imprimez-le depuis celle-ci."
+    120                     "Confirmer l'opération de la souris"
+    121                     "Etes-vous sûr de vouloir copier les fichiers sélectionnés ou les répertoires vers %s ?"
+    122                     "Etes-vous sûr de vouloir déplacer les fichiers ou les répertoires sélectionnés vers %s ?"
+    123                     "Etes-vous sûr de vouloir exécuter %s avec %s comme fichier initial ?"
+    124                     "Gestionnaire de fichiers"
+    126                     "Arborescence de répertoires"
+    127                     "Résultats de la recherche sur : "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "Trop de fichiers"
+    133                     "Gestionnaire de fichiers - Mémoire insuffisante"
+    134                     "Impossible de lire entièrement le répertoire. Une partie seulement sera affichée."
+    140                     "Répertoire courant : %s"
+    141                     "Copier"
+    143                     "Renommer"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "Formater une disquette"
+    146                     "Sélectionnez la disquette à formater."
+    150                     "Création :"
+    151                     "Suppression..."
+    152                     "Copie :"
+    153                     "Changement de nom..."
+    154                     "Déplacement..."
+    155                     "Suppression..."
+    156                     "Impression : %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "Copie..."
+    170                     "Suppression :"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "Total %d fichier(s) (%s)"
+    181                     "Répertoires lus : %d "
+    182                     "%c: %s libre,  %s total"
+    183                     "%d fichier(s) trouvé(s)"
+    185                     "les fichiers sélectionnés"
+    186                     "Impossible de déconnecter le lecteur réseau.\n\nDes fichiers de ce lecteur sont ouverts."
+    187                     "%d fichiers sélectionnés (%s)"
+    188                     "Il n'y a pas de disque dans le lecteur %c.\n\nInsérez un disque et essayez à nouveau."
+    189                     "Le disque dans le lecteur %c n'est pas formaté.\n\nVoulez-vous le formater maintenant ?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "Espace disque insuffisant pour imprimer.\n\nSupprimez un ou plusieurs fichiers pour libérer de l'espace disque et essayez à nouveau."
+    193                     "Mémoire insuffisante pour imprimer.\n\nQuittez une ou plusieurs applications, puis essayez à nouveau."
+    194                     "Erreur pendant l'impression.\n\nAssurez-vous que l'imprimante est correctement configurée et sélectionnée."
+    195                     "L'arborescence affichée est incomplète."
+    197                     "Le lecteur destination est plein.  Insérez un nouveau disque pour continuer."
+    198                     "Ce fichier est un fichier système, caché ou en lecture seule."
+    199                     "Le Gestionnaire de fichiers ne peut effectuer un formatage rapide.\n\nVoulez-vous continuer avec un formatage normal ?"
+    203                     "Une erreur est survenue lors de l'envoi de la commande à l'application."
+    204                     "Impossible de charger la bibliothèque nécessaire pour cette opération."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "&Afficher les répertoires partagés..."
+    210                     "Le formatage détruira TOUTES les données de la disquette. Etes-vous sûr de vouloir formater la disquette dans le lecteur %c ?"
+    211                     "Confirmer le formatage de la disquette"
+    212                     "Cette opération va effacer TOUTES les données de la disquette destination. Etes-vous sûr de vouloir continuer ?"
+    213                     "Confirmer la copie de la disquette"
+    214                     "Fe&rmer"
+    215                     "Fermer"
+    218                     "Le répertoire %s n'existe pas.\n\nVoulez-vous le créer ?"
+    219                     "Programmes#*.exe;*.pif;*.com;*.bat#Tous (*.*)#*.*#"
+    220                     "Parcourir"
+    221                     "Exécuter"
+    222                     "Impossible d'imprimer le fichier"
+    223                     "Impossible d'afficher les informations de l'aide."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "Les fichiers avec une extension %s sont des programmes et ne peuvent pas être associés à une autre application."
+    225                     "%s n'est pas un programme et ne peut pas être associé à une extension de fichier."
+    226                     "(Aucun)"
+    227                     "Pas de fichier trouvé."
+    228                     "Impossible d'imprimer plusieurs fichiers en même temps.\n\nSélectionnez un seul fichier et essayez à nouveau."
+    230                     "Une des bibliothèques nécessaires à l'exécution de cette application est endommagée. Réinstallez cette application."
+    231                     "Ce fichier est utilisé par une autre application."
+    232                     "Le Gestionnaire de fichiers ne peut pas accéder aux fichiers créés dans le répertoire '%s'.\n\nVoulez-vous continuer ?"
+    233                     "Créer un répertoire"
+    234                     "%ld octets"
+    235                     "%s octets"
+    236                     "Impossible de copier plusieurs fichiers ou des répertoires dans le Presse-papiers.\n\nSélectionnez un seul fichier et essayez à nouveau."
+    237                     "%s - %s"
+    238                     "Lecteur :"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "Connexion au lecteur réseau"
+    241                     "Déconnexion du lecteur réseau..."
+    242                     "Connexions réseau"
+    243                     "Partager le répertoire"
+    244                     "Cesser de partager le répertoire"
+    245                     "Afficher tous les détails de fichiers"
+    246                     "Afficher le nom seulement"
+    247                     "Trier par nom"
+    248                     "Trier par type"
+    249                     "Trier par taille"
+    250                     "Trier par date"
+    251                     "Nouvelle fenêtre"
+    252                     "Copier les fichiers"
+    253                     "Déplacer les fichiers"
+    254                     "&Nom du répertoire :"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "Le lecteur réseau n'est pas disponible."
+    259                     "Nom de partage : %s"
+    260                     "Non partagé(e)"
+    261                     "Supprimer les fichiers"
+    262                     " - COMPRESSE"
+    263                     "Copie les fichiers vers %s"
+    264                     "Déplace les fichiers vers %s"
+    265                     "Lance les fichiers avec %s"
+    266                     "%s octets"
+    267                     "%sKo"
+    268                     "%sMo"
+    269                     "%sGo"
+    270                     "%sTo"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "Vous n'avez pas la permission d'accès à ce répertoire."
+    281                     "Vous n'avez pas la permission d'accès à ce fichier."
+    283                     "Le lecteur %c: est occupé et ne peut être accédé.\nLe Gestionnaire de fichiers effectue une copie de disque."
+    284                     "Le lecteur %c: est occupé et ne peut être accédé.\nLe Gestionnaire de fichiers effectue un formatage."
+    285                     "Opération non complètement exécutée"
+    286                     "Impossible de terminer l'opération sur tous les fichiers et répertoires."
+    287                     "Impossible de lire le répertoire"
+END
+
+STRINGTABLE
+BEGIN
+    288                     "Le répertoire n'existe pas."
+    289                     "Impossible de se connecter au lecteur réseau"
+    290                     "Le nom réseau ne peut être trouvé."
+    292                     "Tout affecte tous les fichiers, y compris les \nfichiers système, cachés ou lecture seule."
+    294                     "Ouvrir"
+    295                     "Imprimer"
+    298                     "Ajouter l'extension"
+    299                     "L'extension '%s' est actuellement associée avec '%s.'  Continuer et remplacer cette association ?"
+    300                     "Editeur d'associations"
+    301                     "Impossible d'associer l'extension.  "
+    302                     "Impossible de supprimer l'extension.  "
+    303                     "Impossible d'ajouter le type de fichier.  "
+END
+
+STRINGTABLE
+BEGIN
+    304                     "Impossible de supprimer le type de fichier.  "
+    305                     "Impossible de lire le type de fichier.  "
+    306                     "Le type de fichier ne peut être vide.  Veuillez indiquer un nouveau type."
+    307                     "Impossible de générer un identificateur unique fondé sur votre type de fichier.  Veuillez indiquer un nouveau type."
+    308                     "Supprimer un type de fichier"
+    309                     "Ceci va supprimer le type de fichier et toutes les extensions associées.  Etes-vous sûr de vouloir supprimer '%s' ?"
+    312                     "Le type de fichier doit comporter une commande pour au moins l'une de ses actions.  Veuillez indiquer une application dans la zone Commande."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "Nouveau type de fichier"
+    321                     "Copie de la disquette en cours"
+    322                     "Recherche..."
+    324                     "Le Gestionnaire de fichiers est en train de formater une disquette.  Quitter va annuler cette opération."
+    325                     "Le Gestionnaire de fichiers est en train de copier une disquette.  Quitter va annuler cette opération."
+    326                     "% effectués"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360Ko"
+    354                     "1%s2 Mo"
+    355                     "720Ko"
+    356                     "1%s44 Mo"
+    357                     "2%s88 Mo"
+    358                     "Capacité du lecteur"
+    359                     "Impossible d'obtenir l'information sur la disquette.\n\nVérifiez que la disquette est dans le lecteur."
+    360                     "20%s8 Mo"
+    361                     "Type de disquette inconnu"
+    362                     "Type de disquette inconnu"
+    363                     "Le type de disquette dans le lecteur %s ne peut pas être formaté avec le gestionnaire de fichiers. Veuillez utiliser l'administrateur de disque pour formater cette disquette"
+END
+
+STRINGTABLE
+BEGIN
+    400                     "Système de fichiers incompatible."
+    401                     "Accès refusé."
+    402                     "La disquette est protégée en écriture."
+    403                     "Impossible de verrouiller ce volume."
+    404                     "Impossible d'effectuer un formatage rapide.\n\nAssurez-vous que la densité de la disquette est correcte."
+    405                     "Erreur d'E/S sur le disque source."
+    406                     "Erreur d'E/S sur le disque destination."
+    407                     "Erreur d'E/S à la fois sur le disque source et le disque destination."
+    408                     "Erreur d'entrée/sortie."
+    411                     "Impossible de formater la disquette.\n\nVérifiez que la disquette est dans le lecteur et n'est pas protégée en écriture, endommagée, ou de densité incorrecte."
+    412                     "Le gestionnaire de fichiers ne peut pas nommer le volume.\n\nLe nom n'est pas valide.  Vérifiez que le nom ne contient aucun des caractères suivants\n\n[espace] * ? / \\ | . , ; : + = [ ] ( )  ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "Ouverture..."
+    421                     "Fermeture..."
+    422                     "Trop de fenêtres de répertoire sont ouvertes.\n\nFermez une ou plusieurs fenêtres puis essayez à nouveau."
+    423                     "Formatage rapide..."
+    424                     "Impossible d'initialiser la mise à jour.  Le Gestionnaire de fichiers va quitter.  "
+    425                     "Initialisation du Gestionnaire de fichiers"
+    426                     "Lecture du répertoire, veuillez patienter..."
+    427                     "Voulez-vous également compresser tous les fichiers et sous-répertoires dans %s ? "
+    428                     "Voulez-vous également décompresser tous les fichiers et sous-répertoires dans %s ? "
+    429                     "Le gestionnaire fichiers ne peut pas modifier les attributs de compression pour %s."
+    430                     "Le fichier %s ne sera pas compressé. La compression de ce fichier peut rendre le système inamorçable."
+    431                     "Le gestionnaire de fichiers est actuellement en train de compresser/décompresser des fichiers.\nVous devez attendre qu'il ait terminé avant d'essayer de compresser/décompresser des fichiers supplémentaires."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "Commentaires"
+    501                     "Organisation"
+    502                     "Description du fichier"
+    503                     "Nom interne"
+    504                     "Marques légales"
+    505                     "Nom d'origine du fichier"
+    506                     "Description personnelle de compilation"
+    507                     "Nom du produit"
+    508                     "Version du produit"
+    509                     "Description spéciale de compilation"
+    510                     "Langue"
+    511                     "Langues"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "C&onnecter un lecteur réseau..."
+    801                     "&Déconnecter un lecteur réseau..."
+    802                     "Conne&xions réseau..."
+    803                     "&Partager..."
+    804                     "C&esser de partager..."
+    805                     "&Afficher les répertoires partagés..."
+    806                     "&Annuler la suppression..."
+    807                     "&Nouvelle fenêtre lors de connexion"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "Erreur de déplacement de fichier"
+    1002                    "Erreur de copie de fichier"
+    1003                    "Erreur de suppression de fichier"
+    1004                    "Erreur en renommant le fichier"
+    1005                    "Erreur de sélection du lecteur"
+    1006                    "Erreur de lecture du répertoire"
+    1007                    "Erreur en nommant le volume"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "Impossible de déplacer %s : %s"
+    1012                    "Impossible de copier %s : %s"
+    1013                    "Impossible de supprimer %s : %s"
+    1014                    "Impossible de renommer %s : %s"
+    1021                    "Impossible de créer le répertoire %s : %s"
+    1022                    "Impossible de supprimer le répertoire %s : %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "Impossible de créer ou de remplacer %s : %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "Les lecteurs source et destination sont les mêmes ."
+    1102                    "Sélectionnez seulement un fichier à renommer ou utilisez les caractères génériques pour renommer un groupe de fichiers avec des noms similaires (Ex : *.txt)."
+    1103                    "Impossible de renommer sur un disque ou répertoire différent.\nUtilisez plutôt la commande Déplacer du menu Fichier."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "Impossible de renommer le répertoire racine."
+    1105                    "Le répertoire destination est un sous-répertoire du répertoire source."
+    1106                    "Fichier actuellement utilisé par Windows."
+    1107                    "Spécifiez seulement un fichier ou un répertoire dans la zone Vers. Pour spécifier un groupe de fichiers, utilisez les caractères génériques (Ex : *.txt)."
+    1108                    "Un fichier ou un répertoire porte déjà ce nom.  Dans un répertoire, les noms de fichiers et de répertoires doivent être uniques."
+    1109                    "Assurez-vous que le chemin et le nom de fichier spécifiés sont corrects."
+    1110                    "Assurez-vous que le chemin d'accès correct est spécifié."
+    1111                    "Quittez une ou plusieurs applications et essayez à nouveau. Vous pouvez aussi utiliser l'option Système du Panneau de configuration pour augmenter la mémoire virtuelle."
+    1113                    "Enlevez la protection en écriture sur ce disque ou utilisez un autre disque, puis essayez à nouveau."
+    1114                    "Assurez-vous que vous avez les permissions réseau correctes pour accomplir cette opération."
+    1115                    "Supprimez un ou plusieurs fichiers pour libérer de l'espace disque puis essayez à nouveau."
+    1116                    "Pas de données détectées sur ce média."
+    1117                    "Le répertoire existe déjà."
+    1118                    "Le nom spécifié est déjà utilisé par un fichier."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "La mauvaise disquette est dans le lecteur."
+    1151                    "Cette application ne peut pas s'exécuter en mode Windows NT."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "Le système d'exploitation ne peut pas exécuter ce composant."
+    1153                    "Ce composant ne peut pas s'exécuter en mode Windows NT."
+    1154                    "Ce programme n'est pas une application Windows NT valide."
+    1155                    "Une erreur s'est produite.  Pas de message pour cette erreur."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ƒRƒs[Œ³(&F):"
+    2001                    "ƒRƒs[æ(&T):"
+    2002                    "Œ³‚Ì–¼‘O(&F):"
+    2003                    "V‚µ‚¢–¼‘O(&T):"
+    2004                    "ƒRƒs[æ:"
+    2005                    "‚±‚ÌƒtƒHƒ“ƒg‚ğ?g—p‚·‚é‚ÆŠ¿?š‚Ì•\\?¦‚ª\n‚Å‚«‚È‚­‚È‚è‚Ü‚·B"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "Commandes de traitement des fichiers"
+    3985                    "Commandes de traitement des disques"
+    3986                    "Commandes de modification de l'arborescence"
+    3987                    "Commandes de définition de l'affichage"
+    3988                    "Commandes de modification des options"
+    3989                    "Commandes de manipulation de la sécurité des fichiers et répertoires"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "Commandes de disposition des fenêtres"
+    4001                    "Commandes d'accès à l'aide"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "Recherche une rubrique dans l'aide du Gestionnaire de fichiers"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "Ouvre l'élément sélectionné"
+    4102                    "Imprime un document"
+    4103                    "Associe un fichier à une application"
+    4104                    "Recherche des fichiers et des répertoires"
+    4105                    "Exécute ou ouvre une application ou un document"
+    4106                    "Déplace l'élément sélectionné"
+    4107                    "Copie des fichiers et des répertoires"
+    4108                    "Supprime des fichiers et des répertoires"
+    4109                    "Renomme un fichier ou répertoire"
+    4110                    "Modifie les attributs de fichiers et affiche les propriétés"
+    4111                    "Crée un répertoire"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "Quitte le Gestionnaire de fichiers"
+    4116                    "Sélectionne des fichiers et des répertoires"
+    4117                    "Récupère des fichiers supprimés"
+    4118                    "Copie un fichier vers le Presse-papiers"
+    4119                    "Compresse un fichier ou un répertoire"
+    4120                    "Décompresse un fichier ou un répertoire"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "Copie le contenu d'une disquette"
+    4202                    "Affecte ou modifie le nom de volume d'un disque"
+    4203                    "Formate une disquette"
+    4205                    "Se connecte à un lecteur réseau"
+    4206                    "Se déconnecte d'un lecteur réseau"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "Sélectionne un autre lecteur"
+    4254                    "Partage un répertoire"
+    4255                    "Cesse de partager un répertoire"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "Affiche un autre niveau d'un répertoire"
+    4302                    "Affiche tous les niveaux d'un répertoire"
+    4303                    "Affiche tous les niveaux de tous les répertoires"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "Réduit tous les répertoires d'un répertoire sélectionné"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "N'affiche que les noms de fichier"
+    4402                    "Affiche tous les détails des fichiers"
+    4403                    "Affiche des détails partiels des fichiers"
+    4404                    "Trie les fichiers par nom"
+    4405                    "Trie les fichiers par type"
+    4406                    "Trie les fichiers par taille"
+    4407                    "Trie les fichiers par date"
+    4409                    "Affiche les fichiers d'un certain type"
+    4411                    "Affiche l'arborescence"
+    4412                    "Affiche le contenu du répertoire courant"
+    4413                    "Affiche l'arborescence et le contenu du répertoire courant"
+    4414                    "Fractionne la fenêtre de répertoire ou déplace la barre de fractionnement"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "Contrôle les messages de confirmation"
+    4503                    "Affiche ou masque la barre d'état"
+    4504                    "Réduit le Gestionnaire de fichiers en une icône au démarrage"
+    4505                    "Indique les répertoires qui ont des sous-répertoires"
+    4507                    "Affiche ou masque la barre de lecteurs"
+    4508                    "Afficher ou masque la barre d'outils"
+    4509                    "Ouvre une nouvelle fenêtre lorsque vous vous connectez"
+    4510                    "Modifie la police utilisée par le Gestionnaire de fichiers"
+    4511                    "Enregistre la configuration lorsque vous quittez le Gestionnaire de fichiers"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "Personnalise la barre d'outils"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "Affiche ou affecte les permissions du ou des objets sélectionnés"
+    4606                    "Affiche ou affecte les informations d'audit du ou des objets sélectionnés"
+    4607                    "Affiche ou affecte la propriété du ou des objets sélectionnés"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "Dispose les fenêtres en cascade"
+    5702                    "Dispose les fenêtres en mosaïque verticale"
+    5703                    "Dispose les fenêtres en mosaïque horizontale"
+    5704                    "Met à jour le contenu d'une fenêtre"
+    5705                    "Réorganise les icônes"
+    5706                    "Ouvre une nouvelle fenêtre"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "Affiche le sommaire de l'aide du Gestionnaire de fichiers"
+    5802                    "Affiche l'aide sur l'aide"
+    5803                    "Affiche des informations à propos du Gestionnaire de fichiers"
+END
+
+#endif    // French (France) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

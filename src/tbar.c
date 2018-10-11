@@ -26,6 +26,8 @@
 #define HIDEIT                  0x8000
 #define Static
 
+#define MAXEXTNAME              20
+
 static HWND hwndExtensions = NULL;
 
 static DWORD dwSaveHelpContext; // saves dwContext in tbcustomize dialog
@@ -133,6 +135,28 @@ static struct {
 
 static int iSel = -1;
 
+#define TBHDR_MAGIC MAKEWORD('F', 'M')
+#define TBHDR_VERSION 1
+
+typedef struct
+{
+    WORD magic;
+    WORD version;
+    WORD cButtons;
+} TBSAVEHDR;
+
+// the parts of TBBUTTON we save as the customization data
+typedef struct
+{
+    WORD iBitmap;           // unbiased value
+    WORD idCommand;         // unbiased value
+    BYTE fsState;
+    BYTE fsStyle;
+    WORD iExtP1;            // 1-based iExt (same as dwData in TBBUTTON)
+} TBSAVEITEM;
+
+VOID AddExtensionToolbarButtons(BOOL bAll);
+
 Static VOID
 ExtensionName(int i, LPTSTR szName)
 {
@@ -144,7 +168,7 @@ ExtensionName(int i, LPTSTR szName)
   if ((UINT)i<(UINT)iNumExtensions
    && GetModuleFileName(extensions[i].hModule, szFullName,
    COUNTOF(szFullName)) && (lpName=StrRChr (szFullName, NULL, TEXT('\\'))))
-  StrNCpy(szName, lpName+1, 15);
+    StrNCpy(szName, lpName+1, MAXEXTNAME);
 }
 
 
@@ -572,18 +596,7 @@ ResetToolbar(void)
 
    // Add the extensions back in
 
-   if (hwndExtensions) {
-      INT nExtButtons;
-      TBBUTTON tbButton;
-
-      nExtButtons = (INT)SendMessage(hwndExtensions, TB_BUTTONCOUNT, 0, 0L);
-      for (nItem=0; nItem<nExtButtons; ++nItem) {
-         SendMessage(hwndExtensions, TB_GETBUTTON, nItem,
-            (LPARAM)(LPTBBUTTON)&tbButton);
-         SendMessage(hwndToolbar, TB_ADDBUTTONS, 1,
-            (LPARAM)(LPTBBUTTON)&tbButton);
-      }
-   }
+   AddExtensionToolbarButtons(TRUE);
 
    // Set the states correctly
 
@@ -627,20 +640,9 @@ LoadDesc(UINT uID, LPTSTR lpDesc)
    TCHAR szItem[MAXDESCLEN-COUNTOF(szMenu)];
    LPTSTR lpIn;
 
-   HWND hwndActive;
-
    hMenu = GetMenu(hwndFrame);
 
-   uMenu = uID/100 - 1;
-   if (uMenu > IDM_EXTENSIONS)
-      uMenu -= MAX_EXTENSIONS - iNumExtensions;
-
-   // Add 1 if MDI is maximized.
-
-   hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-
-   if (hwndActive && GetWindowLongPtr(hwndActive, GWL_STYLE) & WS_MAXIMIZE)
-      uMenu++;
+   uMenu = MapIDMToMenuPos(uID);
 
    GetMenuString(hMenu, uMenu, szMenu, COUNTOF(szMenu), MF_BYPOSITION);
    if (GetMenuString(hMenu, uID, szItem, COUNTOF(szItem), MF_BYCOMMAND) <= 0) {
@@ -683,7 +685,7 @@ GetAdjustInfo(LPTBNOTIFY lpTBNotify)
 {
    LPTBBUTTON lpButton = &lpTBNotify->tbButton;
    FMS_HELPSTRING tbl;
-   int iExt;
+   INT iExt;
    int j = lpTBNotify->iItem;
 
 
@@ -711,7 +713,8 @@ UnlockAndReturn:
       if (lpButton->fsStyle & TBSTYLE_SEP)
          goto LoadDescription;
 
-      iExt = lpButton->idCommand/100 - IDM_EXTENSIONS - 1;
+      iExt = lpButton->dwData - 1; // can now directly determine the extension with which the button is associated
+
       if ((UINT)iExt < (UINT)iNumExtensions) {
          tbl.idCommand = lpButton->idCommand % 100;
          tbl.hMenu = extensions[iExt].hMenu;
@@ -730,6 +733,10 @@ UnlockAndReturn:
 
          StrNCpy(lpTBNotify->pszText, tbl.szHelp, MAXDESCLEN - 1);
 
+         // bias idCommand and iBitmap as if the button was in hwndToolbar
+         lpButton->iBitmap += extensions[iExt].iStartBmp;
+         lpButton->idCommand += extensions[iExt].Delta;
+
          goto UnlockAndReturn;
       }
    }
@@ -737,6 +744,109 @@ UnlockAndReturn:
    return FALSE;
 }
 
+// handle the TBN_SAVE message; cf. https://docs.microsoft.com/en-us/windows/desktop/Controls/tbn-save
+VOID
+HandleToolbarSave(LPNMTBSAVE lpnmtSave)
+{
+    if (lpnmtSave->iItem == -1)
+    {
+        lpnmtSave->cbData = lpnmtSave->cbData + sizeof(TBSAVEHDR) + sizeof(TBSAVEITEM) * lpnmtSave->cButtons;
+        lpnmtSave->pCurrent = lpnmtSave->pData = LocalAlloc(LPTR, lpnmtSave->cbData);
+
+        // save global values: magic number, version and cButtons
+        TBSAVEHDR hdr;
+        hdr.magic = TBHDR_MAGIC;
+        hdr.version = TBHDR_VERSION;
+        hdr.cButtons = lpnmtSave->cButtons;
+        memcpy(lpnmtSave->pCurrent, &hdr, sizeof(hdr));
+        lpnmtSave->pCurrent = (DWORD *)((BYTE *)lpnmtSave->pCurrent + sizeof(hdr));
+    }
+    else
+    {
+        TBSAVEITEM item;
+        DWORD baseId = 0;
+        DWORD baseIbm = 0;
+
+        // for extension buttons, remove bias for both idCommand and iBitmap
+        if (lpnmtSave->tbButton.dwData != 0)
+        {
+            INT iExt = lpnmtSave->tbButton.dwData - 1;
+            baseId = extensions[iExt].Delta;
+            baseIbm = extensions[iExt].iStartBmp;
+        }
+
+        item.iBitmap = (WORD)(lpnmtSave->tbButton.iBitmap - baseIbm);
+        item.idCommand = (WORD)(lpnmtSave->tbButton.idCommand - baseId);
+        item.fsState = lpnmtSave->tbButton.fsState;
+        item.fsStyle = lpnmtSave->tbButton.fsStyle;
+        item.iExtP1 = (WORD)lpnmtSave->tbButton.dwData;
+
+        memcpy(lpnmtSave->pCurrent, &item, sizeof(item));
+        lpnmtSave->pCurrent = (DWORD *)((BYTE *)lpnmtSave->pCurrent + sizeof(item));
+    }
+}
+
+// handle TBN_RESTORE message; cf. https://docs.microsoft.com/en-us/windows/desktop/Controls/tbn-restore;
+// returns FALSE to abort restore (if iItem == -1) or skip an item (otherwise).
+BOOL
+HandleToolbarRestore(LPNMTBRESTORE lpnmtRestore)
+{
+    if (lpnmtRestore->iItem == -1)
+    {
+        lpnmtRestore->cbBytesPerRecord = sizeof(TBSAVEITEM);
+        lpnmtRestore->tbButton.idCommand = 0;
+        TBSAVEHDR *phdr = (TBSAVEHDR *)lpnmtRestore->pData;
+        if (phdr->magic == TBHDR_MAGIC && phdr->version == TBHDR_VERSION)
+        {
+            // only restore if magic value matches; fetch cButtons too
+            lpnmtRestore->cButtons = phdr->cButtons;
+            lpnmtRestore->pCurrent = (DWORD *)((BYTE *)lpnmtRestore->pCurrent + sizeof(*phdr));
+
+            return FALSE;
+        }
+
+        // returning TRUE aborts the restore as a whole
+    }
+    else
+    {
+        TBSAVEITEM *pitem = (TBSAVEITEM *)lpnmtRestore->pCurrent;
+        DWORD baseId = 0;
+        DWORD baseIbm = 0;
+
+        // handle extension toolbar buttons specially
+        if (pitem->iExtP1 != 0)
+        {
+            INT iExt = pitem->iExtP1 - 1;
+
+            if ((UINT)iExt < (UINT)iNumExtensions)
+            {
+                // add back bias based on potentially new extension order
+                baseId = extensions[iExt].Delta;
+                baseIbm = extensions[iExt].iStartBmp;
+
+                // mark that we saw this extension during restore
+                extensions[iExt].bRestored = TRUE;
+            }
+            else
+            {
+                // extension not loaded any more; skip this one for now
+                lpnmtRestore->tbButton.idCommand = 0;
+                lpnmtRestore->pCurrent = (DWORD *)((BYTE *)lpnmtRestore->pCurrent + sizeof(*pitem));
+                return FALSE;
+            }
+        }
+
+        lpnmtRestore->tbButton.iBitmap = pitem->iBitmap + baseIbm;
+        lpnmtRestore->tbButton.idCommand = pitem->idCommand + baseId;
+        lpnmtRestore->tbButton.fsState = pitem->fsState;
+        lpnmtRestore->tbButton.fsStyle = pitem->fsStyle;
+        lpnmtRestore->tbButton.dwData = pitem->iExtP1;
+
+        lpnmtRestore->pCurrent = (DWORD *)((BYTE *)lpnmtRestore->pCurrent + sizeof(*pitem));
+    }
+
+    return TRUE;
+}
 
 DWORD
 DriveListMessage(UINT uMsg, WPARAM wParam, LPARAM lParam, UINT* puiRetVal)
@@ -799,6 +909,11 @@ ExtensionHelp:
                return(0);
             }
          }
+
+         // NormalHelp with MF_POPUP case; fix up ids to workaround some bugs in MenuHelp
+         INT idm = MapMenuPosToIDM(uItem);
+         dwMenuIDs[MHPOP_CURRENT] = MH_POPUP + idm;
+         dwMenuIDs[MHPOP_CURRENT+1] = uItem;
 
 NormalHelp:
          MenuHelp((WORD)uMsg, wParam, lParam, GetMenu(hwndFrame),
@@ -896,8 +1011,15 @@ NormalHelp:
                     return(lpTBNotify->iItem);
 
                  case TBN_GETBUTTONINFO:
-
                     *puiRetVal = GetAdjustInfo(lpTBNotify);
+                    return(*puiRetVal);
+
+                 case TBN_SAVE:
+                    HandleToolbarSave((LPNMTBSAVE)lParam);
+                    break;
+
+                 case TBN_RESTORE:
+                    *puiRetVal = HandleToolbarRestore((LPNMTBRESTORE)lParam);
                     return(*puiRetVal);
 
                  case TBN_RESET:
@@ -1215,6 +1337,15 @@ InitToolbarButtons(VOID)
    EnableStopShareButton();
 }
 
+BOOL LastButtonIsSeparator(HWND hwndTB)
+{
+    TBBUTTON button;
+
+    INT count = (INT)SendMessage(hwndTB, TB_BUTTONCOUNT, 0, 0L);
+    SendMessage(hwndTB, TB_GETBUTTON, count - 1, (LPARAM)(LPTBBUTTON)&button);
+
+    return (button.fsStyle & TBSTYLE_SEP) ? TRUE : FALSE;
+}
 
 BOOL
 InitToolbarExtension(INT iExt)
@@ -1254,10 +1385,7 @@ InitToolbarExtension(INT iExt)
       // If the last "button" is not a separator, then add one.  If it is, and
       // there are no extensions yet, then "include" it in the extensions.
 
-      i = (INT)SendMessage(hwndToolbar, TB_BUTTONCOUNT, 0, 0L);
-      SendMessage(hwndToolbar, TB_GETBUTTON, i-1,
-         (LPARAM)(LPTBBUTTON)&extButton);
-      if (!(extButton.fsStyle & TBSTYLE_SEP))
+      if (!LastButtonIsSeparator(hwndExtensions))
          goto AddSep;
    } else {
       hwndExtensions = CreateToolbarEx(hwndFrame, WS_CHILD,
@@ -1272,6 +1400,8 @@ AddSep:
       extButton.idCommand = 0;
       extButton.fsState = 0;
       extButton.fsStyle = TBSTYLE_SEP;
+      extButton.dwData = 0;
+      extButton.iString = 0;
 
       SendMessage(hwndExtensions, TB_INSERTBUTTON, (WORD)-1,
          (LPARAM)(LPTBBUTTON)&extButton);
@@ -1292,7 +1422,14 @@ AddSep:
                                (LPARAM) &tbAddBitmap);
    }
 
-   // Add all of his buttons.
+   // fill in toolbar image information
+   extensions[iExt].hbmButtons = tbl.hBitmap;
+   extensions[iExt].idBitmap = tbl.idBitmap;
+   extensions[iExt].iStartBmp = iStart;
+
+   // Add all of his buttons.  Non-separator items have bitmap images in sequence.
+   // idCommand and iBitmap values in hwndExtensions are the unbiased ones;
+   // when saving toolbar customization, we save the unbiased idCommand and iBitmap.
 
    for (fSepLast=TRUE, i=tbl.cButtons, iBitmap=0, lpButton=tbl.lpButtons;
       i>0; --i, ++lpButton) {
@@ -1304,15 +1441,15 @@ AddSep:
          extButton.iBitmap = 0;
          fSepLast = TRUE;
       } else {
-         extButton.iBitmap = iBitmap + iStart;
+         extButton.iBitmap = iBitmap;       // will be biased with iStart when added to hwndToolbar
          ++iBitmap;
          fSepLast = FALSE;
       }
 
       extButton.fsStyle   = (BYTE)lpButton->fsStyle;
-      extButton.idCommand = lpButton->idCommand + extensions[iExt].Delta;
+      extButton.idCommand = lpButton->idCommand;    // will be biased with Delta when added to hwndToolbar
       extButton.fsState   = TBSTATE_ENABLED;
-      extButton.dwData    = 0;
+      extButton.dwData    = iExt + 1;     // 1 based iExt for command and bitmap start mapping
       extButton.iString   = 0;
 
       SendMessage(hwndExtensions, TB_INSERTBUTTON, (WORD)-1,
@@ -1322,6 +1459,52 @@ AddSep:
    return TRUE;
 }
 
+VOID
+AddExtensionToolbarButtons(BOOL bAll)
+{
+    INT nExtButtons;
+    TBBUTTON tbButton;
+    BOOL bLastSep;
+
+    if (hwndExtensions == NULL)
+        return;
+
+    bLastSep = LastButtonIsSeparator(hwndToolbar);
+
+    nExtButtons = (INT)SendMessage(hwndExtensions, TB_BUTTONCOUNT, 0, 0L);
+    for (INT nItem = 0; nItem < nExtButtons; ++nItem)
+    {
+        SendMessage(hwndExtensions, TB_GETBUTTON, nItem,
+            (LPARAM)(LPTBBUTTON)&tbButton);
+
+        if ((tbButton.fsStyle & TBSTYLE_SEP) != 0 && bLastSep)
+        {
+            // have a separator and last button is one, skip
+            continue;
+        }
+
+        // map idCommand and iBitmap if this is a valid extension
+        INT iExt = tbButton.dwData - 1;
+        if ((UINT)iExt < (UINT)iNumExtensions)
+        {
+            // if we are not loading them all and this button's extension was seen during toolbar restore, skip
+            if (!bAll && extensions[iExt].bRestored)
+                continue;
+
+            tbButton.idCommand += extensions[iExt].Delta;
+            tbButton.iBitmap += extensions[iExt].iStartBmp;
+
+            // when bAll, we want to reset the bRestored flag
+            if (bAll)
+                extensions[iExt].bRestored = FALSE;
+        }
+
+        bLastSep = (tbButton.fsStyle & TBSTYLE_SEP) != 0;
+
+        SendMessage(hwndToolbar, TB_ADDBUTTONS, 1,
+            (LPARAM)(LPTBBUTTON)&tbButton);
+    }
+}
 
 VOID
 FreeToolbarExtensions(VOID)
@@ -1338,7 +1521,7 @@ SaveRestoreToolbar(BOOL bSave)
    static TCHAR  szSubKey[] = TEXT("Software\\Microsoft\\File Manager\\Settings");
    static TCHAR  szValueName [] = TEXT("ToolbarWindow");
 
-   TCHAR szNames[20*MAX_EXTENSIONS];
+   TCHAR szNames[MAXEXTNAME*MAX_EXTENSIONS];    // '\0' between the names replaced with ','
    TBSAVEPARAMS tbSave;
 
    if (bSave) {
@@ -1350,7 +1533,8 @@ SaveRestoreToolbar(BOOL bSave)
       for (i=0, pName=szNames; i<iNumExtensions; ++i) {
          ExtensionName(i, pName);
          pName += lstrlen(pName);
-         *pName++ = TEXT(',');
+         if ((i+1) < iNumExtensions)
+            *pName++ = TEXT(',');
       }
 
       *pName = TEXT('\0');
@@ -1372,9 +1556,8 @@ SaveRestoreToolbar(BOOL bSave)
       SendMessage(hwndToolbar, TB_INSERTBUTTON, 0,
          (LPARAM)(LPTBBUTTON)tbButtons);
    } else {
-      INT i, iExt, nExtButtons;
+      INT iExt;
       BOOL bRestored;
-      TBBUTTON tbButton;
       LPTSTR pName, pEnd;
 
       // Only load the buttons for the extensions that were the same as
@@ -1383,39 +1566,44 @@ SaveRestoreToolbar(BOOL bSave)
       GetPrivateProfileString(szSettings, szAddons, szNULL, szNames,
          COUNTOF(szNames), szTheINIFile);
 
-      for (iExt=0, pName=szNames; iExt<iNumExtensions; ++iExt, pName=pEnd) {
-         TCHAR szName[20];
+      for (pName=szNames; pName && *pName; pName=pEnd) {
+         TCHAR szName[MAXEXTNAME];
 
          pEnd = StrChr(pName, TEXT(','));
-         if (!pEnd)
-            break;
-         *pEnd++ = TEXT('\0');
+         if (pEnd)
+             *pEnd++ = TEXT('\0');
 
-         ExtensionName(iExt, szName);
-         if (lstrcmpi(szName, pName))
-            break;
+         // find whether extension in currently list and mark restored.
 
-         InitToolbarExtension(iExt);
+         for (iExt = 0; iExt < iNumExtensions; iExt++) {
+            ExtensionName(iExt, szName);
+
+            if (lstrcmpi(szName, pName) == 0) {
+                extensions[iExt].bRestored = TRUE;
+                break;
+            }
+         }
       }
 
-      // Save the number of buttons currently loaded
+      // load all extensions and add their bitmaps to hwndToolbar; this needs to happen before the restore
+      // so that we have the bitmap bias values loaded.
+      for (iExt = 0; iExt<iNumExtensions; ++iExt)
+          InitToolbarExtension(iExt);
 
-      if (hwndExtensions)
-         nExtButtons = (int)SendMessage(hwndExtensions, TB_BUTTONCOUNT, 0, 0L);
-      else
-         nExtButtons = 0;
+      // Load any saved toolbar buttons; extension buttons were saved with unbiased idCommand and iBitmap;
+      // we map them back during restore here; toolbar buttons will be discarded if we haven't loaded the extension;
+      // changing the order of the extensions will (at present) remap the buttons, but otherwise won't cause harm.
 
-      // Now actually set the toolbar buttons and load the rest of the
-      // extension buttons.
+      // TB_SAVERESTORE does not return a boolean (as the code once showed);
+      // we check for restoration by checking for a change in the number of buttons.
+      INT nCurButtons = (int)SendMessage(hwndToolbar, TB_BUTTONCOUNT, 0, 0L);
 
       tbSave.hkr = HKEY_CURRENT_USER;
       tbSave.pszSubKey = szSubKey;
       tbSave.pszValueName = szValueName;
-      bRestored = (BOOL)SendMessage(hwndToolbar, TB_SAVERESTORE, 0, (LPARAM)&tbSave);
+      SendMessage(hwndToolbar, TB_SAVERESTORE, 0, (LPARAM)&tbSave);
 
-
-      for ( ; iExt<iNumExtensions; ++iExt)
-         InitToolbarExtension(iExt);
+      bRestored = nCurButtons != (int)SendMessage(hwndToolbar, TB_BUTTONCOUNT, 0, 0L);
 
       if (bRestored) {
          INT idGood, idBad, nItem;
@@ -1434,24 +1622,12 @@ SaveRestoreToolbar(BOOL bSave)
                (LPARAM)(LPTBBUTTON)(&tbButtons[ICONNECTIONS]));
          }
 
-         // Add in the beginning separator and the "new" extensions
+         // Add in the beginning separator and the extensions
 
          SendMessage(hwndToolbar, TB_INSERTBUTTON, 0,
             (LPARAM)(LPTBBUTTON)tbButtons);
 
-         // Add in any extensions that are new
-
-         if (hwndExtensions) {
-            i = nExtButtons;
-            nExtButtons = (int)SendMessage(hwndExtensions, TB_BUTTONCOUNT,
-            0, 0L) - nExtButtons;
-            for ( ; nExtButtons>0; ++i, --nExtButtons) {
-               SendMessage(hwndExtensions, TB_GETBUTTON, i,
-                  (LPARAM)(LPTBBUTTON)&tbButton);
-               SendMessage(hwndToolbar, TB_ADDBUTTONS, 1,
-                  (LPARAM)(LPTBBUTTON)&tbButton);
-            }
-         }
+         AddExtensionToolbarButtons(FALSE);
 
       } else
          ResetToolbar();

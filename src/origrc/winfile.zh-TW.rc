@@ -1,0 +1,1472 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (Traditional, Taiwan) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHT)
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
+#pragma code_page(950)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "檔案(&F)"
+    BEGIN
+        MENUITEM "開啟舊檔(&O)\tEnter",             101
+        MENUITEM "移動(&M)...\tF7",               106
+        MENUITEM "複製(&C)...\tF8",               107
+        MENUITEM "複製到剪貼簿(&B)...\tF9",           118
+        MENUITEM "刪除(&D)...\tDel",              108
+        MENUITEM "更名(&N)...",                   109
+        MENUITEM "內容(&T)...\tAlt+Enter",        110
+        MENUITEM SEPARATOR
+        MENUITEM "壓縮(&S)...",                   119
+        MENUITEM "解壓縮(&U)...",                  120
+        MENUITEM SEPARATOR
+        MENUITEM "執行(&R)...",                   105
+        MENUITEM "列印(&P)...",                   102
+        MENUITEM "關聯(&A)...",                   103
+        MENUITEM SEPARATOR
+        MENUITEM "建立目錄(&E)...",                 111
+        MENUITEM "搜尋(&H)...",                   104
+        MENUITEM "選擇檔案(&F)...",                 116
+        MENUITEM SEPARATOR
+        MENUITEM "結束(&X)",                      115
+    END
+    POPUP "磁碟(&D)"
+    BEGIN
+        MENUITEM "複製磁碟(&C)...",                 201
+        MENUITEM "為磁碟命名(&L)...",                202
+        MENUITEM SEPARATOR
+        MENUITEM "格式化磁片(&F)...",                203
+        MENUITEM SEPARATOR
+        MENUITEM "選擇磁碟機(&S)...",                251
+    END
+    POPUP "目錄(&T)"
+    BEGIN
+        MENUITEM "顯示次層子目錄(&X)\t+",              301
+        MENUITEM "顯示多層子目錄(&B)\t*",              302
+        MENUITEM "顯示所有子目錄(&A)\tCtrl+*",         303
+        MENUITEM "隱藏子目錄(&C)\t-",                304
+        MENUITEM SEPARATOR
+        MENUITEM "標示可顯示的多層子目錄(&I)",             505
+    END
+    POPUP "檢視(&V)"
+    BEGIN
+        MENUITEM "樹狀結構與目錄(&R)",                 413
+        MENUITEM "只看樹狀結構(&E)",                  411
+        MENUITEM "只看目錄(&O)",                    412
+        MENUITEM SEPARATOR
+        MENUITEM "分割(&L)",                      414
+        MENUITEM SEPARATOR
+        MENUITEM "名稱(&N)",                      401
+        MENUITEM "檔案的所有詳細資料(&A)",               402, CHECKED
+        MENUITEM "部份的詳細資料(&P)...",              403
+        MENUITEM SEPARATOR
+        MENUITEM "依名稱排序(&S)",                   404
+        MENUITEM "依類型排序(&B)",                   405
+        MENUITEM "依大小排序(&Z)",                   406
+        MENUITEM "依日期排序(&D)",                   407
+        MENUITEM SEPARATOR
+        MENUITEM "依檔案類型(&T)...",                409
+    END
+    POPUP "選項(&O)"
+    BEGIN
+        MENUITEM "確認(&C)...",                   501
+        MENUITEM "字型(&F)...",                   510
+        MENUITEM "自訂工具列(&B)...",                512
+        MENUITEM SEPARATOR
+        MENUITEM "工具列(&T)",                     508
+        MENUITEM "磁碟機列(&D)",                    507
+        MENUITEM "狀態列(&S)",                     503
+        MENUITEM SEPARATOR
+        MENUITEM "使用時最小化(&M)",                  504
+        MENUITEM "結束時將設定值存檔(&E)",               511
+    END
+    POPUP "安全(&S)"
+    BEGIN
+        MENUITEM "使用權限(&P)...",                 605
+        MENUITEM "稽核(&A)...",                   606
+        MENUITEM "擁有人(&O)...",                  607
+    END
+    POPUP "視窗(&W)"
+    BEGIN
+        MENUITEM "開新視窗(&N)",                    1706
+        MENUITEM "重疊顯示(&C)\tShift+F5",          1701
+        MENUITEM "上下並排(&H)",                    1703
+        MENUITEM "左右並排(&T)\tShift+F4",          1702
+        MENUITEM "排列圖示(&A)",                    1705
+        MENUITEM "重新整理(&R)\tF5",                1704
+    END
+    POPUP "說明(&H)"
+    BEGIN
+        MENUITEM "內容(&C)",                      1801
+        MENUITEM "搜尋說明主題(&S)...",               30
+        MENUITEM "說明使用方法(&H)",                  1802
+        MENUITEM SEPARATOR
+        MENUITEM "關於檔案管理員(&A)...",              1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 210, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "執行"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,162,10
+    CONTROL         "指令行(&C):",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,10,18,134,10
+    EDITTEXT        201,10,29,134,12,ES_AUTOHSCROLL
+    CONTROL         "執行時最小化(&M)",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,45,134,12
+    DEFPUSHBUTTON   "確定",1,165,6,40,14
+    PUSHBUTTON      "取消",2,165,24,40,14
+    PUSHBUTTON      "說明(&H)",254,165,42,40,14
+END
+
+11 DIALOG 20, 20, 240, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "列印"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,193,10
+    CONTROL         "列印(&P):",-1,"Static",SS_LEFTNOWORDWRAP,8,19,30,10
+    EDITTEXT        102,39,18,147,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,36,193,10
+    DEFPUSHBUTTON   "確定",1,197,6,40,14
+    PUSHBUTTON      "取消",2,197,24,40,14
+    PUSHBUTTON      "說明(&H)",254,197,42,40,14
+END
+
+12 DIALOG 20, 20, 255, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "關聯"
+FONT 9, "新細明體"
+BEGIN
+    LTEXT           "副檔名(&F):",-1,7,7,52,9
+    COMBOBOX        315,73,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "關聯應用程式(&A):",-1,6,30,92,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "瀏覽(&B)...",318,130,26,47,14
+    DEFPUSHBUTTON   "確定",1,187,6,62,14,WS_GROUP
+    PUSHBUTTON      "取消",2,187,23,62,14
+    PUSHBUTTON      "新增類型(&N)...",300,187,42,62,14
+    PUSHBUTTON      "變更類型(&C)...",251,187,59,62,14
+    PUSHBUTTON      "刪除類型(&D)",219,187,76,62,14
+    PUSHBUTTON      "說明(&H)",254,187,95,62,14
+END
+
+13 DIALOG 20, 20, 263, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "搜尋"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "搜尋對象(&S):",-1,"Static",SS_LEFTNOWORDWRAP,5,6,51,12
+    EDITTEXT        201,57,5,155,12,ES_AUTOHSCROLL
+    CONTROL         "開始目錄(&F):",-1,"Static",SS_LEFTNOWORDWRAP,5,21,51,12
+    EDITTEXT        101,57,20,155,12,ES_AUTOHSCROLL
+    CONTROL         "搜尋所有子目錄(&E)",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,57,37,155,12
+    DEFPUSHBUTTON   "確定",1,217,6,40,14
+    PUSHBUTTON      "取消",2,217,23,40,14
+    PUSHBUTTON      "說明(&H)",254,217,43,40,14
+END
+
+14 DIALOG 47, 59, 231, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "移動"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "目前工作目錄: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,182,10
+    CONTROL         "到(&T):",2001,"Static",SS_LEFTNOWORDWRAP,3,33,48,10
+    EDITTEXT        103,52,32,123,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,48,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,52,49,123,12
+    DEFPUSHBUTTON   "確定",1,185,6,40,14
+    PUSHBUTTON      "取消",2,185,23,40,14
+    PUSHBUTTON      "說明(&H)",254,185,40,40,14
+    CONTROL         "從(&F):",2002,"Static",SS_LEFTNOWORDWRAP,3,19,48,10
+    EDITTEXT        102,52,18,123,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "刪除"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "目前工作目錄: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "刪除(&L):",-1,"Static",SS_LEFTNOWORDWRAP,3,20,31,10
+    EDITTEXT        102,40,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,31,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,40,35,155,10
+    DEFPUSHBUTTON   "確定",1,200,6,40,14
+    PUSHBUTTON      "取消",2,200,23,40,14
+    PUSHBUTTON      "說明(&H)",254,200,40,40,14
+END
+
+16 DIALOG 23, 13, 259, 229
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s 內容"
+FONT 9, "新細明體"
+BEGIN
+    DEFPUSHBUTTON   "確定",1,204,6,50,14,WS_GROUP
+    PUSHBUTTON      "取消",2,204,23,50,14
+    PUSHBUTTON      "說明(&H)",254,204,40,50,14
+    CONTROL         "檔案名稱(&F):",261,"Static",SS_LEFTNOWORDWRAP,5,5,62,10
+    EDITTEXT        201,72,5,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "路徑(&P):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,62,10
+    EDITTEXT        101,72,16,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "上次修改時間:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,62,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,72,27,132,10
+    CONTROL         "版本:",258,"Static",SS_LEFTNOWORDWRAP,5,38,62,10
+    CONTROL         "未標示",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,72,38,132,10
+    LTEXT           "版權(&Y):",-1,5,49,62,10
+    EDITTEXT        265,72,49,132,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "大小:",260,"Static",SS_LEFTNOWORDWRAP,5,60,62,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,72,60,132,10
+    CONTROL         "壓縮大小:",268,"Static",SS_LEFTNOWORDWRAP,5,71,62,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,72,71,132,10
+    CONTROL         "壓縮比率:",270,"Static",SS_LEFTNOWORDWRAP,5,82,62,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,72,82,132,10
+    GROUPBOX        "屬性",-1,4,96,120,54
+    CONTROL         "唯讀(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,61,12
+    CONTROL         "隱藏(&I)",216,"Button",BS_AUTOCHECKBOX,71,108,49,12
+    CONTROL         "保存檔案(&A)",217,"Button",BS_AUTOCHECKBOX,9,120,61,12
+    CONTROL         "系統(&S)",218,"Button",BS_AUTOCHECKBOX,71,120,49,12
+    CONTROL         "壓縮(&C)",267,"Button",BS_AUTOCHECKBOX,9,132,61,12
+    GROUPBOX        "版本資訊(&V)",262,4,155,250,70
+    LISTBOX         263,9,168,91,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,110,168,138,50,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 200, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "建立目錄"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,154,10
+    CONTROL         "名稱(&N):",-1,"Static",SS_LEFTNOWORDWRAP,3,23,35,10
+    EDITTEXT        201,39,22,90,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,154,10
+    DEFPUSHBUTTON   "確定",1,157,6,40,14
+    PUSHBUTTON      "取消",2,157,24,40,14
+    PUSHBUTTON      "說明(&H)",254,157,42,40,14
+END
+
+19 DIALOG 20, 20, 157, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "複製磁片"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "來源磁碟(&S):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,48,10
+    COMBOBOX        245,60,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "目的磁碟(&D):",206,"Static",SS_LEFTNOWORDWRAP,5,25,47,10
+    COMBOBOX        222,60,23,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "確定",1,110,6,40,14
+    PUSHBUTTON      "取消",2,110,24,40,14
+    PUSHBUTTON      "說明(&H)",254,110,42,40,14
+END
+
+22 DIALOG 30, 30, 131, 61
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "複製磁碟"
+FONT 9, "新細明體"
+BEGIN
+    CTEXT           "所要複製的磁片現在位於 ",-1,0,5,131,10,NOT WS_GROUP
+    CTEXT           "磁碟機 A:",222,0,16,131,10,NOT WS_GROUP
+    CTEXT           "讀取來源磁片",243,0,27,131,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "取消",2,44,41,44,14
+END
+
+23 DIALOG 20, 20, 161, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "磁碟命名"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "標籤(&L):",-1,"Static",SS_LEFTNOWORDWRAP,5,15,100,10
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "確定",1,115,6,40,14
+    PUSHBUTTON      "取消",2,115,24,40,14
+    PUSHBUTTON      "說明(&H)",254,115,42,40,14
+END
+
+24 DIALOG 11, 28, 183, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "格式化磁片"
+FONT 9, "新細明體"
+BEGIN
+    DEFPUSHBUTTON   "確定",1,134,6,40,14
+    PUSHBUTTON      "取消",2,134,23,40,14
+    PUSHBUTTON      "說明(&H)",254,134,40,40,14
+    CONTROL         "磁片所在(&D):",-1,"Static",SS_LEFTNOWORDWRAP,5,7,49,10
+    COMBOBOX        222,55,6,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "容量(&C):",-1,"Static",SS_LEFTNOWORDWRAP,5,22,49,10
+    COMBOBOX        241,55,21,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "選項",102,5,39,115,53,WS_GROUP
+    CONTROL         "標籤(&L):",-1,"Static",SS_LEFTNOWORDWRAP,11,55,35,10
+    EDITTEXT        201,47,52,68,12
+    CONTROL         "快速格式化(&Q)",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,70,90,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "格式化磁片"
+FONT 9, "新細明體"
+BEGIN
+    CTEXT           "正在格式化磁碟片",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "啟動磁碟機...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "取消",2,49,30,44,14
+END
+
+30 DIALOG 20, 20, 174, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "部份的詳細資料"
+FONT 9, "新細明體"
+BEGIN
+    GROUPBOX        "詳細資料",-1,4,4,121,74
+    CONTROL         "大小(&S)",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,100,12
+    CONTROL         "上次修改日期(&M)",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,100,12
+    CONTROL         "上次修改時間(&T)",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,100,12
+    CONTROL         "檔案屬性(&F)",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,100,12
+    CONTROL         "MS-DOS 檔案名稱(&D)",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,100,12
+    DEFPUSHBUTTON   "確定",1,130,6,40,14
+    PUSHBUTTON      "取消",2,130,23,40,14
+    PUSHBUTTON      "說明(&H)",254,130,60,40,14
+END
+
+32 DIALOG 20, 20, 157, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "依檔案類型"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "名稱(&N):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,31,10
+    EDITTEXT        201,39,6,66,12,ES_AUTOHSCROLL
+    GROUPBOX        "檔案類型",-1,5,20,100,62
+    CONTROL         "目錄(&D)",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,31,73,12
+    CONTROL         "程式(&P)",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,43,70,12
+    CONTROL         "文件(&M)",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,55,65,12
+    CONTROL         "其他檔案(&O)",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,14,67,67,12
+    CONTROL         "顯示隱藏/系統檔案(&S)",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,100,12
+    DEFPUSHBUTTON   "確定",1,110,6,40,14
+    PUSHBUTTON      "取消",2,110,23,40,14
+    PUSHBUTTON      "說明(&H)",254,110,41,40,14
+END
+
+33 DIALOG 20, 20, 215, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認"
+FONT 9, "新細明體"
+BEGIN
+    GROUPBOX        "要求使用者確認",-1,5,3,158,87,WS_TABSTOP
+    CONTROL         "檔案刪除(&D)",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,15,128,12
+    CONTROL         "目錄刪除(&I)",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,27,132,12
+    CONTROL         "檔案取代(&R)",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,39,132,12
+    CONTROL         "滑鼠動作(&M)",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,51,127,12
+    CONTROL         "磁碟指令(&K)",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,63,113,12
+    CONTROL         "修改系統、隱藏、唯讀檔案(&S)",215,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,75,133,12
+    DEFPUSHBUTTON   "確定",1,168,6,40,14
+    PUSHBUTTON      "取消",2,168,23,40,14
+    PUSHBUTTON      "說明(&H)",254,168,44,40,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "移動..."
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "到:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,49,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "取消",2,200,28,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 120, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 9, "新細明體"
+BEGIN
+    CTEXT           "列印檔案...",-1,0,6,120,12
+    CTEXT           "",-1,0,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "取消",2,44,40,32,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 206, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "內容"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "選擇 %d 個檔案",100,"Static",SS_LEFTNOWORDWRAP,11,5,132,10
+    CONTROL         "總共 %s 位元組",111,"Static",SS_LEFTNOWORDWRAP,11,17,130,10
+    GROUPBOX        "屬性",-1,5,29,120,54
+    CONTROL         "唯讀(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,42,61,12
+    CONTROL         "隱藏(&I)",216,"Button",BS_AUTOCHECKBOX,72,42,52,12
+    CONTROL         "保存檔案(&A)",217,"Button",BS_AUTOCHECKBOX,10,54,61,12
+    CONTROL         "系統(&S)",218,"Button",BS_AUTOCHECKBOX,72,55,52,12
+    CONTROL         "壓縮(&C)",267,"Button",BS_AUTOCHECKBOX,10,66,61,12
+    DEFPUSHBUTTON   "確定",1,144,6,50,14,WS_GROUP
+    PUSHBUTTON      "取消",2,144,23,50,14
+    PUSHBUTTON      "說明(&H)",254,144,41,50,14
+END
+
+39 DIALOG 10, 20, 245, 103
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認檔案取代"
+FONT 9, "新細明體"
+BEGIN
+    ICON            32515,-1,3,12,14,14
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "原有檔案:",-1,"Static",SS_LEFTNOWORDWRAP,27,14,49,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,14,165,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,75,25,165,10
+    CONTROL         "取代成為:",-1,"Static",SS_LEFTNOWORDWRAP,28,36,49,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,36,165,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,75,47,165,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,58,203,19
+    DEFPUSHBUTTON   "是(&Y)",6,16,83,41,14
+    PUSHBUTTON      "全部皆是(&A)",107,60,83,60,14
+    PUSHBUTTON      "否(&N)",7,124,83,50,14
+    PUSHBUTTON      "取消",2,178,83,50,14
+END
+
+40 DIALOG 10, 20, 245, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認刪除檔案"
+FONT 9, "新細明體"
+BEGIN
+    ICON            32515,-1,3,12,14,14
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "刪除檔案:",-1,"Static",SS_LEFTNOWORDWRAP,30,18,55,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,29,203,20
+    DEFPUSHBUTTON   "是(&Y)",6,16,52,43,14
+    PUSHBUTTON      "全部皆是(&A)",107,63,52,57,14
+    PUSHBUTTON      "否(&N)",7,124,52,50,14
+    PUSHBUTTON      "取消",2,178,52,50,14
+END
+
+41 DIALOG 10, 20, 245, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認刪除目錄"
+FONT 9, "新細明體"
+BEGIN
+    ICON            32515,-1,3,12,14,14
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,205,10
+    CONTROL         "刪除目錄:",-1,"Static",SS_LEFTNOWORDWRAP,29,18,42,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,150,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,29,205,20
+    DEFPUSHBUTTON   "是(&Y)",6,17,52,50,14
+    PUSHBUTTON      "全部皆是(&A)",107,71,52,50,14
+    PUSHBUTTON      "否(&N)",7,125,52,50,14
+    PUSHBUTTON      "取消",2,179,52,50,14
+END
+
+42 DIALOG 10, 22, 245, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認移動檔案"
+FONT 9, "新細明體"
+BEGIN
+    ICON            32515,-1,3,12,14,14
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "移動檔案:",-1,"Static",SS_LEFTNOWORDWRAP,28,17,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,17,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,29,203,20
+    DEFPUSHBUTTON   "是(&Y)",6,16,52,45,14
+    PUSHBUTTON      "全部皆是(&A)",107,63,52,57,14
+    PUSHBUTTON      "否(&N)",7,124,52,50,14
+    PUSHBUTTON      "取消",2,178,52,50,14
+END
+
+43 DIALOG 10, 22, 245, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認檔案更名"
+FONT 9, "新細明體"
+BEGIN
+    ICON            32515,-1,3,12,14,14
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "檔案更名:",-1,"Static",SS_LEFTNOWORDWRAP,29,17,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,17,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,29,203,20
+    DEFPUSHBUTTON   "是(&Y)",6,16,52,43,14
+    PUSHBUTTON      "全部皆是(&A)",107,63,52,57,14
+    PUSHBUTTON      "否(&N)",7,124,52,50,14
+    PUSHBUTTON      "取消",2,178,52,50,14
+END
+
+44 DIALOG 15, 12, 133, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "選擇檔案"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "檔案(&F):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "選擇(&S)",1,70,6,55,14
+    PUSHBUTTON      "取消選取(&D)",6,70,23,55,14
+    PUSHBUTTON      "取消",2,70,40,55,14
+    PUSHBUTTON      "說明(&H)",254,70,63,55,14
+END
+
+45 DIALOG 11, 31, 201, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "選擇磁碟機"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "磁碟機(&D):",245,"Static",SS_LEFTNOWORDWRAP,5,5,140,10
+    LISTBOX         222,5,16,140,62,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "確定",1,154,16,40,14
+    PUSHBUTTON      "取消",2,154,33,40,14
+    PUSHBUTTON      "說明(&H)",254,154,51,40,14
+END
+
+46 DIALOG 11, 28, 250, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "選取檔案名稱"
+FONT 9, "新細明體"
+BEGIN
+    LTEXT           "這個路徑不符合 FAT 檔案名稱格式, 請輸入新名稱。",99,5,4,190,24,NOT WS_GROUP
+    RTEXT           "新名稱(&N):",-1,10,56,42,12,NOT WS_GROUP
+    EDITTEXT        103,57,55,130,12
+    RTEXT           "原始路徑:",-1,12,28,40,11,NOT WS_GROUP
+    EDITTEXT        102,57,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "到目錄:",-1,17,42,35,11,NOT WS_GROUP
+    EDITTEXT        101,57,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "確定",1,205,7,40,14
+    PUSHBUTTON      "取消",2,205,23,40,14
+    PUSHBUTTON      "說明(&H)",254,205,39,40,14
+END
+
+48 DIALOG 23, 13, 250, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s 內容"
+FONT 9, "新細明體"
+BEGIN
+    DEFPUSHBUTTON   "確定",1,194,6,50,14,WS_GROUP
+    PUSHBUTTON      "取消",2,194,23,50,14
+    PUSHBUTTON      "說明(&H)",254,194,43,50,14
+    CONTROL         "檔案名稱(&F):",261,"Static",SS_LEFTNOWORDWRAP,5,5,62,10
+    EDITTEXT        201,68,5,120,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "路徑(&P):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,62,10
+    EDITTEXT        101,68,16,120,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "上次修改時間:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,62,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,68,27,120,10
+    CONTROL         "大小:",260,"Static",SS_LEFTNOWORDWRAP,5,38,62,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,68,38,120,10
+    GROUPBOX        "屬性",-1,4,52,120,54
+    CONTROL         "唯讀(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,61,12
+    CONTROL         "隱藏(&I)",216,"Button",BS_AUTOCHECKBOX,71,64,49,12
+    CONTROL         "保存檔案(&A)",217,"Button",BS_AUTOCHECKBOX,9,76,61,12
+    CONTROL         "系統(&S)",218,"Button",BS_AUTOCHECKBOX,71,76,49,12
+    CONTROL         "壓縮(&C)",267,"Button",BS_AUTOCHECKBOX,9,88,61,12
+END
+
+49 DIALOG 13, 54, 264, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "字型"
+FONT 9, "新細明體"
+BEGIN
+    LTEXT           "字型(&F):",1088,6,3,94,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "字型樣式(&Y):",1089,108,3,64,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "大小(&S):",1090,179,3,32,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "效果",1072,6,73,84,61,WS_GROUP
+    CONTROL         "刪除線(&K)",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,60,10
+    CONTROL         "底線(&U)",1041,"Button",BS_AUTOCHECKBOX,10,95,60,10
+    CONTROL         "FAT 磁碟機以小寫顯示(&L)",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,127,252,10
+    CONTROL         "所有磁碟機以小寫顯示(&D)",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,139,252,10
+    LTEXT           "色彩(&C):",1091,10,107,75,9
+    COMBOBOX        1139,10,117,75,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "確定",1,218,6,40,14,WS_GROUP
+    PUSHBUTTON      "取消",2,218,23,40,14,WS_GROUP
+    PUSHBUTTON      "套用(&A)",1026,218,40,40,14,WS_GROUP
+    PUSHBUTTON      "說明(&H)",1038,218,57,40,14,WS_GROUP
+    GROUPBOX        "範例",1073,6,72,252,49,WS_GROUP
+    CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "中文字型 AaBbYyZz",1092,10,81,243,37,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "格式化磁片"
+FONT 9, "新細明體"
+BEGIN
+    CTEXT           "",100,15,36,131,9
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "隱藏",110,38,48,40,14
+    PUSHBUTTON      "取消",2,82,48,40,14
+END
+
+51 DIALOG 10, 20, 260, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認: 忽略檔案或目錄，然後繼續"
+FONT 9, "新細明體"
+BEGIN
+    ICON            32515,-1,3,12,14,14
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "存取被拒絕，忽略:",202,"Static",SS_LEFTNOWORDWRAP,30,14,188,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,108,14,122,10
+    CONTROL         "您沒有使用權，或者檔案正在使用中。",-1,"Static",SS_LEFTNOWORDWRAP,30,25,170,10
+    CONTROL         "請選取「是」略過這個檔案，然後繼續執行。",-1,"Static",SS_LEFTNOWORDWRAP,30,37,184,10
+    DEFPUSHBUTTON   "是(&Y)",6,24,52,43,14
+    PUSHBUTTON      "全部皆是(&A)",107,71,52,57,14
+    PUSHBUTTON      "否(&N)",7,132,52,50,14
+    PUSHBUTTON      "取消",2,186,52,50,14
+END
+
+52 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認: 忽略檔案或目錄，然後繼續"
+FONT 9, "新細明體"
+BEGIN
+    ICON            32515,-1,3,12,14,14
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "無法存取目的位置，忽略:",202,"Static",SS_LEFTNOWORDWRAP,29,14,167,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,124,14,106,10
+    CONTROL         "選取「是」，即可忽略這個檔案，並且繼續執行。",-1,"Static",SS_LEFTNOWORDWRAP,29,25,180,10
+    DEFPUSHBUTTON   "是(&Y)",6,16,42,45,14
+    PUSHBUTTON      "全部皆是(&A)",107,64,42,56,14
+    PUSHBUTTON      "否(&N)",7,124,42,50,14
+    PUSHBUTTON      "取消",2,178,42,50,14
+END
+
+53 DIALOG 77, 109, 174, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "搜尋磁碟"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "搜尋目標:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,60,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,66,5,100,10
+    CONTROL         "搜尋起點:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,66,15,100,10
+    CONTROL         "讀取目錄:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,60,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,66,25,100,10
+    CONTROL         "相符項目個數:",-1,"Static",SS_LEFTNOWORDWRAP,5,38,60,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,66,35,100,10
+    PUSHBUTTON      "隱藏",110,45,49,40,14
+    PUSHBUTTON      "取消",2,89,49,40,14
+END
+
+54 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "複製到剪貼簿"
+FONT 9, "新細明體"
+BEGIN
+    CONTROL         "目前工作目錄: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,7,5,185,10
+    CONTROL         "複製到剪貼簿(&B):",-1,"Static",SS_LEFTNOWORDWRAP,8,20,67,10
+    EDITTEXT        102,80,19,115,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "確定",1,200,6,40,14
+    PUSHBUTTON      "取消",2,200,23,40,14
+    PUSHBUTTON      "說明(&H)",254,200,43,40,14
+END
+
+55 DIALOG 18, 14, 290, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "變更檔案類型"
+FONT 9, "新細明體"
+BEGIN
+    LTEXT           "檔案型式(&F):",302,5,7,50,9
+    EDITTEXT        301,56,5,100,12,ES_AUTOHSCROLL
+    GROUPBOX        "動作(&A): ",-1,5,22,235,126,WS_GROUP
+    COMBOBOX        306,51,22,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "指令(&C):",313,9,41,38,9
+    EDITTEXT        304,47,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "瀏覽(&B)...",318,164,38,47,14
+    CONTROL         "使用 DDE(&U)",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,57,80,10
+    LTEXT           "DDE 訊息(&M):",320,22,72,82,8
+    EDITTEXT        309,105,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "應用程式未執行時的 DDE 訊息(&N):",322,22,84,82,19
+    LTEXT           "(選項)",324,207,90,26,9
+    EDITTEXT        311,105,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "應用程式(&P):",321,22,109,82,8
+    EDITTEXT        310,105,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "主題(&T):",323,22,127,82,8
+    EDITTEXT        312,105,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "新副檔名(&W):",-1,11,185,52,9
+    EDITTEXT        315,64,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "新增 (&D) ->",303,102,174,50,14
+    PUSHBUTTON      "<- 移除(&R)",219,102,191,50,14
+    LTEXT           "副檔名(&E):",-1,157,161,65,9
+    LISTBOX         317,157,172,65,46,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "與本檔案類型相關的副檔名:",316,5,154,235,66
+    DEFPUSHBUTTON   "確定",1,245,6,40,14
+    PUSHBUTTON      "取消",2,245,23,40,14
+    PUSHBUTTON      "說明(&H)",254,245,40,40,14
+END
+
+57 DIALOG 123, 60, 207, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "進行檔案壓縮"
+FONT 9, "新細明體"
+BEGIN
+    LTEXT           "正在壓縮的檔案:",-1,6,8,79,9
+    LTEXT           "filename.xxx",341,86,8,110,9
+    LTEXT           "目錄:",-1,6,20,79,9
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,86,20,110,9
+    LTEXT           "正在壓縮的目錄:",-1,6,32,79,9
+    LTEXT           """1,888,888,999""",343,86,32,110,9
+    LTEXT           "已經壓縮的檔案:",-1,6,44,79,9
+    LTEXT           """1,888,888,999""",344,86,44,110,9
+    LTEXT           "壓縮前檔案總大小:",-1,6,56,79,9
+    LTEXT           """9,999,999,999,999""",345,86,56,110,9
+    LTEXT           "壓縮後檔案總大小:",-1,6,68,79,9
+    LTEXT           """9,999,999,999,999""",346,86,69,110,9
+    LTEXT           "檔案壓縮比率:",-1,6,80,79,9
+    LTEXT           "100%",347,86,80,110,9
+    PUSHBUTTON      "取消",2,76,97,55,14
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "進行檔案解壓縮"
+FONT 9, "新細明體"
+BEGIN
+    LTEXT           "正在解壓縮的檔案:",-1,6,8,83,9
+    LTEXT           "filename.xxx",351,93,8,100,9
+    LTEXT           "目錄:",-1,6,20,83,9
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,93,20,100,9
+    LTEXT           "已經解壓縮的目錄:",-1,6,32,83,9
+    LTEXT           """1,999,999,999""",353,93,32,100,9
+    LTEXT           "已經解壓縮的檔案:",-1,6,44,83,9
+    LTEXT           """1,999,999,999""",354,93,44,100,9
+    PUSHBUTTON      "取消",2,74,64,49,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "壓縮檔案發生錯誤"
+FONT 9, "新細明體"
+BEGIN
+    ICON            32515,-1,8,8,19,18
+    LTEXT           "",100,35,8,190,27
+    DEFPUSHBUTTON   "略過(&I)",5,16,47,44,14,WS_GROUP
+    PUSHBUTTON      "全部略過(&G)",112,62,47,58,14
+    PUSHBUTTON      "重試(&R)",4,124,47,50,14
+    PUSHBUTTON      "放棄(&A)",3,178,47,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,52
+ PRODUCTVERSION 4,0,1381,52
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040404B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "File Manager"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Microsoft(R) Windows NT(TM) Operating System"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x404, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "複製磁片"
+    51                      "插入目的磁片。"
+    52                      "插入來源磁片。"
+    53                      "插入來源和目的磁片。"
+    54                      "格式化目的磁片"
+    55                      "複製磁片錯誤"
+    56                      "無法複製磁片。"
+    58                      "來源磁片與目的磁片不相容。"
+    60                      "完成 %d%%"
+    61                      "建立主目錄..."
+    62                      "複製系統檔案..."
+    63                      "格式化磁片錯誤"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "格式化完成"
+    67                      "總共磁碟空間: %ld 位元組\n磁碟上可用的位元組: %ld\n\n是否格式化另一磁片？"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "網路錯誤"
+    83                      "這部磁碟機包含 Windows 系統檔案，因此無法切斷連接。"
+    91                      "檔案管理員無法變更屬性。"
+    92                      "檔案管理員無法建立目錄。"
+    93                      "檔案管理員無法為磁片命名。\n\n請確認磁片未作防寫保護、並非網路，而且輸入正確的名稱。\n名稱不可包含下列字元：\n[空格] * ? / \\ | . , ; : + = [ ] ( )  ^ < > "" (& )"
+    95                      "找不到相符的檔案。"
+END
+
+STRINGTABLE
+BEGIN
+    97                      "這部磁碟機的內容已經變更。是否要更新「搜尋結果」視窗？"
+    98                      "您必須以管理者身份登入此工作站，以便在硬碟上執行此項操作。"
+    101                     "磁碟機 %c:%c"
+    110                     "無法執行程式"
+    111                     "無法預期的錯誤: %d。"
+END
+
+STRINGTABLE
+BEGIN
+    112                     "沒有足夠的記憶體可啟動指定的應用程式。\n\n請結束使用一或數個應用程式，然後再試。"
+    113                     "檔案管理員無法找到檔案（或其元件）。\n\n請確定路徑和檔案名稱都是正確的，且所有必要的程式庫都是可用的。"
+    114                     "指定的路徑無效。"
+    116                     "沒有應用程式與此檔案有關聯。\n\n請從「檔案」功能表中選擇「關聯」以建立關聯。"
+    118                     "檔案管理員無法開啟或列印檔案。\n\n請啟動用以建立此檔的應用程式，並開啟或列印該檔。"
+    120                     "確認滑鼠操作"
+    121                     "是否確定要複製指定檔案或目錄到 %s？"
+    122                     "是否確定要移動指定檔案或目錄到 %s？"
+    123                     "是否確定要使用 %s 來啟動 %s 作為起始檔？"
+    124                     "檔案管理員"
+    126                     "樹狀目錄結構"
+    127                     "搜尋結果: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "檔案太多"
+    133                     "檔案管理員 - 記憶體不足"
+    134                     "無法讀取整個目錄。僅顯示部份清單。"
+    140                     "目前工作目錄: %s"
+    141                     "複製"
+    143                     "更名"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "格式化磁片"
+    146                     "選擇磁片以進行格式化。"
+    150                     "建立:"
+    151                     "移除..."
+    152                     "複製:"
+    153                     "更名..."
+    154                     "移動..."
+    155                     "刪除..."
+    156                     "列印: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "複製..."
+    170                     "移除:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "Total %d file(s) (%s)"
+    181                     "讀取目錄: %d "
+    182                     "%c: 可用空間 %s, 總計 %s"
+    183                     "找到 %d 個檔案"
+    185                     "選定檔案"
+    186                     "檔案管理員無法切斷網路磁碟機的連接。\n\n在此磁碟機上開啟了數個檔案。"
+    187                     "選取 %d 個檔案 (%s)"
+    188                     "在 %c 磁碟機上沒有磁片。\n\n請插入磁片﹐然後再試一次。"
+    189                     "%c 磁碟機內的磁片並未格式化。\n\n是否要格式化？"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "沒有足夠的磁碟空間可供列印。\n\n請刪除一個或數個檔案以增加磁碟空間﹐然後再試一次。"
+    193                     "沒有足夠的記憶體可供列印。\n\n請結束使用一個或數個應用程式﹐然後再試一次。"
+    194                     "列印時發生錯誤。\n\n請確定印表機已妥當配置並已指定好。"
+    195                     "顯示的目前工作目錄並不完整"
+    197                     "目的磁片已滿。請插入另一磁片以繼續。"
+    198                     "這是一個系統、隱藏或唯讀檔案。"
+    199                     "檔案管理員無法執行快速格式化。\n\n是否改為執行一般格式化？"
+    203                     "將指令送往應用程式時發生錯誤。"
+    204                     "無法載入這項操作所需的程式庫。"
+END
+
+STRINGTABLE
+BEGIN
+    209                     "共用目錄(&H)..."
+    210                     "格式化會清除磁片中的所有資料。是否確定要格式化 %c 磁碟機內的磁片？"
+    211                     "確認格式化磁片"
+    212                     "此操作將會清除目的磁片中的所有資料。確定要繼續嗎？"
+    213                     "確認複製磁片"
+    214                     "關閉(&C)"
+    215                     "關閉"
+    218                     "%s 目錄並不存在。\n\n是否要建立該目錄？"
+    219                     "程式#*.exe;*.pif;*.com;*.bat#所有檔案 (*.*)#*.*#"
+    220                     "瀏覽"
+    221                     "執行"
+    222                     "無法列印檔案"
+    223                     "無法顯示說明資訊。"
+END
+
+STRINGTABLE
+BEGIN
+    224                     "含 %s 副檔名的檔案皆為程式，不能與其他應用程式產生關聯。"
+    225                     "%s 不是程式，不能與檔案副檔名產生關聯。"
+    226                     "(無)"
+    227                     "找不到檔案。"
+    228                     "檔案管理員無法列印多重檔案。\n\n請只選擇一個檔案，然後再試。"
+    230                     "執行這個應用程式所需的某個程式庫檔案已經損毀了。請重新安裝這個應用程式。"
+    231                     "這個檔案正被其他應用程式使用中。"
+    232                     "檔案管理員無法存取在 '%s' 目錄中所建立的檔案。\n\n是否繼續？"
+    233                     "建立目錄"
+    234                     "%ld 位元組"
+    235                     "%s 位元組"
+    236                     "檔案管理員無法將多重檔案或目錄複製到「剪貼板」中。\n\n請只選擇一個檔案，然後再試。"
+    237                     "%s - %s"
+    238                     "磁碟機:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "連接網路磁碟機"
+    241                     "切斷網路磁碟機連接"
+    242                     "網路連接"
+    243                     "共用目錄"
+    244                     "停止目錄共用"
+    245                     "檢視檔案的所有詳細資料"
+    246                     "只檢視名稱"
+    247                     "依名稱排序"
+    248                     "依類型排序"
+    249                     "依大小排序"
+    250                     "依日期排序"
+    251                     "開新視窗"
+    252                     "複製檔案"
+    253                     "移動檔案"
+    254                     "目錄名稱(&D):"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "無法使用網路磁碟機。"
+    259                     "共用為 %s"
+    260                     "不共用"
+    261                     "刪除檔案"
+    262                     " - 壓縮"
+    263                     "複製檔案到 %s"
+    264                     "移動檔案到 %s"
+    265                     "以 %s 執行檔案"
+    266                     "%s 位元組"
+    267                     "%sKB"
+    268                     "%sMB"
+    269                     "%sGB"
+    270                     "%sTB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "您並未擁有存取此目錄的使用權限。"
+    281                     "您並未擁有存取此檔案的使用權限。"
+    283                     "%c: 磁碟機使用中，無法存取。\n檔案管理員正在執行磁碟複製。"
+    284                     "%c: 磁碟機使用中，無法存取。\n檔案管理員正在格式化磁碟。"
+    285                     "未完全完成操作"
+    286                     "無法完成檔案和目錄上所有的操作。"
+    287                     "無法讀取目錄"
+END
+
+STRINGTABLE
+BEGIN
+    288                     "目錄並不存在。"
+    289                     "無法連接網路磁碟機"
+    290                     "找不到網路名稱。"
+    292                     "「全部皆是」會作用到所有檔案，包括系統、隱藏和\n唯讀檔案。"
+    294                     "開啟舊檔"
+    295                     "列印"
+    298                     "加入副檔名"
+    299                     "'%s' 副檔名目前關聯到 '%s'。是否取代原有關聯？"
+    300                     "檔案關聯編輯器"
+    301                     "無法與副檔名產生關聯。"
+    302                     "無法刪除副檔名。"
+    303                     "無法加入檔案類型。"
+END
+
+STRINGTABLE
+BEGIN
+    304                     "無法刪除檔案類型。"
+    305                     "無法讀取檔案類型。"
+    306                     "檔案類型說明不能是空的。請鍵入新的檔案類型。"
+    307                     "無法根據檔案類型產生唯一的識別代號。請鍵入新的檔案類型。"
+    308                     "刪除檔案類型"
+    309                     "如此將會刪除檔案類型及所有相關的副檔名。是否確定要刪除 '%s'？"
+    312                     "檔案類型的動作至少必需有一個指令與其搭配。請在指令欄位鍵入應用程式。"
+END
+
+STRINGTABLE
+BEGIN
+    320                     "新檔案類型"
+    321                     "複製磁碟"
+    322                     "搜尋..."
+    324                     "檔案管理員目前正在格式化磁片。結束檔案管理員將會中斷此項操作。"
+    325                     "檔案管理員目前正在複製磁片。結束檔案管理員將會中斷此項操作。"
+    326                     "完成百分比"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360K"
+    354                     "1%s2 MB"
+    355                     "720K"
+    356                     "1%s44 MB"
+    357                     "2%s88 MB"
+    358                     "磁碟機容量"
+    359                     "檔案管理員無法取得磁片資訊。\n\n請確定磁片位於磁碟機中。"
+    360                     "20%s8 MB"
+    361                     "未知的磁碟類型"
+    362                     "未知的磁碟類型"
+    363                     "檔案管理員無法格式化磁碟機 %s 中的磁碟類型。請使用磁碟系統管理者來格式化這個磁碟。"
+END
+
+STRINGTABLE
+BEGIN
+    370                     "128 MB"
+    371                     "230 MB"
+    375                     "1%s23 MB"
+    376                     "640K"
+    377                     "1%s25 MB"
+    378                     "256K"
+END
+
+STRINGTABLE
+BEGIN
+    400                     "不相容的檔案系統。"
+    401                     "存取被拒。"
+    402                     "磁碟受到寫入保護。"
+    403                     "檔案管理員無法鎖定磁碟區。"
+    404                     "檔案管理員無法快速格式化磁片。\n\n請確定磁片的密度比是正確的。"
+    405                     "來源磁片上的 IO 錯誤。"
+    406                     "目的磁片上的 IO 錯誤。"
+    407                     "來源磁片和目的磁片上的 IO 錯誤。"
+    408                     "發生 IO 錯誤。"
+    411                     "檔案管理員無法格式化磁片。\n\n請確定磁片位於磁碟機內﹐且未受到寫入保護、損壞或具有錯誤的密度比。"
+    412                     "檔案管理員無法為磁碟機命名。\n\n指定的磁碟標籤無效。請確認標籤並未包含任何下列字元\n\n[空格] * ? / \\ | . , ; : +  = [ ] ( )  ^ < > "" (& )"
+END
+
+STRINGTABLE
+BEGIN
+    420                     "開啟..."
+    421                     "關閉..."
+    422                     "開啟太多目錄視窗。\n\n請關閉一或數個視窗，然後重試。"
+    423                     "快速格式化中..."
+    424                     "無法起始化背景更新支援。檔案管理員會結束。"
+    425                     "檔案管理員起始化"
+    426                     "讀取目錄中，請稍候..."
+    427                     "要同時壓縮 %s 中所有的檔案及子目錄?"
+    428                     "要同時解壓縮 %s 中所有的檔案及子目錄?"
+    429                     "檔案管理員無法變更 %s。"
+    430                     "%s 檔不會被壓縮。這個檔案如果壓縮，系統可能無法開機。"
+    431                     "檔案管理員目前正在壓縮或解壓縮案。\n您必須先壓縮完所有的檔案，才能再壓縮其它的檔案。"
+END
+
+STRINGTABLE
+BEGIN
+    500                     "說明"
+    501                     "公司名稱"
+    502                     "檔案說明"
+    503                     "內部名稱"
+    504                     "註冊商標"
+    505                     "原始檔名"
+    506                     "私人版本說明"
+    507                     "產品名稱"
+    508                     "產品版本"
+    509                     "特殊版本說明"
+    510                     "語言"
+    511                     "語言"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "連接網路磁碟機(&N)..."
+    801                     "中斷網路磁碟機連線(&D)..."
+    802                     "網路連線(&N)..."
+    803                     "共用(&A)..."
+    804                     "停止共用(&T)..."
+    805                     "檢視共用目錄(&H)..."
+    806                     "取消刪除(&U)..."
+    807                     "連接時開啟新視窗(&O)"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "移動檔案錯誤"
+    1002                    "複製檔案錯誤"
+    1003                    "刪除檔案錯誤"
+    1004                    "檔案更名錯誤"
+    1005                    "選擇磁碟機錯誤"
+    1006                    "讀取目錄錯誤"
+    1007                    "磁碟命名錯誤"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "檔案管理員無法移動 %s: %s"
+    1012                    "檔案管理員無法複製 %s: %s"
+    1013                    "檔案管理員無法刪除 %s: %s"
+    1014                    "檔案管理員無法更名 %s: %s"
+    1021                    "檔案管理員無法建立目錄 %s: %s"
+    1022                    "檔案管理員無法移除目錄 %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "檔案管理員無法建立或取代 %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "來源和目標相同。"
+    1102                    "僅選擇一個檔案更名，或使用通配字元（例如 *.TXT）為一組具有類似名稱的檔案更名。"
+    1103                    "無法更名為不同的目錄或磁碟。\n請改用「檔案移動」指令。"
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "無法為主目錄更名。"
+    1105                    "目標目錄為來源的子目錄。"
+    1106                    "檔案正由 Windows 使用中。"
+    1107                    "「到」方塊中僅指定一個檔案或目錄。若要指定一組檔案，請使用通配字元（例如 *.TXT）。"
+    1108                    "已經有使用這個名稱的檔案或目錄存在。在目錄中，檔案和目錄名稱都必須是唯一的。"
+    1109                    "請檢查是否指定正確的路徑和檔名。"
+    1110                    "請檢查是否指定正確的路徑。"
+    1111                    "請結束使用一或數個應用程式，然後再試。或是使用控制台的「系統」選項增加虛擬記憶體。"
+    1113                    "取消此磁碟的寫入保護或使用另一部磁碟，然後再試一次。"
+    1114                    "請確定您擁有正確的網路使用權限以便執行此項操作。"
+    1115                    "請刪除一個或數個檔案以增加磁碟空間，然後再試一次。"
+    1116                    "在此媒體上未偵測到任何資料。"
+    1117                    "目錄已經存在。"
+    1118                    "指定的名稱已由另一個檔案所使用。"
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "磁碟機中是錯誤的磁片。"
+    1151                    "應用程式無法在 Windows NT 模式下執行。"
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "作業系統無法執行此元件。"
+    1153                    "此元件無法在 Windows NT 模式下執行。"
+    1154                    "此程式並非有效的 Windows NT 應用程式。"
+    1155                    "發生錯誤。沒有任何關於此錯誤的訊息文字。"
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "複製來源(&F):"
+    2001                    "複製到(&T):"
+    2002                    "從(&F):"
+    2003                    "到(&T):"
+    2004                    "若設定此字型，就無法\n顯示 Kanji。"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "處理檔案的指令"
+    3985                    "處理磁碟的指令"
+    3986                    "樹狀結構視窗的指令"
+    3987                    "設定資訊顯示方式的指令"
+    3988                    "設定選項的指令"
+    3989                    "控制檔案和目錄安全的指令"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "排列視窗的指令"
+    4001                    "顯示檔案管理員說明的指令"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "搜尋檔案管理員說明的主題"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "開啟指定項目"
+    4102                    "列印文件"
+    4103                    "使檔案與應用程式產生關聯"
+    4104                    "搜尋檔案和目錄"
+    4105                    "啟動或開啟應用程式或文件"
+    4106                    "移動指定項目"
+    4107                    "複製檔案和目錄"
+    4108                    "刪除檔案和目錄"
+    4109                    "為檔案或目錄更名"
+    4110                    "設定檔案屬性以及顯示檔案內容"
+    4111                    "建立目錄"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "結束檔案管理員"
+    4116                    "選擇檔案和目錄"
+    4117                    "擷取先前已刪除的檔案"
+    4118                    "複製檔案到剪貼板"
+    4119                    "壓縮檔案或目錄"
+    4120                    "解壓縮檔案或目錄"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "複製磁片的內容"
+    4202                    "指定或變更磁碟標籤"
+    4203                    "格式化磁片"
+    4205                    "連接到網路磁碟機"
+    4206                    "切斷網路磁碟機連接"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "選擇不同的磁碟機"
+    4254                    "共用目錄"
+    4255                    "停止共用目錄"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "顯示另一個目錄層級"
+    4302                    "顯示所有的目錄層級"
+    4303                    "顯示所有目錄的所有層級"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "隱藏指定目錄的所有目錄"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "只顯示檔案名稱"
+    4402                    "顯示檔案的所有詳細資料"
+    4403                    "顯示檔案的部份詳細資料"
+    4404                    "依名稱排序檔案"
+    4405                    "依類型排序檔案"
+    4406                    "依大小排序檔案"
+    4407                    "依日期排序檔案"
+    4409                    "顯示指定類型的檔案"
+    4411                    "顯示樹狀目錄結構"
+    4412                    "顯示目前工作目錄的內容"
+    4413                    "顯示樹狀目錄結構和目前工作目錄的內容"
+    4414                    "分割目錄視窗或移動分割軸"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "控制確認訊息"
+    4503                    "顯示或隱藏狀態列"
+    4504                    "啟動時將檔案管理員縮小為圖示"
+    4505                    "標示擁有子目錄的目錄"
+    4507                    "顯示或隱藏磁碟機顯示"
+    4508                    "顯示或隱藏工具列"
+    4509                    "在連接時開啟新視窗"
+    4510                    "變更檔案管理員字型"
+    4511                    "結束使用檔案管理員時儲存設定"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "自訂工具列"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "檢視或設定指定項目的使用權限資訊"
+    4606                    "檢視或設定指定項目的稽核資訊"
+    4607                    "檢視或取得指定項目的所有權"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "重疊顯示視窗"
+    5702                    "垂直並排視窗"
+    5703                    "水平並排視窗"
+    5704                    "更新視窗內容"
+    5705                    "排列圖示"
+    5706                    "開啟新視窗"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "顯示檔案管理員說明的內容"
+    5802                    "顯示使用說明的資訊"
+    5803                    "顯示有關檔案管理員的資訊"
+END
+
+#endif    // Chinese (Traditional, Taiwan) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
