@@ -1,12 +1,11 @@
-# ![icon](winfile.png) Windows ファイルマネージャー (文件管理器)
+# ![icon](winfile.png) Windowsファイルマネージャ (文件管理器)
 
-The Windows File Manager lives again and runs as a native x86 and x64 desktop app
-on all currently supported version of Windows, including Windows 10. I welcome your thoughts, comments and suggestions.
+Windowsファイルマネージャは32ビット及び64ビット環境の現在のWindows(Windows 10も含む)で再び利用できる様になりました。
 
-There are two primary versions of the source code in the master branch:
+このリポジトリのmasterブランチには、以下の二つのタグが存在します。
 
-1. original_plus tag: refers to the source for WinFile as of Windows NT4 with minimal changes
-so that it compiles with Visual Studio and runs on current Windows.
+1. original_plug: Windows NT4で利用されていた物から現在のWindowsで利用可能にするために最小限の変更が行われたバージョンです。
+Visual Studioでコンパイルして実行する事ができます。
 
 2. current master: contains my personal changes / additions to WinFile.
 
