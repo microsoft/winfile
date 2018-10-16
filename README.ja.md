@@ -7,7 +7,7 @@ Windowsƒtƒ@ƒCƒ‹ƒ}ƒl[ƒWƒƒ‚Í32ƒrƒbƒg‹y‚Ñ64ƒrƒbƒgŠÂ‹«‚ÌŒ»İ‚ÌWindows(Windows 10‚àŠ
 1. original_plug: Windows NT4‚Å—˜—p‚³‚ê‚Ä‚¢‚½•¨‚©‚çŒ»İ‚ÌWindows‚Å—˜—p‰Â”\‚É‚·‚é‚½‚ß‚ÉÅ¬ŒÀ‚Ì•ÏX‚ªs‚í‚ê‚½ƒo[ƒWƒ‡ƒ“‚Å‚·B
 Visual Studio‚ÅƒRƒ“ƒpƒCƒ‹‚µ‚ÄÀs‚·‚é–‚ª‚Å‚«‚Ü‚·B
 
-2. current master: contains my personal changes / additions to WinFile.
+2. current master: V‹@”\‚ª’Ç‰Á‚³‚ê‚½ƒo[ƒWƒ‡ƒ“‚Å‚·B
 
 I will consider bugs fixes and suggestions for minor changes to the master branch.  Feel free to create a pull request or post issues as you see fit.
 
