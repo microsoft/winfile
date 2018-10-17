@@ -1,0 +1,1134 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Arquivo"
+    BEGIN
+    MENUITEM    "&Abrir	Enter", 0X0065
+    MENUITEM    "&Mover... 	F7", 0X006A
+    MENUITEM    "&Copiar... 	F8", 0X006B
+    MENUITEM    "&Excluir... 	Del", 0X006C
+    MENUITEM    "Re&nomear...", 0X006D
+    MENUITEM    "&Propriedades... 	Alt+Enter", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "E&xecutar...", 0X0069
+    MENUITEM    "&Imprimir...", 0X0066
+    MENUITEM    "A&ssociar...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Criar &Diretório...", 0X006F
+    MENUITEM    "&Localizar...", 0X0068
+    MENUITEM    "Selecionar Arqui&vos...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "Sai&r", 0X0073
+    END
+    POPUP   "&Disco"
+    BEGIN
+    MENUITEM    "&Copiar Disco...", 0X00C9
+    MENUITEM    "&Nomear Disco...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Formatar Disco...", 0X00CB
+    MENUITEM    "Gerar &Sistema no Disco...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "Selecionar &Unidade...", 0X00FB
+    END
+    POPUP   "Á&rvore"
+    BEGIN
+    MENUITEM    "Expa&ndir um Nível	+", 0X012D
+    MENUITEM    "Expandi&r Ramificação	*", 0X012E
+    MENUITEM    "Expandir &Tudo	Ctrl + *", 0X012F
+    MENUITEM    "Redu&zir Ramificação	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Indicar Ramificações Expansíveis", 0X01F9
+    END
+    POPUP   "&Visualizar"
+    BEGIN
+    MENUITEM    "Árvor&e e Diretório", 0X019D
+    MENUITEM    "Somente Á&rvore", 0X019B
+    MENUITEM    "Somente &Diretório", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "Di&visão", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Nome", 0X0191
+    MENUITEM    "Todo&s os Detalhes do Arquivo", 0X0192
+    MENUITEM    "Deta&lhes Parciais...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Classificar p&or Nome", 0X0194
+    MENUITEM    "Class&ificar por Tipo", 0X0195
+    MENUITEM    "Classificar por Ta&manho", 0X0196
+    MENUITEM    "Cl&assificar por Data", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Tipo de Arquivo...", 0X0199
+    END
+    POPUP   "&Opções"
+    BEGIN
+    MENUITEM    "&Confirmação...", 0X01F5
+    MENUITEM    "&Fonte...", 0X01FE
+    MENUITEM    "&Personalizar Barra de Ferramentas...", 0X0200
+    MENUITEM    "", 0X0000
+    MENUITEM    "Barra d&e Ferramentas", 0X01FC
+    MENUITEM    "Barra de &Unidades", 0X01FB
+    MENUITEM    "&Barra de Status", 0X01F7
+    MENUITEM    "", 0X0000
+    MENUITEM    "Mi&nimizar no Uso", 0X01F8
+    MENUITEM    "&Salvar Configurações ao Sair", 0X01FF
+    END
+    POPUP   "&Janela"
+    BEGIN
+    MENUITEM    "&Nova Janela", 0X0452
+    MENUITEM    "Em &Cascata	Shift+F5", 0X044D
+    MENUITEM    "Lado a Lado &Horizontalmente", 0X044F
+    MENUITEM    "Lado a Lado &Verticalmente	Shift+F4", 0X044E
+    MENUITEM    "&Organizar Ícones", 0X0451
+    MENUITEM    "&Atualizar	F5", 0X0450
+    END
+    POPUP   "&?"
+    BEGIN
+    MENUITEM    "&Conteúdo", 0X04B1
+    MENUITEM    "&Procurar Ajuda Sobre...", 0X001E
+    MENUITEM    "Co&mo Usar a Ajuda", 0X04B2
+    MENUITEM    "", 0X0000
+    MENUITEM    "So&bre o Gerenciador de Arquivos...", 0X04B3
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 265, 134
+CAPTION "Fonte"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Fonte:", 1088, 0x0000, 6, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 61
+    CONTROL 0x82, "&Estilo da fonte:", 1089, 0x0000, 108, 3, 62, 9
+    CONTROL 0x85, "", 1137, 0x0001, 108, 13, 64, 61
+    CONTROL 0x82, "&Tamanho:", 1090, 0x0000, 179, 3, 33, 9
+    CONTROL 0x85, "", 1138, 0x0311, 179, 13, 32, 61
+    CONTROL 0x80, "Efeitos", 1072, 0x0007, 6, 80, 84, 65
+    CONTROL 0x80, "&Riscado", 1040, 0x0003, 10, 91, 49, 10
+    CONTROL 0x80, "&Sublinhado", 1041, 0x0003, 10, 103, 51, 10
+    CONTROL 0x80, "&Minúscula", 1042, 0x0003, 10, 91, 49, 10
+    CONTROL 0x82, "&Cor", 1091, 0x0000, 10, 114, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 124, 75, 50
+    CONTROL 0x80, "OK", 1, 0x0001, 218, 8, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 218, 25, 40, 14
+    CONTROL 0x80, "Ap&licar", 1026, 0x0000, 218, 42, 40, 14
+    CONTROL 0x80, "Aj&uda", 1038, 0x0000, 218, 59, 40, 14
+    CONTROL 0x80, "Exemplo", 1073, 0x0007, 98, 80, 160, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 134, 160, 18
+    CONTROL 0x82, "AaBbYyZz", 1092, 0x0081, 105, 89, 149, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 201, 86
+CAPTION "Selecionar Unidade"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Un&idades:", 245, 0x000c, 5, 5, 41, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "OK", 1, 0x0001, 155, 16, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 155, 33, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 155, 54, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Executar"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Linha de comando:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "Executar mi&nimizado", 214, 0x0003, 3, 45, 77, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 165, 43, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 137, 83
+CAPTION "Selecionar Arquivo"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Arquivo(s):", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "&Selecionar", 1, 0x0001, 72, 6, 60, 14
+    CONTROL 0x80, "A&nular seleção", 6, 0x0000, 72, 23, 60, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 72, 40, 60, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 72, 63, 60, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 251, 95
+CAPTION "Confirmação de Substituição de Arquivo"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Substituir arquivo:", 100, 0x000c, 25, 14, 60, 10
+    CONTROL 0x82, "", 103, 0x008c, 89, 14, 157, 10
+    CONTROL 0x82, "", 105, 0x000c, 89, 24, 157, 10
+    CONTROL 0x82, "Pelo arquivo:", 100, 0x000c, 25, 35, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 89, 35, 157, 10
+    CONTROL 0x82, "", 106, 0x000c, 89, 45, 157, 10
+    CONTROL 0x80, "&Sim", 6, 0x0001, 3, 73, 59, 14
+    CONTROL 0x80, "Sim para &todos", 107, 0x0000, 65, 73, 59, 14
+    CONTROL 0x80, "&Não", 7, 0x0000, 127, 73, 59, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 189, 73, 59, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 251, 60
+CAPTION "Confirmação de Exclusão de Arquivo"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 203, 10
+    CONTROL 0x82, "Excluir arquivo:", 100, 0x000c, 25, 18, 52, 8
+    CONTROL 0x82, "", 102, 0x008c, 80, 18, 160, 10
+    CONTROL 0x80, "&Sim", 6, 0x0001, 3, 42, 58, 14
+    CONTROL 0x80, "Sim para &todos", 107, 0x0000, 65, 42, 58, 14
+    CONTROL 0x80, "&Não", 7, 0x0000, 127, 42, 58, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 189, 42, 58, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 251, 60
+CAPTION "Confirmação de Exclusão de Diretório"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Excluir diretório:", 100, 0x000c, 25, 18, 55, 10
+    CONTROL 0x82, "", 102, 0x008c, 80, 18, 160, 10
+    CONTROL 0x80, "&Sim", 6, 0x0001, 3, 42, 59, 14
+    CONTROL 0x80, "Sim para &todos", 107, 0x0000, 65, 42, 59, 14
+    CONTROL 0x80, "&Não", 7, 0x0000, 127, 42, 59, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 189, 42, 59, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 251, 60
+CAPTION "Confirmação de Movimentação de Arquivo"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Mover arquivo:", 100, 0x000c, 25, 18, 50, 10
+    CONTROL 0x82, "", 102, 0x008c, 81, 18, 161, 10
+    CONTROL 0x80, "&Sim", 6, 0x0001, 4, 42, 58, 14
+    CONTROL 0x80, "Sim para &todos", 107, 0x0000, 66, 42, 58, 14
+    CONTROL 0x80, "&Não", 7, 0x0000, 128, 42, 58, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 190, 42, 58, 14
+END
+
+43 DIALOG 0x80c8, 8, 22, 253, 60
+CAPTION "Confirmação de Renomeação de Arquivo"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Renomear arquivo:", 100, 0x000c, 25, 18, 64, 10
+    CONTROL 0x82, "", 102, 0x008c, 93, 18, 157, 10
+    CONTROL 0x80, "&Sim", 6, 0x0001, 4, 42, 58, 14
+    CONTROL 0x80, "Sim para &todos", 107, 0x0000, 66, 42, 58, 14
+    CONTROL 0x80, "&Não", 7, 0x0000, 128, 42, 58, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 190, 42, 58, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 240, 63
+CAPTION "Imprimir"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 193, 10
+    CONTROL 0x82, "&Imprimir:", 100, 0x000c, 3, 20, 28, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 152, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 36, 186, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 197, 43, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 263, 72
+CAPTION "Localizar"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Localizar:", 100, 0x000c, 5, 8, 37, 12
+    CONTROL 0x81, "", 201, 0x0480, 52, 7, 160, 12
+    CONTROL 0x82, "&Iniciar em:", 100, 0x000c, 5, 23, 37, 12
+    CONTROL 0x81, "", 101, 0x0480, 52, 22, 160, 12
+    CONTROL 0x80, "&Pesquisar em todos os subdiretórios", 232, 0x0003, 52, 36, 135, 12
+    CONTROL 0x82, "", 104, 0x000c, 5, 53, 200, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 217, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 217, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 217, 43, 40, 14
+END
+
+14 DIALOG 0x80c8, 47, 59, 231, 73
+CAPTION "Mover"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Diretório atual: N", 101, 0x008b, 2, 7, 182, 10
+    CONTROL 0x82, "P&ara:", 100, 0x000c, 3, 40, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 37, 39, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 26, 40, 10, 10
+    CONTROL 0x80, "&Copiar para a Área de Transferência", 256, 0x0004, 26, 56, 149, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 58, 86, 10
+    CONTROL 0x82, "", 201, 0x008b, 89, 58, 91, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 185, 44, 40, 14
+    CONTROL 0x82, "&De:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 22, 138, 12
+END
+
+10014 DIALOG 0x80c8, 47, 59, 231, 101
+CAPTION "Mover"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Diretório atual: N", 101, 0x008b, 3, 7, 182, 10
+    CONTROL 0x82, "P&ara:", 100, 0x000c, 3, 40, 20, 10
+    CONTROL 0x62, "edit", 103, 0x0004, 38, 40, 138, 42
+    CONTROL 0x50, "€", 256, 0x0401, 6656, 10240, 2560, 2560
+    CONTROL 0x80, "&Copiar para a Área de Transferência", 256, 0x0004, 26, 85, 150, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 85, 86, 12
+    CONTROL 0x82, "", 201, 0x008b, 89, 85, 91, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Procurar", 600, 0x0000, 185, 40, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 185, 59, 40, 14
+    CONTROL 0x82, "&De:", 100, 0x000c, 3, 24, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 39, 23, 138, 12
+END
+
+200 DIALOG 0x00c8, 36, 24, 164, 134
+CAPTION "Selecionar Diretório"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x81, "", 1152, 0x0490, 6, 16, 90, 12
+    CONTROL 0x83, "", 1120, 0x0053, 12, 28, 84, 68
+    CONTROL 0x82, "&Diretórios:", -1, 0x0000, 10, 6, 92, 9
+    CONTROL 0x82, "", 1088, 0x0000, 10, 16, 92, 9
+    CONTROL 0x83, "", 1121, 0x0053, 10, 28, 92, 68
+    CONTROL 0x82, "Un&idades:", 1091, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1137, 0x0353, 10, 112, 92, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 108, 6, 50, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 108, 24, 50, 14
+    CONTROL 0x82, "&Nome do arquivo:", 1090, 0x0000, 6, 6, 76, 9
+    CONTROL 0x82, "Lis&tar arquivos do tipo:", 1089, 0x0000, 6, 104, 90, 9
+    CONTROL 0x85, "", 1136, 0x0043, 6, 114, 90, 36
+    CONTROL 0x80, "Aj&uda", 1038, 0x0000, 208, 46, 50, 14
+    CONTROL 0x80, "&Somente para leitura", 1040, 0x0003, 208, 68, 50, 12
+END
+
+15 DIALOG 0x80c8, 21, 20, 261, 64
+CAPTION "Excluir"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Diretório atual: C", 101, 0x008c, 3, 6, 206, 10
+    CONTROL 0x82, "&Excluir:", 100, 0x000c, 3, 23, 47, 8
+    CONTROL 0x81, "", 102, 0x0480, 55, 22, 152, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 41, 47, 8
+    CONTROL 0x82, "", 201, 0x008b, 55, 41, 152, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 213, 7, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 213, 24, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 213, 44, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 245, 63
+CAPTION "Propriedades"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d arquivo(s) selecionado(s). Total: %s bytes", 100, 0x000c, 5, 5, 190, 10
+    CONTROL 0x80, "Atributos", -1, 0x0007, 5, 20, 190, 39
+    CONTROL 0x80, "&Somente para leitura", 215, 0x0003, 10, 31, 79, 12
+    CONTROL 0x80, "&Oculto", 216, 0x0003, 115, 31, 52, 12
+    CONTROL 0x80, "&Arquivo", 217, 0x0003, 10, 43, 52, 12
+    CONTROL 0x80, "Sis&tema", 218, 0x0003, 115, 43, 52, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 200, 7, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 200, 24, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 200, 44, 40, 14
+END
+
+16 DIALOG 0x80c8, 21, 13, 267, 204
+CAPTION "Propriedades de %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 212, 6, 50, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 212, 23, 50, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 212, 43, 50, 14
+    CONTROL 0x82, "&Nome do arquivo:", 261, 0x000c, 7, 5, 65, 10
+    CONTROL 0x81, "", 201, 0x0880, 78, 5, 132, 10
+    CONTROL 0x82, "&Caminho:", 100, 0x000c, 7, 16, 65, 10
+    CONTROL 0x81, "", 101, 0x0880, 78, 16, 132, 10
+    CONTROL 0x82, "Última modificação:", 100, 0x000c, 7, 27, 65, 10
+    CONTROL 0x82, "", 204, 0x000c, 78, 27, 132, 10
+    CONTROL 0x82, "Versão:", 258, 0x000c, 7, 38, 65, 10
+    CONTROL 0x82, "Não disponível", 259, 0x008c, 78, 38, 132, 10
+    CONTROL 0x82, "Copy&right:", -1, 0x0000, 7, 49, 65, 10
+    CONTROL 0x81, "Não disponível", 265, 0x0880, 78, 49, 132, 10
+    CONTROL 0x82, "Tamanho:", 260, 0x000c, 7, 60, 65, 10
+    CONTROL 0x82, "", 203, 0x000c, 78, 60, 132, 10
+    CONTROL 0x80, "Atributos", 100, 0x0007, 6, 74, 254, 42
+    CONTROL 0x80, "&Somente para leitura", 215, 0x0003, 11, 86, 82, 12
+    CONTROL 0x80, "&Oculto", 216, 0x0003, 122, 86, 40, 12
+    CONTROL 0x80, "&Arquivo", 217, 0x0003, 11, 98, 80, 12
+    CONTROL 0x80, "Sis&tema", 218, 0x0003, 122, 98, 40, 12
+    CONTROL 0x80, "&Informação sobre a versão", 262, 0x0007, 6, 121, 255, 77
+    CONTROL 0x83, "", 263, 0x1003, 11, 135, 102, 58
+    CONTROL 0x81, "", 264, 0x0804, 118, 135, 138, 56
+END
+
+17 DIALOG 0x80c8, 20, 20, 181, 63
+CAPTION "Criar Diretório"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 118, 10
+    CONTROL 0x82, "&Nome:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 201, 0x0480, 30, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 40, 127, 18
+    CONTROL 0x80, "OK", 1, 0x0001, 136, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 136, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 136, 43, 40, 14
+END
+
+10017 DIALOG 0x80c8, 20, 20, 241, 78
+CAPTION "Criar Diretório"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 2, 5, 172, 10
+    CONTROL 0x82, "&Nome:", 100, 0x000c, 3, 24, 20, 10
+    CONTROL 0x62, "edit", 201, 0x0000, 3, 36, 170, 18
+    CONTROL 0x50, "‚", 26624, 0x8c00, 768, 16128, -21504, 2560
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 42, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 194, 23, 42, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 194, 42, 42, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 234, 64
+CAPTION "Gerar Sistema no Disco"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Copiar os arquivos do sistema para o disco na unidade:", -1, 0x000c, 5, 9, 181, 8
+    CONTROL 0x85, "", 222, 0x0003, 79, 22, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 188, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 188, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 188, 43, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 145, 64
+CAPTION "Cópia de Disco"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Origem:", -1, 0x000c, 5, 8, 31, 10
+    CONTROL 0x85, "", 245, 0x0003, 45, 6, 40, 37
+    CONTROL 0x82, "&Destino:", 206, 0x000c, 5, 22, 31, 10
+    CONTROL 0x85, "", 222, 0x0003, 45, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 100, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 100, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 100, 43, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Copiando Disco"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Copiando disco na ", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "unidade A:", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Lendo o disco de origem", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Cancelar", 2, 0x0001, 44, 39, 40, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 63
+CAPTION "Nomear Disco"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Nome:", 100, 0x000c, 5, 15, 30, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 115, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 115, 43, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 174, 102
+CAPTION "Formatar Disco"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 129, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 129, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 129, 41, 40, 14
+    CONTROL 0x82, "&Disco na:", -1, 0x000c, 5, 6, 45, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 6, 65, 40
+    CONTROL 0x82, "&Capacidade:", 100, 0x000c, 5, 23, 49, 10
+    CONTROL 0x85, "", 241, 0x0003, 55, 23, 65, 40
+    CONTROL 0x80, "Opções", 102, 0x0007, 5, 39, 115, 59
+    CONTROL 0x82, "&Nome:", -1, 0x000c, 11, 53, 23, 10
+    CONTROL 0x81, "", 201, 0x0000, 40, 51, 75, 12
+    CONTROL 0x80, "Gerar &sistema no disco", 242, 0x0003, 11, 66, 90, 12
+    CONTROL 0x80, "&Formatação rápida", 244, 0x0003, 11, 81, 90, 12
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 50
+CAPTION "Formatando Disco"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Formatando disco", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "Inicializando unidade...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Cancelar", 2, 0x0001, 54, 30, 40, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 57
+CAPTION "Gerar Sistema no Disco"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Copiando arquivos do sistema.", 100, 0x0001, 3, 10, 165, 8
+    CONTROL 0x82, "Pressione 'Cancelar' caso queira desistir.", 100, 0x0001, 3, 22, 164, 8
+    CONTROL 0x80, "Cancelar", 2, 0x0001, 66, 39, 40, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 243, 135
+CAPTION "Conexões da Rede"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Nova conexão", -1, 0x0007, 5, 3, 170, 55
+    CONTROL 0x82, "Caminho da &rede:", -1, 0x0000, 10, 16, 60, 10
+    CONTROL 0x81, "", 223, 0x0480, 70, 14, 100, 12
+    CONTROL 0x82, "Un&idade:", -1, 0x0000, 10, 30, 31, 10
+    CONTROL 0x85, "", 222, 0x0003, 70, 28, 40, 100
+    CONTROL 0x82, "&Senha:", -1, 0x0000, 10, 44, 36, 10
+    CONTROL 0x81, "", 224, 0x04a0, 70, 42, 100, 12
+    CONTROL 0x82, "C&onexões atuais:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 170, 60
+    CONTROL 0x80, "&Fechar", 2, 0x0001, 187, 6, 51, 14
+    CONTROL 0x80, "&Conectar", 1, 0x0000, 187, 27, 51, 14
+    CONTROL 0x80, "&Anterior...", 226, 0x0000, 187, 44, 51, 14
+    CONTROL 0x80, "&Procurar...", 227, 0x0000, 187, 61, 51, 14
+    CONTROL 0x80, "&Desconectar", 255, 0x0000, 187, 78, 51, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 187, 99, 51, 14
+END
+
+29 DIALOG 0x80c8, 29, 30, 231, 100
+CAPTION "Conexões Anteriores da Rede"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Caminhos da &rede:", 100, 0x000c, 4, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "&Selecionar", 1, 0x0001, 182, 15, 44, 14
+    CONTROL 0x80, "Fechar", 2, 0x0000, 182, 32, 44, 14
+    CONTROL 0x80, "&Excluir", 219, 0x0000, 182, 49, 44, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 182, 69, 44, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 163, 70
+CAPTION "Detalhes Parciais"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Detalhes", 100, 0x0007, 4, 4, 111, 61
+    CONTROL 0x80, "&Tamanho", 203, 0x0003, 11, 16, 100, 9
+    CONTROL 0x80, "&Data da última modificação", 204, 0x0003, 11, 28, 100, 10
+    CONTROL 0x80, "&Hora da última modificação", 205, 0x0003, 11, 40, 100, 10
+    CONTROL 0x80, "&Atributos de arquivo", 206, 0x0003, 11, 52, 77, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 120, 10, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 120, 27, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 120, 47, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 157, 102
+CAPTION "Tipo de Arquivo"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Nome:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Tipo de arquivo", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "&Diretórios", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "&Programas", 210, 0x0003, 10, 43, 60, 12
+    CONTROL 0x80, "D&ocumentos", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "Outros &arquivos", 212, 0x0003, 10, 67, 62, 10
+    CONTROL 0x80, "&Exibir arquivos ocultos/de sistema", 250, 0x0003, 5, 86, 122, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 110, 43, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 82
+CAPTION "Confirmação"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Confirmar em", 100, 0x0007, 5, 3, 108, 73
+    CONTROL 0x80, "Exclusão de &arquivo", 219, 0x0003, 10, 15, 77, 10
+    CONTROL 0x80, "Exclusão de &diretório", 220, 0x0003, 10, 27, 80, 10
+    CONTROL 0x80, "&Substituição de arquivo", 221, 0x0003, 10, 39, 88, 10
+    CONTROL 0x80, "Ação do &Mouse", 249, 0x0003, 10, 51, 62, 10
+    CONTROL 0x80, "&Comandos para disco", 251, 0x0003, 10, 63, 81, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 118, 6, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 118, 23, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 118, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Movendo..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 55, 5, 192, 10
+    CONTROL 0x82, "Para:", 108, 0x008b, 5, 16, 25, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 16, 192, 10
+    CONTROL 0x80, "Cancelar", 2, 0x0001, 200, 29, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 120, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Imprimindo arquivo...", -1, 0x0001, 4, 6, 113, 12
+    CONTROL 0x82, "", 100, 0x0081, 4, 20, 113, 12
+    CONTROL 0x80, "Cancelar", 2, 0x0001, 44, 40, 40, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 214, 96
+CAPTION "Associar"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "A&rquivos com extensão:", 99, 0x000c, 5, 8, 79, 10
+    CONTROL 0x81, "", 112, 0x0400, 85, 6, 35, 12
+    CONTROL 0x82, "&Associar a:", 99, 0x000c, 5, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 5, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 11, 44, 146, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 44, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 165, 23, 44, 14
+    CONTROL 0x80, "&Procurar...", 232, 0x0000, 165, 43, 44, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 165, 60, 44, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 250, 78
+CAPTION "Selecionar Nome de Arquivo"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Este caminho não é compatível com o formato do DOS para nomes de arquivo.  Digite um novo nome.", 99, 0x0000, 4, 4, 190, 19
+    CONTROL 0x82, "&Novo nome:", 99, 0x0002, 5, 57, 40, 12
+    CONTROL 0x81, "", 103, 0x0000, 65, 56, 130, 12
+    CONTROL 0x82, "Caminho original:", 99, 0x0002, 4, 27, 57, 11
+    CONTROL 0x81, "", 102, 0x0880, 67, 28, 122, 12
+    CONTROL 0x82, "Para diretório:", 99, 0x0002, 5, 42, 47, 11
+    CONTROL 0x81, "", 101, 0x0880, 67, 42, 122, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 205, 4, 40, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 205, 20, 40, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 205, 38, 40, 14
+END
+
+48 DIALOG 0x80c8, 23, 13, 229, 101
+CAPTION "Propriedades de %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 175, 6, 50, 14
+    CONTROL 0x80, "Cancelar", 2, 0x0000, 175, 23, 50, 14
+    CONTROL 0x80, "Aj&uda", 254, 0x0000, 175, 43, 50, 14
+    CONTROL 0x82, "&Nome do arquivo:", 261, 0x000c, 5, 5, 71, 10
+    CONTROL 0x81, "", 201, 0x0880, 75, 5, 98, 10
+    CONTROL 0x82, "&Caminho:", 100, 0x000c, 5, 16, 69, 10
+    CONTROL 0x81, "", 101, 0x0880, 75, 16, 98, 10
+    CONTROL 0x82, "Última modificação:", 100, 0x000c, 5, 27, 68, 10
+    CONTROL 0x82, "", 204, 0x000c, 75, 27, 90, 10
+    CONTROL 0x82, "Tamanho:", 260, 0x000c, 5, 38, 67, 10
+    CONTROL 0x82, "", 203, 0x000c, 75, 38, 98, 10
+    CONTROL 0x80, "Atributos", 100, 0x0007, 4, 52, 160, 42
+    CONTROL 0x80, "&Somente para leitura", 215, 0x0003, 9, 63, 82, 12
+    CONTROL 0x80, "&Oculto", 216, 0x0003, 98, 63, 39, 12
+    CONTROL 0x80, "&Arquivo", 217, 0x0003, 9, 75, 52, 12
+    CONTROL 0x80, "Sis&tema", 218, 0x0003, 98, 75, 40, 12
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0101   "(Diretório principal)"
+0x0102   "(Não aplicável)"
+0x0103   "Compartilhado como %s"
+0x0104   "Não compartilhado"
+0x0107   "Copiando arquivos para %s"
+0x0108   "Movendo arquivos para %s"
+0x0109   "Executando arquivos com %s"
+0x010a   "%s bytes"
+0x010b   "%sKB"
+0x010c   "%sMB"
+0x010d   "%sGB"
+0x010e   "%sTB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Sair do Windows"
+0x0029   "Esta sessão do Windows será finalizada."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Cópia de Disco"
+0x0033   "Insira o disco de destino."
+0x0034   "Insira disco de origem."
+0x0035   "Insira os discos de origem e de destino."
+0x0036   "Formatando disco de destino."
+0x0037   "Erro na Cópia de Disco"
+0x0038   "Não foi possível copiar o disco."
+0x003a   "A origem e o destino são incompatíveis."
+0x003c   "%d%% concluído"
+0x003d   "Criando diretório principal..."
+0x003e   "Copiando arquivos do sistema..."
+0x003f   "Erro na Formatação do Disco"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Espaço em disco insuficiente para impressão.
+
+Exclua um ou mais arquivos e tente novamente. "
+0x00c1   "Memória insuficiente para impressão.
+
+Feche um ou mais aplicativos e tente novamente."
+0x00c2   "Um erro ocorreu durante a impressão.
+
+Verifique se a impressora foi selecionada e configurada de forma apropriada."
+0x00c3   "Árvore de diretório incompleta exibida"
+0x00c5   "A unidade de destino está cheia.
+
+Insira um novo disco para continuar."
+0x00c6   "Este é um arquivo de sistema, oculto ou somente para leitura."
+0x00c7   "Não foi possível executar formatação rápida.
+
+Continuar com formatação normal?"
+0x00c8   "O aplicativo especificado não é um aplicativo baseado no Windows ou no MS-DOS."
+0x00c9   "Este aplicativo requer uma versão mais recente do Microsoft Windows."
+0x00ca   "Este aplicativo requer Windows."
+0x00cb   "Houve um erro no envio do comando para o aplicativo."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Não foi possível formatar disco"
+0x0042   "Formatação completa"
+0x0043   "Espaço total no disco:%ld bytes
+Espaço disponível:%ld bytes
+
+Você deseja formatar outro disco?"
+0x0046   "Gerar Sistema no Disco"
+0x0047   "Você tem certeza que deseja copiar os arquivos do sistema para o disco na unidade %c?"
+0x0048   "Erro no Disco de Sistema"
+0x0049   "A unidade de inicialização do MS-DOS não contém arquivos de sistema ou não está disponível."
+0x004a   "Não é possível copiar os arquivos do sistema para a unidade de inicialização do MS-DOS."
+0x004b   "Não foi possível incluir arquivos de sistema neste disco.
+
+Verifique se o disco nesta unidade está formatado e se a porta da unidade está fechada."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Não foi possível criar ou substituir %s: %s"
+0x0408   "Não foi possível criar um disco flexível do sistema MS-DOS porque o Windows NT de múltipla inicialização está instalado em seu sistema. Para fazer um disco flexível de sistema, use o utilitário SYS a partir do aviso de comando do MS-DOS."
+0x0409   "Você deseja formatar o disco flexível agora sem transferir o sistema?"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Erro na rede"
+0x0053   "Esta unidade contém os arquivos do sistema do Windows e não pode ser desconectada."
+0x005b   "Não foi possível alterar os atributos.
+
+Verifique se o disco é protegido contra gravação."
+0x005c   "Não foi possível criar um diretório.
+
+Verifique se o disco é protegido contra gravação."
+0x005d   "Não foi possível nomear este disco.
+
+Verifique se o disco é protegido contra gravação, se é uma unidade de rede e se o nome é válido.
+Nomes não podem possuir os seguintes caracteres:
+[espaço] * ? / \ | . , ; : + = [ ] ( ) & ^ < > " "
+0x005f   "Não foi encontrado nenhum arquivo correspondente."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "%d arquivo(s) (%s)"
+0x00b5   "Diretórios lidos: %d "
+0x00b6   "%c: Livres: %s Total: %s "
+0x00b7   "%d arquivos(s) encontrado(s)"
+0x00b9   "os arquivos selecionados"
+0x00ba   "Não foi possível desconectar-se da unidade de rede.
+
+Existem arquivos abertos nesta unidade."
+0x00bb   "%d arquivo(s) selecionado(s) (%s)"
+0x00bc   "Não há disco na unidade %c.
+
+Insira um disco e tente novamente."
+0x00bd   "O disco na unidade %c não está formatado.
+
+Você deseja formatá-lo agora?"
+0x00bf   "O arquivo a ser impresso não foi encontrado. Verifique se o caminho e o nome de arquivo foram especificados corretamente."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "O diretório já existe."
+0x0061   "O conteúdo desta unidade foi alterado. Você deseja atualizar a janela Resultados da pesquisa?"
+0x0065   "Unidade %c:%c"
+0x006e   "Não foi possível executar o programa"
+0x006f   "Erro inesperado: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "A formatação apagará TODOS os dados do disco. Você tem certeza que deseja formatar o disco na unidade %c?"
+0x00d3   "Confirmação de Formatação de Disco"
+0x00d4   "Esta operação apagará TODOS os dados do disco de destino. Você tem certeza que deseja continuar?"
+0x00d5   "Confirmação de Cópia de Disco"
+0x00d6   "&Fechar"
+0x00da   "O diretório %s não existe.
+
+Você deseja criá-lo?"
+0x00db   "Programas#*.exe;*.pif;*.com;*.bat#Todos os arquivos (*.*)#*.*#"
+0x00dc   "Procurar"
+0x00dd   "Executar"
+0x00de   "Não foi possível imprimir o arquivo"
+0x00df   "Não foi possível exibir Ajuda."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Memória insuficiente para iniciar o aplicativo especificado.
+
+Feche um ou mais aplicativos e tente novamente."
+0x0071   "Não foi possível encontrar o arquivo especificado ou um dos seus componentes.
+
+Verifique se o caminho e o nome do arquivo estão corretos, e se todas as bibliotecas solicitadas estão disponíveis."
+0x0072   "O caminho especificado não é válido."
+0x0073   "Muitos arquivos estão atualmente em uso.
+
+Feche um ou mais aplicativos ou aumente o valor do comando FILES no CONFIG.SYS, e então tente novamente."
+0x0074   "Nenhum aplicativo está associado a este arquivo.
+
+Escolha Associar do menu Arquivo para criar uma associação."
+0x0075   "Não foi possível iniciar mais de uma cópia do programa especificado."
+0x0076   "Não foi possível abrir ou imprimir o arquivo especificado.
+
+Inicie o aplicativo utilizado para criar este arquivo, e então abra e imprima o arquivo a partir dele."
+0x0078   "Confirmação de Operação do Mouse"
+0x0079   "Você tem certeza que deseja copiar o(s) arquivo(s) ou diretório(s) selecionado(s) para %s?"
+0x007a   "Você tem certeza que deseja mover o(s) arquivo(s) ou diretório(s) selecionado(s) para %s?"
+0x007b   "Você tem certeza que deseja iniciar %s utilizando %s como arquivo inicial?"
+0x007c   "Gerenciador de Arquivos"
+0x007e   "Árvore do Diretório"
+0x007f   "Resultados da pesquisa: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Arquivos com a extensão %s são programas e não podem ser associados a outro aplicativo."
+0x00e1   "%s não é um programa e não pode ser associado a uma extensão de arquivo."
+0x00e2   "(Nenhum)"
+0x00e4   "Não é possível imprimir múltiplos arquivos.
+
+Selecione somente um arquivo e tente novamente."
+0x00e5   "Este programa ou um dos seus componentes está compactado.
+
+Utilize o utilitário Expand do MS-DOS para copiar o arquivo dos discos de instalação."
+0x00e6   "Um dos arquivos da biblioteca necessário para executar este aplicativo está danificado. Instale novamente este aplicativo."
+0x00e7   "Este arquivo está sendo utilizado por outro aplicativo."
+0x00e8   "Poderá não ser possível acessar arquivos criados no diretório "%s".
+
+Você deseja continuar?"
+0x00e9   "Criar Diretório"
+0x00ea   "%ld bytes"
+0x00eb   "%s bytes"
+0x00ec   "Não é possível copiar múltiplos arquivos para a Área de Transferência.
+
+Selecione somente um arquivo e tente novamente."
+0x00ed   "%s - %s"
+0x00ee   "Unidade:"
+0x00ef   "%s, "
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Muitos Arquivos"
+0x0085   "Gerenciador de Arquivos sem memória"
+0x0086   "Não foi possível ler todo o diretório. Somente uma lista parcial será exibida."
+0x008c   "Diretório atual: %s"
+0x008d   "Copiar"
+0x008f   "Renomear"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Formatar Disco"
+0x0092   "Selecione o disco a ser formatado."
+0x0096   "Criando:"
+0x0097   "Removendo..."
+0x0098   "Copiando:"
+0x0099   "Renomeando..."
+0x009a   "Movendo..."
+0x009b   "Excluindo:"
+0x009c   "Imprimindo: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "A unidade %c não existe."
+0x00a9   "Copiando..."
+0x00aa   "Removendo:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Abrindo..."
+0x01a5   "Fechando..."
+0x01a6   "Muitas janelas de diretório estão abertas.
+
+Feche uma ou mais janelas e tente novamente."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Erro na movimentação do arquivo"
+0x03ea   "Erro na cópia do arquivo"
+0x03eb   "Erro na exclusão do arquivo"
+0x03ec   "Erro na renomeação do arquivo"
+0x03ed   "Erro na seleção da unidade"
+0x03ee   "Erro na leitura do diretório"
+0x03ef   "Erro na nomeação do disco"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "Não foi possível mover %s: %s"
+0x03f4   "Não foi possível copiar %s: %s"
+0x03f5   "Não foi possível excluir %s: %s"
+0x03f6   "Não foi possível renomear %s: %s"
+0x03fd   "Não foi possível criar diretório %s: %s"
+0x03fe   "Não foi possível remover diretório %s: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Função inválida do MS-DOS."
+0x0412   "Não foi possível encontrar o arquivo especificado.
+
+Verifique se o caminho e o nome do arquivo foram especificados corretamente."
+0x0413   "Não foi possível encontrar o caminho especificado.
+
+Verifique se o caminho correto foi especificado."
+0x0414   "Existem muitos outros arquivos atualmente em uso. Feche um ou mais aplicativos e tente novamente."
+0x0415   "Acesso negado.
+
+Verifique se o disco não está cheio ou se é protegido contra gravação."
+0x0416   "Gerenciador de arquivo inválido."
+0x0418   "Memória insuficiente.
+
+Feche um ou mais aplicativos e tente novamente."
+0x041c   "Acesso a arquivo inválido."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Não foi possível remover o diretório atual (erro interno)."
+0x0421   "Dispositivo inválido."
+0x0422   "O diretório está cheio."
+0x0423   "O disco é protegido contra gravação.
+
+Remova a proteção contra gravação deste disco e tente novamente."
+0x042d   "Não foi possível gravar o arquivo ou o disco de destino."
+0x042f   "Não foi possível ler o arquivo ou o disco de origem."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Operação inválida."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Acesso a rede negado. Verifique se possui permissão para executar esta operação."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Houve violação do compartilhamento. Os arquivos de origem e de destino podem estar sendo utilizados."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Espaço em disco insuficiente.
+
+Exclua um ou mais arquivos e tente novamente."
+0x0481   "Os arquivos de origem e de destino são os mesmos."
+0x0482   "Selecione somente um arquivo para ser renomeado, ou utilize os caracteres curinga do MS-DOS (por examplo, *.TXT) para renomear um grupo de arquivos com nomes similares."
+0x0483   "Não é possível renomear um arquivo para um outro diretório ou disco."
+0x0484   "Diretório atual (erro interno)."
+0x0486   "O diretório de destino é um subdiretório do diretório de origem."
+0x0487   "O arquivo especificado está sendo utilizado pelo Windows."
+0x0488   "Acesso negado. O arquivo origem pode estar sendo utilizado."
+0x0489   "O caminho é muito comprido."
+0x048a   "Especifique somente um arquivo ou diretório na caixa Para, ou se você desejar especificar um grupo de arquivos, utilize os caracteres curinga do MS-DOS (por examplo, *.TXT)."
+0x048b   "O nome de arquivo especificado já existe. Especifique um outro nome na caixa Para e tente novamente."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2MB"
+0x0131   "720K"
+0x0132   "1,44MB"
+0x0133   "2,88MB"
+0x0134   "Capacidade da unidade"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360K"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Memória insuficiente."
+0x0192   "Não é possível formatar a unidade de inicialização do MS-DOS."
+0x0193   "A unidade de inicialização do MS-DOS possui um tamanho de setor inválido."
+0x0194   "A unidade especificada é um tipo desconhecido."
+0x0199   "Houve falha na transferência dos arquivos do sistema."
+0x019a   "Este disco pode ser formatado com a capacidade de %s. Você quer continuar formatado com esta capacidade?"
+0x019b   "Não foi possível formatar este disco.
+
+Verifique se o disco está na unidade, se não é protegido contra gravação, se não está danificado ou se a densidade está errada."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00fe   "&Diretório:"
+0x00ff   "\StringFileInfo\040904E4\"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01f4   "Comentários"
+0x01f5   "Nome da empresa"
+0x01f6   "Descrição do arquivo"
+0x01f7   "Nome interno"
+0x01f8   "Marcas registradas"
+0x01f9   "Nome original do arquivo"
+0x01fa   "Descrição particular"
+0x01fb   "Nome do produto"
+0x01fc   "Versão do produto"
+0x01fd   "Descrição especial"
+0x01fe   "Idioma"
+0x01ff   "Idiomas"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0222   "Nenhum arquivo foi encontrado."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0255   "O computador especificado não foi selecionado."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0263   "O diretório compartilhado não foi encontrado."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0274   "Existem muitas conexões à rede."
+0x0276   "Senha inválida."
+
+Ordinal  String
+---------------------------------------------------------------
+0x02b0   "A unidade da rede não está disponível."
+0x02b1   "Um erro ocorreu durante a leitura da unidade %c."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0f90   "Comandos para trabalhar com arquivos"
+0x0f91   "Comandos para trabalhar com discos"
+0x0f92   "Comandos para trabalhar com a janela de diretório"
+0x0f93   "Comandos para definir como a informação será apresentada"
+0x0f94   "Comandos para personalizar o Gerenciador de Arquivos"
+0x0f9a   "Comandos para organização de janelas"
+0x0f9b   "Comandos para exibir a Ajuda do Gerenciador de Arquivos"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1005   "Abre o item selecionado "
+0x1006   "Imprime um documento"
+0x1007   "Associa um arquivo a um aplicativo"
+0x1008   "Localiza arquivos e diretórios"
+0x1009   "Inicia ou abre um aplicativo ou documento"
+0x100a   "Move o item selecionado"
+0x100b   "Copia arquivos e diretórios"
+0x100c   "Exclui arquivos e diretórios"
+0x100d   "Renomeia um arquivo ou diretório"
+0x100e   "Define os atributos do arquivo e exibe as suas propriedades"
+0x100f   "Cria um diretório"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1013   "Sai do Gerenciador de Arquivos"
+0x1014   "Seleciona arquivos e diretórios"
+0x1015   "Recupera arquivos anteriormente excluídos"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1069   "Copia o conteúdo de um disco flexível"
+0x106a   "Atribui ou altera o nome do volume de um disco"
+0x106b   "Formata um disco flexível"
+0x106c   "Copia os arquivos do MS-DOS para um disco flexível"
+0x106d   "Conecta-se a uma unidade de rede"
+0x106e   "Desconecta-se de uma unidade de rede"
+
+Ordinal  String
+---------------------------------------------------------------
+0x109b   "Seleciona uma unidade diferente"
+0x109c   "Conexões da Rede..."
+0x109d   "Visualizar Diretórios Compartilhados..."
+0x109e   "Compartilha um diretório"
+0x109f   "Finaliza o compartilhamento de um diretório"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10cd   "Exibe um outro nível de um diretório"
+0x10ce   "Exibe todos os níveis de um diretório"
+0x10cf   "Exibe todos os níveis de todos os diretórios"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10d0   "Reduz todos os diretórios de um diretório selecionado"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1195   "Controla a confirmação de mensagens"
+0x1197   "Exibe ou oculta a Barra de Status"
+0x1198   "Reduz o Gerenciador de Arquivos a um ícone ao iniciar"
+0x1199   "Indica diretórios que possuem subdiretórios"
+0x119b   "Exibe ou oculta a Barra de Unidades"
+0x119c   "Exibe ou oculta a Barra de Ferramentas"
+0x119d   "Abre nova janela ao conectar-se"
+0x119e   "Altera a fonte a ser usada no Gerenciador de Arquivos "
+0x119f   "As definições são salvas ao sair do Gerenciador de Arquivos"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1131   "Exibe somente os nomes dos arquivos"
+0x1132   "Exibe todos os detalhes dos arquivos"
+0x1133   "Exibe detalhes parciais dos arquivos"
+0x1134   "Classifica os arquivos por nome"
+0x1135   "Classifica os arquivos por tipo"
+0x1136   "Classifica os arquivos por tamanho"
+0x1137   "Classifica os arquivos por data"
+0x1139   "Exibe os arquivos de um tipo específico"
+0x113b   "Exibe a árvore de diretório"
+0x113c   "Exibe o conteúdo do diretório atual"
+0x113d   "Exibe a árvore de diretório e o conteúdo do diretório atual"
+0x113e   "Divide uma janela de diretório ou move a barra de divisão"
+
+Ordinal  String
+---------------------------------------------------------------
+0x11a0   "Personaliza a Barra de Ferramentas"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13f0   "Atualiza o conteúdo de uma janela ativa"
+0x13f1   "Organiza os ícones em fila na parte inferior da janela"
+0x13f2   "Abre uma nova janela"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13ed   "Organiza as janelas uma após a outra, permitindo a visualização das barras de título"
+0x13ee   "Organiza as janelas lado a lado verticalmente"
+0x13ef   "Organiza as janelas lado a lado horizontalmente"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1451   "Exibe o conteúdo da Ajuda do Gerenciador de Arquivos"
+0x1452   "Exibe informações sobre o uso da Ajuda"
+0x1453   "Exibe informações sobre o Gerenciador de Arquivos"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0fbe   "Procura por um tópico na Ajuda do Gerenciador de Arquivos"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0320   "Con&ectar Unidade da Rede..."
+0x0321   "&Desconectar Unidade da Rede..."
+0x0322   "Conexões da &Rede..."
+0x0323   "C&ompartilhar Como..."
+0x0324   "F&inalizar Compartilhamento..."
+0x0325   "&Visualizar Diretórios Compartilhados..."
+0x0326   "Recuperar Arquiv&os Excluídos..."
+0x0327   "Abrir Nova &Janela ao Conectar"
+
+

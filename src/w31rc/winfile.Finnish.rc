@@ -1,0 +1,1135 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Tiedosto"
+    BEGIN
+    MENUITEM    "&Avaa	Enter", 0X0065
+    MENUITEM    "Sii&rrä...	F7", 0X006A
+    MENUITEM    "&Kopioi...	F8", 0X006B
+    MENUITEM    "&Poista...	Del", 0X006C
+    MENUITEM    "&Nimeä uudelleen...", 0X006D
+    MENUITEM    "&Ominaisuudet...	Alt+Enter", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Suorita...", 0X0069
+    MENUITEM    "&Tulosta...", 0X0066
+    MENUITEM    "K&ytke...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Luo &hakemisto...", 0X006F
+    MENUITEM    "&Etsi...", 0X0068
+    MENUITEM    "&Valitse tiedostot...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Lopeta", 0X0073
+    END
+    POPUP   "&Levy"
+    BEGIN
+    MENUITEM    "&Kopioi levyke...", 0X00C9
+    MENUITEM    "&Nimeä levy...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Alusta levyke...", 0X00CB
+    MENUITEM    "&Tee järjestelmälevyke...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "Va&litse asema...", 0X00FB
+    END
+    POPUP   "&Hakemistopuu"
+    BEGIN
+    MENUITEM    "Laajenna &yksi taso	+", 0X012D
+    MENUITEM    "&Laajenna haara	*", 0X012E
+    MENUITEM    "Laajenna &kaikki	Ctrl+*", 0X012F
+    MENUITEM    "Kutista &haara	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Merkitse laajennettavat haarat", 0X01F9
+    END
+    POPUP   "&Näytä"
+    BEGIN
+    MENUITEM    "&Puu ja hakemisto", 0X019D
+    MENUITEM    "&Vain puu", 0X019B
+    MENUITEM    "Vain &hakemisto", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Jaa", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Nimi", 0X0191
+    MENUITEM    "&Kaikki tiedostotiedot", 0X0192
+    MENUITEM    "&Osittaiset tiedot...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Laj&ittele nimen mukaan", 0X0194
+    MENUITEM    "Lajittele &tyypin mukaan", 0X0195
+    MENUITEM    "Lajittele koon &mukaan", 0X0196
+    MENUITEM    "Lajittele p&äiväyksen mukaan", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "Tiedostot&yypin mukaan...", 0X0199
+    END
+    POPUP   "&Asetukset"
+    BEGIN
+    MENUITEM    "&Vahvistus...", 0X01F5
+    MENUITEM    "&Fontti...", 0X01FE
+    MENUITEM    "&Muokkaa työkaluriviä...", 0X0200
+    MENUITEM    "", 0X0000
+    MENUITEM    "T&yökalurivi", 0X01FC
+    MENUITEM    "A&semarivi", 0X01FB
+    MENUITEM    "T&ilarivi", 0X01F7
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Pienennä käytettäessä", 0X01F8
+    MENUITEM    "&Tallenna asetukset lopetettaessa", 0X01FF
+    END
+    POPUP   "&Ikkuna"
+    BEGIN
+    MENUITEM    "&Uusi ikkuna", 0X0452
+    MENUITEM    "&Limittäin	Vaihto+F5", 0X044D
+    MENUITEM    "Vierekkäin &vaakasuunnassa", 0X044F
+    MENUITEM    "Vierekkäin &pystysuunnassa	Vaihto+F4", 0X044E
+    MENUITEM    "&Järjestä kuvakkeet", 0X0451
+    MENUITEM    "P&äivitä	F5", 0X0450
+    END
+    POPUP   "&Ohje"
+    BEGIN
+    MENUITEM    "&Sisällys", 0X04B1
+    MENUITEM    "&Etsi ohje aiheesta...", 0X001E
+    MENUITEM    "&Ohjeen käyttö", 0X04B2
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Tietoja Tiedostonhallinnasta...", 0X04B3
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 265, 153
+CAPTION "Fontti"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Fontti:", 1088, 0x0000, 6, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 54
+    CONTROL 0x82, "&Tyyli:", 1089, 0x0000, 108, 3, 44, 9
+    CONTROL 0x85, "", 1137, 0x0001, 108, 13, 64, 54
+    CONTROL 0x82, "&Koko:", 1090, 0x0000, 179, 3, 30, 9
+    CONTROL 0x85, "", 1138, 0x0311, 179, 13, 32, 54
+    CONTROL 0x80, "Korostus", 1072, 0x0007, 6, 72, 84, 61
+    CONTROL 0x80, "&Yliviivattu", 1040, 0x0003, 10, 82, 64, 10
+    CONTROL 0x80, "&Alleviivattu", 1041, 0x0003, 10, 94, 59, 10
+    CONTROL 0x80, "&Pienet kirjaimet", 1042, 0x0003, 10, 82, 67, 10
+    CONTROL 0x82, "&Väri:", 1091, 0x0000, 10, 106, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "OK", 1, 0x0001, 218, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 218, 23, 40, 14
+    CONTROL 0x80, "K&äytä", 1026, 0x0000, 218, 40, 40, 14
+    CONTROL 0x80, "&Ohje", 1038, 0x0000, 218, 57, 40, 14
+    CONTROL 0x80, "Malli", 1073, 0x0007, 98, 72, 160, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 124, 160, 20
+    CONTROL 0x82, "AaBbÄäÖö", 1092, 0x0081, 104, 81, 149, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 201, 86
+CAPTION "Valitse asema"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Asemat:", 245, 0x000c, 5, 5, 41, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "OK", 1, 0x0001, 155, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 155, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 155, 44, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Suorita"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Komentorivi:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "&Suorita kuvakkeena", 214, 0x0003, 3, 45, 80, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 165, 43, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 133, 84
+CAPTION "Valitse tiedostot"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Tiedosto(t):", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "&Valitse", 1, 0x0001, 70, 6, 59, 14
+    CONTROL 0x80, "&Peruuta valinta", 6, 0x0000, 70, 23, 59, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 70, 40, 59, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 70, 63, 59, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 245, 95
+CAPTION "Vahvista tiedoston korvaus"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 215, 10
+    CONTROL 0x82, "Korvaa tiedosto:", 100, 0x000c, 25, 17, 56, 10
+    CONTROL 0x82, "", 103, 0x008c, 83, 17, 157, 10
+    CONTROL 0x82, "", 105, 0x000c, 83, 27, 157, 10
+    CONTROL 0x82, "Tiedostolla:", 100, 0x000c, 25, 39, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 83, 39, 157, 10
+    CONTROL 0x82, "", 106, 0x000c, 83, 49, 157, 10
+    CONTROL 0x80, "&Kyllä", 6, 0x0001, 10, 75, 52, 14
+    CONTROL 0x80, "Kyllä k&aikkiin", 107, 0x0000, 68, 75, 52, 14
+    CONTROL 0x80, "&Ei", 7, 0x0000, 126, 75, 52, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 184, 75, 52, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Vahvista tiedoston poisto"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 214, 10
+    CONTROL 0x82, "Poista tiedosto:", 100, 0x000c, 25, 18, 52, 10
+    CONTROL 0x82, "", 102, 0x008c, 82, 18, 158, 10
+    CONTROL 0x80, "&Kyllä", 6, 0x0001, 10, 40, 52, 14
+    CONTROL 0x80, "Kyllä k&aikkiin", 107, 0x0000, 68, 40, 52, 14
+    CONTROL 0x80, "&Ei", 7, 0x0000, 126, 40, 52, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 184, 40, 52, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Vahvista hakemiston poisto"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 216, 10
+    CONTROL 0x82, "Poista hakemisto:", 100, 0x000c, 25, 18, 60, 10
+    CONTROL 0x82, "", 102, 0x008c, 90, 18, 150, 10
+    CONTROL 0x80, "&Kyllä", 6, 0x0001, 11, 40, 50, 14
+    CONTROL 0x80, "Kyllä k&aikkiin", 107, 0x0000, 69, 40, 50, 14
+    CONTROL 0x80, "&Ei", 7, 0x0000, 127, 40, 50, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 185, 40, 50, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "Vahvista tiedoston siirto"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 217, 10
+    CONTROL 0x82, "Siirrä tiedosto:", 100, 0x000c, 25, 18, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 76, 18, 164, 10
+    CONTROL 0x80, "&Kyllä", 6, 0x0001, 9, 40, 53, 14
+    CONTROL 0x80, "Kyllä k&aikkiin", 107, 0x0000, 67, 40, 53, 14
+    CONTROL 0x80, "&Ei", 7, 0x0000, 125, 40, 53, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 183, 40, 53, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "Vahvista tiedoston uudelleen nimeäminen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 213, 10
+    CONTROL 0x82, "Nimeä tiedosto:", 100, 0x000c, 25, 16, 54, 10
+    CONTROL 0x82, "", 102, 0x008c, 80, 16, 160, 10
+    CONTROL 0x80, "&Kyllä", 6, 0x0001, 9, 40, 53, 14
+    CONTROL 0x80, "Kyllä k&aikkiin", 107, 0x0000, 67, 40, 53, 14
+    CONTROL 0x80, "&Ei", 7, 0x0000, 125, 40, 53, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 183, 40, 53, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 240, 63
+CAPTION "Tulosta"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 193, 10
+    CONTROL 0x82, "&Tulosta:", 100, 0x000c, 3, 20, 28, 8
+    CONTROL 0x81, "", 102, 0x0480, 34, 18, 160, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 36, 190, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 197, 43, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 263, 63
+CAPTION "Etsi"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Etsittävä:", 100, 0x000c, 5, 6, 45, 12
+    CONTROL 0x81, "", 201, 0x0480, 52, 5, 160, 12
+    CONTROL 0x82, "&Aloita mistä:", 100, 0x000c, 5, 21, 45, 12
+    CONTROL 0x81, "", 101, 0x0480, 52, 20, 160, 12
+    CONTROL 0x80, "Etsi &kaikki alihakemistot", 232, 0x0003, 52, 34, 100, 12
+    CONTROL 0x82, "", 104, 0x000c, 5, 50, 200, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 217, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 217, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 217, 43, 40, 14
+END
+
+14 DIALOG 0x80c8, 47, 59, 231, 64
+CAPTION "Siirrä"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Nykyinen hakemisto: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "Mi&hin:", 100, 0x000c, 3, 33, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 37, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 26, 33, 10, 10
+    CONTROL 0x80, "&Kopioi Leikepöydälle", 256, 0x0004, 26, 47, 83, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 49, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 45, 49, 138, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 185, 44, 40, 14
+    CONTROL 0x82, "&Mistä:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+10014 DIALOG 0x80c8, 47, 59, 231, 98
+CAPTION "Siirrä"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Nykyinen hakemisto: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "Mi&hin:", 100, 0x000c, 3, 38, 20, 10
+    CONTROL 0x62, "edit", 103, 0x0004, 37, 38, 138, 42
+    CONTROL 0x50, "€", 256, 0x0401, 6656, 9728, 2560, 2560
+    CONTROL 0x80, "&Kopioi Leikepöydälle", 256, 0x0004, 26, 84, 81, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 84, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 45, 84, 138, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Selaa", 600, 0x0000, 185, 40, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 185, 61, 40, 14
+    CONTROL 0x82, "&Mistä:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+200 DIALOG 0x00c8, 36, 24, 164, 134
+CAPTION "Valitse hakemisto"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x81, "", 1152, 0x0490, 6, 16, 90, 12
+    CONTROL 0x83, "", 1120, 0x0053, 12, 28, 84, 68
+    CONTROL 0x82, "&Hakemistot:", -1, 0x0000, 10, 6, 92, 9
+    CONTROL 0x82, "", 1088, 0x0000, 10, 16, 92, 9
+    CONTROL 0x83, "", 1121, 0x0053, 10, 28, 92, 68
+    CONTROL 0x82, "&Asemat:", 1091, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1137, 0x0353, 10, 112, 92, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 108, 6, 50, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 108, 24, 50, 14
+    CONTROL 0x82, "Tiedosto&nimi:", 1090, 0x0000, 6, 6, 76, 9
+    CONTROL 0x82, "&Luettele tiedostot tyypeittäin:", 1089, 0x0000, 6, 104, 99, 9
+    CONTROL 0x85, "", 1136, 0x0043, 6, 114, 90, 36
+    CONTROL 0x80, "&Ohje", 1038, 0x0000, 208, 46, 50, 14
+    CONTROL 0x80, "&Vain luku", 1040, 0x0003, 208, 68, 50, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 246, 64
+CAPTION "Poista"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Nykyinen hakemisto: C", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "&Poista:", 100, 0x000c, 3, 20, 35, 10
+    CONTROL 0x81, "", 102, 0x0480, 40, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 35, 35, 10
+    CONTROL 0x82, "", 201, 0x008b, 40, 35, 155, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 200, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 200, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 200, 43, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 218, 65
+CAPTION "Ominaisuudet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d tiedostoa valittuna, yhteensä %s tavua.", 100, 0x000c, 5, 5, 158, 10
+    CONTROL 0x80, "Attribuutit", -1, 0x0007, 5, 18, 144, 42
+    CONTROL 0x80, "&Vain luku", 215, 0x0003, 10, 29, 52, 12
+    CONTROL 0x80, "&Piilotettu", 216, 0x0003, 72, 29, 52, 12
+    CONTROL 0x80, "&Arkisto", 217, 0x0003, 10, 41, 52, 12
+    CONTROL 0x80, "&Järjestelmä", 218, 0x0003, 72, 41, 52, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 166, 6, 50, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 166, 23, 50, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 166, 43, 50, 14
+END
+
+16 DIALOG 0x80c8, 23, 13, 263, 195
+CAPTION "Tiedoston %s ominaisuudet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 210, 6, 50, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 210, 23, 50, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 210, 40, 50, 14
+    CONTROL 0x82, "Tiedosto&nimi:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 66, 5, 139, 10
+    CONTROL 0x82, "&Polku:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 66, 16, 139, 10
+    CONTROL 0x82, "Viimeisin muutos:", 100, 0x000c, 5, 27, 58, 10
+    CONTROL 0x82, "", 204, 0x000c, 66, 27, 139, 10
+    CONTROL 0x82, "Versio:", 258, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "Ei merkitty", 259, 0x008c, 66, 38, 139, 10
+    CONTROL 0x82, "&Tekijänoikeudet:", -1, 0x0000, 5, 49, 56, 10
+    CONTROL 0x81, "Ei merkitty", 265, 0x0880, 66, 49, 134, 10
+    CONTROL 0x82, "Koko:", 260, 0x000c, 5, 60, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 66, 60, 139, 10
+    CONTROL 0x80, "Attribuutit", 100, 0x0007, 4, 74, 120, 42
+    CONTROL 0x80, "&Vain luku", 215, 0x0003, 9, 86, 52, 12
+    CONTROL 0x80, "Piilotett&u", 216, 0x0003, 71, 86, 49, 12
+    CONTROL 0x80, "Ar&kisto", 217, 0x0003, 9, 98, 52, 12
+    CONTROL 0x80, "&Järjestelmä", 218, 0x0003, 71, 98, 49, 12
+    CONTROL 0x80, "Ve&rsiotiedot", 262, 0x0007, 4, 121, 257, 72
+    CONTROL 0x83, "", 263, 0x1003, 9, 132, 108, 58
+    CONTROL 0x81, "", 264, 0x0804, 121, 132, 137, 58
+END
+
+17 DIALOG 0x80c8, 20, 20, 200, 63
+CAPTION "Luo hakemisto"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Nimi:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 201, 0x0480, 30, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 157, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 157, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 157, 43, 40, 14
+END
+
+10017 DIALOG 0x80c8, 20, 20, 240, 74
+CAPTION "Luo hakemisto"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Nimi:", 100, 0x000c, 3, 28, 20, 10
+    CONTROL 0x62, "edit", 201, 0x0000, 3, 40, 170, 18
+    CONTROL 0x50, "‚", 26624, 0x8c00, 768, 15360, -27136, 2560
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 197, 43, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 173, 64
+CAPTION "Tee järjestelmälevyke"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Kopioi järjestelmätiedostot asemaan:", -1, 0x000c, 5, 8, 120, 10
+    CONTROL 0x85, "", 222, 0x0003, 29, 23, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 129, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 129, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 129, 43, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 157, 64
+CAPTION "Kopioi levyke"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Lähde:", -1, 0x000c, 5, 8, 24, 8
+    CONTROL 0x85, "", 245, 0x0003, 55, 6, 40, 37
+    CONTROL 0x82, "&Kohde:", 206, 0x000c, 5, 22, 24, 8
+    CONTROL 0x85, "", 222, 0x0003, 55, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 110, 43, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Kopioidaan levy"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Kopioidaan levyä ", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "asemassa A:", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Luetaan lähdelevyä", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Peruuta", 2, 0x0001, 44, 39, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 63
+CAPTION "Nimeä levy"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Nimi:", 100, 0x000c, 5, 15, 30, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 115, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 115, 43, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 183, 96
+CAPTION "Alusta levy"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 140, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 140, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 140, 43, 40, 14
+    CONTROL 0x82, "&Levyasema:", -1, 0x000c, 5, 7, 49, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 4, 65, 40
+    CONTROL 0x82, "L&evykoko:", 100, 0x000c, 5, 20, 49, 10
+    CONTROL 0x85, "", 241, 0x0003, 55, 19, 65, 40
+    CONTROL 0x80, "Asetukset", 102, 0x0007, 5, 39, 115, 53
+    CONTROL 0x82, "&Nimi:", -1, 0x000c, 11, 51, 18, 8
+    CONTROL 0x81, "", 201, 0x0000, 40, 49, 63, 12
+    CONTROL 0x80, "&Tee järjestelmälevyke", 242, 0x0003, 11, 62, 90, 12
+    CONTROL 0x80, "&Pika-alustus", 244, 0x0003, 11, 76, 90, 12
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 50
+CAPTION "Alustetaan levy"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Alustetaan levyä", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "   Alustetaan asemaa...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Peruuta", 2, 0x0001, 54, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 57
+CAPTION "Tee järjestelmälevyke"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Kopioidaan järjestelmätiedostoja...", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "Keskeytä painamalla Peruuta.", 100, 0x0001, 0, 17, 174, 8
+    CONTROL 0x80, "Peruuta", 2, 0x0001, 66, 39, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 241, 135
+CAPTION "Verkkoyhteydet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Uusi yhteys", -1, 0x0007, 5, 3, 170, 55
+    CONTROL 0x82, "&Verkkopolku:", -1, 0x0000, 10, 16, 55, 10
+    CONTROL 0x81, "", 223, 0x0480, 65, 14, 100, 12
+    CONTROL 0x82, "&Asema:", -1, 0x0000, 10, 30, 24, 10
+    CONTROL 0x85, "", 222, 0x0003, 65, 28, 40, 100
+    CONTROL 0x82, "Sa&lasana:", -1, 0x0000, 10, 44, 36, 10
+    CONTROL 0x81, "", 224, 0x04a0, 65, 42, 100, 12
+    CONTROL 0x82, "&Nykyiset yhteydet:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 160, 60
+    CONTROL 0x80, "S&ulje", 2, 0x0001, 180, 6, 59, 14
+    CONTROL 0x80, "&Yhdistä", 1, 0x0000, 180, 27, 59, 14
+    CONTROL 0x80, "&Edellinen...", 226, 0x0000, 180, 44, 59, 14
+    CONTROL 0x80, "&Selaa...", 227, 0x0000, 180, 61, 59, 14
+    CONTROL 0x80, "&Katkaise yhteys", 255, 0x0000, 180, 78, 59, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 180, 95, 59, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 231, 98
+CAPTION "Edelliset verkkoyhteydet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "V&erkkopolut:", 100, 0x000c, 3, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "&Valitse", 1, 0x0001, 181, 6, 44, 14
+    CONTROL 0x80, "Sulje", 2, 0x0000, 181, 24, 44, 14
+    CONTROL 0x80, "&Poista", 219, 0x0000, 181, 41, 44, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 181, 58, 44, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 183, 69
+CAPTION "Osittaiset tiedot"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Tiedot", 100, 0x0007, 4, 4, 129, 63
+    CONTROL 0x80, "&Koko", 203, 0x0003, 11, 15, 100, 11
+    CONTROL 0x80, "Viimeisimmän muutoksen &päiväys", 204, 0x0003, 11, 27, 118, 11
+    CONTROL 0x80, "Viimeisimmän muutoksen &aika", 205, 0x0003, 11, 39, 107, 11
+    CONTROL 0x80, "&Tiedoston attribuutit", 206, 0x0003, 11, 51, 77, 11
+    CONTROL 0x80, "OK", 1, 0x0001, 138, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 138, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 138, 43, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 157, 102
+CAPTION "Tiedostotyypin mukaan"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Nimi:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Tiedostotyyppi", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "&Hakemistot", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "Ohj&elmat", 210, 0x0003, 10, 43, 60, 12
+    CONTROL 0x80, "&Asiakirjat", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "&Muut tiedostot", 212, 0x0003, 10, 67, 60, 12
+    CONTROL 0x80, "N&äytä piilotetut ja järjestelmätiedostot", 250, 0x0003, 5, 85, 142, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 110, 43, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 80
+CAPTION "Vahvistus"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Vahvista", 100, 0x0007, 5, 3, 108, 73
+    CONTROL 0x80, "&Tiedoston poisto", 219, 0x0003, 10, 15, 80, 12
+    CONTROL 0x80, "H&akemiston poisto", 220, 0x0003, 10, 27, 80, 12
+    CONTROL 0x80, "Tiedoston &korvaus", 221, 0x0003, 10, 39, 80, 12
+    CONTROL 0x80, "&Hiiritoiminnot", 249, 0x0003, 10, 51, 80, 12
+    CONTROL 0x80, "&Levykomennot", 251, 0x0003, 10, 63, 80, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 118, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 118, 23, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 118, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Siirretään..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 55, 5, 192, 10
+    CONTROL 0x82, "Mihin:", 108, 0x008b, 5, 15, 25, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 15, 192, 10
+    CONTROL 0x80, "Peruuta", 2, 0x0001, 200, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 129, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Tulostetaan tiedostoa...", -1, 0x0001, 4, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 4, 20, 120, 12
+    CONTROL 0x80, "Peruuta", 2, 0x0001, 46, 40, 36, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 211, 96
+CAPTION "Kytke"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Tiedostot, joiden tunniste on:", 99, 0x000c, 5, 8, 103, 8
+    CONTROL 0x81, "", 112, 0x0400, 109, 7, 35, 12
+    CONTROL 0x82, "K&ytke tiedostotyyppiin:", 99, 0x000c, 5, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 5, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 11, 44, 146, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Selaa...", 232, 0x0000, 165, 43, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 165, 60, 40, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 250, 78
+CAPTION "Valitse tiedostonimi"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Tämä polku ei vastaa DOSin tiedostonimimuotoa. Anna tiedostolle uusi nimi.", 99, 0x0000, 4, 4, 190, 24
+    CONTROL 0x82, "&Uusi nimi:", 99, 0x0002, 21, 56, 50, 12
+    CONTROL 0x81, "", 103, 0x0000, 75, 55, 130, 12
+    CONTROL 0x82, "Alkuperäinen polku:", 99, 0x0002, 5, 28, 66, 8
+    CONTROL 0x81, "", 102, 0x0880, 75, 28, 127, 12
+    CONTROL 0x82, "Hakemistoon:", 99, 0x0002, 21, 42, 50, 11
+    CONTROL 0x81, "", 101, 0x0880, 75, 42, 127, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 205, 4, 40, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 205, 20, 40, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 205, 36, 40, 14
+END
+
+48 DIALOG 0x80c8, 23, 13, 250, 107
+CAPTION "Tiedoston %s ominaisuudet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 50, 14
+    CONTROL 0x80, "Peruuta", 2, 0x0000, 194, 23, 50, 14
+    CONTROL 0x80, "&Ohje", 254, 0x0000, 194, 43, 50, 14
+    CONTROL 0x82, "Tiedosto&nimi:", 261, 0x000c, 5, 5, 59, 10
+    CONTROL 0x81, "", 201, 0x0880, 67, 5, 122, 10
+    CONTROL 0x82, "&Polku:", 100, 0x000c, 5, 16, 59, 10
+    CONTROL 0x81, "", 101, 0x0880, 67, 16, 122, 10
+    CONTROL 0x82, "Viimeisin muutos:", 100, 0x000c, 5, 27, 59, 10
+    CONTROL 0x82, "", 204, 0x000c, 67, 27, 122, 10
+    CONTROL 0x82, "Koko:", 260, 0x000c, 5, 38, 59, 10
+    CONTROL 0x82, "", 203, 0x000c, 67, 38, 122, 10
+    CONTROL 0x80, "Attribuutit", 100, 0x0007, 4, 52, 120, 42
+    CONTROL 0x80, "&Vain luku", 215, 0x0003, 9, 64, 52, 12
+    CONTROL 0x80, "Piilotett&u", 216, 0x0003, 71, 64, 49, 12
+    CONTROL 0x80, "Ar&kisto", 217, 0x0003, 9, 76, 52, 12
+    CONTROL 0x80, "&Järjestelmä", 218, 0x0003, 71, 76, 49, 12
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0101   "(päähakemisto)"
+0x0102   "(Ei käytössä)"
+0x0103   "Jaettu: %s"
+0x0104   "Ei jaettu"
+0x0107   "Kopioidaan tiedostoja hakemistoon %s."
+0x0108   "Siirretään tiedostoja hakemistoon %s."
+0x0109   "Suoritetaan tiedostoja ohjelmalla %s."
+0x010a   "%s tavua"
+0x010b   "%s kt"
+0x010c   "%s Mt"
+0x010d   "%s Gt"
+0x010e   "%s Tt"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Lopeta Windows"
+0x0029   "Lopettaa Windowsin."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Kopioi levyke"
+0x0033   "Aseta kohdelevyke asemaan."
+0x0034   "Aseta lähdelevyke asemaan."
+0x0035   "Aseta kohde- ja lähdelevykkeet asemiin."
+0x0036   "Kohdelevykkeen alustus."
+0x0037   "Levykkeen kopiointivirhe"
+0x0038   "Levykettä ei voi kopioida."
+0x003a   "Lähde- ja kohdeasemat eivät ole yhteensopivia."
+0x003c   "%d %% valmiina"
+0x003d   "Luodaan päähakemistoa..."
+0x003e   "Kopioidaan järjestelmätiedostoja..."
+0x003f   "Levykkeen alustusvirhe"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Liian vähän levytilaa tulostamiseen.
+
+Vapauta levytilaa poistamalla tiedostoja ja yritä uudelleen."
+0x00c1   "Liian vähän muistia tulostamiseen.
+
+Lopeta sovelluksia ja yritä uudelleen."
+0x00c2   "Virhe tulostuksessa.
+
+Varmista, että kirjoitinasetukset ovat oikein ja että kirjoitin on valittuna."
+0x00c3   "Hakemistopuuta ei esitetty kokonaisuudessaan"
+0x00c5   "Kohdelevy on täynnä.
+
+Aseta uusi levyke asemaan."
+0x00c6   "Tiedosto on järjestelmätiedosto, piilotettu tai vain luku -tyyppiä."
+0x00c7   "Pika-alustusta ei voi suorittaa.
+
+Tehdäänkö normaalialustus?"
+0x00c8   "Sovellus ei ole Windows- tai MS-DOS-ohjelma."
+0x00c9   "Tämän sovelluksen käyttöön tarvitaan uudempi Microsoft Windows -versio."
+0x00ca   "Sovelluksen käyttöön tarvitaan Windows."
+0x00cb   "Virhe lähetettäessä komentoa sovellukselle."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Levyä ei voi alustaa."
+0x0042   "Alustus valmis"
+0x0043   "Yhteensä %ld tavua levytilaa,
+%ld tavua käytettävissä levyllä.
+
+Haluatko alustaa toisen levykkeen?"
+0x0046   "Tee järjestelmälevyke"
+0x0047   "Oletko varma, että haluat kopioida järjestelmätiedostot asemassa %c olevalle levylle?"
+0x0048   "Järjestelmälevyvirhe"
+0x0049   "MS-DOSin käynnistysasemassa ei ole järjestelmätiedostoja, tai se ei ole käytettävissä."
+0x004a   "Järjestelmätiedostoja ei voi kopioida MS-DOSin käynnistysasemaan."
+0x004b   "Järjestelmätiedostoja ei voi lisätä levylle.
+
+Varmista, että asemassa on alustettu levy ja että aseman luukku on suljettu."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Tiedostonhallinta ei voi luoda tai korvata tiedostoa %s. %s"
+0x0408   "Tiedostonhallinta ei voi luoda MS-DOS-järjestelmälevykettä, koska järjestelmääsi on asennettu Windows NT Flexboot. Tee järjestelmälevyke MS-DOSin komentoriviltä SYS-apuohjelmalla."
+0x0409   "Haluatko alustaa levykkeen nyt ilman järjestelmätietojen siirtämistä sille?"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Verkkovirhe"
+0x0053   "Asema sisältää Windowsin järjestelmätiedostot, eikä yhteyttä siihen voi katkaista."
+0x005b   "Attribuutteja ei voi muuttaa.
+
+Varmista, ettei levy ole kirjoitussuojattu."
+0x005c   "Hakemistoa ei voi luoda.
+
+Varmista, ettei levy ole kirjoitussuojattu."
+0x005d   "Tiedostonhallinta ei voi nimetä levyä. 
+
+Varmista, että levy ei ole kirjoitussuojattu, ettei asema ole verkkoasema ja että nimi on kelvollinen.
+Nimessä ei saa olla seuraavia merkkejä:
+[väli] * ? / \ | . , ; : + = [ ] ( ) & ^ < > " "
+0x005f   "Ei pyydettyjä tiedostoja."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "Yht. %d tiedostoa (%s)"
+0x00b5   "Luetut hakemistot: %d "
+0x00b6   "%c: %s vapaana,  %s yht."
+0x00b7   "%d tiedostoa löydetty"
+0x00b9   "valitut tiedostot"
+0x00ba   "Yhteyttä verkkoasemaan ei voi katkaista.
+
+Asemassa on avoimia tiedostoja."
+0x00bb   "Valittu %d tiedostoa (%s)"
+0x00bc   "Asemassa %c ei ole levykettä.
+
+Aseta levyke asemaan ja yritä uudelleen."
+0x00bd   "Levyä asemassa %c ei ole alustettu.
+
+Haluatko alustaa sen nyt?"
+0x00bf   "Tulostettavaa tiedostoa ei löydy. Varmista, että hakemistopolku ja tiedostonimi ovat oikein."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "Hakemisto on jo olemassa."
+0x0061   "Aseman sisällys on muuttunut. Haluatko päivittää Etsinnän tulokset -ikkunan?"
+0x0065   "Asema %c:%c"
+0x006e   "Ohjelmaa ei voi suorittaa"
+0x006f   "Odottamaton virhe: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "Alustus tuhoaa KAIKKI tiedot levyltä. Haluatko varmasti alustaa levyn asemassa %c?"
+0x00d3   "Vahvista levykkeen alustus"
+0x00d4   "Toiminto tuhoaa KAIKKI tiedot kohdelevyltä. Haluatko varmasti jatkaa?"
+0x00d5   "Vahvista levykkeen kopiointi"
+0x00d6   "&Sulje"
+0x00da   "Hakemistoa %s ei ole.
+
+Luodaanko hakemisto?"
+0x00db   "Ohjelmat#*.exe;*.pif;*.com;*.bat#Kaikki tiedostot (*.*)#*.*#"
+0x00dc   "Selaa"
+0x00dd   "Suorita"
+0x00de   "Tiedostoa ei voi tulostaa"
+0x00df   "Ohjetietoja ei voi näyttää."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Liian vähän muistia sovelluksen käynnistämiseen.
+
+Lopeta sovelluksia ja yritä uudelleen."
+0x0071   "Tiedostoa (tai sen osaa) ei löydy.
+
+Varmista, että hakemistopolku ja tiedostonimi ovat oikein ja että kaikki tarvittavat kirjastotiedostot ovat käytettävissä."
+0x0072   "Hakemistopolku on väärä."
+0x0073   "Liian monta tiedostoa käytössä.
+
+Lopeta sovelluksia tai suurenna FILES-komennon arvoa CONFIG.SYS-tiedostossa ja yritä uudelleen."
+0x0074   "Mitään sovellusta ei ole kytketty tähän datatiedostoon.
+
+Luo kytkentä valitsemalla Tiedosto-valikosta Kytke."
+0x0075   "Ohjelmasta voi käynnistää vain yhden kopion."
+0x0076   "Tiedostoa ei voi avata tai tulostaa.
+
+Käynnistä tiedoston luomiseen käytetty sovellus ja avaa tai tulosta tiedosto sovelluksesta."
+0x0078   "Vahvista hiiritoiminto"
+0x0079   "Haluatko varmasti kopioida valitut tiedostot tai hakemistot hakemistoon %s?"
+0x007a   "Haluatko varmasti siirtää valitut tiedostot tai hakemistot hakemistoon %s?"
+0x007b   "Haluatko varmasti käynnistää ohjelman %s käyttäen tiedostoa %s ensimmäiseksi?"
+0x007c   "Tiedostonhallinta"
+0x007e   "Hakemistopuu"
+0x007f   "Etsinnän tulokset: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Tiedostot, joiden tunniste on %s, ovat ohjelmia, eikä niitä voi kytkeä toisiin sovelluksiin."
+0x00e1   "%s ei ole ohjelma, eikä sitä voi kytkeä tiedostotunnisteeseen."
+0x00e2   "(Ei mitään)"
+0x00e4   "Tiedostonhallinta ei voi tulostaa useita tiedostoja.
+
+Valitse vain yksi tiedosto ja yritä uudelleen."
+0x00e5   "Ohjelma tai jokin sen osista on pakattu.
+
+Kopioi tiedosto asennuslevykkeeltä MS-DOSin Expand-apuohjelmalla."
+0x00e6   "Yksi sovelluksen käyttämistä kirjastotiedostoista on vioittunut. Asenna sovellus uudelleen."
+0x00e7   "Tiedosto on toisen sovelluksen käytössä."
+0x00e8   "Hakemistossa "%s" luotuja tiedostoja ei ehkä voi käsitellä Tiedostonhallinnassa.
+
+Jatketaanko?"
+0x00e9   "Luo hakemisto"
+0x00ea   "%ld tavua"
+0x00eb   "%s tavua"
+0x00ec   "Leikepöydälle ei voi kopioida useita tiedostoja tai hakemistoja.
+
+Valitse yksi tiedosto ja yritä uudelleen."
+0x00ed   "%s - %s"
+0x00ee   "Asema:"
+0x00ef   "%s, "
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Liian monta tiedostoa"
+0x0085   "Tiedostonhallinta - Muisti on lopussa"
+0x0086   "Koko hakemistoa ei voi lukea. Vain osittainen luettelo näytetään."
+0x008c   "Nykyinen hakemisto: %s"
+0x008d   "Kopioi"
+0x008f   "Nimeä uudelleen"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Alusta levy"
+0x0092   "Valitse alustettava levy."
+0x0096   "Luodaan:"
+0x0097   "Poistetaan..."
+0x0098   "Kopioidaan:"
+0x0099   "Nimetään..."
+0x009a   "Siirretään..."
+0x009b   "Poistetaan..."
+0x009c   "Tulostetaan: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "Asemaa %c ei ole."
+0x00a9   "Kopioidaan..."
+0x00aa   "Poistetaan:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Avataan..."
+0x01a5   "Suljetaan..."
+0x01a6   "Liian monta avointa hakemistoikkunaa.
+
+Sulje ikkunoita ja yritä uudelleen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Virhe tiedoston siirrossa"
+0x03ea   "Virhe tiedoston kopioinnissa"
+0x03eb   "Virhe tiedoston poistossa"
+0x03ec   "Virhe tiedoston uudelleen nimeämisessä"
+0x03ed   "Virhe aseman valinnassa"
+0x03ee   "Virhe hakemiston luvussa"
+0x03ef   "Virhe levyn nimeämisessä"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "Tiedostonhallinta ei voi siirtää %s. %s"
+0x03f4   "Tiedostonhallinta ei voi kopioida %s. %s"
+0x03f5   "Tiedostonhallinta ei voi poistaa %s. %s"
+0x03f6   "Tiedostonhallinta ei voi nimetä uudelleen %s. %s"
+0x03fd   "Tiedostonhallinta ei voi luoda hakemistoa %s. %s"
+0x03fe   "Tiedostonhallinta ei voi poistaa hakemistoa %s. %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Epäkelpo MS-DOS-funktio."
+0x0412   "Tiedostoa ei löydy.
+
+Varmista, että hakemistopolku ja tiedostonimi ovat oikein."
+0x0413   "Hakemistopolkua ei löydy.
+
+Varmista, että hakemistopolku on oikein."
+0x0414   "Liian monta muuta tiedostoa käytössä. Lopeta sovelluksia ja yritä uudelleen."
+0x0415   "Käyttö estetty.
+
+Varmista, ettei levy ole täynnä eikä kirjoitussuojattu."
+0x0416   "Epäkelpo tiedostokahva."
+0x0418   "Liian vähän muistia.
+
+Lopeta sovelluksia ja yritä uudelleen."
+0x041c   "Epäkelpo tiedostonkäyttöpyyntö."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Nykyistä hakemistoa ei voi poistaa (sisäinen virhe)."
+0x0421   "Epäkelpo laite."
+0x0422   "Hakemisto on tyhjä."
+0x0423   "Levyke on kirjoitussuojattu.
+
+Poista levykkeen kirjoitussuojaus tai käytä toista levykettä ja yritä uudelleen."
+0x042d   "Kirjoitus epäonnistui. Kohdetiedosto tai -levy voi olla vahingoittunut."
+0x042f   "Luku epäonnistui. Lähdetiedosto tai -levy voi olla vahingoittunut."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Epäkelpo toiminto."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Pääsy verkkoon estetty. Varmista, että sinulla on oikeat verkko-oikeudet tämän toiminnon suorittamiseen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Tiedostonjakovirhe. Lähde- tai kohdetiedostot voivat olla käytössä."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Levytila ei riitä.
+
+Vapauta levytilaa poistamalla tiedostoja ja yritä uudelleen."
+0x0481   "Lähde- ja kohdetiedoston nimi on sama."
+0x0482   "Valitse ainoastaan yksi tiedosto uudelleen nimettäväksi tai käytä MS-DOSin yleismerkkejä (esimerkiksi *.TXT), kun haluat nimetä tiedostoryhmän samankaltaisilla nimillä."
+0x0483   "Ei voi siirtää eri hakemistoon tai levylle nimeämällä uudelleen."
+0x0484   "Päähakemisto (sisäinen virhe)."
+0x0486   "Kohdehakemisto on lähteen alihakemisto."
+0x0487   "Tiedosto on Windowsin käytössä."
+0x0488   "Käyttö estetty. Lähdetiedosto voi olla käytössä."
+0x0489   "Hakemistopolku on liian pitkä."
+0x048a   "Määritä vain yksi tiedosto tai hakemisto Mihin-ruudussa. Jos haluat määrittää useampia tiedostoja, käytä MS-DOSin yleismerkkejä (esimerkiksi *.TXT)."
+0x048b   "Tiedostonimi on jo olemassa. Anna toinen nimi Mihin-ruudussa ja yritä uudelleen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 Mt"
+0x0131   "720 kt"
+0x0132   "1,44 Mt"
+0x0133   "2,88 Mt"
+0x0134   "Levykoko"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360 kt"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Liian vähän muistia."
+0x0192   "MS-DOSin käynnistyslevyä ei voi alustaa."
+0x0193   "Väärä sektorikoko MS-DOSin käynnistyslevyllä."
+0x0194   "Tuntematon asematyyppi."
+0x0199   "Järjestelmätiedostojen siirto epäonnistui."
+0x019a   "Levy voidaan alustaa kokoon %s. Jatketaanko alustamista tähän kokoon?"
+0x019b   "Levyä ei voi alustaa.
+
+Varmista, että levyke on asemassa, ettei levyke ole kirjoitussuojattu eikä vahingoittunut ja että sen tiheys on oikea."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00fe   "&Hakemistonimi:"
+0x00ff   "\StringFileInfo\040904E4\"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01f4   "Kommentit"
+0x01f5   "Yrityksen nimi"
+0x01f6   "Tiedostokuvaus"
+0x01f7   "Sisäinen nimi"
+0x01f8   "Lailliset tavaramerkit"
+0x01f9   "Alkuperäinen tiedostonimi"
+0x01fa   "Yksityinen ohjelman rakennuskuvaus"
+0x01fb   "Tuotenimi"
+0x01fc   "Tuoteversio"
+0x01fd   "Erityinen ohjelman rakennuskuvaus"
+0x01fe   "Kieli"
+0x01ff   "Kielet"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0222   "Ei tiedostoja."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0255   "Valittua tietokonetta ei löydy."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0263   "Jaettua hakemistoa ei löydy."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0274   "Liian monta verkkoyhteyttä."
+0x0276   "Väärä salasana."
+
+Ordinal  String
+---------------------------------------------------------------
+0x02b0   "Verkkoasema ei ole käytössä."
+0x02b1   "Virhe luettaessa asemaa %c:."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0f90   "Tiedostojen käsittelykomennot"
+0x0f91   "Levyjen käsittelykomennot"
+0x0f92   "Hakemistopuuikkunan käsittelykomennot"
+0x0f93   "Tietojen näyttökomennot"
+0x0f94   "Asetuskomennot"
+0x0f9a   "Ikkunoiden järjestelykomennot"
+0x0f9b   "Tiedostonhallinnan Ohjeen komennot"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1005   "Avaa valitun kohteen"
+0x1006   "Tulostaa asiakirjan"
+0x1007   "Kytkee tiedoston sovellukseen"
+0x1008   "Etsii tiedostoja ja hakemistoja"
+0x1009   "Käynnistää tai avaa sovelluksen tai asiakirjan"
+0x100a   "Siirtää valitun kohteen"
+0x100b   "Kopioi tiedostoja ja hakemistoja"
+0x100c   "Poistaa tiedostoja ja hakemistoja"
+0x100d   "Nimeää tiedoston tai hakemiston uudelleen"
+0x100e   "Asettaa tiedoston attribuutit ja näyttää sen ominaisuudet"
+0x100f   "Luo hakemiston"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1013   "Lopettaa Tiedostonhallinnan"
+0x1014   "Valitsee tiedostoja ja hakemistoja"
+0x1015   "Palauttaa aiemmin poistettuja tiedostoja"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1069   "Kopioi levykkeen sisällön"
+0x106a   "Nimeää levyn tai muuttaa levyn nimen"
+0x106b   "Alustaa levykkeen"
+0x106c   "Kopioi MS-DOS-tiedostot levykkeelle"
+0x106d   "Luo yhteyden verkkoasemaan"
+0x106e   "Katkaisee yhteyden verkkoasemaan"
+
+Ordinal  String
+---------------------------------------------------------------
+0x109b   "Valitsee aseman"
+0x109c   "Verkkoyhteydet..."
+0x109d   "Näytä jaetut hakemistot..."
+0x109e   "Jakaa hakemiston verkossa"
+0x109f   "Lopettaa hakemiston jakamisen"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10c1   "      "
+0x10cd   "Näyttää hakemiston seuraavan tason"
+0x10ce   "Näyttää hakemiston kaikki tasot"
+0x10cf   "Näyttää kaikkien hakemistojen kaikki tasot"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10d0   "Piilottaa valitun hakemiston kaikki tasot"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1195   "Vahvistusviestien asetukset"
+0x1197   "Näyttää tai piilottaa tilarivin"
+0x1198   "Pienentää Tiedostonhallinnan kuvakkeeksi käynnistettäessä"
+0x1199   "Osoittaa hakemistot, joilla on alihakemistoja"
+0x119b   "Näyttää tai piilottaa levyasemarivin"
+0x119c   "Näyttää tai piilottaa työkalurivin"
+0x119d   "Avaa uuden ikkunan yhdistettäessä verkkoasemaan"
+0x119e   "Muuttaa Tiedostonhallinnan fontin"
+0x119f   "Tallentaa asetukset lopetettaessa Tiedostonhallinta"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1131   "Näyttää vain tiedostonimet"
+0x1132   "Näyttää kaikki tiedot tiedostoista"
+0x1133   "Näyttää osittaiset tiedot tiedostoista"
+0x1134   "Järjestää tiedostot nimen mukaan"
+0x1135   "Järjestää tiedostot tyypin mukaan"
+0x1136   "Järjestää tiedostot koon mukaan"
+0x1137   "Järjestää tiedostot päiväyksen mukaan"
+0x1139   "Näyttää määritetyn tyyppiset tiedostot"
+0x113b   "Näyttää hakemistopuun"
+0x113c   "Näyttää nykyisen hakemiston sisällön"
+0x113d   "Näyttää hakemistopuun ja nykyisen hakemiston sisällön"
+0x113e   "Jakaa hakemistoikkunan tai siirtää jakopalkkia"
+
+Ordinal  String
+---------------------------------------------------------------
+0x11a0   "Muokkaa työkaluriviä"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13f0   "Päivittää ikkunan sisällön"
+0x13f1   "Järjestää kuvakkeet"
+0x13f2   "Avaa uuden ikkunan"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13ed   "Järjestää ikkunat"
+0x13ee   "Järjestää ikkunat"
+0x13ef   "Järjestää ikkunat"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1451   "Näyttää Tiedostonhallinnan Ohjeen"
+0x1452   "Näyttää ohjeita Ohjeen käytöstä"
+0x1453   "Näyttää tietoja Tiedostonhallinnasta"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0fbe   "Etsii aiheita Tiedostonhallinnan Ohjeesta"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0320   "&Yhdistä verkkoasemaan..."
+0x0321   "Katkaise yhteys &verkkoasemaan..."
+0x0322   "&Verkkoyhteydet..."
+0x0323   "&Jaa hakemisto..."
+0x0324   "L&opeta jakaminen..."
+0x0325   "&Näytä jaetut hakemistot..."
+0x0326   "Palauta t&iedosto..."
+0x0327   "Avaa &uusi ikkuna yhdistettäessä"
+
+

@@ -1,0 +1,871 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Soubor"
+    BEGIN
+    MENUITEM    "&Otevøi	Enter", 0X0065
+    MENUITEM    "&Pøesuò...	F7", 0X006A
+    MENUITEM    "Kopí&ruj...	F8", 0X006B
+    MENUITEM    "&Sma...	Del", 0X006C
+    MENUITEM    "Pøe&jmenuj...", 0X006D
+    MENUITEM    "Pop&is...	Alt+Enter", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "Sp&us...", 0X0069
+    MENUITEM    "Vy&tiskni...", 0X0066
+    MENUITEM    "&Asociuj...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Vytvoø a&dresáø...", 0X006F
+    MENUITEM    "Vy&hledej...", 0X0068
+    MENUITEM    "Vy&ber soubory...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Konec", 0X0073
+    END
+    POPUP   "&Disk"
+    BEGIN
+    MENUITEM    "&Kopíruj disk...", 0X00C9
+    MENUITEM    "Pojmenování &disku...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Formátuj disk...", 0X00CB
+    MENUITEM    "&Vytvoø systémovı disk...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "Volba &jednotky...", 0X00FB
+    END
+    POPUP   "S&trom"
+    BEGIN
+    MENUITEM    "&Rozbal o jednu úroveò	+", 0X012D
+    MENUITEM    "Rozbal &vìtev	*", 0X012E
+    MENUITEM    "Rozbal ú&plnì	Ctrl+*", 0X012F
+    MENUITEM    "&Sbal vìtev	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Indikuj rozbalitelné vìtve", 0X01F9
+    END
+    POPUP   "&Zobrazení"
+    BEGIN
+    MENUITEM    "S&trom a adresáøe", 0X019D
+    MENUITEM    "&Pouze strom", 0X019B
+    MENUITEM    "Pouze &adresáøe", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Rozdìlení", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Jen jméno", 0X0191
+    MENUITEM    "Úp&lnı popis", 0X0192
+    MENUITEM    "Èá&steènı popis...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Seøaï podle j&ména", 0X0194
+    MENUITEM    "Seøaï podle t&ypu", 0X0195
+    MENUITEM    "Seøaï podle &velikosti", 0X0196
+    MENUITEM    "Seøaï podle &data", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "Typ &zobrazenıch souborù...", 0X0199
+    END
+    POPUP   "&Volitelné"
+    BEGIN
+    MENUITEM    "P&otvrzení...", 0X01F5
+    MENUITEM    "&Písmo...", 0X01FE
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Stavovı pruh", 0X01F7
+    MENUITEM    "Pøi spuštìní aplikace se &minimalizuj", 0X01F8
+    MENUITEM    "Pøi ukonèení ulo &nastavení", 0X01FF
+    END
+    POPUP   "&Okno"
+    BEGIN
+    MENUITEM    "&Nové okno", 0X03ED
+    MENUITEM    "&Kaskáda	Shift+F5", 0X03E9
+    MENUITEM    "&Dladice	Shift+F4", 0X03EA
+    MENUITEM    "&Uspoøádej ikony", 0X03EC
+    MENUITEM    "&Aktualizuj	F5", 0X03EB
+    END
+    POPUP   "&Nápovìda"
+    BEGIN
+    MENUITEM    "O&bsah", 0X044D
+    MENUITEM    "&Vyhledej nápovìdu...", 0X001E
+    MENUITEM    "&Jak pouívat nápovìdu", 0X044E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&O aplikaci Správce souborù...", 0X044F
+    END
+END
+
+
+145 DIALOG 0x80c8, 18, 15, 272, 146
+CAPTION "Písmo"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Písmo:", 1088, 0x0000, 4, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 4, 13, 104, 54
+    CONTROL 0x82, "&Styl písma:", 1089, 0x0000, 116, 3, 44, 9
+    CONTROL 0x85, "", 1137, 0x0001, 116, 13, 64, 54
+    CONTROL 0x82, "&Velikost:", 1090, 0x0000, 188, 3, 30, 9
+    CONTROL 0x85, "", 1138, 0x0311, 188, 13, 32, 54
+    CONTROL 0x80, "Efekty", 1072, 0x0007, 4, 72, 88, 34
+    CONTROL 0x80, "Pøeš&krtnutí", 1040, 0x0003, 10, 82, 65, 10
+    CONTROL 0x80, "Pod&trení", 1041, 0x0003, 10, 94, 51, 10
+    CONTROL 0x80, "Pouze &malá písmena", 1042, 0x0003, 10, 82, 81, 10
+    CONTROL 0x82, "&Barva:", 1091, 0x0000, 4, 110, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 4, 120, 88, 100
+    CONTROL 0x80, "OK", 1, 0x0001, 228, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 228, 22, 40, 14
+    CONTROL 0x80, "P&ouít", 1026, 0x0000, 228, 40, 40, 14
+    CONTROL 0x80, "&Nápovìda", 1038, 0x0000, 228, 58, 40, 14
+    CONTROL 0x80, "Vzorek", 1073, 0x0007, 98, 72, 170, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 124, 160, 20
+    CONTROL 0x82, "Ovèáci ètveráci", 1092, 0x0081, 104, 81, 159, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 200, 82
+CAPTION "Volba diskové jednotky"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Diskové jednotky:", 245, 0x000c, 4, 4, 81, 9
+    CONTROL 0x83, "", 222, 0x0083, 4, 14, 140, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 156, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 156, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 156, 44, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 208, 62
+CAPTION "Spuštìní programu"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 4, 4, 160, 9
+    CONTROL 0x82, "&Povelovı øádek:", 100, 0x000c, 4, 14, 60, 9
+    CONTROL 0x81, "", 201, 0x0480, 4, 24, 153, 12
+    CONTROL 0x80, "Spustit &minimalizovanı", 214, 0x0003, 4, 42, 146, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 164, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 164, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 164, 44, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 116, 80
+CAPTION "Vıbìr souborù"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Soubor(y):", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "&Vyber", 1, 0x0001, 70, 4, 42, 14
+    CONTROL 0x80, "Z&ruš vıbìr", 6, 0x0000, 70, 22, 42, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 70, 40, 42, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 70, 62, 42, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 246, 81
+CAPTION "Potvrzení pøepisu obsahu souboru"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 4, 221, 10
+    CONTROL 0x82, "Pøepsat soubor(y):", 100, 0x000c, 25, 14, 63, 10
+    CONTROL 0x82, "", 103, 0x008c, 88, 14, 158, 10
+    CONTROL 0x82, "", 105, 0x000c, 75, 22, 171, 10
+    CONTROL 0x82, "Obsahem souboru:", 100, 0x000c, 25, 34, 63, 10
+    CONTROL 0x82, "", 102, 0x008c, 88, 34, 158, 10
+    CONTROL 0x82, "", 106, 0x000c, 75, 42, 171, 10
+    CONTROL 0x80, "&Ano", 6, 0x0001, 20, 62, 40, 14
+    CONTROL 0x80, "Ano pro &všechny", 107, 0x0000, 66, 62, 68, 14
+    CONTROL 0x80, "&Ne", 7, 0x0000, 140, 62, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 186, 62, 40, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 246, 57
+CAPTION "Potvrzení smazání souboru"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x000c, 25, 4, 221, 10
+    CONTROL 0x82, "Smazat soubor:", 100, 0x000c, 25, 14, 63, 10
+    CONTROL 0x82, "", 102, 0x008c, 88, 14, 152, 10
+    CONTROL 0x80, "&Ano", 6, 0x0001, 20, 38, 40, 14
+    CONTROL 0x80, "Ano pro &všechny", 107, 0x0000, 66, 38, 68, 14
+    CONTROL 0x80, "&Ne", 7, 0x0000, 140, 38, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 186, 38, 40, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 246, 57
+CAPTION "Potvrzení smazání adresáøe"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 4, 221, 10
+    CONTROL 0x82, "Smazat adresáø:", 100, 0x000c, 25, 14, 63, 10
+    CONTROL 0x82, "", 102, 0x008c, 88, 14, 158, 10
+    CONTROL 0x80, "&Ano", 6, 0x0001, 20, 38, 40, 14
+    CONTROL 0x80, "Ano pro &všechny", 107, 0x0000, 66, 38, 68, 14
+    CONTROL 0x80, "&Ne", 7, 0x0000, 140, 38, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 186, 38, 40, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 246, 57
+CAPTION "Potvrzení pøesunu souboru"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 221, 10
+    CONTROL 0x82, "Pøesunout soubor:", 100, 0x000c, 25, 14, 63, 10
+    CONTROL 0x82, "", 102, 0x008c, 88, 14, 158, 10
+    CONTROL 0x80, "&Ano", 6, 0x0001, 20, 38, 40, 14
+    CONTROL 0x80, "Ano pro &všechny", 107, 0x0000, 66, 38, 68, 14
+    CONTROL 0x80, "&Ne", 7, 0x0000, 140, 38, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 186, 38, 40, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 246, 57
+CAPTION "Potvrzení pøejmenování souboru"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 4, 221, 10
+    CONTROL 0x82, "Pøejmenovat soubor:", 100, 0x000c, 25, 14, 73, 10
+    CONTROL 0x82, "", 102, 0x008c, 98, 13, 148, 10
+    CONTROL 0x80, "&Ano", 6, 0x0001, 20, 38, 40, 14
+    CONTROL 0x80, "Ano pro &všechny", 107, 0x0000, 66, 38, 68, 14
+    CONTROL 0x80, "&Ne", 7, 0x0000, 140, 38, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 186, 38, 40, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 240, 62
+CAPTION "Vytiskni"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 4, 4, 188, 10
+    CONTROL 0x82, "&Vytisknout:", 100, 0x000c, 2, 20, 37, 10
+    CONTROL 0x81, "", 102, 0x0480, 50, 18, 142, 12
+    CONTROL 0x82, "", 104, 0x008c, 4, 36, 188, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 196, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 196, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 196, 44, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 264, 62
+CAPTION "Hledání souboru (ù)"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Vyhledat:", 100, 0x000c, 4, 6, 42, 12
+    CONTROL 0x81, "", 201, 0x0480, 46, 5, 166, 12
+    CONTROL 0x82, "V &adresáøi:", 100, 0x000c, 4, 21, 42, 12
+    CONTROL 0x81, "", 101, 0x0480, 46, 20, 166, 12
+    CONTROL 0x80, "&Prohledat také podadresáøe", 232, 0x0003, 46, 41, 109, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 220, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 220, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 220, 44, 40, 14
+END
+
+14 DIALOG 0x80c8, 47, 60, 230, 62
+CAPTION "Pøesun souboru (ù)"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktuální adresáø: N", 101, 0x008b, 4, 4, 182, 10
+    CONTROL 0x82, "&Kam:", 100, 0x000c, 4, 33, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 37, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 26, 33, 10, 10
+    CONTROL 0x80, "Kopírovat do &schránky", 256, 0x0004, 26, 47, 121, 12
+    CONTROL 0x82, "", 104, 0x008b, 4, 49, 40, 9
+    CONTROL 0x82, "", 201, 0x008b, 45, 49, 138, 9
+    CONTROL 0x80, "OK", 1, 0x0001, 186, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 186, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 186, 44, 40, 14
+    CONTROL 0x82, "&Odkud:", 100, 0x000c, 3, 19, 27, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 246, 62
+CAPTION "Smazání souboru (ù)"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktuální adresáø: N", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "&Smazat:", 100, 0x000c, 4, 20, 50, 10
+    CONTROL 0x81, "", 102, 0x0480, 54, 19, 140, 12
+    CONTROL 0x82, "", 104, 0x008b, 4, 35, 35, 10
+    CONTROL 0x82, "", 201, 0x008b, 40, 35, 155, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 202, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 202, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 202, 44, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 235, 62
+CAPTION "Popis souborù"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Je vybráno %d souborù, celkovì %s bytù", 100, 0x000c, 4, 4, 173, 10
+    CONTROL 0x80, "Atributy", -1, 0x0007, 4, 16, 126, 42
+    CONTROL 0x80, "&Pouze ètení", 215, 0x0003, 10, 27, 52, 12
+    CONTROL 0x80, "&Skrytı", 216, 0x0003, 72, 27, 52, 12
+    CONTROL 0x80, "&Archivovat", 217, 0x0003, 10, 40, 52, 12
+    CONTROL 0x80, "S&ystém", 218, 0x0003, 72, 41, 52, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 180, 4, 50, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 180, 22, 50, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 180, 44, 50, 14
+END
+
+16 DIALOG 0x80c8, 33, 44, 230, 93
+CAPTION "Popis %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 176, 4, 50, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 176, 22, 50, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 176, 44, 50, 14
+    CONTROL 0x82, "&Jméno souboru:", 100, 0x000c, 4, 4, 54, 10
+    CONTROL 0x81, "", 201, 0x0880, 62, 4, 111, 10
+    CONTROL 0x82, "Velikost:", 100, 0x000c, 4, 15, 40, 10
+    CONTROL 0x82, "", 203, 0x000c, 62, 15, 86, 10
+    CONTROL 0x82, "Poslední zmìna:", 100, 0x000c, 4, 26, 58, 10
+    CONTROL 0x82, "", 204, 0x000c, 62, 26, 111, 10
+    CONTROL 0x82, "&Cesta:", 100, 0x000c, 4, 37, 46, 10
+    CONTROL 0x81, "", 101, 0x0880, 62, 37, 111, 10
+    CONTROL 0x80, "Atributy", 100, 0x0007, 4, 51, 160, 38
+    CONTROL 0x80, "&Pouze ètení", 215, 0x0003, 9, 61, 52, 12
+    CONTROL 0x80, "&Skrytı", 216, 0x0003, 71, 61, 49, 12
+    CONTROL 0x80, "&Archivovat", 217, 0x0003, 9, 73, 52, 12
+    CONTROL 0x80, "S&ystém", 218, 0x0003, 71, 73, 49, 12
+END
+
+17 DIALOG 0x80c8, 20, 20, 200, 62
+CAPTION "Vytvoøení adresáøe"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 4, 4, 150, 10
+    CONTROL 0x82, "&Jméno:", 100, 0x000c, 4, 22, 26, 10
+    CONTROL 0x81, "", 201, 0x0480, 30, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 156, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 156, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 156, 44, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 140, 62
+CAPTION "Vytvoøení systémového disku"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Systémové soubory kopírovat na disketu v &jednotce:", -1, 0x0000, 4, 4, 86, 28
+    CONTROL 0x85, "", 222, 0x0003, 22, 32, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 96, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 96, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 96, 44, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 156, 62
+CAPTION "Kopírování diskety"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Zdrojová disketa:", -1, 0x000c, 4, 6, 62, 10
+    CONTROL 0x85, "", 245, 0x0003, 66, 4, 40, 37
+    CONTROL 0x82, "&Cílová disketa:", 206, 0x000c, 4, 22, 50, 10
+    CONTROL 0x85, "", 222, 0x0003, 66, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 112, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 112, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 112, 44, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 59
+CAPTION "Kopírování diskety"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Probíhá kopírování diskety", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "v jednotce A:", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Ètení zdrojové diskety", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Zrušit", 2, 0x0001, 44, 40, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 160, 62
+CAPTION "Pojmenování disku"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Pojmenování:", 100, 0x000c, 4, 15, 62, 10
+    CONTROL 0x81, "", 201, 0x0480, 4, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 116, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 116, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 116, 44, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 176, 88
+CAPTION "Formátování diskety"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 132, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 132, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 132, 44, 40, 14
+    CONTROL 0x82, "&Disketa:", -1, 0x000c, 4, 7, 36, 10
+    CONTROL 0x85, "", 222, 0x0003, 40, 4, 80, 40
+    CONTROL 0x82, "&Kapacita:", 100, 0x000c, 4, 20, 36, 10
+    CONTROL 0x85, "", 241, 0x0003, 40, 19, 80, 40
+    CONTROL 0x80, "Volitelné", 102, 0x0007, 4, 32, 115, 52
+    CONTROL 0x82, "&Pojmenování:", -1, 0x000c, 10, 44, 50, 10
+    CONTROL 0x81, "", 201, 0x0000, 60, 42, 53, 12
+    CONTROL 0x80, "&Vytvoøení systémové diskety", 242, 0x0003, 10, 55, 108, 12
+    CONTROL 0x80, "&Rychlé formátování", 244, 0x0003, 10, 69, 90, 12
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 49
+CAPTION "Formátování diskety"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Probíhá formátování diskety", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "Inicializace jednotky...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Zrušit", 2, 0x0001, 54, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 180, 57
+CAPTION "Vytváøení systémové diskety"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Probíhá kopírování systémovıch souborù", 100, 0x0001, 0, 6, 180, 9
+    CONTROL 0x82, "Pokud chcete èinnost pøerušit, stisknìte tlaèítko Zrušit.", 100, 0x0001, 0, 18, 180, 9
+    CONTROL 0x80, "Zrušit", 2, 0x0001, 68, 38, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 240, 135
+CAPTION "Pøipojení na sí"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Nové pøipojení", -1, 0x0007, 4, 1, 170, 56
+    CONTROL 0x82, "&Síová cesta:", -1, 0x0000, 10, 14, 55, 10
+    CONTROL 0x81, "", 223, 0x0480, 65, 12, 100, 12
+    CONTROL 0x82, "&Jednotka:", -1, 0x0000, 10, 28, 45, 10
+    CONTROL 0x85, "", 222, 0x0003, 65, 26, 40, 100
+    CONTROL 0x82, "&Heslo:", -1, 0x0000, 10, 42, 36, 10
+    CONTROL 0x81, "", 224, 0x04a0, 65, 40, 100, 12
+    CONTROL 0x82, "S&távající pøipojení jednotek:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 169, 60
+    CONTROL 0x80, "&Zavøít", 2, 0x0001, 191, 4, 45, 14
+    CONTROL 0x80, "&Pøipojit", 1, 0x0000, 191, 28, 45, 14
+    CONTROL 0x80, "&Minulá...", 226, 0x0000, 191, 46, 45, 14
+    CONTROL 0x80, "Na&listovat...", 227, 0x0000, 191, 64, 45, 14
+    CONTROL 0x80, "&Odpojit", 255, 0x0000, 191, 82, 45, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 191, 100, 45, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 230, 98
+CAPTION "Minulá pøipojení na sí"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Síové &cesty:", 100, 0x000c, 4, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 4, 14, 172, 80
+    CONTROL 0x80, "&Zvolit", 1, 0x0001, 182, 4, 44, 14
+    CONTROL 0x80, "Zavøít", 2, 0x0000, 182, 24, 44, 14
+    CONTROL 0x80, "&Vypustit", 219, 0x0000, 182, 42, 44, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 182, 60, 44, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 162, 62
+CAPTION "Èásteènı popis"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Parametry", 100, 0x0007, 4, 2, 111, 56
+    CONTROL 0x80, "&Velikost", 203, 0x0003, 10, 13, 100, 10
+    CONTROL 0x80, "&Datum poslední zmìny", 204, 0x0003, 10, 24, 100, 10
+    CONTROL 0x80, "Èas poslední &zmìny", 205, 0x0003, 10, 35, 100, 10
+    CONTROL 0x80, "&Atributy souboru", 206, 0x0003, 10, 46, 100, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 118, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 118, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 118, 44, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 156, 98
+CAPTION "Typ zobrazenıch souborù"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Jméno:", 100, 0x000c, 4, 6, 28, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 4, 65, 12
+    CONTROL 0x80, "Typ souboru", 100, 0x0007, 4, 20, 95, 62
+    CONTROL 0x80, "&Adresáøe", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "&Programy", 210, 0x0003, 10, 43, 60, 12
+    CONTROL 0x80, "&Dokumenty", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "&Ostatní soubory", 212, 0x0003, 10, 67, 81, 12
+    CONTROL 0x80, "&Zobrazit skryté a systémové soubory", 250, 0x0003, 4, 85, 152, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 112, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 112, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 112, 44, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 80
+CAPTION "Potvrzení"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Potvrzované èinnosti", 100, 0x0007, 4, 2, 108, 74
+    CONTROL 0x80, "&Smazání souboru", 219, 0x0003, 10, 13, 80, 12
+    CONTROL 0x80, "Smazání &adresáøe", 220, 0x0003, 10, 25, 80, 12
+    CONTROL 0x80, "&Pøepis souboru", 221, 0x0003, 10, 37, 80, 12
+    CONTROL 0x80, "Povely zadané &myší", 249, 0x0003, 10, 49, 88, 12
+    CONTROL 0x80, "&Diskové povely", 251, 0x0003, 10, 61, 80, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 120, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 120, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 120, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Pøesun souboru(ù)..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 4, 4, 60, 10
+    CONTROL 0x82, "", 201, 0x008b, 64, 4, 182, 10
+    CONTROL 0x82, "Kam:", 108, 0x008b, 4, 14, 60, 10
+    CONTROL 0x82, "", 109, 0x008b, 64, 14, 182, 10
+    CONTROL 0x80, "Zrušit", 2, 0x0001, 206, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 120, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Tisk souboru(ù)...", -1, 0x0001, 0, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 0, 20, 120, 12
+    CONTROL 0x80, "Zrušit", 2, 0x0001, 44, 38, 32, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 212, 89
+CAPTION "Asociace typù souborù s aplikacemi"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Soubory s rozšíøením:", 99, 0x000c, 4, 6, 74, 10
+    CONTROL 0x81, "", 112, 0x0400, 80, 4, 35, 12
+    CONTROL 0x82, "&Asociovat s aplikací:", 99, 0x000c, 4, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 4, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 10, 44, 146, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 162, 4, 46, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 162, 22, 46, 14
+    CONTROL 0x80, "Na&listovat...", 232, 0x0000, 162, 53, 46, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 162, 71, 46, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 250, 69
+CAPTION "Volba souboru"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Tato cesta neodpovídá formátu DOS pro jména souborù.  Zadejte, prosím, nové jméno souboru.", 99, 0x0000, 4, 4, 190, 24
+    CONTROL 0x82, "Nové &jméno:", 99, 0x0002, 0, 52, 60, 12
+    CONTROL 0x81, "", 103, 0x0000, 62, 51, 130, 12
+    CONTROL 0x82, "Pùvodní cesta:", 99, 0x0002, 0, 28, 60, 11
+    CONTROL 0x81, "", 102, 0x0880, 62, 28, 130, 11
+    CONTROL 0x82, "Do adresáøe:", 99, 0x0002, 0, 38, 60, 11
+    CONTROL 0x81, "", 101, 0x0880, 62, 38, 130, 11
+    CONTROL 0x80, "OK", 1, 0x0001, 206, 4, 40, 14
+    CONTROL 0x80, "Zrušit", 2, 0x0000, 206, 22, 40, 14
+    CONTROL 0x80, "&Nápovìda", 254, 0x0000, 206, 44, 40, 14
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Ukonèení bìhu Windows"
+0x0029   "Toto je konec vaší práce ve Windows."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Kopírování diskety"
+0x0033   "Vlote cílovou disketu."
+0x0034   "Vlote zdrojovou disketu."
+0x0035   "Vlote zdrojovou a cílovou disketu."
+0x0036   "Formátování cílové diskety."
+0x0037   "Chyba pøi kopírování diskety"
+0x0038   "Disketu nelze zkopírovat."
+0x003a   "Zdrojová a cílová disketa nejsou kompatibilní."
+0x003c   "%d%% hotovo"
+0x003d   "Vytváøení koøenového adresáøe..."
+0x003e   "Kopírování systémovıch souborù..."
+0x003f   "Chyba pøi formátování diskety"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Pro tisknutí není na disku dostatek místa.
+
+Uvolnìte místo na disku smazáním jednoho èi více souborù a zkuste to znovu."
+0x00c1   "Pro tisknutí není dostatek pamìti.
+
+Zvìtšete mnoství dostupné pamìti zavøením jedné èi více aplikací a zkuste to znovu."
+0x00c2   "Pøi tisku nastala chyba.
+
+Pøesvìdète se, prosím, e tiskárna je pøipojena a správnì nastavena."
+0x00c3   "Zobrazenı adresáøovı strom není kompletní"
+0x00c5   "Cílová disketa je plná.
+
+Pokraèujte vloením nové."
+0x00c6   "Tento soubor je systémovı, skrytı, èi pouze pro ètení."
+0x00c7   "Nelze formátovat rychle.
+
+Má bıt pokraèováno normálním formátováním?"
+0x00c8   "Zadaná aplikace není program pro Windows ani pro MS-DOS."
+0x00c9   "Tato aplikace vyaduje novìjší verzi Microsoft Windows."
+0x00ca   "Tato aplikace vyaduje Windows."
+0x00cb   "Pøi zasílání povelu aplikaci nastala chyba."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Disketu nelze formátovat."
+0x0042   "Formátování je dokonèeno"
+0x0043   "Celkové místo na disketì je %ld bytù
+%ld bytù je dostupnıch
+
+Chcete formátovat další disketu?"
+0x0046   "Vytvoøení systémového disku"
+0x0047   "Opravdu chcete kopírovat soubory na disketu v jednotce %c?"
+0x0048   "Chyba systémového disku"
+0x0049   "Disková jednotka, z které byl spuštìn MS-DOS, buï neobsahuje systémové soubory, nebo tyto nejsou dostupné."
+0x004a   "Na diskovou jednotku, z které byl spuštìn MS-DOS, nelze kopírovat systémové soubory."
+0x004b   "Na disketu nelze pøidat systémové soubory.
+
+Pøesvìdète se, e v jednotce je zformátovanı disk a e dvíøka jsou zavøená."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Síová chyba"
+0x0053   "Tato jednotka obsahuje systémové soubory Windows, a proto nemùe bıt odpojena."
+0x005b   "Nelze zmìnit atributy.
+
+Pøesvìdète se, e disk není chránìn proti pøepisu."
+0x005c   "Adresáø nelze vytvoøit.
+
+Pøesvìdète se, e disk není chránìn proti pøepisu."
+0x005d   "Disk nelze pojmenovat.
+
+Pøesvìdète se, e disk není chránìn proti pøepisu, e neleí v síti a e pojmenování je platné.
+Pojmenování nemùe obsahovat tyto znaky:
+[mezera] * ? / \ | . , ; : + = [ ] ( ) & ^ < > " "
+0x005f   "Nebyly nalezeny ádné odpovídající soubory."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "Celkem %d soubory(ù) (%s bytù)"
+0x00b5   "Pøeèteno %d adresáøù"
+0x00b6   "%c: %s KB volnıch,  %s KB celkem"
+0x00b7   "nalezeny(o) %d soubory(ù)"
+0x00b9   "zvolené soubory"
+0x00ba   "Síovou jednotku nelze odpojit.
+
+Leí na ní otevøené soubory."
+0x00bb   "Zvoleny(o) %d soubory(ù) (%s bytù)"
+0x00bc   "V jednotce %c není ádná disketa.
+
+Vlote ji a zkuste to znovu."
+0x00bd   "Disketa v jednotce %c není formátovaná.
+
+Chcete ji zformátovat?"
+0x00bf   "Nelze nalézt soubor, kterı má bıt vytisknut. Pøesvìdète se, prosím, e byla zadána správná cesta a jméno souboru."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "Adresáø u existuje."
+0x0061   "Došlo ke zmìnì obsahu jednotky. Chcete aktualizovat okno s vısledky hledání souboru(ù)?"
+0x0065   "Jednotka %c:%c"
+0x006e   "Program nelze spustit"
+0x006f   "Neoèekávaná chyba: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "Formátování smae z diskety VŠECHNA data. Opravdu chcete formátovat disketu v jednotce %c?"
+0x00d3   "Potvrzení formátování diskety"
+0x00d4   "Tato operace smae VŠECHNA data z cílové diskety. Opravdu chcete pokraèovat? "
+0x00d5   "Potvrzení kopírování diskety"
+0x00d6   "&Zavøít"
+0x00d7   "Ob&nov smazané..."
+0x00d8   "&Pøipojení síové jednotky..."
+0x00d9   "&Pøipojení na sí..."
+0x00da   "Adresáø %s neexistuje.
+
+Chcete ho vytvoøit?"
+0x00db   "programy#*.exe;*.pif;*.com;*.bat#nespecifikován (*.*)#*.*#"
+0x00dc   "Nalistování"
+0x00dd   "Spuštìní programu"
+0x00de   "Soubor nelze vytisknout"
+0x00df   "Nápovìdu nelze zobrazit."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Pro spuštìní zadané aplikace není dostatek pamìti.
+
+Ukonèete jednu èi více aplikací a zkuste to znovu."
+0x0071   "Soubor (nebo jednu z jeho poloek nelze) nelze nalézt.
+
+Pøesvìdète se, prosím, o správnosti zadání jména souboru a cesty a o tom, e všechny poadované knihovny jsou dostupné."
+0x0072   "Zadaná cesta není platná."
+0x0073   "Je pouíváno pøiliš mnoho souborù najednou.
+
+Buï ukonèete jednu èi více aplikací, nebo zvìtšete hodnotu v pøíkazu FILES (soubor CONFIG.SYS), a zkuste to znovu."
+0x0074   "S tímto typem souboru není asociována ádná aplikace.
+
+Zvolte Asociuj v nabídce Soubor a vytvoøte asociaci."
+0x0075   "Nelze spustit více ne jednu kopii zadaného programu."
+0x0076   "Soubor nelze buï otevøít, nebo vytisknout.
+
+Spuste aplikaci, pomocí které byl soubor vytvoøen, a otevøete v ní (popøípadì vytisknìte) tento soubor."
+0x0078   "Potvrzení povelù zadanıch myší"
+0x0079   "Opravdu chcete kopírovat zvolené soubory nebo adresáøe do %s?"
+0x007a   "Opravdu chcete pøesunout zvolené soubory nebo adresáøe do %s?"
+0x007b   "Opravdu chcete spustit %s s pouitím %s jako poèáteèní soubor?"
+0x007c   "Správce souborù"
+0x007e   "Adresáøovı strom"
+0x007f   "Vısledky hledání: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Soubory s rozšíøením %s jsou programy a jako takové nemohou bıt asociovány s jinou aplikací."
+0x00e1   "%s není program, a proto nemùe bıt asociován s rozšíøením souboru."
+0x00e2   "(ádnı)"
+0x00e3   "Nebyly nalezeny ádné soubory."
+0x00e4   "Vytisknout více souborù najednou nelze .
+
+Zvolte pouze jeden a zkuste to znovu."
+0x00e5   "Program nebo jedna z jeho poloek je v komprimovaném stavu.
+
+Pouijte sluební program MS-DOSu EXPAND a zkopírujte jím komprimovanı soubor z instalaèní diskety."
+0x00e6   "Jeden z knihovních souborù potøebnıch ke spuštìní této aplikace je poškozen. Proveïte, prosím, novou instalaci aplikace."
+0x00e7   "Tento soubor pouívá nìjaká jiná aplikace."
+0x00e8   "Správce souborù nemusí bıt schopen mít pøístup k souborùm v adresáøi "%s".
+
+Chcete pokraèovat?"
+0x00e9   "Vytváøení adresáøe"
+0x00ea   "%ld bytù"
+0x00eb   "%s bytù"
+0x00ec   "Zkopírovat více souborù nebo adresáøù najednou do Schránky nelze.
+
+Zvolte pouze jeden a zkuste to znovu."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Pøíliš mnoho souborù"
+0x0085   "Správce souborù - došla pamì"
+0x0086   "Pøeèíst celı adresáø není moné.  Bude zobrazen pouze èásteènı seznam."
+0x008c   "Bìnı adresáø: %s"
+0x008d   "Kopírování"
+0x008f   "Zmìna jména"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Formátování diskety"
+0x0092   "Zvolte disk, kterı má bıt formátován."
+0x0094   "&Odpojení síové jednotky..."
+0x0096   "Vytváøení:"
+0x0097   "Vypouštìní..."
+0x0098   "Kopírování:"
+0x0099   "Zmìna jména..."
+0x009a   "Pøesun..."
+0x009b   "Mazání..."
+0x009c   "Probíhá tisknutí: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "Jednotka %c neexistuje."
+0x00a9   "Kopírování..."
+0x00aa   "Vypouštìní:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Otevírání..."
+0x01a5   "Zavírání..."
+0x01a6   "Je otevøeno pøíliš mnoho oken s adresáøi.
+
+Zavøete jedno èí více oken a zkuste to znovu."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Chyba pøi pøesunu souboru"
+0x03ea   "Chyba pøi kopírování souboru"
+0x03eb   "Chyba pøi mazání souboru"
+0x03ec   "Chyba pøi pøejmenování souboru"
+0x03ed   "Chyba pøi volbì diskové jednotky"
+0x03ee   "Chyba pøi ètení adresáøe"
+0x03ef   "Chyba pøi pojmenovávání disku"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "Nelze pøesunout %s: %s"
+0x03f4   "Nelze kopírovat %s: %s"
+0x03f5   "Nelze smazat %s: %s"
+0x03f6   "Nelze pøejmenovat %s: %s"
+0x03fd   "Nelze vytvoøit adresáø %s: %s"
+0x03fe   "Nelze vyjmout adresáø %s: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Nelze vytvoøit nebo pøepsat %s: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Neplatná funkce DOSu"
+0x0412   "Soubor nelze nalézt.
+
+Pøesvìdète se, prosím, e byla zadána správná cesta a jméno souboru."
+0x0413   "Cestu nelze nalézt.
+
+Pøesvìdète se, prosím, e byla správnì zadána."
+0x0414   "Je pouíváno pøiliš mnoho souborù najednou.
+
+Ukonèete jednu èi více aplikací."
+0x0415   "Pøístup byl odepøen.
+
+Pøesvìdète se, prosím, e disk není plnı, nebo chránìn proti pøepisu."
+0x0416   "Neplatnı handle souboru"
+0x0418   "Nedostatek pamìti.
+
+Ukonèete jednu èi více aplikací a zkuste to znovu."
+0x041c   "Neplatnı pøístup k souboru"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Bìnı adresáø nelze vyjmout (vnitøní chyba)."
+0x0421   "Neplatné zaøízení"
+0x0422   "Adresáø je prázdnı."
+0x0423   "Disk je chránìn proti pøepisu.
+
+Odstraòte tuto ochranu, nebo pouijte jinı disk, a zkuste to znovu."
+0x042d   "Zápis se nezdaøil. Cílovı disk nebo soubor mùe bıt poškozen."
+0x042f   "Ètení se nezdaøilo. Cílovı disk nebo soubor mùe bıt poškozen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Neplatná operace"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Pøístup do sítì byl odepøen. Pøesvìdète se, prosím, e máte správná síová povolení k provedení této operace."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Porušení pravidel sdílení. Zdroj nebo cíl mùe bıt pouíván nìkde jinde."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Nedostatek místa na disku.
+
+Uvolnìte místo na disku smazáním jednoho èi více souborù a zkuste to znovu."
+0x0481   "Zdroj a cíl jsou totoné."
+0x0482   "Zvolte jen jeden soubor k pøejmenování. Mùete ale také pouít syntaxi MS-DOSu k zadání více souborù pomocí '*' a '?' (napøíklad *.TXT), a pøejmenovat skupinu souborù s podobnım jménem."
+0x0483   "Adresáø nebo disk nelze pøejmenovat."
+0x0484   "Koøenovı adresáø (vnitøní chyba)."
+0x0486   "Cílovı adresáø je podadresáø zdrojového adresáøe."
+0x0487   "Soubor je pouíván Windows."
+0x0488   "Pøístup byl odepøen. Zdrojovı soubor je patrnì pouíván."
+0x0489   "Cesta je pøíliš dlouhá."
+0x048a   "Zadejte pouze jeden soubor nebo adresáø do pole 'Kam'. Mùete také pouít syntaxi MS-DOSu k zadání více souborù pomocí '*' a '?' (napøíklad *.TXT)."
+0x048b   "Soubor zadaného jména ji existuje. Zkuste to znovu, ale zadejte jiné jméno v poli 'Kam'."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 MB"
+0x0131   "720K"
+0x0132   "1,44 MB"
+0x0133   "2,88 MB"
+0x0134   "Kapacita jednotky"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360K"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Nedostatek pamìti."
+0x0192   "Diskovou jednotku, z které byl spuštìn MS-DOS, nelze formátovat."
+0x0193   "Disková jednotka, z které byl spuštìn MS-DOS, má neplatnou velikost sektoru."
+0x0194   "Neznámı typ jednotky."
+0x0199   "Nepodaøilo se pøenést systémové soubory."
+0x019a   "Tuto disketu je moné formátovat na kapacitu %s. Chcete pokraèovat s formátováním na tuto kapacitu?"
+0x019b   "Disketu nelze formátovat.
+
+Pøesvìdète se, prosím, e disketa je správnì zasunuta do jednotky, e není chránìna proti pøepisu, e není poškozena, èi urèena pro formátování na jinou kapacitu."
+
+
