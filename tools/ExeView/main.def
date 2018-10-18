@@ -1,0 +1,35 @@
+NAME         EXEVIEW
+
+DESCRIPTION  'Windows Executable Viewer'
+
+EXETYPE      WINDOWS
+
+STUB         'WINSTUB.EXE'
+
+CODE  MOVEABLE DISCARDABLE
+
+DATA  PRELOAD MOVEABLE MULTIPLE
+
+
+HEAPSIZE     1024
+STACKSIZE    5120
+
+SEGMENTS    _TEXT  PRELOAD MOVABLE DISCARDABLE
+SEGMENTS    MAIN   PRELOAD MOVABLE DISCARDABLE
+    
+EXPORTS
+    MainWndProc     @1
+    About           @2
+    NameTableProc   @3
+    IconGroupProc   @4
+    CursorGroupProc @5
+    AccelTableProc  @6
+    StringTableProc @7
+    FontDirProc     @8
+
+    ShowIconProc    @10
+    ShowCursorProc  @11
+    ShowMenuProc    @12
+    ShowDialogProc  @13
+    ShowBitmapProc  @14
+    
