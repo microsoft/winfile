@@ -1,0 +1,1132 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&File"
+    BEGIN
+    MENUITEM    "&Open	Enter", 0X0065
+    MENUITEM    "&Move...	F7", 0X006A
+    MENUITEM    "&Copy...	F8", 0X006B
+    MENUITEM    "&Delete...	Del", 0X006C
+    MENUITEM    "Re&name...", 0X006D
+    MENUITEM    "Proper&ties...	Alt+Enter", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Run...", 0X0069
+    MENUITEM    "&Print...", 0X0066
+    MENUITEM    "&Associate...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Cr&eate Directory...", 0X006F
+    MENUITEM    "Searc&h...", 0X0068
+    MENUITEM    "&Select Files...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "E&xit", 0X0073
+    END
+    POPUP   "&Disk"
+    BEGIN
+    MENUITEM    "&Copy Disk...", 0X00C9
+    MENUITEM    "&Label Disk...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Format Disk...", 0X00CB
+    MENUITEM    "&Make System Disk...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Select Drive...", 0X00FB
+    END
+    POPUP   "&Tree"
+    BEGIN
+    MENUITEM    "E&xpand One Level	+", 0X012D
+    MENUITEM    "Expand &Branch	*", 0X012E
+    MENUITEM    "Expand &All	Ctrl+*", 0X012F
+    MENUITEM    "&Collapse Branch	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Indicate Expandable Branches", 0X01F9
+    END
+    POPUP   "&View"
+    BEGIN
+    MENUITEM    "T&ree and Directory", 0X019D
+    MENUITEM    "Tr&ee Only", 0X019B
+    MENUITEM    "Directory &Only", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "Sp&lit", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Name", 0X0191
+    MENUITEM    "&All File Details", 0X0192
+    MENUITEM    "&Partial Details...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Sort by Name", 0X0194
+    MENUITEM    "Sort &by Type", 0X0195
+    MENUITEM    "Sort by Si&ze", 0X0196
+    MENUITEM    "Sort by &Date", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "By File &Type...", 0X0199
+    END
+    POPUP   "&Options"
+    BEGIN
+    MENUITEM    "&Confirmation...", 0X01F5
+    MENUITEM    "&Font...", 0X01FE
+    MENUITEM    "Customize Tool&bar...", 0X0200
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Toolbar", 0X01FC
+    MENUITEM    "&Drivebar", 0X01FB
+    MENUITEM    "&Status Bar", 0X01F7
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Minimize on Use", 0X01F8
+    MENUITEM    "Save Settings on &Exit", 0X01FF
+    END
+    POPUP   "&Window"
+    BEGIN
+    MENUITEM    "&New Window", 0X0452
+    MENUITEM    "&Cascade	Shift+F5", 0X044D
+    MENUITEM    "Tile &Horizontally", 0X044F
+    MENUITEM    "&Tile Vertically	Shift+F4", 0X044E
+    MENUITEM    "&Arrange Icons", 0X0451
+    MENUITEM    "&Refresh	F5", 0X0450
+    END
+    POPUP   "&Help"
+    BEGIN
+    MENUITEM    "&Contents", 0X04B1
+    MENUITEM    "&Search for Help on...", 0X001E
+    MENUITEM    "&How to Use Help", 0X04B2
+    MENUITEM    "", 0X0000
+    MENUITEM    "&About File Manager...", 0X04B3
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 264, 127
+CAPTION "Font"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Font:", 1088, 0x0000, 6, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 54
+    CONTROL 0x82, "Font St&yle:", 1089, 0x0000, 108, 3, 44, 9
+    CONTROL 0x85, "", 1137, 0x0001, 108, 13, 64, 54
+    CONTROL 0x82, "&Size:", 1090, 0x0000, 179, 3, 30, 9
+    CONTROL 0x85, "", 1138, 0x0311, 179, 13, 32, 54
+    CONTROL 0x80, "Effects", 1072, 0x0007, 6, 72, 84, 61
+    CONTROL 0x80, "Stri&keout", 1040, 0x0003, 10, 82, 49, 10
+    CONTROL 0x80, "&Underline", 1041, 0x0003, 10, 94, 51, 10
+    CONTROL 0x80, "&Lowercase", 1042, 0x0003, 10, 82, 49, 10
+    CONTROL 0x82, "&Color:", 1091, 0x0000, 10, 106, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "OK", 1, 0x0001, 218, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 218, 23, 40, 14
+    CONTROL 0x80, "&Apply", 1026, 0x0000, 218, 40, 40, 14
+    CONTROL 0x80, "&Help", 1038, 0x0000, 218, 57, 40, 14
+    CONTROL 0x80, "Sample", 1073, 0x0007, 98, 72, 160, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 124, 160, 20
+    CONTROL 0x82, "AaBbYyZz", 1092, 0x0081, 104, 81, 149, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 201, 86
+CAPTION "Select Drive"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Drives:", 245, 0x000c, 5, 5, 41, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "OK", 1, 0x0001, 155, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 155, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 155, 44, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Run"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Command Line:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "Run &Minimized", 214, 0x0003, 3, 45, 71, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 165, 43, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 116, 83
+CAPTION "Select Files"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&File(s):", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "&Select", 1, 0x0001, 70, 6, 40, 14
+    CONTROL 0x80, "&Deselect", 6, 0x0000, 70, 23, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 70, 40, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 70, 63, 40, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 245, 95
+CAPTION "Confirm File Replace"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Replace File:", 100, 0x000c, 25, 12, 49, 10
+    CONTROL 0x82, "", 103, 0x008c, 75, 12, 165, 10
+    CONTROL 0x82, "", 105, 0x000c, 75, 22, 170, 10
+    CONTROL 0x82, "With File:", 100, 0x000c, 25, 34, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 75, 34, 165, 10
+    CONTROL 0x82, "", 106, 0x000c, 75, 44, 170, 10
+    CONTROL 0x80, "&Yes", 6, 0x0001, 33, 73, 40, 14
+    CONTROL 0x80, "Yes to &All", 107, 0x0000, 79, 73, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 125, 73, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 171, 73, 40, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Confirm File Delete"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 203, 10
+    CONTROL 0x82, "Delete File:", 100, 0x000c, 25, 18, 44, 10
+    CONTROL 0x82, "", 102, 0x008c, 70, 18, 170, 10
+    CONTROL 0x80, "&Yes", 6, 0x0001, 33, 42, 40, 14
+    CONTROL 0x80, "Yes to &All", 107, 0x0000, 79, 42, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 171, 42, 40, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Confirm Directory Delete"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Delete Directory:", 100, 0x000c, 25, 18, 55, 10
+    CONTROL 0x82, "", 102, 0x008c, 80, 18, 160, 10
+    CONTROL 0x80, "&Yes", 6, 0x0001, 33, 42, 40, 14
+    CONTROL 0x80, "Yes to &All", 107, 0x0000, 79, 42, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 171, 42, 40, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "Confirm File Move"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Move File:", 100, 0x000c, 25, 18, 44, 10
+    CONTROL 0x82, "", 102, 0x008c, 70, 18, 170, 10
+    CONTROL 0x80, "&Yes", 6, 0x0001, 33, 42, 40, 14
+    CONTROL 0x80, "Yes to &All", 107, 0x0000, 79, 42, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 171, 42, 40, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "Confirm File Rename"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Rename File:", 100, 0x000c, 25, 13, 54, 10
+    CONTROL 0x82, "", 102, 0x008c, 80, 13, 160, 10
+    CONTROL 0x80, "&Yes", 6, 0x0001, 33, 42, 40, 14
+    CONTROL 0x80, "Yes to &All", 107, 0x0000, 79, 42, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 171, 42, 40, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 240, 63
+CAPTION "Print"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 193, 10
+    CONTROL 0x82, "&Print:", 100, 0x000c, 3, 20, 23, 10
+    CONTROL 0x81, "", 102, 0x0480, 27, 18, 160, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 36, 190, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 197, 43, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 263, 63
+CAPTION "Search"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Search For:", 100, 0x000c, 5, 6, 45, 12
+    CONTROL 0x81, "", 201, 0x0480, 52, 5, 160, 12
+    CONTROL 0x82, "Start &From:", 100, 0x000c, 5, 21, 45, 12
+    CONTROL 0x81, "", 101, 0x0480, 52, 20, 160, 12
+    CONTROL 0x80, "S&earch All Subdirectories", 232, 0x0003, 52, 34, 100, 12
+    CONTROL 0x82, "", 104, 0x000c, 5, 50, 200, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 217, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 217, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 217, 43, 40, 14
+END
+
+14 DIALOG 0x80c8, 47, 59, 231, 64
+CAPTION "Move"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Current Directory: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&To:", 100, 0x000c, 3, 33, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 37, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 26, 33, 10, 10
+    CONTROL 0x80, "&Copy to Clipboard", 256, 0x0004, 26, 47, 72, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 49, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 45, 49, 138, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 185, 44, 40, 14
+    CONTROL 0x82, "&From:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+10014 DIALOG 0x80c8, 47, 59, 231, 98
+CAPTION "Move"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Current Directory: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&To:", 100, 0x000c, 3, 38, 20, 10
+    CONTROL 0x62, "edit", 103, 0x0004, 37, 38, 138, 42
+    CONTROL 0x50, "€", 256, 0x0401, 6656, 9728, 2560, 2560
+    CONTROL 0x80, "&Copy to Clipboard", 256, 0x0004, 26, 84, 72, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 84, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 45, 84, 138, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Browse", 600, 0x0000, 185, 40, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 185, 61, 40, 14
+    CONTROL 0x82, "&From:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+200 DIALOG 0x00c8, 36, 24, 164, 134
+CAPTION "Select Directory"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x81, "", 1152, 0x0490, 6, 16, 90, 12
+    CONTROL 0x83, "", 1120, 0x0053, 12, 28, 84, 68
+    CONTROL 0x82, "&Directories:", -1, 0x0000, 10, 6, 92, 9
+    CONTROL 0x82, "", 1088, 0x0000, 10, 16, 92, 9
+    CONTROL 0x83, "", 1121, 0x0053, 10, 28, 92, 68
+    CONTROL 0x82, "Dri&ves:", 1091, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1137, 0x0353, 10, 112, 92, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 108, 6, 50, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 108, 24, 50, 14
+    CONTROL 0x82, "File &Name:", 1090, 0x0000, 6, 6, 76, 9
+    CONTROL 0x82, "List Files of &Type:", 1089, 0x0000, 6, 104, 90, 9
+    CONTROL 0x85, "", 1136, 0x0043, 6, 114, 90, 36
+    CONTROL 0x80, "&Help", 1038, 0x0000, 208, 46, 50, 14
+    CONTROL 0x80, "&Read Only", 1040, 0x0003, 208, 68, 50, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 246, 64
+CAPTION "Delete"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Current Directory: C", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "De&lete:", 100, 0x000c, 3, 20, 35, 10
+    CONTROL 0x81, "", 102, 0x0480, 40, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 35, 35, 10
+    CONTROL 0x82, "", 201, 0x008b, 40, 35, 155, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 200, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 200, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 200, 43, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 206, 65
+CAPTION "Properties"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d Files Selected, Total %s bytes", 100, 0x000c, 5, 5, 144, 10
+    CONTROL 0x80, "Attributes", -1, 0x0007, 5, 18, 120, 42
+    CONTROL 0x80, "&Read Only", 215, 0x0003, 10, 29, 52, 12
+    CONTROL 0x80, "H&idden", 216, 0x0003, 72, 29, 52, 12
+    CONTROL 0x80, "&Archive", 217, 0x0003, 10, 41, 52, 12
+    CONTROL 0x80, "&System", 218, 0x0003, 72, 41, 52, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 150, 6, 50, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 150, 23, 50, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 150, 43, 50, 14
+END
+
+16 DIALOG 0x80c8, 23, 13, 250, 195
+CAPTION "Properties for %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 50, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 194, 23, 50, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 194, 40, 50, 14
+    CONTROL 0x82, "&File Name:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 60, 5, 134, 10
+    CONTROL 0x82, "&Path:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 60, 16, 134, 10
+    CONTROL 0x82, "Last Change:", 100, 0x000c, 5, 27, 62, 10
+    CONTROL 0x82, "", 204, 0x000c, 60, 27, 97, 10
+    CONTROL 0x82, "Version:", 258, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "Not marked", 259, 0x008c, 60, 38, 90, 10
+    CONTROL 0x82, "&Copyright:", -1, 0x0000, 5, 49, 45, 10
+    CONTROL 0x81, "Not marked", 265, 0x0880, 60, 49, 134, 10
+    CONTROL 0x82, "Size:", 260, 0x000c, 5, 60, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 60, 60, 90, 10
+    CONTROL 0x80, "Attributes", 100, 0x0007, 4, 74, 120, 42
+    CONTROL 0x80, "&Read Only", 215, 0x0003, 9, 86, 52, 12
+    CONTROL 0x80, "H&idden", 216, 0x0003, 71, 86, 49, 12
+    CONTROL 0x80, "&Archive", 217, 0x0003, 9, 98, 52, 12
+    CONTROL 0x80, "&System", 218, 0x0003, 71, 98, 49, 12
+    CONTROL 0x80, "&Version Information", 262, 0x0007, 4, 121, 242, 72
+    CONTROL 0x83, "", 263, 0x1003, 9, 132, 91, 58
+    CONTROL 0x81, "", 264, 0x0804, 103, 132, 138, 58
+END
+
+17 DIALOG 0x80c8, 20, 20, 200, 63
+CAPTION "Create Directory"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Name:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 201, 0x0480, 30, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 157, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 157, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 157, 43, 40, 14
+END
+
+10017 DIALOG 0x80c8, 20, 20, 240, 74
+CAPTION "Create Directory"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Name:", 100, 0x000c, 3, 28, 20, 10
+    CONTROL 0x62, "edit", 201, 0x0000, 3, 40, 170, 18
+    CONTROL 0x50, "‚", 26624, 0x8c00, 768, 15360, -27136, 2560
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 197, 43, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 157, 64
+CAPTION "Make System Disk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Copy System Files to Disk in:", -1, 0x000c, 5, 8, 100, 10
+    CONTROL 0x85, "", 222, 0x0003, 30, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 110, 43, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 157, 64
+CAPTION "Copy Disk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Source In:", -1, 0x000c, 5, 8, 50, 10
+    CONTROL 0x85, "", 245, 0x0003, 55, 6, 40, 37
+    CONTROL 0x82, "&Destination In:", 206, 0x000c, 5, 22, 50, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 110, 43, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Copying Disk"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Now Copying disk in ", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "Drive A:", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Reading the source disk", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Cancel", 2, 0x0001, 44, 39, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 63
+CAPTION "Label Disk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Label:", 100, 0x000c, 5, 15, 30, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 115, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 115, 43, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 183, 96
+CAPTION "Format Disk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 140, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 140, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 140, 43, 40, 14
+    CONTROL 0x82, "&Disk In:", -1, 0x000c, 5, 7, 49, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 4, 65, 40
+    CONTROL 0x82, "&Capacity:", 100, 0x000c, 5, 20, 49, 10
+    CONTROL 0x85, "", 241, 0x0003, 55, 19, 65, 40
+    CONTROL 0x80, "Options", 102, 0x0007, 5, 39, 115, 53
+    CONTROL 0x82, "&Label:", -1, 0x000c, 11, 51, 39, 10
+    CONTROL 0x81, "", 201, 0x0000, 40, 49, 63, 12
+    CONTROL 0x80, "&Make System Disk", 242, 0x0003, 11, 62, 90, 12
+    CONTROL 0x80, "&Quick Format", 244, 0x0003, 11, 76, 90, 12
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 50
+CAPTION "Formatting Disk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Now formatting disk", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "Initializing Drive...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Cancel", 2, 0x0001, 54, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 57
+CAPTION "Make System Disk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Now copying system files", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "Press Cancel if you want to abort.", 100, 0x0001, 0, 14, 174, 8
+    CONTROL 0x80, "Cancel", 2, 0x0001, 66, 39, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 241, 135
+CAPTION "Network Connections"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "New Connection", -1, 0x0007, 5, 3, 170, 55
+    CONTROL 0x82, "&Network Path:", -1, 0x0000, 10, 16, 55, 10
+    CONTROL 0x81, "", 223, 0x0480, 65, 14, 100, 12
+    CONTROL 0x82, "D&rive:", -1, 0x0000, 10, 30, 24, 10
+    CONTROL 0x85, "", 222, 0x0003, 65, 28, 40, 100
+    CONTROL 0x82, "Pass&word:", -1, 0x0000, 10, 44, 36, 10
+    CONTROL 0x81, "", 224, 0x04a0, 65, 42, 100, 12
+    CONTROL 0x82, "Current Dri&ve Connections:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 160, 60
+    CONTROL 0x80, "C&lose", 2, 0x0001, 190, 6, 45, 14
+    CONTROL 0x80, "&Connect", 1, 0x0000, 190, 27, 45, 14
+    CONTROL 0x80, "&Previous...", 226, 0x0000, 190, 44, 45, 14
+    CONTROL 0x80, "&Browse...", 227, 0x0000, 190, 61, 45, 14
+    CONTROL 0x80, "&Disconnect", 255, 0x0000, 190, 78, 45, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 190, 95, 45, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 231, 98
+CAPTION "Previous Network Connections"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Network &Paths:", 100, 0x000c, 3, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "&Select", 1, 0x0001, 181, 6, 44, 14
+    CONTROL 0x80, "Close", 2, 0x0000, 181, 24, 44, 14
+    CONTROL 0x80, "&Delete", 219, 0x0000, 181, 41, 44, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 181, 58, 44, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 163, 65
+CAPTION "Partial Details"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Details", 100, 0x0007, 4, 4, 111, 55
+    CONTROL 0x80, "&Size", 203, 0x0003, 11, 15, 100, 9
+    CONTROL 0x80, "Last &Modification Date", 204, 0x0003, 11, 25, 100, 9
+    CONTROL 0x80, "Last Modification &Time", 205, 0x0003, 11, 35, 100, 9
+    CONTROL 0x80, "&File Attributes", 206, 0x0003, 11, 45, 100, 9
+    CONTROL 0x80, "OK", 1, 0x0001, 120, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 120, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 120, 43, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 157, 102
+CAPTION "By File Type"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Name:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "File Type", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "&Directories", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "&Programs", 210, 0x0003, 10, 43, 60, 12
+    CONTROL 0x80, "Docu&ments", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "&Other Files", 212, 0x0003, 10, 67, 60, 12
+    CONTROL 0x80, "Show Hidden/&System Files", 250, 0x0003, 5, 85, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 110, 43, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 80
+CAPTION "Confirmation"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Confirm On", 100, 0x0007, 5, 3, 108, 73
+    CONTROL 0x80, "File &Delete", 219, 0x0003, 10, 15, 80, 12
+    CONTROL 0x80, "D&irectory Delete", 220, 0x0003, 10, 27, 80, 12
+    CONTROL 0x80, "File &Replace", 221, 0x0003, 10, 39, 80, 12
+    CONTROL 0x80, "&Mouse Action", 249, 0x0003, 10, 51, 80, 12
+    CONTROL 0x80, "Dis&k Commands", 251, 0x0003, 10, 63, 80, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 118, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 118, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 118, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Moving..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 55, 5, 192, 10
+    CONTROL 0x82, "To:", 108, 0x008b, 5, 15, 25, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 15, 192, 10
+    CONTROL 0x80, "Cancel", 2, 0x0001, 200, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 120, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Printing File...", -1, 0x0001, 4, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 4, 20, 120, 12
+    CONTROL 0x80, "Cancel", 2, 0x0001, 44, 40, 32, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 211, 96
+CAPTION "Associate"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Files with Extension:", 99, 0x000c, 5, 8, 74, 10
+    CONTROL 0x81, "", 112, 0x0400, 80, 6, 35, 12
+    CONTROL 0x82, "&Associate With:", 99, 0x000c, 5, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 5, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 11, 44, 146, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Browse...", 232, 0x0000, 165, 43, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 165, 60, 40, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 250, 78
+CAPTION "Select Filename"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "This path does not match the DOS format for filenames.  Please enter a new name.", 99, 0x0000, 4, 4, 190, 24
+    CONTROL 0x82, "&New Name:", 99, 0x0002, 5, 56, 50, 12
+    CONTROL 0x81, "", 103, 0x0000, 57, 55, 130, 12
+    CONTROL 0x82, "Original Path:", 99, 0x0002, 5, 28, 50, 11
+    CONTROL 0x81, "", 102, 0x0880, 57, 28, 130, 12
+    CONTROL 0x82, "To Directory:", 99, 0x0002, 5, 42, 50, 11
+    CONTROL 0x81, "", 101, 0x0880, 57, 42, 130, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 205, 4, 40, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 205, 20, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 205, 36, 40, 14
+END
+
+48 DIALOG 0x80c8, 23, 13, 250, 107
+CAPTION "Properties for %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 50, 14
+    CONTROL 0x80, "Cancel", 2, 0x0000, 194, 23, 50, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 194, 43, 50, 14
+    CONTROL 0x82, "&File Name:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 60, 5, 134, 10
+    CONTROL 0x82, "&Path:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 60, 16, 134, 10
+    CONTROL 0x82, "Last Change:", 100, 0x000c, 5, 27, 62, 10
+    CONTROL 0x82, "", 204, 0x000c, 60, 27, 97, 10
+    CONTROL 0x82, "Size:", 260, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 60, 38, 90, 10
+    CONTROL 0x80, "Attributes", 100, 0x0007, 4, 52, 120, 42
+    CONTROL 0x80, "&Read Only", 215, 0x0003, 9, 64, 52, 12
+    CONTROL 0x80, "H&idden", 216, 0x0003, 71, 64, 49, 12
+    CONTROL 0x80, "&Archive", 217, 0x0003, 9, 76, 52, 12
+    CONTROL 0x80, "&System", 218, 0x0003, 71, 76, 49, 12
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0101   "(Root Directory)"
+0x0102   "(Not Applicable)"
+0x0103   "Shared as %s"
+0x0104   "Not shared"
+0x0107   "Copying files to %s"
+0x0108   "Moving files to %s"
+0x0109   "Running files with %s"
+0x010a   "%s bytes"
+0x010b   "%sKB"
+0x010c   "%sMB"
+0x010d   "%sGB"
+0x010e   "%sTB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Exit Windows"
+0x0029   "This will end your Windows session."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Copy Disk"
+0x0033   "Insert destination disk."
+0x0034   "Insert source disk."
+0x0035   "Insert source and destination disks."
+0x0036   "Formatting destination disk."
+0x0037   "Copy Disk Error"
+0x0038   "Unable to copy disk."
+0x003a   "The source and destination drives are incompatible."
+0x003c   "%d%% completed"
+0x003d   "Creating root directory..."
+0x003e   "Copying system files..."
+0x003f   "Format Disk Error"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "There is not enough disk space to print.
+
+Delete one or more files to increase disk space, and then try again."
+0x00c1   "There is not enough memory to print.
+
+Quit one or more applications, and then try again."
+0x00c2   "An error has occurred while printing.
+
+Make sure the printer is properly configured and selected."
+0x00c3   "Incomplete directory tree displayed"
+0x00c5   "The destination drive is full.
+
+Insert a new disk to continue."
+0x00c6   "This is a system, hidden, or read-only file."
+0x00c7   "File Manager cannot perform a quick format.
+
+Continue with normal format?"
+0x00c8   "The specified application is not a Windows-based or MS-DOS-based application."
+0x00c9   "This application requires a newer version of Microsoft Windows."
+0x00ca   "This application requires Windows."
+0x00cb   "An error occurred in sending the command to the application."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Cannot format disk."
+0x0042   "Format Complete"
+0x0043   "%ld bytes total disk space
+%ld bytes available on disk
+
+Do you want to format another disk?"
+0x0046   "Make System Disk"
+0x0047   "Are you sure you want to copy system files to the disk in drive %c?"
+0x0048   "System Disk Error"
+0x0049   "The MS-DOS startup drive does not contain system files or is not available."
+0x004a   "You cannot copy system files to the MS-DOS startup drive."
+0x004b   "You cannot add system files to this disk.
+
+Make sure a formatted disk is in the drive and that the drive door is closed."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "File Manager cannot create or replace %s: %s"
+0x0408   "File Manager cannot create an MS-DOS system diskette because Windows NT multiboot is installed on your system.  To make a system diskette, use the SYS utility from the MS-DOS command line."
+0x0409   "Do you want to format the diskette now without transferring the system?"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Network Error"
+0x0053   "This drive contains the Windows system files and cannot be disconnected."
+0x005b   "File Manager cannot change the attributes.
+
+Make sure the disk is not write-protected."
+0x005c   "File Manager cannot create a directory.
+
+Make sure the disk is not write-protected."
+0x005d   "File Manager cannot label the disk.
+
+Make sure the disk is not write-protected, is not a network drive, and that the label is valid.
+Labels cannot contain the following characters:
+[space] * ? / \ | . , ; : + = [ ] ( ) & ^ < > " "
+0x005f   "No matching files were found."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "Total %d file(s) (%s)"
+0x00b5   "Directories read: %d "
+0x00b6   "%c: %s free,  %s total"
+0x00b7   "%d file(s) found"
+0x00b9   "the selected files"
+0x00ba   "File Manager cannot disconnect from this network drive because there are files open."
+0x00bb   "Selected %d file(s) (%s)"
+0x00bc   "There is no disk in drive %c.
+
+Insert a disk, and then try again."
+0x00bd   "The disk in drive %c is not formatted.
+
+Do you want to format it now?"
+0x00bf   "The file you want to print cannot be found. Make sure the correct path and filename are specified."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "The specified directory already exists."
+0x0061   "The contents of this drive have changed. Do you want to update the Search Results window?"
+0x0065   "Drive %c:%c"
+0x006e   "Cannot Run Program"
+0x006f   "Unexpected error: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "Formatting will erase ALL data from your disk. Are you sure you want to format the disk in drive %c?"
+0x00d3   "Confirm Format Disk"
+0x00d4   "This operation will erase ALL data from the destination disk. Are you sure you want to continue?"
+0x00d5   "Confirm Copy Disk"
+0x00d6   "&Close"
+0x00da   "The %s directory does not exist.
+
+Do you want to create it?"
+0x00db   "Programs#*.exe;*.pif;*.com;*.bat#All Files (*.*)#*.*#"
+0x00dc   "Browse"
+0x00dd   "Run"
+0x00de   "Cannot Print File"
+0x00df   "Unable to show Help information."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "There is not enough memory to start the specified application.
+
+Quit one or more applications, and then try again."
+0x0071   "File Manager cannot find the specified file (or one of its components).
+
+Make sure the path and filename are correct and that all required libraries are available."
+0x0072   "The specified path is invalid."
+0x0073   "There are too many files currently in use.
+
+Quit one or more applications, or increase the value of the Files command in CONFIG.SYS, and then try again."
+0x0074   "There is no application associated with this file.
+
+Choose Associate from the File menu to create an association."
+0x0075   "You cannot start more than one copy of the specified program."
+0x0076   "File Manager cannot open or print the specified file.
+
+Start the application used to create this file, and open or print it from there."
+0x0078   "Confirm Mouse Operation"
+0x0079   "Are you sure you want to copy the selected files or directories to %s?"
+0x007a   "Are you sure you want to move the selected files or directories to %s?"
+0x007b   "Are you sure you want to start %s by using %s as the initial file?"
+0x007c   "File Manager"
+0x007e   "Directory Tree"
+0x007f   "Search Results: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Files with the extension %s are programs and cannot be associated with another application."
+0x00e1   "%s is not a program and cannot be associated with a file extension."
+0x00e2   "(None)"
+0x00e4   "File Manager cannot print multiple files.
+
+Select only one file, and then try again."
+0x00e5   "This program or one of its components is compressed.
+
+Use the MS-DOS Expand utility to copy the file from the setup disks."
+0x00e6   "One of the library files needed to run this application is damaged. Please reinstall this application."
+0x00e7   "This file is in use by some other application."
+0x00e8   "File Manager may not be able to access files created in the directory "%s".
+
+Do you want to continue?"
+0x00e9   "Create Directory"
+0x00ea   "%ld bytes"
+0x00eb   "%s bytes"
+0x00ec   "You cannot copy multiple files or directories onto the Clipboard.
+
+Select a single file, and then try again."
+0x00ed   "%s - %s"
+0x00ee   "Drive:"
+0x00ef   "%s, "
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Too Many Files"
+0x0085   "File Manager - Out of Memory"
+0x0086   "Unable to read entire directory. Only a partial listing will be displayed."
+0x008c   "Current Directory: %s"
+0x008d   "Copy"
+0x008f   "Rename"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Format Disk"
+0x0092   "Select the disk to format."
+0x0096   "Creating:"
+0x0097   "Removing..."
+0x0098   "Copying:"
+0x0099   "Renaming..."
+0x009a   "Moving..."
+0x009b   "Deleting..."
+0x009c   "Printing: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "Drive %c does not exist."
+0x00a9   "Copying..."
+0x00aa   "Removing:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Opening..."
+0x01a5   "Closing..."
+0x01a6   "There are too many directory windows open.
+
+Close one or more windows, and then try again."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Error Moving File"
+0x03ea   "Error Copying File"
+0x03eb   "Error Deleting File"
+0x03ec   "Error Renaming File"
+0x03ed   "Error Selecting Drive"
+0x03ee   "Error Reading Directory"
+0x03ef   "Error Labeling Disk"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "File Manager cannot move %s: %s"
+0x03f4   "File Manager cannot copy %s: %s"
+0x03f5   "File Manager cannot delete %s: %s"
+0x03f6   "File Manager cannot rename %s: %s"
+0x03fd   "File Manager cannot create directory %s: %s"
+0x03fe   "File Manager cannot remove directory %s: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Invalid MS-DOS function."
+0x0412   "File Manager cannot find the specified file.
+
+Make sure the correct path and filename are specified."
+0x0413   "File Manager cannot find the specified path.
+
+Make sure the correct path is specified."
+0x0414   "There are too many other files currently in use. Quit one or more applications, and then try again."
+0x0415   "Access is denied.
+
+Make sure the disk is not full or write-protected."
+0x0416   "Invalid file handle."
+0x0418   "There is not enough memory.
+
+Quit one or more applications, and then try again."
+0x041c   "Invalid file access."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "File Manager cannot remove the current directory (internal error)."
+0x0421   "Invalid device."
+0x0422   "The directory is empty."
+0x0423   "The disk is write-protected.
+
+Remove the write-protection on this disk or use another disk, and then try again."
+0x042d   "File Manager cannot write to the destination file or disk."
+0x042f   "File Manager cannot read from the source file or disk."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Invalid operation."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Network access is denied. Be sure you have the correct network permissions to perform this operation."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "There has been a sharing violation. The source or destination files may be in use."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "There is not enough disk space.
+
+Delete one or more files to increase disk space, and then try again."
+0x0481   "The source and destination filenames are the same."
+0x0482   "Select only one file to rename, or use MS-DOS wildcards (for example, *.TXT) to rename a group of files with similar names."
+0x0483   "You cannot rename to a different directory or disk."
+0x0484   "Root directory (internal error)."
+0x0486   "The destination directory is a subdirectory of the source directory."
+0x0487   "The specified file is being used by Windows."
+0x0488   "Access is denied. The source file may be in use."
+0x0489   "The path is too deep."
+0x048a   "Specify only one file or directory in the To box. Or, if you want to specify a group of files, use MS-DOS wildcards (for example, *.TXT)."
+0x048b   "The specified filename already exists. Try again, and specify a different name in the To box."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1.2 MB"
+0x0131   "720K"
+0x0132   "1.44 MB"
+0x0133   "2.88 MB"
+0x0134   "Drive Capacity"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360K"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "There is not enough memory."
+0x0192   "You cannot format the MS-DOS startup drive."
+0x0193   "The MS-DOS startup drive has an invalid sector size."
+0x0194   "The specified drive is an unknown type."
+0x0199   "File Manager failed to transfer the system files."
+0x019a   "This disk is capable of being formatted at a capacity of %s. Continue formatting at this capacity?"
+0x019b   "File Manager cannot format this disk.
+
+Make sure the disk is in the drive and is not write-protected, damaged, or the wrong density."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00fe   "&Directory Name:"
+0x00ff   "\StringFileInfo\040904E4\"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01f4   "Comments"
+0x01f5   "Company Name"
+0x01f6   "File Description"
+0x01f7   "Internal Name"
+0x01f8   "Legal Trademarks"
+0x01f9   "Original Filename"
+0x01fa   "Private Build Description"
+0x01fb   "Product Name"
+0x01fc   "Product Version"
+0x01fd   "Special Build Description"
+0x01fe   "Language"
+0x01ff   "Languages"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0222   "No files found."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0255   "The specified computer cannot be found."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0263   "The shared directory cannot be found."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0274   "There are too many network redirections."
+0x0276   "Invalid password."
+
+Ordinal  String
+---------------------------------------------------------------
+0x02b0   "The network drive is not available."
+0x02b1   "An error occurred reading drive %c:."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0f90   "Commands for working with files"
+0x0f91   "Commands for working with disks"
+0x0f92   "Commands for working in the tree window"
+0x0f93   "Commands for determining how information is displayed"
+0x0f94   "Commands for setting options"
+0x0f9a   "Commands for arranging windows"
+0x0f9b   "Commands for displaying File Manager Help"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1005   "Opens selected item"
+0x1006   "Prints a document"
+0x1007   "Associates a file with an application"
+0x1008   "Searches for files and directories"
+0x1009   "Starts or opens an application or document"
+0x100a   "Moves selected item"
+0x100b   "Copies files and directories"
+0x100c   "Deletes files and directories"
+0x100d   "Renames a file or directory"
+0x100e   "Sets file attributes and displays properties"
+0x100f   "Creates a directory"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1013   "Quits File Manager"
+0x1014   "Selects files and directories"
+0x1015   "Retrieves previously deleted files"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1069   "Copies the contents of a floppy disk"
+0x106a   "Assigns or changes a disk's volume label"
+0x106b   "Formats a floppy disk"
+0x106c   "Copies MS-DOS files to a floppy disk"
+0x106d   "Connects to a network drive"
+0x106e   "Disconnects from a network drive"
+
+Ordinal  String
+---------------------------------------------------------------
+0x109b   "Selects a different drive"
+0x109c   "Network Connections..."
+0x109d   "View Shared Directories..."
+0x109e   "Shares a directory"
+0x109f   "Stops sharing a directory"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10cd   "Displays another level of a directory"
+0x10ce   "Displays all levels of a directory"
+0x10cf   "Displays all levels of all directories"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10d0   "Collapses all directories of a selected directory"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1195   "Controls confirmation messages"
+0x1197   "Displays or hides the status bar"
+0x1198   "Reduces File Manager to an icon at startup"
+0x1199   "Indicates directories that have subdirectories"
+0x119b   "Displays or hides the drive bar"
+0x119c   "Displays or hides the toolbar"
+0x119d   "Opens a new window when you connect"
+0x119e   "Changes the File Manager font"
+0x119f   "Saves settings when you quit File Manager"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1131   "Shows filenames only"
+0x1132   "Shows all file details"
+0x1133   "Shows partial file details"
+0x1134   "Sorts files by name"
+0x1135   "Sorts files by type"
+0x1136   "Sorts files by size"
+0x1137   "Sorts files by date"
+0x1139   "Shows files of a specified type"
+0x113b   "Displays the directory tree"
+0x113c   "Displays the contents of the current directory"
+0x113d   "Displays the directory tree and the contents of the current directory"
+0x113e   "Splits a directory window or moves the split bar"
+
+Ordinal  String
+---------------------------------------------------------------
+0x11a0   "Customizes the toolbar"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13f0   "Updates the contents of a window"
+0x13f1   "Arranges icons"
+0x13f2   "Opens a new window"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13ed   "Arranges windows"
+0x13ee   "Arranges windows"
+0x13ef   "Arranges windows"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1451   "Displays contents for File Manager Help"
+0x1452   "Displays information about using Help"
+0x1453   "Displays information about File Manager"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0fbe   "Searches for a topic in File Manager Help"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0320   "Connect &Network Drive..."
+0x0321   "&Disconnect Network Drive..."
+0x0322   "&Network Connections..."
+0x0323   "Share &As..."
+0x0324   "S&top Sharing..."
+0x0325   "View S&hared Directories..."
+0x0326   "&Undelete..."
+0x0327   "&Open New Window on Connect"
+
+

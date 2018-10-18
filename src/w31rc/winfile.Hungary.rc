@@ -1,0 +1,1152 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&File"
+    BEGIN
+    MENUITEM    "&Megnyit	Enter", 0X0065
+    MENUITEM    "Át&helyez...	F7", 0X006A
+    MENUITEM    "Má&sol...	F8", 0X006B
+    MENUITEM    "&Töröl...	Del", 0X006C
+    MENUITEM    "Átne&vez...", 0X006D
+    MENUITEM    "J&ellemzõk...	Alt+Enter", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "F&uttat...", 0X0069
+    MENUITEM    "&Nyomtat...", 0X0066
+    MENUITEM    "Tá&rsít...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Könyvtárat &létrehoz...", 0X006F
+    MENUITEM    "&Keres...", 0X0068
+    MENUITEM    "&File-okat jelöl...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "K&ilép", 0X0073
+    END
+    POPUP   "&Lemez"
+    BEGIN
+    MENUITEM    "Lemez má&solása...", 0X00C9
+    MENUITEM    "Lemez &címkézése...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "Lemez f&ormázása...", 0X00CB
+    MENUITEM    "&Rendszerlemez...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Lemezmeghajtó...", 0X00FB
+    END
+    POPUP   "&Könyvtárfa"
+    BEGIN
+    MENUITEM    "Egy &szint kifejtése	+", 0X012D
+    MENUITEM    "&Egy ág kifejtése	*", 0X012E
+    MENUITEM    "&Teljes kifejtés	Ctrl+*", 0X012F
+    MENUITEM    "Egy ág &bezárása	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Kifejthetõ ágak jelölése", 0X01F9
+    END
+    POPUP   "&Nézet"
+    BEGIN
+    MENUITEM    "&Fa és tartalom", 0X019D
+    MENUITEM    "&Csak a fa", 0X019B
+    MENUITEM    "C&sak a tartalom", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "F&eloszt", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "Né&v", 0X0191
+    MENUITEM    "&Minden adat", 0X0192
+    MENUITEM    "&Az adatok egy része...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Név szerint rendez", 0X0194
+    MENUITEM    "&Típus szerint rendez", 0X0195
+    MENUITEM    "Mé&ret szerint rendez", 0X0196
+    MENUITEM    "&Dátum szerint rendez", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "M&utatott filetípusok...", 0X0199
+    END
+    POPUP   "&Egyebek"
+    BEGIN
+    MENUITEM    "Jó&váhagyás...", 0X01F5
+    MENUITEM    "&Betûtípus...", 0X01FE
+    MENUITEM    "&Egyedi eszköztár...", 0X0200
+    MENUITEM    "", 0X0000
+    MENUITEM    "E&szköztár", 0X01FC
+    MENUITEM    "&Lemezek", 0X01FB
+    MENUITEM    "Álla&potsor", 0X01F7
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Ikon állapot indításkor", 0X01F8
+    MENUITEM    "Beállítások &mentése kilépéskor", 0X01FF
+    END
+    POPUP   "&Ablak"
+    BEGIN
+    MENUITEM    "Új &ablak", 0X0452
+    MENUITEM    "&Lépcsõzetes elrendezés	Shift+F5", 0X044D
+    MENUITEM    "&Vízszintes mozaik elrendezés", 0X044F
+    MENUITEM    "&Függõleges mozaik elrendezés	Shift+F4", 0X044E
+    MENUITEM    "&Ikonok elrendezése", 0X0451
+    MENUITEM    "F&rissít	F5", 0X0450
+    END
+    POPUP   "&Súgó"
+    BEGIN
+    MENUITEM    "&Tartalom", 0X04B1
+    MENUITEM    "Téma&kör keresése...", 0X001E
+    MENUITEM    "&Használat", 0X04B2
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Névjegy...", 0X04B3
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 264, 127
+CAPTION "Betûtípus"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Betûtípus:", 1088, 0x0000, 6, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 54
+    CONTROL 0x82, "J&ellemzõ:", 1089, 0x0000, 108, 3, 44, 9
+    CONTROL 0x85, "", 1137, 0x0001, 108, 13, 64, 54
+    CONTROL 0x82, "&Méret:", 1090, 0x0000, 179, 3, 30, 9
+    CONTROL 0x85, "", 1138, 0x0311, 179, 13, 32, 54
+    CONTROL 0x80, "Különlegességek", 1072, 0x0007, 6, 72, 84, 61
+    CONTROL 0x80, "Á&thúzott", 1040, 0x0003, 10, 82, 49, 10
+    CONTROL 0x80, "A&láhúzott", 1041, 0x0003, 10, 94, 51, 10
+    CONTROL 0x80, "&Kisbetûk", 1042, 0x0003, 10, 82, 49, 10
+    CONTROL 0x82, "S&zín:", 1091, 0x0000, 10, 106, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "OK", 1, 0x0001, 218, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 218, 23, 40, 14
+    CONTROL 0x80, "&Alkalmaz", 1026, 0x0000, 218, 40, 40, 14
+    CONTROL 0x80, "&Súgó", 1038, 0x0000, 218, 57, 40, 14
+    CONTROL 0x80, "Minta", 1073, 0x0007, 98, 72, 160, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 124, 160, 20
+    CONTROL 0x82, "AaBbYyÕõ", 1092, 0x0081, 104, 81, 149, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 201, 86
+CAPTION "Lemezmeghajtó"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Lemezmeghajtók:", 245, 0x000c, 5, 5, 58, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "OK", 1, 0x0001, 155, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 155, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 155, 44, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Program futtatása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Parancssor:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "&Ikon állapotban indul", 214, 0x0003, 3, 45, 81, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 165, 43, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 154, 83
+CAPTION "File-ok kijelölése"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&File-ok:", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "&Kijelöl", 1, 0x0001, 70, 6, 78, 14
+    CONTROL 0x80, "Kijelölést &megszüntet", 6, 0x0000, 70, 23, 78, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 70, 40, 78, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 70, 63, 78, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 245, 95
+CAPTION "File felülírásának jóváhagyása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Törlendõ file:", 100, 0x000c, 25, 12, 49, 10
+    CONTROL 0x82, "", 103, 0x008c, 75, 12, 165, 10
+    CONTROL 0x82, "", 105, 0x000c, 75, 22, 170, 10
+    CONTROL 0x82, "Új file:", 100, 0x000c, 25, 34, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 75, 34, 165, 10
+    CONTROL 0x82, "", 106, 0x000c, 75, 44, 170, 10
+    CONTROL 0x80, "&Igen", 6, 0x0001, 33, 73, 40, 14
+    CONTROL 0x80, "&Mind", 107, 0x0000, 79, 73, 40, 14
+    CONTROL 0x80, "&Nem", 7, 0x0000, 125, 73, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 171, 73, 40, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "File törlésének jóváhagyása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 203, 10
+    CONTROL 0x82, "Törlendõ file:", 100, 0x000c, 25, 18, 44, 10
+    CONTROL 0x82, "", 102, 0x008c, 70, 18, 170, 10
+    CONTROL 0x80, "&Igen", 6, 0x0001, 33, 42, 40, 14
+    CONTROL 0x80, "&Mind", 107, 0x0000, 79, 42, 40, 14
+    CONTROL 0x80, "&Nem", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 171, 42, 40, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Könyvtár törlésének jóváhagyása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Törlendõ könyvtár:", 100, 0x000c, 25, 18, 63, 10
+    CONTROL 0x82, "", 102, 0x008c, 88, 18, 152, 10
+    CONTROL 0x80, "&Igen", 6, 0x0001, 33, 42, 40, 14
+    CONTROL 0x80, "&Mind", 107, 0x0000, 79, 42, 40, 14
+    CONTROL 0x80, "&Nem", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 171, 42, 40, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "File áthelyezésének jóváhagyása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Áthelyezendõ file:", 100, 0x000c, 25, 18, 59, 10
+    CONTROL 0x82, "", 102, 0x008c, 85, 18, 155, 10
+    CONTROL 0x80, "&Igen", 6, 0x0001, 33, 42, 40, 14
+    CONTROL 0x80, "&Mind", 107, 0x0000, 79, 42, 40, 14
+    CONTROL 0x80, "&Nem", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 171, 42, 40, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "File átnevezésének jóváhagyása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Átnevezendõ file:", 100, 0x000c, 25, 13, 58, 10
+    CONTROL 0x82, "", 102, 0x008c, 86, 13, 154, 10
+    CONTROL 0x80, "&Igen", 6, 0x0001, 33, 42, 40, 14
+    CONTROL 0x80, "&Mind", 107, 0x0000, 79, 42, 40, 14
+    CONTROL 0x80, "&Nem", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 171, 42, 40, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 260, 63
+CAPTION "Nyomtatás"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 211, 10
+    CONTROL 0x82, "&Nyomtatandó file:", 100, 0x000c, 3, 20, 58, 10
+    CONTROL 0x81, "", 102, 0x0480, 61, 18, 146, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 36, 212, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 217, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 217, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 217, 43, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 269, 63
+CAPTION "Keresés"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Filenév:", 100, 0x000c, 5, 6, 27, 12
+    CONTROL 0x81, "", 201, 0x0480, 60, 5, 160, 12
+    CONTROL 0x82, "&Kezdõ könyvtár:", 100, 0x000c, 5, 21, 54, 12
+    CONTROL 0x81, "", 101, 0x0480, 60, 20, 160, 12
+    CONTROL 0x80, "&Alkönyvtárakban is keres", 232, 0x0003, 60, 34, 95, 12
+    CONTROL 0x82, "", 104, 0x000c, 5, 48, 218, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 225, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 225, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 225, 43, 40, 14
+END
+
+14 DIALOG 0x80c8, 47, 59, 231, 64
+CAPTION "Áthelyezés"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Az élõ könyvtár: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&Cél:", 100, 0x000c, 3, 33, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 37, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 26, 33, 10, 10
+    CONTROL 0x80, "&Vágólapra másol", 256, 0x0004, 26, 47, 66, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 49, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 45, 49, 138, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 185, 44, 40, 14
+    CONTROL 0x82, "&Forrás:", 100, 0x000c, 3, 19, 22, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+10014 DIALOG 0x80c8, 47, 59, 231, 98
+CAPTION "Áthelyezés"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Az élõ könyvtár: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&Cél:", 100, 0x000c, 3, 38, 20, 10
+    CONTROL 0x62, "edit", 103, 0x0004, 37, 38, 138, 42
+    CONTROL 0x50, "€", 256, 0x0401, 6656, 9728, 2560, 2560
+    CONTROL 0x80, "&Vágólapra másol", 256, 0x0004, 26, 84, 66, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 84, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 45, 84, 138, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Tallózás", 600, 0x0000, 185, 40, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 185, 61, 40, 14
+    CONTROL 0x82, "&Forrás:", 100, 0x000c, 3, 19, 24, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+200 DIALOG 0x00c8, 36, 24, 164, 134
+CAPTION "Könyvtár választása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x81, "", 1152, 0x0490, 6, 16, 90, 12
+    CONTROL 0x83, "", 1120, 0x0053, 12, 28, 84, 68
+    CONTROL 0x82, "&Könyvtár:", -1, 0x0000, 7, 4, 92, 9
+    CONTROL 0x82, "", 1088, 0x0000, 9, 17, 92, 9
+    CONTROL 0x83, "", 1121, 0x0053, 10, 28, 92, 68
+    CONTROL 0x82, "&Meghajtók:", 1091, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1137, 0x0353, 10, 112, 92, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 108, 6, 50, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 108, 24, 50, 14
+    CONTROL 0x82, "&Filenév:", 1090, 0x0000, 6, 4, 76, 9
+    CONTROL 0x82, "&Listázandó filetípus:", 1089, 0x0000, 6, 104, 90, 9
+    CONTROL 0x85, "", 1136, 0x0043, 6, 114, 90, 36
+    CONTROL 0x80, "&Súgó", 1038, 0x0000, 208, 46, 50, 14
+    CONTROL 0x80, "Írás&védett", 1040, 0x0003, 208, 68, 50, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 267, 64
+CAPTION "Törlés"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Az élõ könyvtár: C", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "&Törlendõ:", 100, 0x000c, 3, 20, 35, 10
+    CONTROL 0x81, "", 102, 0x0480, 40, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 2, 36, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 54, 36, 163, 11
+    CONTROL 0x80, "OK", 1, 0x0001, 220, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 220, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 220, 43, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 215, 65
+CAPTION "Jellemzõk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d file (összesen %s byte) van kijelölve", 100, 0x000c, 5, 5, 152, 10
+    CONTROL 0x80, "Attribútumok", -1, 0x0007, 5, 18, 120, 42
+    CONTROL 0x80, "Írás&védett", 215, 0x0003, 10, 29, 52, 12
+    CONTROL 0x80, "&Rejtett", 216, 0x0003, 72, 29, 52, 12
+    CONTROL 0x80, "&Archiválandó", 217, 0x0003, 10, 41, 55, 12
+    CONTROL 0x80, "R&endszer", 218, 0x0003, 72, 41, 52, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 161, 6, 50, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 161, 23, 50, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 161, 43, 50, 14
+END
+
+16 DIALOG 0x80c8, 22, -31, 273, 195
+CAPTION "%s jellemzõi"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 221, 6, 50, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 221, 23, 50, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 221, 40, 50, 14
+    CONTROL 0x82, "&Filenév:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 77, 5, 134, 10
+    CONTROL 0x82, "&Elérési út:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 77, 16, 134, 10
+    CONTROL 0x82, "Legutóbbi módosítás:", 100, 0x000c, 5, 27, 71, 10
+    CONTROL 0x82, "", 204, 0x000c, 77, 27, 97, 10
+    CONTROL 0x82, "Verziószám:", 258, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "Nincs megjelölve", 259, 0x008c, 77, 38, 90, 10
+    CONTROL 0x82, "&Copyright:", -1, 0x0000, 5, 49, 45, 10
+    CONTROL 0x81, "Nincs megjelölve", 265, 0x0880, 77, 49, 134, 10
+    CONTROL 0x82, "Méret:", 260, 0x000c, 5, 60, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 77, 60, 90, 10
+    CONTROL 0x80, "Attribútumok", 100, 0x0007, 4, 74, 120, 42
+    CONTROL 0x80, "Írás&védett", 215, 0x0003, 9, 86, 52, 12
+    CONTROL 0x80, "&Rejtett", 216, 0x0003, 71, 86, 49, 12
+    CONTROL 0x80, "&Archiválandó", 217, 0x0003, 9, 98, 55, 12
+    CONTROL 0x80, "Re&ndszer", 218, 0x0003, 71, 98, 49, 12
+    CONTROL 0x80, "Verz&ió információ", 262, 0x0007, 4, 121, 257, 72
+    CONTROL 0x83, "", 263, 0x1003, 9, 132, 105, 58
+    CONTROL 0x81, "", 264, 0x0804, 116, 132, 138, 58
+END
+
+17 DIALOG 0x80c8, 20, 20, 200, 63
+CAPTION "Könyvtár létrehozása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Név:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 201, 0x0480, 30, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 157, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 157, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 157, 43, 40, 14
+END
+
+10017 DIALOG 0x80c8, 20, 20, 240, 74
+CAPTION "Könyvtár létrehozása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 189, 10
+    CONTROL 0x82, "&Név:", 100, 0x000c, 3, 28, 20, 10
+    CONTROL 0x62, "edit", 201, 0x0000, 3, 40, 170, 18
+    CONTROL 0x50, "‚", 26624, 0x8c00, 768, 15360, -27136, 2560
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 197, 43, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 171, 64
+CAPTION "Rendszerlemez készítése"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Rendszerfile-ok másolása az
+alábbi meghajtóban levõ lemezre:", -1, 0x000c, 5, 8, 118, 16
+    CONTROL 0x85, "", 222, 0x0003, 36, 28, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 127, 5, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 127, 22, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 127, 43, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 157, 64
+CAPTION "Lemez másolása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Forráslemez:", -1, 0x000c, 5, 8, 42, 8
+    CONTROL 0x85, "", 245, 0x0003, 55, 6, 40, 37
+    CONTROL 0x82, "&Céllemez:", 206, 0x000c, 5, 22, 32, 8
+    CONTROL 0x85, "", 222, 0x0003, 55, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 110, 43, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Lemez másolása"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Lemez másolása ", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "'A:' lemezmeghajtó", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "A forráslemez olvasása", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Mégsem", 2, 0x0001, 44, 39, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 63
+CAPTION "Lemez címkézése"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Címke:", 100, 0x000c, 5, 15, 30, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 115, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 115, 43, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 183, 96
+CAPTION "Lemez formázása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 140, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 140, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 140, 43, 40, 14
+    CONTROL 0x82, "&Lemezmeghajtó:", -1, 0x000c, 5, 7, 54, 10
+    CONTROL 0x85, "", 222, 0x0003, 60, 4, 65, 40
+    CONTROL 0x82, "&Kapacitás:", 100, 0x000c, 5, 20, 49, 10
+    CONTROL 0x85, "", 241, 0x0003, 60, 19, 65, 40
+    CONTROL 0x80, "Egyebek", 102, 0x0007, 5, 39, 120, 53
+    CONTROL 0x82, "&Címke:", -1, 0x000c, 11, 51, 24, 8
+    CONTROL 0x81, "", 201, 0x0000, 40, 49, 63, 12
+    CONTROL 0x80, "&Rendszerlemez készítése", 242, 0x0003, 11, 62, 95, 12
+    CONTROL 0x80, "&Gyors formázás", 244, 0x0003, 11, 76, 90, 12
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 50
+CAPTION "Lemez formázása"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Lemez formázása", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "A meghajtó inicializálása...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Mégsem", 2, 0x0001, 54, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 57
+CAPTION "Rendszerlemez készítése"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Rendszerfile-ok másolása", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "A Mégsem gombbal félbeszakíthatja.", 100, 0x0001, 0, 14, 174, 8
+    CONTROL 0x80, "Mégsem", 2, 0x0001, 66, 39, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 241, 135
+CAPTION "Hálózati csatlakozások"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Új csatlakozás", -1, 0x0007, 5, 3, 170, 55
+    CONTROL 0x82, "&Hálózati út:", -1, 0x0000, 10, 16, 55, 10
+    CONTROL 0x81, "", 223, 0x0480, 65, 14, 100, 12
+    CONTROL 0x82, "&Lemezmeghajtó:", -1, 0x0000, 10, 30, 54, 10
+    CONTROL 0x85, "", 222, 0x0003, 65, 28, 40, 100
+    CONTROL 0x82, "J&elszó:", -1, 0x0000, 10, 44, 36, 10
+    CONTROL 0x81, "", 224, 0x04a0, 65, 42, 100, 12
+    CONTROL 0x82, "Élõ &meghajtó-csatlakozások:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 160, 60
+    CONTROL 0x80, "&Bezár", 2, 0x0001, 186, 6, 50, 14
+    CONTROL 0x80, "&Csatlakoztat", 1, 0x0000, 186, 27, 50, 14
+    CONTROL 0x80, "Elõ&zõ...", 226, 0x0000, 186, 44, 50, 14
+    CONTROL 0x80, "&Tallóz...", 227, 0x0000, 186, 61, 50, 14
+    CONTROL 0x80, "Le&választ", 255, 0x0000, 186, 78, 50, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 186, 95, 50, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 231, 98
+CAPTION "Korábbi hálózati csatlakozások"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Hálózati utak:", 100, 0x000c, 3, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "&Kiválasztás", 1, 0x0001, 181, 6, 46, 14
+    CONTROL 0x80, "Bezárás", 2, 0x0000, 181, 24, 46, 14
+    CONTROL 0x80, "&Törlés", 219, 0x0000, 181, 41, 46, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 181, 58, 46, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 173, 65
+CAPTION "A megjelenítendõ jellemzõk "
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Jellemzõk", 100, 0x0007, 4, 4, 120, 55
+    CONTROL 0x80, "&Méret", 203, 0x0003, 11, 15, 100, 9
+    CONTROL 0x80, "A &legutóbbi módosítás dátuma", 204, 0x0003, 11, 25, 110, 9
+    CONTROL 0x80, "&A legutóbbi módosítás ideje", 205, 0x0003, 11, 35, 102, 9
+    CONTROL 0x80, "&Fileattribútumok", 206, 0x0003, 11, 45, 100, 9
+    CONTROL 0x80, "OK", 1, 0x0001, 129, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 129, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 129, 43, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 157, 102
+CAPTION "Mutatott file-ok"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Név:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Filetípus", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "&Könyvtárak", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "&Végrehajtható file-ok", 210, 0x0003, 10, 43, 80, 12
+    CONTROL 0x80, "&Dokumentumok", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "&Egyéb file-ok", 212, 0x0003, 10, 67, 60, 12
+    CONTROL 0x80, "&Rejtett és rendszerfile-ok megmutatása", 250, 0x0003, 5, 85, 139, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 110, 43, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 80
+CAPTION "Jóváhagyás"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Megerõsítendõ mûveletek", 100, 0x0007, 5, 3, 108, 73
+    CONTROL 0x80, "File &törlése", 219, 0x0003, 10, 15, 80, 12
+    CONTROL 0x80, "&Könyvtár törlése", 220, 0x0003, 10, 27, 80, 12
+    CONTROL 0x80, "&File felülírása", 221, 0x0003, 10, 39, 80, 12
+    CONTROL 0x80, "Egé&rmûveletek", 249, 0x0003, 10, 51, 80, 12
+    CONTROL 0x80, "&Lemezparancsok", 251, 0x0003, 10, 63, 80, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 118, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 118, 23, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 118, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Áthelyezés..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 55, 5, 192, 10
+    CONTROL 0x82, "Cél:", 108, 0x008b, 5, 15, 25, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 15, 192, 10
+    CONTROL 0x80, "Mégsem", 2, 0x0001, 200, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 120, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "File nyomtatása...", -1, 0x0001, 4, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 4, 20, 120, 12
+    CONTROL 0x80, "Mégsem", 2, 0x0001, 40, 38, 40, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 211, 96
+CAPTION "Társítás"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Filenév-kiterjesztés:", 99, 0x000c, 5, 8, 74, 10
+    CONTROL 0x81, "", 112, 0x0400, 80, 6, 35, 12
+    CONTROL 0x82, "&A hozzá tartozó program:", 99, 0x000c, 5, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 5, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 11, 44, 146, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Tallóz...", 232, 0x0000, 165, 43, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 165, 60, 40, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 256, 78
+CAPTION "Filenév kiválasztás"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Ez az elérési út nem felel meg a DOS filenevek formai követelményeinek. Adjon meg egy új nevet.", 99, 0x0000, 4, 4, 190, 19
+    CONTROL 0x82, "Új &név:", 99, 0x0002, 14, 56, 50, 12
+    CONTROL 0x81, "", 103, 0x0000, 68, 55, 130, 12
+    CONTROL 0x82, "Eredeti elérési út:", 99, 0x0002, 5, 28, 59, 11
+    CONTROL 0x81, "", 102, 0x0880, 68, 28, 130, 12
+    CONTROL 0x82, "Célkönyvtár:", 99, 0x0002, 14, 42, 50, 11
+    CONTROL 0x81, "", 101, 0x0880, 68, 42, 130, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 210, 4, 40, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 210, 20, 40, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 210, 36, 40, 14
+END
+
+48 DIALOG 0x80c8, 23, 13, 266, 107
+CAPTION "%s jellemzõi"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 213, 6, 50, 14
+    CONTROL 0x80, "Mégsem", 2, 0x0000, 213, 23, 50, 14
+    CONTROL 0x80, "&Súgó", 254, 0x0000, 213, 43, 50, 14
+    CONTROL 0x82, "&Filenév:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 77, 5, 130, 10
+    CONTROL 0x82, "&Elérési út:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 77, 16, 131, 10
+    CONTROL 0x82, "Legutóbbi módosítás:", 100, 0x000c, 5, 27, 71, 10
+    CONTROL 0x82, "", 204, 0x000c, 77, 27, 97, 10
+    CONTROL 0x82, "Méret:", 260, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 77, 38, 90, 10
+    CONTROL 0x80, "Attribútumok", 100, 0x0007, 4, 52, 120, 42
+    CONTROL 0x80, "Írás&védett", 215, 0x0003, 9, 64, 52, 12
+    CONTROL 0x80, "&Rejtett", 216, 0x0003, 71, 64, 49, 12
+    CONTROL 0x80, "&Archiválandó", 217, 0x0003, 9, 76, 55, 12
+    CONTROL 0x80, "Ren&dszer", 218, 0x0003, 71, 76, 49, 12
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0101   "(Gyökérkönyvtár)"
+0x0102   "(Nem alkalmazható)"
+0x0103   "Megosztva - %s"
+0x0104   "Nincs megosztva"
+0x0107   "File másolása. Hová: %s"
+0x0108   "File mozgatása. Hová: %s"
+0x0109   "Az alábbi file indítása az adott paraméterrel: %s"
+0x010a   "%s byte"
+0x010b   "%s kB"
+0x010c   "%sMB"
+0x010d   "%sGB"
+0x010e   "%sTB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Kilépés a Windowsból"
+0x0029   "A Windows használatának befejezése."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Lemez másolása"
+0x0033   "Helyezze be a céllemezt."
+0x0034   "Helyezze be a forráslemezt."
+0x0035   "Helyezze be a forrás- és a céllemezt."
+0x0036   "A céllemez formázása."
+0x0037   "Hiba lemez másolása közben"
+0x0038   "Nem sikerült másolni a lemezt."
+0x003a   "A forrás- és a célmeghajtó nem kompatibilis."
+0x003c   "%d%% kész"
+0x003d   "A gyökérkönyvtár létrehozása..."
+0x003e   "A rendszerfile-ok másolása..."
+0x003f   "Hiba a lemez formázása közben"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Kevés a szabad lemezterület a nyomtatáshoz.
+
+Szabadítson fel helyet a lemezen néhány file törlésével, majd próbálja újra."
+0x00c1   "Kevés a memória a nyomtatáshoz.
+
+Lépjen ki néhány programból, ezzel memóriát szabadít fel, majd próbálja újra."
+0x00c2   "Hiba történt nyomtatás közben.
+
+Ellenõrizze, hogy a nyomtató megfelelõen van-e konfigurálva és a megfelelõ nyomtatót választotta-e."
+0x00c3   "A könyvtárfa nem teljes"
+0x00c5   "A céllemez megtelt.
+
+A folytatáshoz helyezzen be egy új lemezt."
+0x00c6   "Ez egy rendszer-, rejtett vagy írásvédett file."
+0x00c7   "A lemez gyorsformázása nem lehetséges.
+
+Kívánja a lemezt teljesen formázni?"
+0x00c8   "A megadott alkalmazás nem Windows vagy MS-DOS alkalmazás."
+0x00c9   "Ez az alkalmazás a Microsoft Windows egy újabb változatát igényli."
+0x00ca   "Az alkalmazásnak Windowsra van szüksége."
+0x00cb   "Hiba történt egy parancsnak az alkalmazás felé küldése közben."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "A lemezt nem lehet formázni."
+0x0042   "A formázás kész"
+0x0043   "%ld byte teljes lemezterület
+%ld byte használható
+
+Kíván egy másik lemezt formázni?"
+0x0046   "Rendszerlemez készítése"
+0x0047   "%c: meghajtó
+Valóban rá akarja másolni a rendszerfile-okat a lemezre?"
+0x0048   "Rendszerlemez hiba"
+0x0049   "Az MS-DOS indító meghajtója nem tartalmaz rendszerfile-okat vagy nem elérhetõ."
+0x004a   "Az MS-DOS indító meghajtóra nem lehet rendszerfile-okat másolni."
+0x004b   "Nem lehet a lemezre rendszerfile-okat másolni.
+
+Ellenõrizze, hogy a lemez formázva van-e, illetve hogy a meghajtó ajtaja le van-e zárva."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Nem lehet létrehozni vagy felülírni: %s: %s"
+0x0408   "Nem lehet MS-DOS rendszerlemezt létrehozni, mivel a rendszeren Windows NT multiboot van telepítve. A rendszerfile-ok másolásához használja az MS-DOS parancssorból a SYS utasítást."
+0x0409   "Akarja formázni a lemezt a rendszerfile-ok másolása nélkül?"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Hálózati hiba"
+0x0053   "Ez a meghajtó tartalmazza a Windows rendszerfile-okat, és nem lehet leválasztani."
+0x005b   "A jellemzõket nem lehet megváltoztatni.
+
+Ellenõrizze, hogy a lemez nem írásvédett-e."
+0x005c   "Nem sikerült könyvtárat létrehozni.
+
+Ellenõrizze, hogy a lemez nem írásvédett-e."
+0x005d   "Nem sikerült a lemezt címkézni.
+
+Ellenõrizze, hogy a lemez nem írásvédett-e, a meghajtó nem hálózati meghajtó-e, valamint hogy a címke nem hibás-e.
+A címke nem tartalmazhatja a következõ jeleket:
+[szóköz] * ? /  | . , ; : + = [ ] ( )  ^ < > " "
+0x005f   "Nincs ilyen file."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "Össz. %d file (%s)"
+0x00b5   "Olvasott könyvtárak száma: %d "
+0x00b6   "%c: %s szabad %s-ból"
+0x00b7   "%d ilyen file van"
+0x00b9   "a kijelölt file-ok"
+0x00ba   "A hálózati meghajtót nem lehet leválasztani.
+
+Megnyitott file-okat tartalmaz."
+0x00bb   "%d kijelölt file (%s)"
+0x00bc   "%c: meghajtó
+
+A meghajtóban nincs lemez.
+Helyezzen be egy lemezt, majd próbálja újra."
+0x00bd   "%c: meghajtó
+
+A lemez nincs formázva.
+Kívánja most formázni?"
+0x00bf   "A nyomtatandó file nem található. Ellenõrizze, hogy a megfelelõ elérési út és filenév van-e megadva."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "A megadott könyvtár már létezik."
+0x0061   "A meghajtó tartalma megváltozott. Kívánja frissíteni a Keresés eredménye ablakot?"
+0x0065   ""%c:" meghajtó"
+0x006e   "A program nem futtatható"
+0x006f   "Nem várt hiba: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "%c: meghajtó
+
+A formázás MINDEN adatot töröl a lemezrõl. Valóban formázni akarja a lemezt?"
+0x00d3   "Formázás jóváhagyása"
+0x00d4   "Ez a mûvelet MINDEN adatot törölni fog a céllemezrõl. Valóban ezt akarja?"
+0x00d5   "Lemezmásolás jóváhagyása"
+0x00d6   "&Bezár"
+0x00da   "%s
+
+A könyvtár nem létezik
+Létre kívánja hozni?"
+0x00db   "Programok#*.exe;*.pif;*.com;*.bat#Minden file (*.*)#*.*#"
+0x00dc   "Tallózás"
+0x00dd   "Program futtatása"
+0x00de   "Nem nyomtatható a file"
+0x00df   "A Súgó nem mûködik."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Nincs elég memória az alkalmazás indításához.
+
+Lépjen ki néhány programból, majd próbálja újra."
+0x0071   "A file vagy egy része nem található.
+
+Ellenõrizze, hogy az elérési út és a filenév helyes-e, és elérhetõ-e minden szükséges DLL."
+0x0072   "A megadott elérési út hibás."
+0x0073   "Túl sok file van használatban.
+
+Lépjen ki néhány programból, vagy növelje a FILES parancs értékét a CONFIG.SYS file-ban, majd próbálja újra."
+0x0074   "A file-hoz nincs alkalmazás társítva.
+
+File és alkalmazás társításához használja a File menü Társít parancsát."
+0x0075   "A megadott programnak csak egy példánya futhat."
+0x0076   "A file-t nem lehet megnyitni vagy nyomtatni.
+
+Indítsa el azt az alkalmazást, amely a dokumentumot létrehozta, és nyomtassa onnan."
+0x0078   "Egérmûvelet jóváhagyása"
+0x0079   "Valóban át akarja másolni a kijelölt file-okat, illetve könyvtárakat a(z) %s könyvtárba?"
+0x007a   "Valóban át akarja helyezni a kijelölt file-okat, illetve könyvtárakat a(z) %s könyvtárba?"
+0x007b   "Program: %s
+Indító file: %s
+
+Valóban indítani akarja a programot?"
+0x007c   "Filekezelõ"
+0x007e   "Könyvtárfa"
+0x007f   "A keresés eredménye: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Az alábbi kiterjesztéssel rendelkezõ file-ok programok, így nem társíthatók másik alkalmazáshoz: %s."
+0x00e1   "%s nem program, ezért nem lehet társítani kiterjesztéssel."
+0x00e2   "(nincs)"
+0x00e4   "Nem lehet egyszerre több file-t nyomtatni.
+
+Jelöljön ki egyet, majd próbálja újra."
+0x00e5   "Ez a program, vagy egy része tömörítve van.
+
+Az MS-DOS Expand segédprogramja használatával másolja a file-t a telepítõ lemezrõl."
+0x00e6   "Az egyik DLL, amelyre a file futtatásához szükség van, megsérült. Telepítse újra az alkalmazást."
+0x00e7   "Ezt a file-t egy másik alkalmazás használja."
+0x00e8   "%s
+
+A Filekezelõ valószínûleg nem tudja elérni az ebben a könyvtárban létrehozott file-okat.
+Kívánja folytatni a mûveletet?"
+0x00e9   "Könyvtár létrehozása"
+0x00ea   "%ld byte"
+0x00eb   "%s byte"
+0x00ec   "A Vágólapra nem lehet egynél több file-t vagy könyvtárat másolni.
+
+Jelöljön ki egy file-t, majd próbálja újra."
+0x00ed   "%s - %s"
+0x00ee   "Lemezmeghajtó:"
+0x00ef   "%s, "
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Túl sok file"
+0x0085   "Filekezelõ - kevés memória"
+0x0086   "Nem sikerült az egész könyvtárat beolvasni. Csak részleges lista jelenik meg."
+0x008c   "Az élõ könyvtár: %s"
+0x008d   "Másolás"
+0x008f   "Átnevezés"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Lemez formázása"
+0x0092   "Válassza ki a formázandó lemezt."
+0x0096   "Létrehozás alatt:"
+0x0097   "Törlés..."
+0x0098   "Másolás alatt:"
+0x0099   "Átnevezés..."
+0x009a   "Áthelyezés..."
+0x009b   "Törlés..."
+0x009c   "Nyomtatás alatt: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "%c: meghajtó
+
+A meghajtó nem létezik."
+0x00a9   "Másolás..."
+0x00aa   "Törlés alatt:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Nyitás..."
+0x01a5   "Zárás..."
+0x01a6   "Túl sok könyvtárablak van egyszerre nyitva.
+
+Zárjon be néhány ablakot, majd próbálja újra."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Hiba a file áthelyezése közben"
+0x03ea   "Hiba a file másolása közben"
+0x03eb   "Hiba a file törlése közben"
+0x03ec   "Hiba a file átnevezése közben"
+0x03ed   "Hiba a meghajtó kiválasztása közben"
+0x03ee   "Hiba a könyvtár olvasása közben"
+0x03ef   "Hiba a lemez címkézése közben"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "%s nem helyezhetõ át: %s"
+0x03f4   "%s nem másolható: %s"
+0x03f5   "%s nem törölhetõ: %s"
+0x03f6   "%s nem nevezhetõ át: %s"
+0x03fd   "%s
+
+A könyvtár nem hozható létre: %s"
+0x03fe   "%s
+
+A könyvtár nem törölhetõ: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Nem létezõ MS-DOS függvény."
+0x0412   "A file nem található.
+
+Ellenõrizze, hogy helyes elérési út és filenév van megadva."
+0x0413   "Az elérési út nem található.
+
+Ellenõrizze, hogy helyesen van-e megadva."
+0x0414   "Túl sok egyéb file van használatban. Lépjen ki néhány alkalmazásból."
+0x0415   "A hozzáférés nem engedélyezett.
+
+Ellenõrizze, hogy a lemez nincs-e tele és nem írásvédett-e."
+0x0416   "Hibás filekezelõ (handle)."
+0x0418   "Nincs elég memória.
+
+Lépjen ki néhány programból, majd próbálja újra."
+0x041c   "Hibás filehozzáférés."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Az élõ könyvtárat nem lehet törölni (belsõ hiba)."
+0x0421   "Nem létezõ hardver eszköz."
+0x0422   "A könyvtár üres."
+0x0423   "A lemez írásvédett.
+
+Szüntesse meg az írásvédelmet, vagy használjon másik lemezt, majd próbálja újra."
+0x042d   "Nem lehet írni a célfile-ba vagy -lemezre."
+0x042f   "Nem lehet olvasni a célfile-ból vagy -lemezrõl."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Nem létezõ mûvelet."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Tiltott a hozzáférés a hálózathoz. Ellenõrizze, hogy rendelkezik-e a mûvelethez szükséges jogokkal."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Elérési jog megsértése. A forrást vagy a célt valószínûleg más program használja."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Nincs elég lemezterület.
+
+Töröljön néhány file-t a szabad lemezterület növelése érdekében, majd próbálja újra."
+0x0481   "A forrás és a cél megegyezik."
+0x0482   "Csak egy file-t jelöljön ki átnevezésre, vagy használja az MS-DOS helyettesítõ karaktereket (például *.TXT) hasonló nevû file-ok átnevezéséhez."
+0x0483   "Nem lehet egy másik könyvtárba vagy lemezre átnevezni."
+0x0484   "Gyökérkönyvtár (belsõ hiba)."
+0x0486   "A célkönyvtár a forráskönyvtár alkönyvtára."
+0x0487   "A file-t a Windows használja."
+0x0488   "A hozzáférés tiltott. A forrásfile valószínûleg használatban van."
+0x0489   "Az elérési út túl hosszú."
+0x048a   "Csak egy file-t vagy könyvtárat adjon meg a Cél mezõben. Ha file-ok egy csoportját kívánja megadni, akkor használja az MS-DOS helyettesítõ karaktereket (például *.TXT)."
+0x048b   "A megadott néven már létezik egy file. Próbálja újra egy másik filenév megadásával."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 Mbyte"
+0x0131   " 720 kbyte"
+0x0132   "1,44 Mbyte"
+0x0133   "2,88 Mbyte"
+0x0134   "Lemezkapacitás"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360 kbyte"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Kevés a memória."
+0x0192   "Az MS-DOS indító meghajtót nem lehet formázni."
+0x0193   "Az MS-DOS indító meghajtó szektormérete hibás."
+0x0194   "Ismeretlen lemezmeghajtó-típus."
+0x0199   "A rendszerfile-ok átmásolása nem sikerült."
+0x019a   "Ezt a lemezt %s kapacitásúra is lehet formázni. Ezzel a kapacitással kívánja folytatni a formázást?"
+0x019b   "A lemez nem formázható.
+
+Ellenõrizze, hogy a meghajtóban olyan lemez van-e, amely nem írásvédett, nem sérült, és a sûrûsége megegyezik a  megadottal."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00fe   "A &könyvtár neve:"
+0x00ff   "\StringFileInfo\040904E4\"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01f4   "Megjegyzés"
+0x01f5   "A cég neve"
+0x01f6   "Fileleírás"
+0x01f7   "Belsõ név"
+0x01f8   "Bejegyzett név"
+0x01f9   "Eredeti filenév"
+0x01fa   "Saját építési leírás"
+0x01fb   "A termék neve"
+0x01fc   "A termék verziószáma"
+0x01fd   "Külön építési leírás"
+0x01fe   "Nyelv"
+0x01ff   "Nyelv"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0222   "Nem található file."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0255   "A megadott számítógép nem található."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0263   "A megosztott könyvtár nem található."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0274   "Túl sok a hálózati átirányítások száma."
+0x0276   "Érvénytelen jelszó."
+
+Ordinal  String
+---------------------------------------------------------------
+0x02b0   "A hálózati meghajtó nem érhetõ el."
+0x02b1   "%c: lemezmeghajtó
+Hiba az olvasáskor."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0f90   "Filekezelõ parancsok"
+0x0f91   "Lemezkezelõ parancsok"
+0x0f92   "Könyvtárfa-ablak kezelésére vonatkozó parancsok"
+0x0f93   "Az adatok kijelzését meghatározó parancsok"
+0x0f94   "Parancsok a jellemzõk beállítására"
+0x0f9a   "Ablakok méretezését szolgáló parancsok"
+0x0f9b   "A Súgó megjelenítésére vonatkozó parancsok"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1005   "A kiválasztott adat megnyitása"
+0x1006   "Dokumentum nyomtatása"
+0x1007   "File társítása egy alkalmazással"
+0x1008   "File és könyvtár keresése"
+0x1009   "Alkalmazás vagy dokumentum indítása, illetve megnyitása"
+0x100a   "A kiválasztott adat áthelyezése"
+0x100b   "File és könyvtár másolása"
+0x100c   "File és könyvtár törlése"
+0x100d   "File és könyvtár átnevezése"
+0x100e   "Fileattribútum beállítása -jellemzõk megjelenítése"
+0x100f   "Könyvtár létrehozása"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1013   "Kilépés a Filekezelõbõl"
+0x1014   "File és könyvtár kijelölése"
+0x1015   "A korábban törölt file visszanyerése"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1069   "Hajlékonylemez tartalmának másolása"
+0x106a   "Lemezcímke létrehozása vagy módosítása"
+0x106b   "Hajlékonylemez formázása"
+0x106c   "Az MS-DOS file-ok másolása a lemezre"
+0x106d   "Hálózati lemezmeghajtóhoz való csatlakozás"
+0x106e   "A hálózati lemezmeghajtó leválasztása"
+
+Ordinal  String
+---------------------------------------------------------------
+0x109b   "Másik lemezmeghajtó kiválasztása"
+0x109c   "Hálózati csatlakozások..."
+0x109d   "Osztott könyvtárak megmutatása..."
+0x109e   "Könyvtár megosztása"
+0x109f   "Könyvtár megosztásának vége"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10cd   "Könyvtár más szintjének megjelenítése"
+0x10ce   "A könyvtár összes szintjének megjelenítése"
+0x10cf   "Minden könyvtár minden szintjének megjelenítése"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10d0   "Minden alkönyvtár bezárása a választott könyvtárban"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1195   "Üzenetek nyugtázásának irányítása"
+0x1197   "Megmutatja, ill. elrejti az állapotsort"
+0x1198   "Ikonméretre csökkenti a Filekezelõt indításkor"
+0x1199   "Alkönyvtárakat tartalmazó könyvtárak kijelzése"
+0x119b   "Lemezmeghajtók kijelzése, illetve elrejtése"
+0x119c   "Az eszköztár kijelzése, illetve elrejtése"
+0x119d   "Kapcsolat létrejöttekor új ablakot nyit"
+0x119e   "A betûtípus megváltoztatása"
+0x119f   "Beállítások mentése kilépéskor"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1131   "Csak a nevet mutatja meg"
+0x1132   "Minden adatot megmutat"
+0x1133   "Az adatok egy részét mutatja csak"
+0x1134   "Név szerinti rendezés"
+0x1135   "Típus szerinti rendezés"
+0x1136   "Méret szerinti rendezés"
+0x1137   "Dátum szerinti rendezés"
+0x1139   "Csak a kiválasztott filetípusokat mutatja meg"
+0x113b   "Könyvtárfa megjelenítése"
+0x113c   "Megjeleníti az aktuális könyvtár tartalmát"
+0x113d   "Megjeleníti a könyvtárfát és az aktuális könyvtár tartalmát"
+0x113e   "Szétosztja a könyvtárablakot vagy elmozdítja az osztócsíkot"
+
+Ordinal  String
+---------------------------------------------------------------
+0x11a0   "Eszköztár egyedi beállítása"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13f0   "Ablak tartalmának frissítése"
+0x13f1   "Ikon elrendezése"
+0x13f2   "Új ablak megnyitása"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13ed   "Ablak elrendezése"
+0x13ee   "Ablak elrendezése"
+0x13ef   "Ablak elrendezése"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1451   "A Filekezelõ Súgójának tartalomjegyzéke"
+0x1452   "Információ a Súgó használatáról"
+0x1453   "Információ a Filekezelõrõl"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0fbe   "Keresés a Filekezelõ Súgójában"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0320   "&Hálózati meghajtó csatlakoztatása..."
+0x0321   "Hálózati &meghajtó leválasztása..."
+0x0322   "Hálózati &csatlakozások..."
+0x0323   "M&egosztás..."
+0x0324   "Megosztás &vége..."
+0x0325   "&Osztott könyvtárak megmutatása..."
+0x0326   "Viss&zahoz..."
+0x0327   "Új abla&k nyitása kapcsolat létrejöttekor"
+
+

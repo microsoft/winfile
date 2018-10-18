@@ -1,0 +1,1132 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Arkiv"
+    BEGIN
+    MENUITEM    "&Öppna	Retur", 0X0065
+    MENUITEM    "&Flytta...	F7", 0X006A
+    MENUITEM    "Ko&piera...	F8", 0X006B
+    MENUITEM    "&Ta bort...	Del", 0X006C
+    MENUITEM    "Byt &namn...", 0X006D
+    MENUITEM    "&Information...	Alt+Retur", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Kör...", 0X0069
+    MENUITEM    "Skriv &ut...", 0X0066
+    MENUITEM    "Asso&ciera...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Skapa kata&log...", 0X006F
+    MENUITEM    "&Sök...", 0X0068
+    MENUITEM    "&Markera filer...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Avsluta", 0X0073
+    END
+    POPUP   "&Disk"
+    BEGIN
+    MENUITEM    "Ko&piera diskett...", 0X00C9
+    MENUITEM    "&Namnge diskett...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Formatera diskett...", 0X00CB
+    MENUITEM    "&Gör en systemdiskett...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "Välj &enhet...", 0X00FB
+    END
+    POPUP   "&Träd"
+    BEGIN
+    MENUITEM    "Utöka e&n nivå	+", 0X012D
+    MENUITEM    "Visa &underkataloger	*", 0X012E
+    MENUITEM    "Utök&a alla	Ctrl+*", 0X012F
+    MENUITEM    "Dölj underkatal&oger	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Indikera underkatalog", 0X01F9
+    END
+    POPUP   "Vi&sa"
+    BEGIN
+    MENUITEM    "T&räd och kataloger", 0X019D
+    MENUITEM    "&Endast träd", 0X019B
+    MENUITEM    "Endast &katalog", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "Delning&slist", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Namn", 0X0191
+    MENUITEM    "&All filinformation", 0X0192
+    MENUITEM    "&Välj filinformation", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Sortera efter na&mn", 0X0194
+    MENUITEM    "Sor&tera efter typ", 0X0195
+    MENUITEM    "Sortera efter stor&lek", 0X0196
+    MENUITEM    "Sortera efter &datum", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "Visa &filtyp...", 0X0199
+    END
+    POPUP   "Alternati&v"
+    BEGIN
+    MENUITEM    "&Bekräftelse...", 0X01F5
+    MENUITEM    "&Teckensnitt...", 0X01FE
+    MENUITEM    "&Anpassa verktygsfält...", 0X0200
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Verktygsfält", 0X01FC
+    MENUITEM    "&Enhetsfält", 0X01FB
+    MENUITEM    "Status&fält", 0X01F7
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Minimera vid användning", 0X01F8
+    MENUITEM    "&Spara inställningar vid avslutning", 0X01FF
+    END
+    POPUP   "F&önster"
+    BEGIN
+    MENUITEM    "&Nytt fönster", 0X0452
+    MENUITEM    "&Överlappande	Skift+F5", 0X044D
+    MENUITEM    "Över och &under", 0X044F
+    MENUITEM    "&Sida vid sida	Skift+F4", 0X044E
+    MENUITEM    "&Ordna ikoner", 0X0451
+    MENUITEM    "U&ppdatera	F5", 0X0450
+    END
+    POPUP   "&?"
+    BEGIN
+    MENUITEM    "&Innehåll", 0X04B1
+    MENUITEM    "&Sök hjälp om...", 0X001E
+    MENUITEM    "Använda &Hjälp", 0X04B2
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Om Filhanteraren...", 0X04B3
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 267, 151
+CAPTION "Teckensnitt"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Teckensnitt:", 1088, 0x0000, 6, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 54
+    CONTROL 0x82, "St&il:", 1089, 0x0000, 108, 3, 44, 9
+    CONTROL 0x85, "", 1137, 0x0001, 108, 13, 64, 54
+    CONTROL 0x82, "&Storlek:", 1090, 0x0000, 179, 3, 30, 9
+    CONTROL 0x85, "", 1138, 0x0311, 179, 13, 32, 54
+    CONTROL 0x80, "Effekter", 1072, 0x0007, 6, 72, 84, 61
+    CONTROL 0x80, "Ge&nomstruken", 1040, 0x0003, 10, 82, 58, 10
+    CONTROL 0x80, "&Understruken", 1041, 0x0003, 10, 94, 55, 10
+    CONTROL 0x80, "&Gemener", 1042, 0x0003, 10, 82, 60, 10
+    CONTROL 0x82, "&Färg:", 1091, 0x0000, 10, 106, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "OK", 1, 0x0001, 218, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 218, 23, 40, 14
+    CONTROL 0x80, "&Använd", 1026, 0x0000, 218, 40, 40, 14
+    CONTROL 0x80, "&Hjälp", 1038, 0x0000, 218, 57, 40, 14
+    CONTROL 0x80, "Exempel", 1073, 0x0007, 98, 72, 160, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 124, 160, 20
+    CONTROL 0x82, "AaBbYyZz", 1092, 0x0081, 104, 85, 149, 33
+END
+
+45 DIALOG 0x80c8, 11, 31, 201, 86
+CAPTION "Välj enhet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Enheter:", 245, 0x000c, 5, 5, 41, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "OK", 1, 0x0001, 155, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 155, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 155, 44, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Kör"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Kommandorad:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "Kör &minimerad", 214, 0x0003, 3, 45, 71, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 165, 43, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 116, 83
+CAPTION "Markera filer"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Fil(er):", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "&Markera", 1, 0x0001, 70, 6, 40, 14
+    CONTROL 0x80, " &Avmarkera", 6, 0x0000, 70, 23, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 70, 40, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 70, 63, 40, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 245, 95
+CAPTION "Bekräfta ersättning av fil"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Ersätt fil:", 100, 0x000c, 25, 12, 49, 10
+    CONTROL 0x82, "", 103, 0x008c, 75, 12, 165, 10
+    CONTROL 0x82, "", 105, 0x000c, 75, 22, 170, 10
+    CONTROL 0x82, "med fil:", 100, 0x000c, 25, 34, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 75, 34, 165, 10
+    CONTROL 0x82, "", 106, 0x000c, 75, 44, 170, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 33, 73, 40, 14
+    CONTROL 0x80, "Ersätt &alla", 107, 0x0000, 79, 73, 43, 14
+    CONTROL 0x80, "&Nej", 7, 0x0000, 125, 73, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 171, 73, 40, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Bekräfta borttagning av fil"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 203, 10
+    CONTROL 0x82, "Ta bort fil:", 100, 0x000c, 25, 18, 44, 10
+    CONTROL 0x82, "", 102, 0x008c, 70, 18, 170, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 30, 42, 40, 14
+    CONTROL 0x80, "Ta bort &alla", 107, 0x0000, 76, 42, 43, 14
+    CONTROL 0x80, "&Nej", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 171, 42, 40, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Bekräfta borttagning av katalog"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Ta bort katalog:", 100, 0x000c, 25, 18, 55, 10
+    CONTROL 0x82, "", 102, 0x008c, 80, 18, 160, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 30, 42, 40, 14
+    CONTROL 0x80, "Ta bort &alla", 107, 0x0000, 76, 42, 43, 14
+    CONTROL 0x80, "&Nej", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 171, 42, 40, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "Bekräfta flyttning"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Flytta fil:", 100, 0x000c, 25, 18, 44, 10
+    CONTROL 0x82, "", 102, 0x008c, 70, 18, 170, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 30, 42, 40, 14
+    CONTROL 0x80, "Flytta &alla", 107, 0x0000, 76, 42, 43, 14
+    CONTROL 0x80, "&Nej", 7, 0x0000, 125, 42, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 171, 42, 40, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 272, 60
+CAPTION "Bekräfta namnbyte"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Byt namn:", 100, 0x000c, 25, 13, 54, 10
+    CONTROL 0x82, "", 102, 0x008c, 80, 13, 160, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 1, 41, 63, 14
+    CONTROL 0x80, "Byt namn på &alla", 107, 0x0000, 70, 41, 63, 14
+    CONTROL 0x80, "&Nej", 7, 0x0000, 139, 41, 63, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 208, 41, 63, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 240, 63
+CAPTION "Skriv ut"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 193, 10
+    CONTROL 0x82, "Skriv &ut:", 100, 0x000c, 3, 20, 29, 8
+    CONTROL 0x81, "", 102, 0x0480, 34, 18, 160, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 36, 190, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 197, 43, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 263, 63
+CAPTION "Sök"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Sök efter:", 100, 0x000c, 5, 6, 45, 12
+    CONTROL 0x81, "", 201, 0x0480, 52, 5, 160, 12
+    CONTROL 0x82, "Starta &med:", 100, 0x000c, 5, 21, 45, 12
+    CONTROL 0x81, "", 101, 0x0480, 52, 20, 160, 12
+    CONTROL 0x80, "Sök i alla &underkataloger", 232, 0x0003, 52, 34, 100, 12
+    CONTROL 0x82, "", 104, 0x000c, 5, 50, 200, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 217, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 217, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 217, 43, 40, 14
+END
+
+14 DIALOG 0x80c8, 38, 59, 240, 64
+CAPTION "Flytta"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktuell katalog: N", 101, 0x008b, 5, 6, 182, 10
+    CONTROL 0x82, "&Till:", 100, 0x000c, 5, 33, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 46, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 35, 33, 10, 10
+    CONTROL 0x80, "&Kopiera till Urklipp", 256, 0x0004, 35, 47, 78, 12
+    CONTROL 0x82, "", 104, 0x008b, 1, 49, 47, 10
+    CONTROL 0x82, "", 201, 0x008b, 66, 49, 122, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 194, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 194, 44, 40, 14
+    CONTROL 0x82, "&Från:", 100, 0x000c, 5, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 46, 18, 138, 12
+END
+
+10014 DIALOG 0x80c8, 47, 59, 231, 98
+CAPTION "Flytta"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktuell katalog: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&Till:", 100, 0x000c, 3, 38, 20, 10
+    CONTROL 0x62, "edit", 103, 0x0004, 37, 38, 138, 42
+    CONTROL 0x50, "€", 256, 0x0401, 6656, 9728, 2560, 2560
+    CONTROL 0x80, "&Kopiera till Urklipp", 256, 0x0004, 26, 84, 80, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 84, 41, 10
+    CONTROL 0x82, "", 201, 0x008b, 47, 84, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Bläddra", 600, 0x0000, 185, 40, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 185, 61, 40, 14
+    CONTROL 0x82, "&Från:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+200 DIALOG 0x00c8, 36, 24, 164, 134
+CAPTION "Välj katalog"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x81, "", 1152, 0x0490, 6, 16, 90, 12
+    CONTROL 0x83, "", 1120, 0x0053, 12, 28, 84, 68
+    CONTROL 0x82, "&Kataloger:", -1, 0x0000, 8, 4, 92, 9
+    CONTROL 0x82, "", 1088, 0x0000, 10, 41, 92, 10
+    CONTROL 0x83, "", 1121, 0x0053, 10, 28, 92, 68
+    CONTROL 0x82, "&Enheter:", 1091, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1137, 0x0353, 6, 113, 92, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 108, 6, 50, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 108, 24, 50, 14
+    CONTROL 0x82, "Fil&namn:", 1090, 0x0000, 6, 4, 76, 9
+    CONTROL 0x82, "&Filformat", 1089, 0x0000, 6, 103, 90, 9
+    CONTROL 0x85, "", 1136, 0x0043, 7, 114, 90, 36
+    CONTROL 0x80, "&Hjälp", 1038, 0x0000, 208, 46, 50, 14
+    CONTROL 0x80, "&Skrivskydd", 1040, 0x0003, 208, 68, 50, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 246, 64
+CAPTION "Ta bort"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktuell katalog: C", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "Ta &bort:", 100, 0x000c, 3, 20, 35, 10
+    CONTROL 0x81, "", 102, 0x0480, 40, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 35, 35, 10
+    CONTROL 0x82, "", 201, 0x008b, 40, 35, 155, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 200, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 200, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 200, 43, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 206, 65
+CAPTION "Information"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d filer valda, totalt %s byte", 100, 0x000c, 5, 5, 144, 10
+    CONTROL 0x80, "Attribut", -1, 0x0007, 5, 18, 120, 42
+    CONTROL 0x80, "&Skrivskydd", 215, 0x0003, 10, 29, 52, 12
+    CONTROL 0x80, "&Dold", 216, 0x0003, 72, 29, 52, 12
+    CONTROL 0x80, "&Arkiv", 217, 0x0003, 10, 41, 52, 12
+    CONTROL 0x80, "Sys&tem", 218, 0x0003, 72, 41, 52, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 150, 6, 50, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 150, 23, 50, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 150, 43, 50, 14
+END
+
+16 DIALOG 0x80c8, 23, 13, 262, 195
+CAPTION "Information om %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 196, 6, 64, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 196, 23, 64, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 196, 44, 64, 14
+    CONTROL 0x82, "Fil&namn:", 261, 0x000c, 5, 5, 60, 10
+    CONTROL 0x81, "", 201, 0x0880, 65, 5, 127, 10
+    CONTROL 0x82, "Sök&väg:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 65, 16, 128, 10
+    CONTROL 0x82, "Senaste ändring:", 100, 0x000c, 5, 27, 62, 10
+    CONTROL 0x82, "", 204, 0x000c, 65, 27, 118, 10
+    CONTROL 0x82, "Version:", 258, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "Anges inte", 259, 0x008c, 65, 38, 90, 10
+    CONTROL 0x82, "&Copyright:", -1, 0x0000, 5, 49, 45, 10
+    CONTROL 0x81, "Inte märkt", 265, 0x0880, 65, 49, 127, 10
+    CONTROL 0x82, "Storlek:", 260, 0x000c, 5, 60, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 65, 60, 90, 10
+    CONTROL 0x80, "Attribut", 100, 0x0007, 4, 74, 120, 42
+    CONTROL 0x80, "&Skrivskydd", 215, 0x0003, 9, 86, 52, 12
+    CONTROL 0x80, "&Dold", 216, 0x0003, 71, 86, 49, 12
+    CONTROL 0x80, "&Arkiv", 217, 0x0003, 9, 98, 52, 12
+    CONTROL 0x80, "Sys&tem", 218, 0x0003, 71, 98, 49, 12
+    CONTROL 0x80, "Versions&information", 262, 0x0007, 4, 121, 242, 72
+    CONTROL 0x83, "", 263, 0x1003, 9, 132, 91, 58
+    CONTROL 0x81, "", 264, 0x0804, 103, 132, 138, 58
+END
+
+17 DIALOG 0x80c8, 20, 20, 200, 63
+CAPTION "Skapa katalog"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Namn:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 201, 0x0480, 30, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 157, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 157, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 157, 43, 40, 14
+END
+
+10017 DIALOG 0x80c8, 20, 20, 240, 74
+CAPTION "Skapa katalog"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Namn:", 100, 0x000c, 3, 28, 20, 10
+    CONTROL 0x62, "edit", 201, 0x0000, 3, 40, 170, 18
+    CONTROL 0x50, "‚", 26624, 0x8c00, 768, 15360, -27136, 2560
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 197, 43, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 161, 64
+CAPTION "Gör systemdiskett"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Kopiera systemfiler till disketten i:", -1, 0x000c, 2, 8, 110, 8
+    CONTROL 0x85, "", 222, 0x0003, 30, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 116, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 116, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 116, 43, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 157, 64
+CAPTION "Kopiera diskett"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Från:", -1, 0x000c, 5, 8, 18, 8
+    CONTROL 0x85, "", 245, 0x0003, 55, 6, 40, 37
+    CONTROL 0x82, "&Till:", 206, 0x000c, 5, 22, 14, 8
+    CONTROL 0x85, "", 222, 0x0003, 55, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 110, 43, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Kopierar disk"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Kopierar disk i ", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "Enhet A:", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Läser källdisken", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Avbryt", 2, 0x0001, 44, 39, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 63
+CAPTION "Namnge disk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Etikett:", 100, 0x000c, 5, 15, 30, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 115, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 115, 43, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 183, 96
+CAPTION "Formatera diskett"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 140, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 140, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 140, 43, 40, 14
+    CONTROL 0x82, "&Diskett i:", -1, 0x000c, 5, 7, 31, 8
+    CONTROL 0x85, "", 222, 0x0003, 55, 4, 65, 40
+    CONTROL 0x82, "&Kapacitet:", 100, 0x000c, 5, 20, 35, 8
+    CONTROL 0x85, "", 241, 0x0003, 55, 19, 65, 40
+    CONTROL 0x80, "Alternativ", 102, 0x0007, 5, 39, 115, 53
+    CONTROL 0x82, "&Etikett:", -1, 0x000c, 11, 51, 25, 8
+    CONTROL 0x81, "", 201, 0x0000, 40, 49, 63, 12
+    CONTROL 0x80, "&Gör en systemdiskett", 242, 0x0003, 11, 62, 79, 10
+    CONTROL 0x80, "&Snabbformatering", 244, 0x0003, 11, 76, 68, 10
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 50
+CAPTION "Formaterar disk"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Formaterar disk", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "Initialiserar enhet...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Avbryt", 2, 0x0001, 54, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 57
+CAPTION "Gör en systemdiskett"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Kopierar systemfiler.", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "Välj Avbryt om du vill sluta.", 100, 0x0001, 0, 14, 174, 8
+    CONTROL 0x80, "Avbryt", 2, 0x0001, 66, 39, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 247, 135
+CAPTION "Nätverksanslutningar"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Ny anslutning", -1, 0x0007, 5, 3, 181, 55
+    CONTROL 0x82, "Sökväg för &nätverket:", -1, 0x0000, 10, 16, 72, 8
+    CONTROL 0x81, "", 223, 0x0480, 84, 14, 100, 12
+    CONTROL 0x82, "&Enhet:", -1, 0x0000, 10, 30, 23, 8
+    CONTROL 0x85, "", 222, 0x0003, 84, 28, 40, 100
+    CONTROL 0x82, "&Lösenord:", -1, 0x0000, 10, 44, 34, 8
+    CONTROL 0x81, "", 224, 0x04a0, 84, 42, 100, 12
+    CONTROL 0x82, "Nu&varande enhetsanslutningar:", -1, 0x0000, 5, 62, 103, 8
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 160, 60
+    CONTROL 0x80, "&Stäng", 2, 0x0001, 190, 6, 53, 14
+    CONTROL 0x80, "&Anslut", 1, 0x0000, 190, 27, 53, 14
+    CONTROL 0x80, " &Föregående...", 226, 0x0000, 190, 44, 53, 14
+    CONTROL 0x80, "&Bläddra...", 227, 0x0000, 190, 61, 53, 14
+    CONTROL 0x80, "&Koppla från", 255, 0x0000, 190, 78, 53, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 190, 95, 53, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 231, 98
+CAPTION "Föregående nätverksanslutningar"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Sökväg till &nätverket:", 100, 0x000c, 3, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "&Välj", 1, 0x0001, 181, 6, 44, 14
+    CONTROL 0x80, "Stäng", 2, 0x0000, 181, 24, 44, 14
+    CONTROL 0x80, "&Ta bort", 219, 0x0000, 181, 41, 44, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 181, 58, 44, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 163, 65
+CAPTION "Filinformation"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Information", 100, 0x0007, 4, 4, 111, 55
+    CONTROL 0x80, "&Storlek", 203, 0x0003, 11, 15, 100, 9
+    CONTROL 0x80, "Senaste ändrings&datum", 204, 0x0003, 11, 25, 100, 9
+    CONTROL 0x80, "Senaste ändrings&tid", 205, 0x0003, 11, 35, 100, 9
+    CONTROL 0x80, "&Filattribut", 206, 0x0003, 11, 45, 100, 9
+    CONTROL 0x80, "OK", 1, 0x0001, 120, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 120, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 120, 43, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 157, 102
+CAPTION "Visa filtyp"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Namn:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Filtyp", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "&Kataloger", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "&Program", 210, 0x0003, 10, 43, 60, 12
+    CONTROL 0x80, "&Dokument", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "&Andra filer", 212, 0x0003, 10, 67, 60, 12
+    CONTROL 0x80, "&Visa dolda filer och systemfiler", 250, 0x0003, 5, 85, 110, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 110, 43, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 80
+CAPTION "Bekräftelse"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Bekräftelse vid", 100, 0x0007, 5, 3, 108, 73
+    CONTROL 0x80, "&Radering av filer", 219, 0x0003, 10, 15, 65, 10
+    CONTROL 0x80, "Radering av &kataloger", 220, 0x0003, 10, 27, 84, 10
+    CONTROL 0x80, "&Ersättning av filer", 221, 0x0003, 10, 39, 69, 10
+    CONTROL 0x80, "&Musoperationer", 249, 0x0003, 10, 51, 61, 10
+    CONTROL 0x80, "&Diskkommandon", 251, 0x0003, 10, 63, 64, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 118, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 118, 23, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 118, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Flyttar..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 55, 5, 192, 10
+    CONTROL 0x82, "Till:", 108, 0x008b, 5, 15, 25, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 15, 192, 10
+    CONTROL 0x80, "Avbryt", 2, 0x0001, 200, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 120, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Skriver ut fil...", -1, 0x0001, 4, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 0, 20, 120, 12
+    CONTROL 0x80, "Avbryt", 2, 0x0001, 44, 40, 32, 14
+END
+
+12 DIALOG 0x80c8, 31, 40, 211, 96
+CAPTION "Associera"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Filer med tillägg:", 99, 0x000c, 5, 8, 74, 10
+    CONTROL 0x81, "", 112, 0x0400, 80, 6, 35, 12
+    CONTROL 0x82, "&Associera med:", 99, 0x000c, 5, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 5, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 11, 44, 146, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Bläddra...", 232, 0x0000, 165, 43, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 165, 60, 40, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 250, 78
+CAPTION "Markera filnamn"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Den här sökvägen stämmer inte överens med DOS-formatet för filnamn. Skriv ett nytt namn.", 99, 0x0000, 4, 4, 190, 24
+    CONTROL 0x82, "&Nytt namn:", 99, 0x0002, 17, 56, 50, 12
+    CONTROL 0x81, "", 103, 0x0000, 73, 55, 130, 12
+    CONTROL 0x82, "Ursprunglig sökväg:", 99, 0x0002, 5, 28, 66, 8
+    CONTROL 0x81, "", 102, 0x0880, 73, 28, 130, 12
+    CONTROL 0x82, "Till katalog:", 99, 0x0002, 21, 42, 50, 11
+    CONTROL 0x81, "", 101, 0x0880, 73, 42, 130, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 205, 4, 40, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 205, 20, 40, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 205, 36, 40, 14
+END
+
+48 DIALOG 0x80c8, 23, 13, 268, 107
+CAPTION "Information om %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 205, 6, 61, 14
+    CONTROL 0x80, "Avbryt", 2, 0x0000, 205, 23, 61, 14
+    CONTROL 0x80, "&Hjälp", 254, 0x0000, 205, 42, 61, 14
+    CONTROL 0x82, "Fil&namn:", 261, 0x000c, 5, 5, 50, 8
+    CONTROL 0x81, "", 201, 0x0880, 63, 6, 134, 10
+    CONTROL 0x82, "Sök&väg:", 100, 0x000c, 5, 16, 28, 8
+    CONTROL 0x81, "", 101, 0x0880, 63, 16, 134, 10
+    CONTROL 0x82, "Senaste ändring:", 100, 0x000c, 5, 27, 56, 8
+    CONTROL 0x82, "", 204, 0x000c, 63, 28, 141, 10
+    CONTROL 0x82, "Storlek:", 260, 0x000c, 5, 38, 27, 8
+    CONTROL 0x82, "", 203, 0x000c, 63, 39, 90, 10
+    CONTROL 0x80, "Attribut", 100, 0x0007, 4, 52, 120, 42
+    CONTROL 0x80, "&Skrivskydd", 215, 0x0003, 9, 64, 47, 10
+    CONTROL 0x80, "&Dold", 216, 0x0003, 71, 64, 26, 10
+    CONTROL 0x80, "&Arkiv", 217, 0x0003, 9, 76, 28, 10
+    CONTROL 0x80, "Sys&tem", 218, 0x0003, 71, 76, 34, 10
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0101   "(Rotkatalog)"
+0x0102   "(Ej läsbar)"
+0x0103   "Delad som %s"
+0x0104   "Delas inte"
+0x0107   "Kopierar filer till %s"
+0x0108   "Flyttar filer till %s"
+0x0109   "Kör filer med %s"
+0x010a   "%s byte"
+0x010b   "%s kb"
+0x010c   "%s Mb"
+0x010d   "%s Gb"
+0x010e   "%s Tb"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "AvslutaWindows"
+0x0029   "Detta avslutar Windows."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Kopiera diskett"
+0x0033   "Sätt in måldisketten."
+0x0034   "Sätt in källdisketten."
+0x0035   "Sätt in käll- och måldisketterna."
+0x0036   "Formaterar måldiskett."
+0x0037   "Kopieringsfel"
+0x0038   "Det går inte att kopiera disketten."
+0x003a   "Käll- och målenheterna är inte kompatibla."
+0x003c   "%d%% färdigt"
+0x003d   "Skapar rotkatalog..."
+0x003e   "Kopierar systemfiler..."
+0x003f   "Formateringsfel"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Det finns inte tillräckligt med diskutrymme för att skriva ut.
+
+Ta bort en eller flera filer för att öka diskutrymmet och försök sedan igen."
+0x00c1   "Det finns inte tillräckligt med minne för att skriva ut.
+
+Stäng ett eller flera program och försök sedan igen."
+0x00c2   "Det har uppstått ett fel vid utskriften.
+
+Kontrollera att skrivaren är riktigt konfigurerad."
+0x00c3   "Ofullständigt katalogträd visas"
+0x00c5   "Målenheten är full.
+
+Sätt in en ny diskett."
+0x00c6   "Det här är en systemfil, dold eller skrivskyddad fil."
+0x00c7   "Det går inte att snabbformatera.
+
+Vill du fortsätta med vanlig formatering?"
+0x00c8   "Det angivna programmet är inte ett Windows- eller MS-DOS-baserat program."
+0x00c9   "Det här programmet kräver en nyare version av Microsoft Windows."
+0x00ca   "Det här programmet kräver Windows."
+0x00cb   "Det uppstod ett fel när kommandot sändes till programmet."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Det går inte att formatera disken."
+0x0042   "Formatering klar"
+0x0043   "%ld byte totalt diskutrymme
+%ld byte ledigt diskutrymme
+
+Vill du formatera fler disketter?"
+0x0046   "Gör en systemdiskett"
+0x0047   "Vill du kopiera systemfiler till disketten i enhet %c?"
+0x0048   "Systemdiskfel"
+0x0049   "MS-DOS startenhet innehåller inte systemfilerna eller är inte tillgänglig."
+0x004a   "Du kan inte kopiera systemfiler till MS-DOS startenhet."
+0x004b   "Du kan inte lägga till systemfiler till den här disken.
+
+Kontrollera att en formaterad diskett sitter i enheten och att diskettluckan är stängd."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Filhanteraren kan inte skapa eller ersätta %s: %s"
+0x0408   "Filhanteraren kan inte skapa en MS-DOS-diskett eftersom Windows NT xxxmultiboot installerats på datorn. Gör en systemdiskett genom att använda SYS-tillbehöret från MS-DOS kommandorad."
+0x0409   "Vill du formatera disketten nu utan att överföra systemet?"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Nätverksfel"
+0x0053   "Enheten innehåller Windows systemfiler och kan därför inte kopplas från."
+0x005b   "Filhanteraren kan inte ändra attributen.
+
+Kontrollera att disken inte är skrivskyddad."
+0x005c   "Filhanteraren kan inte skapa en katalog.
+
+Kontrollera att disken inte är skrivskyddad."
+0x005d   "Filhanteraren kan inte namnge disketten.
+
+Kontrollera att disketten inte är skrivskyddad, inte är en nätverksenhet och att etiketten är giltig.
+Etiketter får inte innehålla följande tecken:
+[blanksteg] * ? / \ | . , ; : + = [ ] ( ) & ^ < > " "
+0x005f   "Det finns inte några filer som matchar. "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "Totalt %d fil(er) (%s)"
+0x00b5   "Genomsökta kataloger: %d "
+0x00b6   "%c: %s lediga,  %s totalt"
+0x00b7   "%d fil(er)"
+0x00b9   "markerade filer"
+0x00ba   "Filhanteraren kan inte koppla ifrån den här nätverksenheten eftersom det finns öppna filer."
+0x00bb   "%d fil(er) markerade (%s)"
+0x00bc   "Det finns ingen diskett i enhet %c.
+
+Sätt in en diskett och försök igen."
+0x00bd   "Disketten i enhet %c är inte formaterad.
+
+Vill du formatera den nu?"
+0x00bf   "Filen du vill skriva ut hittades inte. Kontrollera att korrekt sökväg och filnamn är angivna."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "Den angivna katalogen finns redan."
+0x0061   "Enhetens innehåll har ändrats. Vill du uppdatera informationen i fönstret Sökresultat?"
+0x0065   "Enhet %c:%c"
+0x006e   "Det går inte att köra programmet"
+0x006f   "Oväntat fel: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "Formatering kommer att ta bort ALL information från disketten. Vill du formatera disketten i enhet %c?"
+0x00d3   "Bekräfta Formatera diskett"
+0x00d4   "ALL information på måldisketten kommer att försvinna. Vill du fortsätta?"
+0x00d5   "Bekräfta Kopiera diskett"
+0x00d6   "&Stäng"
+0x00da   "%s-katalogen finns inte.
+
+Vill du skapa den?"
+0x00db   "Program#*.EXE;*.PIF;*.COM;*.BAT#Alla filer (*.*)#*.*#"
+0x00dc   "Bläddra"
+0x00dd   "Kör"
+0x00de   "Det går inte att skriva ut filen"
+0x00df   "Det går inte att visa hjälpinformation."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Det finns inte tillräckligt med minne för att starta det angivna programmet.
+
+Stäng ett eller flera program och försök sedan igen."
+0x0071   "Filhanteraren kan inte hitta den angivna filen (eller en av dess komponenter).
+
+Kontrollera att sökvägen och filnamnet är korrekt och att alla nödvändiga bibliotek finns tillgängliga."
+0x0072   "Den angivna sökvägen är felaktig."
+0x0073   "För många filer används för tillfället.
+
+Stäng ett eller flera program, eller ökva värdet för kommandot Files i CONFIG.SYS och försök sedan igen."
+0x0074   "Inget program är associerat med den här filen.
+
+Välj Associera från Arkiv-menyn för att skapa en association."
+0x0075   "Du kan inte starta det angivna programmet mer än en gång i taget."
+0x0076   "Filhanteraren kan inte öppna eller skriva ut den angivna filen.
+
+Starta programmet som skapade filen och öppna eller skriv ut den från det programmet."
+0x0078   "Bekräfta musoperation"
+0x0079   "Vill du kopiera de markerade filerna eller katalogerna till %s?"
+0x007a   "Vill du flytta de markerade filerna eller katalogerna till %s?"
+0x007b   "Vill du starta %s genom att använda %s som initialfil?"
+0x007c   "Filhanteraren"
+0x007e   "Katalogträd"
+0x007f   "Sökresultat: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Filer med tillägget %s är programfiler och kan därför inte associeras med något annat program."
+0x00e1   "%s är inte ett program och kan inte associeras med ett filtillägg."
+0x00e2   "(Ingen)"
+0x00e4   "Filhanteraren kan inte skriva ut flera filer i taget.
+
+Markera en fil och försök igen."
+0x00e5   "Det här programmet eller en av dess komponenter är komprimerad.
+
+Använd funktionen MS-DOS Expand om du vill kopiera filen från installationsdisketterna."
+0x00e6   "En av biblioteksfilerna som krävs för att kunna köra programmet är skadad."
+0x00e7   "Filen används för tillfället av ett annat program."
+0x00e8   "Filhanteraren kan eventuellt inte komma åt filerna som är skapade i katalogen"%s".
+
+Vill du fortsätta?"
+0x00e9   "Skapa katalog"
+0x00ea   "%ld byte"
+0x00eb   "%s byte"
+0x00ec   "Du kan inte kopiera flera filer eller kataloger i taget till Urklipp.
+
+Markera en enstaka fil och försök igen."
+0x00ed   "%s - %s"
+0x00ee   "Enhet:"
+0x00ef   "%s, "
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "För många filer"
+0x0085   "Filhanteraren - Slut på ledigt minne."
+0x0086   "Det går inte att läsa hela katalogen. Endast en del av listan kommer att visas."
+0x008c   "Aktuell katalog: %s"
+0x008d   "Kopiera"
+0x008f   "Byt namn"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Formatera diskett"
+0x0092   "Markera den diskett som ska formateras."
+0x0096   "Skapar:"
+0x0097   "Tar bort..."
+0x0098   "Kopierar:"
+0x0099   "Byter namn..."
+0x009a   "Flyttar..."
+0x009b   "Tar bort..."
+0x009c   "Skriver ut: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "Enhet %c finns inte."
+0x00a9   "Kopierar..."
+0x00aa   "Tar bort:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Öppnar..."
+0x01a5   "Stänger..."
+0x01a6   "Det finns för många katalogfönster öppna.
+
+Stäng ett eller flera fönster och försök sedan igen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Det uppstod ett fel när filen flyttades"
+0x03ea   "Det uppstod ett fel när filen kopierades"
+0x03eb   "Det uppstod ett fel när filen togs bort"
+0x03ec   "Det uppstod ett fel när filnamnet ändrades "
+0x03ed   "Det uppstod ett fel när enheten valdes"
+0x03ee   "Det uppstod ett fel när katalogen lästes"
+0x03ef   "Det uppstod ett fel när disken namngavs"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "Filhanteraren kan inte flytta %s: %s"
+0x03f4   "Filhanteraren kan inte kopiera %s: %s"
+0x03f5   "Filhanteraren kan inte ta bort %s: %s"
+0x03f6   "Filhanteraren kan inte byta namn på %s: %s"
+0x03fd   "Filhanteraren kan inte skapa katalogen %s: %s"
+0x03fe   "Filhanteraren kan inte flytta katalogen %s: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Felaktig MS-DOS-funktion."
+0x0412   "Filhanteraren kan inte hitta den angivna filen.
+
+Kontrollera att du har angivit korrekt sökväg och filnamn."
+0x0413   "Filhanteraren kan inte hitta den angivna sökvägen.
+
+Kontrollera att du har angivit korrekt sökväg."
+0x0414   "För många filer används för tillfället. Stäng ett eller flera program och försök igen."
+0x0415   "Åtkomst nekas.
+
+Kontrollera att disken inte är full eller skrivskyddad."
+0x0416   "Felaktig filidentifierare."
+0x0418   "Otillräckligt med minne.
+
+Stäng ett eller flera program och försök igen."
+0x041c   "Felaktig filåtkomst."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Filhanteraren kan inte ta bort den aktuella katalogen (internt fel)."
+0x0421   "Felaktig enhet."
+0x0422   "Katalogen är tom."
+0x0423   "Disketten är skrivskyddad.
+
+Ta bort skrivskyddet på den här disketten eller använd en annan diskett och försök igen."
+0x042d   "Filhanteraren kan inte skriva till målfilen eller -disken."
+0x042f   "Filhanteraren kan inte läsa från källfilen eller -disken."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Felaktig operation."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Åtkomst till nätverket nekas. Kontrollera att nätverket tillåter dig utföra den här operationen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Ett delningsfel har uppstått. Käll- eller målfilerna kanske används."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Otillräckligt med diskutrymme.
+
+Ta bort en eller flera filer för att öka diskutrymmet och försök sedan igen."
+0x0481   "Käll- och målfilnamnen är desamma."
+0x0482   "Välj endast en fil att byta namn på, eller använd MS-DOS jokertecken (till exempel *.TXT) för att byta namn på en grupp filer med liknande namn."
+0x0483   "Du kan inte byta namn till en annan katalog eller disk."
+0x0484   "Rotkatalog (internt fel)."
+0x0486   "Målkatalogen är en underkatalog till källkatalogen."
+0x0487   "Den angivna filen används av Windows."
+0x0488   "Åtkomst nekas. Källfilen används eventuellt."
+0x0489   "Sökvägen är för lång."
+0x048a   "Ange endast en fil eller katalog i rutan Till, eller använd MS-DOS jokertecken (till exempel *.TXT) om du vill ange en grupp filer eller kataloger."
+0x048b   "Det angivna filnamnet finns redan. Försök igen och ange ett annat namn i rutan "Till"."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 Mb"
+0x0131   "720 kb"
+0x0132   "1,44 Mb"
+0x0133   "2,88 Mb"
+0x0134   "Storlek på enhet"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360 kb"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Otillräckligt med minne."
+0x0192   "Du kan inte formatera MS-DOS startenhet."
+0x0193   "MS-DOS startenhet har en felaktig sektorstorlek."
+0x0194   "Den angivna enheten är av okänd typ."
+0x0199   "Filhanteraren kunde inte föra över systemfilerna."
+0x019a   "Den här disken kan formateras med en kapacitet av %s. Vill du fortsätta att formatera med den här kapaciteten?"
+0x019b   "Filhanteraren kan inte formatera den här disketten.
+
+Kontrollera att disketten sitter i enheten och inte är skrivskyddad, skadad eller har felaktig densitet."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00fe   "&Katalognamn:"
+0x00ff   "\StringFileInfo\040904E4\"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01f4   "Kommentarer"
+0x01f5   "Organisationsnamn"
+0x01f6   "Filbeskrivning"
+0x01f7   "Internt namn"
+0x01f8   "Varumärken"
+0x01f9   "Ursprungligt filnamn"
+0x01fa   "Privat byggbeskrivning"
+0x01fb   "Produktnamn"
+0x01fc   "Produktversion"
+0x01fd   "Speciell byggbeskrivning"
+0x01fe   "Språk"
+0x01ff   "Språk"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0222   "Det går inte att hitta några filer."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0255   "Den angivna datorn kunde inte hittas."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0263   "Den delade katalogen kunde inte hittas."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0274   "Det finns för många omdirigeringar av nätverket."
+0x0276   "Felaktigt lösenord."
+
+Ordinal  String
+---------------------------------------------------------------
+0x02b0   "Nätverksenheten är inte tillgänglig."
+0x02b1   "Ett fel uppstod när enhet %c skulle läsas."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0f90   "Kommandon för filhantering"
+0x0f91   "Kommandon för diskhantering"
+0x0f92   "Kommandon för kataloghantering"
+0x0f93   "Kommandon för inställningar av informationvisning"
+0x0f94   "Kommandon för inställningar av alternativ"
+0x0f9a   "Kommandon för fönsterhantering"
+0x0f9b   "Kommandon för hjälpfunktioner"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1005   "Öppnar markerat objekt"
+0x1006   "Skriver ut dokument"
+0x1007   "Associerar filer med program"
+0x1008   "Söker efter filer och kataloger"
+0x1009   "Kör program eller öppnar dokument "
+0x100a   "Flyttar markerat objekt"
+0x100b   "Kopierar filer och kataloger"
+0x100c   "Tar bort filer och kataloger"
+0x100d   "Byter namn på filer eller kataloger"
+0x100e   "Anger filattribut och visar information"
+0x100f   "Skapar kataloger"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1013   "Avslutar Filhanteraren"
+0x1014   "Markerar filer och kataloger"
+0x1015   "Återställer tidigare borttagna filer"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1069   "Kopierar diskettinnehåll"
+0x106a   "Anger volymetiketter"
+0x106b   "Formaterar disketter"
+0x106c   "Kopierar MS-DOS-filer till en diskett"
+0x106d   "Ansluter nätverksenheter"
+0x106e   "Kopplar från nätverksenheter"
+
+Ordinal  String
+---------------------------------------------------------------
+0x109b   "Väljer ny enhet"
+0x109c   "Nätverksanslutningar..."
+0x109d   "Visa delade kataloger..."
+0x109e   "Delar kataloger"
+0x109f   "Slutar dela kataloger"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10cd   "Visar ytterligare en nivå i katalogträdet för markerad katalog"
+0x10ce   "Visar alla underkataloger till markerad katalog"
+0x10cf   "Visar hela katalogträdet för enheten"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10d0   "Döljer underkatalogerna i markerad katalog"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1195   "Bestämmer vilka meddelanden som behöver bekräftas"
+0x1197   "Visar eller döljer statusfältet"
+0x1198   "Förminskar Filhanteraren till en ikon vid start"
+0x1199   "Markerar kataloger som har underkataloger"
+0x119b   "Visar eller döljer enhetsfältet"
+0x119c   "Visar eller döljer verktygsfältet"
+0x119d   "Öppnar ett nytt fönster vid anslutning"
+0x119e   "Ändrar Filhanterarens teckensnitt"
+0x119f   "Sparar inställningar när Filhanteraren avslutas"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1131   "Visar endast filnamn"
+0x1132   "Visar all filinformation"
+0x1133   "Visar valfri filinformation"
+0x1134   "Sorterar filer efter namn"
+0x1135   "Sorterar filer efter typ"
+0x1136   "Sorterar filer efter storlek"
+0x1137   "Sorterar filer efter datum"
+0x1139   "Visar filer av valfri filtyp"
+0x113b   "Visar katalogträdet för aktivt fönster"
+0x113c   "Visar aktuell katalog och dess innehåll"
+0x113d   "Visar katalogträdet och innehållet i markerad katalog"
+0x113e   "Delar katalogfönstret eller flyttar delningslisten"
+
+Ordinal  String
+---------------------------------------------------------------
+0x11a0   "Anpassar Filhanterarens verktygsfält"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13f0   "Uppdaterar innehållet i ett fönster"
+0x13f1   "Ordnar ikoner"
+0x13f2   "Öppnar ett nytt fönster"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13ed   "Ordnar fönster"
+0x13ee   "Ordnar fönster"
+0x13ef   "Ordnar fönster"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1451   "Ordnar fönster"
+0x1452   "Ordnar fönster"
+0x1453   "Ordnar fönster"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0fbe   "Söker efter ämne i Hjälp"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0320   "&Anslut nätverksenhet..."
+0x0321   "&Koppla från nätverksenhet..."
+0x0322   "Nätverks&anslutningar..."
+0x0323   "&Dela katalog som..."
+0x0324   "&Sluta dela katalog..."
+0x0325   "&Visa delade kataloger..."
+0x0326   "&Återställ..."
+0x0327   "&Öppna nytt fönster vid anslutning"
+
+
