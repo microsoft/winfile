@@ -44,8 +44,8 @@
 //*** Function Prototypes
 //*** Main.c
     int APIENTRY WinMain (HINSTANCE, HINSTANCE, LPSTR, int);
-    long FAR PASCAL MainWndProc (HWND, UINT, WPARAM, LPARAM);
-    BOOL FAR PASCAL About (HWND, UINT, WPARAM, LPARAM);
+    LRESULT CALLBACK MainWndProc (HWND, UINT, WPARAM, LPARAM);
+    INT_PTR CALLBACK About (HWND, UINT, WPARAM, LPARAM);
     VOID            ResizeChildWindows ( HWND hMainWnd );
     VOID            EnableChildWindows ( HWND, PEXEINFO);
 

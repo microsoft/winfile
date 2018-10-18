@@ -103,7 +103,7 @@ INT APIENTRY WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
 //
 //*************************************************************
 
-long FAR PASCAL MainWndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
+LRESULT CALLBACK MainWndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     DLGPROC lpProc;
     HWND    hLB = GetDlgItem( hWnd, IDL_EXEHDR );
@@ -338,7 +338,7 @@ long FAR PASCAL MainWndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 //
 //*************************************************************
 
-INT_PTR FAR PASCAL About (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK About (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg) 
     {
