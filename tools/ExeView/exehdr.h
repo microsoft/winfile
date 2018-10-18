@@ -140,14 +140,9 @@ typedef struct
 } RINFO;
 
 // RESINFO2 is the same structure as RINFO with one modification.
-// RESINFO2 structure uses the lower 16 bits of the lReserved from
-// RINFO structure to point to a string that represents
-// the resource name.  This can be done since the lReserved piece
-// of this structure is used for Run-time data.  This use of the
-// lReserved portion is done so that all resources of a certain
-// type can be read into one allocated array, thus using 1 ALLOC
-// and 1 read.  This saves memory and makes the loading faster
-// so it's worth the slight confusion that might be introduced.
+// RESINFO2 structure includes a pointer to the containing type.
+
+typedef struct tgRESTYPE *PRESTYPE;
 
 typedef struct
 {
@@ -156,17 +151,16 @@ typedef struct
     WORD     wFlags;
     WORD     wID;
     PSTR     pResourceName;
-    WORD     wReserved;
+    // NOTE: RINFO (what is in the file) matches the fields up to this point
+    PRESTYPE pResType;
 } RESINFO2, *PRESINFO;
-
-extern struct tgRESTYPE;
-typedef struct tgRESTYPE *PRESTYPE;
 
 typedef struct tgRESTYPE
 {
     WORD        wType;              // Resource type
     WORD        wCount;             // Specifies ResInfoArray size
     LONG        lReserved;          // Reserved for runtime use
+    // NOTE: RTYPE (what is in the file) matches the fields up to this point
     PSTR        pResourceType;      // Points to custom type name
     PRESINFO    pResInfoArray;      // First entry in array
     PRESTYPE    pNext;              // Next Resource type
@@ -249,5 +243,8 @@ typedef struct
     BOOL        FillLBWithNonResidentNames (HWND, PEXEINFO );
     LPSTR       GetExeDataType (PEXEINFO);
 
+
+//*** save.c
+    BOOL        SaveResources(HWND, PEXEINFO, LPSTR);
 
 //*** EOF: exehdr.h

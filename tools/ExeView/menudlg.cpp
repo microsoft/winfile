@@ -21,7 +21,7 @@
 //   Sample Application Files which are modified.
 //
 
-#include "global.h"
+#include "stdafx.h"
 
 
 //*************************************************************
@@ -115,7 +115,7 @@ BOOL ShowMenu (LPRESPACKET lprp)
 //
 //*************************************************************
 
-LONG FAR PASCAL ShowMenuProc (HWND hWnd, WORD msg, WORD wParam, LONG lParam)
+LRESULT FAR PASCAL ShowMenuProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     // Release MODAL appearance
     if (msg==WM_CLOSE)
@@ -151,7 +151,7 @@ LONG FAR PASCAL ShowMenuProc (HWND hWnd, WORD msg, WORD wParam, LONG lParam)
 //
 //*************************************************************
 
-BOOL FAR PASCAL ShowDialogProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL ShowDialogProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {

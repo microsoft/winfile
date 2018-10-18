@@ -27,6 +27,7 @@ typedef struct
     PRESINFO    pri;
     LONG        lSize;
     LPSTR       lpMem;
+    HANDLE      hMem;
     int         fFile;
 } RESPACKET, FAR *LPRESPACKET;
 
@@ -82,8 +83,8 @@ typedef struct
 
 typedef struct
 {
-    int         xHotSpot;
-    int         yHotSpot;
+    WORD    xHotSpot;
+    WORD    yHotSpot;
     BITMAPINFO  bi;
 } CURSORIMAGE, FAR *LPCURSORIMAGE;
 
@@ -137,47 +138,122 @@ typedef struct
 
 } FONTENTRY, FAR *LPFONTENTRY;
 
+#define MAXDLGITEMS 100
+
+#pragma pack(push, 1)
+typedef struct {
+    WORD style;
+    WORD extra;
+    BYTE cdit;
+    short x;
+    short y;
+    short cx;
+    short cy;
+    WORD flags;
+} DLGTEMPLATE16;
+
+typedef struct {
+    short x;
+    short y;
+    short cx;
+    short cy;
+    short id;
+    WORD style;
+    WORD extra;
+    BYTE kind;
+} DLGITEMTEMPLATE16;
+#pragma pack(pop)
+
+// one dialog item; pointers are into the locked resource memory
+typedef struct
+{
+    DLGITEMTEMPLATE16 *pitem;
+
+    LPCTSTR lpszTitle;
+    WORD iconid;
+
+    LPCTSTR lpszSecond;
+} DLGITEMDECODE;
+
+// decoded dialog as a whole; pointers are into locked resource memory
+typedef struct
+{
+    DLGTEMPLATE16 *pdlg;
+
+    LPCTSTR lpszTitle;
+
+    // if DS_SETFONT
+    WORD wFont;        // size in points
+    LPCTSTR lpszFont;
+
+    // count of items is in pdlg->cdit
+    DLGITEMDECODE rgitems[MAXDLGITEMS];
+} DLGDECODE;
+
+#define MAXMENUITEMS 100
+
+#define MFR_END 0x80
+
+// used for both normal and popup items
+typedef struct
+{
+    WORD flags;
+    WORD id;
+    LPCTSTR lpszMenu;
+} MENUITEM;
+
+// decoded menu; pointers are into locked resource memory
+typedef struct
+{
+    WORD flags;
+    LPCTSTR lpszTitle;
+
+    int cItem;
+    MENUITEM rgitem[MAXMENUITEMS];
+} MENUDECODE;
 
 //*** function prototypes
 //*** bmp.c
 BOOL ShowBitmap (LPRESPACKET );
-LONG FAR PASCAL ShowBitmapProc (HWND, WORD, WORD, LONG);
+LRESULT FAR PASCAL ShowBitmapProc (HWND, UINT, WPARAM, LPARAM);
 HBITMAP MakeBitmap (LPRESPACKET );
 HPALETTE CreateNewPalette  (LPSTR, WORD, WORD);
 
 //*** res.c
+BOOL LoadResourcePacket(PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri, LPRESPACKET lprp);
+VOID FreeResourcePacket(LPRESPACKET lprp);
 BOOL DisplayResource (PEXEINFO, PRESTYPE, PRESINFO );
 
 BOOL FillLBWithNameTable (HWND, LPRESPACKET);
-BOOL FAR PASCAL NameTableProc (HWND, WORD, WORD, LONG);
+INT_PTR FAR PASCAL NameTableProc (HWND, UINT, WPARAM, LPARAM);
 
 BOOL FillLBWithIconGroup (HWND, LPRESPACKET);
-BOOL FAR PASCAL IconGroupProc (HWND, WORD, WORD, LONG);
+INT_PTR FAR PASCAL IconGroupProc (HWND, UINT, WPARAM, LPARAM);
             
 BOOL FillLBWithCursorGroup (HWND, LPRESPACKET);
-BOOL FAR PASCAL CursorGroupProc (HWND, WORD, WORD, LONG);
+INT_PTR FAR PASCAL CursorGroupProc (HWND, UINT, WPARAM, LPARAM);
 
 BOOL FillLBWithAccelTable (HWND, LPRESPACKET);
-BOOL FAR PASCAL AccelTableProc (HWND, WORD, WORD, LONG);
+INT_PTR FAR PASCAL AccelTableProc (HWND, UINT, WPARAM, LPARAM);
 
 BOOL FillLBWithStringTable (HWND, LPRESPACKET);
-BOOL FAR PASCAL StringTableProc (HWND, WORD, WORD, LONG);
+INT_PTR FAR PASCAL StringTableProc (HWND, UINT, WPARAM, LPARAM);
 
 BOOL FillLBWithFontDir (HWND, LPRESPACKET);
-BOOL FAR PASCAL FontDirProc (HWND, WORD, WORD, LONG);
+INT_PTR FAR PASCAL FontDirProc (HWND, UINT, WPARAM, LPARAM);
 
 
 //*** iconcur.c
-BOOL FAR PASCAL ShowIconProc (HWND, WORD, WORD, LONG);
+INT_PTR FAR PASCAL ShowIconProc (HWND, UINT, WPARAM, LPARAM);
 HICON   MakeIcon ( LPRESPACKET );
 
-BOOL FAR PASCAL ShowCursorProc (HWND, WORD, WORD, LONG);
+INT_PTR FAR PASCAL ShowCursorProc (HWND, UINT, WPARAM, LPARAM);
 HCURSOR MakeCursor ( LPRESPACKET );
 
 //*** menudlg.c
 BOOL ShowMenu (LPRESPACKET );
-LONG FAR PASCAL ShowMenuProc (HWND, WORD, WORD, LONG);
-BOOL FAR PASCAL ShowDialogProc (HWND, WORD, WORD, LONG);
+LRESULT FAR PASCAL ShowMenuProc (HWND, UINT, WPARAM, LPARAM);
+INT_PTR FAR PASCAL ShowDialogProc (HWND, UINT, WPARAM, LPARAM);
 
 
 //*** EOF: res.h

@@ -21,7 +21,7 @@
 //   Sample Application Files which are modified.
 //
 
-#include "global.h"
+#include "stdafx.h"
 
 //*************************************************************
 //
@@ -345,6 +345,7 @@ int ReadResourceTable (int fFile, PEXEINFO pExeInfo)
     PRESINFO  pri;
     long      lResTable;
     WORD      wResSize, wI;
+    int       ipri;
 
     rt.pResourceType = NULL;
     rt.pResInfoArray = NULL;
@@ -384,16 +385,21 @@ int ReadResourceTable (int fFile, PEXEINFO pExeInfo)
         prt_last=prt;
 
         // Allocate buffer for 'Count' resources of this type
-        wResSize = prt->wCount * sizeof( RINFO ); 
+        wResSize = prt->wCount * sizeof( RESINFO2 );
         pri = (PRESINFO)LocalAlloc(LPTR, wResSize );
         if (!pri)
             return LERR_MEMALLOC;
         prt->pResInfoArray = pri;
 
         // Now read 'Count' resources of this type
-        nLen = _lread(fFile,(LPSTR)pri, wResSize);
-        if ( nLen != (int)wResSize )
-            return LERR_READINGFILE;
+        for (ipri = 0; ipri < prt->wCount; ipri++)
+        {
+            nLen = _lread(fFile, (LPSTR)(pri + ipri), sizeof(RINFO));
+            if (nLen != sizeof(RINFO))
+                return LERR_READINGFILE;
+
+            (pri + ipri)->pResType = prt;
+        }
     }
 
     // Now that the resources are read, read the names

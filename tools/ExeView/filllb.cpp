@@ -21,9 +21,10 @@
 //   Sample Application Files which are modified.
 //
 
-#include "global.h"
+#include "stdafx.h"
 
-char *rc_types[] = {
+// index is RT_ values through RT_VERSION
+const char *rc_types[] = {
     "",
     "CURSOR",
     "BITMAP",
@@ -39,7 +40,8 @@ char *rc_types[] = {
     "GROUP CURSOR",
     "",
     "GROUP ICON",
-    "NAME TABLE"
+    "NAME TABLE",
+    "VERSION"
 };
 
 //*************************************************************
@@ -513,7 +515,7 @@ BOOL FillLBWithResources (HWND hWnd, PEXEINFO pExeInfo )
     char     szBuff[255];
     LPSTR    lp = (LPSTR)szBuff;
     char     szRCType[30];
-    LPSTR    lpn;
+    LPCSTR   lpn;
     PRESTYPE prt = pExeInfo->pResTable;
 
     #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
@@ -543,10 +545,10 @@ BOOL FillLBWithResources (HWND hWnd, PEXEINFO pExeInfo )
         {
             WORD wType = prt->wType&0x7fff;
 
-            if (wType==0 || wType==11 || wType==13 || wType > 15)
+            if (wType==0 || wType==11 || wType==13 || wType > 16)
             {
                 lpn = (LPSTR)szRCType;
-                wsprintf( lpn, "Unknown Type: %#04X\0", prt->wType );
+                wsprintf( szRCType, "Unknown Type: %#04X\0", prt->wType );
             }
             else    
                 lpn = rc_types[ prt->wType&0x7fff ];
@@ -562,9 +564,8 @@ BOOL FillLBWithResources (HWND hWnd, PEXEINFO pExeInfo )
             int nIndex;
 
             FormatResourceEntry( pExeInfo, pri, lp );
-            if ((nIndex = (int)ADDITEM())>=0)
-                SendMessage( hWnd, LB_SETITEMDATA, nIndex, 
-                    MAKELONG((WORD)pri,(WORD)prt) );
+            if ((nIndex = (int)ADDITEM()) >= 0)
+                SendMessage(hWnd, LB_SETITEMDATA, nIndex, (LPARAM)pri);
             // Set the item data for use when double clicking
 
             pri++;
@@ -889,7 +890,7 @@ LPSTR FormatResourceEntry ( PEXEINFO pExeInfo, PRESINFO pri, LPSTR lp )
     {
         char temp[10];
 
-        wsprintf( (LPSTR)temp, "%#04X", pri->wID );
+        wsprintf( (LPSTR)temp, "%#04X", pri->wID & 0x7fff);
         lstrcat( lp, temp );
     }
     else

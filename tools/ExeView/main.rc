@@ -20,6 +20,7 @@ BEGIN
     POPUP        "&File"
     BEGIN
         MENUITEM "&Open...",            IDM_OPEN
+        MENUITEM "Save &Resources...",  IDM_SAVERES
         MENUITEM SEPARATOR
         MENUITEM "&About ExeView...",   IDM_ABOUT
         MENUITEM SEPARATOR

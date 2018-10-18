@@ -21,7 +21,7 @@
 //   Sample Application Files which are modified.
 //
 
-#include "global.h"
+#include "stdafx.h"
 
 //*************************************************************
 //
@@ -49,7 +49,7 @@
 //
 //*************************************************************
 
-BOOL FAR PASCAL ShowIconProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL ShowIconProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     static HICON hIcon;
     static WORD  wWidth, wHeight;
@@ -146,8 +146,8 @@ HICON MakeIcon ( LPRESPACKET lprp )
     HICON   hIcon = NULL;
     WORD    wH, wW, wXORSize, wANDSize, wColorTableSize, wScans;
     WORD    wIconW, wIconH;
-    LPSTR   lpANDbits;
-    LPSTR   lpXORbits;
+    LPBYTE  lpANDbits;
+    LPBYTE  lpXORbits;
     HDC     hDC, hSrcDC, hDestDC;
     HBITMAP hbmpXOR, hbmpAND;
     HBITMAP hbmpDestXOR, hbmpDestAND;
@@ -167,7 +167,7 @@ HICON MakeIcon ( LPRESPACKET lprp )
 
     wColorTableSize = sizeof(RGBQUAD) * (0x0001<<lpbihdr->biBitCount);
 
-    lpXORbits = ((LPSTR)lpbihdr)+wColorTableSize+(WORD)lpbihdr->biSize;
+    lpXORbits = ((LPBYTE)lpbihdr)+wColorTableSize+(WORD)lpbihdr->biSize;
     lpANDbits = lpXORbits + wXORSize;
 
     // Now we need to make a bitmap and convert these to DDB
@@ -287,8 +287,8 @@ HICON MakeIcon ( LPRESPACKET lprp )
         return NULL;
     }
 
-    hbmpOldSrc = SelectObject( hSrcDC, hbmpXOR );
-    hbmpOldDest = SelectObject( hDestDC, hbmpDestXOR );
+    hbmpOldSrc = (HBITMAP)SelectObject( hSrcDC, hbmpXOR );
+    hbmpOldDest = (HBITMAP)SelectObject( hDestDC, hbmpDestXOR );
     SetStretchBltMode( hDestDC, COLORONCOLOR );
 
     StretchBlt(hDestDC,0,0,wIconW,wIconH,hSrcDC,0,0,wW,wH,SRCCOPY);
@@ -326,7 +326,7 @@ HICON MakeIcon ( LPRESPACKET lprp )
         return NULL;
     }
 
-    if ((lpXORbits = (LPSTR)GlobalLock( hXORbits )) == NULL)
+    if ((lpXORbits = (LPBYTE)GlobalLock( hXORbits )) == NULL)
     {
         GlobalFree( hXORbits );
         DeleteObject( hbmpDestAND );
@@ -358,7 +358,7 @@ HICON MakeIcon ( LPRESPACKET lprp )
         return NULL;
     }
 
-    if ((lpANDbits = (LPSTR)GlobalLock( hANDbits )) == NULL)
+    if ((lpANDbits = (LPBYTE)GlobalLock( hANDbits )) == NULL)
     {
         GlobalFree( hANDbits );
         GlobalUnlock( hXORbits );
@@ -424,7 +424,7 @@ HICON MakeIcon ( LPRESPACKET lprp )
 //
 //*************************************************************
 
-BOOL FAR PASCAL ShowCursorProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL ShowCursorProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     static HCURSOR hCursor;
     static WORD    wWidth, wHeight;
@@ -678,8 +678,8 @@ HCURSOR MakeCursor ( LPRESPACKET lprp )
         return NULL;
     }
 
-    hbmpOldSrc = SelectObject( hSrcDC, hbmpXOR );
-    hbmpOldDest = SelectObject( hDestDC, hbmpDestXOR );
+    hbmpOldSrc = (HBITMAP)SelectObject( hSrcDC, hbmpXOR );
+    hbmpOldDest = (HBITMAP)SelectObject( hDestDC, hbmpDestXOR );
     SetStretchBltMode( hDestDC, WHITEONBLACK );
 
     StretchBlt(hDestDC,0,0,wCursorW,wCursorH,hSrcDC,0,0,wW,wH,SRCCOPY);

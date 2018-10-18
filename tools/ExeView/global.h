@@ -26,6 +26,8 @@
     #define IDM_ABOUT               0x51
     #define IDM_EXIT                0x52
 
+    #define IDM_SAVERES             0x60
+
 //*** Control defines
     #define IDL_EXEHDR              0x100
     #define IDB_OLDHDR              0x101
@@ -41,19 +43,19 @@
 
 //*** Function Prototypes
 //*** Main.c
-    int PASCAL WinMain (HANDLE, HANDLE, LPSTR, int);
+    int APIENTRY WinMain (HINSTANCE, HINSTANCE, LPSTR, int);
     long FAR PASCAL MainWndProc (HWND, UINT, WPARAM, LPARAM);
-    BOOL FAR PASCAL About (HWND, unsigned, WORD, LONG);
+    BOOL FAR PASCAL About (HWND, UINT, WPARAM, LPARAM);
     VOID            ResizeChildWindows ( HWND hMainWnd );
     VOID            EnableChildWindows ( HWND, PEXEINFO);
 
 //*** Init.c
-    BOOL InitApplication (HANDLE);
-    BOOL InitInstance (HANDLE, int);
+    BOOL InitApplication (HINSTANCE);
+    BOOL InitInstance (HINSTANCE, int);
 
 
 //*** EXTERNS for Global Variables
-    extern HANDLE       ghInst;
+    extern HINSTANCE    ghInst;
     extern HWND         ghWndMain;
 
     extern char         szMainMenu[];

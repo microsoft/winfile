@@ -21,7 +21,7 @@
 //   Sample Application Files which are modified.
 //
 
-#include "global.h"
+#include "stdafx.h"
 
 //*************************************************************
 //
@@ -103,7 +103,7 @@ BOOL ShowBitmap (LPRESPACKET lprp)
 //
 //*************************************************************
 
-LONG FAR PASCAL ShowBitmapProc (HWND hWnd, WORD msg, WORD wParam, LONG lParam)
+LRESULT FAR PASCAL ShowBitmapProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     static HBITMAP hBitmap = NULL;
 
@@ -132,7 +132,7 @@ LONG FAR PASCAL ShowBitmapProc (HWND hWnd, WORD msg, WORD wParam, LONG lParam)
                 HBITMAP hBmp;
 
                 GetClientRect( hWnd, &rc );
-                hBmp = SelectObject( hDC, hBitmap );
+                hBmp = (HBITMAP)SelectObject( hDC, hBitmap );
 
                 BitBlt(ps.hdc,0,0,rc.right,rc.bottom,hDC,0,0,SRCCOPY);
                 SelectObject( hDC, hBmp );

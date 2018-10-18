@@ -21,9 +21,9 @@
 //   Sample Application Files which are modified.
 //
 
-#include "global.h"
+#include "stdafx.h"
 
-HANDLE      ghInst      = NULL;
+HINSTANCE   ghInst      = NULL;
 HWND        ghWndMain   = NULL;
 
 char        szMainMenu[]    = "MainMenu";
@@ -56,7 +56,7 @@ PEXEINFO    gpExeInfo;
 //
 //*************************************************************
 
-int PASCAL WinMain (HANDLE hInstance, HANDLE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+INT APIENTRY WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
     MSG msg;
 
@@ -105,13 +105,13 @@ int PASCAL WinMain (HANDLE hInstance, HANDLE hPrevInstance, LPSTR lpCmdLine, int
 
 long FAR PASCAL MainWndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-    FARPROC lpProc;
+    DLGPROC lpProc;
     HWND    hLB = GetDlgItem( hWnd, IDL_EXEHDR );
 
     switch (msg) 
     {
         case WM_COMMAND: 
-            switch ( wParam )
+            switch ( LOWORD(wParam) )
             {
                 case IDM_OPEN:
                 {
@@ -251,9 +251,8 @@ long FAR PASCAL MainWndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                     int  nItem = (int)SendMessage( hLB, LB_GETCURSEL,0,0L );
                     LONG lData;
 
-                    if (HIWORD(lParam)!=LBN_DBLCLK)
+                    if (HIWORD(wParam)!=LBN_DBLCLK)
                         break;
-
 
                     if (nItem<0)
                         break;
@@ -263,8 +262,34 @@ long FAR PASCAL MainWndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
                     if (lData==NULL)
                         break;
 
-                    return (LONG)DisplayResource(gpExeInfo,
-                        (PRESTYPE)HIWORD(lData), (PRESINFO)LOWORD(lData));
+                    return (LONG)DisplayResource(gpExeInfo, ((PRESINFO)lData)->pResType, (PRESINFO)lData);
+                }
+                break;
+
+                case IDM_SAVERES:
+                {
+                    OPENFILENAME of;
+                    char         szFile[120];
+
+                    memset( &of, 0, sizeof(OPENFILENAME) );
+
+                    szFile[0] = 0;
+
+                    of.lStructSize  = sizeof(OPENFILENAME);
+                    of.hwndOwner    = ghWndMain;
+                    of.hInstance    = ghInst;
+                    of.lpstrFilter  = (LPSTR)"Resource file\0*.rc\0\0";
+                    of.nFilterIndex = 0;
+                    of.lpstrFile    = (LPSTR)szFile;
+                    of.nMaxFile     = (DWORD)sizeof(szFile);
+                    of.lpstrTitle   = (LPSTR)"Resource File";
+                    of.Flags        = OFN_HIDEREADONLY|OFN_PATHMUSTEXIST;
+                    of.lpstrDefExt  = (LPSTR)"rc";
+
+                    if (GetSaveFileName(&of))
+                    {
+                        SaveResources(hWnd, gpExeInfo, szFile);
+                    }
                 }
                 break;
             }
@@ -313,7 +338,7 @@ long FAR PASCAL MainWndProc (HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 //
 //*************************************************************
 
-BOOL FAR PASCAL About (HWND hDlg, unsigned msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL About (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg) 
     {

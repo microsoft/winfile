@@ -21,7 +21,7 @@
 //   Sample Application Files which are modified.
 //
 
-#include "global.h"
+#include "stdafx.h"
 
 //*************************************************************
 //
@@ -46,7 +46,7 @@
 //
 //*************************************************************
 
-BOOL InitApplication (HANDLE hInstance)
+BOOL InitApplication (HINSTANCE hInstance)
 {
     WNDCLASS  wc;
 
@@ -58,7 +58,7 @@ BOOL InitApplication (HANDLE hInstance)
     wc.hInstance = hInstance;    
     wc.hIcon = LoadIcon(hInstance, "MAINICON");
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
-    wc.hbrBackground = COLOR_APPWORKSPACE+1;
+    wc.hbrBackground = (HBRUSH)(COLOR_APPWORKSPACE+1);
     wc.lpszMenuName  = szMainMenu;  
     wc.lpszClassName = szMainClass;
 
@@ -107,7 +107,7 @@ BOOL InitApplication (HANDLE hInstance)
 //
 //*************************************************************
 
-BOOL InitInstance (HANDLE hInstance, int nCmdShow)
+BOOL InitInstance (HINSTANCE hInstance, int nCmdShow)
 {
     HWND hWnd;
     int  tabs = 36;
@@ -125,51 +125,51 @@ BOOL InitInstance (HANDLE hInstance, int nCmdShow)
     hWnd = CreateWindow( "LISTBOX", NULL, WS_CHILD|WS_VISIBLE|WS_BORDER|
         WS_VSCROLL|LBS_NOINTEGRALHEIGHT|LBS_NOTIFY|LBS_USETABSTOPS,
         0,0,0,0,
-        ghWndMain, IDL_EXEHDR, hInstance, NULL );
+        ghWndMain, (HMENU)IDL_EXEHDR, hInstance, NULL );
 
     if (!hWnd)
         return FALSE;
 
     SendMessage( hWnd, LB_SETTABSTOPS, 1, (LONG)(LPINT)&tabs );
-    SendMessage( hWnd, WM_SETFONT, GetStockObject(SYSTEM_FIXED_FONT), 0L );
+    SendMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(SYSTEM_FIXED_FONT), 0L );
 
     hWnd = CreateWindow( "BUTTON", "Old Header", WS_CHILD|WS_VISIBLE,
-            0, 0, 0, 0, ghWndMain, IDB_OLDHDR, hInstance, NULL );
+            0, 0, 0, 0, ghWndMain, (HMENU)IDB_OLDHDR, hInstance, NULL );
     if (!hWnd)
         return FALSE;
 
     hWnd = CreateWindow( "BUTTON", "New Header", WS_CHILD|WS_VISIBLE,
-            0, 0, 0, 0, ghWndMain, IDB_NEWHDR, hInstance, NULL );
+            0, 0, 0, 0, ghWndMain, (HMENU)IDB_NEWHDR, hInstance, NULL );
     if (!hWnd)
         return FALSE;
 
     hWnd = CreateWindow( "BUTTON", "Entry Table", WS_CHILD|WS_VISIBLE,
-            0, 0, 0, 0, ghWndMain, IDB_ENTRYTABLE, hInstance, NULL );
+            0, 0, 0, 0, ghWndMain, (HMENU)IDB_ENTRYTABLE, hInstance, NULL );
     if (!hWnd)
         return FALSE;
 
     hWnd = CreateWindow( "BUTTON", "Segments", WS_CHILD|WS_VISIBLE,
-            0, 0, 0, 0, ghWndMain, IDB_SEGMENTS, hInstance, NULL );
+            0, 0, 0, 0, ghWndMain, (HMENU)IDB_SEGMENTS, hInstance, NULL );
     if (!hWnd)
         return FALSE;
 
     hWnd = CreateWindow( "BUTTON", "Resources", WS_CHILD|WS_VISIBLE,
-            0, 0, 0, 0, ghWndMain, IDB_RESOURCES, hInstance, NULL );
+            0, 0, 0, 0, ghWndMain, (HMENU)IDB_RESOURCES, hInstance, NULL );
     if (!hWnd)
         return FALSE;
 
     hWnd = CreateWindow( "BUTTON", "Resident Names", WS_CHILD|WS_VISIBLE,
-            0, 0, 0, 0, ghWndMain, IDB_RESIDENTNAMES, hInstance, NULL );
+            0, 0, 0, 0, ghWndMain, (HMENU)IDB_RESIDENTNAMES, hInstance, NULL );
     if (!hWnd)
         return FALSE;
 
     hWnd = CreateWindow( "BUTTON", "Imported Names", WS_CHILD|WS_VISIBLE,
-            0, 0, 0, 0, ghWndMain, IDB_IMPORTEDNAMES, hInstance, NULL );
+            0, 0, 0, 0, ghWndMain, (HMENU)IDB_IMPORTEDNAMES, hInstance, NULL );
     if (!hWnd)
         return FALSE;
 
     hWnd = CreateWindow( "BUTTON", "NonResident Names", WS_CHILD|WS_VISIBLE,
-            0, 0, 0, 0, ghWndMain, IDB_NONRESIDENTNAMES, hInstance, NULL );
+            0, 0, 0, 0, ghWndMain, (HMENU)IDB_NONRESIDENTNAMES, hInstance, NULL );
     if (!hWnd)
         return FALSE;
 

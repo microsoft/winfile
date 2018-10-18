@@ -21,47 +21,21 @@
 //   Sample Application Files which are modified.
 //
 
-#include "global.h"
+#include "stdafx.h"
 #include "string.h"
 
-extern char *rc_types[];
+extern const char *rc_types[];
 
-//*************************************************************
-//
-//  DisplayResource
-//
-//  Purpose:
-//      Attempts to display the given resource
-//
-//
-//  Parameters:
-//      PEXEINFO pExeInfo
-//      PRESTYPE ptr
-//      PRESINFO pri
-//      
-//
-//  Return: (BOOL)
-//
-//
-//  Comments:
-//
-//
-//  History:    Date       Author     Comment
-//
-//*************************************************************
-
-BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
+BOOL LoadResourcePacket(PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri, LPRESPACKET lprp)
 {
     int      fFile;
     OFSTRUCT of;
     int      nErr = 0;
-    RESPACKET rp;
-    LPRESPACKET lprp = &rp;
     LONG     lSize;
     LONG     lOffset;
     HANDLE   hMem;
     LPSTR    lpMem;
-    char huge *lpTMem;
+    char    *lpTMem;
 
     if (!pExeInfo || !prt || !pri)
     {
@@ -84,7 +58,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
     // Calculate the position in the the file and move file pointer
     lOffset = ((LONG)pri->wOffset)<<(pExeInfo->wShiftCount);
-    
+
     _llseek( fFile, lOffset, 0 );
 
     // Allocate memory for resource
@@ -98,7 +72,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
         return FALSE;
     }
 
-    lpMem = GlobalLock( hMem );
+    lpMem = (LPSTR)GlobalLock(hMem);
     if (!lpMem)
     {
         _lclose( fFile );
@@ -108,7 +82,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
     }
 
     // Read in resource from file
-    lpTMem = (char huge *)lpMem;
+    lpTMem = (char *)lpMem;
 
     SetCursor( LoadCursor(NULL, IDC_WAIT) );
     while (lSize)
@@ -120,7 +94,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
         else
             wSize = (WORD)lSize;
 
-// _lread is limited to 32K chunks, thus these gyrations
+        // _lread is limited to 32K chunks, thus these gyrations
         if (_lread(fFile, (LPSTR)lpTMem, wSize) != wSize)
         {
             _lclose( fFile );
@@ -137,13 +111,58 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
     // Build a resource packet.  This allows the passing of all the
     // the needed info with one 32 bit pointer.
-    rp.pExeInfo = pExeInfo;
-    rp.prt      = prt;
-    rp.pri      = pri;
-    rp.lSize    = ((LONG)pri->wLength)<<(pExeInfo->wShiftCount);
-    rp.lpMem    = lpMem;
-    rp.fFile    = fFile;
+    lprp->pExeInfo = pExeInfo;
+    lprp->prt = prt;
+    lprp->pri = pri;
+    lprp->lSize = ((LONG)pri->wLength)<<(pExeInfo->wShiftCount);
+    lprp->lpMem = lpMem;
+    lprp->fFile = fFile;
+    lprp->hMem = hMem;
 
+    return TRUE;
+}
+
+
+VOID FreeResourcePacket(LPRESPACKET lprp)
+{
+    _lclose(lprp->fFile);
+    GlobalUnlock(lprp->hMem);
+    GlobalFree(lprp->hMem);
+}
+
+
+//*************************************************************
+//
+//  DisplayResource
+//
+//  Purpose:
+//      Attempts to display the given resource
+//
+//
+//  Parameters:
+//      PEXEINFO pExeInfo
+//      PRESTYPE ptr
+//      PRESINFO pri
+//
+//
+//  Return: (BOOL)
+//
+//
+//  Comments:
+//
+//
+//  History:    Date       Author     Comment
+//
+//*************************************************************
+
+BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
+{
+    int      nErr = 0;
+    RESPACKET rp;
+    LPRESPACKET lprp = &rp;
+
+    if (!LoadResourcePacket(pExeInfo, prt, pri, lprp))
+        return FALSE;
 
     if (prt->wType & 0x8000)
     {
@@ -151,9 +170,9 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
         {
             case NAMETABLE:
             {
-                FARPROC lpProc;
+                DLGPROC lpProc;
 
-                lpProc = MakeProcInstance( (FARPROC)NameTableProc, ghInst );
+                lpProc = MakeProcInstance(NameTableProc, ghInst );
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
                     (LONG)lprp );
                 FreeProcInstance( lpProc );
@@ -162,9 +181,9 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
             case GROUP_ICON:
             {
-                FARPROC lpProc;
+                DLGPROC lpProc;
 
-                lpProc = MakeProcInstance( (FARPROC)IconGroupProc, ghInst );
+                lpProc = MakeProcInstance(IconGroupProc, ghInst );
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
@@ -175,22 +194,9 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
             case GROUP_CURSOR:
             {
-                FARPROC lpProc;
+                DLGPROC lpProc;
 
-                lpProc = MakeProcInstance( (FARPROC)CursorGroupProc, ghInst );
-
-                // Re-use the NAMETABLE_DLG with a different DlgProc
-                nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
-                FreeProcInstance( lpProc );
-            }
-            break;
-
-            case RT_ACCELERATOR:
-            {
-                FARPROC lpProc;
-
-                lpProc = MakeProcInstance( (FARPROC)AccelTableProc, ghInst );
+                lpProc = MakeProcInstance(CursorGroupProc, ghInst );
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
@@ -199,11 +205,11 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
             }
             break;
 
-            case RT_STRING:
+            case (int)RT_ACCELERATOR:
             {
-                FARPROC lpProc;
+                DLGPROC lpProc;
 
-                lpProc = MakeProcInstance( (FARPROC)StringTableProc, ghInst );
+                lpProc = MakeProcInstance(AccelTableProc, ghInst );
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
@@ -212,11 +218,11 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
             }
             break;
 
-            case RT_FONTDIR:
+            case (int)RT_STRING:
             {
-                FARPROC lpProc;
+                DLGPROC lpProc;
 
-                lpProc = MakeProcInstance( (FARPROC)FontDirProc, ghInst );
+                lpProc = MakeProcInstance(StringTableProc, ghInst );
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
@@ -225,11 +231,24 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
             }
             break;
 
-            case RT_ICON:
+            case (int)RT_FONTDIR:
             {
-                FARPROC lpProc;
+                DLGPROC lpProc;
 
-                lpProc = MakeProcInstance( (FARPROC)ShowIconProc, ghInst );
+                lpProc = MakeProcInstance(FontDirProc, ghInst );
+
+                // Re-use the NAMETABLE_DLG with a different DlgProc
+                nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
+                    (LONG)lprp );
+                FreeProcInstance( lpProc );
+            }
+            break;
+
+            case (int)RT_ICON:
+            {
+                DLGPROC lpProc;
+
+                lpProc = MakeProcInstance(ShowIconProc, ghInst );
 
                 // Re-use the GRAPHIC_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "GRAPHIC_DLG", ghWndMain, lpProc,
@@ -238,11 +257,11 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
             }
             break;
 
-            case RT_CURSOR:
+            case (int)RT_CURSOR:
             {
-                FARPROC lpProc;
+                DLGPROC lpProc;
 
-                lpProc = MakeProcInstance( (FARPROC)ShowCursorProc, ghInst );
+                lpProc = MakeProcInstance(ShowCursorProc, ghInst );
 
                 // Re-use the GRAPHIC_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "GRAPHIC_DLG", ghWndMain, lpProc,
@@ -251,22 +270,23 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
             }
             break;
 
-            case RT_MENU:
+            case (int)RT_MENU:
                 ShowMenu( lprp );
             break;
 
-            case RT_BITMAP:
+            case (int)RT_BITMAP:
                 ShowBitmap( lprp );
             break;
 
-            case RT_DIALOG:
+            case (int)RT_DIALOG:
             {
-                FARPROC lpProc;
-                HANDLE  hDlgMem = (HANDLE)GlobalHandle( HIWORD(lprp->lpMem) );
+                DLGPROC lpProc;
 
-                lpProc = MakeProcInstance( (FARPROC)ShowDialogProc, ghInst );
+                lpProc = MakeProcInstance(ShowDialogProc, ghInst );
 
-                nErr = DialogBoxIndirect(ghInst, hDlgMem, ghWndMain,lpProc);
+                // NOTE: 16bit dialogs will not display at all on 32/64 bit Windows.  Just saying...
+
+                nErr = DialogBoxIndirect(ghInst, (LPCDLGTEMPLATE)lprp->lpMem, ghWndMain,lpProc);
                 FreeProcInstance( lpProc );
                 if (nErr!=-1)
                     nErr = 0;
@@ -279,17 +299,13 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
         }
         if (!nErr)
         {
-            _lclose( fFile );
-            GlobalUnlock( hMem );
-            GlobalFree( hMem );
+            FreeResourcePacket(lprp);
             return TRUE;
         }
     }
 
     MessageBox(ghWndMain,"Unable to display resource!","EXEVIEW",MB_OK);
-    _lclose( fFile );
-    GlobalUnlock( hMem );
-    GlobalFree( hMem );
+    FreeResourcePacket(lprp);
     return FALSE;
 
 } //*** DisplayResource
@@ -320,7 +336,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 //
 //*************************************************************
 
-BOOL FAR PASCAL NameTableProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL NameTableProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -379,7 +395,7 @@ BOOL FillLBWithNameTable (HWND hWnd, LPRESPACKET lprp)
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
-    SendMessage( hWnd, WM_SETFONT, GetStockObject(SYSTEM_FIXED_FONT), 0L );
+    SendMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(SYSTEM_FIXED_FONT), 0L );
 
     lstrcpy( lp, "Type#    ID       Resource Type        Resource Name" );
     ADDITEM();
@@ -390,7 +406,7 @@ BOOL FillLBWithNameTable (HWND hWnd, LPRESPACKET lprp)
     // Loop through the table
     while (lSize < lprp->lSize)        
     {
-        LPSTR lpType, lpID;
+        LPCSTR lpType, lpID;
         WORD wType;
 
         // Check for end of table
@@ -400,13 +416,13 @@ BOOL FillLBWithNameTable (HWND hWnd, LPRESPACKET lprp)
         wType =  lpne->wTypeOrd&0x7fff;
 
         // Point to type
-        lpType = (LPSTR)(lpne+1);
+        lpType = (LPCSTR)(lpne+1);
 
         // Point to ID Name
         lpID = lpType + lstrlen( lpType ) + 1;
 
         if (*lpType==0)
-            if (!(wType==0 || wType==11 || wType==13 || wType > 15))
+            if (!(wType==0 || wType==11 || wType==13 || wType > 16))
                 lpType = rc_types[ wType ];
 
         wsprintf( lp, "%#04x   %#04x   %-20s %s",
@@ -450,7 +466,7 @@ BOOL FillLBWithNameTable (HWND hWnd, LPRESPACKET lprp)
 //
 //*************************************************************
 
-BOOL FAR PASCAL IconGroupProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL IconGroupProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -512,7 +528,7 @@ BOOL FillLBWithIconGroup (HWND hWnd, LPRESPACKET lprp)
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
-    SendMessage( hWnd, WM_SETFONT, GetStockObject(SYSTEM_FIXED_FONT), 0L );
+    SendMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(SYSTEM_FIXED_FONT), 0L );
 
     lstrcpy( lp, "Width  Height  Colors  Planes  Bits/Pel  Size(bytes)  Ordinal" );
     ADDITEM();
@@ -563,7 +579,7 @@ BOOL FillLBWithIconGroup (HWND hWnd, LPRESPACKET lprp)
 //
 //*************************************************************
 
-BOOL FAR PASCAL CursorGroupProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL CursorGroupProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -624,7 +640,7 @@ BOOL FillLBWithCursorGroup (HWND hWnd, LPRESPACKET lprp)
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
-    SendMessage( hWnd, WM_SETFONT, GetStockObject(SYSTEM_FIXED_FONT), 0L );
+    SendMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(SYSTEM_FIXED_FONT), 0L );
 
     lstrcpy( lp, "Width  Height  Planes  Bits/Pel  Size(bytes)  Ordinal" );
     ADDITEM();
@@ -675,7 +691,7 @@ BOOL FillLBWithCursorGroup (HWND hWnd, LPRESPACKET lprp)
 //
 //*************************************************************
 
-BOOL FAR PASCAL AccelTableProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL AccelTableProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -735,7 +751,7 @@ BOOL FillLBWithAccelTable (HWND hWnd, LPRESPACKET lprp)
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
-    SendMessage( hWnd, WM_SETFONT, GetStockObject(SYSTEM_FIXED_FONT), 0L );
+    SendMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(SYSTEM_FIXED_FONT), 0L );
 
     lstrcpy( lp, "Event   ID      Flags" );
     ADDITEM();
@@ -815,7 +831,7 @@ BOOL FillLBWithAccelTable (HWND hWnd, LPRESPACKET lprp)
 //
 //*************************************************************
 
-BOOL FAR PASCAL StringTableProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL StringTableProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -878,7 +894,7 @@ BOOL FillLBWithStringTable (HWND hWnd, LPRESPACKET lprp)
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
-    SendMessage( hWnd, WM_SETFONT, GetStockObject(SYSTEM_FIXED_FONT), 0L );
+    SendMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(SYSTEM_FIXED_FONT), 0L );
 
     lstrcpy( lp, "Ordinal  String" );
     ADDITEM();
@@ -894,7 +910,7 @@ BOOL FillLBWithStringTable (HWND hWnd, LPRESPACKET lprp)
 
         if (bLen)
         {
-            _fstrncat( lp, lpS, (WORD)bLen );
+            strncat_s( lp, 270, lpS, (WORD)bLen );
             lpS += (int)bLen;
             ADDITEM();
         }
@@ -933,7 +949,7 @@ BOOL FillLBWithStringTable (HWND hWnd, LPRESPACKET lprp)
 //
 //*************************************************************
 
-BOOL FAR PASCAL FontDirProc (HWND hDlg, WORD msg, WORD wParam, LONG lParam)
+INT_PTR FAR PASCAL FontDirProc (HWND hDlg, UINT msg, WPARAM wParam, LPARAM lParam)
 {
     switch (msg)
     {
@@ -996,7 +1012,7 @@ BOOL FillLBWithFontDir (HWND hWnd, LPRESPACKET lprp)
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
-    SendMessage( hWnd, WM_SETFONT, GetStockObject(SYSTEM_FIXED_FONT), 0L );
+    SendMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(SYSTEM_FIXED_FONT), 0L );
 
     for (nI=1; nI<=nFonts; nI++)
     {
