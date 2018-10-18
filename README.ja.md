@@ -1,37 +1,34 @@
-# ![icon](winfile.png) Windowsファイルマネージャ (文件管理器)
+# ![icon](winfile.png) Windows ファイルマネージャー (文件管理器)
 
-Windowsファイルマネージャは32ビット及び64ビット環境の現在のWindows(Windows 10も含む)で再び利用できる様になりました。
+Windows ファイルマネージャーは32ビット及び64ビット環境の現在のWindows(Windows 10も含む)で再び利用できる様になりました。
 
 このリポジトリのmasterブランチには、以下の二つのタグが存在します。
 
-1. original_plug: Windows NT4で利用されていた物から現在のWindowsで利用可能にするために最小限の変更が行われたバージョンです。
+1. original_plus: Windows NT4で利用されていた物から現在のWindowsで利用可能にするために最小限の変更が行われたバージョンです。
 Visual Studioでコンパイルして実行する事ができます。
 
 2. current master: 新機能が追加されたバージョンです。
 
-I will consider bugs fixes and suggestions for minor changes to the master branch.  Feel free to create a pull request or post issues as you see fit.
+不具合の報告や機能の提案をissuesに投稿またはプルリクエストを気軽に行ってください。
 
-I will not be changing the original_plus sources nor creating other branches for other purposes.
-You are welcome do that on your own.
+original_plusブランチのソースコードは一切変更しません。また、ご自由にソースコードを利用してください。
 
 ## ダウンロード
-If you just want to download the WinFile application without worrying about compiling from the source code, we have precompiled versions available for both original_plus as well as the latest stable release for you to download. Source code for the corresponding release is also, optionally, available.
+ソースコードではなく実行可能バイナリを利用したい場合は、以下のリンクからダウンロードしてください。
 
-Please select the version which you would like to download.
+masterブランチからの最新版は現在は準備中です。
 
-Latest build from master: coming soon
-
-[Latest Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
+[最新安定板 (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
 
 [Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
 
-To see more release binaries, including of older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
+その他のリリースは[Releases](https://github.com/Microsoft/winfile/releases)ページをご覧ください。
 
 
 ## 歴史
 
-The Windows File manager was originally released with Windows 3.0 in the early 1990s.  You
-can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
+初代Windows ファイルマネージャーはWindows 3.0と共に1990年代初めにリリースされました。
+詳しくは[https://en.wikipedia.org/wiki/File_Manager_(Windows)](https://en.wikipedia.org/wiki/File_Manager_(Windows))をご覧ください。
 
 ## スクリーンショット
 
@@ -39,7 +36,7 @@ can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(W
 
 Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded the image to Wikimedia.
 
-## original_plus での変更
+## original_plus での変更点
 
 The source code provided here (in the src directory) was copied from the Windows NT 4 source tree in November
 2007.  The tag named original_plus contains a very limited set of  modifications
@@ -60,7 +57,7 @@ tries to launch winfile.hlp which fails.
 
 To create your own local branch referring to this release, run "git checkout -b <your branch> original_plus".
 
-## Changes in master v10.0 after original_plus
+## original_plus後のmaster v10.0の変更点
 
 The master branch contains changes I have made since 2007.  The changes have been solely determined
 by my needs and personal use.  Some of the changes have limitations that fit the way I use the tool.
