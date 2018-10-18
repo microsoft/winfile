@@ -21,7 +21,7 @@ BEGIN
 	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"貼り付け(&P)\tCtrl+V", 	IDM_PASTE
     MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
-    MENUITEM    "リネーム(&N)...",   IDM_RENAME
+    MENUITEM    "名前の変更(&N)...",   IDM_RENAME
     MENUITEM    "プロパティ(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    SEPARATOR
     MENUITEM    "圧縮(&S)...",     IDM_COMPRESS
@@ -34,8 +34,8 @@ BEGIN
     MENUITEM    "ディレクトリーを作成(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "検索(&C)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "ファイルを選択(&F)...", IDM_SELECT
-	MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
-	MENUITEM    "Cmd シェルを起動...(&L)...", IDM_STARTCMDSHELL
+	MENUITEM    "bash.exe を起動...", IDM_STARTBASHSHELL
+	MENUITEM    "コマンドプロンプトを起動...(&L)...", IDM_STARTCMDSHELL
     MENUITEM    "PowerShell を起動...(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "別のディレクトリーへ移動(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
@@ -98,7 +98,7 @@ BEGIN
     MENUITEM    "今すぐ設定を保存(&N)",       IDM_SAVENOW
 #endif
     END
-    POPUP       "セキュリティー(&S)"
+    POPUP       "セキュリティ(&S)"
     BEGIN
     MENUITEM    "権限(&P)...",  IDM_PERMISSIONS
     MENUITEM    "監査(&A)...",     IDM_AUDITING
@@ -137,12 +137,12 @@ BEGIN
 	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
 	MENUITEM	"貼り付け(&P)\tCtrl+V", IDM_PASTE
 	MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
-    MENUITEM    "リネーム(&N)...\tF2",   IDM_RENAME
+    MENUITEM    "名前の変更(&N)...\tF2",   IDM_RENAME
     MENUITEM    "プロパティ(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "実行(&R)...",          IDM_RUN
-    MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
-	MENUITEM    "Cmd シェルを起動(&L)...", IDM_STARTCMDSHELL
-	MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
+    MENUITEM    "bash.exe を起動...", IDM_STARTBASHSHELL
+	MENUITEM    "コマンドプロンプトを起動(&L)...", IDM_STARTCMDSHELL
+	MENUITEM    "PowerShellを起動(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "別のディレクトリーへ移動(&G)...", IDM_GOTODIR
 	END
 END
