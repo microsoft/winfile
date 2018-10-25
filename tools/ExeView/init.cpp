@@ -130,7 +130,7 @@ BOOL InitInstance (HINSTANCE hInstance, int nCmdShow)
     if (!hWnd)
         return FALSE;
 
-    SendMessage( hWnd, LB_SETTABSTOPS, 1, (LONG)(LPINT)&tabs );
+    SendMessage( hWnd, LB_SETTABSTOPS, 1, (LPARAM)(LPINT)&tabs );
     SendMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(SYSTEM_FIXED_FONT), 0L );
 
     hWnd = CreateWindow( "BUTTON", "Old Header", WS_CHILD|WS_VISIBLE,
