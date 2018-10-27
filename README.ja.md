@@ -34,7 +34,8 @@ masterブランチからの最新版は現在は準備中です。
 
 ![(https://commons.wikimedia.org/wiki/File:Winfile-v10-0-file-manager_%28cropped%29.png)](https://upload.wikimedia.org/wikipedia/commons/6/67/Winfile-v10-0-file-manager_%28cropped%29.png)
 
-Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded the image to Wikimedia.
+[@Speps](https://github.com/speps)さんリンクを提供して頂き誠にありがとうございます。
+この画像を誰がWikiMediaにアップロードしたのかは分かりません。
 
 ## original_plus での変更点
 
@@ -95,7 +96,7 @@ You can read the code for more details.
 
 ## 献上
 
-### Contributor License Agreement
+### 貢献者とのライセンス契約
 As mentioned above, this project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.microsoft.com.
@@ -108,7 +109,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-### What Makes a Good Pull Request for WinFile?
+### 何がファイルマネージャーにとって良いプルリクエストになりますか？
 If you are interested in contributing and/or suggesting changes to the actual application, you might find it helpful to [read this post first](https://github.com/Microsoft/winfile/issues/88).
 
 ## 利用規約
