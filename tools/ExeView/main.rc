@@ -1,0 +1,57 @@
+//*************************************************************
+//  File name: main.rc
+//
+//  Description: 
+//      Resources for the sample application
+//
+//  History:    Date       Author     Comment
+//              12/16/91   MSM        Created
+//
+// Written by Microsoft Product Support Services, Windows Developer Support
+// Copyright (c) 1992 Microsoft Corporation. All rights reserved.
+//*************************************************************
+
+#include "global.h"
+
+MAINICON    ICON   "Main.ico"
+
+MainMenu MENU
+BEGIN
+    POPUP        "&File"
+    BEGIN
+        MENUITEM "&Open...",            IDM_OPEN
+        MENUITEM "Save &Resources...",  IDM_SAVERES
+        MENUITEM SEPARATOR
+        MENUITEM "&About ExeView...",   IDM_ABOUT
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",               IDM_EXIT
+    END
+END
+
+AboutBox DIALOG 22, 17, 144, 75
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+CAPTION "About ExeView"
+BEGIN
+    CTEXT "Microsoft Windows Developer Support"     -1, 0, 5, 144,  8
+    CTEXT "Windows Executable Viewer"  -1,       0, 14, 144,  8
+    CTEXT "by: Scott McCraw"    -1,       0, 34, 144,  8
+    DEFPUSHBUTTON "OK"          IDOK,     53, 59,  32, 14, WS_GROUP
+END
+
+NAMETABLE_DLG DIALOG DISCARDABLE LOADONCALL PURE MOVEABLE 30, 31, 400, 250
+STYLE WS_POPUP | WS_CAPTION | WS_SYSMENU | 0xC0L
+CAPTION "Viewing NAMETABLE"
+FONT 8, "Helv"
+BEGIN
+  CONTROL "" IDL_NAMES, "LISTBOX", WS_CHILD | WS_VISIBLE | WS_VSCROLL | 0x101L, 0, 0, 400, 250
+END
+
+GRAPHIC_DLG DIALOG DISCARDABLE LOADONCALL PURE MOVEABLE 30, 31, 300, 200
+STYLE WS_POPUP | WS_CAPTION | WS_SYSMENU | 0xC0L
+CAPTION "Viewing Graphic"
+FONT 8, "Helv"
+BEGIN
+END
+
+
+//*** EOF: main.rc
