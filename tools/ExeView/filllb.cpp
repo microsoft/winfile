@@ -74,7 +74,7 @@ BOOL FillLBWithNewExeHeader (HWND hWnd, PEXEINFO pExeInfo)
     PNEWEXE     pne = &(pExeInfo->NewHdr);
     LPSTR       lp = (LPSTR)szBuff;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -233,7 +233,7 @@ BOOL FillLBWithOldExeHeader (HWND hWnd, PEXEINFO pExeInfo )
     LPSTR lp = (LPSTR)szBuff;
     POLDEXE pOldExeHdr = &(pExeInfo->OldHdr);
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -327,7 +327,7 @@ BOOL FillLBWithEntryTable (HWND hWnd, PEXEINFO pExeInfo )
     BYTE  bBundles;
     BYTE  bFlags;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -454,7 +454,7 @@ BOOL FillLBWithSegments (HWND hWnd, PEXEINFO pExeInfo )
     PSEGENTRY pSeg = GetSegEntry( pExeInfo, 0 );
     int       i=0;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -518,8 +518,8 @@ BOOL FillLBWithResources (HWND hWnd, PEXEINFO pExeInfo )
     LPCSTR   lpn;
     PRESTYPE prt = pExeInfo->pResTable;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
-    #define SETDATA() SendMessage( hWnd, LB_SETITEMDATA, , (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
+    #define SETDATA() SendMessage( hWnd, LB_SETITEMDATA, , (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -617,7 +617,7 @@ BOOL FillLBWithResidentNames (HWND hWnd, PEXEINFO pExeInfo )
     LPSTR lp = (LPSTR)szBuff;
     PNAME pName = pExeInfo->pResidentNames;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -682,7 +682,7 @@ BOOL FillLBWithImportedNames (HWND hWnd, PEXEINFO pExeInfo )
     LPSTR lp = (LPSTR)szBuff;
     PNAME pName = pExeInfo->pImportedNames;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -743,7 +743,7 @@ BOOL FillLBWithNonResidentNames (HWND hWnd, PEXEINFO pExeInfo )
     LPSTR lp = (LPSTR)szBuff;
     PNAME pName = pExeInfo->pNonResidentNames;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );

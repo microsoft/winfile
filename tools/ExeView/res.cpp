@@ -174,7 +174,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
                 lpProc = MakeProcInstance(NameTableProc, ghInst );
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
+                    (LPARAM)lprp );
                 FreeProcInstance( lpProc );
             }
             break;
@@ -187,7 +187,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
+                    (LPARAM)lprp );
                 FreeProcInstance( lpProc );
             }
             break;
@@ -200,7 +200,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
+                    (LPARAM)lprp );
                 FreeProcInstance( lpProc );
             }
             break;
@@ -213,7 +213,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
+                    (LPARAM)lprp );
                 FreeProcInstance( lpProc );
             }
             break;
@@ -226,7 +226,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
+                    (LPARAM)lprp );
                 FreeProcInstance( lpProc );
             }
             break;
@@ -239,7 +239,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
                 // Re-use the NAMETABLE_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "NAMETABLE_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
+                    (LPARAM)lprp );
                 FreeProcInstance( lpProc );
             }
             break;
@@ -252,7 +252,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
                 // Re-use the GRAPHIC_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "GRAPHIC_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
+                    (LPARAM)lprp );
                 FreeProcInstance( lpProc );
             }
             break;
@@ -265,7 +265,7 @@ BOOL DisplayResource ( PEXEINFO pExeInfo, PRESTYPE prt, PRESINFO pri )
 
                 // Re-use the GRAPHIC_DLG with a different DlgProc
                 nErr = !DialogBoxParam( ghInst, "GRAPHIC_DLG", ghWndMain, lpProc,
-                    (LONG)lprp );
+                    (LPARAM)lprp );
                 FreeProcInstance( lpProc );
             }
             break;
@@ -391,7 +391,7 @@ BOOL FillLBWithNameTable (HWND hWnd, LPRESPACKET lprp)
     LPNAMEENTRY lpne = (LPNAMEENTRY)lprp->lpMem;
     LONG        lSize = 0;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -524,7 +524,7 @@ BOOL FillLBWithIconGroup (HWND hWnd, LPRESPACKET lprp)
 
 
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -636,7 +636,7 @@ BOOL FillLBWithCursorGroup (HWND hWnd, LPRESPACKET lprp)
     LPCURSORDIR lpcd = (LPCURSORDIR)lprp->lpMem;
 
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -747,7 +747,7 @@ BOOL FillLBWithAccelTable (HWND hWnd, LPRESPACKET lprp)
     LPACCELENTRY lpae = (LPACCELENTRY)lprp->lpMem;
 
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
@@ -886,7 +886,7 @@ BOOL FillLBWithStringTable (HWND hWnd, LPRESPACKET lprp)
     LPSTR lpS, lp = (LPSTR)szBuff;
     int   nI, nOrdinal;
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     nOrdinal = (lprp->pri->wID-1) & 0x7fff;
     nOrdinal <<= 4;
@@ -1008,7 +1008,7 @@ BOOL FillLBWithFontDir (HWND hWnd, LPRESPACKET lprp)
     nFonts = *((LPINT)lprp->lpMem);
     lpfe = (LPFONTENTRY)(lprp->lpMem + sizeof(WORD));
 
-    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LONG)lp )
+    #define ADDITEM() SendMessage( hWnd, LB_ADDSTRING, 0, (LPARAM)lp )
 
     SendMessage( hWnd, WM_SETREDRAW, 0, 0L );
     SendMessage( hWnd, LB_RESETCONTENT, 0, 0L );
