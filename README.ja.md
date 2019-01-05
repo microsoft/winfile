@@ -74,8 +74,8 @@ v10.0では以下の変更があります：
 1. OLEのドラッグ＆ドロップをサポートしました。
 2. コントロールキー(例: Ctrl+C)をドライブを変更する代わりに現在のショートカットキー(例: Ctrl+C -> コピー)へ対応しました。
 3. 切り取り(Ctrl+X)と貼り付け(Ctrl+V)はファイルの移動を表します。
-4. left and right arrows in the tree view expand and collapse folders like in the Explorer
-5. added context menus in both panes
+4. 左右キーを利用してエクスプローラの様にツリービューでフォルダを展開または折りたたむ事ができる様になりました。
+5. コンテキストメニューを追加しました。
 6. improved the means by which icons are displayed for files
 7. F12 runs notepad or notepad++ on the selected file
 8. moved the ini file location to %AppData%\Roaming\Microsoft\WinFile
@@ -91,15 +91,16 @@ selecting one changes to that directory.  Only drive c: is indexed.
 15. View command has a new option to sort by date forward (oldest on top);
 normal date sorting is newest on top
 
-You can read the code for more details.
+これ以外の変更はソースコードを参照してください。
 
-## 献上
+(ここから下はライセンス関連の項目です。敢えて翻訳せず原文のままにして置きました。)
 
-### 貢献者とのライセンス契約
-上記でも述べましたが、このプロジェクトへの献上や提案は受け入れています。
-殆どの貢献は貴方がContributor License Agreement (CLA)に同意する必要があります。
-これは、貴方が私達に貴方の貢献を使う権利を与える権利を宣言します。
-詳しくは https://cla.microsoft.com をご覧ください。
+## Contributing
+
+### Contributor License Agreement
+As mentioned above, this project welcomes contributions and suggestions.  Most contributions require you to agree to a
+Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
+the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
 a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
@@ -109,13 +110,13 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-### プルリクエストについて
-献上や変更の提案に興味がある場合は、最初は[こちら](https://github.com/Microsoft/winfile/issues/88)を呼んでください。
+### What Makes a Good Pull Request for WinFile?
+If you are interested in contributing and/or suggesting changes to the actual application, you might find it helpful to [read this post first](https://github.com/Microsoft/winfile/issues/88).
 
-## 利用規約
+## License
 
 Copyright (c) Microsoft Corporation. All rights reserved.
 
 Licensed under the [MIT](LICENSE) License.
 
-このドキュメントは[@Takym](https://github.com/Takym)により翻訳されました。
+This document is translated by [@Takym](https://github.com/Takym).
