@@ -9,7 +9,7 @@ Visual Studioでコンパイルして実行する事ができます。
 
 2. current master: 新機能が追加されたバージョンです。
 
-不具合の報告や機能の提案をissuesに投稿またはプルリクエストを気軽に行ってください。
+不具合の報告や機能の提案をissuesに投稿またはプルリクエストは気軽に行ってください。
 
 original_plusブランチのソースコードは一切変更しません。また、ご自由にソースコードを利用してください。
 
@@ -96,9 +96,10 @@ You can read the code for more details.
 ## 献上
 
 ### 貢献者とのライセンス契約
-As mentioned above, this project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+上記でも述べましたが、このプロジェクトへの献上や提案は受け入れています。
+殆どの貢献は貴方がContributor License Agreement (CLA)に同意する必要があります。
+これは、貴方が私達に貴方の貢献を使う権利を与える権利を宣言します。
+詳しくは https://cla.microsoft.com をご覧ください。
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
 a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
