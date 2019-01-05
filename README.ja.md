@@ -76,12 +76,12 @@ v10.0では以下の変更があります：
 3. 切り取り(Ctrl+X)と貼り付け(Ctrl+V)はファイルの移動を表します。
 4. 左右キーを利用してエクスプローラの様にツリービューでフォルダを展開または折りたたむ事ができる様になりました。
 5. コンテキストメニューを追加しました。
-6. improved the means by which icons are displayed for files
-7. F12 runs notepad or notepad++ on the selected file
-8. moved the ini file location to %AppData%\Roaming\Microsoft\WinFile
-9. File.Search can include a date which limits the files returned to those after the date provided;
-the output is also sorted by the date instead of by the name
-10. File.Search includes an option as to whether to include sub-directories
+6. ファイルアイコンの表示が向上しました。
+7. F12キーで選択しているファイルをメモ帳で開ける様にしました。
+8. INIファイルを %AppData%\Roaming\Microsoft\WinFile に移動しました。
+9. ファイル検索で日付を利用してファイルを絞り込む事ができる様になりました。
+その場合、ファイルは日付順で並び替えられます。
+10. ファイル検索で子ディレクトリを含むかどうかを変更できる様になりました。
 11. ctrl+K starts a command shell (ConEmu if installed) in the current directory; shift+ctrl+K
 starts an elevated command shell (cmd.exe only)
 12. File.Goto (ctrl+G) enables one to type a few words of a path and get a list of directories;
