@@ -34,7 +34,7 @@ BEGIN
     MENUITEM    "ディレクトリーを作成(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "検索(&C)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "ファイルを選択(&F)...", IDM_SELECT
-	MENUITEM    "bash.exe を起動...", IDM_STARTBASHSHELL
+	MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
 	MENUITEM    "コマンドプロンプトを起動...(&L)...", IDM_STARTCMDSHELL
     MENUITEM    "PowerShell を起動...(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "別のディレクトリーへ移動(&G)...\tCtrl+G", IDM_GOTODIR
@@ -140,7 +140,7 @@ BEGIN
     MENUITEM    "名前の変更(&N)...\tF2",   IDM_RENAME
     MENUITEM    "プロパティ(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "実行(&R)...",          IDM_RUN
-    MENUITEM    "bash.exe を起動...", IDM_STARTBASHSHELL
+    MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
 	MENUITEM    "コマンドプロンプトを起動(&L)...", IDM_STARTCMDSHELL
 	MENUITEM    "PowerShellを起動(&W)...", IDM_STARTPOWERSHELL
 	MENUITEM    "別のディレクトリーへ移動(&G)...", IDM_GOTODIR
