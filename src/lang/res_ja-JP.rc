@@ -68,14 +68,14 @@ BEGIN
     MENUITEM    "分割(&L)",               IDM_SPLIT
     MENUITEM    SEPARATOR
     MENUITEM    "名称(&N)",                IDM_VNAME
-    MENUITEM    "全てのファイルの詳細て(&A)",    IDM_VDETAILS,   CHECKED
+    MENUITEM    "全てのファイルの詳細(&A)",    IDM_VDETAILS,   CHECKED
     MENUITEM    "一部のファイルの詳細(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM "名前でソート(&S)",   IDM_BYNAME
-    MENUITEM "種別でソート(&B)",   IDM_BYTYPE
-    MENUITEM "サイズでソート(&Z)",   IDM_BYSIZE
-    MENUITEM "日付でソート(&D)",   IDM_BYDATE
-    MENUITEM "日付で逆ソート(&F)",   IDM_BYFDATE
+    MENUITEM "名前で並び替え(&S)",   IDM_BYNAME
+    MENUITEM "種別で並び替え(&B)",   IDM_BYTYPE
+    MENUITEM "サイズで並び替え(&Z)",   IDM_BYSIZE
+    MENUITEM "日付で並び替え (降順)(&D)",   IDM_BYDATE
+    MENUITEM "日付で並び替え (昇順)(&F)",   IDM_BYFDATE
     MENUITEM    SEPARATOR
     MENUITEM    "ファイル タイプで絞り込み(&T)...",     IDM_VINCLUDE
     END
@@ -391,10 +391,10 @@ JAPANEND
     IDS_STOPSHAREHELP           "ディレクトリー共有の停止"
     IDS_VDETAILSHELP            "全てのファイル詳細を表示"
     IDS_VNAMEHELP               "名前のみ表示"
-    IDS_BYNAMEHELP              "名前でソート"
-    IDS_BYTYPEHELP              "種別でソート"
-    IDS_BYSIZEHELP              "サイズでソート"
-    IDS_BYDATEHELP              "日付でソート"
+    IDS_BYNAMEHELP              "名前で並び替え"
+    IDS_BYTYPEHELP              "種別で並び替え"
+    IDS_BYSIZEHELP              "サイズで並び替え"
+    IDS_BYDATEHELP              "日付で並び替え"
     IDS_NEWWINHELP              "新しいウィンドウ"
     IDS_COPYHELP                "ファイルのコピー"
     IDS_MOVEHELP                "ファイルの移動"

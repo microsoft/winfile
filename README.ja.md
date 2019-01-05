@@ -82,14 +82,13 @@ v10.0では以下の変更があります：
 9. ファイル検索で日付を利用してファイルを絞り込む事ができる様になりました。
 その場合、ファイルは日付順で並び替えられます。
 10. ファイル検索で子ディレクトリを含むかどうかを変更できる様になりました。
-11. ctrl+K starts a command shell (ConEmu if installed) in the current directory; shift+ctrl+K
-starts an elevated command shell (cmd.exe only)
-12. File.Goto (ctrl+G) enables one to type a few words of a path and get a list of directories;
-selecting one changes to that directory.  Only drive c: is indexed.
-13. UI shows  reparse points (e.g., Junction points) as such
-14. added simple forward / back navigation (probably needs to be improved)
-15. View command has a new option to sort by date forward (oldest on top);
-normal date sorting is newest on top
+11. Ctrl+Kキーを現在のディレクトリでコマンドシェル(ConEmuがインストールされている場合、そちらが起動します)を開く事ができます。
+Shift+Ctrl+Kで管理者権限でコマンドシェルが起動します。(コマンドプロンプトのみ)
+12. 「別のディレクトリへ移動」(Ctrl+G)で数単語だけ入力するとディレクトリの一覧が表示されます。
+その中から一つ選択して移動する事もできます。Cドライブのみインデックスされています。
+13. UIは解析ポイント(例: ジャンクション)をそのまま表示します。
+14. 簡易的な履歴の戻る/進む処理が追加されました。(改善中です。)
+15. 日付順で並び替えができる様になりました。
 
 これ以外の変更はソースコードを参照してください。
 
