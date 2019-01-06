@@ -2210,7 +2210,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
    INT CurIDS = 0;                    // Current string displayed in status
 
    BOOL bErrorOnDest = FALSE;
-   BOOL bIsLFNDriveDest;
+   BOOL bIsLFNDriveDest = FALSE;
 
    BOOL bSameFile;                    // Source, dest same file?
    BOOL bDoMoveRename;                // OPER_DOFILE and FUNC_{RENAME,MOVE}
