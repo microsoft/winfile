@@ -1112,6 +1112,15 @@ AppCommandProc(register DWORD id)
 		}
 		break;
 
+   case IDM_CLOSEWINDOW:
+       {
+           HWND      hwndActive;
+
+           hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+           PostMessage(hwndActive, WM_CLOSE, 0, 0L);
+       }
+       break;
+
    case IDM_SELECT:
 
       // push the focus to the dir half so when they are done
