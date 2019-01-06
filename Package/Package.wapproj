@@ -36,14 +36,14 @@
   <PropertyGroup>
     <ProjectGuid>ac921d51-18e2-4fbe-a444-059543458c00</ProjectGuid>
     <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
     <PackageCertificateKeyFile>Package_StoreKey.pfx</PackageCertificateKeyFile>
     <EntryPointProjectUniqueName>..\src\Winfile.vcxproj</EntryPointProjectUniqueName>
     <PackageCertificateThumbprint>23485B57C6EA3C1FC4147286BE4420716BAC32DA</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
-    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
   </PropertyGroup>
