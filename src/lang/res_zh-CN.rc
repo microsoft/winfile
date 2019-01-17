@@ -117,7 +117,7 @@ BEGIN
     BEGIN
     MENUITEM    "目录(&C)",                IDM_HELPINDEX
     MENUITEM    "查找帮助主题(&S)...",   IDM_HELPKEYS
-    MENUITEM    "帮助使用方法(&H)",         IDM_HELPHELP
+    //MENUITEM    "帮助使用方法(&H)",         IDM_HELPHELP
     MENUITEM    SEPARATOR
     MENUITEM    "关于文件管理器(&A)...",   IDM_ABOUT
     END
@@ -590,7 +590,7 @@ BEGIN
 
     MH_MYITEMS+IDM_HELPINDEX,   "显示文件管理器的“帮助”内容"
     MH_MYITEMS+IDM_HELPKEYS,    "在“文件管理器帮助“里搜索一个主题"
-    MH_MYITEMS+IDM_HELPHELP,    "显示关于使用“帮助“的信息"
+    //MH_MYITEMS+IDM_HELPHELP,    "显示关于使用“帮助“的信息"
     MH_MYITEMS+IDM_ABOUT,       "显示关于文件管理器的信息"
 END
 

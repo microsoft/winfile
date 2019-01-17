@@ -117,7 +117,7 @@ BEGIN
     BEGIN
     MENUITEM    "&Contents",                IDM_HELPINDEX
     MENUITEM    "&Search for Help on...",   IDM_HELPKEYS
-    MENUITEM    "&How to Use Help",         IDM_HELPHELP
+    //MENUITEM    "&How to Use Help",         IDM_HELPHELP
     MENUITEM    SEPARATOR
     MENUITEM    "&About File Manager...",   IDM_ABOUT
     END
@@ -607,7 +607,7 @@ BEGIN
 
     MH_MYITEMS+IDM_HELPINDEX,   "Displays contents for File Manager Help"
     MH_MYITEMS+IDM_HELPKEYS,    "Searches for a topic in File Manager Help"
-    MH_MYITEMS+IDM_HELPHELP,    "Displays information about using Help"
+    //MH_MYITEMS+IDM_HELPHELP,    "Displays information about using Help"
     MH_MYITEMS+IDM_ABOUT,       "Displays information about File Manager"
 END
 

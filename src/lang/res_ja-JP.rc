@@ -117,7 +117,7 @@ BEGIN
     BEGIN
     MENUITEM    "目次(&C)",                IDM_HELPINDEX
     MENUITEM    "ヘルプの検索(&S)...",   IDM_HELPKEYS
-    MENUITEM    "ヘルプの使い方(&H)",         IDM_HELPHELP
+    //MENUITEM    "ヘルプの使い方(&H)",         IDM_HELPHELP
     MENUITEM    SEPARATOR
     MENUITEM    "ファイル マネージャーについて(&A)...",   IDM_ABOUT
     END
@@ -605,7 +605,7 @@ BEGIN
 
     MH_MYITEMS+IDM_HELPINDEX,   "ファイル マネージャーのヘルプのコンテンツを表示する"
     MH_MYITEMS+IDM_HELPKEYS,    "ファイル マネージャーのヘルプのトピックを表示する"
-    MH_MYITEMS+IDM_HELPHELP,    "ヘルプの使い方について表示する"
+    //MH_MYITEMS+IDM_HELPHELP,    "ヘルプの使い方について表示する"
     MH_MYITEMS+IDM_ABOUT,       "ファイル マネージャーについて表示する"
 END
 
