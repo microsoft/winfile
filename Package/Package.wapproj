@@ -4,13 +4,13 @@
     <VisualStudioVersion>15.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup Label="ProjectConfigurations">
-    <ProjectConfiguration Include="Debug|x86">
+    <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
-      <Platform>x86</Platform>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
-    <ProjectConfiguration Include="Release|x86">
+    <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
-      <Platform>x86</Platform>
+      <Platform>Win32</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|x64">
       <Configuration>Debug</Configuration>
@@ -38,9 +38,9 @@
     <TargetPlatformVersion>10.0.17763.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <DefaultLanguage>en-US</DefaultLanguage>
-    <PackageCertificateKeyFile>Package_StoreKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>Winfile.AppStore.UploadCert.pfx</PackageCertificateKeyFile>
     <EntryPointProjectUniqueName>..\src\Winfile.vcxproj</EntryPointProjectUniqueName>
-    <PackageCertificateThumbprint>23485B57C6EA3C1FC4147286BE4420716BAC32DA</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>81244A29ACE3400515761B9E2898EE35FD4EC512</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
@@ -56,13 +56,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <AppxBundle>Always</AppxBundle>
   </PropertyGroup>
   <ItemGroup>
@@ -88,6 +88,7 @@
     <Content Include="Images\StoreLogo.scale-100.png" />
     <Content Include="Images\StoreLogo.scale-200.png" />
     <Content Include="Images\StoreLogo.scale-400.png" />
+    <None Include="Winfile.AppStore.UploadCert.pfx" />
     <None Include="Package_StoreKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
   </ItemGroup>

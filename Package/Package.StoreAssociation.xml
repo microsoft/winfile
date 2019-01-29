@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <StoreAssociation xmlns="http://schemas.microsoft.com/appx/2010/storeassociation">
-  <Publisher>CN=D08A67B8-64F5-448A-B38F-8A1785E37295</Publisher>
-  <PublisherDisplayName>Craig H. Wittenberg</PublisherDisplayName>
-  <DeveloperAccountType>MSA</DeveloperAccountType>
+  <Publisher>CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US</Publisher>
+  <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+  <DeveloperAccountType>AAD</DeveloperAccountType>
   <GeneratePackageHash>http://www.w3.org/2001/04/xmlenc#sha256</GeneratePackageHash>
   <SupportedLocales>
     <Language Code="af" InMinimumRequirementSet="true" />
@@ -359,15 +359,13 @@
     <Language Code="zu-za" InMinimumRequirementSet="true" />
   </SupportedLocales>
   <ProductReservedInfo>
-    <MainPackageIdentityName>17775CraigH.Wittenberg.WindowsFileManager</MainPackageIdentityName>
+    <MainPackageIdentityName>Microsoft.WindowsFileManager_8wekyb3d8bbwe</MainPackageIdentityName>
     <ReservedNames>
       <ReservedName>Windows File Manager</ReservedName>
     </ReservedNames>
   </ProductReservedInfo>
   <AccountPackageIdentityNames>
-    <MainPackageIdentityName>17775CraigH.Wittenberg.BelpresTestApp</MainPackageIdentityName>
-    <MainPackageIdentityName>17775CraigH.Wittenberg.CraigWiTestApp</MainPackageIdentityName>
-    <MainPackageIdentityName>17775CraigH.Wittenberg.WinFile</MainPackageIdentityName>
+    <MainPackageIdentityName>Microsoft.WindowsFileManager_8wekyb3d8bbwe</MainPackageIdentityName>
   </AccountPackageIdentityNames>
-  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9MSV2M6DD4Z2" />
+  <PackageInfoList LandingUrl="https://developer.microsoft.com/dashboard/Application?appId=9P7VBBBC49RB" />
 </StoreAssociation>
