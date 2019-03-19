@@ -1008,6 +1008,15 @@ InitFileManager(
    // setup ini file location
    lstrcpy(szTheINIFile, szBaseINIFile);
    dwRetval = GetEnvironmentVariable(TEXT("APPDATA"), szBuffer, MAXPATHLEN);
+   if (dwRetval == 0 && GetLastError() == ERROR_ENVVAR_NOT_FOUND) {
+	   MessageBox(NULL, TEXT("a"), TEXT("b"), NULL);
+	   WCHAR         szTempBuffer[2 * MAXPATHLEN - 16];
+	   dwRetval = GetEnvironmentVariable(TEXT("USERPROFILE"), szTempBuffer, MAXPATHLEN);
+	   if (dwRetval > 0) {
+		   wsprintf(szBuffer, TEXT("%s%s"), szTempBuffer, TEXT("\\APPDATA\\Roaming"));
+		   dwRetval = dwRetval + 16;
+	   }
+   }
    if (dwRetval > 0 && dwRetval <= (DWORD)(MAXPATHLEN - lstrlen(szRoamINIPath) - 1 - lstrlen(szBaseINIFile) - 1)) {
 	   wsprintf(szTheINIFile, TEXT("%s%s"), szBuffer, szRoamINIPath);
 	   if (CreateDirectory(szTheINIFile, NULL) || GetLastError() == ERROR_ALREADY_EXISTS) {
