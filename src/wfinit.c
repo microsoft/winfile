@@ -1009,8 +1009,7 @@ InitFileManager(
    lstrcpy(szTheINIFile, szBaseINIFile);
    dwRetval = GetEnvironmentVariable(TEXT("APPDATA"), szBuffer, MAXPATHLEN);
    if (dwRetval == 0 && GetLastError() == ERROR_ENVVAR_NOT_FOUND) {
-	   MessageBox(NULL, TEXT("a"), TEXT("b"), NULL);
-	   WCHAR         szTempBuffer[2 * MAXPATHLEN - 16];
+	   WCHAR szTempBuffer[2 * MAXPATHLEN - 16];
 	   dwRetval = GetEnvironmentVariable(TEXT("USERPROFILE"), szTempBuffer, MAXPATHLEN);
 	   if (dwRetval > 0) {
 		   wsprintf(szBuffer, TEXT("%s%s"), szTempBuffer, TEXT("\\APPDATA\\Roaming"));
