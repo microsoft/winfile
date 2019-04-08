@@ -16,6 +16,11 @@ I will not be changing the original_plus sources nor creating other branches for
 You are welcome do that on your own.
 
 ## Download The App
+
+If you are running Windows 10, you can download the app from the store
+
+<a href="https://www.microsoft.com/store/apps/9p7vbbbc49rb?ocid=badge"><img src="https://assets.windowsphone.com/85864462-9c82-451e-9355-a3d5f874397a/English_get-it-from-MS_InvariantCulture_Default.png" alt="Get it from Microsoft" width="150px"></a>
+
 If you just want to download the WinFile application without worrying about compiling from the source code, we have precompiled versions available for both original_plus as well as the latest stable release for you to download. Source code for the corresponding release is also, optionally, available.
 
 Please select the version which you would like to download.
