@@ -26,7 +26,7 @@ Latest build from master: coming soon
 
 [Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
 
-To see more release binaries, including of older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
+To see more release binaries, including those of older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
 
 
 ## History
@@ -69,10 +69,10 @@ For example, the path index which supports the new goto command only contains in
 
 I have also not redesigned or restructured WinFile in any major way.
 
-Version v10.0 represents the entire set of changes from Nov. 2007 until this OSS project
+Version v10.0 represented the entire set of changes from Nov. 2007 until this OSS project
 was created.  For changes post v10.0, see the commit and release history.
 
-In summary v10.0 has the following changes/new features compared to original_plus:
+In summary, v10.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
 2. control characters (e.g., ctrl+C) map to current short cut (e.g., ctrl+c -> copy)
