@@ -25,7 +25,7 @@ If you just want to download the WinFile application without worrying about comp
 
 Please select the version which you would like to download.
 
-- Latest build from master (located on Azure): [Win32 (x86)](https://winfilerelease.blob.core.windows.net/craigwi/Win32/Winfile.exe), [x64](https://winfilerelease.blob.core.windows.net/craigwi/x642/Winfile.exe), [ARM](https://winfilerelease.blob.core.windows.net/craigwi/ARM/Winfile.exe).
+- Latest build from master (located on Azure): [Win32 (x86)](https://winfilerelease.blob.core.windows.net/craigwi/Win32/Winfile.exe), [x64](https://winfilerelease.blob.core.windows.net/craigwi/x64/Winfile.exe), [ARM](https://winfilerelease.blob.core.windows.net/craigwi/ARM/Winfile.exe).
 
 - [Chocolatey release](https://chocolatey.org/packages/winfile)
 
