@@ -2306,7 +2306,7 @@ ReadMoveStatus()
 
 	OleGetClipboard(&pDataObj);		// pDataObj == NULL if error
 
-	if (pDataObj != NULL && pDataObj->lpVtbl->GetData(pDataObj, &fmtetcEffect, &stgmed) == S_OK)
+	if (pDataObj != NULL && pDataObj->lpVtbl->GetData(pDataObj, &fmtetcEffect, &stgmed) == S_OK && stgmed.hGlobal != NULL)
 	{
 		LPDWORD lpEffect = GlobalLock(stgmed.hGlobal);
 		if (*lpEffect & DROPEFFECT_COPY) dwEffect = DROPEFFECT_COPY;
