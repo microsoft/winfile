@@ -21,15 +21,19 @@ If you are running Windows 10, you can download the app from the store
 
 <a href="https://www.microsoft.com/store/apps/9p7vbbbc49rb?ocid=badge"><img src="https://assets.windowsphone.com/85864462-9c82-451e-9355-a3d5f874397a/English_get-it-from-MS_InvariantCulture_Default.png" alt="Get it from Microsoft" width="150px"></a>
 
-If you just want to download the WinFile application without worrying about compiling from the source code, we have precompiled versions available for both original_plus as well as the latest stable release for you to download. Source code for the corresponding release is also, optionally, available.
+If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of precompiled versions available.
 
 Please select the version which you would like to download.
 
-Latest build from master: coming soon
+- Latest build from master (located on Azure): [Win32 (x86)](https://winfilerelease.blob.core.windows.net/craigwi/Win32/Winfile.exe), [x64](https://winfilerelease.blob.core.windows.net/craigwi/x642/Winfile.exe), [ARM](https://winfilerelease.blob.core.windows.net/craigwi/ARM/Winfile.exe).
 
-[Latest Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
+- [Chocolatey release](https://chocolatey.org/packages/winfile)
 
-[Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
+- [Latest Release on Github (v10.1901.1)](https://github.com/microsoft/winfile/releases/tag/v10.0.1901.1)
+
+- [First Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
+
+- [Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
 
 To see more release binaries, including of older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
 
