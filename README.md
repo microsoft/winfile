@@ -10,10 +10,10 @@ so that it compiles with Visual Studio and runs on current Windows.
 
 2. current master: contains my personal changes / additions to WinFile.
 
-I will consider bugs fixes and suggestions for minor changes to the master branch.  Feel free to create a pull request or post issues as you see fit.
+I will consider bugs fixes and suggestions for minor changes to the master branch. Feel free to create a pull request or post issues as you see fit.
 
 I will not be changing the original_plus sources nor creating other branches for other purposes.
-You are welcome do that on your own.
+You are welcome to do that on your own.
 
 ## Download The App
 
