@@ -68,7 +68,7 @@ BEGIN
     MENUITEM    "分割(&L)",               IDM_SPLIT
     MENUITEM    SEPARATOR
     MENUITEM    "名称(&N)",                IDM_VNAME
-    MENUITEM    "全てのファイルの詳細て(&A)",    IDM_VDETAILS,   CHECKED
+    MENUITEM    "全てのファイルの詳細(&A)",    IDM_VDETAILS,   CHECKED
     MENUITEM    "一部のファイルの詳細(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
     MENUITEM "名前でソート(&S)",   IDM_BYNAME
