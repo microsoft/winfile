@@ -1,0 +1,1469 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Dutch (Netherlands) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NLD)
+LANGUAGE LANG_DUTCH, SUBLANG_DUTCH
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "&Bestand"
+    BEGIN
+        MENUITEM "&Openen\tEnter",              101
+        MENUITEM "V&erplaatsen...\tF7",         106
+        MENUITEM "&KopiÎren...\tF8",            107
+        MENUITEM "KopiÎren naar Klem&bord...\tF9", 118
+        MENUITEM "&Verwijderen...\tDel",        108
+        MENUITEM "Naam &wijzigen...",           109
+        MENUITEM "Eige&nschappen...\tAlt+Enter", 110
+        MENUITEM SEPARATOR
+        MENUITEM "&Comprimeren...",             119
+        MENUITEM "Decompr&imeren...",           120
+        MENUITEM SEPARATOR
+        MENUITEM "&Starten...",                 105
+        MENUITEM "Af&drukken...",               102
+        MENUITEM "Ve&rbinden...",               103
+        MENUITEM SEPARATOR
+        MENUITEM "Map &maken...",               111
+        MENUITEM "&Zoeken...",                  104
+        MENUITEM "Bestanden se&lecteren...",    116
+        MENUITEM SEPARATOR
+        MENUITEM "&Afsluiten",                  115
+    END
+    POPUP "&Schijf"
+    BEGIN
+        MENUITEM "Dis&kette kopiÎren...",       201
+        MENUITEM "Volume naam ge&ven...",       202
+        MENUITEM SEPARATOR
+        MENUITEM "Diskette &formatteren...",    203
+        MENUITEM SEPARATOR
+        MENUITEM "Station &selecteren...",      251
+    END
+    POPUP "S&tructuur"
+    BEGIN
+        MENUITEM "&Met ÈÈn niveau uitbreiden\t+", 301
+        MENUITEM "&Submappen weergeven\t*",     302
+        MENUITEM "&Alle submappen weergeven\tCtrl+*", 303
+        MENUITEM "&Geen submappen\t-",          304
+        MENUITEM SEPARATOR
+        MENUITEM "S&ubmappen aangeven",         505
+    END
+    POPUP "Beel&d"
+    BEGIN
+        MENUITEM "&Structuur en map",           413
+        MENUITEM "&Alleen structuur",           411
+        MENUITEM "A&lleen map ",                412
+        MENUITEM SEPARATOR
+        MENUITEM "S&plitsen",                   414
+        MENUITEM SEPARATOR
+        MENUITEM "&Naam",                       401
+        MENUITEM "Alle bestands&gegevens",      402, CHECKED
+        MENUITEM "Deel&weergave...",            403
+        MENUITEM SEPARATOR
+        MENUITEM "Sorteren op naa&m",           404
+        MENUITEM "So&rteren op type ",          405
+        MENUITEM "Sor&teren op omvang",         406
+        MENUITEM "Sorteren op &datum",          407
+        MENUITEM SEPARATOR
+        MENUITEM "&Op type...",                 409
+    END
+    POPUP "&Opties"
+    BEGIN
+        MENUITEM "&Bevestigen...",              501
+        MENUITEM "&Lettertype...",              510
+        MENUITEM "Werkb&alk aanpassen...",      512
+        MENUITEM SEPARATOR
+        MENUITEM "&Werkbalk",                   508
+        MENUITEM "S&tationsbalk",               507
+        MENUITEM "&Statusbalk",                 503
+        MENUITEM SEPARATOR
+        MENUITEM "&Pictogram bij toepassing",   504
+        MENUITEM "&Instellingen opslaan bij afsluiten", 511
+    END
+    POPUP "B&eveiliging"
+    BEGIN
+        MENUITEM "&Machtigingen",               605
+        MENUITEM "&Controle...",                606
+        MENUITEM "&Eigenaar...",                607
+    END
+    POPUP "&Venster"
+    BEGIN
+        MENUITEM "&Nieuw venster",              1706
+        MENUITEM "&Trapsgewijs\tShift+F5",      1701
+        MENUITEM "&Onder elkaar",               1703
+        MENUITEM "N&aast elkaar\tShift+F4",     1702
+        MENUITEM "&Pictogrammen schikken",      1705
+        MENUITEM "&Vernieuwen\tF5",             1704
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "I&nhoud",                     1801
+        MENUITEM "&Zoeken...",                  30
+        MENUITEM "Help &gebruiken",             1802
+        MENUITEM SEPARATOR
+        MENUITEM "&Info...",                    1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 212, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Starten"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,160,10
+    CONTROL         "&Opdrachtregel:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,60,10
+    EDITTEXT        201,3,29,150,12,ES_AUTOHSCROLL
+    CONTROL         "Starten als &pictogram",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,4,44,82,12
+    DEFPUSHBUTTON   "OK",1,164,6,42,14
+    PUSHBUTTON      "Annuleren",2,164,23,42,14
+    PUSHBUTTON      "&Help",254,164,40,42,14
+END
+
+11 DIALOG 20, 20, 242, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Afdrukken"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,189,10
+    CONTROL         "Af&drukken:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,35,10
+    EDITTEXT        102,41,18,146,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,36,189,10
+    DEFPUSHBUTTON   "OK",1,194,6,42,14
+    PUSHBUTTON      "Annuleren",2,194,23,42,14
+    PUSHBUTTON      "&Help",254,194,40,42,14
+END
+
+12 DIALOG 20, 20, 264, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Koppelen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Bestanden met extensie:",-1,6,7,81,8
+    COMBOBOX        315,89,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Koppelen met:",-1,6,30,50,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Bla&deren...",318,133,24,45,14
+    DEFPUSHBUTTON   "OK",1,186,6,72,14,WS_GROUP
+    PUSHBUTTON      "Annuleren",2,186,23,72,14
+    PUSHBUTTON      "&Nieuw type...",300,186,40,72,14
+    PUSHBUTTON      "Type &wijzigen...",251,186,57,72,14
+    PUSHBUTTON      "&Type verwijderen...",219,186,74,72,14
+    PUSHBUTTON      "&Help",254,186,91,72,14
+END
+
+13 DIALOG 20, 20, 264, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Zoeken"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Zoeken...",-1,"Static",SS_LEFTNOWORDWRAP,5,6,45,12
+    EDITTEXT        201,52,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "&Beginnen bij:",-1,"Static",SS_LEFTNOWORDWRAP,5,21,44,12
+    EDITTEXT        101,52,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "&Alle submappen doorzoeken",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,34,112,12
+    DEFPUSHBUTTON   "OK",1,217,6,42,14
+    PUSHBUTTON      "Annuleren",2,217,23,42,14
+    PUSHBUTTON      "&Help",254,217,40,42,14
+END
+
+14 DIALOG 47, 59, 268, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Verplaatsen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Huidige map: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,182,10
+    CONTROL         "&Naar:",2001,"Static",SS_LEFTNOWORDWRAP,3,33,19,10
+    EDITTEXT        103,37,32,165,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,89,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,94,49,120,10
+    DEFPUSHBUTTON   "OK",1,220,6,42,14
+    PUSHBUTTON      "Annuleren",2,220,23,42,14
+    PUSHBUTTON      "&Help",254,220,40,42,14
+    CONTROL         "&Van:",2002,"Static",SS_LEFTNOWORDWRAP,3,19,16,10
+    EDITTEXT        102,37,18,165,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 266, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Verwijderen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Huidige map: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Verwijderen:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,42,10
+    EDITTEXT        102,46,19,158,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,86,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,93,35,119,10
+    DEFPUSHBUTTON   "OK",1,218,6,42,14
+    PUSHBUTTON      "Annuleren",2,218,23,42,14
+    PUSHBUTTON      "&Help",254,218,40,42,14
+END
+
+16 DIALOG 23, 13, 278, 227
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Eigenschappen van %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,209,6,62,14,WS_GROUP
+    PUSHBUTTON      "Annuleren",2,209,23,62,14
+    PUSHBUTTON      "&Help",254,209,40,62,14
+    CONTROL         "Bestands&naam:",261,"Static",SS_LEFTNOWORDWRAP,5,5,51,10
+    EDITTEXT        201,64,5,138,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Pad:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,34,10
+    EDITTEXT        101,64,16,140,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Laatst gewijzigd:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,56,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,64,27,141,10
+    CONTROL         "Versie:",258,"Static",SS_LEFTNOWORDWRAP,5,38,24,10
+    CONTROL         "Niet aangegeven",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,64,38,140,10
+    LTEXT           "&Copyright:",-1,5,49,37,9
+    EDITTEXT        265,64,49,141,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Omvang:",260,"Static",SS_LEFTNOWORDWRAP,5,60,30,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,64,60,90,10
+    CONTROL         "Gecomprimeerde grootte:",268,"Static",SS_LEFTNOWORDWRAP,5,71,84,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,91,71,71,10
+    CONTROL         "Compressieverhouding:",270,"Static",SS_LEFTNOWORDWRAP,5,82,76,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,91,82,71,10
+    GROUPBOX        "Kenmerken",-1,7,93,120,54
+    CONTROL         "&Alleen-lezen",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,12,104,52,12
+    CONTROL         "&Verborgen",216,"Button",BS_AUTOCHECKBOX,67,104,46,12
+    CONTROL         "A&rchief",217,"Button",BS_AUTOCHECKBOX,12,116,36,12
+    CONTROL         "Sy&steem",218,"Button",BS_AUTOCHECKBOX,67,116,40,12
+    CONTROL         "Gec&omprimeerd",267,"Button",BS_AUTOCHECKBOX,12,128,65,12
+    GROUPBOX        "V&ersiegegevens",262,4,151,268,72
+    LISTBOX         263,9,162,113,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,124,162,143,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 201, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Map maken"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,147,10
+    CONTROL         "&Naam:",-1,"Static",SS_LEFTNOWORDWRAP,3,23,20,10
+    EDITTEXT        201,30,22,113,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "OK",1,154,6,42,14
+    PUSHBUTTON      "Annuleren",2,154,23,42,14
+    PUSHBUTTON      "&Help",254,154,40,42,14
+END
+
+19 DIALOG 20, 20, 158, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Diskette kopiÎren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Bronstation:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,40,10
+    COMBOBOX        245,55,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Doelstation:",206,"Static",SS_LEFTNOWORDWRAP,5,22,40,10
+    COMBOBOX        222,55,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,111,6,42,14
+    PUSHBUTTON      "Annuleren",2,111,23,42,14
+    PUSHBUTTON      "&Help",254,111,40,42,14
+END
+
+22 DIALOG 30, 30, 153, 58
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Bezig diskette te kopiÎren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Nu bezig met kopiÎren van diskette in",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "Station A:",222,9,15,130,10,NOT WS_GROUP
+    CTEXT           "Bezig de brondiskette te lezen",243,8,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Annuleren",2,55,39,42,14
+END
+
+23 DIALOG 20, 20, 163, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Volumenaam"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Volumenaam:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,50,10
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,115,6,42,14
+    PUSHBUTTON      "Annuleren",2,115,23,42,14
+    PUSHBUTTON      "&Help",254,115,40,42,14
+END
+
+24 DIALOG 11, 28, 193, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Diskette formatteren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,144,6,42,14
+    PUSHBUTTON      "Annuleren",2,144,23,42,14
+    PUSHBUTTON      "&Help",254,144,40,42,14
+    CONTROL         "&Diskette in:",-1,"Static",SS_LEFTNOWORDWRAP,5,7,39,10
+    COMBOBOX        222,55,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Capaciteit:",-1,"Static",SS_LEFTNOWORDWRAP,5,22,44,10
+    COMBOBOX        241,55,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Opties",102,5,39,126,53,WS_GROUP
+    CONTROL         "&Volumenaam:",-1,"Static",SS_LEFTNOWORDWRAP,11,51,44,10
+    EDITTEXT        201,62,49,63,12
+    CONTROL         "Diskette snelfor&matteren",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,62,92,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Bezig diskette te formatteren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Bezig diskette te formatteren",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "Bezig station te initialiseren...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Annuleren",2,53,30,42,14
+END
+
+30 DIALOG 20, 20, 197, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Deelweergave"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Gegevens",-1,4,4,121,74
+    CONTROL         "&Omvang",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,39,12
+    CONTROL         "&Datum laatste wijziging",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,87,12
+    CONTROL         "&Tijd laatste wijziging",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,79,12
+    CONTROL         "&Bestandskenmerken",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,78,12
+    CONTROL         "&MS-DOS-bestandsnamen",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,93,12
+    DEFPUSHBUTTON   "OK",1,150,6,42,14
+    PUSHBUTTON      "Annuleren",2,150,23,42,14
+    PUSHBUTTON      "&Help",254,150,40,42,14
+END
+
+32 DIALOG 20, 20, 163, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Op type"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Naam:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,23,10
+    EDITTEXT        201,34,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "Bestandstype",-1,5,20,94,62
+    CONTROL         "&Mappen",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,47,12
+    CONTROL         "&Programma's",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,54,12
+    CONTROL         "Do&cumenten",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,54,12
+    CONTROL         "&Andere bestanden",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,72,12
+    CONTROL         "Systeem-/&verborgen bestanden weergeven",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,152,12
+    DEFPUSHBUTTON   "OK",1,115,6,42,14
+    PUSHBUTTON      "Annuleren",2,115,23,42,14
+    PUSHBUTTON      "&Help",254,115,40,42,14
+END
+
+33 DIALOG 20, 20, 249, 92
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bevestigen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Bevestigen ",-1,5,3,194,85,WS_TABSTOP
+    CONTROL         "&Bestand verwijderen",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,79,12
+    CONTROL         "&Map verwijderen",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,82,12
+    CONTROL         "Bestand &vervangen",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,76,12
+    CONTROL         "&Muisbewerking",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,61,12
+    CONTROL         "&Schijfopdrachten",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,68,12
+    CONTROL         "Systeem-, verborgen, alleen-lezenbestanden &wijzigen",215,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,75,187,12
+    DEFPUSHBUTTON   "OK",1,204,6,42,14
+    PUSHBUTTON      "Annuleren",2,204,23,42,14
+    PUSHBUTTON      "&Help",254,204,40,42,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bezig met verplaatsen..."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,85,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,95,5,152,10
+    CONTROL         "Naar:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,19,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,33,15,214,10
+    DEFPUSHBUTTON   "Annuleren",2,104,28,42,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 120, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Bezig bestand af te drukken...",-1,0,6,120,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "Annuleren",2,39,38,42,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 204, 115
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Eigenschappen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "%d bestanden geselecteerd",100,"Static",SS_LEFTNOWORDWRAP,5,5,196,10
+    CONTROL         "Totaal %s bytes",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "Kenmerken",-1,42,29,120,42
+    CONTROL         "&Alleen-lezen",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,47,40,52,12
+    CONTROL         "&Verborgen",216,"Button",BS_AUTOCHECKBOX,109,40,46,12
+    CONTROL         "Ar&chief",217,"Button",BS_AUTOCHECKBOX,47,52,36,12
+    CONTROL         "Sy&steem",218,"Button",BS_AUTOCHECKBOX,109,52,40,12
+    CONTROL         "&Gecomprimeerd",267,"Button",BS_AUTOCHECKBOX,5,73,66,12
+    DEFPUSHBUTTON   "OK",1,23,92,42,14,WS_GROUP
+    PUSHBUTTON      "Annuleren",2,81,92,42,14
+    PUSHBUTTON      "&Help",254,139,92,42,14
+END
+
+39 DIALOG 10, 20, 270, 114
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bestand vervangen bevestigen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,5,203,10
+    CONTROL         "Bestand: ",-1,"Static",SS_LEFTNOWORDWRAP,25,19,32,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,19,182,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,80,29,182,10
+    CONTROL         "Vervangen door:",-1,"Static",SS_LEFTNOWORDWRAP,25,41,55,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,41,187,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,80,51,185,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,67,239,19
+    DEFPUSHBUTTON   "&Ja",6,21,94,45,14
+    PUSHBUTTON      "J&a op alles",107,82,94,45,14
+    PUSHBUTTON      "&Nee",7,143,94,45,14
+    PUSHBUTTON      "Annuleren",2,204,94,45,14
+END
+
+40 DIALOG 10, 20, 261, 73
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bestand verwijderen bevestigen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Bestand verwijderen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,69,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,95,18,156,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,226,22
+    DEFPUSHBUTTON   "&Ja",6,16,53,45,14
+    PUSHBUTTON      "J&a op alles",107,77,53,45,14
+    PUSHBUTTON      "&Nee",7,138,53,45,14
+    PUSHBUTTON      "Annuleren",2,199,53,45,14
+END
+
+41 DIALOG 10, 20, 245, 74
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Map verwijderen bevestigen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Map verwijderen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,72,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,97,18,143,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,30,215,21
+    DEFPUSHBUTTON   "&Ja",6,13,54,45,14
+    PUSHBUTTON      "J&a op alles",107,71,54,45,14
+    PUSHBUTTON      "&Nee",7,129,54,45,14
+    PUSHBUTTON      "Annuleren",2,187,54,45,14
+END
+
+42 DIALOG 10, 22, 261, 73
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bestand verplaatsen bevestigen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Bestand verplaatsen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,69,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,95,18,155,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,226,22
+    DEFPUSHBUTTON   "&Ja",6,16,53,45,14
+    PUSHBUTTON      "J&a op alles",107,77,53,45,14
+    PUSHBUTTON      "&Nee",7,138,53,45,14
+    PUSHBUTTON      "Annuleren",2,199,53,45,14
+END
+
+43 DIALOG 10, 22, 261, 73
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bestandsnaam wijzigen bevestigen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,224,10
+    CONTROL         "Bestandsnaam wijzigen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,79,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,105,18,147,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,231,22
+    DEFPUSHBUTTON   "&Ja",6,16,53,45,14
+    PUSHBUTTON      "J&a op alles",107,77,53,45,14
+    PUSHBUTTON      "&Nee",7,138,53,45,14
+    PUSHBUTTON      "Annuleren",2,199,53,45,14
+END
+
+44 DIALOG 15, 12, 141, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bestanden selecteren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Bestand(en):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,43,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Selecteren",1,69,6,67,14
+    PUSHBUTTON      "Selectie &opheffen",6,69,23,67,14
+    PUSHBUTTON      "Annuleren",2,69,40,67,14
+    PUSHBUTTON      "&Help",254,69,57,67,14
+END
+
+45 DIALOG 11, 31, 203, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Station selecteren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Stations:",245,"Static",SS_LEFTNOWORDWRAP,5,5,30,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,155,6,42,14
+    PUSHBUTTON      "Annuleren",2,155,23,42,14
+    PUSHBUTTON      "&Help",254,155,40,42,14
+END
+
+46 DIALOG 11, 28, 250, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bestandsnaam selecteren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Dit pad komt niet overeen met de FAT-notatie voor bestandsnamen. Voer een nieuwe naam in.",99,5,4,190,20,NOT WS_GROUP
+    RTEXT           "&Nieuwe naam:",-1,5,56,50,12,NOT WS_GROUP
+    EDITTEXT        103,57,55,130,12
+    RTEXT           "Oorspronkelijk pad:",-1,5,24,50,17,NOT WS_GROUP
+    EDITTEXT        102,70,26,117,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "Naar map:",-1,6,42,49,11,NOT WS_GROUP
+    EDITTEXT        101,57,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",1,203,4,42,14
+    PUSHBUTTON      "Annuleren",2,203,20,42,14
+    PUSHBUTTON      "&Help",254,203,36,42,14
+END
+
+48 DIALOG 23, 13, 243, 107
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Eigenschappen van %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,194,6,42,14,WS_GROUP
+    PUSHBUTTON      "Annuleren",2,194,23,42,14
+    PUSHBUTTON      "&Help",254,194,40,42,14
+    CONTROL         "Bestands&naam:",261,"Static",SS_LEFTNOWORDWRAP,5,5,51,10
+    EDITTEXT        201,65,5,127,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Pad:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,65,16,129,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Laatst gewijzigd:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,56,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,65,27,97,10
+    CONTROL         "Omvang:",260,"Static",SS_LEFTNOWORDWRAP,5,38,30,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,65,38,90,10
+    GROUPBOX        "Kenmerken",-1,4,52,120,50
+    CONTROL         "&Alleen-lezen",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,52,12
+    CONTROL         "&Verborgen",216,"Button",BS_AUTOCHECKBOX,71,64,46,12
+    CONTROL         "Ar&chief",217,"Button",BS_AUTOCHECKBOX,9,76,36,12
+    CONTROL         "Sy&steem",218,"Button",BS_AUTOCHECKBOX,71,76,40,12
+    CONTROL         "&Gecomprimeerd",267,"Button",BS_AUTOCHECKBOX,9,88,63,12
+END
+
+49 DIALOG 13, 54, 267, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Lettertype"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Lettertype:",1088,6,3,36,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "T&ekenstijl:",1089,108,3,64,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Grootte:",1090,179,3,27,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Effecten",1072,6,73,84,61,WS_GROUP
+    CONTROL         "&Doorhalen",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,46,10
+    CONTROL         "Onder&strepen",1041,"Button",BS_AUTOCHECKBOX,10,95,56,10
+    CONTROL         "Kleine letters weergeven voor &FAT-stations",1042,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,127,152,10
+    CONTROL         "Kleine letters weergeven voor &alle stations",1043,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,139,151,10
+    LTEXT           "&Kleur:",1091,10,107,20,9
+    COMBOBOX        1139,10,117,75,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",1,217,6,45,14,WS_GROUP
+    PUSHBUTTON      "Annuleren",2,217,23,45,14,WS_GROUP
+    PUSHBUTTON      "&Toepassen",1026,217,40,45,14,WS_GROUP
+    PUSHBUTTON      "&Help",1038,217,57,45,14,WS_GROUP
+    GROUPBOX        "Voorbeeld",1073,6,72,256,49,WS_GROUP
+    CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbYyZz",1092,10,81,247,37,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Bezig diskette te formatteren"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "Verbergen",110,35,48,43,14
+    PUSHBUTTON      "Annuleren",2,84,48,43,14
+END
+
+51 DIALOG 10, 20, 289, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bevestigen: bestand of map negeren en doorgaan."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Toegang geweigerd, negeren:",202,"Static",SS_LEFTNOWORDWRAP,25,10,99,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,128,10,134,10
+    CONTROL         "U hebt geen machtiging of het bestand wordt al gebruikt.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,25,232,10
+    CONTROL         "Klik op Ja als u dit bestand wilt negeren en verder wilt gaan met de bewerking.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,35,258,10
+    DEFPUSHBUTTON   "&Ja",6,30,50,45,14
+    PUSHBUTTON      "J&a op alles",107,91,50,45,14
+    PUSHBUTTON      "&Nee",7,152,50,45,14
+    PUSHBUTTON      "Annuleren",2,213,50,45,14
+END
+
+52 DIALOG 10, 20, 286, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bevestigen: bestand of map negeren en doorgaan."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Geen toegang tot doel, negeren:",202,"Static",SS_LEFTNOWORDWRAP,25,13,107,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,133,13,106,10
+    CONTROL         "Klik op Ja als u dit bestand wilt negeren en verder wilt gaan met de bewerking.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,23,258,11
+    DEFPUSHBUTTON   "&Ja",6,29,40,45,14
+    PUSHBUTTON      "J&a op alles",107,90,40,45,14
+    PUSHBUTTON      "&Nee",7,151,40,45,14
+    PUSHBUTTON      "Annuleren",2,212,40,45,14
+END
+
+53 DIALOG 77, 109, 174, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Bezig schijf te doorzoeken"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Zoeken naar:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,60,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,57,5,113,10
+    CONTROL         "Beginnen bij:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,44,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,57,15,113,10
+    CONTROL         "Mappen gelezen:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,66,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,72,25,94,10
+    CONTROL         "Overeenkomsten gevonden:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,92,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,99,35,67,10
+    PUSHBUTTON      "Verbergen",110,36,48,43,14
+    PUSHBUTTON      "Annuleren",2,95,48,43,14
+END
+
+54 DIALOG 20, 20, 248, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "KopiÎren naar Klembord"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Huidige map: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&KopiÎren naar Klembord:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,80,10
+    EDITTEXT        102,84,19,111,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,200,6,42,14
+    PUSHBUTTON      "Annuleren",2,200,23,42,14
+    PUSHBUTTON      "&Help",254,200,40,42,14
+END
+
+55 DIALOG 18, 14, 305, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Bestandstype wijzigen"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Bestandstype:",302,5,6,47,8
+    EDITTEXT        301,54,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "A&ctie:",-1,5,22,247,126,WS_GROUP
+    COMBOBOX        306,30,22,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Opdracht:",313,9,42,34,8
+    EDITTEXT        304,47,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Bl&aderen...",318,164,38,45,14
+    CONTROL         "&DDE gebruiken",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,57,62,10
+    LTEXT           "DDE-b&ericht:",320,22,72,43,8
+    EDITTEXT        309,109,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "DDE-berichttoepa&ssing is niet  gestart:",322,22,86,82,17
+    LTEXT           "(optioneel)",324,211,90,36,8
+    EDITTEXT        311,109,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Toepassing:",321,22,109,41,8
+    EDITTEXT        310,109,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "O&nderwerp:",323,23,127,39,8
+    EDITTEXT        312,109,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "N&ieuwe extensie:",-1,11,184,66,8
+    EDITTEXT        315,78,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Toevoe&gen ->",303,117,174,56,14
+    PUSHBUTTON      "<- Ver&wijderen",219,117,191,56,14
+    LTEXT           "E&xtensies:",-1,185,162,50,8
+    LISTBOX         317,181,172,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Extensies gekoppeld met dit bestandstype:",316,5,154,247,66
+    DEFPUSHBUTTON   "OK",1,258,6,42,14
+    PUSHBUTTON      "Annuleren",2,258,23,42,14
+    PUSHBUTTON      "&Help",254,258,40,42,14
+END
+
+57 DIALOG 123, 60, 233, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Status bestandscompressie"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Te comprimeren bestand:",-1,6,8,83,8
+    LTEXT           "bestandsnaam.xxx",341,92,8,90,8
+    LTEXT           "Map:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,43,20,150,8
+    LTEXT           "Gecomprimeerde mappen:",-1,6,32,93,8
+    LTEXT           "1,888,888,999",343,165,32,60,8
+    LTEXT           "Gecomprimeerde bestanden:",-1,6,44,96,8
+    LTEXT           "1,888,888,999",344,165,44,58,8
+    LTEXT           "Totale grootte van bestanden voor compressie:",-1,6,56,156,8
+    LTEXT           "9,999,999,999,999",345,165,56,68,8
+    LTEXT           "Totale grootte van bestanden na compressie:",-1,6,68,150,8
+    LTEXT           "9,999,999,999,999",346,165,69,68,8
+    LTEXT           "Compressieverhouding van bestand:",-1,6,80,119,8
+    LTEXT           "100%",347,165,80,27,8
+    PUSHBUTTON      "Annuleren",2,89,97,55,14
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Status bestandsdecompressie"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Te decomprimeren bestand:",-1,6,8,91,8
+    LTEXT           "bestandsnaam.xxx",351,101,8,66,8
+    LTEXT           "Map:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,45,20,144,8
+    LTEXT           "Gedecomprimeerde mappen:",-1,6,32,101,8
+    LTEXT           "1,999,999,999",353,115,32,70,8
+    LTEXT           "Gedecomprimeerde bestanden:",-1,6,44,102,8
+    LTEXT           "1,999,999,999",354,115,44,78,8
+    PUSHBUTTON      "Annuleren",2,74,64,49,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Compressiefout"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,190,20
+    DEFPUSHBUTTON   "&Negeren",5,9,47,40,14,WS_GROUP
+    PUSHBUTTON      "&Alle negeren",112,58,47,50,14
+    PUSHBUTTON      "&Opnieuw proberen",4,117,47,69,14
+    PUSHBUTTON      "Af&breken",3,195,47,40,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,318
+ PRODUCTVERSION 4,0,1381,318
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041304B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "Bestandsbeheer"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright © Microsoft Corp. 1981-1995"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "MicrosoftÆ Windows NT(Tm) besturingssysteem"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x413, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "Diskette kopiÎren"
+    51                      "Plaats de doeldiskette."
+    52                      "Plaats de brondiskette."
+    53                      "Plaats de bron- en doeldiskettes."
+    54                      "Bezig doeldiskette te formatteren."
+    55                      "Fout bij kopiÎren diskette"
+    56                      "Kan diskette niet kopiÎren."
+    58                      "Bron- en doeldiskette zijn niet compatibel."
+    60                      "%d%% voltooid"
+    61                      "Bezig met maken van hoofdmap..."
+    62                      "Bezig met kopiÎren van systeembestanden..."
+    63                      "Fout bij formatteren van diskette"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "Formatteren voltooid"
+    67                      "%ld bytes totale schijfruimte\n%ld bytes beschikbaar op de diskette\n\nWilt u nog een diskette formatteren?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "Netwerkfout"
+    83                      "Deze schijf bevat de Windows-systeembestanden. De verbinding met de schijf kan niet worden verbroken."
+    91                      "Bestandsbeheer kan kenmerken niet wijzigen. "
+    92                      "Bestandsbeheer kan map niet maken. "
+    93                      "Bestandsbeheer kan de schijf geen naam geven.\n\nControleer of de schijf niet is schrijfbeveiligd, geen netwerkstation is en of de naam geldig is. De volgende tekens kunt u niet gebruiken:\n[spatie] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > """
+    95                      "Geen overeenkomstige bestanden gevonden. "
+END
+
+STRINGTABLE
+BEGIN
+    97                      "De inhoud van dit station is gewijzigd. Wilt u het venster Zoekresultaten bijwerken?"
+    98                      "U moet op dit werkstation aangemeld zijn als beheerder om deze bewerking op vaste schijven te kunnen uitvoeren."
+    101                     "Station %c:%c"
+    110                     "Kan programma niet starten"
+    111                     "Onverwachte fout: %d."
+END
+
+STRINGTABLE
+BEGIN
+    112                     "Onvoldoende geheugen voor het starten van de opgegeven toepassing.\n\nSluit ÈÈn of meer toepassingen af en probeer het opnieuw."
+    113                     "Bestandsbeheer kan bestand (of een van de onderdelen) niet vinden.\n\nControleer of het pad en de bestandsnaam juist zijn ingevoerd en of alle vereiste bibliotheken beschikbaar zijn."
+    114                     "Het opgegeven pad is ongeldig."
+    116                     "Er is geen toepassing gekoppeld aan dit bestand.\n\nKies Koppelen in het menu Bestand als u een koppeling wilt maken."
+    118                     "Bestandsbeheer kan bestand niet openen of afdrukken.\n\nStart de toepassing waarmee het bestand is gemaakt en open of druk het daarvan dan af."
+    120                     "Muisbewerking bevestigen"
+    121                     "Weet u zeker dat u de geselecteerde bestanden of mappen naar %s wilt kopiÎren?"
+    122                     "Weet u zeker dat u de geselecteerde bestanden of mappen naar %s wilt verplaatsen?"
+    123                     "Weet u zeker dat u %s wilt starten met %s als opstartbestand?"
+    124                     "Bestandsbeheer"
+    126                     "Mapstructuur"
+    127                     "Zoekresultaten: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "Te veel bestanden"
+    133                     "Bestandsbeheer - Onvoldoende geheugen"
+    134                     "Kan hele map niet lezen. Er wordt slechts een gedeelte weergegeven"
+    140                     "Actieve map: %s"
+    141                     "KopiÎren"
+    143                     "Naam wijzigen"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "Diskette formatteren"
+    146                     "Selecteer de te formatteren diskette."
+    150                     "Bezig met maken van:"
+    151                     "Bezig met verwijderen..."
+    152                     "Bezig met kopiÎren van:"
+    153                     "Bezig met naam wijzigen..."
+    154                     "Bezig met verplaatsen..."
+    155                     "Bezig met verwijderen..."
+    156                     "Bezig met afdrukken van: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "Bezig met kopiÎren..."
+    170                     "Bezig met verwijderen van:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "Totaal %d bestand(en) (%s)"
+    181                     "Aantal gelezen mappen: %d"
+    182                     "%c: %s vrij,  %s totaal"
+    183                     "%d bestand(en) gevonden"
+    185                     "de geselecteerde bestanden"
+    186                     "Bestandsbeheer kan verbinding met netwerkstation niet verbreken.\n\nEr zijn bestanden op dit station geopend."
+    187                     "%d bestand(en) geselecteerd (%s)"
+    188                     "Station %c: bevat geen diskette.\n\nPlaats een diskette en probeer het opnieuw."
+    189                     "De diskette in station %c: is niet geformatteerd.\n\nWilt u de diskette nu formatteren?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "Onvoldoende schijfruimte om af te drukken.\n\nVerwijder ÈÈn of meer bestanden om de beschikbare schijfruimte te vergroten en probeer het opnieuw."
+    193                     "Onvoldoende geheugen om af te drukken.\n\nSluit ÈÈn of meer toepassingen af en probeer het opnieuw."
+    194                     "Fout bij het afdrukken.\n\nControleer of de printer juist is geconfigureerd en of deze is geselecteerd."
+    195                     "Onvolledige mapstructuur weergegeven"
+    197                     "Doeldiskette is vol. Plaats een nieuwe diskette in het station om door te gaan."
+    198                     "Dit is een systeem-, alleen-lezen of verborgen bestand."
+    199                     "Bestandsbeheer kan niet snelformatteren.\n\nDoorgaan met normaal formatteren?"
+    203                     "Fout tijdens het verzenden van de opdracht naar de toepassing."
+    204                     "Kan bibliotheek die vereist is voor deze bewerking niet laden."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "&Gedeelde mappen..."
+    210                     "Hierdoor worden ALLE gegevens van de diskette verwijderd. Weet u zeker dat u de diskette in station %c: wilt formatteren?"
+    211                     "Diskette formatteren bevestigen"
+    212                     "Deze bewerking zal ALLE gegevens van de doeldiskette verwijderen. Weet u zeker dat u wilt doorgaan?"
+    213                     "Diskette kopiÎren bevestigen"
+    214                     "Sl&uiten"
+    215                     "Sluiten"
+    218                     "Map %s bestaat niet.\n\nWilt u dat deze wordt gemaakt?"
+    219                     "Programma's#*.exe;*.pif;*.com;*.bat#Alle bestanden (*.*)#*.*#"
+    220                     "Bladeren"
+    221                     "Starten"
+    222                     "Kan bestand niet afdrukken"
+    223                     "Kan Help-informatie niet weergeven."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "Bestanden met de toevoeging %s zijn programma's en kunnen niet worden gekoppeld aan een andere toepassing."
+    225                     "%s is geen programma en kan niet worden gekoppeld aan een bestandstoevoeging."
+    226                     "(Geen)"
+    227                     "Geen bestanden gevonden."
+    228                     "Bestandsbeheer kan niet meerdere bestanden tegelijkertijd afdrukken.\n\nSelecteer ÈÈn bestand en probeer het opnieuw."
+    230                     "EÈn van de bibliotheekbestanden die nodig zijn om deze toepassing te starten is beschadigd. Installeer de toepassing opnieuw."
+    231                     "Dit bestand wordt gebruikt door een andere toepassing."
+    232                     "Bestandsbeheer kan misschien geen toegang verkrijgen tot de bestanden die in de map %s zijn gemaakt.\n\nWilt u doorgaan? "
+    233                     "Map maken"
+    234                     "%ld bytes"
+    235                     "%s bytes"
+    236                     "Bestandsbeheer kan niet meerdere bestanden tegelijkertijd naar het Klembord kopiÎren.\n\nSelecteer ÈÈn bestand en probeer het opnieuw."
+    237                     "%s - %s"
+    238                     "Station:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "Netwerkstation verbinden"
+    241                     "Verbinding met netwerkstation verbreken"
+    242                     "Netwerkverbindingen"
+    243                     "Map delen"
+    244                     "Delen van map beÎindigen"
+    245                     "Alle bestandsgegevens weergeven"
+    246                     "Alleen bestandsnaam weergeven"
+    247                     "Sorteren op naam"
+    248                     "Sorteren op type "
+    249                     "Sorteren op omvang"
+    250                     "Sorteren op datum"
+    251                     "Nieuw venster"
+    252                     "Bestanden kopiÎren"
+    253                     "Bestanden verplaatsen"
+    254                     "&Mapnaam:"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "Netwerkstation niet beschikbaar."
+    259                     "Gedeeld als %s"
+    260                     "Niet gedeeld"
+    261                     "Bestanden verwijderen"
+    262                     " - GECOMPRIMEERD"
+    263                     "Bezig bestanden naar %s te kopiÎren"
+    264                     "Bezig bestanden naar %s te verplaatsen"
+    265                     "Bezig bestanden met %s uit te voeren"
+    266                     "%s bytes"
+    267                     "%s kB"
+    268                     "%s MB"
+    269                     "%s GB"
+    270                     "%s TB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "U hebt geen machtiging voor toegang tot deze map."
+    281                     "U hebt geen machtiging voor toegang tot dit bestand."
+    283                     "Station %c wordt al gebruikt.\nBestandsbeheer is een diskette aan het kopiÎren."
+    284                     "Station %c wordt al gebruikt.\nBestandsbeheer is deze diskette aan het formatteren."
+    285                     "Bewerking is niet volledig uitgevoerd"
+    286                     "Kan bewerking niet op alle bestanden en mappen uitvoeren."
+    287                     "Kan map niet lezen."
+END
+
+STRINGTABLE
+BEGIN
+    288                     "Map bestaat niet."
+    289                     "Kan verbinding met netwerkstation niet tot stand brengen."
+    290                     "Kan netwerknaam niet vinden."
+    292                     "Ja op alles heeft betrekking op alle bestanden waaronder ook\n de systeem-, verborgen en alleen-lezenbestanden."
+    294                     "Openen"
+    295                     "Afdrukken"
+    298                     "Extensie toevoegen"
+    299                     "De extensie '%s' is nu gekoppeld '%s'. Wilt u doorgaan en deze koppeling overschrijven?"
+    300                     "Bestandsverbindingeditor"
+    301                     "Kan extensie niet koppelen."
+    302                     "Kan extensie niet verwijderen."
+    303                     "Kan bestandstype niet toevoegen."
+END
+
+STRINGTABLE
+BEGIN
+    304                     "Kan bestandstype niet verwijderen."
+    305                     "Kan bestandstype niet lezen."
+    306                     "U kunt het vak Bestandstype niet leeg laten. Typ een nieuw bestandstype in."
+    307                     "Kan geen unieke aanduiding genereren gebaseerd op het door u ingevoerde bestandstype."
+    308                     "Bestandstype verwijderen"
+    309                     "Hiermee verwijdert u het bestandstype en alle verbonden extensies. Weet u zeker dat u '%s' wilt verwijderen?"
+    312                     "Het bestandstype moet voor ten minste ÈÈn van de acties een opdracht hebben. Typ een toepassing in het vak Opdracht."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "Nieuw bestandstype"
+    321                     "Bezig met kopiÎren van diskette"
+    322                     "Bezig met zoeken..."
+    324                     "Bestandsbeheer formatteert momenteel een diskette. Als u nu afsluit, zal Bestandsbeheer deze bewerking beÎindigen."
+    325                     "Bestandsbeheer kopieert momenteel een diskette. Als u nu afsluit, zal Bestandsbeheer deze bewerking beÎindigen."
+    326                     "Percentage voltooid"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360 kB"
+    354                     "1%s2 MB"
+    355                     "720 kB"
+    356                     "1%s44 MB"
+    357                     "2%s88 MB"
+    358                     "Capaciteit station"
+    359                     "Bestandsbeheer kan gegevens over diskette niet verkrijgen.\n\nControleer of de diskette zich in het station bevindt."
+    360                     "20%s8 MB"
+    361                     "Onbekend diskettetype"
+    362                     "Onbekend diskettetype"
+    363                     "Het diskettetype in station %s kan niet worden geformatteerd met Bestandsbeheer. Gebruik Schijfbeheer om deze diskette te formatteren."
+END
+
+STRINGTABLE
+BEGIN
+    400                     "Incompatibel bestandssysteem."
+    401                     "Toegang geweigerd."
+    402                     "De diskette is schrijfbeveiligd."
+    403                     "Bestandsbeheer kan volume niet vergrendelen."
+    404                     "Bestandsbeheer kan diskette niet snelformatteren.\n\nControleer of de diskette de juiste dichtheid heeft."
+    405                     "I/O-fout op de brondiskette."
+    406                     "I/O-fout op de doeldiskette."
+    407                     "I/O-fout op zowel de bron- als de doeldiskette."
+    408                     "I/O-fout."
+    411                     "Bestandsbeheer kan diskette niet formatteren.\n\nControleer of de diskette in het station is geplaatst, of de diskette niet schrijfbeveiligd dan wel beschadigd is en of de diskette niet de verkeerde dichtheid heeft."
+    412                     "Bestandsbeheer kan schijf geen naam geven.\n\nDe opgegeven volumenaam is ongeldig. De volgende tekens kunt u niet gebruiken:\n[spatie] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "Bezig met openen..."
+    421                     "Bezig met sluiten..."
+    422                     "Er zijn te veel mapvensters geopend.\n\nSluit ÈÈn of meer vensters en probeer het opnieuw."
+    423                     "Bezig met snelformatteren..."
+    424                     "Kan steun niet initialiseren. Bestandsbeheer zal worden afgesloten."
+    425                     "Initialisatie Bestandsbeheer"
+    426                     "Bezig map te lezen. Een ogenblik geduld..."
+    427                     "Wilt u alle bestanden en submappen in %s ook comprimeren?"
+    428                     "Wilt u alle bestanden en submappen in %s ook decomprimeren?"
+    429                     "Bestandsbeheer kan de compressiegegevens voor %s niet wijzigen."
+    430                     "Het bestand %s zal niet worden gecomprimeerd. Het comprimeren van dit bestand kan het starten van uw systeem onmogelijk maken."
+    431                     "Bestandsbeheer is momenteel bezig bestanden te (de)comprimeren.\nU moet wachten tot dit is afgerond voordat u andere bestanden kunt (de)comprimeren."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "Opmerkingen"
+    501                     "Naam bedrijf"
+    502                     "Bestandsbeschrijving"
+    503                     "Interne naam"
+    504                     "Wettige handelsmerken"
+    505                     "Oorspronkelijke bestandsnaam"
+    506                     "Private Build Description"
+    507                     "Productnaam"
+    508                     "Productversie"
+    509                     "Special Build Description"
+    510                     "Taal"
+    511                     "Talen"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "&Netwerkstation verbinden..."
+    801                     "Verbinding met net&werkstation verbreken..."
+    802                     "&Netwerkverbindingen..."
+    803                     "&Delen als..."
+    804                     "Delen &beÎindigen..."
+    805                     "&Gedeelde mappen weergeven..."
+    806                     "Verwijderen &ongedaan maken..."
+    807                     "&Nieuw venster openen na verbinden"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "Fout bij verplaatsen van bestand"
+    1002                    "Fout bij kopiÎren van bestand"
+    1003                    "Fout bij verwijderen van bestand"
+    1004                    "Fout bij wijzigen bestandsnaam"
+    1005                    "Fout bij selecteren van station"
+    1006                    "Fout bij lezen van map"
+    1007                    "Fout bij geven van volumenaam aan schijf"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "Kan %s niet verplaatsen.\n%s"
+    1012                    "Kan %s niet kopiÎren.\n%s"
+    1013                    "Kan %s niet verwijderen.\n%s"
+    1014                    "Kan naam van %s niet wijzigen.\n%s"
+    1021                    "Kan map %s niet maken.\n%s"
+    1022                    "Kan map %s niet verwijderen.\n%s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "Kan %s niet maken of vervangen.\n%s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "Bron en doel zijn identiek."
+    1102                    "Selecteer maximaal ÈÈn bestand waarvan u de naam wilt wijzigen of gebruik jokertekens (bijvoorbeeld, *.TXT) voor het wijzigen van de extensie van bestanden.\n"
+    1103                    "Kan de naam niet wijzigen in die van een andere map of schijf.\nGebruik de opdracht Bestand verplaatsen."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "U kunt de naam van de hoofdmap niet wijzigen."
+    1105                    "De doelmap is een submap van de bron."
+    1106                    "Bestand wordt door Windows gebruikt."
+    1107                    "Geef ÈÈn bestand of map op in het vak Naar. Of gebruik, als u een groep bestanden op wilt geven, jokertekens (bijvoorbeeld *.TXT)."
+    1108                    "De opgegeven bestands- of mapnaam bestaat al. In een map moeten bestands- en mapnamen uniek zijn."
+    1109                    "Controleer of het juiste pad en de juiste bestandsnaam zijn opgegeven."
+    1110                    "Controleer of het juiste pad is opgegeven."
+    1111                    "Sluit ÈÈn of meer toepassingen af en probeer het opnieuw of vergroot het virtuele geheugen met behulp van het onderdeel Systeem in het Configuratiescherm."
+    1113                    "Schakel de beveiliging van de diskette uit of gebruik een andere diskette en probeer het opnieuw."
+    1114                    "Controleer of u de juiste netwerkmachtigingen hebt voor het uitvoeren van deze bewerking."
+    1115                    "Verwijder ÈÈn of meer bestanden om de beschikbare schijfruimte te vergroten en probeer het opnieuw."
+    1116                    "Geen gegevens gevonden op dit medium."
+    1117                    "De map bestaat al."
+    1118                    "De opgegeven naam wordt al door een bestand gebruikt."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "Verkeerde diskette in het station."
+    1151                    "De toepassing kan niet in Windows NT-modus worden uitgevoerd."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "Het besturingssysteem kan dit onderdeel niet uitvoeren."
+    1153                    "Het onderdeel kan niet in Windows NT-modus worden uitgevoerd."
+    1154                    "Dit programma is geen geldige Windows NT-toepassing."
+    1155                    "Fout. Er is geen foutbericht voor deze fout."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ÉRÉsÅ[å≥(&F):"
+    2001                    "ÉRÉsÅ[êÊ(&T):"
+    2002                    "å≥ÇÃñºëO(&F):"
+    2003                    "êVÇµÇ¢ñºëO(&T):"
+    2004                    "ÉRÉsÅ[êÊ:"
+    2005                    "Ç±ÇÃÉtÉHÉìÉgÇ?gópÇ∑ÇÈÇ∆äø?öÇÃï\\?¶Ç™\nÇ≈Ç´Ç»Ç≠Ç»ÇËÇ‹Ç∑ÅB"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "Opdrachten voor het werken met bestanden"
+    3985                    "Opdrachten voor het werken met schijven"
+    3986                    "Opdrachten voor het werken in het structuurvenster"
+    3987                    "Opdrachten voor het bepalen hoe gegevens worden weergegeven"
+    3988                    "Opdrachten voor het instellen van opties"
+    3989                    "Opdrachten voor het bewerken van bestands- en mapbeveiliging"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "Opdrachten voor het schikken van vensters"
+    4001                    "Opdrachten voor het weergeven van Help voor Bestandsbeheer "
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "Een onderwerp zoeken in Help voor Bestandsbeheer "
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "Geselecteerd programma openen"
+    4102                    "Een document afdrukken"
+    4103                    "Een bestand koppelen een toepassing"
+    4104                    "Zoeken naar bestanden en mappen"
+    4105                    "Een toepassing of document starten of openen"
+    4106                    "Geselecteerd programma verplaatsen"
+    4107                    "Bestanden en mappen kopiÎren"
+    4108                    "Bestanden en mappen verwijderen"
+    4109                    "Bestandsnaam of mapnaam wijzigen"
+    4110                    "Bestandskenmerken instellen en gegevens weergeven"
+    4111                    "Een map maken"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "Bestandsbeheer afsluiten"
+    4116                    "Bestanden en mappen selecteren"
+    4117                    "Eerder verwijderde bestanden ophalen"
+    4118                    "Een bestand naar het Klembord kopiÎren"
+    4119                    "Een bestand of een map comprimeren"
+    4120                    "Een bestand of een map decomprimeren"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "De inhoud van een diskette kopiÎren"
+    4202                    "Volumenaam van een schijf toewijzen of wijzigen"
+    4203                    "Een diskette formatteren"
+    4205                    "Verbinding maken met een netwerkstation"
+    4206                    "Verbinding met een netwerkstation verbreken"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "Een ander station selecteren"
+    4254                    "Een map delen"
+    4255                    "Delen van een map beÎindigen"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "Een ander niveau van een map weergeven"
+    4302                    "Alle niveaus van een map weergeven"
+    4303                    "Alle niveaus van alle mappen weergeven"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "Alle mappen van een geselecteerde map samenvouwen"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "Alleen bestandsnamen weergeven"
+    4402                    "Alle bestandsgegevens weergeven"
+    4403                    "Bestandsgegevens gedeeltelijk weergeven"
+    4404                    "Bestanden op naam sorteren"
+    4405                    "Bestanden op type sorteren"
+    4406                    "Bestanden op grootte sorteren"
+    4407                    "Bestanden op datum sorteren"
+    4409                    "Bestanden van een opgegeven type weergeven"
+    4411                    "De mapstructuur weergeven"
+    4412                    "De inhoud van de actieve map weergeven"
+    4413                    "De mapstructuur en de inhoud van de actieve map weergeven"
+    4414                    "Een mapvenster splitsen of de splitsbalk verplaatsen"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "Bevestigingsberichten besturen"
+    4503                    "De statusbalk weergeven of verbergen"
+    4504                    "Bestandsbeheer bij opstarten minimaliseren"
+    4505                    "Mappen aangeven die submappen hebben"
+    4507                    "De stationsbalk weergeven of verbergen"
+    4508                    "De werkbalk weergeven of verbergen"
+    4509                    "Een nieuw venster openen als u een verbinding maakt"
+    4510                    "Het lettertype van Bestandsbeheer wijzigen"
+    4511                    "Instellingen opslaan als u Bestandsbeheer afsluit"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "De werkbalk aanpassen"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "Machtigingsgegevens voor de geselecteerde onderdelen instellen of weergeven"
+    4606                    "Controlegegevens voor de geselecteerde onderdelen instellen of weergeven"
+    4607                    "Geselecteerde onderdelen weergeven of eigenaar ervan worden"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "Vensters trapsgewijs schikken"
+    5702                    "Vensters naast elkaar schikken"
+    5703                    "Vensters onder elkaar schikken"
+    5704                    "De inhoud van een venster bijwerken"
+    5705                    "Pictogrammen schikken"
+    5706                    "Een nieuw venster openen"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "Inhoudsopgave van Help voor Bestandsbeheer weergeven"
+    5802                    "Gegevens over het gebruik van Help weergeven"
+    5803                    "Gegevens over Bestandsbeheer weergeven"
+END
+
+#endif    // Dutch (Netherlands) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

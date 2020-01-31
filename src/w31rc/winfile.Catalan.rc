@@ -1,0 +1,868 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Fitxer"
+    BEGIN
+    MENUITEM    "&Obrir	Retorn", 0X0065
+    MENUITEM    "&Desplaçament...	F7", 0X006A
+    MENUITEM    "Cò&pia...	F8", 0X006B
+    MENUITEM    "S&upressió...	Supr", 0X006C
+    MENUITEM    "Can&vi de nom...", 0X006D
+    MENUITEM    "Rede&finició...	Alt+Retorn", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Execució...", 0X0069
+    MENUITEM    "&Impressió...", 0X0066
+    MENUITEM    "&Associació...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Creació d'un direc&tori...", 0X006F
+    MENUITEM    "&Cerca...", 0X0068
+    MENUITEM    "Selecció de fit&xers...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Sortir", 0X0073
+    END
+    POPUP   "&Disc"
+    BEGIN
+    MENUITEM    "Còpia d'un &disquet...", 0X00C9
+    MENUITEM    "&Etiqueta d'un disc...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Formatatge d'un disquet...", 0X00CB
+    MENUITEM    "&Copiar-hi els fitxers del sistema...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Selecció de la unitat...", 0X00FB
+    END
+    POPUP   "A&rbre"
+    BEGIN
+    MENUITEM    "Un &nivell d'expansió	+", 0X012D
+    MENUITEM    "E&xpansió de la branca	*", 0X012E
+    MENUITEM    "&Expansió general	Control+*", 0X012F
+    MENUITEM    "&Compressió de la branca	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Senyalar les branques expansibles", 0X01F9
+    END
+    POPUP   "&Visualització"
+    BEGIN
+    MENUITEM    "&Arbre i directori", 0X019D
+    MENUITEM    "No&més l'arbre", 0X019B
+    MENUITEM    "Nomé&s el directori", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "Di&visió de la pantalla", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Nom", 0X0191
+    MENUITEM    "&Característiques dels fitxers", 0X0192
+    MENUITEM    "&Informació específica...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Classificació segons el n&om", 0X0194
+    MENUITEM    "Classificació segons el &tipus", 0X0195
+    MENUITEM    "Classificació segons la &grandària", 0X0196
+    MENUITEM    "Classificació segons la &data", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Filtratge segons el tipus...", 0X0199
+    END
+    POPUP   "&Opcions"
+    BEGIN
+    MENUITEM    "&Confirmació...", 0X01F5
+    MENUITEM    "&Tipus de lletra...", 0X01FE
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Visualitzar la barra d'estat", 0X01F7
+    MENUITEM    "&Reduir l'administrador", 0X01F8
+    MENUITEM    "&Desar la configuració en sortir", 0X01FF
+    END
+    POPUP   "F&inestra"
+    BEGIN
+    MENUITEM    "&Duplicat de la finestra", 0X03ED
+    MENUITEM    "&Cascada	Majúscules+F5", 0X03E9
+    MENUITEM    "&Mosaic	Majúscules+F4", 0X03EA
+    MENUITEM    "D&isposició de les icones", 0X03EC
+    MENUITEM    "&Actualització de la pantalla	F5", 0X03EB
+    END
+    POPUP   "&Ajuda"
+    BEGIN
+    MENUITEM    "Índe&x", 0X044D
+    MENUITEM    "&Cerca per termes", 0X001E
+    MENUITEM    "Ú&s de l'ajuda", 0X044E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Quant a l'Administrador de fitxers...", 0X044F
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 285, 127
+CAPTION "Tipus de lletra"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Tipus de lletra:", 1088, 0x0000, 6, 3, 53, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 54
+    CONTROL 0x82, "&Estil del tipus de lletra:", 1089, 0x0000, 108, 3, 76, 9
+    CONTROL 0x85, "", 1137, 0x0001, 108, 13, 76, 54
+    CONTROL 0x82, "&Grandària:", 1090, 0x0000, 192, 3, 35, 9
+    CONTROL 0x85, "", 1138, 0x0311, 192, 13, 35, 54
+    CONTROL 0x80, "Efectes", 1072, 0x0007, 6, 72, 84, 61
+    CONTROL 0x80, "&Barrar-lo", 1040, 0x0003, 10, 82, 49, 10
+    CONTROL 0x80, "&Subratllar-lo", 1041, 0x0003, 10, 94, 51, 10
+    CONTROL 0x80, "&Minúscules", 1042, 0x0003, 10, 82, 49, 10
+    CONTROL 0x82, "&Colors:", 1091, 0x0000, 10, 106, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "D'acord", 1, 0x0001, 238, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 238, 23, 40, 14
+    CONTROL 0x80, "A&plicació", 1026, 0x0000, 238, 40, 40, 14
+    CONTROL 0x80, "&Ajuda", 1038, 0x0000, 238, 57, 40, 14
+    CONTROL 0x80, "Exemple", 1073, 0x0007, 119, 72, 160, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 124, 160, 20
+    CONTROL 0x82, "AaBbYyZz", 1092, 0x0081, 125, 81, 149, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 201, 86
+CAPTION "Selecció de la unitat"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Unitats:", 245, 0x000c, 5, 5, 41, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "D'acord", 1, 0x0001, 155, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 155, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 155, 44, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Execució"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Línia d'ordres:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "&Execució reduint-lo", 214, 0x0003, 3, 45, 91, 12
+    CONTROL 0x80, "D'acord", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 165, 43, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 155, 83
+CAPTION "Selecció de fitxers"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Fitxers:", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "&Seleccionar", 1, 0x0001, 70, 6, 75, 14
+    CONTROL 0x80, "A&nul·lar la selecció", 6, 0x0000, 70, 23, 75, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 70, 40, 75, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 70, 63, 75, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 277, 95
+CAPTION "Confirmació de la substitució de fitxers"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Substitució del fitxer:", 100, 0x000c, 26, 12, 73, 10
+    CONTROL 0x82, "", 103, 0x008c, 103, 12, 168, 10
+    CONTROL 0x82, "", 105, 0x000c, 103, 22, 168, 10
+    CONTROL 0x82, "Pel fitxer:", 100, 0x000c, 26, 34, 71, 10
+    CONTROL 0x82, "", 102, 0x008c, 103, 34, 165, 10
+    CONTROL 0x82, "", 106, 0x000c, 103, 44, 162, 10
+    CONTROL 0x80, "&Sí", 6, 0x0001, 52, 73, 40, 14
+    CONTROL 0x80, "Sí a &tots", 107, 0x0000, 98, 73, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 144, 73, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 190, 73, 40, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 275, 60
+CAPTION "Confirmació de la supressió de fitxers"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 203, 10
+    CONTROL 0x82, "Supressió del fitxer:", 100, 0x000c, 25, 18, 65, 10
+    CONTROL 0x82, "", 102, 0x008c, 95, 18, 170, 10
+    CONTROL 0x80, "&Sí", 6, 0x0001, 49, 42, 40, 14
+    CONTROL 0x80, "Sí a &tots", 107, 0x0000, 95, 42, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 141, 42, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 187, 42, 40, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 278, 60
+CAPTION "Confirmació de la supressió de directoris"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Supressió del directori:", 100, 0x000c, 25, 18, 77, 10
+    CONTROL 0x82, "", 102, 0x008c, 105, 17, 160, 10
+    CONTROL 0x80, "&Sí", 6, 0x0001, 54, 42, 40, 14
+    CONTROL 0x80, "Sí a &tots", 107, 0x0000, 100, 42, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 146, 42, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 192, 42, 40, 14
+END
+
+42 DIALOG 0x80c8, 13, 38, 287, 60
+CAPTION "Confirmació del desplaçament de fitxers"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Desplaçament del fitxer:", 100, 0x000c, 25, 18, 80, 10
+    CONTROL 0x82, "", 102, 0x008c, 108, 18, 170, 10
+    CONTROL 0x80, "&Sí", 6, 0x0001, 57, 42, 40, 14
+    CONTROL 0x80, "Sí a &tots", 107, 0x0000, 103, 42, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 149, 42, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 195, 42, 40, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 273, 60
+CAPTION "Confirmació del canvi de nom dels fitxers"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Canvi de nom del fitxer:", 100, 0x000c, 25, 13, 80, 10
+    CONTROL 0x82, "", 102, 0x008c, 105, 13, 160, 10
+    CONTROL 0x80, "&Sí", 6, 0x0001, 48, 42, 40, 14
+    CONTROL 0x80, "Sí a &tots", 107, 0x0000, 94, 42, 40, 14
+    CONTROL 0x80, "&No", 7, 0x0000, 140, 42, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 186, 42, 40, 14
+END
+
+11 DIALOG 0x80c8, 54, 19, 266, 63
+CAPTION "Impressió"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 29, 6, 193, 10
+    CONTROL 0x82, "&Impressió de:", 100, 0x000c, 3, 20, 58, 10
+    CONTROL 0x81, "", 102, 0x0480, 53, 18, 160, 12
+    CONTROL 0x82, "", 104, 0x008c, 29, 36, 190, 10
+    CONTROL 0x80, "D'acord", 1, 0x0001, 223, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 223, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 223, 43, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 263, 63
+CAPTION "Cerca"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Cercar:", 100, 0x000c, 5, 6, 45, 12
+    CONTROL 0x81, "", 201, 0x0480, 52, 5, 160, 12
+    CONTROL 0x82, "&Des de:", 100, 0x000c, 5, 21, 45, 12
+    CONTROL 0x81, "", 101, 0x0480, 52, 20, 160, 12
+    CONTROL 0x80, "C&ercar en tots els subdirectoris", 232, 0x0003, 52, 34, 124, 12
+    CONTROL 0x80, "D'acord", 1, 0x0001, 217, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 217, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 217, 43, 40, 14
+END
+
+14 DIALOG 0x80c8, 34, 113, 253, 64
+CAPTION "Desplaçament"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Directori actiu: ", 101, 0x008b, 25, 6, 182, 10
+    CONTROL 0x82, "&Destinació:", 100, 0x000c, 5, 33, 42, 10
+    CONTROL 0x81, "", 103, 0x0480, 59, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 48, 33, 10, 10
+    CONTROL 0x80, "&Copiar-lo a la Carpeta", 256, 0x0004, 48, 47, 89, 12
+    CONTROL 0x82, "", 104, 0x008b, 5, 49, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 59, 49, 138, 10
+    CONTROL 0x80, "D'acord", 1, 0x0001, 207, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 207, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 207, 44, 40, 14
+    CONTROL 0x82, "&Origen:", 100, 0x000c, 5, 19, 44, 10
+    CONTROL 0x81, "", 102, 0x0480, 59, 18, 138, 12
+END
+
+15 DIALOG 0x80c8, 14, 20, 252, 64
+CAPTION "Supressió"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Directori actiu: ", 101, 0x008c, 3, 6, 193, 10
+    CONTROL 0x82, "&Supressió de:", 100, 0x000c, 2, 20, 43, 10
+    CONTROL 0x81, "", 102, 0x0480, 46, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 9, 35, 35, 10
+    CONTROL 0x82, "", 201, 0x008b, 46, 35, 155, 10
+    CONTROL 0x80, "D'acord", 1, 0x0001, 206, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 206, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 206, 43, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 220, 78
+CAPTION "Redefinició"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d fitxers seleccionats, %s bytes en total", 100, 0x000c, 5, 5, 209, 10
+    CONTROL 0x80, "Atributs", -1, 0x0007, 5, 25, 136, 42
+    CONTROL 0x80, "&Només de lectura", 215, 0x0003, 10, 36, 71, 12
+    CONTROL 0x80, "&Ocult", 216, 0x0003, 85, 36, 52, 12
+    CONTROL 0x80, "&Modificable", 217, 0x0003, 10, 48, 52, 12
+    CONTROL 0x80, "&Sistema", 218, 0x0003, 85, 48, 52, 12
+    CONTROL 0x80, "D'acord", 1, 0x0001, 165, 20, 50, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 165, 37, 50, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 165, 57, 50, 14
+END
+
+16 DIALOG 0x80c8, 53, 34, 231, 100
+CAPTION "Redefinició del fitxer %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "D'acord", 1, 0x0001, 175, 6, 50, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 175, 23, 50, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 175, 43, 50, 14
+    CONTROL 0x82, "&Fitxer:", 100, 0x000c, 5, 5, 50, 10
+    CONTROL 0x81, "", 201, 0x0880, 55, 4, 118, 10
+    CONTROL 0x82, "Grandària:", 100, 0x000c, 5, 16, 40, 10
+    CONTROL 0x82, "", 203, 0x000c, 55, 16, 90, 10
+    CONTROL 0x82, "Ultima modificació:", 100, 0x000c, 5, 27, 64, 10
+    CONTROL 0x82, "", 204, 0x000c, 68, 27, 97, 10
+    CONTROL 0x82, "&Camí:", 100, 0x000c, 5, 38, 46, 10
+    CONTROL 0x81, "", 101, 0x0880, 55, 38, 118, 10
+    CONTROL 0x80, "Atributs", 100, 0x0007, 4, 52, 143, 42
+    CONTROL 0x80, "&Només de lectura", 215, 0x0003, 9, 64, 72, 12
+    CONTROL 0x80, "&Ocult", 216, 0x0003, 90, 64, 49, 12
+    CONTROL 0x80, "&Modificable", 217, 0x0003, 9, 76, 52, 12
+    CONTROL 0x80, "&Sistema", 218, 0x0003, 90, 76, 49, 12
+END
+
+17 DIALOG 0x80c8, 20, 20, 200, 63
+CAPTION "Creació d'un directori"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Nom:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 201, 0x0480, 30, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "D'acord", 1, 0x0001, 157, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 157, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 157, 43, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 157, 66
+CAPTION "Còpia del sistema al disquet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Còpia dels fitxers de sistema al disquet de la unitat:", -1, 0x000c, 5, 5, 100, 20
+    CONTROL 0x85, "", 222, 0x0003, 30, 24, 40, 37
+    CONTROL 0x80, "D'acord", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 110, 43, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 157, 64
+CAPTION "Còpia d'un disquet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Origen:", -1, 0x000c, 5, 8, 50, 10
+    CONTROL 0x85, "", 245, 0x0003, 55, 6, 40, 37
+    CONTROL 0x82, "&Destinació:", 206, 0x000c, 5, 22, 50, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 20, 40, 37
+    CONTROL 0x80, "D'acord", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 110, 43, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Copiant el disquet"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Copiant el disquet a la", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, " Unitat A:", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Llegint el disquet d'origen", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Anul·lació", 2, 0x0001, 44, 39, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 63
+CAPTION "Etiqueta del disc"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Etiqueta:", 100, 0x000c, 5, 15, 30, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "D'acord", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 115, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 115, 43, 40, 14
+END
+
+24 DIALOG 0x90c8, 9, 28, 185, 96
+CAPTION "Formatatge d'un disquet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "D'acord", 1, 0x0001, 142, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 142, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 142, 43, 40, 14
+    CONTROL 0x82, "&Disquet de la unitat:", -1, 0x000c, 3, 7, 66, 10
+    CONTROL 0x85, "", 222, 0x0003, 70, 4, 65, 40
+    CONTROL 0x82, "&Capacitat:", 100, 0x000c, 3, 20, 49, 10
+    CONTROL 0x85, "", 241, 0x0003, 70, 19, 65, 40
+    CONTROL 0x80, "Opcions", 102, 0x0007, 7, 39, 122, 53
+    CONTROL 0x82, "&Etiqueta:", -1, 0x000c, 13, 51, 39, 10
+    CONTROL 0x81, "", 201, 0x0000, 48, 49, 75, 12
+    CONTROL 0x80, "Copiar-hi els fitxers de &sistema", 242, 0x0003, 13, 62, 111, 12
+    CONTROL 0x80, "&Formatar-lo ràpidament", 244, 0x0003, 13, 76, 109, 12
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 50
+CAPTION "Formatant el disquet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Formatant el disquet. ", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "Inicialitzant la unitat...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Anul·lació", 2, 0x0001, 54, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 57
+CAPTION "Còpia del sistema al disquet"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Copiant els fitxers del sistema", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "Premeu Anul·lació si voleu interrompre el procés.", 100, 0x0001, 0, 20, 174, 8
+    CONTROL 0x80, "Anul·lació", 2, 0x0001, 66, 39, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 246, 135
+CAPTION "Connexions a la xarxa"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Creació d'una connexió", -1, 0x0007, 5, 3, 178, 55
+    CONTROL 0x82, "Camí de la &xarxa:", -1, 0x0000, 10, 16, 61, 10
+    CONTROL 0x81, "", 223, 0x0480, 77, 14, 100, 12
+    CONTROL 0x82, "&Unitat:", -1, 0x0000, 10, 30, 24, 10
+    CONTROL 0x85, "", 222, 0x0003, 77, 28, 40, 100
+    CONTROL 0x82, "C&ontrasenya:", -1, 0x0000, 10, 44, 47, 10
+    CONTROL 0x81, "", 224, 0x04a0, 77, 42, 100, 12
+    CONTROL 0x82, "Connexions actuals del &perifèric:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 160, 60
+    CONTROL 0x80, "&Tancar", 2, 0x0001, 190, 6, 50, 14
+    CONTROL 0x80, "&Connexió", 1, 0x0000, 190, 27, 50, 14
+    CONTROL 0x80, "An&terior...", 226, 0x0000, 190, 44, 50, 14
+    CONTROL 0x80, "&Navegació...", 227, 0x0000, 190, 61, 50, 14
+    CONTROL 0x80, "&Desconnexió", 255, 0x0000, 190, 78, 50, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 190, 95, 50, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 231, 98
+CAPTION "Connexions anteriors a la xarxa"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Camins de la xarxa:", 100, 0x000c, 3, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "S&eleccionar", 1, 0x0001, 181, 6, 46, 14
+    CONTROL 0x80, "Tancar", 2, 0x0000, 181, 24, 46, 14
+    CONTROL 0x80, "&Supressió", 219, 0x0000, 181, 41, 46, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 181, 58, 46, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 178, 65
+CAPTION "Informació específica"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Detalls", 100, 0x0007, 4, 4, 122, 55
+    CONTROL 0x80, "&Grandària", 203, 0x0003, 11, 15, 112, 9
+    CONTROL 0x80, "&Data de la darrera modificació", 204, 0x0003, 11, 25, 112, 9
+    CONTROL 0x80, "&Hora de la darrera modificació", 205, 0x0003, 11, 35, 112, 9
+    CONTROL 0x80, "A&tributs del fitxer", 206, 0x0003, 11, 45, 112, 9
+    CONTROL 0x80, "D'acord", 1, 0x0001, 133, 8, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 133, 25, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 133, 45, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 160, 102
+CAPTION "Filtratge segons el tipus"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Nom:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Tipus de fitxers", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "&Directoris", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "&Programes", 210, 0x0003, 10, 43, 60, 12
+    CONTROL 0x80, "D&ocuments", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "A&ltres", 212, 0x0003, 10, 67, 60, 12
+    CONTROL 0x80, "&Visualitzar els fitxers ocults i els de sistema", 250, 0x0003, 5, 85, 152, 12
+    CONTROL 0x80, "D'acord", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 110, 43, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 80
+CAPTION "Confirmació"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Confirmació per", 100, 0x0007, 5, 3, 108, 73
+    CONTROL 0x80, "Suprimir un &fitxer", 219, 0x0003, 10, 15, 97, 12
+    CONTROL 0x80, "Suprimir un &directori", 220, 0x0003, 10, 27, 97, 12
+    CONTROL 0x80, "&Substituir un fitxer", 221, 0x0003, 10, 39, 97, 12
+    CONTROL 0x80, "Operar amb el &ratolí", 249, 0x0003, 10, 51, 97, 12
+    CONTROL 0x80, "&Executar ordres del disc", 251, 0x0003, 10, 63, 97, 12
+    CONTROL 0x80, "D'acord", 1, 0x0001, 118, 6, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 118, 23, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 118, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Desplaçant..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 55, 5, 192, 10
+    CONTROL 0x82, "Destinació:", 108, 0x008b, 5, 15, 41, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 15, 192, 10
+    CONTROL 0x80, "Anul·lació", 2, 0x0001, 200, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 120, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Imprimint el fitxer...", -1, 0x0001, 4, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 0, 20, 120, 12
+    CONTROL 0x80, "Anul·lació", 2, 0x0001, 41, 40, 44, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 221, 96
+CAPTION "Associar"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Fitxers amb l'extensió:", 99, 0x000c, 5, 8, 74, 10
+    CONTROL 0x81, "", 112, 0x0400, 80, 6, 35, 12
+    CONTROL 0x82, "&Associar amb:", 99, 0x000c, 5, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 5, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 11, 44, 146, 40
+    CONTROL 0x80, "D'acord", 1, 0x0001, 165, 6, 48, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 165, 23, 48, 14
+    CONTROL 0x80, "&Navegació...", 232, 0x0000, 165, 43, 48, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 165, 60, 48, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 250, 78
+CAPTION "Selecció del nom"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aquest camí no s'adiu amb el format dels noms dels fitxers del DOS. Escriviu-ne un altre.", 99, 0x0000, 3, 4, 190, 24
+    CONTROL 0x82, "&Crear el nom:", 99, 0x0002, 5, 56, 50, 12
+    CONTROL 0x81, "", 103, 0x0000, 57, 55, 130, 12
+    CONTROL 0x82, "Camí original:", 99, 0x0002, 5, 28, 50, 11
+    CONTROL 0x81, "", 102, 0x0880, 57, 28, 130, 12
+    CONTROL 0x82, "Al directori:", 99, 0x0002, 5, 42, 50, 11
+    CONTROL 0x81, "", 101, 0x0880, 57, 42, 130, 12
+    CONTROL 0x80, "D'acord", 1, 0x0001, 205, 4, 40, 14
+    CONTROL 0x80, "Anul·lació", 2, 0x0000, 205, 20, 40, 14
+    CONTROL 0x80, "&Ajuda", 254, 0x0000, 205, 36, 40, 14
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Sortir del Windows"
+0x0029   "Fi d'aquesta sessió del Windows."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Còpia d'un disquet"
+0x0033   "Introduïu el disquet de destinació."
+0x0034   "Introduïu el disquet d'origen."
+0x0035   "Introduïu els disquets d'origen i de destinació."
+0x0036   "Formatant el disquet de destinació"
+0x0037   "Error en copiar el disquet"
+0x0038   "Impossible de copiar el disquet."
+0x003a   "Les unitats d'origen i de destinació són incompatibles."
+0x003c   "%d%% enllestit"
+0x003d   "Creant el directori principal..."
+0x003e   "Copiant els fitxers del sistema..."
+0x003f   "Error en formatar el disquet"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "No hi ha prou espai de disc per imprimir.
+
+Suprimiu un o més d'un fitxer i torneu a intentar-ho."
+0x00c1   "No hi ha prou memòria per imprimir.
+
+Sortiu d'una o més d'una aplicació i torneu a intentar-ho."
+0x00c2   "Hi ha hagut un error durant la impressió.
+
+Verifiqueu la configuració i la selecció de la impressora."
+0x00c3   "Visualització parcial de l'arbre de directoris"
+0x00c5   "La unitat de destinació és plena.
+
+Introduïu un altre disquet per continuar."
+0x00c6   "Aquest fitxer és del sistema , ocult o bé només de lectura."
+0x00c7   "Impossible de formatar ràpidament.
+
+Voleu continuar formatant a la velocitat normal?"
+0x00c8   "L'aplicació especificada no és del Windows ni de l'MS-DOS."
+0x00c9   "Per executar aquesta aplicació cal una versió posterior del Windows de Microsoft."
+0x00ca   "Per executar aquesta aplicació us cal el Windows."
+0x00cb   "Hi ha hagut un error durant la tramesa de l'ordre a l'aplicació."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Impossible de formatar el disquet."
+0x0042   "Formatatge enllestit"
+0x0043   "%ld bytes d'espai de disc en total
+%ld bytes disponibles al disquet
+
+Voleu formatar-ne un altre?"
+0x0046   "Còpia del sistema al disquet"
+0x0047   "Esteu segurs que voleu copiar els fitxers del sistema al disquet de la unitat %c?"
+0x0048   "Error de disc al sistema"
+0x0049   "A la unitat d'inicialització de l'MS-DOS no hi ha els fitxers del sistema o bé no és accessible."
+0x004a   "Impossible de copiar els fitxers del sistema a la unitat d'inicialització de l'MS-DOS."
+0x004b   "Impossible d'afegir fitxers del sistema al disquet.
+
+Comproveu que hi ha un disquet formatat a la unitat i que la porta de la unitat està tancada."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Error a la xarxa"
+0x0053   "En aquesta unitat hi ha els fitxers del sistema del Windows i, per tant,  no podeu desconnectar-la."
+0x005b   "Impossible de canviar els atributs.
+
+Comproveu que el disquet no està protegit d'escriptura."
+0x005c   "Impossible de crear el directori.
+
+Comproveu que el disquet no està protegit d'escriptura."
+0x005d   "Impossible d'etiquetar el disquet.
+
+Comproveu que no està protegit d'escriptura, no és cap unitat de la xarxa i que l'etiqueta és vàlida.
+Els caràcters següents no són vàlids:n[espai] * ? / \ | . , ; : + = [ ] ( ) & ^ < > " "
+0x005f   "No hi ha cap fitxer amb aquestes característiques."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "Nombre total de fitxers: %d (%s bytes)"
+0x00b5   "Directoris llegits: %d "
+0x00b6   "%c: %s Kb lliures, %s Kb en total"
+0x00b7   "%d fitxers trobats"
+0x00b9   "els fitxers seleccionats"
+0x00ba   "Impossible de desconnectar de la xarxa aquesta unitat.
+
+Encara hi ha fitxers oberts."
+0x00bb   "%d fitxers seleccionats (%s bytes)"
+0x00bc   "No hi cap disquet a la unitat %c.
+
+Introduïu-n'hi un i torneu a intentar-ho."
+0x00bd   "El disquet de la unitat %c no està formatat.
+
+Voleu formatar-lo ara?"
+0x00bf   "Impossible de trobar el fitxer que voleu imprimir. Comproveu-ne el camí i el nom."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "Aquest directori ja ha estat creat."
+0x0061   "El contingut de la unitat ha estat modificat. Voleu actualitzar la finestra Resultats de la cerca?"
+0x0065   "Unitat %c:%c"
+0x006e   "Impossible d'executar el programa."
+0x006f   "Hi ha hagut un error imprevist: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "L'operació de formatatge suprimeix TOTES les dades del disquet. Esteu segurs que voleu formatar el disc de la unitat %c?"
+0x00d3   "Confirmació del formatatge d'un disquet"
+0x00d4   "Aquesta operació suprimeix TOTES les dades del disquet de destinació. Esteu segurs que voleu continuar el procés?"
+0x00d5   "Confirmació de la còpia del disquet"
+0x00d6   "&Tancar"
+0x00d7   "&Recuperar..."
+0x00d8   "Connexió amb una &unitat de la xarxa..."
+0x00d9   "Connexions a la &xarxa..."
+0x00da   "No hi cap directori %s.
+
+Voleu crear-lo?"
+0x00db   "Programes#*.exe;*.pif;*.com;*.bat#Tots els fitxers (*.*)#*.*#"
+0x00dc   "Navegació"
+0x00dd   "Execució"
+0x00de   "Impossible d'imprimir el fitxer"
+0x00df   "Impossible de visualitzar la informació d'ajuda."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "No hi ha prou memòria per executar l'aplicació especificada.
+
+Sortiu d'una o més d'una aplicació i torneu a intentar-ho."
+0x0071   "Impossible de trobar el fitxer (o bé algun dels seus components).
+
+Comproveu-ne el camí i el nom i també que totes les biblioteques necessàries estan disponibles."
+0x0072   "El camí especificat no és vàlid."
+0x0073   "Massa fitxers en execució.
+
+Sortiu d'una o més d'una aplicació o bé augmenteu el valor de l'ordre FILES del Config.sys i torneu a intentar-ho."
+0x0074   "No hi ha cap aplicació associada amb aquest fitxer.
+
+Trieu l'opció Associació del menú Fitxer per crear-ne una."
+0x0075   "Impossible d'executar més d'una vegada el programa especificat."
+0x0076   "Impossible d'obrir o bé d'imprimir el fitxer.
+
+Per obrir-lo o imprimir-lo, executeu l'aplicació utilitzada per crear-lo."
+0x0078   "Confirmació d'una operació amb el ratolí"
+0x0079   "Esteu segurs que voleu copiar els fitxers o els directoris seleccionats a %s?"
+0x007a   "Esteu segurs que voleu desplaçar els fitxers o els directoris seleccionats a %s?"
+0x007b   "Esteu segurs que voleu executar l'aplicació %s amb %s com a fitxer inicial?"
+0x007c   "Administrador de fitxers"
+0x007e   "Arbre de directoris"
+0x007f   "Resultat de la cerca "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Els fitxers amb l'extensió %s són programes i no poden ser associats amb cap altra aplicació."
+0x00e1   "%s no és cap programa i no podeu associar-lo a cap extensió d'un fitxer."
+0x00e2   "(cap)"
+0x00e3   "No hi ha cap fitxer."
+0x00e4   "Impossible d'imprimir més d'un fitxer alhora.
+
+Seleccioneu-ne només un i torneu a intentar-ho."
+0x00e5   "Aquest programa o algun dels seus components és comprimit.
+
+Utilitzeu la utilitat d'expansió de l'MS-DOS per copiar el fitxer des dels disquets d'instal·lació."
+0x00e6   "Un dels fitxers de la biblioteca necessaris per executar aquesta aplicació és defectuós. Torneu a instal·lar l'aplicació."
+0x00e7   "Alguna altra aplicació utilitza el fitxer en aquest moment."
+0x00e8   "És possible que l'Administrador de fitxers no pugui accedir als fitxers creats al directori "%".
+
+Voleu continuar?"
+0x00e9   "Creació d'un directori"
+0x00ea   "%ld bytes"
+0x00eb   "%s bytes"
+0x00ec   "Impossible de copiar més d'un fitxer o directori a la Carpeta.
+
+Seleccioneu-ne només un i torneu a intentar-ho."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Massa fitxers"
+0x0085   "Administrador de fitxers: sense memòria"
+0x0086   "Impossible de llegir tot el directori.  Només és possible de visualitzar-ne una llista parcial."
+0x008c   "El directori actiu és %s"
+0x008d   "Còpia"
+0x008f   "Canvi de nom"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Formatatge de disquets"
+0x0092   "Seleccioneu el disquet que voleu formatar."
+0x0094   "&Desconnexió de la unitat de la xarxa..."
+0x0096   "Creant:"
+0x0097   "Eliminant..."
+0x0098   "Copiant:"
+0x0099   "Canviant el nom..."
+0x009a   "Desplaçant..."
+0x009b   "Suprimint..."
+0x009c   "Imprimint: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "No hi ha cap unitat %c."
+0x00a9   "Copiant..."
+0x00aa   "Eliminant:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Obrint..."
+0x01a5   "Tancant..."
+0x01a6   "Hi ha massa finestres de directoris obertes.
+
+Tanqueu-ne una o més d'una i torneu a intentar-ho."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Error en desplaçar el fitxer"
+0x03ea   "Error en copiar el fitxer"
+0x03eb   "Error en suprimir el fitxer"
+0x03ec   "Error en canviar el nom del fitxer"
+0x03ed   "Error en seleccionar la unitat"
+0x03ee   "Error en llegir el directori"
+0x03ef   "Error en assignar una etiqueta al disc"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "Impossible de desplaçar el fitxer %s: %s"
+0x03f4   "Impossible de copiar el fitxer %s: %s"
+0x03f5   "Impossible de suprimir el fitxer %s: %s"
+0x03f6   "Impossible de canviar el nom del fitxer %s: %s"
+0x03fd   "Impossible de crear el directori %s: %s"
+0x03fe   "Impossible d'eliminar el directori %s: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Impossible de crear o de substituir %s: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Funció del DOS no vàlida"
+0x0412   "Impossible de trobar el fitxer.
+
+Verifiqueu-ne el camí i el nom."
+0x0413   "Impossible de trobar el camí.
+
+Verifiqueu-lo."
+0x0414   "Massa fitxers oberts. Sortiu d'una o més d'una aplicació."
+0x0415   "Accés no autoritzat.
+
+Comproveu que el disquet no és ple i que no està protegit d'escriptura."
+0x0416   "El manejador del fitxer no és vàlid"
+0x0418   "No hi ha prou memòria.
+
+Sortiu d'una o més d'una aplicació i torneu a intentar-ho."
+0x041c   "Accés al fitxer no vàlid"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Impossible d'eliminar el directori actiu (error intern)."
+0x0421   "El dispositiu no és vàlid"
+0x0422   "El directori és buit"
+0x0423   "El disquet està protegit d'escriptura.
+
+Anul·leu la protecció d'escriptura d'aquest disquet o bé utilitzeu-ne un altre i torneu a intentar-ho."
+0x042d   "Error d'escriptura. El fitxer o el disquet de destinació deu ser defectuós."
+0x042f   "Error de lectura. El fitxer d'origen o el disquet deu ser defectuós."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Lóperació no és vàlida"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Accés a la xarxa no autoritzat. Comproveu que disposeu dels permisos de xarxa necessaris per efectuar l'operació."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Impossible d'executar l'operació en fitxers compartits. L'origen o la destinació deuen ser actius."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "No hi ha prou espai al disc.
+
+Suprimiu un o més d'un fitxer i torneu a intentar-ho."
+0x0481   "Les unitats d'origen i de destinació són la mateixa."
+0x0482   "Seleccioneu només un fitxer per canviar-ne el nom. Utilitzeu qualsevol comodí de l'MS-DOS (per exemple, *.txt) per canviar el nom d'un grup de fitxers amb noms semblants."
+0x0483   "Impossible de canviar el nom i copiar-lo en un altre directori o fitxer alhora."
+0x0484   "Directori principal (error intern)"
+0x0486   "El directori de destinació és un subdirectori del d'origen."
+0x0487   "El Windows utilitza el fitxer en aquest moment."
+0x0488   "Accés no autoritzat. Algú deu estar utilitzant el fitxer d'origen."
+0x0489   "Camí massa profund"
+0x048a   "Indiqueu només un fitxer o un directori al quadre Destinació. Utilitzeu qualsevol comodí de l'MS-DOS (per exemple,  *.txt) per indicar un grup de fitxers."
+0x048b   "Ja hi ha un fitxer amb aquest nom. Repetiu l'operació i escriviu-ne un altre al quadre Destinació."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 Mb"
+0x0131   "720 Kb"
+0x0132   "1,44 Mb"
+0x0133   "2,88 Mb"
+0x0134   "Capacitat de la unitat"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360 Kb"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "No hi ha prou memòria."
+0x0192   "Impossible de formatar la unitat d'inicialització de l'MS-DOS."
+0x0193   "La grandària del sector de la unitat d'inicialització de l'MS-DOS no és vàlida."
+0x0194   "Tipus desconegut d'unitat"
+0x0199   "Impossible de transferir els fitxers del sistema."
+0x019a   "Aquest disquet pot ser formatat amb una capacitat de %s. Voleu continuar el formatatge assignant-li aquesta capacitat?"
+0x019b   "Impossible de formatar el disquet.
+
+Comproveu que el disquet és a la unitat , que no està protegit d'escriptura ni és defectuós i que la densitat especificada és correcta."
+
+

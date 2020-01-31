@@ -80,6 +80,7 @@
 #define IDM_HISTORYFWD      127
 #define IDM_STARTPOWERSHELL 128
 #define IDM_STARTBASHSHELL  129
+#define IDM_CLOSEWINDOW     130
 
 // This IDM_ is reserved for IDH_GROUP_ATTRIBS
 #define IDM_GROUP_ATTRIBS   199
@@ -158,7 +159,12 @@
 #define IDM_OWNER           607
 
 #define IDM_EXTENSIONS      6
+// iExt 0, command ids 700-799
+// iExt 1, command ids 800-899
+// etc.
+// iExt 9, command ids 1600-1699
 
+// NOTE: IDM_WINDOW is IDM_EXTENSIONS (6) + MAX_EXTENSIONS (10)
 #define IDM_WINDOW           16
 #define IDM_CASCADE          1701
 #define IDM_TILE             1702
@@ -573,6 +579,8 @@
 #define IDS_SHARES            (MS_EXTRA+5)
 #define IDS_UNDELETE          (MS_EXTRA+6)
 #define IDS_NEWWINONCONNECT   (MS_EXTRA+7)
+
+// TODO: there should be NUMEXTRACOMMANDS strings above; see usage in tbar.c in LoadDesc().
 
 #define IDS_COPYERROR       1000
 #define IDS_VERBS           1010

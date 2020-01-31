@@ -1,0 +1,1467 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian (Russia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "&Файл"
+    BEGIN
+        MENUITEM "&Открыть\tEnter",             101
+        MENUITEM "П&ереместить...\tF7",         106
+        MENUITEM "&Копировать...\tF8",          107
+        MENUITEM "Копировать в &буфер...\tF9",  118
+        MENUITEM "&Удалить...\tDel",            108
+        MENUITEM "Переи&меновать...",           109
+        MENUITEM "Сво&йства...\tAlt+Enter",     110
+        MENUITEM SEPARATOR
+        MENUITEM "С&жать...",                   119
+        MENUITEM "&Развернуть...",              120
+        MENUITEM SEPARATOR
+        MENUITEM "&Выполнить...",               105
+        MENUITEM "&Печать...",                  102
+        MENUITEM "&Сопоставить...",             103
+        MENUITEM SEPARATOR
+        MENUITEM "Созд&ать каталог...",         111
+        MENUITEM "&Найти...",                   104
+        MENUITEM "Выде&лить...",                116
+        MENUITEM SEPARATOR
+        MENUITEM "В&ыход",                      115
+    END
+    POPUP "&Диск"
+    BEGIN
+        MENUITEM "&Копировать...",              201
+        MENUITEM "&Метка...",                   202
+        MENUITEM SEPARATOR
+        MENUITEM "&Форматировать...",           203
+        MENUITEM SEPARATOR
+        MENUITEM "&Выбрать...",                 251
+    END
+    POPUP "&Каталоги"
+    BEGIN
+        MENUITEM "&Раскрыть уровень\t+",        301
+        MENUITEM "Р&аскрыть ветвь\t*",          302
+        MENUITEM "Раскрыть &все\tCtrl+*",       303
+        MENUITEM "&Свернуть ветвь\t-",          304
+        MENUITEM SEPARATOR
+        MENUITEM "&Обозначить подкаталоги",     505
+    END
+    POPUP "&Вид"
+    BEGIN
+        MENUITEM "&Структура и содержимое",     413
+        MENUITEM "Т&олько структура",           411
+        MENUITEM "Только содер&жимое",          412
+        MENUITEM SEPARATOR
+        MENUITEM "&Граница областей",           414
+        MENUITEM SEPARATOR
+        MENUITEM "Только и&мена файлов",        401
+        MENUITEM "&Полные сведения",            402, CHECKED
+        MENUITEM "&Выбранные сведения...",      403
+        MENUITEM SEPARATOR
+        MENUITEM "Сортировать по &имени",       404
+        MENUITEM "Сортировать по &типу",        405
+        MENUITEM "Сортировать по ра&змеру",     406
+        MENUITEM "Сортировать по дат&е",        407
+        MENUITEM SEPARATOR
+        MENUITEM "Типы &файлов...",             409
+    END
+    POPUP "&Параметры"
+    BEGIN
+        MENUITEM "&Подтверждение...",           501
+        MENUITEM "&Шрифт...",                   510
+        MENUITEM "&Настройка панели инструментов...", 512
+        MENUITEM SEPARATOR
+        MENUITEM "Панель &инструментов",        508
+        MENUITEM "Панель дис&ков",              507
+        MENUITEM "&Строка состояния",           503
+        MENUITEM SEPARATOR
+        MENUITEM "Свертывать при &запуске",     504
+        MENUITEM "Со&хранять настройку при выходе", 511
+    END
+    POPUP "&Безопасность"
+    BEGIN
+        MENUITEM "Разре&шения...",              605
+        MENUITEM "&Аудит...",                   606
+        MENUITEM "&Владелец...",                607
+    END
+    POPUP "&Окно"
+    BEGIN
+        MENUITEM "Созд&ать",                    1706
+        MENUITEM "&Каскадом\tShift+F5",         1701
+        MENUITEM "С&верху вниз",                1703
+        MENUITEM "&Слева направо\tShift+F4",    1702
+        MENUITEM "&Упорядочить значки",         1705
+        MENUITEM "О&бновить\tF5",               1704
+    END
+    POPUP "&?"
+    BEGIN
+        MENUITEM "&Содержание",                 1801
+        MENUITEM "&Найти...",                   30
+        MENUITEM "По&льзование справкой",       1802
+        MENUITEM SEPARATOR
+        MENUITEM "&О программе...",             1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 255, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Запуск программы"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,6,6,191,10
+    CONTROL         "&Командная строка:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,6,18,86,10
+    EDITTEXT        201,6,29,188,12,ES_AUTOHSCROLL
+    CONTROL         "&Выполнять в свернутом окне",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,45,152,12
+    DEFPUSHBUTTON   "ОК",1,205,6,44,14
+    PUSHBUTTON      "Отмена",2,205,23,44,14
+    PUSHBUTTON      "&Справка",254,205,43,44,14
+END
+
+11 DIALOG 20, 20, 280, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Печать"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,6,215,10
+    CONTROL         "&Печатать:",-1,"Static",SS_LEFTNOWORDWRAP,6,20,42,10
+    EDITTEXT        102,48,18,174,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,36,215,10
+    DEFPUSHBUTTON   "ОК",1,230,6,44,14
+    PUSHBUTTON      "Отмена",2,230,23,44,14
+    PUSHBUTTON      "&Справка",254,230,43,44,14
+END
+
+12 DIALOG 20, 20, 260, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Сопоставление типа файлов и приложения"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Расширению имен файлов:",-1,6,7,112,10
+    COMBOBOX        315,130,5,60,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Со&поставить тип и приложение:",-1,6,30,122,10
+    EDITTEXT        304,6,42,184,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,179,52,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Об&зор...",318,130,24,60,14
+    DEFPUSHBUTTON   "ОК",1,200,6,53,14,WS_GROUP
+    PUSHBUTTON      "Отмена",2,200,23,53,14
+    PUSHBUTTON      "&Новый тип...",300,200,42,53,14
+    PUSHBUTTON      "Из&менить...",251,200,59,53,14
+    PUSHBUTTON      "&Удалить",219,200,76,53,14
+    PUSHBUTTON      "&Справка",254,200,95,53,14
+END
+
+13 DIALOG 20, 20, 280, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Поиск"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Образец &имени:",-1,"Static",SS_LEFTNOWORDWRAP,6,7,60,10
+    EDITTEXT        201,69,5,152,12,ES_AUTOHSCROLL
+    CONTROL         "&Начальный путь:",-1,"Static",SS_LEFTNOWORDWRAP,6,22,61,10
+    EDITTEXT        101,69,20,152,12,ES_AUTOHSCROLL
+    CONTROL         "&Просмотреть подкаталоги",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,69,36,147,12
+    DEFPUSHBUTTON   "ОК",1,230,5,44,14
+    PUSHBUTTON      "Отмена",2,230,23,44,14
+    PUSHBUTTON      "&Справка",254,230,43,44,14
+END
+
+14 DIALOG 47, 59, 290, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Перемещение"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Текущий каталог: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,6,6,227,10
+    CONTROL         "&Конечный файл/каталог:",2001,"Static",SS_LEFTNOWORDWRAP,6,34,88,10
+    EDITTEXT        103,95,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,6,49,88,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,95,49,138,10
+    DEFPUSHBUTTON   "ОК",1,240,6,44,14
+    PUSHBUTTON      "Отмена",2,240,23,44,14
+    PUSHBUTTON      "&Справка",254,240,40,44,14
+    CONTROL         "&Исходный файл/каталог:",2002,"Static",SS_LEFTNOWORDWRAP,6,20,88,10
+    EDITTEXT        102,95,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 280, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Удаление"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Текущий каталог: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,5,215,10
+    CONTROL         "&Удалить:",-1,"Static",SS_LEFTNOWORDWRAP,6,21,39,10
+    EDITTEXT        102,47,19,174,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,6,35,39,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,47,35,174,10
+    DEFPUSHBUTTON   "ОК",1,230,6,44,14
+    PUSHBUTTON      "Отмена",2,230,23,44,14
+    PUSHBUTTON      "&Справка",254,230,40,44,14
+END
+
+16 DIALOG 23, 13, 270, 229
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Свойства: %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "ОК",1,196,6,68,14,WS_GROUP
+    PUSHBUTTON      "Отмена",2,196,23,68,14
+    PUSHBUTTON      "&Справка",254,196,40,68,14
+    CONTROL         "И&мя файла:",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,72,5,119,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Путь:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,72,16,119,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Изменен:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,66,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,72,27,119,10
+    CONTROL         "Версия:",258,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "Не указана",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,72,38,119,10
+    LTEXT           "А&вторские права:",-1,5,49,65,10
+    EDITTEXT        265,72,49,119,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Размер:",260,"Static",SS_LEFTNOWORDWRAP,5,60,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,72,60,119,10
+    CONTROL         "После сжатия:",268,"Static",SS_LEFTNOWORDWRAP,5,71,60,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,72,71,119,10
+    CONTROL         "Степень сжатия:",270,"Static",SS_LEFTNOWORDWRAP,5,82,63,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,72,82,119,10
+    GROUPBOX        "Атрибуты",-1,4,96,150,54
+    CONTROL         "Только &чтение",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,68,12
+    CONTROL         "Скр&ытый",216,"Button",BS_AUTOCHECKBOX,91,108,56,12
+    CONTROL         "&Архивный",217,"Button",BS_AUTOCHECKBOX,9,120,52,12
+    CONTROL         "С&истемный",218,"Button",BS_AUTOCHECKBOX,91,120,60,12
+    CONTROL         "С&жатый",267,"Button",BS_AUTOCHECKBOX,9,132,73,12
+    GROUPBOX        "Св&едения о версии",262,4,155,260,70
+    LISTBOX         263,9,168,91,54,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,110,168,148,50,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 220, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Создание каталога"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,6,158,10
+    CONTROL         "&Имя:",-1,"Static",SS_LEFTNOWORDWRAP,6,24,23,10
+    EDITTEXT        201,30,22,133,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,46,157,10
+    DEFPUSHBUTTON   "ОК",1,170,6,44,14
+    PUSHBUTTON      "Отмена",2,170,23,44,14
+    PUSHBUTTON      "&Справка",254,170,43,44,14
+END
+
+19 DIALOG 20, 20, 165, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Копирование диска"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Исходный диск:",-1,"Static",SS_LEFTNOWORDWRAP,6,8,59,10
+    COMBOBOX        245,66,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Конечный диск:",206,"Static",SS_LEFTNOWORDWRAP,6,22,59,10
+    COMBOBOX        222,66,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "ОК",1,115,6,44,14
+    PUSHBUTTON      "Отмена",2,115,23,44,14
+    PUSHBUTTON      "&Справка",254,115,43,44,14
+END
+
+22 DIALOG 30, 30, 130, 55
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Копирование диска"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Копирование диска в ",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "устройстве A:",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "Чтение исходного диска",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Отмена",2,44,38,44,14
+END
+
+23 DIALOG 20, 20, 170, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Метка диска"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Метка:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,38,10
+    EDITTEXT        201,5,26,108,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "ОК",1,120,6,44,14
+    PUSHBUTTON      "Отмена",2,120,23,44,14
+    PUSHBUTTON      "&Справка",254,120,43,44,14
+END
+
+24 DIALOG 11, 28, 200, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Форматирование диска"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "ОК",1,150,6,44,14
+    PUSHBUTTON      "Отмена",2,150,23,44,14
+    PUSHBUTTON      "&Справка",254,150,43,44,14
+    CONTROL         "&Устройство:",-1,"Static",SS_LEFTNOWORDWRAP,5,7,46,10
+    COMBOBOX        222,52,4,83,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Емкость:",-1,"Static",SS_LEFTNOWORDWRAP,5,20,46,10
+    COMBOBOX        241,52,19,83,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Параметры",102,5,39,136,53,WS_GROUP
+    CONTROL         "&Метка:",-1,"Static",SS_LEFTNOWORDWRAP,11,51,39,10
+    EDITTEXT        201,52,49,83,12
+    CONTROL         "&Быстрое форматирование",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,64,116,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Форматирование"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Идет форматирование диска",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "Инициализация устройства...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Отмена",2,54,30,44,14
+END
+
+30 DIALOG 20, 20, 207, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Выбор отображаемых сведений"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Сведения",-1,6,4,142,74
+    CONTROL         "&Размер",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,15,132,12
+    CONTROL         "&Дата последнего изменения",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,27,132,12
+    CONTROL         "&Время последнего изменения",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,39,132,12
+    CONTROL         "&Атрибуты файла",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,51,132,12
+    CONTROL         "&Имена файлов MS-DOS",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,63,132,12
+    DEFPUSHBUTTON   "ОК",1,157,8,44,14
+    PUSHBUTTON      "Отмена",2,157,25,44,14
+    PUSHBUTTON      "&Справка",254,157,42,44,14
+END
+
+32 DIALOG 20, 20, 200, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Выбор типов файлов"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Образец имени:",-1,"Static",SS_LEFTNOWORDWRAP,6,8,64,10
+    EDITTEXT        201,75,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "Типы файлов",-1,6,20,135,62
+    CONTROL         "&Каталоги",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,31,95,12
+    CONTROL         "&Программы",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,43,95,12
+    CONTROL         "&Документы",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,55,95,12
+    CONTROL         "Про&чие файлы",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,67,95,12
+    CONTROL         "Скр&ытые/системные файлы",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,85,135,12
+    DEFPUSHBUTTON   "ОК",1,150,6,44,14
+    PUSHBUTTON      "Отмена",2,150,23,44,14
+    PUSHBUTTON      "&Справка",254,150,43,44,14
+END
+
+33 DIALOG 20, 20, 240, 92
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Подтверждение"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Запрашивать подтверждение на",-1,6,3,228,64,WS_TABSTOP
+    CONTROL         "удаление &файлов",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,15,105,12
+    CONTROL         "удаление &каталогов",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,27,105,12
+    CONTROL         "&замену файлов",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,39,105,12
+    CONTROL         "действия &мышью",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,137,15,86,12
+    CONTROL         "&действия с дисками",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,137,27,86,12
+    CONTROL         "&изменение файлов системных/скрытых/только для чтения",215,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,51,216,12
+    DEFPUSHBUTTON   "ОК",1,38,72,44,14
+    PUSHBUTTON      "Отмена",2,98,72,44,14
+    PUSHBUTTON      "&Справка",254,158,72,44,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Перемещение..."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "в:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,25,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "Отмена",2,103,28,44,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 120, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Печать файла...",-1,0,6,120,12
+    CTEXT           "",-1,0,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "Отмена",2,38,40,44,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 206, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Свойства"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Выделено файлов: %d",100,"Static",SS_LEFTNOWORDWRAP,5,5,144,10
+    CONTROL         "Всего байт: %s",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "Атрибуты",-1,5,29,144,54
+    CONTROL         "Только &чтение",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,73,12
+    CONTROL         "Скр&ытый",216,"Button",BS_AUTOCHECKBOX,88,40,58,12
+    CONTROL         "&Архивный",217,"Button",BS_AUTOCHECKBOX,10,52,73,12
+    CONTROL         "С&истемный",218,"Button",BS_AUTOCHECKBOX,88,52,58,12
+    CONTROL         "С&жатый",267,"Button",BS_AUTOCHECKBOX,10,64,73,12
+    DEFPUSHBUTTON   "ОК",1,156,6,44,14,WS_GROUP
+    PUSHBUTTON      "Отмена",2,156,23,44,14
+    PUSHBUTTON      "&Справка",254,156,43,44,14
+END
+
+39 DIALOG 10, 20, 276, 107
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Подтверждение замены файла"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,18,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,3,235,10
+    CONTROL         "Заменить файл:",-1,"Static",SS_LEFTNOWORDWRAP,33,12,61,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,92,12,176,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,92,22,176,10
+    CONTROL         "Файлом:",-1,"Static",SS_LEFTNOWORDWRAP,33,34,49,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,92,34,176,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,92,44,176,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,56,235,22
+    DEFPUSHBUTTON   "&Да",6,15,87,55,14
+    PUSHBUTTON      "Да для &всех",107,80,87,55,14
+    PUSHBUTTON      "&Нет",7,145,87,55,14
+    PUSHBUTTON      "Отмена",2,210,87,55,14
+END
+
+40 DIALOG 10, 20, 285, 71
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Подтверждение удаления файла"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,21,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,33,4,248,10
+    CONTROL         "Удалить файл:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,55,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,89,16,191,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,28,246,22
+    DEFPUSHBUTTON   "&Да",6,15,52,55,14
+    PUSHBUTTON      "Да для &всех",107,80,52,55,14
+    PUSHBUTTON      "&Нет",7,145,52,55,14
+    PUSHBUTTON      "Отмена",2,210,52,55,14
+END
+
+41 DIALOG 10, 20, 285, 71
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Подтверждение удаления каталога"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,18,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,4,247,10
+    CONTROL         "Удалить каталог:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,65,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,98,16,182,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,28,246,22
+    DEFPUSHBUTTON   "&Да",6,15,52,55,14
+    PUSHBUTTON      "Да для &всех",107,80,52,55,14
+    PUSHBUTTON      "&Нет",7,145,52,55,14
+    PUSHBUTTON      "Отмена",2,210,52,55,14
+END
+
+42 DIALOG 10, 22, 285, 71
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Подтверждение перемещения файла"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,18,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,4,250,10
+    CONTROL         "Переместить файл:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,71,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,105,16,175,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,28,247,22
+    DEFPUSHBUTTON   "&Да",6,15,52,55,14
+    PUSHBUTTON      "Да для &всех",107,80,52,55,14
+    PUSHBUTTON      "&Нет",7,145,52,55,14
+    PUSHBUTTON      "Отмена",2,210,52,55,14
+END
+
+43 DIALOG 10, 22, 285, 71
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Подтверждение переименования файла"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,18,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,4,250,10
+    CONTROL         "Переименовать файл:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,80,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,114,16,167,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,28,247,22
+    DEFPUSHBUTTON   "&Да",6,15,52,55,14
+    PUSHBUTTON      "Да для &всех",107,80,52,55,14
+    PUSHBUTTON      "&Нет",7,145,52,55,14
+    PUSHBUTTON      "Отмена",2,210,52,55,14
+END
+
+44 DIALOG 15, 12, 150, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Выделение файлов"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Файл(ы):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Выделить",1,72,6,72,14
+    PUSHBUTTON      "Сн&ять выделение",6,72,23,72,14
+    PUSHBUTTON      "Отмена",2,72,40,72,14
+    PUSHBUTTON      "&Справка",254,72,63,72,14
+END
+
+45 DIALOG 11, 31, 205, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Выбор диска"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Диски:",245,"Static",SS_LEFTNOWORDWRAP,5,5,41,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "ОК",1,155,6,44,14
+    PUSHBUTTON      "Отмена",2,155,23,44,14
+    PUSHBUTTON      "&Справка",254,155,44,44,14
+END
+
+46 DIALOG 11, 28, 259, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Выбор имени файла"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Указанный путь не соответствует формату имен файлов FAT. Введите новое имя.",99,5,4,190,24,NOT WS_GROUP
+    RTEXT           "&Новое имя:",-1,4,56,64,12,NOT WS_GROUP
+    EDITTEXT        103,73,55,130,12
+    RTEXT           "Исходный путь:",-1,4,28,64,11,NOT WS_GROUP
+    EDITTEXT        102,73,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "Конечный путь:",-1,4,42,64,11,NOT WS_GROUP
+    EDITTEXT        101,73,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "ОК",1,209,4,44,14
+    PUSHBUTTON      "Отмена",2,209,20,44,14
+    PUSHBUTTON      "&Справка",254,209,36,44,14
+END
+
+48 DIALOG 23, 13, 260, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Свойства: %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "ОК",1,187,6,66,14,WS_GROUP
+    PUSHBUTTON      "Отмена",2,187,23,66,14
+    PUSHBUTTON      "&Справка",254,187,43,66,14
+    CONTROL         "И&мя файла:",261,"Static",SS_LEFTNOWORDWRAP,5,5,44,10
+    EDITTEXT        201,50,5,131,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "&Путь:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,44,10
+    EDITTEXT        101,50,16,131,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Изменен:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,44,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,50,27,131,10
+    CONTROL         "Размер:",260,"Static",SS_LEFTNOWORDWRAP,5,38,44,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,50,38,131,10
+    GROUPBOX        "Атрибуты",-1,4,52,173,54
+    CONTROL         "Только &чтение",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,74,12
+    CONTROL         "Скр&ытый",216,"Button",BS_AUTOCHECKBOX,91,64,68,12
+    CONTROL         "&Архивный",217,"Button",BS_AUTOCHECKBOX,9,76,74,12
+    CONTROL         "С&истемный",218,"Button",BS_AUTOCHECKBOX,91,76,68,12
+    CONTROL         "С&жатый",267,"Button",BS_AUTOCHECKBOX,9,88,74,12
+END
+
+49 DIALOG 13, 54, 290, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Выбор шрифта"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Шрифт:",1088,6,3,40,9
+    COMBOBOX        1136,6,13,103,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Начертание:",1089,115,3,44,9
+    COMBOBOX        1137,115,13,80,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Размер:",1090,200,3,30,9
+    COMBOBOX        1138,200,13,27,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Атрибуты",1072,6,73,103,62,WS_GROUP
+    CONTROL         "&Зачеркнутый",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,83,73,10
+    CONTROL         "Под&черкнутый",1041,"Button",BS_AUTOCHECKBOX,15,95,73,10
+    CONTROL         "С&трочные буквы для дисков FAT",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,127,149,10
+    CONTROL         "Строчные &буквы для всех дисков",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,139,149,10
+    LTEXT           "Ц&вет:",1091,15,107,30,9
+    COMBOBOX        1139,15,117,85,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "ОК",1,235,6,47,14,WS_GROUP
+    PUSHBUTTON      "Отмена",2,235,23,47,14,WS_GROUP
+    PUSHBUTTON      "При&менить",1026,235,40,47,14,WS_GROUP
+    PUSHBUTTON      "&Справка",1038,235,57,47,14,WS_GROUP
+    GROUPBOX        "Образец",1073,115,72,167,49,WS_GROUP
+    CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbБбФф",1092,121,82,155,34,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Форматирование диска"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "Скрыть",110,28,48,44,14
+    PUSHBUTTON      "Отмена",2,88,48,44,14
+END
+
+51 DIALOG 10, 20, 280, 76
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Подтверждение: пропустить файл или каталог и продолжить"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,18,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,33,3,242,10
+    CONTROL         "Нет доступа, пропустить:",202,"Static",SS_LEFTNOWORDWRAP,33,15,86,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,124,15,150,10
+    CONTROL         "Нет разрешения на доступ или файл уже используется.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,33,27,241,10
+    CONTROL         "Выберите ''Да'' для пропуска файла и продолжения выполнения.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,33,39,241,10
+    DEFPUSHBUTTON   "&Да",6,15,54,55,14
+    PUSHBUTTON      "Да для &всех",107,77,54,55,14
+    PUSHBUTTON      "&Нет",7,139,54,55,14
+    PUSHBUTTON      "Отмена",2,201,54,55,14
+END
+
+52 DIALOG 10, 20, 280, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Подтверждение: пропустить файл или каталог и продолжить"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,18,20
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,33,3,242,10
+    CONTROL         "Нет доступа, пропустить:",202,"Static",SS_LEFTNOWORDWRAP,33,15,86,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,124,15,151,10
+    CONTROL         "Выберите ''Да'' для пропуска файла и продолжения выполнения.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,33,27,241,10
+    DEFPUSHBUTTON   "&Да",6,11,44,55,14
+    PUSHBUTTON      "Да для &всех",107,73,44,55,14
+    PUSHBUTTON      "&Нет",7,135,44,55,14
+    PUSHBUTTON      "Отмена",2,197,44,55,14
+END
+
+53 DIALOG 77, 109, 190, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Поиск на диске"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Образец имени:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,64,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,94,5,91,10
+    CONTROL         "Начальный путь:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,64,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,94,15,91,10
+    CONTROL         "Просмотрено каталогов:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,88,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,94,25,91,10
+    CONTROL         "Результаты поиска:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,81,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,94,35,91,10
+    PUSHBUTTON      "Скрыть",110,47,47,44,14
+    PUSHBUTTON      "Отмена",2,103,47,44,14
+END
+
+54 DIALOG 20, 20, 256, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Копирование в буфер"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Текущий каталог: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,5,193,10
+    CONTROL         "Копировать в &буфер:",-1,"Static",SS_LEFTNOWORDWRAP,6,21,76,10
+    EDITTEXT        102,83,19,115,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "ОК",1,206,6,44,14
+    PUSHBUTTON      "Отмена",2,206,23,44,14
+    PUSHBUTTON      "&Справка",254,206,43,44,14
+END
+
+55 DIALOG 18, 14, 335, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Изменение типа файла"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Тип файлов:",302,6,6,46,8
+    EDITTEXT        301,53,4,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "&Команда:    ",-1,6,22,273,126,WS_GROUP
+    COMBOBOX        306,53,20,95,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Ко&мандная строка:",313,11,42,69,8
+    EDITTEXT        304,82,40,130,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "Об&зор...",318,223,38,44,14
+    CONTROL         "&Использовать DDE",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,11,57,90,10
+    LTEXT           "Соо&бщение DDE:",320,23,71,81,8
+    EDITTEXT        309,112,69,100,12,ES_AUTOHSCROLL
+    LTEXT           "Сооб&щение DDE (приложение неактивно):",322,23,84,89,19
+    LTEXT           "(необязательно)",324,217,90,59,8
+    EDITTEXT        311,112,87,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Приложение:",321,23,108,54,8
+    EDITTEXT        310,112,106,100,12,ES_AUTOHSCROLL
+    LTEXT           "Д&окумент:",323,24,126,46,8
+    EDITTEXT        312,112,124,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Новое расширение:",-1,12,182,73,10
+    EDITTEXT        315,87,181,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Добавить ->",303,133,172,52,14
+    PUSHBUTTON      "<- &Удалить",219,133,189,52,14
+    LTEXT           "&Расширения:",-1,197,162,67,8
+    LISTBOX         317,197,172,65,29,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Расширения, связанные с типом файлов:",316,6,154,273,60
+    DEFPUSHBUTTON   "ОК",1,286,6,44,14
+    PUSHBUTTON      "Отмена",2,286,23,44,14
+    PUSHBUTTON      "&Справка",254,286,40,44,14
+END
+
+57 DIALOG 123, 60, 207, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Ход сжатия файлов"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Идет сжатие файла:",-1,6,8,79,8
+    LTEXT           "filename.xxx",341,86,8,116,8
+    LTEXT           "Каталог:",-1,6,20,36,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,86,20,116,8
+    LTEXT           "Сжато каталогов:",-1,6,32,79,8
+    LTEXT           "1 888 888 999",343,86,32,60,8
+    LTEXT           "Сжато файлов:",-1,6,44,79,8
+    LTEXT           "1 888 888 999",344,86,44,60,8
+    LTEXT           "Объем до сжатия:",-1,6,56,79,8
+    LTEXT           "9 999 999 999 999",345,86,56,68,8
+    LTEXT           "Объем после сжатия:",-1,6,68,79,8
+    LTEXT           "9 999 999 999 999",346,86,68,68,8
+    LTEXT           "Степень сжатия:",-1,6,80,79,8
+    LTEXT           "100%",347,86,80,27,8
+    PUSHBUTTON      "Отмена",2,79,97,48,14
+END
+
+58 DIALOG 114, 62, 207, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Снятие сжатия с файлов"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Снимается сжатие с файла:",-1,6,8,99,8
+    LTEXT           "filename.xxx",351,106,8,94,8
+    LTEXT           "Каталог:",-1,6,20,35,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,42,20,158,8
+    LTEXT           "Развернуто каталогов:",-1,6,32,83,8
+    LTEXT           "1 999 999 999",353,91,32,78,8
+    LTEXT           "Развернуто файлов:",-1,6,44,78,8
+    LTEXT           "1 999 999 999",354,91,44,78,8
+    PUSHBUTTON      "Отмена",2,79,64,48,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ошибка сжатия"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,203,20
+    DEFPUSHBUTTON   "&Пропуск",5,18,45,50,14,WS_GROUP
+    PUSHBUTTON      "Пр&опустить все",112,71,45,63,14
+    PUSHBUTTON      "По&втор",4,137,45,50,14
+    PUSHBUTTON      "С&топ",3,190,45,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,318
+ PRODUCTVERSION 4,0,1381,318
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041904B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "Диспетчер файлов"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "© Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Операционная система Microsoft® Windows NT™"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x419, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "Копирование диска"
+    51                      "Вставьте конечный диск."
+    52                      "Вставьте исходный диск."
+    53                      "Вставьте исходный и конечный диски."
+    54                      "Форматирование конечного диска"
+    55                      "Ошибка при копировании диска"
+    56                      "Копирование невозможно."
+    58                      "Исходный и конечный диски несовместимы."
+    60                      "%d%% завершено"
+    61                      "Создание корневого каталога..."
+    62                      "Копирование системных файлов..."
+    63                      "Ошибка при форматировании диска"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "Форматирование завершено"
+    67                      "Полный объем диска: %ld байт\nСвободно: %ld байт\n\nФорматировать следующий диск?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "Сетевая ошибка"
+    83                      "Диск содержит системные файлы Windows и не может быть отключен."
+    91                      "Изменение атрибутов невозможно. "
+    92                      "Не удается создать каталог. "
+    93                      "Создание метки диска невозможно.\n\nУбедитесь, что диск не защищен от записи и не является сетевым, а также проверьте правильность метки. В метках запрещается использовать следующие символы:\n[пробел] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "Соответствующие образцу файлы не найдены."
+END
+
+STRINGTABLE
+BEGIN
+    97                      "Содержимое диска изменилось. Обновить окно результатов поиска?"
+    98                      "Для выполнения этой операции с жесткими дисками необходимо войти на рабочую станцию с правами администратора."
+    101                     "Диск %c:%c"
+    110                     "Запуск программы невозможен"
+    111                     "Неопознанная ошибка: %d."
+END
+
+STRINGTABLE
+BEGIN
+    112                     "Недостаточно памяти для запуска приложения.\n\nЗакройте ненужные приложения и повторите попытку."
+    113                     "Диспетчеру файлов не удалось найти файл или один из его компонентов.\n\nПроверьте правильность ввода пути и имени файла, а также наличие необходимых библиотек."
+    114                     "Указан неверный путь."
+    116                     "Этому типу файлов не сопоставлено ни одно приложение.\n\nДля сопоставления приложения и типа файлов воспользуйтесь командой 'Сопоставить' из меню 'Файл'."
+    118                     "Не удается открыть или напечатать файл.\n\nЗапустите приложение, в котором файл был создан, и выполните нужную операцию из приложения."
+    120                     "Подтверждение действия с помощью мыши"
+    121                     "Копировать выбранные файлы или каталоги в каталог '%s'?"
+    122                     "Переместить выбранные файлы или каталоги в каталог '%s'?"
+    123                     "Запустить %s с исходным файлом %s?"
+    124                     "Диспетчер файлов"
+    126                     "Структура каталогов"
+    127                     "Результаты поиска: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "Слишком много файлов"
+    133                     "Диспетчер файлов: недостаточно памяти"
+    134                     "Не удается прочитать каталог полностью. Только часть каталога будет отображена."
+    140                     "Текущий каталог: %s"
+    141                     "Копирование"
+    143                     "Переименование"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "Форматирование диска"
+    146                     "Укажите форматируемый диск."
+    150                     "Создание:"
+    151                     "Удаление..."
+    152                     "Копирование:"
+    153                     "Переименование..."
+    154                     "Перемещение..."
+    155                     "Удаление..."
+    156                     "Печать: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "Копирование..."
+    170                     "Удаление:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "Всего файлов: %d (%s)"
+    181                     "Найдено каталогов: %d "
+    182                     "%c: свободно %s; всего %s"
+    183                     "Найдено файлов: %d"
+    185                     "выделенные файлы"
+    186                     "Отключение сетевого диска невозможно.\n\nНа этом диске открыты файлы."
+    187                     "Выделено файлов: %d (%s)"
+    188                     "В устройстве %c нет диска.\n\nВставьте диск и повторите попытку."
+    189                     "Диск в устройстве %c не отформатирован.\n\nВыполнить его форматирование?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "Недостаточно места на диске для печати.\n\nУдалите ненужные файлы и повторите попытку."
+    193                     "Недостаточно памяти для печати.\n\nЗакройте ненужные приложения и повторите попытку."
+    194                     "Ошибка при печати.\n\nПроверьте правильность настройки принтера."
+    195                     "Структура каталогов отображается не полностью"
+    197                     "Конечный диск полон. Для продолжения операции поместите в устройство другой диск."
+    198                     "Файл является системным, скрытым или доступен только для чтения."
+    199                     "Быстрое форматирование невозможно.\n\nВыполнить обычное форматирование?"
+    203                     "Ошибка при отправке команды в приложение."
+    204                     "Не удается загрузить нужную библиотеку."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "О&бщие каталоги..."
+    210                     "При форматировании ВСЕ данные на диске будут уничтожены. Форматировать диск в устройстве %c?"
+    211                     "Подтверждение форматирования диска"
+    212                     "Эта операция приведет к уничтожению ВСЕХ файлов на конечном диске. Продолжить?"
+    213                     "Подтверждение копирования диска"
+    214                     "&Закрыть"
+    215                     "Закрыть"
+    218                     "Каталог %s не существует.\n\nСоздать его?"
+    219                     "Программы#*.exe;*.pif;*.com;*.bat#Все файлы (*.*)#*.*#"
+    220                     "Обзор"
+    221                     "Выполнить"
+    222                     "Печать файла невозможна"
+    223                     "Не удается отобразить справку."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "Файлы с расширением %s являются программами и не могут быть сопоставлены другому приложению."
+    225                     "Файл '%s' не является программой и не может быть сопоставлен для файлов с указанным расширением."
+    226                     "(Нет)"
+    227                     "Файлы не найдены."
+    228                     "Одновременная печать нескольких файлов не допускается.\n\nВыберите один файл и повторите попытку."
+    230                     "Поврежден один из файлов, необходимых для запуска приложения. Переустановите приложение."
+    231                     "Файл используется другим приложением."
+    232                     "Доступ к файлам, созданным в каталоге '%s', может отсутствовать.\n\nПродолжить?"
+    233                     "Создание каталога"
+    234                     "%ld байт"
+    235                     "%s байт"
+    236                     "Копирование в буфер обмена нескольких файлов или целых каталогов не допускается.\n\nВыберите один файл и повторите попытку."
+    237                     "%s - %s"
+    238                     "Диск:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "Подключение сетевого диска"
+    241                     "Отключение сетевого диска"
+    242                     "Сетевые устройства"
+    243                     "Установка общего доступа к каталогу"
+    244                     "Прекращение общего доступа к каталогу"
+    245                     "Отображение полных сведений о файлах"
+    246                     "Отображение только имен файлов"
+    247                     "Сортировка по имени"
+    248                     "Сортировка по типу"
+    249                     "Сортировка по размеру"
+    250                     "Сортировка по дате"
+    251                     "Открытие нового окна"
+    252                     "Копирование файлов"
+    253                     "Перемещение файлов"
+    254                     "&Каталог:"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "Сетевой диск недоступен."
+    259                     "Сетевое имя: %s"
+    260                     "Нет совместного доступа"
+    261                     "Удаление файлов"
+    262                     " - УПЛОТНЕН"
+    263                     "Копирование файлов в '%s'"
+    264                     "Перемещение файлов в '%s'"
+    265                     "Запуск файлов с помощью '%s'"
+    266                     "%s байт"
+    267                     "%s Кбайт"
+    268                     "%s Мбайт"
+    269                     "%s Гбайт"
+    270                     "%s Тбайт"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "Отсутствует разрешение на доступ к каталогу."
+    281                     "Отсутствует разрешение на доступ к файлу."
+    283                     "Диск %c: занят и недоступен.\nВыполняется копирование диска."
+    284                     "Диск %c: занят и недоступен.\nВыполняется форматирование диска."
+    285                     "Операция завершена не полностью"
+    286                     "Завершение операции для всех файлов и каталогов невозможно."
+    287                     "Не удается прочитать каталог"
+END
+
+STRINGTABLE
+BEGIN
+    288                     "Каталог не существует."
+    289                     "Не удается подключить сетевой диск"
+    290                     "Не найдено сетевое имя."
+    292                     "Кнопка ""Да для всех"" выполняет операцию для всех файлов, \nвключая системные, скрытые и доступные только для чтения."
+    294                     "Открыть"
+    295                     "Печать"
+    298                     "Добавить расширение"
+    299                     "Расширению '%s' в настоящее время сопоставлено приложение '%s'. Переопределить сопоставление?"
+    300                     "Редактор сопоставлений файлов"
+    301                     "Не удается сопоставить расширение. "
+    302                     "Не удается удалить расширение. "
+    303                     "Не удается добавить тип файла. "
+END
+
+STRINGTABLE
+BEGIN
+    304                     "Не удается удалить тип файла. "
+    305                     "Не удается прочитать тип файла. "
+    306                     "Описание типа файлов не может быть пусто. Введите новый тип файлов."
+    307                     "Не удается создать уникальный идентификатор для типа файлов. Введите новый тип файлов."
+    308                     "Удаление типа файлов"
+    309                     "Выполнение этой операции приведет к удалению типа файлов '%s' и всех сопоставленных ему расширений. Продолжить?"
+    312                     "Необходимо определить команду хотя бы для одного действия, связанного с типом файлов. Введите имя приложения в поле командной строки."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "Новый тип файлов"
+    321                     "Копирование диска"
+    322                     "Идет поиск..."
+    324                     "Выполняется форматирование диска. Выход из диспетчера файлов приведет к прерыванию этой операции."
+    325                     "Выполняется копирование диска. Выход из диспетчера файлов приведет к прерыванию этой операции."
+    326                     "Степень завершения"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360 Кбайт"
+    354                     "1%s2 Мбайт"
+    355                     "720 Кбайт"
+    356                     "1%s44 Мбайт"
+    357                     "2%s88 Мбайт"
+    358                     "Емкость диска"
+    359                     "Не удается получить сведения о диске.\n\nПроверьте наличие диска в дисководе."
+    360                     "20%s8 Мбайт"
+    361                     "Неизвестный тип диска"
+    362                     "Неизвестный тип диска"
+    363                     "Диск в устройстве %s нельзя форматировать с помощью диспетчера файлов. Воспользуйтесь диспетчером дисков."
+END
+
+STRINGTABLE
+BEGIN
+    400                     "Несовместимая файловая система."
+    401                     "Нет доступа."
+    402                     "Диск защищен от записи."
+    403                     "Блокировка тома невозможна."
+    404                     "Быстрое форматирование диска невозможно.\n\nПроверьте правильность емкости диска."
+    405                     "Ошибка ввода/вывода для исходного диска."
+    406                     "Ошибка ввода/вывода для конечного диска."
+    407                     "Ошибка ввода/вывода для обоих дисков."
+    408                     "Ошибка ввода/вывода."
+    411                     "Форматирование диска невозможно.\n\nПроверьте наличие диска в дисководе, убедитесь, что он не защищен от записи, не поврежден и имеет нужную емкость."
+    412                     "Создание метки диска невозможно.\n\nУказана недопустимая метка. В метках дисков запрещается использовать следующие символы:\n[пробел] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "Открытие..."
+    421                     "Закрытие..."
+    422                     "Открыто слишком много окон.\n\nЗакройте ненужные окна и повторите попытку."
+    423                     "Быстрое форматирование..."
+    424                     "Инициализация поддержки фонового обновления невозможна. Диспетчер файлов прекращает работу. "
+    425                     "Инициализация диспетчера файлов"
+    426                     "Идет чтение каталога, немного подождите..."
+    427                     "Сжать также все файлы и подкаталоги в %s?"
+    428                     "Развернуть также все сжатые файлы и подкаталоги в %s?"
+    429                     "Изменение атрибутов сжатия для %s невозможно."
+    430                     "Файл %s сжат не будет, так как при этом система перестанет загружаться."
+    431                     "Проводится сжатие или развертывание файлов.\nНеобходимо дождаться завершения этой операции перед обработкой дополнительных файлов."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "Заметки"
+    501                     "Производитель"
+    502                     "Описание файла"
+    503                     "Внутреннее имя"
+    504                     "Товарные знаки"
+    505                     "Исходное имя файла"
+    506                     "Вариант"
+    507                     "Название продукта"
+    508                     "Версия продукта"
+    509                     "Дополнительные сведения"
+    510                     "Язык"
+    511                     "Языки"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "Подклю&чить сетевой диск..."
+    801                     "Отк&лючить сетевой диск..."
+    802                     "С&етевые подключения..."
+    803                     "О&бщий доступ..."
+    804                     "&Запретить доступ..."
+    805                     "&Показать общие каталоги..."
+    806                     "Восс&тановить..."
+    807                     "Новое &окно при подключении диска"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "Ошибка при перемещении файла"
+    1002                    "Ошибка при копировании файла"
+    1003                    "Ошибка при удалении файла"
+    1004                    "Ошибка при переименовании файла"
+    1005                    "Ошибка при выборе диска"
+    1006                    "Ошибка при чтении каталога"
+    1007                    "Ошибка при назначении диску метки"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "Не удается переместить %s. %s"
+    1012                    "Не удается скопировать %s. %s"
+    1013                    "Не удается удалить %s. %s"
+    1014                    "Не удается переименовать %s. %s"
+    1021                    "Не удается создать каталог %s. %s"
+    1022                    "Не удается удалить каталог %s. %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "Не удается создать или заменить %s. %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "Исходный и конечный объекты совпадают."
+    1102                    "Выберите один файл для переименования или воспользуйтесь подстановочными знаками (например *.TXT) для переименования группы файлов с похожими именами."
+    1103                    "Переименование в другой каталог или на другой диск не допускается.\nВоспользуйтесь вместо этого командой ''Переместить''."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "Переименование корневого каталога невозможно."
+    1105                    "Конечный каталог является подкаталогом исходного."
+    1106                    "Файл используется системой Windows."
+    1107                    "Укажите один файл или каталог, либо воспользуйтесь подстановочными знаками (например *.TXT) для операций с группами файлов."
+    1108                    "Файл или каталог с данным именем уже существует. В пределах каталога имена всех файлов и каталогов должны быть уникальными."
+    1109                    "Проверьте правильность ввода пути и имени файла."
+    1110                    "Проверьте правильность ввода пути."
+    1111                    "Закройте ненужные приложения и повторите попытку, либо увеличьте объем виртуальной памяти с помощью раздела ''Система'' панели управления."
+    1113                    "Снимите защиту диска от записи или возьмите другой диск, а затем повторите попытку."
+    1114                    "Проверьте наличие необходимых разрешений для данной операции."
+    1115                    "Удалите ненужные файлы и повторите попытку."
+    1116                    "Носитель не содержит данных."
+    1117                    "Каталог уже существует."
+    1118                    "Указанное имя уже используется файлом."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "Неверный диск в устройстве."
+    1151                    "Приложение не предназначено для работы с Windows NT."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "Выполнение данного компонента невозможно."
+    1153                    "Компонент не предназначен для работы с Windows NT."
+    1154                    "Данная программа не является приложением для Windows NT."
+    1155                    "Возникла ошибка. Текст сообщения об ошибке отсутствует."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ѓRѓsЃ[Њі(&F):"
+    2001                    "ѓRѓsЃ[ђж(&T):"
+    2002                    "Њі‚М–ј‘O(&F):"
+    2003                    "ђV‚µ‚ў–ј‘O(&T):"
+    2004                    "ѓRѓsЃ[ђж:"
+    2005                    "‚±‚МѓtѓHѓ“ѓg‚рЋg—p‚·‚й‚ЖЉїЋљ‚М•\\Ћ¦‚Є\n‚Е‚«‚И‚­‚И‚и‚Ь‚·ЃB"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "Команды для работы с файлами"
+    3985                    "Команды для работы с дисками"
+    3986                    "Команды для работы в окне структуры каталогов"
+    3987                    "Команды установки режима вывода данных"
+    3988                    "Команды настройки параметров"
+    3989                    "Команды управления безопасностью файлов и каталогов"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "Команды для работы с окнами"
+    4001                    "Команды для работы со справкой"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "Поиск нужного раздела в справочной системе"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "Открытие выбранного элемента"
+    4102                    "Печать документа"
+    4103                    "Сопоставление файла и приложения"
+    4104                    "Поиск файлов и каталогов"
+    4105                    "Запуск приложения или открытие документа"
+    4106                    "Перемещение выбранных элементов"
+    4107                    "Копирование файлов и каталогов"
+    4108                    "Удаление файлов и каталогов"
+    4109                    "Переименование файлов и каталогов"
+    4110                    "Установка атрибутов и отображение свойств файлов"
+    4111                    "Создание каталога"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "Завершение работы с диспетчером файлов"
+    4116                    "Выделение файлов и каталогов"
+    4117                    "Восстановление удаленных файлов"
+    4118                    "Копирование файла в буфер обмена"
+    4119                    "Уплотнение файла или каталога"
+    4120                    "Распаковка файла или каталога"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "Копирование диска"
+    4202                    "Изменение метки диска"
+    4203                    "Форматирование диска"
+    4205                    "Подключение сетевого диска"
+    4206                    "Отключение сетевого диска"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "Выбор текущего диска"
+    4254                    "Установка общего доступа к каталогу"
+    4255                    "Отмена общего доступа к каталогу"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "Отображение подкаталогов первого уровня"
+    4302                    "Отображение подкаталогов всех уровней"
+    4303                    "Отображение полной структуры каталогов"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "Свертывание структуры выбранного подкаталога"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "Отображение только имен файлов"
+    4402                    "Отображение полных сведений о файлах"
+    4403                    "Отображение выбранных сведений о файлах"
+    4404                    "Сортировка файлов по имени"
+    4405                    "Сортировка файлов по типу"
+    4406                    "Сортировка файлов по размеру"
+    4407                    "Сортировка файлов по дате"
+    4409                    "Отображение файлов выбранных типов"
+    4411                    "Отображение структуры каталогов"
+    4412                    "Отображение содержимого текущего каталога"
+    4413                    "Отображение структуры каталогов и содержимого текущего каталога"
+    4414                    "Перемещение разделителя областей в окне просмотра"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "Управление сообщениями о подтверждении операций"
+    4503                    "Вывод и скрытие строки состояния"
+    4504                    "Свертывание окна диспетчера файлов в значок при запуске программы"
+    4505                    "Обозначение каталогов, содержащих подкаталоги"
+    4507                    "Вывод и скрытие панели дисков"
+    4508                    "Вывод и скрытие панели инструментов"
+    4509                    "Открытие новых окон при подключении сетевых устройств"
+    4510                    "Изменение шрифта для диспетчера файлов"
+    4511                    "Сохранение настройки при выходе из программы"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "Настройка панели инструментов"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "Просмотр и установка разрешений для выделенных объектов"
+    4606                    "Просмотр и установка параметров аудита для выделенных объектов"
+    4607                    "Просмотр и смена владельца выделенных объектов"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "Расположение окон каскадом (с наложением)"
+    5702                    "Расположение окон справа налево без наложения"
+    5703                    "Расположение окон сверху вниз без наложения"
+    5704                    "Обновление содержимого окна"
+    5705                    "Упорядочивание значков в окне"
+    5706                    "Открытие нового окна"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "Вывод содержания справочной системы диспетчера файлов"
+    5802                    "Вывод сведений о работе со справкой"
+    5803                    "Вывод сведений о диспетчере файлов"
+END
+
+#endif    // Russian (Russia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

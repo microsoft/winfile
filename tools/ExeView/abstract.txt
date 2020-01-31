@@ -1,0 +1,34 @@
+EXEVIEW: Extracts and Decodes Information from Executable
+Files
+
+EXEVIEW demonstrates how to extract and decode resources
+and tables from executable files or library files. (FONTS
+and DRVs qualify as dynamic link libraries [DLLs]).
+
+Applications often wish to extract information from an
+executable file without loading the application itself.
+For example, the Microsoft(R) Windows(TM) Program Manager
+extracts an icon from an .EXE file to represent an
+application. There are many other resources and tables in
+an .EXE file (or in a DLL) that may be useful to certain
+applications.
+
+EXEVIEW uses the old and new header formats, which are
+documented in the "MS-DOS Encyclopedia" (Microsoft Press,
+1988). EXEVIEW loads these headers and the associated
+tables that these headers point at, including the entry
+table, the segment table, the resource table, the resident
+and non-resident name tables, and the imported name
+tables. EXEVIEW also loads the resources from the resource
+table. If a resource can be displayed graphically (for
+example, icons, cursors, bitmaps, menus), it is. Resources
+for string tables and directories (for example, icons,
+cursors, fonts) are listed in a text format.
+
+For more information on file and resource formats, see the
+Microsoft Systems Journal, Vol. 6, No. 5
+(September/October 1991) or the "MS-DOS Encyclopedia"
+(Microsoft Press, 1988).
+
+EXEVIEW was built and tested under Microsoft Windows
+version 3.1.

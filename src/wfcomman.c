@@ -882,7 +882,6 @@ BOOL
 AppCommandProc(register DWORD id)
 {
    DWORD         dwFlags;
-   BOOL          bMaxed;
    HMENU         hMenu;
    register HWND hwndActive;
    BOOL          bTemp;
@@ -891,11 +890,6 @@ AppCommandProc(register DWORD id)
    INT           ret;
 
    hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-   if (hwndActive && GetWindowLongPtr(hwndActive, GWL_STYLE) & WS_MAXIMIZE)
-      bMaxed = 1;
-   else
-      bMaxed = 0;
-
 
    dwContext = IDH_HELPFIRST + id;
 
@@ -1117,6 +1111,15 @@ AppCommandProc(register DWORD id)
 			LocalFree(szDir);
 		}
 		break;
+
+   case IDM_CLOSEWINDOW:
+       {
+           HWND      hwndActive;
+
+           hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+           PostMessage(hwndActive, WM_CLOSE, 0, 0L);
+       }
+       break;
 
    case IDM_SELECT:
 
@@ -2017,7 +2020,7 @@ CHECK_OPTION:
        //
        // Check/Uncheck the menu item.
        //
-       hMenu = GetSubMenu(GetMenu(hwndFrame), IDM_OPTIONS + bMaxed);
+       hMenu = GetSubMenu(GetMenu(hwndFrame), MapIDMToMenuPos(IDM_OPTIONS));
        CheckMenuItem(hMenu, id, (bTemp ? MF_CHECKED : MF_UNCHECKED));
        break;
 
@@ -2186,22 +2189,14 @@ VOID
 InitNetMenuItems(VOID)
 {
    HMENU hMenu;
-   INT iMax;
    TCHAR szValue[MAXPATHLEN];
-   HWND hwndActive;
 
-
-   hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-   if (hwndActive && GetWindowLongPtr(hwndActive, GWL_STYLE) & WS_MAXIMIZE)
-      iMax = 1;
-   else
-      iMax = 0;
    hMenu = GetMenu(hwndFrame);
 
    // No. Now add net items if net has been started.
    // use submenu because we are doing this by position
 
-   hMenu = GetSubMenu(hMenu, IDM_DISK + iMax);
+   hMenu = GetSubMenu(hMenu, MapIDMToMenuPos(IDM_DISK));
 
    if (WNetStat(NS_CONNECTDLG)) {
 
@@ -2311,7 +2306,7 @@ ReadMoveStatus()
 
 	OleGetClipboard(&pDataObj);		// pDataObj == NULL if error
 
-	if (pDataObj != NULL && pDataObj->lpVtbl->GetData(pDataObj, &fmtetcEffect, &stgmed) == S_OK)
+	if (pDataObj != NULL && pDataObj->lpVtbl->GetData(pDataObj, &fmtetcEffect, &stgmed) == S_OK && stgmed.hGlobal != NULL)
 	{
 		LPDWORD lpEffect = GlobalLock(stgmed.hGlobal);
 		if (*lpEffect & DROPEFFECT_COPY) dwEffect = DROPEFFECT_COPY;

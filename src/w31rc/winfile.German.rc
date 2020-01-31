@@ -1,0 +1,1133 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Datei"
+    BEGIN
+    MENUITEM    "Ö&ffnen	Eingabetaste", 0X0065
+    MENUITEM    "&Verschieben...	F7", 0X006A
+    MENUITEM    "&Kopieren...	F8", 0X006B
+    MENUITEM    "&Löschen...	Entf", 0X006C
+    MENUITEM    "&Umbenennen...", 0X006D
+    MENUITEM    "&Eigenschaften...	Alt+Eingabetaste", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Ausführen...", 0X0069
+    MENUITEM    "&Drucken...", 0X0066
+    MENUITEM    "Verk&nüpfen...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Ver&zeichnis erstellen...", 0X006F
+    MENUITEM    "&Suchen...", 0X0068
+    MENUITEM    "Dateien aus&wählen...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Beenden", 0X0073
+    END
+    POPUP   "Daten&träger"
+    BEGIN
+    MENUITEM    "Datenträger &kopieren...", 0X00C9
+    MENUITEM    "Datenträger &benennen...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "Datenträger &formatieren...", 0X00CB
+    MENUITEM    "&Systemdatenträger erstellen...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "Laufwerk aus&wählen...", 0X00FB
+    END
+    POPUP   "&Verzeichnisse"
+    BEGIN
+    MENUITEM    "&Nächste Ebene einblenden	+", 0X012D
+    MENUITEM    "&Zweig einblenden	*", 0X012E
+    MENUITEM    "Alle Ebenen &einblenden	Strg+*", 0X012F
+    MENUITEM    "Zweig &ausblenden	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Verzweigungen kennzeichnen", 0X01F9
+    END
+    POPUP   "&Ansicht"
+    BEGIN
+    MENUITEM    "Struktur &und Verzeichnis", 0X019D
+    MENUITEM    "Nur &Struktur", 0X019B
+    MENUITEM    "Nur &Verzeichnis", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "Tei&len", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Name", 0X0191
+    MENUITEM    "Alle &Dateiangaben", 0X0192
+    MENUITEM    "&Bestimmte Dateiangaben...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Nach N&ame", 0X0194
+    MENUITEM    "Nach &Typ", 0X0195
+    MENUITEM    "Nach &Größe", 0X0196
+    MENUITEM    "Nach Datu&m", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "Angaben aus&wählen...", 0X0199
+    END
+    POPUP   "&Optionen"
+    BEGIN
+    MENUITEM    "&Bestätigen...", 0X01F5
+    MENUITEM    "Schrift&art...", 0X01FE
+    MENUITEM    "Symbolleiste &definieren...", 0X0200
+    MENUITEM    "", 0X0000
+    MENUITEM    "Sy&mbolleiste", 0X01FC
+    MENUITEM    "&Laufwerkleiste", 0X01FB
+    MENUITEM    "Status&zeile", 0X01F7
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Symbol nach Programmstart", 0X01F8
+    MENUITEM    "&Einstellungen beim Beenden speichern", 0X01FF
+    END
+    POPUP   "&Fenster"
+    BEGIN
+    MENUITEM    "Neues &Fenster", 0X0452
+    MENUITEM    "Über&lappend	Umschalt+F5", 0X044D
+    MENUITEM    "&Untereinander", 0X044F
+    MENUITEM    "&Nebeneinander	Umschalt+F4", 0X044E
+    MENUITEM    "&Symbole anordnen", 0X0451
+    MENUITEM    "&Aktualisieren	F5", 0X0450
+    END
+    POPUP   "&Hilfe"
+    BEGIN
+    MENUITEM    "&Inhalt", 0X04B1
+    MENUITEM    "&Suchen...", 0X001E
+    MENUITEM    "&Hilfe benutzen", 0X04B2
+    MENUITEM    "", 0X0000
+    MENUITEM    "Inf&o...", 0X04B3
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 304, 136
+CAPTION "Schriftart"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Schrift&art:", 1088, 0x0000, 6, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 54
+    CONTROL 0x82, "Schrifts&til:", 1089, 0x0000, 108, 3, 44, 9
+    CONTROL 0x85, "", 1137, 0x0001, 108, 13, 64, 54
+    CONTROL 0x82, "&Schriftgröße:", 1090, 0x0000, 179, 3, 43, 9
+    CONTROL 0x85, "", 1138, 0x0311, 179, 13, 43, 54
+    CONTROL 0x80, "Darstellung", 1072, 0x0007, 6, 72, 94, 61
+    CONTROL 0x80, "&Durchgestrichen", 1040, 0x0003, 10, 82, 49, 10
+    CONTROL 0x80, "&Unterstrichen", 1041, 0x0003, 10, 94, 67, 10
+    CONTROL 0x80, "&Kleinbuchstaben", 1042, 0x0003, 10, 82, 67, 10
+    CONTROL 0x82, "&Farbe:", 1091, 0x0000, 10, 106, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "OK", 1, 0x0001, 243, 6, 55, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 243, 23, 55, 14
+    CONTROL 0x80, "&Zuweisen", 1026, 0x0000, 243, 40, 55, 14
+    CONTROL 0x80, "&Hilfe", 1038, 0x0000, 243, 57, 55, 14
+    CONTROL 0x80, "Muster", 1073, 0x0007, 108, 72, 190, 49
+    CONTROL 0x82, "", 1093, 0x0081, 108, 124, 190, 9
+    CONTROL 0x82, "AaBbYyZz", 1092, 0x0081, 117, 81, 172, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 207, 86
+CAPTION "Laufwerk auswählen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Laufwerke:", 245, 0x000c, 5, 5, 41, 9
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 64
+    CONTROL 0x80, "OK", 1, 0x0001, 155, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 155, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 155, 44, 45, 14
+END
+
+10 DIALOG 0x80c8, 14, 12, 211, 63
+CAPTION "Ausführen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 4, 6, 150, 10
+    CONTROL 0x82, "Befehls&zeile:", 100, 0x000c, 4, 19, 60, 9
+    CONTROL 0x81, "", 201, 0x0480, 4, 29, 134, 12
+    CONTROL 0x80, "Als Sy&mbol", 214, 0x0003, 4, 45, 71, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 161, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 161, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 161, 43, 45, 14
+END
+
+44 DIALOG 0x80c8, 36, 23, 146, 81
+CAPTION "Dateien auswählen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Datei(en):", -1, 0x000c, 4, 19, 60, 9
+    CONTROL 0x81, "", 201, 0x0480, 4, 29, 60, 12
+    CONTROL 0x80, "Aus&wählen", 1, 0x0001, 74, 6, 69, 14
+    CONTROL 0x80, "Auswahl &aufheben", 6, 0x0000, 74, 23, 69, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 74, 40, 69, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 74, 63, 69, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 270, 95
+CAPTION "Dateiüberschreiben bestätigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 241, 10
+    CONTROL 0x82, "Überschreibe Datei:", 100, 0x000c, 25, 17, 67, 10
+    CONTROL 0x82, "", 103, 0x008c, 95, 17, 165, 10
+    CONTROL 0x82, "", 105, 0x000c, 95, 27, 170, 10
+    CONTROL 0x82, "Mit Datei:", 100, 0x000c, 25, 39, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 95, 39, 165, 10
+    CONTROL 0x82, "", 106, 0x000c, 95, 49, 170, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 33, 73, 40, 14
+    CONTROL 0x80, "&Alle überschreiben", 107, 0x0000, 79, 73, 70, 14
+    CONTROL 0x80, "&Nein", 7, 0x0000, 155, 73, 40, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 201, 73, 40, 14
+END
+
+40 DIALOG 0x80c8, 29, 36, 270, 60
+CAPTION "Dateilöschen bestätigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 237, 10
+    CONTROL 0x82, "Lösche Datei:", 100, 0x000c, 25, 19, 46, 10
+    CONTROL 0x82, "", 102, 0x008c, 73, 19, 185, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 25, 41, 49, 14
+    CONTROL 0x80, "&Alle löschen", 107, 0x0000, 83, 41, 49, 14
+    CONTROL 0x80, "&Nein", 7, 0x0000, 141, 41, 49, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 199, 41, 49, 14
+END
+
+41 DIALOG 0x80c8, 11, 20, 270, 60
+CAPTION "Verzeichnislöschen bestätigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 237, 10
+    CONTROL 0x82, "Lösche Verzeichnis:", 100, 0x000c, 25, 19, 65, 10
+    CONTROL 0x82, "", 102, 0x008c, 92, 19, 171, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 25, 41, 49, 14
+    CONTROL 0x80, "&Alle löschen", 107, 0x0000, 82, 41, 49, 14
+    CONTROL 0x80, "&Nein", 7, 0x0000, 139, 41, 49, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 196, 41, 49, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 277, 60
+CAPTION "Dateiverschieben bestätigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 245, 10
+    CONTROL 0x82, "Verschiebe Datei:", 100, 0x000c, 25, 18, 57, 10
+    CONTROL 0x82, "", 102, 0x008c, 84, 18, 186, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 6, 41, 63, 14
+    CONTROL 0x80, "&Alle verschieben", 107, 0x0000, 73, 41, 63, 14
+    CONTROL 0x80, "&Nein", 7, 0x0000, 140, 41, 63, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 207, 41, 63, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 289, 60
+CAPTION "Dateiumbenennen bestätigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 257, 10
+    CONTROL 0x82, "Benenne Datei um:", 100, 0x000c, 25, 18, 61, 10
+    CONTROL 0x82, "", 102, 0x008c, 88, 18, 194, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 7, 41, 65, 14
+    CONTROL 0x80, "&Alle umbenennen", 107, 0x0000, 77, 41, 65, 14
+    CONTROL 0x80, "&Nein", 7, 0x0000, 147, 41, 65, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 217, 41, 65, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 251, 62
+CAPTION "Drucken"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 4, 5, 190, 10
+    CONTROL 0x82, "&Drucken:", 100, 0x000c, 4, 20, 31, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 156, 12
+    CONTROL 0x82, "", 104, 0x008c, 4, 36, 190, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 202, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 202, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 202, 43, 45, 14
+END
+
+13 DIALOG 0x80c8, 21, 20, 272, 64
+CAPTION "Suchen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Suchen nach:", 100, 0x000c, 4, 7, 47, 12
+    CONTROL 0x81, "", 201, 0x0480, 53, 5, 160, 12
+    CONTROL 0x82, "&Beginnen in:", 100, 0x000c, 4, 22, 47, 12
+    CONTROL 0x81, "", 101, 0x0480, 53, 20, 160, 12
+    CONTROL 0x80, "&Alle Unterverzeichnisse durchsuchen", 232, 0x0003, 53, 34, 133, 12
+    CONTROL 0x82, "", 104, 0x000c, 5, 50, 200, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 223, 4, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 223, 21, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 223, 41, 45, 14
+END
+
+14 DIALOG 0x80c8, 47, 59, 238, 62
+CAPTION "Verschieben"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktuelles Verzeichnis: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&Nach:", 100, 0x000c, 3, 33, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 37, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 25, 33, 10, 10
+    CONTROL 0x80, "In die &Zwischenablage kopieren", 256, 0x0004, 25, 47, 150, 12
+    CONTROL 0x82, "", 104, 0x008b, 4, 48, 50, 10
+    CONTROL 0x82, "", 201, 0x008b, 54, 48, 128, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 189, 7, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 189, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 189, 44, 45, 14
+    CONTROL 0x82, "&Von:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+10014 DIALOG 0x80c8, 47, 59, 236, 100
+CAPTION "Verschieben"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktuelles Verzeichnis: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&Nach:", 100, 0x000c, 3, 38, 20, 10
+    CONTROL 0x62, "edit", 103, 0x0004, 37, 38, 138, 42
+    CONTROL 0x50, "€", 256, 0x0401, 6656, 9728, 2560, 2560
+    CONTROL 0x80, "In die &Zwischenablage kopieren", 256, 0x0004, 26, 84, 149, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 84, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 45, 84, 138, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 182, 6, 48, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 182, 23, 48, 14
+    CONTROL 0x80, "&Durchsuchen", 600, 0x0000, 182, 40, 48, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 182, 58, 48, 14
+    CONTROL 0x82, "&Von:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+200 DIALOG 0x00c8, 36, 24, 164, 134
+CAPTION "Verzeichnis auswählen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x81, "", 1152, 0x0490, 6, 16, 90, 12
+    CONTROL 0x83, "", 1120, 0x0053, 12, 28, 84, 68
+    CONTROL 0x82, "&Verzeichnisse:", -1, 0x0000, 6, 6, 92, 9
+    CONTROL 0x82, "", 1088, 0x0000, 10, 16, 92, 9
+    CONTROL 0x83, "", 1121, 0x0053, 10, 28, 92, 68
+    CONTROL 0x82, "&Laufwerke:", 1091, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1137, 0x0353, 10, 112, 92, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 108, 6, 50, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 108, 24, 50, 14
+    CONTROL 0x82, "Datei&name:", 1090, 0x0000, 6, 6, 76, 9
+    CONTROL 0x82, "Zeige Dateien des &Typs an:", 1089, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1136, 0x0043, 10, 112, 90, 36
+    CONTROL 0x80, "&Hilfe", 1038, 0x0000, 208, 46, 50, 14
+    CONTROL 0x80, "&Schreibgeschützt", 1040, 0x0003, 208, 68, 50, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 252, 62
+CAPTION "Löschen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktuelles Verzeichnis: C", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "&Löschen:", 100, 0x000c, 3, 20, 35, 10
+    CONTROL 0x81, "", 102, 0x0480, 40, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 35, 35, 10
+    CONTROL 0x82, "", 201, 0x008b, 40, 35, 155, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 203, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 203, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 203, 43, 45, 14
+END
+
+38 DIALOG 0x80c8, 23, 35, 250, 65
+CAPTION "Eigenschaften"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d Dateien ausgewählt, insgesamt %s Byte", 100, 0x000c, 5, 5, 188, 10
+    CONTROL 0x80, "Dateiattribute", -1, 0x0007, 5, 18, 166, 42
+    CONTROL 0x80, "&Schreibgeschützt", 215, 0x0003, 10, 29, 69, 12
+    CONTROL 0x80, "&Versteckt", 216, 0x0003, 102, 29, 52, 12
+    CONTROL 0x80, "&Archiv", 217, 0x0003, 10, 41, 69, 12
+    CONTROL 0x80, "Sys&tem", 218, 0x0003, 102, 41, 52, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 50, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 197, 23, 50, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 197, 43, 50, 14
+END
+
+16 DIALOG 0x80c8, 34, 38, 255, 200
+CAPTION "Eigenschaften von %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 57, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 194, 23, 57, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 194, 40, 57, 14
+    CONTROL 0x82, "Datei&name:", 261, 0x000c, 4, 5, 45, 10
+    CONTROL 0x81, "", 201, 0x0880, 62, 5, 130, 10
+    CONTROL 0x82, "&Pfad:", 100, 0x000c, 4, 16, 43, 10
+    CONTROL 0x81, "", 101, 0x0880, 62, 16, 130, 10
+    CONTROL 0x82, "Letzte Änderung:", 100, 0x000c, 4, 27, 57, 10
+    CONTROL 0x82, "", 204, 0x000c, 62, 27, 130, 10
+    CONTROL 0x82, "Version:", 258, 0x000c, 4, 38, 49, 10
+    CONTROL 0x82, "Nicht gekennzeichnet", 259, 0x008c, 62, 38, 130, 10
+    CONTROL 0x82, "&Copyright:", -1, 0x0000, 4, 49, 45, 10
+    CONTROL 0x81, "Nicht gekennzeichnet", 265, 0x0880, 62, 49, 130, 10
+    CONTROL 0x82, "Größe:", 260, 0x000c, 4, 61, 47, 10
+    CONTROL 0x82, "", 203, 0x000c, 62, 61, 130, 10
+    CONTROL 0x80, "Dateiattribute", 100, 0x0007, 4, 75, 135, 45
+    CONTROL 0x80, "&Schreibgeschützt", 215, 0x0003, 12, 88, 69, 12
+    CONTROL 0x80, "&Versteckt", 216, 0x0003, 87, 88, 49, 14
+    CONTROL 0x80, "&Archiv", 217, 0x0003, 12, 104, 70, 12
+    CONTROL 0x80, "Sys&tem", 218, 0x0003, 87, 104, 49, 14
+    CONTROL 0x80, "&Informationen zur Version", 262, 0x0007, 4, 126, 226, 72
+    CONTROL 0x83, "", 263, 0x1003, 9, 137, 91, 58
+    CONTROL 0x81, "", 264, 0x0804, 103, 137, 124, 58
+END
+
+17 DIALOG 0x80c8, 20, 20, 208, 61
+CAPTION "Verzeichnis erstellen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 150, 10
+    CONTROL 0x82, "&Name:", 100, 0x000c, 3, 23, 22, 10
+    CONTROL 0x81, "", 201, 0x0480, 28, 22, 120, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 160, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 160, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 160, 43, 45, 14
+END
+
+10017 DIALOG 0x80c8, 20, 20, 240, 74
+CAPTION "Verzeichnis erstellen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Name:", 100, 0x000c, 3, 28, 20, 10
+    CONTROL 0x62, "edit", 201, 0x0000, 3, 40, 170, 18
+    CONTROL 0x50, "‚", 26624, 0x8c00, 768, 15360, -27136, 2560
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 197, 43, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 215, 62
+CAPTION "Systemdatenträger erstellen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Kopieren der Systemdateien auf Datenträger in:", -1, 0x000c, 5, 8, 156, 10
+    CONTROL 0x85, "", 222, 0x0003, 57, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 166, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 166, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 166, 43, 45, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 177, 62
+CAPTION "Datenträger kopieren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Quelldatenträger in:", -1, 0x000c, 5, 7, 66, 10
+    CONTROL 0x85, "", 245, 0x0003, 73, 5, 40, 37
+    CONTROL 0x82, "&Zieldatenträger in:", 206, 0x000c, 5, 22, 66, 10
+    CONTROL 0x85, "", 222, 0x0003, 73, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 127, 5, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 127, 22, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 127, 42, 45, 14
+END
+
+22 DIALOG 0x90c8, 33, 41, 130, 69
+CAPTION "Datenträger kopieren"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "wird kopiert.", 100, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Der Datenträger in Laufwerk A:", 222, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "Der Quelldatenträger wird gelesen.", 243, 0x0001, 0, 26, 130, 19
+    CONTROL 0x80, "Abbrechen", 2, 0x0001, 42, 49, 45, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 165, 63
+CAPTION "Datenträger benennen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Datenträgerbezeichnung:", 100, 0x000c, 5, 15, 100, 9
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 115, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 115, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 115, 43, 45, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 197, 96
+CAPTION "Datenträger formatieren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 147, 4, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 147, 21, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 147, 41, 45, 14
+    CONTROL 0x82, "&Datenträger in:", -1, 0x000c, 5, 7, 62, 10
+    CONTROL 0x85, "", 222, 0x0003, 68, 4, 65, 40
+    CONTROL 0x82, "Speicher&kapazität:", 100, 0x000c, 5, 20, 62, 10
+    CONTROL 0x85, "", 241, 0x0003, 68, 19, 65, 40
+    CONTROL 0x80, "Optionen", 102, 0x0007, 5, 39, 128, 53
+    CONTROL 0x82, "&Bezeichnung:", -1, 0x000c, 11, 51, 46, 10
+    CONTROL 0x81, "", 201, 0x0000, 58, 49, 63, 12
+    CONTROL 0x80, "&Systemdatenträger erstellen", 242, 0x0003, 11, 62, 103, 12
+    CONTROL 0x80, "&QuickFormat", 244, 0x0003, 11, 76, 103, 12
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 61
+CAPTION "Datenträger formatieren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Der Datenträger wird jetzt formatiert.", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "Das Laufwerk wird initialisiert...", 243, 0x0001, 0, 17, 150, 20
+    CONTROL 0x80, "Abbrechen", 2, 0x0001, 52, 41, 45, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 74
+CAPTION "Systemdatenträger erstellen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Die Systemdateien werden jetzt kopiert.", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "Wählen Sie 'Abbrechen', wenn Sie den Vorgang abbrechen möchten.", 100, 0x0001, 0, 18, 174, 31
+    CONTROL 0x80, "Abbrechen", 2, 0x0001, 65, 54, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 281, 135
+CAPTION "Netzwerkverbindungen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Neue Verbindung", -1, 0x0007, 5, 3, 170, 55
+    CONTROL 0x82, "&Netzwerkpfad:", -1, 0x0000, 10, 16, 48, 10
+    CONTROL 0x81, "", 223, 0x0480, 61, 14, 104, 12
+    CONTROL 0x82, "&Laufwerk:", -1, 0x0000, 10, 30, 48, 10
+    CONTROL 0x85, "", 222, 0x0003, 61, 28, 39, 100
+    CONTROL 0x82, "&Kennwort:", -1, 0x0000, 10, 44, 48, 10
+    CONTROL 0x81, "", 224, 0x04a0, 61, 42, 104, 12
+    CONTROL 0x82, "&Aktuelle Verbindungen:", -1, 0x0000, 5, 63, 120, 9
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 169, 60
+    CONTROL 0x80, "&Schließen", 2, 0x0001, 184, 6, 93, 14
+    CONTROL 0x80, "&Verbinden", 1, 0x0000, 184, 27, 93, 14
+    CONTROL 0x80, "&Bisherige Verbindungen...", 226, 0x0000, 184, 44, 93, 14
+    CONTROL 0x80, "&Durchsuchen...", 227, 0x0000, 184, 61, 93, 14
+    CONTROL 0x80, "&Trennen", 255, 0x0000, 184, 78, 93, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 184, 95, 93, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 232, 99
+CAPTION "Bisherige Netzwerkverbindungen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Netzwerkpfade:", 100, 0x000c, 4, 3, 69, 9
+    CONTROL 0x83, "", 226, 0x0003, 4, 14, 172, 80
+    CONTROL 0x80, "&Auswählen", 1, 0x0001, 183, 5, 45, 14
+    CONTROL 0x80, "Schließen", 2, 0x0000, 183, 23, 45, 14
+    CONTROL 0x80, "&Löschen", 219, 0x0000, 183, 40, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 183, 57, 45, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 181, 65
+CAPTION "Bestimmte Dateiangaben"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Angaben", 100, 0x0007, 4, 4, 117, 55
+    CONTROL 0x80, "&Größe", 203, 0x0003, 11, 15, 106, 10
+    CONTROL 0x80, "&Datum der letzten Änderung", 204, 0x0003, 11, 25, 106, 10
+    CONTROL 0x80, "&Uhrzeit der letzten Änderung", 205, 0x0003, 11, 35, 106, 10
+    CONTROL 0x80, "Datei&attribute", 206, 0x0003, 11, 45, 106, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 132, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 132, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 132, 43, 45, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 159, 102
+CAPTION "Angaben auswählen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Name:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Dateityp", 100, 0x0007, 5, 20, 93, 62
+    CONTROL 0x80, "&Verzeichnisse", 101, 0x0003, 10, 31, 74, 12
+    CONTROL 0x80, "&Programme", 210, 0x0003, 10, 43, 74, 12
+    CONTROL 0x80, "&Dokumente", 211, 0x0003, 10, 55, 74, 12
+    CONTROL 0x80, "&Andere Dateien", 212, 0x0003, 10, 67, 74, 12
+    CONTROL 0x80, "Versteckte/Sys&temdateien anzeigen", 250, 0x0003, 5, 85, 150, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 110, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 110, 43, 45, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 203, 80
+CAPTION "Bestätigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Bestätigung einholen vor", 100, 0x0007, 5, 3, 138, 73
+    CONTROL 0x80, "Löschen von &Dateien", 219, 0x0003, 10, 15, 123, 12
+    CONTROL 0x80, "Löschen von &Verzeichnissen", 220, 0x0003, 10, 27, 123, 12
+    CONTROL 0x80, "Über&schreiben von Dateien", 221, 0x0003, 10, 39, 123, 12
+    CONTROL 0x80, "Ausführen von &Mausaktionen", 249, 0x0003, 10, 51, 123, 12
+    CONTROL 0x80, "Ausführen von Datenträger&befehlen", 251, 0x0003, 10, 63, 128, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 154, 6, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 154, 23, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 154, 44, 45, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Verschieben..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 55, 5, 192, 10
+    CONTROL 0x82, "Nach:", 108, 0x008b, 5, 15, 49, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 15, 192, 10
+    CONTROL 0x80, "Abbrechen", 2, 0x0001, 200, 28, 45, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 138, 55
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Datei wird gedruckt...", -1, 0x0001, 32, 6, 72, 8
+    CONTROL 0x82, "", 100, 0x0081, 0, 14, 138, 10
+    CONTROL 0x80, "Abbrechen", 2, 0x0001, 46, 35, 45, 14
+END
+
+12 DIALOG 0x80c8, 32, 39, 234, 91
+CAPTION "Verknüpfen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Dateien mit Dateinamen&erweiterung:", 99, 0x000c, 4, 8, 119, 10
+    CONTROL 0x81, "", 112, 0x0400, 124, 6, 35, 12
+    CONTROL 0x82, "&Verknüpfen mit:", 99, 0x000c, 4, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 4, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 10, 44, 146, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 171, 6, 59, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 171, 23, 59, 14
+    CONTROL 0x80, "&Durchsuchen...", 232, 0x0000, 171, 43, 59, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 171, 60, 59, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 246, 100
+CAPTION "Dateinamen auswählen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Diese Pfadangabe entspricht nicht dem MS-DOS-Format für Dateinamen. Geben Sie einen neuen Namen ein.", 99, 0x0000, 5, 4, 186, 27
+    CONTROL 0x82, "&Neuer Name:", 99, 0x0002, 4, 82, 50, 12
+    CONTROL 0x81, "", 103, 0x0000, 57, 80, 126, 12
+    CONTROL 0x82, "Ursprünglicher Pfad:", 99, 0x0002, 5, 34, 50, 18
+    CONTROL 0x81, "", 102, 0x0880, 57, 42, 126, 10
+    CONTROL 0x82, "Nach Verzeichnis:", 99, 0x0002, 4, 53, 50, 18
+    CONTROL 0x81, "", 101, 0x0880, 57, 61, 126, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 196, 4, 45, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 196, 20, 45, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 196, 38, 45, 14
+END
+
+48 DIALOG 0x80c8, 23, 13, 254, 107
+CAPTION "Eigenschaften von %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 57, 14
+    CONTROL 0x80, "Abbrechen", 2, 0x0000, 194, 23, 57, 14
+    CONTROL 0x80, "&Hilfe", 254, 0x0000, 194, 43, 57, 14
+    CONTROL 0x82, "Datei&name:", 261, 0x000c, 5, 5, 60, 10
+    CONTROL 0x81, "", 201, 0x0880, 66, 5, 122, 10
+    CONTROL 0x82, "&Pfad:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 66, 16, 122, 10
+    CONTROL 0x82, "Letzte Änderung:", 100, 0x000c, 5, 27, 59, 10
+    CONTROL 0x82, "", 204, 0x000c, 66, 27, 122, 10
+    CONTROL 0x82, "Größe:", 260, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 66, 38, 122, 10
+    CONTROL 0x80, "Dateiattribute", 100, 0x0007, 4, 52, 127, 42
+    CONTROL 0x80, "&Schreibgeschützt", 215, 0x0003, 9, 64, 69, 12
+    CONTROL 0x80, "&Versteckt", 216, 0x0003, 81, 64, 45, 12
+    CONTROL 0x80, "&Archiv", 217, 0x0003, 9, 76, 52, 12
+    CONTROL 0x80, "Sys&tem", 218, 0x0003, 81, 76, 41, 12
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0101   "(Stammverzeichnis)"
+0x0102   "(Nicht anwendbar)"
+0x0103   "Freigegeben als %s"
+0x0104   "Nicht freigegeben"
+0x0107   "Datei(en) kopieren nach %s"
+0x0108   "Datei(en) verschieben nach %s"
+0x0109   "Datei(en) ausführen mit %s"
+0x010a   "%s Byte"
+0x010b   "%s KB"
+0x010c   "%s MB"
+0x010d   "%s GB"
+0x010e   "%s TB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Windows beenden"
+0x0029   "Hiermit beenden Sie Ihre Windows-Sitzung."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Datenträger kopieren"
+0x0033   "Legen Sie den Zieldatenträger ein."
+0x0034   "Legen Sie den Quelldatenträger ein."
+0x0035   "Legen Sie den Quell- und den Zieldatenträger ein."
+0x0036   "Formatiert den Zieldatenträger."
+0x0037   "Fehler beim Datenträgerkopieren"
+0x0038   "Das Kopieren des Datenträgers ist nicht möglich."
+0x003a   "Das Quell- und das Ziellaufwerk sind inkompatibel."
+0x003c   "%d %% bearbeitet"
+0x003d   "Das Stammverzeichnis wird angelegt..."
+0x003e   "Die Systemdateien werden kopiert..."
+0x003f   "Fehler beim Formatieren"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Nicht genügend Speicherplatz auf dem Datenträger, um zu drucken.
+
+Löschen Sie eine oder mehrere Dateien, und versuchen Sie es erneut."
+0x00c1   "Nicht genügend Arbeitsspeicher, um zu drucken.
+
+Schließen Sie eine oder mehrere Anwendungen, und versuchen Sie es erneut."
+0x00c2   "Während des Druckens ist ein Fehler aufgetreten.
+
+Vergewissern Sie sich, daß der Drucker richtig konfiguriert und selektiert ist."
+0x00c3   "Unvollständige Anzeige der Verzeichnisstruktur"
+0x00c5   "Die Speicherkapazität des Ziellaufwerks ist erschöpft.
+
+Legen Sie einen neuen Datenträger ein, um fortzufahren."
+0x00c6   "Dies ist eine System-, eine versteckte oder eine schreibgeschützte Datei."
+0x00c7   "Der Datei-Manager kann keine schnelle Formatierung durchführen.
+
+Möchten Sie mit standardmäßigem Formatieren fortsetzen?"
+0x00c8   "Die angegebene Anwendung ist keine auf Windows- oder auf MS-DOS basierende Anwendung."
+0x00c9   "Diese Anwendung benötigt eine neuere Version von Microsoft Windows."
+0x00ca   "Diese Anwendung erfordert Windows."
+0x00cb   "Fehler beim Senden des Befehls an die Anwendung."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Der Datenträger kann nicht formatiert werden."
+0x0042   "Formatieren abgeschlossen"
+0x0043   "%ld Byte Speicherplatz insgesamt
+%ld Byte Speicherplatz verfügbar
+
+Möchten Sie einen weiteren Datenträger formatieren?"
+0x0046   "Systemdatenträger erstellen"
+0x0047   "Sind Sie sicher, daß Sie die Systemdateien auf den Datenträger in Laufwerk %c: kopieren möchten?"
+0x0048   "Systemdatenträgerfehler"
+0x0049   "Das MS-DOS-Startlaufwerk enthält keine Systemdateien oder ist nicht verfügbar."
+0x004a   "Auf das MS-DOS-Startlaufwerk können keine Systemdateien kopiert werden."
+0x004b   "Auf diesen Datenträger können keine Systemdateien kopiert werden.
+
+Vergewissern Sie sich, daß in das Laufwerk ein formatierter Datenträger eingelegt wurde und das Laufwerk verriegelt ist."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Der Datei-Manager kann %s nicht erzeugen oder ersetzen. %s"
+0x0408   "Datei-Manager kann keine MS-DOS-Systemdiskette anlegen, da Windows NT-multiboot auf Ihrem System installiert ist. Benutzen Sie das SYS-Dienstprogramm in der MS-DOS Befehlszeile, um eine Systemdiskette zu erstellen."
+0x0409   "Möchten Sie die Diskette formatieren, ohne das System zu übertragen?"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Netzwerkfehler"
+0x0053   "Dieses Laufwerk enthält die Windows-Systemdateien und kann nicht getrennt werden."
+0x005b   "Der Datei-Manager kann die Attribute nicht ändern.
+
+Vergewissern Sie sich, daß der Datenträger nicht schreibgeschützt ist."
+0x005c   "Der Datei-Manager kann dieses Verzeichnis nicht erstellen.
+
+Vergewissern Sie sich, daß der Datenträger nicht schreibgeschützt ist."
+0x005d   "Der Datenträger kann nicht umbenannt werden.
+
+Vergewissern Sie sich, daß der er nicht schreibgeschützt und kein Netzwerklaufwerk ist und daß der Name keines der folgenden unzulässigen Zeichen enthält.
+[LEER] * ? / \ | . , ; : + = [ ] ( ) & ^ < > " "
+0x005f   "Es wurden keine entsprechenden Dateien gefunden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "%d Datei(en) (%s)"
+0x00b5   "Gelesene Verzeichnisse: %d "
+0x00b6   "%c: %s von %s frei"
+0x00b7   "%d Datei(en) gefunden"
+0x00b9   "die ausgewählten Dateien"
+0x00ba   "Der Datei-Manager konnte das Netzwerklaufwerk nicht trennen, da noch Dateien geöffnet sind."
+0x00bb   "%d Datei(en) (%s) ausgewählt"
+0x00bc   "In Laufwerk %c ist kein Datenträger eingelegt.
+
+Legen Sie einen Datenträger ein, und versuchen Sie es erneut."
+0x00bd   "Der Datenträger in Laufwerk %c ist nicht formatiert.
+
+Möchten Sie, daß der Datenträger jetzt formatiert wird?"
+0x00bf   "Die auszudruckende Datei kann nicht gefunden werden. Vergewissern Sie sich, daß der angegebene Pfad- und Dateiname richtig ist."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "Das angegebene Verzeichnis besteht bereits."
+0x0061   "Der Inhalt des Laufwerks hat sich geändert. Möchten Sie, daß das Fenster "Suchergebnis" aktualisiert wird?"
+0x0065   "Laufwerk %c:%c"
+0x006e   "Programmausführungsfehler"
+0x006f   "Unerwarteter Fehler: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "Das Formatieren löscht ALLE Daten auf dem Datenträger. Möchten Sie tatsächlich den Datenträger in Laufwerk %c: formatieren?"
+0x00d3   "Datenträgerformatieren bestätigen"
+0x00d4   "Die Ausführung dieser Funktion löscht ALLE Daten auf dem Zieldatenträger. Möchten Sie fortsetzen?"
+0x00d5   "Datenträgerkopieren bestätigen"
+0x00d6   "Sch&ließen"
+0x00da   "Das Verzeichnis %s existiert nicht.
+
+Möchten Sie, daß es angelegt wird?"
+0x00db   "Programme#*.exe;*.pif;*.com;*.bat#Alle Dateien (*.*)#*.*#"
+0x00dc   "Durchsuchen"
+0x00dd   "Ausführen"
+0x00de   "Datei kann nicht gedruckt werden."
+0x00df   "Die Hilfeinformation kann nicht angezeigt werden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Nicht genügend Arbeitsspeicher, um die Anwendung zu starten.
+
+Schließen Sie eine oder mehrere Anwendungen, und versuchen Sie es erneut."
+0x0071   "Der Datei-Manager konnte die Datei bzw. Komponente nicht finden.
+
+Überprüfen Sie, ob Pfad- und Dateiname richtig und alle Bibliotheken verfügbar sind."
+0x0072   "Der angegebene Pfadname ist ungültig."
+0x0073   "Es sind zu viele Dateien geöffnet.
+
+Schließen Sie eine oder mehrere Anwendungen, oder erhöhen Sie den Wert für FILES in Ihrer CONFIG.SYS-Datei, und versuchen Sie es dann erneut."
+0x0074   "Dieser Datei ist keine Anwendung zugeordnet.
+
+Wählen Sie aus dem Menü 'Datei' den Befehl 'Verknüpfen', um eine Verknüpfung herzustellen."
+0x0075   "Das angegebene Programm kann nicht mehrmals gleichzeitig ausgeführt werden."
+0x0076   "Der Datei-Manager kann die Datei nicht öffnen oder drucken.
+
+Verwenden Sie die Anwendung, mit der die Datei erstellt wurde, und öffnen oder drucken Sie die Datei von dort."
+0x0078   "Mausaktion bestätigen"
+0x0079   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s kopieren möchten?"
+0x007a   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s verschieben möchten?"
+0x007b   "Sind Sie sicher, daß Sie %s ausführen und %s bearbeiten möchten?"
+0x007c   "Datei-Manager"
+0x007e   "Verzeichnisstruktur"
+0x007f   "Suchergebnis: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Dateien mit der Dateinamenerweiterung %s sind Programme und können nicht mit einer anderen Anwendung verknüpft werden."
+0x00e1   "%s ist kein Programm und kann mit keiner Dateinamenerweiterung verknüpft werden."
+0x00e2   "(Keine)"
+0x00e4   "Mehrere Dateien können nicht in einem gedruckt werden.
+
+Wählen Sie eine einzelne Datei aus, und versuchen Sie es erneut."
+0x00e5   "Dieses Programm oder eine der Komponenten ist komprimiert.
+
+Benutzen Sie den MS-DOS-Befehl "Expand", um die Datei von Ihren Setup-Disketten zu kopieren."
+0x00e6   "Eine der zur Ausführung dieser Anwendung benötigten Bibliotheksdateien ist beschädigt. Installieren Sie die Anwendung neu."
+0x00e7   "Diese Datei wird von einer anderen Anwendung bearbeitet."
+0x00e8   "Der Datei-Manager kann eventuell nicht auf die Dateien, erstellt im Verzeichnis "%s", zugreifen.
+
+Möchten Sie fortsetzen?"
+0x00e9   "Verzeichnis erstellen"
+0x00ea   "%ld Byte"
+0x00eb   "%s Byte"
+0x00ec   "Mehrere Dateien oder Verzeichnisse können nicht gleichzeitig in die Zwischenablage kopiert werden.
+
+Markieren Sie eine einzelne Datei, und versuchen Sie es erneut."
+0x00ed   "%s - %s"
+0x00ee   "Laufwerk:"
+0x00ef   "%s,"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Zu viele Dateien"
+0x0085   "Datei-Manager - Kein Arbeitsspeicher"
+0x0086   "Das vollständige Verzeichnis kann nicht gelesen werden. Es wird nur ein Teil der Informationen angezeigt."
+0x008c   "Aktuelles Verzeichnis: %s"
+0x008d   "Kopieren"
+0x008f   "Umbenennen"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Datenträger formatieren"
+0x0092   "Wählen Sie den Datenträger aus, den Sie formatieren möchten."
+0x0096   "Erstellt:"
+0x0097   "Löschen..."
+0x0098   "Kopiert:"
+0x0099   "Umbenennen..."
+0x009a   "Verschieben..."
+0x009b   "Löschen..."
+0x009c   "Druckt: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "Laufwerk %c existiert nicht."
+0x00a9   "Kopieren..."
+0x00aa   "Löschen:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Öffnen..."
+0x01a5   "Schließen..."
+0x01a6   "Es sind zu viele Verzeichnisfenster geöffnet.
+
+Schließen Sie ein oder mehrere Fenster, und versuchen Sie es erneut."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Fehler beim Dateiverschieben"
+0x03ea   "Fehler beim Dateikopieren"
+0x03eb   "Fehler beim Dateilöschen"
+0x03ec   "Fehler beim Dateiumbenennen"
+0x03ed   "Fehler beim Laufwerkauswählen"
+0x03ee   "Fehler beim Verzeichnislesen"
+0x03ef   "Fehler beim Datenträgerbenennen"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "Der Datei-Manager kann %s nicht verschieben. %s"
+0x03f4   "Der Datei-Manager kann %s nicht kopieren. %s"
+0x03f5   "Der Datei-Manager kann %s nicht löschen. %s"
+0x03f6   "Der Datei-Manager kann %s nicht umbenennen. %s"
+0x03fd   "Der Datei-Manager kann das Verzeichnis %s nicht erzeugen. %s"
+0x03fe   "Der Datei-Manager kann das Verzeichnis %s nicht löschen. %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Ungültige MS-DOS-Funktion."
+0x0412   "Der Datei-Manager konnte die angegebene Datei nicht finden.
+
+Vergewissern Sie sich, daß Pfad- und Dateiname richtig angegeben wurden."
+0x0413   "Der Datei-Manager konnte den angegebenen Pfad nicht finden.
+
+Vergewissern Sie sich, daß der Pfadname richtig angegeben wurde."
+0x0414   "Es sind zu viele Dateien geöffnet. Schließen Sie eine oder mehrere Anwendungen, und versuchen Sie es dann erneut."
+0x0415   "Der Zugriff wird verweigert.
+
+Vergewissern Sie sich, daß der Datenträger nicht voll oder schreibgeschützt ist."
+0x0416   "Ungültige Dateizugriffsnummer"
+0x0418   "Nicht genügend Arbeitsspeicher verfügbar.
+
+Beenden Sie eine oder mehrere Anwendungen, und versuchen Sie es erneut."
+0x041c   "Ungültiger Dateizugriff"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Der Datei-Manager kann das aktuelle Verzeichnis nicht löschen (interner Fehler)."
+0x0421   "Ungültiges Gerät"
+0x0422   "Das Verzeichnis ist leer."
+0x0423   "Der Datenträger ist schreibgeschützt.
+
+Entfernen Sie den Schreibschutz, oder benutzen Sie einen anderen Datenträger, und versuchen Sie es erneut."
+0x042d   "Der Datei-Manager kann nicht in die Zieldatei oder den Zieldatenträger schreiben."
+0x042f   "Der Datei-Manager kann nicht aus der Quelldatei oder von dem Zieldatenträger lesen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Ungültige Funktion"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Der Netzwerkzugriff wurde verweigert. Vergewissern Sie sich, daß Ihre Netzwerkprivilegien zur Funktionsdurchführung ausreichen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Konflikt durch gemeinsamen Dateizugriff. Die Quell- oder Zieldatei wird möglicherweise gerade benutzt."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Nicht genügend Speicherplatz auf dem Datenträger verfügbar.
+
+Löschen Sie eine oder mehrere Dateien, um den verfügbaren Speicherplatz zu erhöhen, und versuchen Sie es erneut."
+0x0481   "Die Quell- und Zieldateinamen sind identisch."
+0x0482   "Wählen Sie nur eine umzubenennende Datei aus, oder verwenden Sie MS-DOS-Stellvertreterzeichen (z.B. *.TXT), um eine Dateigruppe mit ähnlichen Namen umzubennen."
+0x0483   "Das Umbenennen läßt sich nicht gleichzeitig mit einer Verschiebung in ein anderes Verzeichnis oder auf ein anderes Laufwerk durchführen."
+0x0484   "Stammverzeichnis (interner Fehler)."
+0x0486   "Das Zielverzeichnis ist ein Unterverzeichnis des Quellverzeichnisses."
+0x0487   "Die Datei wird von Windows momentan benutzt."
+0x0488   "Zugriff verweigert. Die Quelldatei wird möglicherweise gerade benutzt."
+0x0489   "Der Pfad ist zu tief verschachtelt."
+0x048a   "Wählen Sie nur eine Datei oder ein Verzeichnis aus. Wenn Sie eine Dateigruppe mit ähnlichen Namen angeben wollen, können Sie MS-DOS-Stellvertreterzeichen (z.B. *.TXT) verwenden."
+0x048b   "Der angegebene Dateiname besteht bereits. Versuchen Sie es erneut, und verwenden Sie einen anderen Dateinamen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 MB"
+0x0131   "720 KB"
+0x0132   "1,44 MB"
+0x0133   "2,88 MB"
+0x0134   "Laufwerkskapazität"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360 KB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Nicht genügend Arbeitsspeicher verfügbar."
+0x0192   "Das MS-DOS-Startlaufwerk kann nicht formatiert werden."
+0x0193   "Das MS-DOS-Startlaufwerk hat eine ungültige Sektorgröße."
+0x0194   "Der angegebene Datenträger hat einen unbekannten Laufwerkstyp."
+0x0199   "Der Datei-Manager konnte die Systemdateien nicht übertragen."
+0x019a   "Dieser Datenträger kann mit einer Kapazität von %s formatiert werden.
+
+Möchten Sie, daß der Datenträger mit dieser Kapazität formatiert wird?"
+0x019b   "Der Datei-Manager kann den Datenträger nicht formatieren.
+
+Vergewissern Sie sich, daß der Datenträger eingelegt und nicht schreibgeschützt oder beschädigt ist und daß er nicht die falsche Speicherdichte hat."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00fe   "Ver&zeichnisname:"
+0x00ff   "\StringFileInfo\040904E4\"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01f4   "Kommentare"
+0x01f5   "Firmenname"
+0x01f6   "Dateibeschreibung"
+0x01f7   "Interner Name"
+0x01f8   "Geschütztes Warenzeichen"
+0x01f9   "Originaler Dateiname"
+0x01fa   "Beschreibung"
+0x01fb   "Produktname"
+0x01fc   "Produktversion"
+0x01fd   "Spezielle Beschreibung"
+0x01fe   "Sprache"
+0x01ff   "Sprachen"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0222   "Es wurden keine Dateien gefunden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0255   "Der angegebene Computer kann nicht gefunden werden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0263   "Das freigebene Verzeichnis kann nicht gefunden werden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0274   "Es gibt zu viele Redirections."
+0x0276   "Ungültiges Kennwort"
+
+Ordinal  String
+---------------------------------------------------------------
+0x02b0   "Das Netzwerklaufwerk ist nicht verfügbar."
+0x02b1   "Beim Lesen von Laufwerk %c: ist ein Fehler aufgetreten."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0f90   "Befehle zum Arbeiten mit Dateien"
+0x0f91   "Befehle zum Arbeiten mit Datenträgern"
+0x0f92   "Befehle zum Arbeiten im Verzeichnisfenster"
+0x0f93   "Befehle zum Ändern der Anzeige"
+0x0f94   "Befehle zum Setzen von Optionen"
+0x0f9a   "Befehle zum Arbeiten mit Fenstern"
+0x0f9b   "Befehle zum Anfordern von Hilfe"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1005   "Öffnet das ausgewählte Element."
+0x1006   "Druckt ein Dokument."
+0x1007   "Verknüpft eine Datei mit einer Anwendung."
+0x1008   "Sucht nach Dateien und Verzeichnissen."
+0x1009   "Startet oder öffnet eine Anwendung oder ein Dokument."
+0x100a   "Verschiebt das ausgewählte Element."
+0x100b   "Kopiert Dateien und Verzeichnisse."
+0x100c   "Löscht Dateien und Verzeichnisse."
+0x100d   "Benennt eine Datei oder ein Verzeichnis um."
+0x100e   "Setzt Dateiattribute und zeigt Eigenschaften an."
+0x100f   "Erstellt ein Verzeichnis."
+
+Ordinal  String
+---------------------------------------------------------------
+0x1013   "Beendet den Datei-Manager."
+0x1014   "Wählt Dateien und Verzeichnisse aus."
+0x1015   "Stellt eine gelöschte Datei wieder her."
+
+Ordinal  String
+---------------------------------------------------------------
+0x1069   "Kopiert den Inhalt einer Diskette."
+0x106a   "Ändert den Namen eines Datenträgers oder weist ihm einen Namen zu."
+0x106b   "Formatiert eine Diskette."
+0x106c   "Kopiert MS-DOS-Systemdateien auf eine Diskette."
+0x106d   "Verbindet zu einem Netzwerklaufwerk."
+0x106e   "Trennt von einem Netzwerklaufwerk."
+
+Ordinal  String
+---------------------------------------------------------------
+0x109b   "Wählt ein anderes Laufwerk."
+0x109c   "Netzwerkverbindungen..."
+0x109d   "Freigegebene Verzeichnisse anzeigen..."
+0x109e   "Gibt ein Verzeichnis für andere Benutzer frei."
+0x109f   "Beendet die Freigabe eines Verzeichnisses für andere Benutzer."
+
+Ordinal  String
+---------------------------------------------------------------
+0x10cd   "Blendet die nächste Verzeichnisebene ein."
+0x10ce   "Blendet einen ganzen Zweig eines Verzeichnisses ein."
+0x10cf   "Blendet alle Ebenen aller Verzeichnisse ein."
+
+Ordinal  String
+---------------------------------------------------------------
+0x10d0   "Blendet alle Unterverzeichnisse des gewählten Verzeichnisses aus."
+
+Ordinal  String
+---------------------------------------------------------------
+0x1195   "Setzt die Optionen zum Bestätigen von Aktionen."
+0x1197   "Blendet die Statuszeile ein oder aus."
+0x1198   "Reduziert den Datei-Manager nach dem Start zu einem Symbol."
+0x1199   "Kennzeichnet Verzeichnisse, die Unterverzeichnisse besitzen."
+0x119b   "Blendet die Laufwerkleiste ein oder aus."
+0x119c   "Blendet die Symbolleiste ein oder aus."
+0x119d   "Öffnet ein neues Fenster bei jedem Herstellen einer Verbindung."
+0x119e   "Ändert die vom Datei-Manager benutzte Schriftart."
+0x119f   "Speichert die Einstellungen des Datei-Managers beim Beenden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x1131   "Zeigt nur Dateinamen an."
+0x1132   "Zeigt alle Dateiangaben an."
+0x1133   "Zeigt bestimmte Dateiangaben an."
+0x1134   "Sortiert Dateien nach Namen."
+0x1135   "Sortiert Dateien nach Dateityp."
+0x1136   "Sortiert Dateien nach Größe."
+0x1137   "Sortiert Dateien nach Datum."
+0x1139   "Zeigt Dateien eines bestimmten Typs an."
+0x113b   "Zeigt nur die Verzeichnisstruktur an."
+0x113c   "Zeigt nur den Inhalt des aktuellen Verzeichnisses an."
+0x113d   "Zeigt die Verzeichnisstruktur und den Inhalt des aktuellen Verzeichnisses an."
+0x113e   "Teilt ein Verzeichnisfenster oder bewegt die Teilungsmarkierung."
+
+Ordinal  String
+---------------------------------------------------------------
+0x11a0   "Definiert das Aussehen der Symbolleiste."
+
+Ordinal  String
+---------------------------------------------------------------
+0x13f0   "Aktualisiert den Inhalt eines Fensters."
+0x13f1   "Ordnet die Symbole an."
+0x13f2   "Öffnet ein neues Fenster."
+
+Ordinal  String
+---------------------------------------------------------------
+0x13ed   "Arrangiert die Fenster."
+0x13ee   "Arrangiert die Fenster."
+0x13ef   "Arrangiert die Fenster."
+
+Ordinal  String
+---------------------------------------------------------------
+0x1451   "Zeigt den Inhalt für die Datei-Manager Hilfe an"
+0x1452   "Zeigt Informationen über Hilfe benutzen an"
+0x1453   "Zeigt Informationen über Datei-Manager an"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0fbe   "Sucht nach einem Thema in der Hilfe zum Datei-Manager."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0320   "Netzlaufwerk &verbinden..."
+0x0321   "Netzlaufwerk &trennen..."
+0x0322   "Netz&werkverbindungen..."
+0x0323   "F&reigeben als..."
+0x0324   "Freigabe been&den..."
+0x0325   "Frei&gegebene Verzeichnisse..."
+0x0326   "&Undelete..."
+0x0327   "Beim Verbinden ne&ues Fenster öffnen"
+
+

@@ -1,0 +1,1471 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Japanese (Japan) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_JPN)
+LANGUAGE LANG_JAPANESE, SUBLANG_DEFAULT
+#pragma code_page(932)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "ﾌｧｲﾙ(&F)"
+    BEGIN
+        MENUITEM "開く(&O)\tEnter",               101
+        MENUITEM "移動(&M)...\tF7",               106
+        MENUITEM "ｺﾋﾟｰ(&C)...\tF8",             107
+        MENUITEM "ｸﾘｯﾌﾟﾎﾞｰﾄﾞへｺﾋﾟｰ(&B)...\tF9",  118
+        MENUITEM "削除(&D)...\tDel",              108
+        MENUITEM "名前の変更(&N)...",                109
+        MENUITEM "ﾌﾟﾛﾊﾟﾃｨ(&T)...\tAlt+Enter",   110
+        MENUITEM SEPARATOR
+        MENUITEM "圧縮(&S)...",                   119
+        MENUITEM "圧縮解除(&U)...",                 120
+        MENUITEM SEPARATOR
+        MENUITEM "ﾌｧｲﾙ名を指定して実行(&R)...",         105
+        MENUITEM "印刷(&P)...",                   102
+        MENUITEM "ｱﾌﾟﾘｹｰｼｮﾝとの関連付け(&A)...",      103
+        MENUITEM SEPARATOR
+        MENUITEM "ﾃﾞｨﾚｸﾄﾘの作成(&E)...",           111
+        MENUITEM "検索(&H)...",                   104
+        MENUITEM "選択(&F)...",                   116
+        MENUITEM SEPARATOR
+        MENUITEM "ﾌｧｲﾙ ﾏﾈｰｼﾞｬの終了(&X)",          115
+    END
+    POPUP "ﾃﾞｨｽｸ(&D)"
+    BEGIN
+        MENUITEM "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのｺﾋﾟｰ(&C)...",    201
+        MENUITEM "ﾎﾞﾘｭｰﾑ ﾗﾍﾞﾙの変更(&L)...",       202
+        MENUITEM SEPARATOR
+        MENUITEM "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのﾌｫｰﾏｯﾄ(&F)...",  203
+        MENUITEM SEPARATOR
+        MENUITEM "ﾄﾞﾗｲﾌﾞの選択(&S)...",            251
+    END
+    POPUP "ﾃﾞｨﾚｸﾄﾘ(&T)"
+    BEGIN
+        MENUITEM "1 つ下を表示(&X)\t+",              301
+        MENUITEM "この下をすべて表示(&B)\t*",            302
+        MENUITEM "すべて表示(&A)\tCtrl+*",           303
+        MENUITEM "この下を表示しない(&C)\t-",            304
+        MENUITEM SEPARATOR
+        MENUITEM "ｻﾌﾞﾃﾞｨﾚｸﾄﾘの有無を表示(&I)",        505
+    END
+    POPUP "表示(&V)"
+    BEGIN
+        MENUITEM "ﾃﾞｨﾚｸﾄﾘとﾌｧｲﾙ一覧(&R)",          413
+        MENUITEM "ﾃﾞｨﾚｸﾄﾘのみ(&E)",               411
+        MENUITEM "ﾌｧｲﾙ一覧のみ(&O)",                412
+        MENUITEM SEPARATOR
+        MENUITEM "境界の変更(&L)",                   414
+        MENUITEM SEPARATOR
+        MENUITEM "名前のみ(&N)",                    401
+        MENUITEM "すべての情報(&A)",                  402, CHECKED
+        MENUITEM "表示情報の設定(&P)...",              403
+        MENUITEM SEPARATOR
+        MENUITEM "名前順(&S)",                     404
+        MENUITEM "拡張子順(&B)",                    405
+        MENUITEM "ｻｲｽﾞ順(&Z)",                   406
+        MENUITEM "日付順(&D)",                     407
+        MENUITEM SEPARATOR
+        MENUITEM "ﾌｧｲﾙの種類の指定(&T)...",           409
+    END
+    POPUP "ｵﾌﾟｼｮﾝ(&O)"
+    BEGIN
+        MENUITEM "確認ﾒｯｾｰｼﾞの有無(&C)...",          501
+        MENUITEM "ﾌｫﾝﾄ(&F)...",                 510
+        MENUITEM "ﾂｰﾙ ﾊﾞｰの変更(&B)...",           512
+        MENUITEM SEPARATOR
+        MENUITEM "ﾂｰﾙ ﾊﾞｰ(&T)",                 508
+        MENUITEM "ﾄﾞﾗｲﾌﾞ ﾊﾞｰ(&D)",              507
+        MENUITEM "ｽﾃｰﾀｽ ﾊﾞｰ(&S)",               503
+        MENUITEM SEPARATOR
+        MENUITEM "未使用時に最小化(&M)",                504
+        MENUITEM "終了時の状態を保存(&E)",               511
+    END
+    POPUP "ｾｷｭﾘﾃｨ(&S)"
+    BEGIN
+        MENUITEM "ｱｸｾｽ権(&P)...",                605
+        MENUITEM "監査(&A)...",                   606
+        MENUITEM "所有者(&O)...",                  607
+    END
+    POPUP "ｳｨﾝﾄﾞｳ(&W)"
+    BEGIN
+        MENUITEM "新しいｳｨﾝﾄﾞｳ(&N)",               1706
+        MENUITEM "重ねて表示(&C)\tShift+F5",         1701
+        MENUITEM "上下に並べて表示(&H)",                1703
+        MENUITEM "左右に並べて表示(&T)\tShift+F4",      1702
+        MENUITEM "ｱｲｺﾝの整列(&A)",                 1705
+        MENUITEM "最新の情報に更新(&R)\tF5",            1704
+    END
+    POPUP "ﾍﾙﾌﾟ(&H)"
+    BEGIN
+        MENUITEM "目次(&C)",                      1801
+        MENUITEM "ｷｰﾜｰﾄﾞで検索(&S)...",            30
+        MENUITEM "ﾍﾙﾌﾟの使い方(&H)",                1802
+        MENUITEM SEPARATOR
+        MENUITEM "ﾊﾞｰｼﾞｮﾝ情報(&A)...",            1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 210, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙ名を指定して実行"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,160,10
+    CONTROL         "ｺﾏﾝﾄﾞ ﾗｲﾝ(&C):",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,60,10
+    EDITTEXT        201,3,29,134,12,ES_AUTOHSCROLL
+    CONTROL         "最小化の状態で実行(&M)",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,45,90,12
+    DEFPUSHBUTTON   "OK",1,165,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,165,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,165,43,40,14
+END
+
+11 DIALOG 20, 20, 256, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "印刷"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,200,10
+    CONTROL         "印刷するﾌｧｲﾙ(&P):",-1,"Static",SS_LEFTNOWORDWRAP,3,20,65,10
+    EDITTEXT        102,68,18,137,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,36,200,10
+    DEFPUSHBUTTON   "OK",1,210,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,210,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,210,43,40,14
+END
+
+12 DIALOG 12, 19, 256, 135
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "ｱﾌﾟﾘｹｰｼｮﾝとの関連付け"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT           "拡張子(&F):",-1,6,7,40,10
+    COMBOBOX        315,48,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "実行されるｱﾌﾟﾘｹｰｼｮﾝ ﾌﾟﾛｸﾞﾗﾑ(&A):",-1,6,30,124,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,63,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "参照(&B)...",318,131,25,47,14
+    DEFPUSHBUTTON   "OK",1,186,7,65,14,WS_GROUP
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,186,23,65,14
+    PUSHBUTTON      "ﾌｧｲﾙ ﾀｲﾌﾟ作成(&N)...",300,186,44,65,14
+    PUSHBUTTON      "ﾌｧｲﾙ ﾀｲﾌﾟ変更(&C)...",251,186,61,65,14
+    PUSHBUTTON      "ﾌｧｲﾙ ﾀｲﾌﾟ削除(&D)",219,186,78,65,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,186,96,65,14
+END
+
+13 DIALOG 20, 20, 288, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "検索"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "検索するﾌｧｲﾙ名(&S):",-1,"Static",SS_LEFTNOWORDWRAP,5,7,72,12
+    EDITTEXT        201,77,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "検索するﾃﾞｨﾚｸﾄﾘ(&F):",-1,"Static",SS_LEFTNOWORDWRAP,5,22,72,12
+    EDITTEXT        101,77,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "ｻﾌﾞﾃﾞｨﾚｸﾄﾘまで検索(&E)",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,77,34,100,12
+    DEFPUSHBUTTON   "OK",1,242,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,242,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,242,43,40,14
+END
+
+14 DIALOG 33, 28, 246, 106
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "移動"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "現在のﾃﾞｨﾚｸﾄﾘ: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,5,6,224,10
+    CONTROL         "移動先(&T):",2001,"Static",SS_LEFTNOWORDWRAP,3,34,54,10
+    EDITTEXT        103,59,32,176,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,16,71,101,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,16,54,152,10
+    DEFPUSHBUTTON   "OK",1,46,86,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,102,86,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,158,86,40,14
+    CONTROL         "移動元(&F):",2002,"Static",SS_LEFTNOWORDWRAP,3,20,54,10
+    EDITTEXT        102,59,18,176,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 256, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "削除"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "現在のﾃﾞｨﾚｸﾄﾘ: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,203,10
+    CONTROL         "削除するﾌｧｲﾙ(&L):",-1,"Static",SS_LEFTNOWORDWRAP,3,21,65,10
+    EDITTEXT        102,68,19,137,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,55,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,68,35,137,10
+    DEFPUSHBUTTON   "OK",1,210,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,210,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,210,40,40,14
+END
+
+16 DIALOG 23, 13, 259, 229
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s のﾌﾟﾛﾊﾟﾃｨ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,204,6,50,14,WS_GROUP
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,204,23,50,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,204,40,50,14
+    CONTROL         "ﾌｧｲﾙ名(&F):",261,"Static",SS_LEFTNOWORDWRAP,5,5,45,10
+    EDITTEXT        201,55,5,142,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "ﾊﾟｽ(&P):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,45,10
+    EDITTEXT        101,55,16,142,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "保存した日時:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,45,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,55,27,142,10
+    CONTROL         "ﾊﾞｰｼﾞｮﾝ:",258,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "なし",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,55,38,142,10
+    LTEXT           "Copyright(&Y):",-1,5,49,45,10
+    EDITTEXT        265,55,49,142,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "ｻｲｽﾞ:",260,"Static",SS_LEFTNOWORDWRAP,5,60,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,55,60,142,10
+    CONTROL         "圧縮ｻｲｽﾞ:",268,"Static",SS_LEFTNOWORDWRAP,5,71,45,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,55,71,142,10
+    CONTROL         "圧縮率:",270,"Static",SS_LEFTNOWORDWRAP,5,82,45,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,55,82,142,10
+    GROUPBOX        "属性",-1,4,96,130,54
+    CONTROL         "読み取り専用(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,65,12
+    CONTROL         "隠しﾌｧｲﾙ(&I)",216,"Button",BS_AUTOCHECKBOX,81,108,49,12
+    CONTROL         "ｱｰｶｲﾌﾞ(&A)",217,"Button",BS_AUTOCHECKBOX,9,120,52,12
+    CONTROL         "ｼｽﾃﾑ(&S)",218,"Button",BS_AUTOCHECKBOX,81,120,49,12
+    CONTROL         "圧縮(&C)",267,"Button",BS_AUTOCHECKBOX,9,132,52,12
+    GROUPBOX        "ﾊﾞｰｼﾞｮﾝ情報(&V)",262,4,155,250,70
+    LISTBOX         263,9,168,91,49,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,110,168,138,50,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 200, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾃﾞｨﾚｸﾄﾘの作成"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,150,10
+    CONTROL         "ﾃﾞｨﾚｸﾄﾘ名(&N):",-1,"Static",SS_LEFTNOWORDWRAP,3,24,45,10
+    EDITTEXT        201,48,22,90,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "OK",1,157,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,157,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,157,43,40,14
+END
+
+19 DIALOG 20, 20, 163, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのｺﾋﾟｰ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "ｺﾋﾟｰ元のﾄﾞﾗｲﾌﾞ(&S):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,86,10
+    COMBOBOX        245,106,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "ｺﾋﾟｰ先のﾄﾞﾗｲﾌﾞ(&D):",206,"Static",SS_LEFTNOWORDWRAP,5,22,87,10
+    COMBOBOX        222,106,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,11,44,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,61,44,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,111,44,40,14
+END
+
+22 DIALOG 30, 30, 190, 64
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのｺﾋﾟｰ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CTEXT           "のﾃﾞｨｽｸをｺﾋﾟｰしています",-1,29,16,130,10,NOT WS_GROUP
+    CTEXT           "ﾄﾞﾗｲﾌﾞ A:",222,29,4,130,10,NOT WS_GROUP
+    CTEXT           "ｺﾋﾟｰ元のﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸを読み取り中です",243,3,29,183,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "ｷｬﾝｾﾙ",2,72,45,44,14
+END
+
+23 DIALOG 20, 20, 168, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾎﾞﾘｭｰﾑ ﾗﾍﾞﾙの変更"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "新しいﾎﾞﾘｭｰﾑ ﾗﾍﾞﾙ(&L):",-1,"Static",SS_LEFTNOWORDWRAP,5,15,109,10
+    EDITTEXT        201,5,26,102,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,122,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,122,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,122,43,40,14
+END
+
+24 DIALOG 11, 28, 188, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのﾌｫｰﾏｯﾄ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,142,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,142,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,142,43,40,14
+    CONTROL         "ﾄﾞﾗｲﾌﾞ(&D):",-1,"Static",SS_LEFTNOWORDWRAP,5,6,35,10
+    COMBOBOX        222,45,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "容量(&C):",-1,"Static",SS_LEFTNOWORDWRAP,5,21,35,10
+    COMBOBOX        241,45,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "ｵﾌﾟｼｮﾝ",102,5,36,131,47,WS_GROUP
+    CONTROL         "ﾎﾞﾘｭｰﾑ ﾗﾍﾞﾙ(&L):",-1,"Static",SS_LEFTNOWORDWRAP,11,48,54,10
+    EDITTEXT        201,66,46,63,12
+    CONTROL         "ｸｲｯｸ ﾌｫｰﾏｯﾄ形式(&Q)",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,65,101,12
+END
+
+26 DIALOG 30, 30, 168, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのﾌｫｰﾏｯﾄ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CTEXT           "現在ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸをﾌｫｰﾏｯﾄ中",-1,0,6,168,10,NOT WS_GROUP
+    CTEXT           "ﾄﾞﾗｲﾌﾞの初期化中...",243,25,18,119,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "ｷｬﾝｾﾙ",2,62,31,44,14
+END
+
+30 DIALOG 20, 20, 174, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "表示情報の設定"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "詳細",-1,4,4,121,74
+    CONTROL         "ﾌｧｲﾙ ｻｲｽﾞ(&S)",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,100,12
+    CONTROL         "保存した日付(&M)",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,100,12
+    CONTROL         "保存した時刻(&T)",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,100,12
+    CONTROL         "ﾌｧｲﾙの属性(&F)",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,100,12
+    CONTROL         "MS-DOS ﾌｧｲﾙ名(&D)",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,100,12
+    DEFPUSHBUTTON   "OK",1,130,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,130,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,130,60,40,14
+END
+
+32 DIALOG 20, 20, 176, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙの種類の指定"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "ﾌｧｲﾙ名(&N):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,46,10
+    EDITTEXT        201,58,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "ﾌｧｲﾙの種類",-1,5,20,118,62
+    CONTROL         "ﾃﾞｨﾚｸﾄﾘ(&D)",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,81,12
+    CONTROL         "ﾌﾟﾛｸﾞﾗﾑ(&P)",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,82,12
+    CONTROL         "ﾄﾞｷｭﾒﾝﾄ(&M)",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,87,12
+    CONTROL         "上記以外のﾌｧｲﾙ(&O)",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,98,12
+    CONTROL         "隠しﾌｧｲﾙ/ｼｽﾃﾑ ﾌｧｲﾙも表示(&S)",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,167,12
+    DEFPUSHBUTTON   "OK",1,132,23,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,132,40,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,132,60,40,14
+END
+
+33 DIALOG 20, 20, 214, 97
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認ﾒｯｾｰｼﾞの有無"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "確認する操作",-1,5,3,157,88,WS_TABSTOP
+    CONTROL         "ﾌｧｲﾙの削除(&D)",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,137,12
+    CONTROL         "ﾃﾞｨﾚｸﾄﾘの削除(&I)",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,126,12
+    CONTROL         "ﾌｧｲﾙの上書き(&R)",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,125,12
+    CONTROL         "ﾏｳｽの操作(&M)",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,141,12
+    CONTROL         "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのﾌｫｰﾏｯﾄとｺﾋﾟｰ(&K)",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,138,12
+    CONTROL         "ｼｽﾃﾑ/隠し/読み取り専用ﾌｧｲﾙの変更(&S)",215,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,75,148,12
+    DEFPUSHBUTTON   "OK",1,169,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,169,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,169,44,40,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙの移動"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "移動先:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,25,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "ｷｬﾝｾﾙ",2,200,28,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 124, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CTEXT           "ﾌｧｲﾙを印刷中...",-1,5,6,111,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "ｷｬﾝｾﾙ",2,40,40,40,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 206, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌﾟﾛﾊﾟﾃｨ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "%d 個のﾌｧｲﾙが選択されました。",100,"Static",SS_LEFTNOWORDWRAP,5,5,140,10
+    CONTROL         "合計 %s ﾊﾞｲﾄです。",111,"Static",SS_LEFTNOWORDWRAP,5,16,140,10
+    GROUPBOX        "属性",-1,5,29,130,54
+    CONTROL         "読み取り専用(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,65,12
+    CONTROL         "隠しﾌｧｲﾙ(&I)",216,"Button",BS_AUTOCHECKBOX,82,40,52,12
+    CONTROL         "ｱｰｶｲﾌﾞ(&A)",217,"Button",BS_AUTOCHECKBOX,10,52,52,12
+    CONTROL         "ｼｽﾃﾑ(&S)",218,"Button",BS_AUTOCHECKBOX,82,52,52,12
+    CONTROL         "圧縮(&C)",267,"Button",BS_AUTOCHECKBOX,10,64,52,12
+    DEFPUSHBUTTON   "OK",1,150,6,50,14,WS_GROUP
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,150,23,50,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,150,43,50,14
+END
+
+39 DIALOG 10, 20, 245, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙの上書きの確認"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,5,203,10
+    CONTROL         "元のﾌｧｲﾙ:",-1,"Static",SS_LEFTNOWORDWRAP,30,22,44,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,22,165,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,75,32,170,10
+    CONTROL         "新しいﾌｧｲﾙ:",-1,"Static",SS_LEFTNOWORDWRAP,30,44,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,44,165,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,75,54,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,70,203,16
+    DEFPUSHBUTTON   "はい(&Y)",6,26,95,40,14
+    PUSHBUTTON      "すべて上書き(&A)",107,72,95,55,14
+    PUSHBUTTON      "いいえ(&N)",7,133,95,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,179,95,40,14
+END
+
+40 DIALOG 10, 20, 245, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙの削除の確認"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,30,5,203,10
+    CONTROL         "削除するﾌｧｲﾙ:",-1,"Static",SS_LEFTNOWORDWRAP,30,22,50,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,22,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,38,203,16
+    DEFPUSHBUTTON   "はい(&Y)",6,26,63,40,14
+    PUSHBUTTON      "すべて削除(&A)",107,72,63,55,14
+    PUSHBUTTON      "いいえ(&N)",7,133,63,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,179,63,40,14
+END
+
+41 DIALOG 10, 20, 245, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾃﾞｨﾚｸﾄﾘの削除の確認"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,5,203,10
+    CONTROL         "削除するﾃﾞｨﾚｸﾄﾘ:",-1,"Static",SS_LEFTNOWORDWRAP,30,22,55,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,87,22,155,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,38,203,16
+    DEFPUSHBUTTON   "はい(&Y)",6,26,63,40,14
+    PUSHBUTTON      "すべて削除(&A)",107,72,63,55,14
+    PUSHBUTTON      "いいえ(&N)",7,133,63,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,179,63,40,14
+END
+
+42 DIALOG 10, 22, 245, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙの移動の確認"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,5,203,10
+    CONTROL         "移動するﾌｧｲﾙ:",-1,"Static",SS_LEFTNOWORDWRAP,30,22,50,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,22,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,38,203,16
+    DEFPUSHBUTTON   "はい(&Y)",6,26,63,40,14
+    PUSHBUTTON      "すべて移動(&A)",107,72,63,55,14
+    PUSHBUTTON      "いいえ(&N)",7,133,63,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,179,63,40,14
+END
+
+43 DIALOG 10, 22, 245, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙ名の変更の確認"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,5,203,10
+    CONTROL         "名前を変更するﾌｧｲﾙ:",-1,"Static",SS_LEFTNOWORDWRAP,30,22,70,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,100,22,140,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,30,38,203,15
+    DEFPUSHBUTTON   "はい(&Y)",6,26,63,40,14
+    PUSHBUTTON      "すべて変更(&A)",107,72,63,55,14
+    PUSHBUTTON      "いいえ(&N)",7,133,63,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,179,63,40,14
+END
+
+44 DIALOG 15, 12, 116, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙの選択"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "選択するﾌｧｲﾙ(&F):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "選択(&S)",1,70,6,40,14
+    PUSHBUTTON      "取り消し(&D)",6,70,23,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,70,40,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,70,63,40,14
+END
+
+45 DIALOG 11, 31, 201, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾄﾞﾗｲﾌﾞの選択"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "ﾄﾞﾗｲﾌﾞ名(&D):",245,"Static",SS_LEFTNOWORDWRAP,5,5,61,10
+    LISTBOX         222,7,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,156,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,156,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,156,44,40,14
+END
+
+46 DIALOG 11, 28, 250, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙ名の選択"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT           "このﾊﾟｽは、FAT 形式のﾌｧｲﾙ名ではありません。新しい名前を入力してください。",99,5,4,185,24,NOT WS_GROUP
+    RTEXT           "新しい名前(&N):",-1,5,57,50,12,NOT WS_GROUP
+    EDITTEXT        103,57,55,130,12
+    RTEXT           "元のﾊﾟｽ:",-1,5,28,50,11,NOT WS_GROUP
+    EDITTEXT        102,57,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "転送先ﾃﾞｨﾚｸﾄﾘ:",-1,5,42,50,11,NOT WS_GROUP
+    EDITTEXT        101,57,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",1,205,4,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,205,20,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,205,36,40,14
+END
+
+48 DIALOG 23, 13, 250, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s のﾌﾟﾛﾊﾟﾃｨ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,194,6,50,14,WS_GROUP
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,194,23,50,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,194,43,50,14
+    CONTROL         "ﾌｧｲﾙ名(&F):",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,60,5,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "ﾊﾟｽ(&P):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,60,16,134,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "保存した日時:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,45,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,60,27,97,10
+    CONTROL         "ｻｲｽﾞ:",260,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,60,38,90,10
+    GROUPBOX        "属性",-1,4,52,130,54
+    CONTROL         "読み取り専用(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,65,12
+    CONTROL         "隠しﾌｧｲﾙ(&I)",216,"Button",BS_AUTOCHECKBOX,81,64,49,12
+    CONTROL         "ｱｰｶｲﾌﾞ(&A)",217,"Button",BS_AUTOCHECKBOX,9,76,52,12
+    CONTROL         "ｼｽﾃﾑ(&S)",218,"Button",BS_AUTOCHECKBOX,81,76,49,12
+    CONTROL         "圧縮(&C)",267,"Button",BS_AUTOCHECKBOX,9,88,52,12
+END
+
+49 DIALOG 12, 14, 273, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｫﾝﾄ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT           "ﾌｫﾝﾄ名(&F):",1088,6,3,54,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "ｽﾀｲﾙ(&Y):",1089,108,3,48,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "ｻｲｽﾞ(&S):",1090,178,3,41,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "文字飾り",1072,6,73,84,61,WS_GROUP
+    CONTROL         "取り消し線(&K)",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,65,10
+    CONTROL         "下線(&U)",1041,"Button",BS_AUTOCHECKBOX,10,95,51,10
+    CONTROL         "小文字で表示 - FAT ﾄﾞﾗｲﾌﾞ(&L)",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,127,252,10
+    CONTROL         "小文字で表示 - すべてのﾄﾞﾗｲﾌﾞ(&D)",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,139,252,10
+    LTEXT           "色(&C):",1091,10,107,30,9
+    COMBOBOX        1139,10,117,75,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",1,225,6,40,14,WS_GROUP
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,225,23,40,14,WS_GROUP
+    PUSHBUTTON      "適用(&A)",1026,225,40,40,14,WS_GROUP
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",1038,225,57,40,14,WS_GROUP
+    GROUPBOX        "ｻﾝﾌﾟﾙ",1073,5,72,259,49,WS_GROUP
+    CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbYyZz",1092,10,81,251,37,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 196, 67
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのﾌｫｰﾏｯﾄ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,68,35,61,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,166,20
+    PUSHBUTTON      "表示しない",110,39,47,51,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,107,47,51,14
+END
+
+51 DIALOG 10, 20, 245, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認: ﾌｧｲﾙまたはﾃﾞｨﾚｸﾄﾘの無視および継続"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,30,5,203,10
+    CONTROL         "ｱｸｾｽが拒否されました。無視:",202,"Static",SS_LEFTNOWORDWRAP,30,22,95,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,126,22,117,10
+    CONTROL         "権限がないか、ﾌｧｲﾙは使用中です。",-1,"Static",SS_LEFTNOWORDWRAP,30,38,206,10
+    CONTROL         "[はい] をｸﾘｯｸすると、このﾌｧｲﾙを無視して処理を続行します。",-1,"Static",SS_LEFTNOWORDWRAP,30,48,201,10
+    DEFPUSHBUTTON   "はい(&Y)",6,26,63,40,14
+    PUSHBUTTON      "すべて無視(&A)",107,72,63,55,14
+    PUSHBUTTON      "いいえ(&N)",7,133,63,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,179,63,40,14
+END
+
+52 DIALOG 10, 20, 245, 82
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "確認: ﾌｧｲﾙまたはﾃﾞｨﾚｸﾄﾘの無視および継続"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,30,5,203,10
+    CONTROL         "ｱｸｾｽ権がありません。無視:",202,"Static",SS_LEFTNOWORDWRAP,30,22,90,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,120,22,122,10
+    CONTROL         "[はい] をｸﾘｯｸすると、このﾌｧｲﾙを無視して処理を続行します。",-1,"Static",SS_LEFTNOWORDWRAP,30,38,195,10
+    DEFPUSHBUTTON   "はい(&Y)",6,26,63,40,14
+    PUSHBUTTON      "すべて無視(&A)",107,72,63,55,14
+    PUSHBUTTON      "いいえ(&N)",7,133,63,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,179,63,40,14
+END
+
+53 DIALOG 18, 22, 228, 68
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾃﾞｨｽｸの検索中"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "検索するﾌｧｲﾙ名:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,76,9
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,91,5,120,9
+    CONTROL         "開始するﾃﾞｨﾚｸﾄﾘ:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,83,9
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,91,15,120,9
+    CONTROL         "読み取ったﾃﾞｨﾚｸﾄﾘ数:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,83,9
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,91,25,100,9
+    CONTROL         "検索結果:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,60,9
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,91,35,100,9
+    PUSHBUTTON      "表示しない",110,56,50,50,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,122,50,50,14
+END
+
+54 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "ｸﾘｯﾌﾟﾎﾞｰﾄﾞへｺﾋﾟｰ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    CONTROL         "現在のﾃﾞｨﾚｸﾄﾘ: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "ﾌｧｲﾙ名(&B):",-1,"Static",SS_LEFTNOWORDWRAP,3,21,44,10
+    EDITTEXT        102,58,19,137,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,200,23,40,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,200,43,40,14
+END
+
+55 DIALOG 5, 13, 293, 203
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "ﾌｧｲﾙ ﾀｲﾌﾟの変更"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT           "ﾌｧｲﾙ ﾀｲﾌﾟ(&F):",302,4,5,49,9
+    EDITTEXT        301,54,3,120,12,ES_AUTOHSCROLL
+    GROUPBOX        "動作(&A):     ",-1,5,23,244,107,WS_GROUP
+    COMBOBOX        306,41,21,60,32,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "ｺﾏﾝﾄﾞ(&C):",313,9,41,35,9
+    EDITTEXT        304,47,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "参照(&B)...",318,163,38,45,14
+    CONTROL         "DDE を使用(&U)",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,55,67,10
+    LTEXT           "DDE ﾒｯｾｰｼﾞ(&M):",320,21,67,63,9
+    EDITTEXT        309,114,65,100,12,ES_AUTOHSCROLL
+    LTEXT           "ｱﾌﾟﾘｹｰｼｮﾝを実行していないときの DDE ﾒｯｾｰｼﾞ(&N):",322,21,79,90,17
+    LTEXT           "(ｵﾌﾟｼｮﾝ)",324,216,83,30,8
+    EDITTEXT        311,114,81,100,12,ES_AUTOHSCROLL
+    LTEXT           "ｱﾌﾟﾘｹｰｼｮﾝ(&P):",321,21,99,52,9
+    EDITTEXT        310,114,97,100,12,ES_AUTOHSCROLL
+    LTEXT           "ﾄﾋﾟｯｸ(&T):",323,21,115,32,9
+    EDITTEXT        312,114,113,100,12,ES_AUTOHSCROLL
+    LTEXT           "新しい拡張子(&W):",-1,9,166,56,9
+    EDITTEXT        315,67,164,46,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "追加(&D) ->",303,119,156,48,14
+    PUSHBUTTON      "<- 削除(&R)",219,119,172,48,14
+    LTEXT           "拡張子(&E):",-1,172,142,71,9
+    LISTBOX         317,173,154,71,41,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "ﾌｧｲﾙ ﾀｲﾌﾟと関連付ける拡張子:",316,5,134,244,66
+    DEFPUSHBUTTON   "OK",1,254,3,35,14
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,254,20,35,14
+    PUSHBUTTON      "ﾍﾙﾌﾟ(&H)",254,254,41,35,14
+END
+
+57 DIALOG 123, 60, 207, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "ﾌｧｲﾙの圧縮状況"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT           "圧縮中のﾌｧｲﾙ:",-1,6,8,50,8
+    LTEXT           "filename.xxx",341,57,8,90,8
+    LTEXT           "ﾃﾞｨﾚｸﾄﾘ:",-1,6,20,50,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,57,20,145,8
+    LTEXT           "圧縮されたﾃﾞｨﾚｸﾄﾘ数:",-1,6,32,75,8
+    LTEXT           "1,888,888,999",343,87,32,68,8
+    LTEXT           "圧縮されたﾌｧｲﾙ数:",-1,6,44,75,8
+    LTEXT           "1,888,888,999",344,87,44,68,8
+    LTEXT           "圧縮前の総ﾌｧｲﾙ ｻｲｽﾞ:",-1,6,56,75,8
+    LTEXT           "9,999,999,999,999",345,87,56,68,8
+    LTEXT           "圧縮後の総ﾌｧｲﾙ ｻｲｽﾞ:",-1,6,68,75,8
+    LTEXT           "9,999,999,999,999",346,87,68,68,8
+    LTEXT           "ﾌｧｲﾙ圧縮率:",-1,6,80,75,8
+    LTEXT           "100%",347,87,80,27,8
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,78,97,55,14
+END
+
+58 DIALOG 114, 62, 207, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "ﾌｧｲﾙの圧縮解除状況"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    LTEXT           "圧縮解除中のﾌｧｲﾙ:",-1,6,8,60,8
+    LTEXT           "filename.xxx",351,67,8,90,8
+    LTEXT           "ﾃﾞｨﾚｸﾄﾘ:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,67,20,135,8
+    LTEXT           "圧縮解除されたﾃﾞｨﾚｸﾄﾘ数:",-1,6,32,81,8
+    LTEXT           "1,999,999,999",353,87,32,68,8
+    LTEXT           "圧縮解除されたﾌｧｲﾙ数:",-1,6,44,80,8
+    LTEXT           "1,999,999,999",354,87,44,68,8
+    PUSHBUTTON      "ｷｬﾝｾﾙ",2,78,64,50,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "圧縮ｴﾗｰ"
+FONT 9, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,190,24
+    DEFPUSHBUTTON   "無視(&I)",5,26,47,40,14,WS_GROUP
+    PUSHBUTTON      "すべて無視(&G)",112,72,47,55,14
+    PUSHBUTTON      "再試行(&R)",4,133,47,40,14
+    PUSHBUTTON      "中止(&A)",3,179,47,40,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY, NOINVERT
+    VK_RETURN,      101,                    VIRTKEY, NOINVERT
+    VK_RETURN,      101,                    VIRTKEY, SHIFT, NOINVERT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT, NOINVERT
+    VK_F4,          1702,                   VIRTKEY, SHIFT, NOINVERT
+    VK_F5,          1704,                   VIRTKEY, NOINVERT
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII,  NOINVERT
+    VK_ADD,         301,                    VIRTKEY, NOINVERT
+    "*",            302,                    ASCII,  NOINVERT
+    VK_MULTIPLY,    302,                    VIRTKEY, NOINVERT
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL, NOINVERT
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL, NOINVERT
+    "-",            304,                    ASCII,  NOINVERT
+    VK_SUBTRACT,    304,                    VIRTKEY, NOINVERT
+    VK_RETURN,      110,                    VIRTKEY, ALT, NOINVERT
+    VK_F2,          2000,                   VIRTKEY, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,52
+ PRODUCTVERSION 4,0,1381,52
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041104B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "File Manager"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Microsoft(R) Windows NT(R) Operating System"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x411, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのｺﾋﾟｰ"
+    51                      "転送先のﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸを挿入してください。"
+    52                      "転送元のﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸを挿入してください。"
+    53                      "転送元と転送先のﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸを挿入してください。"
+    54                      "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸをﾌｫｰﾏｯﾄ中です"
+    55                      "ﾃﾞｨｽｸ ｺﾋﾟｰのｴﾗｰ"
+    56                      "ﾃﾞｨｽｸをｺﾋﾟｰできません。"
+    58                      "転送元と転送先のﾃﾞｨｽｸに互換性がありません。"
+    60                      "%d%% 完了"
+    61                      "ﾙｰﾄ ﾃﾞｨﾚｸﾄﾘを作成しています..."
+    62                      "ｼｽﾃﾑ ﾌｧｲﾙをｺﾋﾟｰしています..."
+    63                      "ﾃﾞｨｽｸ ﾌｫｰﾏｯﾄのｴﾗｰ"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "ﾌｫｰﾏｯﾄ完了"
+    67                      "%ld ﾊﾞｲﾄ 全ﾃﾞｨｽｸ領域\n%ld ﾊﾞｲﾄ 空きﾃﾞｨｽｸ領域\n\n別のﾃﾞｨｽｸをﾌｫｰﾏｯﾄしますか?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "ﾈｯﾄﾜｰｸ ｴﾗｰ"
+    83                      "このﾄﾞﾗｲﾌﾞには Windows のｼｽﾃﾑ ﾌｧｲﾙが含まれているため、接続を切断できません。"
+    91                      "属性を変更できません。"
+    92                      "ﾃﾞｨﾚｸﾄﾘを作成できません。"
+    93                      "ﾃﾞｨｽｸにﾎﾞﾘｭｰﾑ ﾗﾍﾞﾙを付けられません。\n\nそのﾃﾞｨｽｸがﾗｲﾄ ﾌﾟﾛﾃｸﾄされていないか、ﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞでないか、またはﾗﾍﾞﾙが有効かどうか確認してください。次の文字は使用できません:\n空白文字 * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "該当するﾌｧｲﾙが見つかりません。"
+END
+
+STRINGTABLE
+BEGIN
+    97                      "このﾄﾞﾗｲﾌﾞの内容は変更されています。\n[検索結果] ｳｨﾝﾄﾞｳを更新しますか?"
+    98                      "ﾊｰﾄﾞ ﾃﾞｨｽｸに対してこの操作を実行するときは、管理者としてこのﾜｰｸｽﾃｰｼｮﾝにﾛｸﾞｵﾝしてください。"
+    101                     "ﾄﾞﾗｲﾌﾞ %c:%c"
+    110                     "ｱﾌﾟﾘｹｰｼｮﾝ実行ｴﾗｰ"
+    111                     "予期しないｴﾗｰ: %d"
+END
+
+STRINGTABLE
+BEGIN
+    112                     "ﾒﾓﾘ不足のため、このｱﾌﾟﾘｹｰｼｮﾝを実行できません。\n\nいくつかの Windows ｱﾌﾟﾘｹｰｼｮﾝを終了してから、やり直してください。"
+    113                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬはﾌｧｲﾙ (または必要なﾌｧｲﾙ) を見つけることができません。\n\nﾊﾟｽおよびﾌｧｲﾙ名と、必要なﾗｲﾌﾞﾗﾘを確認してください。"
+    114                     "指定されたﾊﾟｽが無効です。"
+    116                     "指定されたﾌｧｲﾙに関連付けられたｱﾌﾟﾘｹｰｼｮﾝはありません。\n\n[ﾌｧｲﾙ] ﾒﾆｭｰの [ｱﾌﾟﾘｹｰｼｮﾝとの関連付け] ｺﾏﾝﾄﾞを使って設定してください。"
+    118                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬは、ﾌｧｲﾙを開けないか印刷することができません。\n\nこのﾌｧｲﾙを作成したｱﾌﾟﾘｹｰｼｮﾝに切り替えて操作してください。"
+    120                     "ﾏｳｽ操作の確認"
+    121                     "選択されたﾌｧｲﾙを %s にｺﾋﾟｰしてよろしいですか?"
+    122                     "選択されたﾌｧｲﾙを %s に移動してよろしいですか?"
+    123                     "%s を起動し、%s を初期ﾌｧｲﾙとして開きます。よろしいですか?"
+    124                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬ"
+    126                     "ﾃﾞｨﾚｸﾄﾘ ﾂﾘｰ"
+    127                     "検索結果: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "ﾌｧｲﾙが多すぎます"
+    133                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬ - ﾒﾓﾘ不足"
+    134                     "ﾃﾞｨﾚｸﾄﾘ全体を読み取ることができません。"
+    140                     "現在のﾃﾞｨﾚｸﾄﾘ: %s"
+    141                     "ｺﾋﾟｰ"
+    143                     "名前の変更"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのﾌｫｰﾏｯﾄ"
+    146                     "ﾄﾞﾗｲﾌﾞを選択してください。"
+    150                     "作成中:"
+    151                     "削除しています..."
+    152                     "ｺﾋﾟｰ中:"
+    153                     "名前を変更しています..."
+    154                     "移動中..."
+    155                     "削除しています..."
+    156                     "%s を印刷中..."
+END
+
+STRINGTABLE
+BEGIN
+    169                     "ｺﾋﾟｰしています..."
+    170                     "削除中:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "合計 %d ﾌｧｲﾙ (%s)"
+    181                     "読み取ったﾃﾞｨﾚｸﾄﾘ数: %d "
+    182                     "%c: 空き領域 %s、全ﾃﾞｨｽｸ領域 %s"
+    183                     "%d 個のﾌｧｲﾙが見つかりました。"
+    185                     "選択されたﾌｧｲﾙ"
+    186                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬはﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞを切断できません。\n\nこのﾄﾞﾗｲﾌﾞのﾌｧｲﾙをまだ開いています。"
+    187                     "%d 個のﾌｧｲﾙを選択 (%s)"
+    188                     "ﾄﾞﾗｲﾌﾞ %c の準備ができていません。\n\nﾃﾞｨｽｸを挿入してやり直してください。"
+    189                     "ﾄﾞﾗｲﾌﾞ %c のﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸはﾌｫｰﾏｯﾄされていません。\n\nﾌｫｰﾏｯﾄしますか?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "ﾃﾞｨｽｸ領域が足りません。\n\n不要なﾌｧｲﾙを削除して空きﾃﾞｨｽｸ領域を増やしてから、やり直してください。"
+    193                     "ﾒﾓﾘ不足のため印刷できません。\n\nいくつかの Windows ｱﾌﾟﾘｹｰｼｮﾝを終了してから、やり直してください。"
+    194                     "印刷中にｴﾗｰが発生しました。\n\nﾌﾟﾘﾝﾀの設定と接続が正しく行われているか確認してください。"
+    195                     "完全なﾃﾞｨﾚｸﾄﾘとﾌｧｲﾙの一覧を表示できません。"
+    197                     "転送先のﾄﾞﾗｲﾌﾞはいっぱいです。続行するには新しいﾃﾞｨｽｸを挿入してください。"
+    198                     "ｼｽﾃﾑ ﾌｧｲﾙ、隠しﾌｧｲﾙ、または読み取り専用ﾌｧｲﾙです。"
+    199                     "ｸｲｯｸ ﾌｫｰﾏｯﾄはできません。\n\n通常のﾌｫｰﾏｯﾄを行いますか?"
+    203                     "ｱﾌﾟﾘｹｰｼｮﾝにｺﾏﾝﾄﾞを送っているときにｴﾗｰが発生しました。"
+    204                     "この操作に必要なﾗｲﾌﾞﾗﾘを読み込めません。"
+END
+
+STRINGTABLE
+BEGIN
+    209                     "共有ﾃﾞｨﾚｸﾄﾘ(&H)..."
+    210                     "ﾌｫｰﾏｯﾄするとﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸの全ﾃﾞｰﾀがｸﾘｱされます。ﾄﾞﾗｲﾌﾞ %c: のﾃﾞｨｽｸをﾌｫｰﾏｯﾄしますか?"
+    211                     "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのﾌｫｰﾏｯﾄの確認"
+    212                     "この操作を実行すると転送先の全ﾃﾞｰﾀがｸﾘｱされます。操作を続行しますか?"
+    213                     "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのｺﾋﾟｰの確認"
+    214                     "閉じる(&C)"
+    215                     "閉じる"
+    218                     "ﾃﾞｨﾚｸﾄﾘ %s は存在しません。\n\nこのﾃﾞｨﾚｸﾄﾘを作成しますか?"
+    219                     "ﾌﾟﾛｸﾞﾗﾑ ﾌｧｲﾙ#*.exe;*.pif;*.com;*.bat#すべてのﾌｧｲﾙ (*.*)#*.*#"
+    220                     "参照"
+    221                     "実行"
+    222                     "ﾌｧｲﾙの印刷ｴﾗｰ"
+    223                     "ﾍﾙﾌﾟを表示できません。"
+END
+
+STRINGTABLE
+BEGIN
+    224                     "拡張子 %s のﾌｧｲﾙはﾌﾟﾛｸﾞﾗﾑであるため、ほかのｱﾌﾟﾘｹｰｼｮﾝを関連付けることはできません。"
+    225                     "%s はﾌﾟﾛｸﾞﾗﾑではないため、ﾌｧｲﾙ拡張子を関連付けることはできません。"
+    226                     "(なし)"
+    227                     "ﾌｧｲﾙが見つかりません。"
+    228                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬは複数のﾌｧｲﾙを印刷できません。\n\nﾌｧｲﾙを 1 つだけ選択してやり直してください。"
+    230                     "このｱﾌﾟﾘｹｰｼｮﾝを起動するのに必要なﾗｲﾌﾞﾗﾘ ﾌｧｲﾙが壊れています。このｱﾌﾟﾘｹｰｼｮﾝをｲﾝｽﾄｰﾙし直してください。"
+    231                     "このﾌｧｲﾙはほかのｱﾌﾟﾘｹｰｼｮﾝが使っています。"
+    232                     "ﾃﾞｨﾚｸﾄﾘ '%s' に作成されたﾌｧｲﾙにｱｸｾｽできない可能性があります。\n\n続行しますか?"
+    233                     "ﾃﾞｨﾚｸﾄﾘの作成"
+    234                     "%ld ﾊﾞｲﾄ"
+    235                     "%s ﾊﾞｲﾄ"
+    236                     "複数のﾌｧｲﾙまたはﾃﾞｨﾚｸﾄﾘはｸﾘｯﾌﾟﾎﾞｰﾄﾞにｺﾋﾟｰできません。\n\n1 つのﾌｧｲﾙを指定してやり直してください。"
+    237                     "%s - %s"
+    238                     "ﾄﾞﾗｲﾌﾞ:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "ﾈｯﾄﾜｰｸの接続"
+    241                     "ﾈｯﾄﾜｰｸの切断"
+    242                     "ﾈｯﾄﾜｰｸの接続"
+    243                     "共有ﾃﾞｨﾚｸﾄﾘ"
+    244                     "ﾃﾞｨﾚｸﾄﾘの共有解除"
+    245                     "すべての情報を表示"
+    246                     "名前のみ表示"
+    247                     "名前順"
+    248                     "拡張子順"
+    249                     "ｻｲｽﾞ順"
+    250                     "日付順"
+    251                     "新しいｳｨﾝﾄﾞｳ"
+    252                     "ﾌｧｲﾙのｺﾋﾟｰ"
+    253                     "ﾌｧｲﾙの移動"
+    254                     "ﾃﾞｨﾚｸﾄﾘ名(&D):"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "ﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞを利用できません。"
+    259                     "%s 共有"
+    260                     "非共有"
+    261                     "ﾌｧｲﾙの削除"
+    262                     " - 圧縮"
+    263                     "%s へｺﾋﾟｰ中"
+    264                     "%s へ移動中"
+    265                     "%s で実行中"
+    266                     "%s ﾊﾞｲﾄ"
+    267                     "%sKB"
+    268                     "%sMB"
+    269                     "%sGB"
+    270                     "%sTB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "このﾃﾞｨﾚｸﾄﾘへのｱｸｾｽ権がありません。"
+    281                     "このﾌｧｲﾙへのｱｸｾｽ権がありません。"
+    283                     "ﾄﾞﾗｲﾌﾞ %c: はﾋﾞｼﾞｰであり、ｱｸｾｽできません。\nﾌｧｲﾙ ﾏﾈｰｼﾞｬはﾃﾞｨｽｸ ｺﾋﾟｰを実行中です。"
+    284                     "ﾄﾞﾗｲﾌﾞ %c: はﾋﾞｼﾞｰであり、ｱｸｾｽできません。\nﾌｧｲﾙ ﾏﾈｰｼﾞｬはこのﾃﾞｨｽｸをﾌｫｰﾏｯﾄ中です。"
+    285                     "操作が完了していません"
+    286                     "すべてのﾌｧｲﾙまたはﾃﾞｨﾚｸﾄﾘに対して操作を終了できません。"
+    287                     "ﾃﾞｨﾚｸﾄﾘを読み取れません。"
+END
+
+STRINGTABLE
+BEGIN
+    288                     "ﾃﾞｨﾚｸﾄﾘは存在しません。"
+    289                     "ﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞに接続できません"
+    290                     "ﾈｯﾄﾜｰｸ名が見つかりませんでした。"
+    292                     "[すべて－] をｸﾘｯｸすると、ｼｽﾃﾑ、隠し、および読み取り専用ﾌｧｲﾙを\n含めて、すべてのﾌｧｲﾙに影響があります。"
+    294                     "開く"
+    295                     "印刷"
+    298                     "拡張子を追加"
+    299                     "拡張子 '%s' は現在 '%s' に関連付けられています。関連付けを変更してもよろしいですか?"
+    300                     "ﾌｧｲﾙの関連付けｴﾃﾞｨﾀ"
+    301                     "拡張子を関連付けることができません。"
+    302                     "拡張子を削除できません。"
+    303                     "ﾌｧｲﾙ ﾀｲﾌﾟを追加できません。"
+END
+
+STRINGTABLE
+BEGIN
+    304                     "ﾌｧｲﾙ ﾀｲﾌﾟを削除できません。"
+    305                     "ﾌｧｲﾙ ﾀｲﾌﾟを読み取ることができません。"
+    306                     "ﾌｧｲﾙ ﾀｲﾌﾟを空にすることはできません。新しいﾌｧｲﾙ ﾀｲﾌﾟを入力してください。"
+    307                     "指定されたﾌｧｲﾙ ﾀｲﾌﾟからは一意の識別子を作成できません。新しいﾌｧｲﾙ ﾀｲﾌﾟを入力してください。"
+    308                     "ﾌｧｲﾙ ﾀｲﾌﾟの削除"
+    309                     "この操作はﾌｧｲﾙ ﾀｲﾌﾟと、すべての関連付けられている拡張子を削除します。'%s' を削除してもよろしいですか?"
+    312                     "ﾌｧｲﾙ ﾀｲﾌﾟに対して、少なくとも 1 つの動作を行うｺﾏﾝﾄﾞを指定する必要があります。[ｺﾏﾝﾄﾞ] にｱﾌﾟﾘｹｰｼｮﾝを指定してください。"
+END
+
+STRINGTABLE
+BEGIN
+    320                     "ﾌｧｲﾙ ﾀｲﾌﾟの作成"
+    321                     "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸのｺﾋﾟｰ"
+    322                     "検索中..."
+    324                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬはﾃﾞｨｽｸをﾌｫｰﾏｯﾄしています。ﾌｧｲﾙ ﾏﾈｰｼﾞｬを終了すると、この操作は取り消されます。"
+    325                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬはﾃﾞｨｽｸをｺﾋﾟｰしています。ﾌｧｲﾙ ﾏﾈｰｼﾞｬを終了すると、この操作は取り消されます。"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360K"
+    354                     "1%s2MB"
+    355                     "720K"
+    356                     "1%s44MB"
+    357                     "2%s88MB"
+    358                     "ﾄﾞﾗｲﾌﾞの容量"
+    359                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬはﾃﾞｨｽｸ情報を検索できません。\n\nﾃﾞｨｽｸがﾄﾞﾗｲﾌﾞに挿入されているか調べてください。"
+    360                     "20%s8MB"
+    361                     "不明なﾃﾞｨｽｸの種類"
+    362                     "不明なﾃﾞｨｽｸの種類"
+    363                     "ﾄﾞﾗｲﾌﾞ %s のﾃﾞｨｽｸの種類はﾌｧｲﾙ ﾏﾈｰｼﾞｬではﾌｫｰﾏｯﾄできません。ﾃﾞｨｽｸ ｱﾄﾞﾐﾆｽﾄﾚｰﾀを使用して、このﾃﾞｨｽｸをﾌｫｰﾏｯﾄしてください。"
+END
+
+STRINGTABLE
+BEGIN
+    370                     "128MB"
+    371                     "230MB"
+    375                     "1%s23MB"
+    376                     "640K"
+    377                     "1%s25MB"
+    378                     "256K"
+END
+
+STRINGTABLE
+BEGIN
+    400                     "ﾌｧｲﾙ ｼｽﾃﾑに互換性がありません。"
+    401                     "ｱｸｾｽは拒否されました。"
+    402                     "ﾃﾞｨｽｸはﾗｲﾄ ﾌﾟﾛﾃｸﾄされています。"
+    403                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬは、ﾎﾞﾘｭｰﾑをﾛｯｸできません。"
+    404                     "ﾃﾞｨｽｸをｸｲｯｸ ﾌｫｰﾏｯﾄできません。\n\nﾃﾞｨｽｸの種類が誤っていないか確認してください。"
+    405                     "送り側ﾃﾞｨｽｸで I/O ｴﾗｰが発生しました。"
+    406                     "受け側ﾃﾞｨｽｸで I/O ｴﾗｰが発生しました。"
+    407                     "送り側と受け側ﾃﾞｨｽｸで I/O ｴﾗｰが発生しました。"
+    408                     "I/O ｴﾗｰが発生しました。"
+    411                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬはﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸをﾌｫｰﾏｯﾄできません。\n\nﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸがﾄﾞﾗｲﾌﾞに挿入されているか、ﾗｲﾄ ﾌﾟﾛﾃｸﾄされていないか、壊れていないか、ﾃﾞｨｽｸの種類が誤っていないかを確認してください。"
+    412                     "ﾃﾞｨｽｸにﾗﾍﾞﾙを付けることができません。\n\n指定したﾗﾍﾞﾙが無効です。ﾗﾍﾞﾙに次の文字を使用していないか調べてください。\n空白文字 * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "開いています..."
+    421                     "閉じています..."
+    422                     "開いているﾃﾞｨﾚｸﾄﾘ ｳｨﾝﾄﾞｳが多すぎます。\n\nいくつかを閉じてから、やり直してください。"
+    423                     "ｸｲｯｸ ﾌｫｰﾏｯﾄ中..."
+    424                     "ﾊﾞｯｸｸﾞﾗｳﾝﾄﾞで情報を更新するための初期化ができません。ﾌｧｲﾙ ﾏﾈｰｼﾞｬは終了します。"
+    425                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬの初期化"
+    426                     "ﾃﾞｨﾚｸﾄﾘを読み取り中です。しばらくお待ちください..."
+    427                     "%s の下のすべてのﾌｧｲﾙとｻﾌﾞﾃﾞｨﾚｸﾄﾘを圧縮しますか?"
+    428                     "%s の下のすべてのﾌｧｲﾙとｻﾌﾞﾃﾞｨﾚｸﾄﾘを圧縮解除しますか?"
+    429                     "ﾌｧｲﾙ ﾏﾈｰｼﾞｬは %s の圧縮属性を変更できません。"
+    430                     "ﾌｧｲﾙ %s は圧縮されません。このﾌｧｲﾙを圧縮すると、ｼｽﾃﾑを起動できなくなる可能性があります。"
+    431                     "現在、ﾌｧｲﾙ ﾏﾈｰｼﾞｬはﾌｧｲﾙを圧縮または圧縮解除しています。圧縮または圧縮解除するﾌｧｲﾙの追加は、この処理が完了してから行ってください。"
+END
+
+STRINGTABLE
+BEGIN
+    500                     "ｺﾒﾝﾄ"
+    501                     "会社名"
+    502                     "ﾌｧｲﾙの説明"
+    503                     "内部名"
+    504                     "登録商標"
+    505                     "ｵﾘｼﾞﾅﾙ ﾌｧｲﾙ名"
+    506                     "ﾌﾟﾗｲﾍﾞｰﾄ ﾋﾞﾙﾄﾞ情報"
+    507                     "製品名"
+    508                     "製品ﾊﾞｰｼﾞｮﾝ"
+    509                     "ｽﾍﾟｼｬﾙ ﾋﾞﾙﾄﾞ情報"
+    510                     "言語"
+    511                     "言語"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "ﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞの接続(&N)..."
+    801                     "ﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞの切断(&D)..."
+    802                     "ﾈｯﾄﾜｰｸの接続(&N)..."
+    803                     "共有(&A)..."
+    804                     "共有解除(&T)..."
+    805                     "共有ﾃﾞｨﾚｸﾄﾘの表示(&H)..."
+    806                     "削除の取り消し(&U)..."
+    807                     "接続時に新しいｳｨﾝﾄﾞｳを開く(&O)"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "ﾌｧｲﾙの移動ｴﾗｰ"
+    1002                    "ﾌｧｲﾙのｺﾋﾟｰ ｴﾗｰ"
+    1003                    "ﾌｧｲﾙの削除 ｴﾗｰ"
+    1004                    "ﾌｧｲﾙ名の変更ｴﾗｰ"
+    1005                    "ﾄﾞﾗｲﾌﾞの選択ｴﾗｰ"
+    1006                    "ﾃﾞｨﾚｸﾄﾘの読み取りｴﾗｰ"
+    1007                    "ﾎﾞﾘｭｰﾑ ﾗﾍﾞﾙの作成ｴﾗｰ"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "%s を移動できません: %s"
+    1012                    "%s をｺﾋﾟｰできません: %s"
+    1013                    "%s を削除できません: %s"
+    1014                    "%s の名前を変更できません: %s"
+    1021                    "ﾃﾞｨﾚｸﾄﾘ %s を作成できません: %s"
+    1022                    "ﾃﾞｨﾚｸﾄﾘ %s を削除できません: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "%s を作成または上書きできません: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "転送元と転送先が同じです。"
+    1102                    "名前を変更するには、1 つのﾌｧｲﾙだけを指定してください。同様のﾌｧｲﾙ名を変更するには、ﾜｲﾙﾄﾞｶｰﾄﾞ (*.TXT など) を使ってください。"
+    1103                    "異なるﾃﾞｨﾚｸﾄﾘまたはﾃﾞｨｽｸの名前には変更できません。\n代わりにﾌｧｲﾙの移動ｺﾏﾝﾄﾞを使ってください。"
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "ﾙｰﾄ ﾃﾞｨﾚｸﾄﾘ名は変更できません。"
+    1105                    "転送先のﾃﾞｨﾚｸﾄﾘは転送元のｻﾌﾞﾃﾞｨﾚｸﾄﾘです。"
+    1106                    "このﾌｧｲﾙは Windows が使用しています。"
+    1107                    "1 つのﾌｧｲﾙまたはﾃﾞｨﾚｸﾄﾘを指定してください。ﾌｧｲﾙのｸﾞﾙｰﾌﾟを指定したいときは、ﾜｲﾙﾄﾞｶｰﾄﾞ (*.TXT など) を使ってください。"
+    1108                    "指定されたﾌｧｲﾙは既に存在します。別の名前を指定してやり直してください。"
+    1109                    "指定したﾊﾟｽおよびﾌｧｲﾙ名が正しいか、ﾈｯﾄﾜｰｸが開始されているか確認してください。"
+    1110                    "指定したﾊﾟｽが正しいか確認してください。"
+    1111                    "いくつかのｱﾌﾟﾘｹｰｼｮﾝを終了してからもう一度実行してください。または、ｺﾝﾄﾛｰﾙ ﾊﾟﾈﾙを使って仮想ﾒﾓﾘを増やしてください。"
+    1113                    "このﾃﾞｨｽｸのﾗｲﾄ ﾌﾟﾛﾃｸﾄを解除するか、別のﾃﾞｨｽｸを使って、やり直してください。"
+    1114                    "この操作を実行するのに必要なﾈｯﾄﾜｰｸ ｱｸｾｽ権があるか調べてください。"
+    1115                    "不要なﾌｧｲﾙを削除して空きﾃﾞｨｽｸ領域を増やしてから、やり直してください。"
+    1116                    "このﾒﾃﾞｨｱからﾃﾞｰﾀを検出できません。"
+    1117                    "このﾃﾞｨﾚｸﾄﾘは既に存在します。"
+    1118                    "指定されたﾌｧｲﾙは既に存在します。"
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "ﾃﾞｨｽｸ ﾄﾞﾗｲﾌﾞに間違ったﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸが挿入されています。"
+    1151                    "このｱﾌﾟﾘｹｰｼｮﾝは Windows NT ﾓｰﾄﾞで実行できません。"
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "ｵﾍﾟﾚｰﾃｨﾝｸﾞ ｼｽﾃﾑは、このｺﾝﾎﾟｰﾈﾝﾄを実行できません。"
+    1153                    "このｺﾝﾎﾟｰﾈﾝﾄは、Windows NT ﾓｰﾄﾞで実行できません。"
+    1154                    "このﾌﾟﾛｸﾞﾗﾑは有効な Windows NT ｱﾌﾟﾘｹｰｼｮﾝではありません。"
+    1155                    "ｴﾗｰが発生しました。このｴﾗｰにはﾒｯｾｰｼﾞがありません。"
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ｺﾋﾟｰ元(&F):"
+    2001                    "ｺﾋﾟｰ先(&T):"
+    2002                    "元の名前(&F):"
+    2003                    "新しい名前(&T):"
+    2004                    "このﾌｫﾝﾄを使用すると、漢字が正しく\n表示できなくなります。"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "ﾌｧｲﾙを操作するｺﾏﾝﾄﾞです。"
+    3985                    "ﾃﾞｨｽｸを操作するｺﾏﾝﾄﾞです。"
+    3986                    "ﾃﾞｨﾚｸﾄﾘの表示を変更するｺﾏﾝﾄﾞです。"
+    3987                    "表示する情報を選ぶｺﾏﾝﾄﾞです。"
+    3988                    "ｵﾌﾟｼｮﾝを設定するｺﾏﾝﾄﾞです。"
+    3989                    "ﾌｧｲﾙとﾃﾞｨﾚｸﾄﾘのｾｷｭﾘﾃｨを設定するｺﾏﾝﾄﾞです。"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "ｳｨﾝﾄﾞｳの配置を操作するｺﾏﾝﾄﾞです。"
+    4001                    "ﾌｧｲﾙ ﾏﾈｰｼﾞｬのﾍﾙﾌﾟを表示するｺﾏﾝﾄﾞです。"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "ﾍﾙﾌﾟの項目をｷｰﾜｰﾄﾞで検索します。"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "選択されたﾌｧｲﾙやﾃﾞｨﾚｸﾄﾘを開きます。"
+    4102                    "ﾄﾞｷｭﾒﾝﾄを印刷します。"
+    4103                    "ﾌｧｲﾙをｱﾌﾟﾘｹｰｼｮﾝと関連付けます。"
+    4104                    "ﾌｧｲﾙやﾃﾞｨﾚｸﾄﾘを検索します。"
+    4105                    "ｱﾌﾟﾘｹｰｼｮﾝやﾄﾞｷｭﾒﾝﾄ名を入力して、実行します。"
+    4106                    "選択されたﾌｧｲﾙやﾃﾞｨﾚｸﾄﾘを移動します。"
+    4107                    "ﾌｧｲﾙやﾃﾞｨﾚｸﾄﾘをｺﾋﾟｰします。"
+    4108                    "ﾌｧｲﾙやﾃﾞｨﾚｸﾄﾘを削除します。"
+    4109                    "ﾌｧｲﾙやﾃﾞｨﾚｸﾄﾘの名前を変更します。"
+    4110                    "ﾌｧｲﾙのﾌﾟﾛﾊﾟﾃｨを表示し、属性を設定します。"
+    4111                    "ﾃﾞｨﾚｸﾄﾘを作成します。"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "ﾌｧｲﾙ ﾏﾈｰｼﾞｬを終了します。"
+    4116                    "ﾌｧｲﾙとﾃﾞｨﾚｸﾄﾘを選択します。"
+    4117                    "削除したﾌｧｲﾙを回復します。"
+    4118                    "ﾌｧｲﾙをｸﾘｯﾌﾟﾎﾞｰﾄﾞにｺﾋﾟｰします。"
+    4119                    "ﾌｧｲﾙやﾃﾞｨﾚｸﾄﾘを圧縮します。"
+    4120                    "ﾌｧｲﾙやﾃﾞｨﾚｸﾄﾘを圧縮解除します。"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸの内容をｺﾋﾟｰします。"
+    4202                    "ﾃﾞｨｽｸにﾎﾞﾘｭｰﾑ ﾗﾍﾞﾙを付けたり、変更します。"
+    4203                    "ﾌﾛｯﾋﾟｰ ﾃﾞｨｽｸをﾌｫｰﾏｯﾄします。"
+    4205                    "ﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞに接続します。"
+    4206                    "ﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞとの接続を解除します。"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "別のﾄﾞﾗｲﾌﾞを選択します。"
+    4254                    "ﾃﾞｨﾚｸﾄﾘを共有します。"
+    4255                    "ﾃﾞｨﾚｸﾄﾘの共有を解除します。"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "ｻﾌﾞﾃﾞｨﾚｸﾄﾘを表示します。"
+    4302                    "ｻﾌﾞﾃﾞｨﾚｸﾄﾘをすべて表示します。"
+    4303                    "全ﾃﾞｨﾚｸﾄﾘの全ｻﾌﾞﾃﾞｨﾚｸﾄﾘを表示します。"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "選択されたﾃﾞｨﾚｸﾄﾘのｻﾌﾞﾃﾞｨﾚｸﾄﾘを閉じます。"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "ﾌｧｲﾙ名だけを表示します。"
+    4402                    "すべてのﾌｧｲﾙ情報を表示します。"
+    4403                    "一部のﾌｧｲﾙ情報を表示します。"
+    4404                    "ﾌｧｲﾙを名前順に並べ替えます。"
+    4405                    "ﾌｧｲﾙを拡張子順に並べ替えます。"
+    4406                    "ﾌｧｲﾙをｻｲｽﾞ順に並べ替えます。"
+    4407                    "ﾌｧｲﾙを日付順に並べ替えます。"
+    4409                    "指定された種類のﾌｧｲﾙだけを表示します。"
+    4411                    "ﾃﾞｨﾚｸﾄﾘ ﾂﾘｰだけを表示します。"
+    4412                    "現在のﾃﾞｨﾚｸﾄﾘのﾌｧｲﾙだけを表示します。"
+    4413                    "ﾃﾞｨﾚｸﾄﾘ ﾂﾘｰと現在のﾃﾞｨﾚｸﾄﾘのﾌｧｲﾙを表示します。"
+    4414                    "ﾃﾞｨﾚｸﾄﾘとﾌｧｲﾙを区切る境界の位置を移動します。"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "確認ﾒｯｾｰｼﾞを表示するかどうか設定します。"
+    4503                    "ｽﾃｰﾀｽ ﾊﾞｰの表示/非表示を切り替えます。"
+    4504                    "ｱﾌﾟﾘｹｰｼｮﾝの起動時にﾌｧｲﾙ ﾏﾈｰｼﾞｬを最小化します。"
+    4505                    "ｻﾌﾞﾃﾞｨﾚｸﾄﾘがあるかどうか印を付けます。"
+    4507                    "ﾄﾞﾗｲﾌﾞ ﾊﾞｰの表示/非表示を切り替えます。"
+    4508                    "ﾂｰﾙ ﾊﾞｰの表示/非表示を切り替えます。"
+    4509                    "ﾈｯﾄﾜｰｸ ﾄﾞﾗｲﾌﾞへ接続時に新しいｳｨﾝﾄﾞｳを開きます。"
+    4510                    "ﾌｧｲﾙ ﾏﾈｰｼﾞｬが使うﾌｫﾝﾄを変更します。"
+    4511                    "ﾌｧｲﾙ ﾏﾈｰｼﾞｬを終了するときに状態を保存します。"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "ﾂｰﾙ ﾊﾞｰを変更します。"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "選択した項目のｱｸｾｽ権を表示または設定します。"
+    4606                    "選択した項目の監査情報を表示または設定します。"
+    4607                    "選択した項目の所有権を表示または取得します。"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "ｳｨﾝﾄﾞｳを重ねて表示します。"
+    5702                    "ｳｨﾝﾄﾞｳを左右に並べて表示します。"
+    5703                    "ｳｨﾝﾄﾞｳを上下に並べて表示します。"
+    5704                    "ｳｨﾝﾄﾞｳの内容を最新の情報に更新します。"
+    5705                    "ｱｲｺﾝを整列します。"
+    5706                    "新しいｳｨﾝﾄﾞｳを開きます。"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "ﾍﾙﾌﾟの目次を表示します。"
+    5802                    "ﾍﾙﾌﾟの使い方を表示します。"
+    5803                    "ﾊﾞｰｼﾞｮﾝ情報を表示します。"
+END
+
+#endif    // Japanese (Japan) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

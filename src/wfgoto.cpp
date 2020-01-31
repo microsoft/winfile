@@ -344,8 +344,9 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 		}
 
 		// for all directories at this level, insert into BagOValues
+        // do not insert the directories '.' or '..'; or insert empty directory names (cf. issue #194)
 
-		if ((lfndta.fd.dwFileAttributes & ATTR_DIR) == 0 || ISDOTDIR(lfndta.fd.cFileName))
+		if ((lfndta.fd.dwFileAttributes & ATTR_DIR) == 0 || ISDOTDIR(lfndta.fd.cFileName) || lfndta.fd.cFileName[0] == CHAR_NULL)
 		{
 			bFound = WFFindNext(&lfndta);
 			continue;
@@ -551,6 +552,7 @@ SetCurrentPathOfWindow(LPWSTR szPath)
 }
 
 INT_PTR
+CALLBACK
 GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
 	HWND hwndEdit;

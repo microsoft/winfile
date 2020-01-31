@@ -1,0 +1,26 @@
+Summary:
+
+    Often applications wish to extract information from an executable 
+file without the application being loaded.  The Windows Program Manager 
+does this when it extracts an icon from the .EXE to represent the 
+application.  There are many other resources and tables in an EXE file 
+(or a DLL) that may be useful to certain applications.  The EXEVIEW 
+sample demonstrates how to extract and decode these resources and tables 
+for executable or library files (FONTS and DRVs qualify as DLLs).
+
+More Information:
+
+    The EXEVIEW sample uses the Old and New Header formats has documented 
+in the Microsoft MS-DOS Encyclopedia.  EXEVIEW loads these headers and the 
+associated tables that are pointed at by these headers.  The include the 
+Entry Table, the Segment Table, the Resource Table, the Resident and 
+Non-Resident name tables as well as the Imported  Name tables.  In addition 
+to loading these tables,  EXEVIEW will also load the resources that can 
+be found in the resource table.  If the resource can be displayed 
+graphically (Icons, cursors, bitmaps, menus, etc...) then it is.  For 
+string tables and directories (Icon, cursor, font, etc...) the resources 
+are listed in a text format.
+
+    For more information on the file formats and resource formats see 
+the MS-DOS Encyclopedia, The September 1991 Microsoft Systems Journal 
+or the Microsoft Open Tools documentation.

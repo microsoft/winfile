@@ -1,0 +1,843 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Dosya"
+    BEGIN
+    MENUITEM    "&Aç	Enter", 0X0065
+    MENUITEM    "&Taþý...	F7", 0X006A
+    MENUITEM    "K&opyala...	F8", 0X006B
+    MENUITEM    "&Sil...	Del", 0X006C
+    MENUITEM    "Ad &Deðiþtir...", 0X006D
+    MENUITEM    "Ö&zellikler...	Alt+Enter", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "Ça&lýþtýr...", 0X0069
+    MENUITEM    "&Yazdýr...", 0X0066
+    MENUITEM    "Ýliþkil&endir...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Dizi&n Yarat...", 0X006F
+    MENUITEM    "A&ra...", 0X0068
+    MENUITEM    "Seçim &Belirle...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "Çý&kýþ", 0X0073
+    END
+    POPUP   "Dis&k"
+    BEGIN
+    MENUITEM    "Disket &Kopyala...", 0X00C9
+    MENUITEM    "Disk &Etiketle...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "Disket &Biçimle...", 0X00CB
+    MENUITEM    "Sistem Disketi &Hazýrla...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Sürücü Seç...", 0X00FB
+    END
+    POPUP   "&Aðaç"
+    BEGIN
+    MENUITEM    "&Bir Alt Düzeyini Göster	+", 0X012D
+    MENUITEM    "&Alt Düzeylerini Göster	*", 0X012E
+    MENUITEM    "&Tümünü Göster	Ctrl+*", 0X012F
+    MENUITEM    "Alt Düzeylerini Gi&zle	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "Alt Düzeyi Olanlarý Ýþa&retle", 0X01F9
+    END
+    POPUP   "&Görünüm"
+    BEGIN
+    MENUITEM    "Aðaç &ve Dizin", 0X019D
+    MENUITEM    "&Yalnýz Aðaç", 0X019B
+    MENUITEM    "Yalnýz &Dizin", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "Bö&l", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Ad", 0X0191
+    MENUITEM    "Tü&m Dosya Ayrýntýlarý", 0X0192
+    MENUITEM    "&Bazý Dosya Ayrýntýlarý...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Ada göre &Sýrala", 0X0194
+    MENUITEM    "&Türe göre Sýrala", 0X0195
+    MENUITEM    "Boy&uta göre Sýrala", 0X0196
+    MENUITEM    "Ta&rihe göre Sýrala", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "Dosya Türüne &Göre...", 0X0199
+    END
+    POPUP   "&Seçenekler"
+    BEGIN
+    MENUITEM    "&Onay...", 0X01F5
+    MENUITEM    "&Yazýtipi...", 0X01FE
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Durum Çubuðu", 0X01F7
+    MENUITEM    "Kullanýmda &Simge ile Göster", 0X01F8
+    MENUITEM    "Çýkýþta &Ayarlarý Kaydet", 0X01FF
+    END
+    POPUP   "&Pencere"
+    BEGIN
+    MENUITEM    "Yeni &Pencere", 0X03ED
+    MENUITEM    "&Basamakla	ÜstKrkt+F5", 0X03E9
+    MENUITEM    "Döþ&e	ÜstKrkt+F4", 0X03EA
+    MENUITEM    "&Simgeleri Yerleþtir", 0X03EC
+    MENUITEM    "&Yenile	F5", 0X03EB
+    END
+    POPUP   "&Bilgi"
+    BEGIN
+    MENUITEM    "Dosya Yöneticisi &Hakkýnda...", 0X044F
+    END
+END
+
+
+145 DIALOG 0x80c8, 14, 17, 264, 169
+CAPTION "Yazýtipi"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Yazýtipi:", 1088, 0x0000, 6, 3, 40, 8
+    CONTROL 0x85, "", 1136, 0x0351, 6, 12, 94, 54
+    CONTROL 0x82, "Yazýtipi &Biçemi:", 1089, 0x0000, 108, 3, 55, 8
+    CONTROL 0x85, "", 1137, 0x0001, 108, 12, 64, 54
+    CONTROL 0x82, "Boyu&t:", 1090, 0x0000, 179, 3, 30, 8
+    CONTROL 0x85, "", 1138, 0x0311, 179, 12, 32, 54
+    CONTROL 0x80, "Etkiler", 1072, 0x0007, 6, 72, 84, 61
+    CONTROL 0x80, "Üs&tüçizili", 1040, 0x0003, 10, 82, 49, 10
+    CONTROL 0x80, "&Altçizgi", 1041, 0x0003, 10, 94, 51, 10
+    CONTROL 0x80, "&Küçük Harf", 1042, 0x0003, 10, 82, 49, 10
+    CONTROL 0x82, "&Renk:", 1091, 0x0000, 10, 106, 30, 8
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "Tamam", 1, 0x0001, 219, 12, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 219, 29, 40, 14
+    CONTROL 0x80, "Uyg&ula", 1026, 0x0000, 219, 46, 40, 14
+    CONTROL 0x80, "Örnek", 1073, 0x0007, 99, 82, 160, 51
+    CONTROL 0x82, "", 1093, 0x0081, 98, 135, 160, 20
+    CONTROL 0x82, "AaÇçÜüZz", 1092, 0x0081, 104, 92, 149, 37
+END
+
+45 DIALOG 0x80c8, 26, 25, 201, 80
+CAPTION "Sürücü Seç"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Sürücüler:", 245, 0x000c, 5, 5, 41, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "Tamam", 1, 0x0001, 155, 15, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 155, 32, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Çalýþtýr"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Komut Satýrý:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "&Simge Durumunda Çalýþtýr", 214, 0x0003, 3, 45, 100, 12
+    CONTROL 0x80, "Tamam", 1, 0x0001, 167, 11, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 167, 28, 40, 14
+END
+
+44 DIALOG 0x80c8, 16, 17, 145, 61
+CAPTION "Seçim Belirle"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Dosya(lar):", -1, 0x000c, 6, 16, 68, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 68, 12
+    CONTROL 0x80, "&Seç", 1, 0x0001, 81, 6, 61, 14
+    CONTROL 0x80, "Seçi&mden Çýkart", 6, 0x0000, 81, 23, 61, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 81, 40, 61, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 255, 95
+CAPTION "Yerine Koymaya Onay"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 26, 3, 203, 10
+    CONTROL 0x82, "Silinecek Dosya:", 100, 0x000c, 26, 17, 59, 10
+    CONTROL 0x82, "", 103, 0x008c, 86, 17, 165, 10
+    CONTROL 0x82, "", 105, 0x000c, 86, 30, 165, 10
+    CONTROL 0x82, "Yerine Konulacak Dosya:", 100, 0x000c, 26, 43, 59, 10
+    CONTROL 0x82, "", 102, 0x008c, 86, 43, 165, 10
+    CONTROL 0x82, "", 106, 0x000c, 86, 56, 165, 10
+    CONTROL 0x80, "&Evet", 6, 0x0001, 14, 73, 53, 14
+    CONTROL 0x80, "&Tümüne Evet", 107, 0x0000, 72, 73, 53, 14
+    CONTROL 0x80, "&Hayýr", 7, 0x0000, 130, 73, 53, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 188, 73, 53, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 255, 60
+CAPTION "Dosya Silmeye Onay"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 203, 10
+    CONTROL 0x82, "Silinecek Dosya:", 100, 0x000c, 25, 18, 54, 10
+    CONTROL 0x82, "", 102, 0x008c, 82, 18, 170, 10
+    CONTROL 0x80, "&Evet", 6, 0x0001, 14, 42, 53, 14
+    CONTROL 0x80, "&Tümüne Evet", 107, 0x0000, 72, 42, 53, 14
+    CONTROL 0x80, "&Hayýr", 7, 0x0000, 130, 42, 53, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 188, 42, 53, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Dizin Silmeye Onay"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Silinecek Dizin:", 100, 0x000c, 25, 18, 55, 10
+    CONTROL 0x82, "", 102, 0x008c, 80, 18, 160, 10
+    CONTROL 0x80, "&Evet", 6, 0x0001, 9, 42, 53, 14
+    CONTROL 0x80, "&Tümüne Evet", 107, 0x0000, 67, 42, 53, 14
+    CONTROL 0x80, "&Hayýr", 7, 0x0000, 125, 42, 53, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 183, 42, 53, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 255, 60
+CAPTION "Dosya Taþýmaya Onay"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Taþýnacak Dosya:", 100, 0x000c, 25, 18, 59, 10
+    CONTROL 0x82, "", 102, 0x008c, 86, 18, 166, 10
+    CONTROL 0x80, "&Evet", 6, 0x0001, 14, 42, 53, 14
+    CONTROL 0x80, "&Tümüne Evet", 107, 0x0000, 72, 42, 53, 14
+    CONTROL 0x80, "&Hayýr", 7, 0x0000, 130, 42, 53, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 188, 42, 53, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 255, 60
+CAPTION "Dosya Adý Deðiþtirmeye Onay"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Adý Deðiþtirilecek:", 100, 0x000c, 25, 13, 64, 10
+    CONTROL 0x82, "", 102, 0x008c, 90, 13, 160, 10
+    CONTROL 0x80, "&Evet", 6, 0x0001, 14, 42, 53, 14
+    CONTROL 0x80, "&Tümüne Evet", 107, 0x0000, 72, 42, 53, 14
+    CONTROL 0x80, "&Hayýr", 7, 0x0000, 130, 42, 53, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 188, 42, 53, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 258, 55
+CAPTION "Yazdýr"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 193, 10
+    CONTROL 0x82, "&Yazdýrýlacak:", 100, 0x000c, 3, 20, 46, 10
+    CONTROL 0x81, "", 102, 0x0480, 48, 18, 160, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 36, 190, 10
+    CONTROL 0x80, "Tamam", 1, 0x0001, 215, 10, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 215, 27, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 263, 54
+CAPTION "Ara"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Aranan:", 100, 0x000c, 5, 6, 45, 12
+    CONTROL 0x81, "", 201, 0x0480, 52, 5, 160, 12
+    CONTROL 0x82, "&Baþlama Yeri:", 100, 0x000c, 5, 21, 45, 12
+    CONTROL 0x81, "", 101, 0x0480, 52, 20, 160, 12
+    CONTROL 0x80, "&Tüm Altdizinleri Tara", 232, 0x0003, 52, 34, 100, 12
+    CONTROL 0x80, "Tamam", 1, 0x0001, 217, 9, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 217, 26, 40, 14
+END
+
+14 DIALOG 0x80c8, 47, 59, 241, 83
+CAPTION "Taþý"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Geçerli Dizin: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "S&on:", 100, 0x000c, 3, 33, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 37, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 26, 33, 10, 10
+    CONTROL 0x80, "&Pano'ya Kopyala", 256, 0x0004, 26, 47, 105, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 66, 55, 10
+    CONTROL 0x82, "", 201, 0x008b, 60, 66, 135, 10
+    CONTROL 0x80, "Tamam", 1, 0x0001, 193, 12, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 193, 29, 40, 14
+    CONTROL 0x82, "Ýl&k:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 246, 56
+CAPTION "Sil"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Geçerli Dizin: C", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "&Silinecek:", 100, 0x000c, 3, 20, 35, 10
+    CONTROL 0x81, "", 102, 0x0480, 40, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 36, 35, 10
+    CONTROL 0x82, "", 201, 0x008b, 40, 36, 155, 10
+    CONTROL 0x80, "Tamam", 1, 0x0001, 200, 6, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 200, 23, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 184, 65
+CAPTION "Özellikler"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d Dosya Seçili, Toplam %s byte", 100, 0x000c, 5, 5, 144, 10
+    CONTROL 0x80, "Öznitelikler", -1, 0x0007, 5, 18, 120, 42
+    CONTROL 0x80, "Salt &Okunur", 215, 0x0003, 10, 29, 52, 12
+    CONTROL 0x80, "&Gizli", 216, 0x0003, 72, 29, 52, 12
+    CONTROL 0x80, "&Arþiv", 217, 0x0003, 10, 41, 52, 12
+    CONTROL 0x80, "&Sistem", 218, 0x0003, 72, 41, 52, 12
+    CONTROL 0x80, "Tamam", 1, 0x0001, 136, 9, 44, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 136, 26, 44, 14
+END
+
+16 DIALOG 0x80c8, 33, 44, 231, 100
+CAPTION "%s Dosyasýnýn Özellikleri"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Tamam", 1, 0x0001, 178, 11, 50, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 178, 28, 50, 14
+    CONTROL 0x82, "&Dosya Adý:", 100, 0x000c, 5, 5, 50, 10
+    CONTROL 0x81, "", 201, 0x0880, 56, 4, 118, 10
+    CONTROL 0x82, "Boyut:", 100, 0x000c, 5, 16, 40, 10
+    CONTROL 0x82, "", 203, 0x000c, 56, 16, 90, 10
+    CONTROL 0x82, "Son Deðiþiklik:", 100, 0x000c, 5, 27, 57, 10
+    CONTROL 0x82, "", 204, 0x000c, 56, 27, 97, 10
+    CONTROL 0x82, "&Yol:", 100, 0x000c, 5, 38, 46, 10
+    CONTROL 0x81, "", 101, 0x0880, 56, 38, 118, 10
+    CONTROL 0x80, "Öznitelikler", 100, 0x0007, 4, 52, 120, 42
+    CONTROL 0x80, "Salt &Okunur", 215, 0x0003, 9, 64, 52, 12
+    CONTROL 0x80, "&Gizli", 216, 0x0003, 71, 64, 49, 12
+    CONTROL 0x80, "&Arþiv", 217, 0x0003, 9, 76, 52, 12
+    CONTROL 0x80, "&Sistem", 218, 0x0003, 71, 76, 49, 12
+END
+
+17 DIALOG 0x80c8, 20, 20, 201, 59
+CAPTION "Dizin Yarat"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Ad:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 201, 0x0480, 25, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 40, 145, 10
+    CONTROL 0x80, "Tamam", 1, 0x0001, 158, 6, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 158, 23, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 155, 57
+CAPTION "Sistem Disketi Hazýrla"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Sürücü:", -1, 0x000c, 5, 8, 100, 10
+    CONTROL 0x85, "", 222, 0x0003, 30, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 9, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 110, 26, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 21, 162, 58
+CAPTION "Disket Kopyala"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Kaynak Sürücü:", -1, 0x000c, 5, 8, 53, 10
+    CONTROL 0x85, "", 245, 0x0003, 61, 7, 40, 37
+    CONTROL 0x82, "&Hedef Sürücü:", 206, 0x000c, 5, 22, 50, 10
+    CONTROL 0x85, "", 222, 0x0003, 61, 21, 40, 37
+    CONTROL 0x80, "Tamam", 1, 0x0001, 115, 9, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 115, 26, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Disk Kopyalanýyor"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "içindeki disket kopyalanýyor.", 100, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Sürücü A:", 222, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "Kaynak disket okunuyor.", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Ýptal", 2, 0x0001, 44, 39, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 41
+CAPTION "Disk Etiketle"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Etiket:", 100, 0x000c, 5, 10, 30, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 21, 100, 12
+    CONTROL 0x80, "Tamam", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 115, 23, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 177, 96
+CAPTION "Disket Biçimle"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Tamam", 1, 0x0001, 132, 10, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 132, 27, 40, 14
+    CONTROL 0x82, "Sü&rücü:", -1, 0x000c, 5, 7, 49, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 4, 66, 40
+    CONTROL 0x82, "&Sýða:", 100, 0x000c, 5, 20, 49, 10
+    CONTROL 0x85, "", 241, 0x0003, 55, 19, 66, 40
+    CONTROL 0x80, "Seçenekler", 102, 0x0007, 5, 39, 116, 53
+    CONTROL 0x82, "&Etiket:", -1, 0x000c, 11, 51, 39, 10
+    CONTROL 0x81, "", 201, 0x0000, 40, 49, 63, 12
+    CONTROL 0x80, "Sistem Disketi Olarak &Hazýrla", 242, 0x0003, 11, 62, 107, 12
+    CONTROL 0x80, "Çabuk &Biçimle", 244, 0x0003, 11, 76, 90, 12
+END
+
+26 DIALOG 0x90c8, 28, 30, 155, 50
+CAPTION "Disket Biçimleme"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Disket biçimleniyor.", 100, 0x0001, 2, 5, 150, 10
+    CONTROL 0x82, "Sürücü ilk kullanýma hazýrlanýyor...", 243, 0x0001, 2, 17, 150, 10
+    CONTROL 0x80, "Ýptal", 2, 0x0001, 56, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 177, 51
+CAPTION "Sistem Disketi Hazýrla"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Sistem dosyalarý kopyalanýyor.", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "Durdurmak için Ýptal düðmesine basýn.", 100, 0x0001, 0, 16, 174, 8
+    CONTROL 0x80, "Ýptal", 2, 0x0001, 66, 31, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 245, 135
+CAPTION "Að Baðlantýlarý"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Yeni Baðlantý", -1, 0x0007, 5, 3, 160, 55
+    CONTROL 0x82, "Að &Yolu:", -1, 0x0000, 11, 15, 55, 10
+    CONTROL 0x81, "", 223, 0x0480, 55, 14, 100, 12
+    CONTROL 0x82, "&Sürücü:", -1, 0x0000, 10, 30, 24, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 28, 40, 100
+    CONTROL 0x82, "&Parola:", -1, 0x0000, 10, 44, 36, 10
+    CONTROL 0x81, "", 224, 0x04a0, 55, 42, 100, 12
+    CONTROL 0x82, "Geçerli Sürücü Baðl&antýlarý:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 160, 60
+    CONTROL 0x80, "&Kapat", 2, 0x0001, 181, 11, 58, 14
+    CONTROL 0x80, "&Baðlan", 1, 0x0000, 181, 32, 58, 14
+    CONTROL 0x80, "Ön&cekiler...", 226, 0x0000, 181, 49, 58, 14
+    CONTROL 0x80, "&Gözat...", 227, 0x0000, 181, 66, 58, 14
+    CONTROL 0x80, "Baðlantýyý K&es", 255, 0x0000, 181, 83, 58, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 228, 98
+CAPTION "Önceki Að Baðlantýlarý"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Að &Yollarý:", 100, 0x000c, 3, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "&Seç", 1, 0x0001, 181, 10, 44, 14
+    CONTROL 0x80, "&Kapat", 2, 0x0000, 181, 28, 44, 14
+    CONTROL 0x80, "Si&l", 219, 0x0000, 181, 45, 44, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 163, 65
+CAPTION "Kýsmi Ayrýntýlar"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Ayrýntýlar", 100, 0x0007, 4, 4, 111, 55
+    CONTROL 0x80, "&Boyut", 203, 0x0003, 11, 15, 100, 9
+    CONTROL 0x80, "Son Deðiþiklik &Tarihi", 204, 0x0003, 11, 25, 100, 9
+    CONTROL 0x80, "Son Deðiþiklik &Saati", 205, 0x0003, 11, 35, 100, 9
+    CONTROL 0x80, "Dosya Öz&nitelikleri", 206, 0x0003, 11, 45, 100, 9
+    CONTROL 0x80, "Tamam", 1, 0x0001, 120, 10, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 120, 27, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 152, 102
+CAPTION "Dosya Türüne Göre"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Ad:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Dosya Türü", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "Di&zinler", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "&Programlar", 210, 0x0003, 10, 43, 60, 12
+    CONTROL 0x80, "&Belgeler", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "&Diðer Dosyalar", 212, 0x0003, 10, 67, 60, 12
+    CONTROL 0x80, "&Gizli/Sistem Dosyalarýný Göster", 250, 0x0003, 5, 85, 115, 12
+    CONTROL 0x80, "Tamam", 1, 0x0001, 108, 14, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 108, 31, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 80
+CAPTION "Onay"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Onaylanacak Ýþlemler", 100, 0x0007, 5, 3, 108, 73
+    CONTROL 0x80, "&Dosya Silme", 219, 0x0003, 10, 15, 80, 12
+    CONTROL 0x80, "Dizin &Silme", 220, 0x0003, 10, 27, 80, 12
+    CONTROL 0x80, "Dosya Deðiþtirm&e", 221, 0x0003, 10, 39, 80, 12
+    CONTROL 0x80, "&Fare Ýþlemi", 249, 0x0003, 10, 51, 80, 12
+    CONTROL 0x80, "Disk &Komutu", 251, 0x0003, 10, 63, 80, 12
+    CONTROL 0x80, "Tamam", 1, 0x0001, 118, 9, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 118, 26, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 251, 46
+CAPTION "Taþýnýyor..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 49, 5, 192, 10
+    CONTROL 0x82, "Son:", 108, 0x008b, 5, 15, 20, 10
+    CONTROL 0x82, "", 109, 0x008b, 49, 15, 192, 10
+    CONTROL 0x80, "Ýptal", 2, 0x0001, 105, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 18, 20, 124, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Dosya yazdýrýlýyor...", -1, 0x0001, 2, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 2, 20, 120, 12
+    CONTROL 0x80, "Ýptal", 2, 0x0001, 46, 40, 32, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 211, 88
+CAPTION "Ýliþkilendir"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Dosyalarýn Uzantýsý:", 99, 0x000c, 5, 7, 74, 10
+    CONTROL 0x81, "", 112, 0x0400, 80, 6, 42, 12
+    CONTROL 0x82, "Ý&liþkilendirileceði:", 99, 0x000c, 5, 22, 75, 10
+    CONTROL 0x81, "", 113, 0x0080, 5, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 11, 44, 146, 40
+    CONTROL 0x80, "Tamam", 1, 0x0001, 165, 11, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 165, 28, 40, 14
+    CONTROL 0x80, "&Gözat...", 232, 0x0000, 165, 48, 40, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 250, 72
+CAPTION "Dosya Adý Seç"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Belirtilen yol, DOS'un dosya adý biçimine uymuyor.  Lütfen yeni bir ad girin.", 99, 0x0000, 4, 4, 190, 24
+    CONTROL 0x82, "&Yeni Ad:", 99, 0x0002, 5, 56, 54, 12
+    CONTROL 0x81, "", 103, 0x0000, 61, 55, 130, 12
+    CONTROL 0x82, "Esas Yol:", 99, 0x0002, 5, 28, 54, 11
+    CONTROL 0x81, "", 102, 0x0880, 61, 28, 130, 12
+    CONTROL 0x82, "Gideceði Dizin:", 99, 0x0002, 5, 42, 54, 11
+    CONTROL 0x81, "", 101, 0x0880, 61, 42, 130, 12
+    CONTROL 0x80, "Tamam", 1, 0x0001, 205, 11, 40, 14
+    CONTROL 0x80, "Ýptal", 2, 0x0000, 205, 27, 40, 14
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Windows'dan Çýkýþ"
+0x0029   "Bu iþlem Windows oturumunu kapayacaktýr."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Disket Kopyala"
+0x0033   "Hedef disketi yerleþtirin."
+0x0034   "Kaynak disketi yerleþtirin."
+0x0035   "Kaynak ve hedef disketi yerleþtirin."
+0x0036   "Hedef disket biçimleniyor."
+0x0037   "Disket Kopyalama Hatasý"
+0x0038   "Disket kopyalanamýyor."
+0x003a   "Kaynak sürücü ve hedef sürücü birbiriyle uyumsuz."
+0x003c   "%d%% tamamlandý."
+0x003d   "Kök dizin hazýrlanýyor..."
+0x003e   "Sistem dosyalarý kopyalanýyor..."
+0x003f   "Disket Biçimleme Hatasý"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Yazdýrma iþlemi için diskte yeterli yer yok.
+
+Gerekli olmayan bazý dosyalarý silip, tekrar deneyin."
+0x00c1   "Yazdýrma iþlemi için bellek yeterli deðil.
+
+Bir ya da birkaç uygulamayý kapatýp, tekrar deneyin."
+0x00c2   "Yazdýrma iþlemi sýrasýnda hata oluþtu.
+
+Yazýcý ayarlarýnýn doðruluðunu ve yazýcýnýn seçili olduðunu denetleyin."
+0x00c3   "Görüntülenen dizin aðacý eksik"
+0x00c5   "Hedef sürücüde yer yok.
+
+Sürücüye yeni bir disket yerleþtirin."
+0x00c6   "Bu, gizli, salt okunur ya da bir sistem dosyasý."
+0x00c7   "Çabuk biçimleme yapýlamýyor.
+
+Normal biçimleme uygulansýn mý?"
+0x00c8   "Belirtilen uygulama bir Windows ya da MS-DOS programý deðil."
+0x00c9   "Bu uygulama Microsoft Windows'un daha yeni bir sürümünü gerektiriyor."
+0x00ca   "Bu uygulama Windows'u gerektirir."
+0x00cb   "Komut uygulamaya gönderilirken bir hata oluþtu."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Disket biçimlenemiyor."
+0x0042   "Biçimleme tamamlandý."
+0x0043   "Diskteki toplam yer %ld byte.
+Diskteki boþ yer %ld byte.
+
+Baþka bir disk biçimlemek istiyor musunuz?"
+0x0046   "Sistem Disketi Hazýrla"
+0x0047   "%c sürücüsündeki diskete sistem dosyalarýný kopyalamak istediðinizden emin misiniz?"
+0x0048   "Sistem Disketi Hatasý"
+0x0049   "MS-DOS baþlangýç sürücüsü sistem dosyasý içermiyor ya da kullanýlabilir deðil."
+0x004a   "Sistem dosyalarýný MS-DOS baþlangýç sürücüsüne kopyalýyamýyor."
+0x004b   "Sistem dosyalarý diskete eklenemiyor.
+
+Sürücüde biçimlenmiþ bir disket bulunduðunu ve sürücü kapýsýný kapalý olduðunu denetleyiniz."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Að Hatasý"
+0x0053   "Bu sürücü Windows sistem dosyalarýný içermekte; baðlantý kesilemez."
+0x005b   "Öznitelikler deðiþtirilemiyor.
+
+Diskin yazmaya karþý korunmuþ olmadýðýný denetleyin."
+0x005c   "Dizin yaratýlamýyor.
+
+Diskin yazmaya karþý korunmuþ olmadýðýný denetleyin. "
+0x005d   "Disket etiketlendirilemiyor.
+
+Diskin yazmaya karþý korunmuþ olmadýðýný, að sürücüsü olmadýðýný ve etiketin geçerli olduðunu denetleyin.
+Etiketler ilerideki iþaretleri içeremez:
+[Boþluk] * ? / \ | . , ; : + = [ ] ( ) & ^ < > ""
+0x005f   "Eþlenen hiçbir dosya bulunamadý."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "Toplam %d dosya (%s byte)"
+0x00b5   "Okunan dizin sayýsý: %d "
+0x00b6   "%c: %sKB boþ, toplam %sKB "
+0x00b7   "%d dosya bulundu."
+0x00b9   "seçili dosyalar"
+0x00ba   "Að sürücüsü baðlantýsý kesilemiyor.
+
+Sürücü üzerinde açýk dosyalar var."
+0x00bb   "%d dosya seçili (%s byte)"
+0x00bc   "%c: sürücüsünde disket yok.
+
+Sürücüye bir disket yerleþtirip, tekrar deneyin."
+0x00bd   "%c sürücüsündeki disket biçimlenmemiþ.
+
+Þimdi biçimlenmesini ister misiniz?"
+0x00bf   "Yazdýrýlacak dosya bulunamadý. Belirtilen yolun ve dosya adýnýn doðruluðunu denetleyiniz."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "Bu adda bir dizin zaten var."
+0x0061   "Bu sürücünün içeriði deðiþti. Arama Sonuçlarý penceresinin güncellenmesini istiyor musunuz?"
+0x0065   "Sürücü %c:%c"
+0x006e   "Program çalýþtýrýlamýyor"
+0x006f   "Beklenmedik hata: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "Biçimleme, disketinizdeki TÜM bilgiyi silecek. %c sürücüsündeki disketi biçimlemek istediðinizden emin misiniz?"
+0x00d3   "Disket Biçimleye Onay"
+0x00d4   "Bu iþlem hedef disketteki TÜM bilgiyi silecek. Ýþlemi südürmek istediðinizden emin misiniz?"
+0x00d5   "Disket Kopyalamaya Onay"
+0x00d6   "&Kapat"
+0x00d7   "Silinenleri &Geri Getir..."
+0x00d8   "&Að Sürücüsüne Baðlan..."
+0x00d9   "&Að Baðlantýlarý..."
+0x00da   "%s adlý bir dizin yok.
+
+Yaratýlsýn mý?"
+0x00db   "Programlar#*.exe;*.pif;*.com;*.bat#Tüm Dosyalar (*.*)#*.*#"
+0x00dc   "Gözat"
+0x00dd   "Çalýþtýr"
+0x00de   "Dosya Yazdýrýlamýyor"
+0x00df   "Yardým bilgisi görüntülenemiyor."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Belirtilen uygulamayý baþlatmak için bellek yetersiz.
+
+Bir ya da birkaç uygulamayý kapatýp, tekrar deneyin."
+0x0071   "Dosya (ya da bileþenlerinden biri) bulunamadý.
+
+Yolun ve dosya adýnýn doðruluðunu ve gerekli kitaplýklarýn tümünün var olduðunu denetleyin."
+0x0072   "Belirtilen yol geçersiz."
+0x0073   "Çok fazla sayýda dosya kullanýlýyor.
+
+Bir ya da birkaç uygulamayý kapatýn ya da CONFIG.SYS'deki FILES komutunun deðerini yükseltip, yeniden deneyin."
+0x0074   "Bu dosya bir uygulama ile iliþkilendirilmemiþ.
+
+Bir iliþki yaratmak için Dosya menüsünden Ýliþkilendir komutunu seçin."
+0x0075   "Belitilen programýn birden fazla kopyasý baþlatýlamaz."
+0x0076   "Dosya açýlamýyor ya da yazdýrýlamýyor.
+
+Bu dosyayý yaratmakta kullanýlan uygulamayý baþlatýp, dosyayý o uygulamadan açýn ya da yazdýrýn."
+0x0078   "Fare Ýþlemine Onay"
+0x0079   "Seçili dosyalarý ya da dizinleri %s dizinine kopyalamak istediðinizden emin misiniz?"
+0x007a   "Seçili dosyalarý ya da dizinleri %s dizinine taþýmak istediðinizden emin misiniz?"
+0x007b   "%s dosyasýnýn, %s baþlatýldýðýnda açýlan ilk dosya olmasýný istediðinizden emin misiniz?"
+0x007c   "Dosya Yöneticisi"
+0x007e   "Dizin Aðacý"
+0x007f   "Arama Sonuçlarý: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "%s uzantýlý dosyalar program dosyalarýdýr ve baþka bir uygulamayla iliþkilendirilemezler."
+0x00e1   "%s, bir program deðil ve bir dosya uzantýsýyla iliþkilendirilemez."
+0x00e2   "(Hiçbiri)"
+0x00e3   "Hiçbir dosya bulunamadý."
+0x00e4   "Birden fazla dosya yazdýrýlamýyor.
+
+Tek bir dosya seçip, yeniden deneyin."
+0x00e5   "Bu program veya öðelerinden biri sýkýþtýrýlmýþ.
+
+Dosyayý kurma disketlerinden kopyalamak için, MS-DOS expand hizmet programýný kullanýn."
+0x00e6   "Bu uygulamayý çalýþtýrmak için gerekli olan kitaplýk dosyalarýndan biri hasar görmüþ. Lütfen bu uygulamayý yeniden yükleyin."
+0x00e7   "Bu dosya baþka bir uygulama tarafýndan kullanýmda."
+0x00e8   "Dosya Yöneticisi "%s" dizininde yaratýlan dosyalara ulaþamayabilir.
+
+Devam etmek istiyor musunuz?"
+0x00e9   "Dizin Yarat"
+0x00ea   "%ld byte"
+0x00eb   "%s byte"
+0x00ec   "Birden fazla dosyayý veya dizini Pano'ya kopyalayamýyor.
+
+Tek bir dosya seçip, tekrar deneyin. "
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Çok Fazla Dosya"
+0x0085   "Dosya Yöneticisi - Bellekte Yer Yok"
+0x0086   "Tüm dizini okuyamýyor.  Yalnýzca kýsýmsal listeler görüntülenecek."
+0x008c   "Geçerli Dizin: %s"
+0x008d   "Kopyala"
+0x008f   "Ad Deðiþtir"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Disket Biçimle"
+0x0092   "Biçimlenecek disketi seçin."
+0x0094   "Að Sürücüsü Baðlantýsý&ný Kes..."
+0x0096   "Yaratýlan:"
+0x0097   "Siliniyor..."
+0x0098   "Kopyalanan:"
+0x0099   "Adý Deðiþtiriliyor..."
+0x009a   "Taþýnýyor..."
+0x009b   "Siliniyor..."
+0x009c   "Yazdýrýlan: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "%c:\ sürücüsü yok."
+0x00a9   "Kopyalanýyor..."
+0x00aa   "Silinen:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Açýlýyor..."
+0x01a5   "Kapatýlýyor..."
+0x01a6   "Çok fazla dizin penceresi açýk.
+
+Bir ya da daha fazla pencereyi kapatýp, tekrar deneyin."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Dosya Taþýmada Hata"
+0x03ea   "Dosya Kopyalamada Hata"
+0x03eb   "Dosya Silmede Hata"
+0x03ec   "Dosya Adý Deðiþtirmede Hata"
+0x03ed   "Sürücü Seçmede Hata"
+0x03ee   "Dizin Okumada Hata"
+0x03ef   "Disk Etiketlemede Hata"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "%s taþýnamýyor: %s"
+0x03f4   "%s kopyalanamýyor: %s"
+0x03f5   "%s silinemiyor: %s"
+0x03f6   "%s Dosyasýnýn adý deðiþtirilemiyor: %s"
+0x03fd   "%s dizini yaratýlamýyor: %s"
+0x03fe   "%s dizini yok edilemiyor: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "%s yaratýlamýyor ya da deðiþtirilemiyor: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Geçersiz dos iþlevi"
+0x0412   "Dosya bulunamýyor.
+
+Yolun ve dosya adýnýn doðruluðunu denetleyiniz."
+0x0413   "Yol bulunamadý.
+
+Yolun doðruluðunu denetleyin."
+0x0414   "Çok fazla diðer dosya kullanýmda. Bir ya da daha fazla uygulamayý kapatýn."
+0x0415   "Eriþim engellendi.
+
+Diskin dolu ve yazmaya karþý korunmuþ olmadýðýný denetleyin."
+0x0416   "Geçersiz dosya tanýtýcý deðeri."
+0x0418   "Bellek yetersiz.
+
+Bir ya daha fazla uygulamayý kapatýp, tekrar deneyin."
+0x041c   "Geçersiz dosya eriþimi"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Geçerli dizini silemiyor (iç hata)"
+0x0421   "Geçersiz aygýt"
+0x0422   "Dizin boþ."
+0x0423   "Disk yazmaya karþý korunmuþ.
+
+Diskteki yazmaya karþý korumayý kaldýrýn ya da baþka bir disk kullanýn ve tekrar deneyin."
+0x042d   "Yazýmda hata. Hedef dosyasý veya diski hasarlý olabilir."
+0x042f   "Okumada hata. Kaynak dosyasý veya diski hasarlý olabilir."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Geçersiz iþlem"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Að eriþimi engellendi. Bu iþlem için gerekli olan að kullaným izninizin olduðunu denetleyin."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Paylaþým hatasý. Hedef ya da kaynak kullanýmda olabilir."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Yetersiz disk yeri.
+
+Diskteki yeri artýrmak için bir yada daha fazla dosyayý silip, tekrar deneyin."
+0x0481   "Kaynak ve Hedef ayný."
+0x0482   "Ad deðiþtirmek için tek bir dosya seçin, ya da benzer adlý bir grup dosyayýnýn adýný deðiþtirmek için MS-DOS genel arama karakterlerini (örneðin, *.TXT) kullanýn."
+0x0483   "Baþka bir dizine ya da diske ad deðiþtirilemiyor."
+0x0484   "Ana Dizin (iç hata)."
+0x0486   "Hedef dizini kaynaðýn bir altdizini."
+0x0487   "Dosya, Windows tarafýndan kullanýlýyor."
+0x0488   "Eriþim engellendi. Kaynak dosya kullanýmda olabilir."
+0x0489   "Yol çok derin."
+0x048a   "Son kutusunda yalnýzca bir dosya ya da dizin belirtin ya da benzer adlý bir grup dosyayýnýn adýný deðiþtirmek için MS-DOS genel arama karakterlerini (örneðin, *.TXT) kullanýn.  "
+0x048b   "Belirtilen dosya adý kullanýlmakta. Son kutusunda deðiþik bir ad belirtip, tekrar deneyin."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 MB"
+0x0131   "720 K"
+0x0132   "1,44 MB"
+0x0133   "2,88 MB"
+0x0134   "Sürücü Sýðasý"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360 K"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Bellek yetersiz."
+0x0192   "MS-DOS baþlangýç sürücüsünü biçimleyemiyor."
+0x0193   "MS-DOS baþlangýç sürücüsünün geçersiz bir kýsým boyutu var."
+0x0194   "Sürücü tipi tanýnmýyor."
+0x0199   "Sistem dosyalarý aktarýlamadý."
+0x019a   "Bu disket, sýðasý %s olmak üzere biçimlenebilir. Biçimleme bu sýðada sürdürülsün mü?"
+0x019b   "Disk biçimlenemiyor.
+
+Diskin sürücüde olduðunu ve yazmaya karþý korunmuþ olmadýðýný, hasar görmemiþ olduðunu ya da doðru yoðunlukta olduðunu denetleyin."
+
+

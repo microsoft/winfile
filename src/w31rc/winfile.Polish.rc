@@ -1,0 +1,1134 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Plik"
+    BEGIN
+    MENUITEM    "&Otwórz	Enter", 0X0065
+    MENUITEM    "Pr&zesuñ...	F7", 0X006A
+    MENUITEM    "&Kopiuj...	F8", 0X006B
+    MENUITEM    "&Usuñ...	Del", 0X006C
+    MENUITEM    "Zmieñ &nazwê...", 0X006D
+    MENUITEM    "&W³aœciwoœci...	Alt+Enter", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "Urucho&m...", 0X0069
+    MENUITEM    "&Drukuj...", 0X0066
+    MENUITEM    "&Skojarz...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "U&twórz katalog...", 0X006F
+    MENUITEM    "Szuk&aj...", 0X0068
+    MENUITEM    "Wy&bierz pliki...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "Konie&c", 0X0073
+    END
+    POPUP   "&Dysk"
+    BEGIN
+    MENUITEM    "Kopiuj &dyskietkê...", 0X00C9
+    MENUITEM    "&Nadaj etykietê...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Formatuj dyskietkê...", 0X00CB
+    MENUITEM    "Dyskietka syste&mowa...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Wybierz stacjê dysków...", 0X00FB
+    END
+    POPUP   "D&rzewo"
+    BEGIN
+    MENUITEM    "&Rozwiñ jeden poziom	+", 0X012D
+    MENUITEM    "Roz&wiñ ga³¹Ÿ	*", 0X012E
+    MENUITEM    "R&ozwiñ wszystkie	Ctrl+*", 0X012F
+    MENUITEM    "&Zwiñ ga³¹Ÿ	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "Z&aznacz rozwijalne ga³êzie", 0X01F9
+    END
+    POPUP   "&Widok"
+    BEGIN
+    MENUITEM    "Drze&wo i katalog", 0X019D
+    MENUITEM    "&Tylko drzewo", 0X019B
+    MENUITEM    "Tyl&ko katalog", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Podziel okno", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Nazwa", 0X0191
+    MENUITEM    "Ca³k&owita informacja o pliku", 0X0192
+    MENUITEM    "&Czêœciowa informacja o pliku...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Sortuj wg n&azwy", 0X0194
+    MENUITEM    "Sort&uj wg typu", 0X0195
+    MENUITEM    "So&rtuj wg rozmiaru", 0X0196
+    MENUITEM    "Sortuj wg &daty", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "Wyœwi&etl pliki typu...", 0X0199
+    END
+    POPUP   "&Opcje"
+    BEGIN
+    MENUITEM    "&Potwierdzenie...", 0X01F5
+    MENUITEM    "&Czcionka...", 0X01FE
+    MENUITEM    "Pr&zystosowanie paska narzêdzi...", 0X0200
+    MENUITEM    "", 0X0000
+    MENUITEM    "Pasek &narzêdzi", 0X01FC
+    MENUITEM    "Pasek stacji &dysków", 0X01FB
+    MENUITEM    "Pa&sek stanu", 0X01F7
+    MENUITEM    "", 0X0000
+    MENUITEM    "Z&minimalizuj po uruchomieniu aplikacji", 0X01F8
+    MENUITEM    "Z&achowaj koñcowe ustawienia", 0X01FF
+    END
+    POPUP   "O&kno"
+    BEGIN
+    MENUITEM    "&Nowe okno", 0X0452
+    MENUITEM    "&Kaskada	Shift+F5", 0X044D
+    MENUITEM    "S¹siaduj¹c&o w poziomie", 0X044F
+    MENUITEM    "S¹s&iaduj¹co w pionie 	Shift+F4", 0X044E
+    MENUITEM    "&Uporz¹dkuj ikony", 0X0451
+    MENUITEM    "Ak&tualizuj	F5", 0X0450
+    END
+    POPUP   "Pomo&c"
+    BEGIN
+    MENUITEM    "&Spis treœci", 0X04B1
+    MENUITEM    "&Pomoc na temat...", 0X001E
+    MENUITEM    "&Korzystanie z Pomocy", 0X04B2
+    MENUITEM    "", 0X0000
+    MENUITEM    "Inf&ormacje o Mened¿erze plików...", 0X04B3
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 264, 127
+CAPTION "Czcionka"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "C&zcionka:", 1088, 0x0000, 6, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 54
+    CONTROL 0x82, "&Styl:", 1089, 0x0000, 108, 3, 44, 9
+    CONTROL 0x85, "", 1137, 0x0001, 108, 13, 64, 54
+    CONTROL 0x82, "&Rozmiar:", 1090, 0x0000, 179, 3, 30, 9
+    CONTROL 0x85, "", 1138, 0x0311, 179, 13, 32, 54
+    CONTROL 0x80, "Efekty specjalne", 1072, 0x0007, 6, 72, 84, 61
+    CONTROL 0x80, "Prze&kreœlenie", 1040, 0x0003, 10, 82, 59, 10
+    CONTROL 0x80, "Po&dkreœlenie", 1041, 0x0003, 10, 94, 59, 10
+    CONTROL 0x80, "&Ma³e litery", 1042, 0x0003, 10, 82, 54, 10
+    CONTROL 0x82, "K&olor:", 1091, 0x0000, 10, 106, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "OK", 1, 0x0001, 218, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 218, 23, 40, 14
+    CONTROL 0x80, "&Wybierz", 1026, 0x0000, 218, 40, 40, 14
+    CONTROL 0x80, "Pomo&c", 1038, 0x0000, 218, 57, 40, 14
+    CONTROL 0x80, "Przyk³ad", 1073, 0x0007, 98, 72, 160, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 124, 160, 20
+    CONTROL 0x82, "AaBbYyZz", 1092, 0x0081, 104, 81, 149, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 201, 86
+CAPTION "Wybierz stacjê dysków"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Stacje dysków:", 245, 0x000c, 5, 5, 51, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "OK", 1, 0x0001, 155, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 155, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 155, 44, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Uruchom"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Polecenie:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "&Do ikony podczas pracy", 214, 0x0003, 3, 45, 136, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 165, 43, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 127, 83
+CAPTION "Wybierz pliki"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Plik(i):", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "&Wybierz", 1, 0x0001, 70, 6, 51, 14
+    CONTROL 0x80, "&Anuluj wybór", 6, 0x0000, 70, 23, 51, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 70, 40, 51, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 70, 63, 51, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 245, 95
+CAPTION "PotwierdŸ zast¹pienie pliku"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Zamieñ plik:", 100, 0x000c, 25, 12, 49, 10
+    CONTROL 0x82, "", 103, 0x008c, 75, 12, 165, 10
+    CONTROL 0x82, "", 105, 0x000c, 75, 22, 170, 10
+    CONTROL 0x82, "Na plik:", 100, 0x000c, 25, 34, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 75, 34, 165, 10
+    CONTROL 0x82, "", 106, 0x000c, 75, 44, 170, 10
+    CONTROL 0x80, "&Tak", 6, 0x0001, 23, 74, 40, 14
+    CONTROL 0x80, "Tak na &wszystkie", 107, 0x0000, 68, 74, 64, 14
+    CONTROL 0x80, "&Nie", 7, 0x0000, 137, 74, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 182, 74, 40, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "PotwierdŸ usuniêcie pliku"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 203, 10
+    CONTROL 0x82, "Usun¹æ plik:", 100, 0x000c, 25, 18, 44, 10
+    CONTROL 0x82, "", 102, 0x008c, 70, 18, 170, 10
+    CONTROL 0x80, "&Tak", 6, 0x0001, 22, 42, 40, 14
+    CONTROL 0x80, "Tak na &wszystkie", 107, 0x0000, 67, 42, 64, 14
+    CONTROL 0x80, "&Nie", 7, 0x0000, 136, 42, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 181, 42, 40, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "PotwierdŸ usuniêcie katalogu"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Usun¹æ katalog:", 100, 0x000c, 25, 18, 55, 10
+    CONTROL 0x82, "", 102, 0x008c, 80, 18, 160, 10
+    CONTROL 0x80, "&Tak", 6, 0x0001, 22, 42, 40, 14
+    CONTROL 0x80, "Tak na &wszystkie", 107, 0x0000, 67, 42, 64, 14
+    CONTROL 0x80, "&Nie", 7, 0x0000, 136, 42, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 181, 42, 40, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 253, 60
+CAPTION "PotwierdŸ przesuniêcie pliku"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Przesun¹æ plik:", 100, 0x000c, 25, 18, 51, 10
+    CONTROL 0x82, "", 102, 0x008c, 79, 18, 170, 10
+    CONTROL 0x80, "&Tak", 6, 0x0001, 27, 42, 40, 14
+    CONTROL 0x80, "Tak na &wszystkie", 107, 0x0000, 72, 42, 64, 14
+    CONTROL 0x80, "&Nie", 7, 0x0000, 141, 42, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 186, 42, 40, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 258, 60
+CAPTION "PotwierdŸ zmianê nazwy pliku"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Zmieniæ nazwê pliku:", 100, 0x000c, 25, 13, 70, 10
+    CONTROL 0x82, "", 102, 0x008c, 97, 13, 160, 10
+    CONTROL 0x80, "&Tak", 6, 0x0001, 33, 41, 40, 14
+    CONTROL 0x80, "Tak na &wszystkie", 107, 0x0000, 78, 41, 64, 14
+    CONTROL 0x80, "&Nie", 7, 0x0000, 147, 41, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 192, 41, 40, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 240, 63
+CAPTION "Drukuj"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 193, 10
+    CONTROL 0x82, "&Drukuj:", 100, 0x000c, 3, 20, 23, 10
+    CONTROL 0x81, "", 102, 0x0480, 29, 18, 160, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 36, 190, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 197, 43, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 263, 63
+CAPTION "Szukaj"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Szukaj:", 100, 0x000c, 5, 6, 45, 12
+    CONTROL 0x81, "", 201, 0x0480, 52, 5, 160, 12
+    CONTROL 0x82, "&Zacznij od:", 100, 0x000c, 5, 21, 45, 12
+    CONTROL 0x81, "", 101, 0x0480, 52, 20, 160, 12
+    CONTROL 0x80, "Szukaj w&e wszystkich podkatalogach", 232, 0x0003, 52, 34, 134, 12
+    CONTROL 0x82, "", 104, 0x000c, 5, 50, 200, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 217, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 217, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 217, 43, 40, 14
+END
+
+14 DIALOG 0x80c8, 47, 59, 244, 64
+CAPTION "Przesuñ"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktualny katalog: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&Do/Na:", 100, 0x000c, 3, 33, 25, 10
+    CONTROL 0x81, "", 103, 0x0480, 40, 32, 138, 12
+    CONTROL 0x80, "", 257, 0x0004, 29, 33, 10, 10
+    CONTROL 0x80, "&Kopiuj do Schowka", 256, 0x0004, 29, 47, 75, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 49, 54, 10
+    CONTROL 0x82, "", 201, 0x008b, 59, 49, 138, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 201, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 201, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 201, 44, 40, 14
+    CONTROL 0x82, "&Z:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 40, 18, 138, 12
+END
+
+10014 DIALOG 0x80c8, 47, 59, 231, 98
+CAPTION "Przesuñ"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktualny katalog: N", 101, 0x008b, 3, 6, 182, 10
+    CONTROL 0x82, "&Do/Na:", 100, 0x000c, 3, 38, 24, 10
+    CONTROL 0x62, "edit", 103, 0x0004, 41, 38, 138, 42
+    CONTROL 0x50, "€", 256, 0x0401, 7680, 9728, 2560, 2560
+    CONTROL 0x80, "&Kopiuj do Schowka", 256, 0x0004, 31, 84, 75, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 84, 40, 10
+    CONTROL 0x82, "", 201, 0x008b, 45, 84, 138, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Przegl¹daj", 600, 0x0000, 185, 40, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 185, 61, 40, 14
+    CONTROL 0x82, "&Z:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 41, 18, 138, 12
+END
+
+200 DIALOG 0x00c8, 36, 24, 164, 134
+CAPTION "Wybierz katalog"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x81, "", 1152, 0x0490, 6, 16, 90, 12
+    CONTROL 0x83, "", 1120, 0x0053, 12, 28, 84, 68
+    CONTROL 0x82, "&Katalogi:", -1, 0x0000, 10, 6, 92, 9
+    CONTROL 0x82, "", 1088, 0x0000, 10, 16, 92, 9
+    CONTROL 0x83, "", 1121, 0x0053, 10, 28, 92, 68
+    CONTROL 0x82, "&Stacje dysków:", 1091, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1137, 0x0353, 10, 112, 92, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 108, 6, 50, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 108, 24, 50, 14
+    CONTROL 0x82, "&Nazwa pliku:", 1090, 0x0000, 6, 6, 76, 9
+    CONTROL 0x82, "&Wyœwietl pliki typu:", 1089, 0x0000, 6, 104, 90, 9
+    CONTROL 0x85, "", 1136, 0x0043, 6, 114, 90, 36
+    CONTROL 0x80, "Pomo&c", 1038, 0x0000, 208, 46, 50, 14
+    CONTROL 0x80, "&Tylko-do-odczytu", 1040, 0x0003, 208, 68, 50, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 254, 64
+CAPTION "Usuñ"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Aktualny katalog: C", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "&Usuñ:", 100, 0x000c, 3, 20, 35, 10
+    CONTROL 0x81, "", 102, 0x0480, 40, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 35, 43, 10
+    CONTROL 0x82, "", 201, 0x008b, 48, 35, 155, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 208, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 208, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 208, 43, 40, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 249, 65
+CAPTION "W³aœciwoœci"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Liczba wybranych plików: %d, razem bajtów: %s", 100, 0x000c, 5, 5, 187, 10
+    CONTROL 0x80, "Atrybuty", -1, 0x0007, 5, 19, 132, 41
+    CONTROL 0x80, "&Tylko-do-odczytu", 215, 0x0003, 10, 32, 67, 12
+    CONTROL 0x80, "&Ukryty", 216, 0x0003, 83, 32, 49, 12
+    CONTROL 0x80, "&Archiwizowany", 217, 0x0003, 10, 44, 65, 12
+    CONTROL 0x80, "&Systemowy", 218, 0x0003, 83, 44, 49, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 50, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 194, 23, 50, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 194, 43, 50, 14
+END
+
+16 DIALOG 0x80c8, 23, 13, 266, 195
+CAPTION "W³aœciwoœci %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 204, 6, 57, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 204, 23, 57, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 204, 40, 57, 14
+    CONTROL 0x82, "&Nazwa pliku:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 69, 5, 134, 10
+    CONTROL 0x82, "Œci&e¿ka:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 69, 16, 134, 10
+    CONTROL 0x82, "Ostatnia zmiana:", 100, 0x000c, 5, 27, 62, 10
+    CONTROL 0x82, "", 204, 0x000c, 69, 27, 97, 10
+    CONTROL 0x82, "Wersja:", 258, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "Nie zaznaczona", 259, 0x008c, 69, 38, 90, 10
+    CONTROL 0x82, "&Prawa autorskie:", -1, 0x0000, 5, 49, 58, 10
+    CONTROL 0x81, "Nie zaznaczone", 265, 0x0880, 69, 49, 134, 10
+    CONTROL 0x82, "Rozmiar:", 260, 0x000c, 5, 60, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 69, 60, 90, 10
+    CONTROL 0x80, "Atrybuty", 100, 0x0007, 4, 74, 132, 42
+    CONTROL 0x80, "&Tylko-do-odczytu", 215, 0x0003, 9, 86, 67, 12
+    CONTROL 0x80, "&Ukryty", 216, 0x0003, 82, 86, 49, 12
+    CONTROL 0x80, "&Archiwizowany", 217, 0x0003, 9, 98, 65, 12
+    CONTROL 0x80, "&Systemowy", 218, 0x0003, 82, 98, 49, 12
+    CONTROL 0x80, "Inf&ormacje o wersji", 262, 0x0007, 4, 121, 252, 72
+    CONTROL 0x83, "", 263, 0x1003, 9, 132, 91, 58
+    CONTROL 0x81, "", 264, 0x0804, 103, 132, 147, 58
+END
+
+17 DIALOG 0x80c8, 20, 20, 203, 63
+CAPTION "Utwórz katalog"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Nazwa:", 100, 0x000c, 3, 23, 26, 10
+    CONTROL 0x81, "", 201, 0x0480, 35, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 157, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 157, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 157, 43, 40, 14
+END
+
+10017 DIALOG 0x80c8, 20, 20, 240, 74
+CAPTION "Utwórz katalog"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Nazwa:", 100, 0x000c, 3, 28, 28, 10
+    CONTROL 0x62, "edit", 201, 0x0000, 3, 40, 170, 18
+    CONTROL 0x50, "‚", 26624, 0x8c00, 768, 15360, -27136, 2560
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 197, 43, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 188, 64
+CAPTION "Dyskietka systemowa"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Kopiuj pliki systemowe na dyskietkê w:", -1, 0x000c, 5, 8, 130, 10
+    CONTROL 0x85, "", 222, 0x0003, 30, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 139, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 139, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 139, 43, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 134, 64
+CAPTION "Kopiuj dyskietkê"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Z:", -1, 0x000c, 5, 8, 26, 10
+    CONTROL 0x85, "", 245, 0x0003, 33, 6, 40, 37
+    CONTROL 0x82, "&Do/Na:", 206, 0x000c, 5, 22, 26, 10
+    CONTROL 0x85, "", 222, 0x0003, 33, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 86, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 86, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 86, 43, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Kopiuje dyskietkê"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Kopiowanie dyskietki w ", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "stacji dysków A:", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Odczyt dyskietki Ÿród³owej", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Anuluj", 2, 0x0001, 44, 39, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 63
+CAPTION "Nadaj etykietê"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Etykieta dysku:", 100, 0x000c, 5, 15, 56, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 115, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 115, 43, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 190, 96
+CAPTION "Formatuj dyskietkê"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 148, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 148, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 148, 43, 40, 14
+    CONTROL 0x82, "&Dyskietka w:", -1, 0x000c, 5, 7, 49, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 4, 84, 40
+    CONTROL 0x82, "&Pojemnoœæ:", 100, 0x000c, 5, 20, 49, 10
+    CONTROL 0x85, "", 241, 0x0003, 55, 19, 84, 40
+    CONTROL 0x80, "Opcje", 102, 0x0007, 5, 39, 135, 53
+    CONTROL 0x82, "&Etykieta dysku:", -1, 0x000c, 11, 51, 51, 10
+    CONTROL 0x81, "", 201, 0x0000, 63, 49, 72, 12
+    CONTROL 0x80, "Dyskietka syste&mowa", 242, 0x0003, 11, 62, 90, 12
+    CONTROL 0x80, "&Szybkie formatowanie", 244, 0x0003, 11, 76, 90, 12
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 50
+CAPTION "Formatowanie dyskietki"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Formatowanie dyskietki", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "Inicjalizacja stacji dysków...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Anuluj", 2, 0x0001, 54, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 57
+CAPTION "Dyskietka systemowa"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Kopiowanie plików systemowych", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "Naciœnij Anuluj, aby przerwaæ kopiowanie.", 100, 0x0001, 0, 16, 174, 8
+    CONTROL 0x80, "Anuluj", 2, 0x0001, 66, 39, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 246, 135
+CAPTION "Po³¹czenia sieciowe"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Nowe po³¹czenie", -1, 0x0007, 5, 3, 182, 55
+    CONTROL 0x82, "Œcie¿&ka sieciowa:", -1, 0x0000, 10, 16, 69, 10
+    CONTROL 0x81, "", 223, 0x0480, 80, 14, 100, 12
+    CONTROL 0x82, "&Stacja dysków:", -1, 0x0000, 10, 30, 56, 10
+    CONTROL 0x85, "", 222, 0x0003, 80, 28, 40, 100
+    CONTROL 0x82, "&Has³o:", -1, 0x0000, 10, 44, 36, 10
+    CONTROL 0x81, "", 224, 0x04a0, 80, 42, 100, 12
+    CONTROL 0x82, "&Aktualne stacje dysków:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 160, 60
+    CONTROL 0x80, "&Zamknij", 2, 0x0001, 193, 6, 50, 14
+    CONTROL 0x80, "&Pod³¹cz", 1, 0x0000, 193, 27, 50, 14
+    CONTROL 0x80, "Poprze&dnie...", 226, 0x0000, 193, 44, 50, 14
+    CONTROL 0x80, "Prz&egl¹daj...", 227, 0x0000, 193, 61, 50, 14
+    CONTROL 0x80, "&Od³¹cz", 255, 0x0000, 193, 78, 50, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 193, 95, 50, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 231, 98
+CAPTION "Poprzednie po³¹czenia sieciowe"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Œcie¿&ki sieciowe:", 100, 0x000c, 3, 3, 106, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "&Wybierz", 1, 0x0001, 181, 6, 44, 14
+    CONTROL 0x80, "Zamknij", 2, 0x0000, 181, 24, 44, 14
+    CONTROL 0x80, "&Usuñ", 219, 0x0000, 181, 41, 44, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 181, 58, 44, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 169, 65
+CAPTION "Czêœciowa informacja o pliku"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Informacja", 100, 0x0007, 4, 4, 117, 55
+    CONTROL 0x80, "&Rozmiar", 203, 0x0003, 11, 15, 100, 9
+    CONTROL 0x80, "&Data ostatniej zmiany pliku", 204, 0x0003, 11, 25, 100, 9
+    CONTROL 0x80, "Czas &ostatniej zmiany pliku", 205, 0x0003, 11, 35, 100, 9
+    CONTROL 0x80, "&Atrybuty pliku", 206, 0x0003, 11, 45, 100, 9
+    CONTROL 0x80, "OK", 1, 0x0001, 126, 7, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 126, 24, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 126, 44, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 157, 102
+CAPTION "Wyœwietl pliki typu"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Nazwa:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Pliki typu", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "&Katalogi", 101, 0x0003, 10, 31, 60, 12
+    CONTROL 0x80, "&Programy", 210, 0x0003, 10, 43, 60, 12
+    CONTROL 0x80, "Doku&menty", 211, 0x0003, 10, 55, 60, 12
+    CONTROL 0x80, "&Inne pliki", 212, 0x0003, 10, 67, 60, 12
+    CONTROL 0x80, "Wyœwietl pliki ukryte/&systemowe", 250, 0x0003, 5, 85, 118, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 110, 43, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 169, 80
+CAPTION "Potwierdzenie"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "PotwierdŸ", 100, 0x0007, 5, 3, 113, 73
+    CONTROL 0x80, "Usuniêcie &plików", 219, 0x0003, 10, 15, 80, 12
+    CONTROL 0x80, "Usuniêcie &katalogów", 220, 0x0003, 10, 27, 80, 12
+    CONTROL 0x80, "&Zast¹pienie plików", 221, 0x0003, 10, 39, 80, 12
+    CONTROL 0x80, "Dzia³ania z u¿ycie&m myszy", 249, 0x0003, 10, 51, 98, 12
+    CONTROL 0x80, "Polecenia &dotycz¹ce dysku", 251, 0x0003, 10, 63, 101, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 125, 6, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 125, 23, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 125, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 263, 46
+CAPTION "Przesuwa..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 49, 10
+    CONTROL 0x82, "", 201, 0x008b, 55, 5, 204, 10
+    CONTROL 0x82, "Do/Na:", 108, 0x008b, 5, 15, 25, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 15, 192, 10
+    CONTROL 0x80, "Anuluj", 2, 0x0001, 207, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 120, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Plik w druku...", -1, 0x0001, 4, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 4, 20, 120, 12
+    CONTROL 0x80, "Anuluj", 2, 0x0001, 44, 40, 32, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 217, 96
+CAPTION "Skojarz"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Pli&ki z rozszerzeniem:", 99, 0x000c, 5, 8, 74, 10
+    CONTROL 0x81, "", 112, 0x0400, 80, 6, 35, 12
+    CONTROL 0x82, "&Skojarz z:", 99, 0x000c, 5, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 5, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 11, 44, 146, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 48, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 165, 23, 48, 14
+    CONTROL 0x80, "&Przegl¹daj...", 232, 0x0000, 165, 43, 48, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 165, 60, 48, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 257, 78
+CAPTION "Wybierz nazwê pliku"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Podana œcie¿ka nie odpowiada formatowi MS-DOS dla nazw plików. Podaj now¹ nazwê.", 99, 0x0000, 4, 4, 190, 24
+    CONTROL 0x82, "&Nowa nazwa:", 99, 0x0002, 19, 56, 50, 12
+    CONTROL 0x81, "", 103, 0x0000, 71, 55, 130, 12
+    CONTROL 0x82, "Oryginalna œcie¿ka:", 99, 0x0002, 5, 28, 64, 11
+    CONTROL 0x81, "", 102, 0x0880, 71, 28, 130, 12
+    CONTROL 0x82, "Do katalogu:", 99, 0x0002, 19, 42, 50, 11
+    CONTROL 0x81, "", 101, 0x0880, 71, 42, 130, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 213, 4, 40, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 213, 20, 40, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 213, 36, 40, 14
+END
+
+48 DIALOG 0x80c8, 23, 13, 265, 107
+CAPTION "W³aœciwoœci %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 206, 6, 57, 14
+    CONTROL 0x80, "Anuluj", 2, 0x0000, 206, 23, 57, 14
+    CONTROL 0x80, "Pomo&c", 254, 0x0000, 206, 43, 57, 14
+    CONTROL 0x82, "&Nazwa pliku:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 72, 5, 134, 10
+    CONTROL 0x82, "Œci&e¿ka:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 72, 16, 134, 10
+    CONTROL 0x82, "Ostatnia zmiana:", 100, 0x000c, 5, 27, 62, 10
+    CONTROL 0x82, "", 204, 0x000c, 72, 27, 134, 10
+    CONTROL 0x82, "Rozmiar:", 260, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 72, 38, 134, 10
+    CONTROL 0x80, "Atrybuty", 100, 0x0007, 4, 54, 136, 40
+    CONTROL 0x80, "&Tylko-do-odczytu", 215, 0x0003, 10, 67, 67, 12
+    CONTROL 0x80, "&Ukryty", 216, 0x0003, 83, 67, 49, 12
+    CONTROL 0x80, "&Archiwizowany", 217, 0x0003, 10, 79, 65, 12
+    CONTROL 0x80, "&Systemowy", 218, 0x0003, 83, 79, 49, 12
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0101   "(katalog g³ówny)"
+0x0102   "(nie dotyczy)"
+0x0103   "Udostêpnione jako %s"
+0x0104   "Nie udostêpnione"
+0x0107   "Kopiowanie plików do %s"
+0x0108   "Przesuwanie plików do %s"
+0x0109   "Uruchamianie plików z %s"
+0x010a   "bajtów: %s"
+0x010b   "%sKB"
+0x010c   "%sMB"
+0x010d   "%sGB"
+0x010e   "%sTB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Koniec Windows"
+0x0029   "Naciœniêcie OK zakoñczy sesjê Windows."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Kopiuj dyskietkê"
+0x0033   "W³ó¿ dyskietkê, na któr¹ chcesz kopiowaæ."
+0x0034   "W³ó¿ dyskietkê, z której chcesz kopiowaæ."
+0x0035   "W³ó¿ dyskietkê Ÿród³ow¹ i docelow¹."
+0x0036   "Formatuje dyskietkê docelow¹."
+0x0037   "B³¹d przy kopiowaniu"
+0x0038   "Skopiowanie dyskietki nie jest mo¿liwe."
+0x003a   "Stacje dysków, Ÿród³owa i docelowa, nie s¹ zgodne."
+0x003c   "wykonane %d%%"
+0x003d   "Tworzenie katalogu g³ównego..."
+0x003e   "Kopiuje pliki systemowe..."
+0x003f   "B³¹d przy formatowaniu"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Brak miejsca na dysku dla wykonania wydruku.
+
+Usuñ jeden lub kilka plików w celu zwiêkszenia wolnego obszaru dysku i ponów próbê."
+0x00c1   "Brak miejsca w pamiêci dla wykonania wydruku.
+
+Zakoñcz jedn¹ lub kilka aplikacji i ponów próbê."
+0x00c2   "B³¹d przy wydruku.
+
+SprawdŸ czy drukarka jest prawid³owo skonfigurowana i wybrana."
+0x00c3   "Obraz drzewa jest niekompletny"
+0x00c5   "Dyskietka docelowa jest zape³niona.
+
+W³ó¿ now¹ dyskietkê i kontynuuj."
+0x00c6   "To jest plik systemowy, ukryty lub tylko-do-odczytu."
+0x00c7   "Szybkie formatowanie nie jest mo¿liwe.
+
+Kontynuowaæ standardowe formatowanie?"
+0x00c8   "Podana aplikacja nie jest aplikacj¹ dla œrodowiska Windows ani dla MS-DOS."
+0x00c9   "Ta aplikacja wymaga nowszej wersji Microsoft Windows."
+0x00ca   "Ta aplikacja wymaga Windows."
+0x00cb   "B³¹d przy wysy³aniu polecenia do aplikacji."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Sformatowanie dyskietki nie jest mo¿liwe."
+0x0042   "Formatowanie gotowe"
+0x0043   "%ld bajtów ca³kowitego obszaru dyskietki
+%ld bajtów wolnych na dyskietce
+
+Sformatowaæ nastêpn¹ dyskietkê?"
+0x0046   "Dyskietka systemowa"
+0x0047   "Skopiowaæ pliki systemowe na dyskietkê w stacji dysków %c:?"
+0x0048   "B³¹d dyskietki systemowej"
+0x0049   "Uruchomieniowa stacja dysków systemu MS-DOS nie zawiera plików systemowych lub nie jest dostêpna."
+0x004a   "Skopiowanie plików systemowych do uruchomieniowej stacji dysków systemu MS-DOS nie jest mo¿liwe."
+0x004b   "Umieszczenie plików systemowych na tej dyskietce nie jest mo¿liwe.
+
+SprawdŸ czy dyskietka w stacji dysków jest sformatowana i czy stacja dysków jest zamkniêta."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Utworzenie lub zast¹pienie %s nie jest mo¿liwe: %s"
+0x0408   "Utworzenie dyskietki systemowej MS-DOS nie jest mo¿liwe, poniewa¿ jest zainstalowany system multiboot Windows NT. Dyskietkê systemow¹ mo¿na utworzyæ za pomoc¹ polecenia SYS wydanego w wierszu poleceñ MS-DOS."
+0x0409   "Sformatowaæ dyskietkê bez przenoszenia systemu?"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "B³¹d sieci"
+0x0053   "Ta stacja dysków zawiera pliki systemowe Windows i dlatego nie mo¿e byæ od³¹czona."
+0x005b   "Zmiana atrybutów nie jest mo¿liwa.
+
+SprawdŸ czy dyskietka nie posiada blokady zapisu."
+0x005c   "Utworzenie katalogu nie jest mo¿liwe.
+
+SprawdŸ czy dyskietka nie posiada blokady zapisu."
+0x005d   "Nadanie etykiety dysku jest niemo¿liwe.
+
+SprawdŸ czy dysk nie posiada blokady zapisu lub czy nie jest stacj¹ sieciow¹ oraz czy etykieta jest poprawnie podana.
+Nie mo¿e ona zawieraæ nastêpuj¹cych znaków:
+[spacja] * ? /  | . , ; : + = [ ] ( )  ^ < > " "
+0x005f   "Nie odnaleziono odpowiadaj¹cych plików."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "Plików: %d (%s)"
+0x00b5   "Przeszukane katalogi: %d "
+0x00b6   "%c: wolne %s, razem %s"
+0x00b7   "Liczba znalezionych plików: %d"
+0x00b9   "zaznaczone pliki"
+0x00ba   "Od³¹czenie sieciowej stacji dysków nie jest mo¿liwe
+
+poniewa¿ pliki w tej stacji s¹ otwarte."
+0x00bb   "Wybranych plików: %d (%s)"
+0x00bc   "Nie ma dyskietki w stacji dysków %c.
+
+W³ó¿ dyskietkê i ponów próbê."
+0x00bd   "Dyskietka w stacji dysków %c nie jest sformatowana.
+
+Sformatowaæ j¹?"
+0x00bf   "Odnalezienie pliku do wydruku nie by³o mo¿liwe. SprawdŸ czy œcie¿ka jest prawid³owo podana."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "Ten katalog ju¿ istnieje."
+0x0061   "Zawartoœæ tej stacji dysków zosta³a zmieniona. Aktualizowaæ okno "Rezultat szukania"?"
+0x0065   "Stacja dysków %c:%c"
+0x006e   "Uruchomienie programu nie jest mo¿liwe"
+0x006f   "Nieoczekiwany b³¹d: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "Formatowanie skasuje WSZYSTKIE dane na Twojej dyskietce. Sformatowaæ dyskietkê w stacji dysków %c?"
+0x00d3   "PotwierdŸ "Formatowanie dyskietki""
+0x00d4   "Ta operacja skasuje WSZYSTKIE dane na docelowej dyskietce. Kontynuowaæ?"
+0x00d5   "PotwierdŸ "Kopiowanie dyskietki""
+0x00d6   "&Zamknij"
+0x00da   "Katalog %s nie istnieje.
+
+Utworzyæ katalog o tej nazwie?"
+0x00db   "Programy#*.exe;*.pif;*.com;*.bat#Wszystkie pliki (*.*)#*.*#"
+0x00dc   "Przegl¹daj"
+0x00dd   "Uruchom"
+0x00de   "Wydrukowanie pliku nie jest mo¿liwe"
+0x00df   "Wyœwietlenie informacji Pomocy nie jest mo¿liwe."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Brak miejsca w pamiêci do uruchomienia podanej aplikacji.
+
+Zakoñcz jedn¹ lub kilka aplikacji i ponów próbê."
+0x0071   "Odnalezienie pliku (lub jednego z jego elementów) nie jest mo¿liwe.
+
+SprawdŸ czy œcie¿ka i nazwa pliku s¹ prawid³owo podane oraz czy wymagane biblioteki s¹ dostêpne."
+0x0072   "Niew³aœciwa œcie¿ka."
+0x0073   "Za du¿o plików jest obecnie w u¿yciu.
+
+Zakoñcz jedn¹ lub kilka aplikacji lub zwiêksz polecenie FILES w pliku CONFIG.SYS i ponów próbê."
+0x0074   "¯adna aplikacja nie jest skojarzona z podanym plikiem.
+
+Utwórz skojarzenie wybieraj¹c polecenie Skojarz z menu Plik."
+0x0075   "Uruchomienie drugiej kopii wybranego programu nie jest mo¿liwe."
+0x0076   "Otwarcie lub wydruk pliku nie jest mo¿liwy.
+
+Uruchom aplikacjê, w której plik by³ utworzony i otwórz lub wydrukuj plik z tej aplikacji."
+0x0078   "PotwierdŸ "Dzia³ania z u¿yciem myszy""
+0x0079   "Skopiowaæ wybrane pliki lub katalogi do %s?"
+0x007a   "Przesun¹æ wybrane pliki lub katalogi do %s?"
+0x007b   "Uruchomiæ %s u¿ywaj¹c %s jako pliku pocz¹tkowego?"
+0x007c   "Mened¿er plików"
+0x007e   "Drzewo katalogu"
+0x007f   "Rezultat szukania: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Pliki z rozszerzeniem nazwy %s s¹ programami i dlatego nie mog¹ byæ skojarzone z inn¹ aplikacj¹."
+0x00e1   "%s nie jest programem i dlatego nie mo¿e byæ skojarzony z rozszerzeniem pliku."
+0x00e2   "(Brak)"
+0x00e4   "Wydruk kilku plików jednoczeœnie nie jest mo¿liwy.
+
+Wybierz tylko jeden i ponów próbê."
+0x00e5   "Ten program lub jeden z jego elementów jest spakowany.
+
+U¿yj polecenia "expand" w MS-DOS, aby skopiowaæ plik z dyskietek instalacyjnych Windows."
+0x00e6   "Jeden z plików bibiliotek potrzebnych do uruchomienia tej aplikacji jest uszkodzony. Zainstaluj ponownie tê aplikacjê."
+0x00e7   "Ten plik jest u¿ywany przez inn¹ aplikacjê."
+0x00e8   "Mened¿er plików mo¿e nie mieæ dostêpu do plików utworzonych w katalogu "%s".
+
+Kontynuowaæ?"
+0x00e9   "Utwórz katalog"
+0x00ea   "%ld B"
+0x00eb   "%s bajtów"
+0x00ec   "Skopiowanie kilku plików lub katalogów do Schowka nie jest mo¿liwe.
+
+Wybierz jeden plik i ponów próbê."
+0x00ed   "%s - %s"
+0x00ee   "Stacja dysków:"
+0x00ef   "%s, "
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Za du¿o plików"
+0x0085   "Mened¿er plików - brak wolnej pamiêci"
+0x0086   "Odczyt podanego katalogu nie jest mo¿liwy. Zostanie wyœwietlona tylko czêœæ plików."
+0x008c   "Aktualny katalog: %s"
+0x008d   "Kopiuj"
+0x008f   "Zmieñ nazwê"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Formatuj dyskietkê"
+0x0092   "Wybierz dyskietkê, która bêdzie formatowana."
+0x0096   "Tworzy:"
+0x0097   "Usuwa..."
+0x0098   "Kopiuje:"
+0x0099   "Zmienia nazwê..."
+0x009a   "Przesuwa..."
+0x009b   "Usuwa..."
+0x009c   "Drukuje: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "Stacja dysków %c nie istnieje."
+0x00a9   "Kopiuje..."
+0x00aa   "Usuwa:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Otwiera..."
+0x01a5   "Zamyka..."
+0x01a6   "Za du¿o otwartych okien katalogu.
+
+Zamknij jedno lub kilka okien i ponów próbê."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "B³¹d przy przesuwaniu pliku"
+0x03ea   "B³¹d przy kopiowaniu pliku"
+0x03eb   "B³¹d przy usuwaniu pliku"
+0x03ec   "B³¹d przy zmianie nazwy pliku"
+0x03ed   "B³¹d przy wyborze stacji dysków"
+0x03ee   "B³¹d przy odczycie katalogu"
+0x03ef   "B³¹d przy nadawaniu etykiety dysku"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "Nie mo¿na przesun¹æ %s: %s"
+0x03f4   "Nie mo¿na skopiowaæ %s: %s"
+0x03f5   "Nie mo¿na usun¹æ %s: %s"
+0x03f6   "Nie mo¿na zmieniæ nazwy %s: %s"
+0x03fd   "Nie mo¿na utworzyæ katalogu %s: %s"
+0x03fe   "Nie mo¿na usun¹æ katalogu %s: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Niew³aœciwa funkcja systemu MS-DOS."
+0x0412   "Odnalezienie pliku nie jest mo¿liwe.
+
+SprawdŸ czy œcie¿ka i nazwa pliku s¹ prawid³owo podane."
+0x0413   "Odnalezienie œcie¿ki nie jest mo¿liwe.
+
+SprawdŸ czy œcie¿ka jest prawid³owo podana."
+0x0414   "Za du¿o innych plików jest obecnie w u¿yciu. Zakoñcz jedn¹ lub kilka aplikacji."
+0x0415   "Brak dostêpu.
+
+SprawdŸ czy dysk nie jest zape³niony lub czy nie posiada zabezpieczenia przed zapisem."
+0x0416   "Niew³aœciwy numer identyfikacyjny pliku."
+0x0418   "Brak miejsca w pamiêci.
+
+Zakoñcz jedn¹ lub kilka aplikacji i ponów próbê."
+0x041c   "Niew³aœciwy dostêp do pliku."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Usuniêcie aktualnego katalogu nie jest mo¿liwe (b³¹d wewnêtrzny)."
+0x0421   "Niew³aœciwe urz¹dzenie."
+0x0422   "Katalog jest pusty."
+0x0423   "Dysk jest zabezpieczony przed zapisem.
+
+Usuñ zabezpieczenie tego dysku lub u¿yj innego dysku i ponów próbê."
+0x042d   "B³¹d przy zapisie. Plik lub dysk docelowy mo¿e byæ uszkodzony."
+0x042f   "B³¹d przy odczycie. Plik lub dysk Ÿród³owy mo¿e byæ uszkodzony."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Niew³aœciwe polecenie."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Brak dostêpu do sieci. SprawdŸ czy masz zezwolenie na wykonanie tego polecenia."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Konflikt wspólnego dostêpu. Stacja Ÿród³owa i docelowa mog¹ byæ w u¿yciu."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Brak miejsca na dysku.
+
+Usuñ jeden lub kilka plików w celu zwiêkszenia wolnego obszaru dysku i ponów próbê."
+0x0481   "Nazwy pliku Ÿród³owego i docelowego s¹ te same."
+0x0482   "Wybierz tylko jeden plik do zmiany nazwy lub zmieñ nazwê grupy plików o podobnych nazwach u¿ywaj¹c wieloznaczników systemu MS-DOS (np. *.TXT)."
+0x0483   "Zmiana nazwy do innego katalogu lub dysku nie jest mo¿liwa."
+0x0484   "Katalog g³ówny (b³¹d wewnêtrzny)."
+0x0486   "Katalog docelowy jest podkatalogiem Ÿród³a."
+0x0487   "Plik jest wykorzystywany w Windows."
+0x0488   "Brak dostêpu. Plik Ÿród³owy mo¿e byæ w u¿yciu."
+0x0489   "Œcie¿ka jest za d³uga."
+0x048a   "Podaj tylko jeden plik lub katalog w polu "Do/Na:" Je¿eli chcesz podaæ grupê plików u¿yj wieloznaczników systemu MS-DOS (np. *.TXT)."
+0x048b   "Podana nazwa pliku ju¿ istnieje. Podaj now¹ nazwê w polu "Do/Na:"."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 MB"
+0x0131   "720 KB"
+0x0132   "1,44 MB"
+0x0133   "2,88 MB"
+0x0134   "Pojemnoœæ stacji dysków"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360 KB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Brak miejsca w pamiêci."
+0x0192   "Sformatowanie uruchomieniowej stacji dysków systemu MS-DOS nie jest mo¿liwe."
+0x0193   "Uruchomieniowa stacja dysków systemu MS-DOS wykazuje nieprawid³owy rozmiar sektora."
+0x0194   "Nieznany typ stacji dysków."
+0x0199   "B³¹d przy przesy³aniu plików systemowych."
+0x019a   "Tê dyskietkê mo¿na sformatowaæ do pojemnoœci %s. Kontynuowaæ formatowanie do takiej pojemnoœci?"
+0x019b   "Sformatowanie dyskietki nie jest mo¿liwe.
+
+SprawdŸ czy dyskietka nie posiada zabezpieczenia przed zapisem lub czy nie jest uszkodzona albo czy nie jest o niew³aœciwej pojemnoœci."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00fe   "&Nazwa katalogu:"
+0x00ff   "\StringFileInfo\040904E4\"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01f4   "Komentarze"
+0x01f5   "Nazwa firmy"
+0x01f6   "Opis pliku"
+0x01f7   "Nazwa wewnêtrzna"
+0x01f8   "Znaki firmowe"
+0x01f9   "Oryginalna nazwa pliku"
+0x01fa   "Opis"
+0x01fb   "Nazwa produktu"
+0x01fc   "Wersja produktu"
+0x01fd   "Opis"
+0x01fe   "Jêzyk"
+0x01ff   "Jêzyki"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0222   "Brak plików."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0255   "Nie znaleziono wskazanego komputera."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0263   "Nie znaleziono udostêpnionego katalogu."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0274   "Jest zbyt wiele przeadresowañ sieci."
+0x0276   "Niew³aœciwe has³o."
+
+Ordinal  String
+---------------------------------------------------------------
+0x02b0   "Stacja dysków sieci nie jest dostêpna."
+0x02b1   "B³¹d odczytu stacji dysków %c:."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0f90   "Polecenia do pracy z plikami"
+0x0f91   "Polecenia do pracy z dyskami"
+0x0f92   "Polecenia do pracy w oknie drzewa"
+0x0f93   "Polecenia okreœlaj¹ce sposób wyœwietlania informacji"
+0x0f94   "Polecenia ustawiania opcji"
+0x0f9a   "Polecenia rozmieszczania okien"
+0x0f9b   "Polecenia wyœwietlania Pomocy dla Mened¿era plików"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1005   "Otwiera wskazany element"
+0x1006   "Drukuje dokument"
+0x1007   "Kojarzy plik z aplikacj¹"
+0x1008   "Wyszukuje pliki i katalogi"
+0x1009   "Rozpoczyna lub otwiera aplikacjê lub dokument"
+0x100a   "Przesuwa wskazany element"
+0x100b   "Kopiuje pliki i katalogi"
+0x100c   "Usuwa pliki i katalogi"
+0x100d   "Zmienia nazwê pliku lub katalogu"
+0x100e   "Ustawia atrybuty pliku i wyœwietla jego w³aœciwoœci"
+0x100f   "Tworzy katalog"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1013   "Koñczy pracê z Mened¿erem plików"
+0x1014   "Zaznacza pliki i katalogi"
+0x1015   "Odtwarza wczeœniej usuniête pliki"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1069   "Kopiuje zawartoœæ dyskietki"
+0x106a   "Przypisuje lub zmienia etykietê dysku"
+0x106b   "Formatuje dyskietkê"
+0x106c   "Kopiuje pliki MS-DOS na dyskietkê"
+0x106d   "Pod³¹cza sieciow¹ stacjê dysków"
+0x106e   "Od³¹cza dysk sieciowy"
+
+Ordinal  String
+---------------------------------------------------------------
+0x109b   "Wybiera inn¹ stacjê dysków"
+0x109c   "Po³¹czenia sieciowe..."
+0x109d   "Wyœwietl udostêpnione katalogi..."
+0x109e   "Udostêpnia katalog"
+0x109f   "Koñczy udostêpnianie katalogu"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10cd   "Wyœwietla inny poziom katalogu"
+0x10ce   "Wyœwietla wszystkie poziomy katalogu"
+0x10cf   "Wyœwietla wszystkie poziomy wszystkich katalogów"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10d0   "Zwija wszystkie katalogi wskazanego katalogu"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1195   "Steruje komunikatami potwierdzenia"
+0x1197   "Wyœwietla lub ukrywa pasek stanu"
+0x1198   "Redukuje Mened¿era plików do ikony po uruchomieniu"
+0x1199   "Wskazuje katalogi, które maj¹ podkatalogi"
+0x119b   "Wyœwietla lub ukrywa pasek stacji dysków"
+0x119c   "Wyœwietla lub ukrywa pasek narzêdzi"
+0x119d   "Otwiera nowe okno po pod³¹czeniu"
+0x119e   "Zmienia czcionkê Mened¿era plików"
+0x119f   "Zachowuje ustawienia po zakoñczeniu pracy z Mened¿erem plików"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1131   "Pokazuje tylko nazwy plików"
+0x1132   "Pokazuje wszystkie informacje o plikach"
+0x1133   "Pokazuje czêœciowe informacje o plikach"
+0x1134   "Sortuje pliki wed³ug nazwy"
+0x1135   "Sortuje pliki wed³ug typu"
+0x1136   "Sortuje pliki wed³ug rozmiaru"
+0x1137   "Sortuje pliki wed³ug daty"
+0x1139   "Pokazuje pliki okreœlonego typu"
+0x113b   "Wyœwietla drzewo katalogów"
+0x113c   "Wyœwietla zawartoœæ bie¿¹cego katalogu"
+0x113d   "Wyœwietla drzewo katalogów i zawartoœæ katalogu bie¿¹cego"
+0x113e   "Dzieli okno katalogu lub przesuwa liniê podzia³u"
+
+Ordinal  String
+---------------------------------------------------------------
+0x11a0   "Pozwala zmieniaæ pasek narzêdzi"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13f0   "Uaktualnia zawartoœæ okna"
+0x13f1   "Porz¹dkuje ikony"
+0x13f2   "Otwiera nowe okno"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13ed   "Rozmieszcza okna"
+0x13ee   "Rozmieszcza okna"
+0x13ef   "Rozmieszcza okna"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1451   "Wyœwietla spis treœci Pomocy Mened¿era plików"
+0x1452   "Wyœwietla informacje o korzystaniu z Pomocy"
+0x1453   "Wyœwietla informacje o Mened¿erze plików"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0fbe   "Szuka tematu w Pomocy Mened¿era plików"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0320   "&Pod³¹cz dysk sieciowy..."
+0x0321   "&Od³¹cz dysk sieciowy..."
+0x0322   "Po³¹czenia &sieciowe..."
+0x0323   "&Udostêpnij jako..."
+0x0324   "Za&koñcz udostêpnianie..."
+0x0325   "&Wyœwietl udostêpnione katalogi..."
+0x0326   "Co&fnij usuniêcie..."
+0x0327   "&Otwórz nowe okno po pod³¹czeniu"
+
+

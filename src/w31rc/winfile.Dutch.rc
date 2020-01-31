@@ -1,0 +1,1132 @@
+/********************************************************************
+
+    Resources that were extracted from a binary that ran on 16-bit Windows.
+
+    Copyright(c) Microsoft Corporation.All rights reserved.
+    Licensed under the MIT License.
+
+********************************************************************/
+
+500 MENU
+BEGIN
+    POPUP   "&Bestand"
+    BEGIN
+    MENUITEM    "&Openen	Enter", 0X0065
+    MENUITEM    "V&erplaatsen...	F7", 0X006A
+    MENUITEM    "&Kopiëren...	F8", 0X006B
+    MENUITEM    "&Verwijderen...	Del", 0X006C
+    MENUITEM    "Naam &wijzigen...", 0X006D
+    MENUITEM    "&Gegevens...	Alt+Enter", 0X006E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Starten...", 0X0069
+    MENUITEM    "Af&drukken...", 0X0066
+    MENUITEM    "Ve&rbinden...", 0X0067
+    MENUITEM    "", 0X0000
+    MENUITEM    "Directory &maken...", 0X006F
+    MENUITEM    "&Zoeken...", 0X0068
+    MENUITEM    "Bestanden se&lecteren...", 0X0074
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Afsluiten", 0X0073
+    END
+    POPUP   "&Schijf"
+    BEGIN
+    MENUITEM    "&Diskette kopiëren...", 0X00C9
+    MENUITEM    "S&chijf naam geven...", 0X00CA
+    MENUITEM    "", 0X0000
+    MENUITEM    "Diskette &formatteren...", 0X00CB
+    MENUITEM    "&Systeemdiskette maken...", 0X00CC
+    MENUITEM    "", 0X0000
+    MENUITEM    "S&tation selecteren...", 0X00FB
+    END
+    POPUP   "S&tructuur"
+    BEGIN
+    MENUITEM    "&Met één niveau uitbreiden	+", 0X012D
+    MENUITEM    "&Subdirectory's weergeven	*", 0X012E
+    MENUITEM    "&Alle subdirectory's weergeven	Ctrl+*", 0X012F
+    MENUITEM    "&Geen subdirectory's	-", 0X0130
+    MENUITEM    "", 0X0000
+    MENUITEM    "S&ubdirectory's aangeven", 0X01F9
+    END
+    POPUP   "Beel&d"
+    BEGIN
+    MENUITEM    "&Structuur en directory", 0X019D
+    MENUITEM    "&Alleen structuur", 0X019B
+    MENUITEM    "A&lleen directory ", 0X019C
+    MENUITEM    "", 0X0000
+    MENUITEM    "S&plitsen", 0X019E
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Naam", 0X0191
+    MENUITEM    "Alle bestands&gegevens", 0X0192
+    MENUITEM    "Deel&weergave...", 0X0193
+    MENUITEM    "", 0X0000
+    MENUITEM    "Sorteren op naa&m", 0X0194
+    MENUITEM    "So&rteren op type", 0X0195
+    MENUITEM    "Sor&teren op omvang", 0X0196
+    MENUITEM    "Sorteren op &datum", 0X0197
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Op type...", 0X0199
+    END
+    POPUP   "&Opties"
+    BEGIN
+    MENUITEM    "&Bevestigen...", 0X01F5
+    MENUITEM    "&Lettertype...", 0X01FE
+    MENUITEM    "Werkb&alk aanpassen...", 0X0200
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Werkbalk", 0X01FC
+    MENUITEM    "&Stationsbalk", 0X01FB
+    MENUITEM    "Stat&usbalk", 0X01F7
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Pictogram bij toepassing", 0X01F8
+    MENUITEM    "&Instellingen opslaan bij afsluiten", 0X01FF
+    END
+    POPUP   "&Venster"
+    BEGIN
+    MENUITEM    "Nieu&w venster", 0X0452
+    MENUITEM    "&Trapsgewijs	Shift+F5", 0X044D
+    MENUITEM    "Naast elkaar - &horizontaal schikken", 0X044F
+    MENUITEM    "&Naast elkaar - verticaal schikken	Shift+F4", 0X044E
+    MENUITEM    "&Pictogrammen schikken", 0X0451
+    MENUITEM    "&Vernieuwen	F5", 0X0450
+    END
+    POPUP   "&?"
+    BEGIN
+    MENUITEM    "&Help-index", 0X04B1
+    MENUITEM    "&Zoeken...", 0X001E
+    MENUITEM    "Help &gebruiken", 0X04B2
+    MENUITEM    "", 0X0000
+    MENUITEM    "&Info...", 0X04B3
+    END
+END
+
+
+145 DIALOG 0x80c8, 13, 54, 278, 150
+CAPTION "Lettertype"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Lettertype:", 1088, 0x0000, 6, 3, 40, 9
+    CONTROL 0x85, "", 1136, 0x0351, 6, 13, 94, 54
+    CONTROL 0x82, "Lettertype-op&maak:", 1089, 0x0000, 110, 3, 64, 8
+    CONTROL 0x85, "", 1137, 0x0001, 110, 13, 64, 54
+    CONTROL 0x82, "Om&vang:", 1090, 0x0000, 186, 3, 35, 9
+    CONTROL 0x85, "", 1138, 0x0311, 186, 13, 37, 54
+    CONTROL 0x80, "Effecten", 1072, 0x0007, 6, 72, 84, 61
+    CONTROL 0x80, "&Doorhalen", 1040, 0x0003, 10, 82, 52, 10
+    CONTROL 0x80, "&Onderstrepen", 1041, 0x0003, 10, 94, 55, 10
+    CONTROL 0x80, "Klei&ne letters", 1042, 0x0003, 10, 82, 54, 10
+    CONTROL 0x82, "&Kleur:", 1091, 0x0000, 10, 106, 30, 9
+    CONTROL 0x85, "", 1139, 0x0253, 10, 116, 75, 50
+    CONTROL 0x80, "OK", 1, 0x0001, 229, 6, 45, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 229, 23, 45, 14
+    CONTROL 0x80, "&Toepassen", 1026, 0x0000, 229, 40, 45, 14
+    CONTROL 0x80, "&Help", 1038, 0x0000, 229, 57, 45, 14
+    CONTROL 0x80, "Voorbeeld", 1073, 0x0007, 98, 72, 160, 49
+    CONTROL 0x82, "", 1093, 0x0081, 98, 124, 160, 25
+    CONTROL 0x82, "AaBbYyZz", 1092, 0x0081, 104, 81, 149, 37
+END
+
+45 DIALOG 0x80c8, 11, 31, 201, 86
+CAPTION "Station selecteren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Stations:", 245, 0x000c, 5, 5, 41, 10
+    CONTROL 0x83, "", 222, 0x0083, 5, 16, 140, 60
+    CONTROL 0x80, "OK", 1, 0x0001, 155, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 155, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 155, 44, 40, 14
+END
+
+10 DIALOG 0x80c8, 15, 12, 210, 63
+CAPTION "Starten"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008b, 3, 6, 162, 10
+    CONTROL 0x82, "&Opdrachtregel:", 100, 0x000c, 3, 18, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 3, 29, 134, 12
+    CONTROL 0x80, "Starten als &pictogram", 214, 0x0003, 3, 45, 82, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 165, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 165, 43, 40, 14
+END
+
+44 DIALOG 0x80c8, 15, 12, 123, 83
+CAPTION "Bestanden selecteren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Bestand(en):", -1, 0x000c, 5, 16, 60, 10
+    CONTROL 0x81, "", 201, 0x0480, 5, 29, 60, 12
+    CONTROL 0x80, "S&electeren", 1, 0x0001, 70, 6, 45, 14
+    CONTROL 0x80, "&Opheffen", 6, 0x0000, 70, 23, 45, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 70, 40, 45, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 70, 63, 45, 14
+END
+
+39 DIALOG 0x80c8, 10, 20, 245, 95
+CAPTION "Bestand vervangen bevestigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Bestand vervangen:", 100, 0x000c, 25, 12, 68, 10
+    CONTROL 0x82, "", 103, 0x008c, 94, 12, 146, 10
+    CONTROL 0x82, "", 105, 0x000c, 94, 22, 146, 10
+    CONTROL 0x82, "Door bestand:", 100, 0x000c, 25, 34, 49, 10
+    CONTROL 0x82, "", 102, 0x008c, 94, 34, 146, 10
+    CONTROL 0x82, "", 106, 0x000c, 94, 44, 146, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 28, 73, 45, 14
+    CONTROL 0x80, "J&a op alles", 107, 0x0000, 77, 73, 45, 14
+    CONTROL 0x80, "&Nee", 7, 0x0000, 126, 73, 45, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 175, 73, 45, 14
+END
+
+40 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Bestand verwijderen bevestigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x000c, 25, 3, 203, 10
+    CONTROL 0x82, "Bestand verwijderen:", 100, 0x000c, 25, 18, 71, 10
+    CONTROL 0x82, "", 102, 0x008c, 95, 18, 145, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 28, 42, 45, 14
+    CONTROL 0x80, "J&a op alles", 107, 0x0000, 77, 42, 45, 14
+    CONTROL 0x80, "&Nee", 7, 0x0000, 126, 42, 45, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 175, 42, 45, 14
+END
+
+41 DIALOG 0x80c8, 10, 20, 245, 60
+CAPTION "Directory verwijderen bevestigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 16, 16
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Directory verwijderen:", 100, 0x000c, 25, 18, 74, 10
+    CONTROL 0x82, "", 102, 0x008c, 99, 18, 141, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 28, 42, 45, 14
+    CONTROL 0x80, "J&a op alles", 107, 0x0000, 77, 42, 45, 14
+    CONTROL 0x80, "&Nee", 7, 0x0000, 126, 42, 45, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 175, 42, 45, 14
+END
+
+42 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "Bestand verplaatsen bevestigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Bestand verplaatsen:", 100, 0x000c, 25, 18, 70, 8
+    CONTROL 0x82, "", 102, 0x008c, 97, 18, 143, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 28, 42, 45, 14
+    CONTROL 0x80, "J&a op alles", 107, 0x0000, 77, 42, 45, 14
+    CONTROL 0x80, "&Nee", 7, 0x0000, 126, 42, 45, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 175, 42, 45, 14
+END
+
+43 DIALOG 0x80c8, 10, 22, 245, 60
+CAPTION "Bestandsnaam wijzigen bevestigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, 32515, 100, 0x0003, 3, 12, 18, 20
+    CONTROL 0x82, "", 104, 0x008c, 25, 3, 203, 10
+    CONTROL 0x82, "Bestandsnaam wijzigen:", 100, 0x000c, 25, 13, 79, 8
+    CONTROL 0x82, "", 102, 0x008c, 105, 13, 135, 10
+    CONTROL 0x80, "&Ja", 6, 0x0001, 28, 42, 45, 14
+    CONTROL 0x80, "J&a op alles", 107, 0x0000, 77, 42, 45, 14
+    CONTROL 0x80, "&Nee", 7, 0x0000, 126, 42, 45, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 175, 42, 45, 14
+END
+
+11 DIALOG 0x80c8, 20, 20, 260, 63
+CAPTION "Afdrukken"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 193, 10
+    CONTROL 0x82, "Af&drukken:", 100, 0x000c, 3, 20, 37, 8
+    CONTROL 0x81, "", 102, 0x0480, 42, 18, 160, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 36, 190, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 213, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 213, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 213, 43, 40, 14
+END
+
+13 DIALOG 0x80c8, 20, 20, 263, 63
+CAPTION "Zoeken"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Zoeken naar:", 100, 0x000c, 5, 6, 45, 12
+    CONTROL 0x81, "", 201, 0x0480, 52, 5, 160, 12
+    CONTROL 0x82, "&Beginnen bij:", 100, 0x000c, 5, 21, 45, 12
+    CONTROL 0x81, "", 101, 0x0480, 52, 20, 160, 12
+    CONTROL 0x80, "&Alle subdirectory's doorzoeken", 232, 0x0003, 52, 34, 113, 10
+    CONTROL 0x82, "", 104, 0x000c, 5, 48, 200, 14
+    CONTROL 0x80, "OK", 1, 0x0001, 217, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 217, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 217, 43, 40, 14
+END
+
+14 DIALOG 0x80c8, 47, 59, 258, 67
+CAPTION "Verplaatsen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Huidige directory: N", 101, 0x008b, 3, 6, 178, 10
+    CONTROL 0x82, "&Naar:", 100, 0x000c, 3, 33, 20, 10
+    CONTROL 0x81, "", 103, 0x0480, 37, 32, 161, 12
+    CONTROL 0x80, "", 257, 0x0004, 26, 33, 10, 10
+    CONTROL 0x80, "&Kopiëren naar Klembord", 256, 0x0004, 26, 49, 89, 10
+    CONTROL 0x82, "", 104, 0x008b, 3, 49, 92, 10
+    CONTROL 0x82, "", 201, 0x008b, 99, 49, 101, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 206, 6, 44, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 206, 23, 44, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 206, 44, 44, 14
+    CONTROL 0x82, "&Van:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 161, 12
+END
+
+10014 DIALOG 0x80c8, 47, 59, 231, 98
+CAPTION "Verplaatsen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Huidige directory: N", 101, 0x008b, 3, 6, 179, 10
+    CONTROL 0x82, "&Naar:", 100, 0x000c, 3, 38, 20, 10
+    CONTROL 0x62, "edit", 103, 0x0004, 37, 38, 138, 42
+    CONTROL 0x50, "€", 256, 0x0401, 6656, 9728, 2560, 2560
+    CONTROL 0x80, "&Kopiëren naar Klembord", 256, 0x0004, 26, 84, 92, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 86, 92, 10
+    CONTROL 0x82, "", 201, 0x008b, 98, 86, 128, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 185, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 185, 23, 40, 14
+    CONTROL 0x80, "&Bladeren", 600, 0x0000, 185, 40, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 185, 61, 40, 14
+    CONTROL 0x82, "&Van:", 100, 0x000c, 3, 19, 20, 10
+    CONTROL 0x81, "", 102, 0x0480, 37, 18, 138, 12
+END
+
+200 DIALOG 0x00c8, 36, 24, 164, 134
+CAPTION "Directory selecteren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x81, "", 1152, 0x0490, 6, 16, 90, 12
+    CONTROL 0x83, "", 1120, 0x0053, 12, 28, 84, 68
+    CONTROL 0x82, "&Directory's:", -1, 0x0000, 10, 6, 92, 9
+    CONTROL 0x82, "", 1088, 0x0000, 10, 17, 83, 8
+    CONTROL 0x83, "", 1121, 0x0053, 10, 28, 92, 68
+    CONTROL 0x82, "&Stations:", 1091, 0x0000, 10, 102, 92, 9
+    CONTROL 0x85, "", 1137, 0x0353, 10, 112, 92, 68
+    CONTROL 0x80, "OK", 1, 0x0001, 108, 6, 50, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 108, 24, 50, 14
+    CONTROL 0x82, "Besta&ndsnaam:", 1090, 0x0000, 6, 6, 76, 9
+    CONTROL 0x82, "Geef bes&tanden weer van het type:", 1089, 0x0000, 6, 104, 116, 9
+    CONTROL 0x85, "", 1136, 0x0043, 6, 114, 90, 36
+    CONTROL 0x80, "&Help", 1038, 0x0000, 208, 46, 50, 14
+    CONTROL 0x80, "&Alleen-lezen", 1040, 0x0003, 208, 68, 50, 12
+END
+
+15 DIALOG 0x80c8, 20, 20, 258, 64
+CAPTION "Verwijderen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Huidige directory: C", 101, 0x008c, 3, 5, 193, 10
+    CONTROL 0x82, "&Verwijderen:", 100, 0x000c, 3, 20, 42, 8
+    CONTROL 0x81, "", 102, 0x0480, 47, 19, 155, 12
+    CONTROL 0x82, "", 104, 0x008b, 3, 40, 71, 10
+    CONTROL 0x82, "", 201, 0x008b, 76, 40, 128, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 210, 6, 42, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 210, 23, 42, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 210, 43, 42, 14
+END
+
+38 DIALOG 0x80c8, 20, 20, 230, 77
+CAPTION "Gegevens"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "%d bestanden geselecteerd, totaal %s bytes", 100, 0x000c, 5, 5, 167, 18
+    CONTROL 0x80, "Kenmerken", -1, 0x0007, 5, 23, 120, 42
+    CONTROL 0x80, "&Alleen-lezen", 215, 0x0003, 10, 34, 52, 12
+    CONTROL 0x80, "&Verborgen", 216, 0x0003, 72, 34, 52, 12
+    CONTROL 0x80, "A&rchief", 217, 0x0003, 10, 46, 52, 12
+    CONTROL 0x80, "&Systeem", 218, 0x0003, 72, 46, 52, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 174, 6, 50, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 174, 23, 50, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 174, 40, 50, 14
+END
+
+16 DIALOG 0x80c8, 23, 13, 267, 195
+CAPTION "Gegevens van %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 199, 6, 65, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 199, 23, 65, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 199, 40, 65, 14
+    CONTROL 0x82, "Besta&ndsnaam:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 65, 5, 130, 10
+    CONTROL 0x82, "&Pad:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 65, 16, 130, 10
+    CONTROL 0x82, "Laatst gewijzigd:", 100, 0x000c, 5, 27, 56, 8
+    CONTROL 0x82, "", 204, 0x000c, 65, 27, 97, 10
+    CONTROL 0x82, "Versie:", 258, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "Niet aangegeven", 259, 0x008c, 65, 38, 90, 10
+    CONTROL 0x82, "&Copyright:", -1, 0x0000, 5, 49, 45, 10
+    CONTROL 0x81, "Niet aangegeven", 265, 0x0880, 65, 49, 130, 10
+    CONTROL 0x82, "Omvang:", 260, 0x000c, 5, 60, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 65, 60, 90, 10
+    CONTROL 0x80, "Kenmerken", 100, 0x0007, 4, 74, 120, 42
+    CONTROL 0x80, "&Alleen-lezen", 215, 0x0003, 9, 86, 51, 10
+    CONTROL 0x80, "&Verborgen", 216, 0x0003, 71, 86, 45, 10
+    CONTROL 0x80, "A&rchief", 217, 0x0003, 9, 98, 39, 10
+    CONTROL 0x80, "&Systeem", 218, 0x0003, 71, 98, 38, 10
+    CONTROL 0x80, "V&ersiegegevens", 262, 0x0007, 6, 121, 258, 72
+    CONTROL 0x83, "", 263, 0x1003, 9, 132, 120, 58
+    CONTROL 0x81, "", 264, 0x0804, 130, 132, 130, 58
+END
+
+17 DIALOG 0x80c8, 20, 20, 200, 63
+CAPTION "Directory maken"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Naam:", 100, 0x000c, 3, 23, 20, 10
+    CONTROL 0x81, "", 201, 0x0480, 30, 22, 90, 12
+    CONTROL 0x82, "", 104, 0x008c, 3, 46, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 157, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 157, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 157, 43, 40, 14
+END
+
+10017 DIALOG 0x80c8, 20, 20, 240, 74
+CAPTION "Directory maken"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 101, 0x008c, 3, 6, 154, 10
+    CONTROL 0x82, "&Naam:", 100, 0x000c, 3, 28, 26, 10
+    CONTROL 0x62, "edit", 201, 0x0000, 3, 40, 170, 18
+    CONTROL 0x50, "‚", 26624, 0x8c00, 768, 15360, -27136, 2560
+    CONTROL 0x80, "OK", 1, 0x0001, 197, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 197, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 197, 43, 40, 14
+END
+
+47 DIALOG 0x80c8, 20, 20, 197, 64
+CAPTION "Systeemdiskette maken"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Kopieer systeembestanden naar diskette in:", -1, 0x000c, 5, 8, 143, 8
+    CONTROL 0x85, "", 222, 0x0003, 30, 20, 40, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 153, 7, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 153, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 153, 44, 40, 14
+END
+
+19 DIALOG 0x80c8, 20, 20, 157, 64
+CAPTION "Diskette kopiëren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Bronstation:", -1, 0x000c, 5, 8, 40, 8
+    CONTROL 0x85, "", 245, 0x0003, 55, 6, 48, 37
+    CONTROL 0x82, "&Doelstation:", 206, 0x000c, 5, 22, 40, 8
+    CONTROL 0x85, "", 222, 0x0003, 55, 20, 48, 37
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 110, 43, 40, 14
+END
+
+22 DIALOG 0x90c8, 30, 30, 130, 55
+CAPTION "Bezig met diskette kopiëren"
+FONT 8, "Helv"
+STYLE 0x00c2
+    CONTROL 0x82, "Bezig met kopiëren diskette in ", 100, 0x0001, 0, 5, 130, 10
+    CONTROL 0x82, "Station A:", 222, 0x0001, 0, 15, 130, 10
+    CONTROL 0x82, "Brondiskette wordt gelezen", 243, 0x0001, 0, 26, 130, 10
+    CONTROL 0x80, "Annuleren", 2, 0x0001, 44, 39, 44, 14
+END
+
+23 DIALOG 0x80c8, 20, 20, 161, 63
+CAPTION "Schijf naam geven"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Volumenaam:", 100, 0x000c, 5, 15, 53, 8
+    CONTROL 0x81, "", 201, 0x0480, 5, 26, 100, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 115, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 115, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 115, 43, 40, 14
+END
+
+24 DIALOG 0x90c8, 11, 28, 183, 96
+CAPTION "Diskette formatteren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 140, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 140, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 140, 43, 40, 14
+    CONTROL 0x82, "&Diskette in:", -1, 0x000c, 5, 7, 47, 10
+    CONTROL 0x85, "", 222, 0x0003, 55, 4, 65, 40
+    CONTROL 0x82, "&Capaciteit:", 100, 0x000c, 5, 20, 48, 10
+    CONTROL 0x85, "", 241, 0x0003, 55, 19, 65, 40
+    CONTROL 0x80, "Opties", 102, 0x0007, 5, 39, 119, 53
+    CONTROL 0x82, "&Volumenaam:", -1, 0x000c, 11, 51, 44, 8
+    CONTROL 0x81, "", 201, 0x0000, 56, 49, 63, 12
+    CONTROL 0x80, "&Systeemdiskette maken", 242, 0x0003, 11, 62, 93, 10
+    CONTROL 0x80, "Diskette snelfor&matteren", 244, 0x0003, 11, 76, 98, 10
+END
+
+26 DIALOG 0x90c8, 30, 30, 150, 50
+CAPTION "Schijf formatteren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Diskette wordt geformatteerd", 100, 0x0001, 0, 5, 150, 10
+    CONTROL 0x82, "Station wordt geïnitialiseerd...", 243, 0x0001, 0, 17, 150, 10
+    CONTROL 0x80, "Annuleren", 2, 0x0001, 54, 30, 44, 14
+END
+
+27 DIALOG 0x90c8, 30, 30, 174, 57
+CAPTION "Systeemdiskette maken"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Systeembestanden worden gekopieerd.", 100, 0x0001, 0, 6, 174, 8
+    CONTROL 0x82, "Druk op Annuleren om af te breken.", 100, 0x0001, 0, 14, 174, 8
+    CONTROL 0x80, "Annuleren", 2, 0x0001, 66, 39, 44, 14
+END
+
+28 DIALOG 0x80c8, 12, 28, 241, 135
+CAPTION "Netwerkverbindingen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Nieuwe verbinding", -1, 0x0007, 5, 3, 170, 55
+    CONTROL 0x82, "&Netwerkpad:", -1, 0x0000, 10, 16, 55, 10
+    CONTROL 0x81, "", 223, 0x0480, 65, 14, 100, 12
+    CONTROL 0x82, "S&tation:", -1, 0x0000, 10, 30, 24, 10
+    CONTROL 0x85, "", 222, 0x0003, 65, 28, 40, 100
+    CONTROL 0x82, "&Wachtwoord:", -1, 0x0000, 10, 44, 44, 8
+    CONTROL 0x81, "", 224, 0x04a0, 65, 42, 100, 12
+    CONTROL 0x82, "H&uidige stationsverbindingen:", -1, 0x0000, 5, 62, 120, 10
+    CONTROL 0x83, "", 245, 0x1003, 5, 73, 160, 60
+    CONTROL 0x80, "&Sluiten", 2, 0x0001, 190, 6, 45, 14
+    CONTROL 0x80, "&Verbinden", 1, 0x0000, 190, 27, 45, 14
+    CONTROL 0x80, "Vo&rige...", 226, 0x0000, 190, 44, 45, 14
+    CONTROL 0x80, "&Bladeren...", 227, 0x0000, 190, 61, 45, 14
+    CONTROL 0x80, "V&erbreken", 255, 0x0000, 190, 78, 45, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 190, 95, 45, 14
+END
+
+29 DIALOG 0x80c8, 30, 30, 239, 98
+CAPTION "Vorige netwerkverbindingen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Netwerkpaden:", 100, 0x000c, 3, 3, 69, 10
+    CONTROL 0x83, "", 226, 0x0003, 3, 15, 172, 80
+    CONTROL 0x80, "S&electeren", 1, 0x0001, 181, 6, 47, 14
+    CONTROL 0x80, "Sluiten", 2, 0x0000, 181, 24, 47, 14
+    CONTROL 0x80, "&Verwijderen", 219, 0x0000, 181, 41, 47, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 181, 58, 47, 14
+END
+
+30 DIALOG 0x80c8, 20, 20, 163, 65
+CAPTION "Deelweergave"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Gegevens", 100, 0x0007, 4, 4, 111, 55
+    CONTROL 0x80, "&Omvang", 203, 0x0003, 11, 15, 100, 9
+    CONTROL 0x80, "&Datum laatste wijziging", 204, 0x0003, 11, 25, 100, 9
+    CONTROL 0x80, "&Tijd laatste wijziging", 205, 0x0003, 11, 35, 100, 9
+    CONTROL 0x80, "&Bestandskenmerken", 206, 0x0003, 11, 45, 100, 9
+    CONTROL 0x80, "OK", 1, 0x0001, 120, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 120, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 120, 43, 40, 14
+END
+
+32 DIALOG 0x80c8, 20, 20, 157, 102
+CAPTION "Op type"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "&Naam:", 100, 0x000c, 5, 8, 23, 10
+    CONTROL 0x81, "", 201, 0x0480, 34, 6, 65, 12
+    CONTROL 0x80, "Bestandstype", 100, 0x0007, 5, 20, 94, 62
+    CONTROL 0x80, "&Directory's", 101, 0x0003, 10, 31, 59, 10
+    CONTROL 0x80, "&Programma's", 210, 0x0003, 10, 43, 61, 10
+    CONTROL 0x80, "Do&cumenten", 211, 0x0003, 10, 55, 61, 10
+    CONTROL 0x80, "&Andere bestanden", 212, 0x0003, 10, 67, 77, 10
+    CONTROL 0x80, "&Verborgen/systeembestanden weergeven", 250, 0x0003, 5, 85, 150, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 110, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 110, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 110, 43, 40, 14
+END
+
+33 DIALOG 0x80c8, 20, 20, 164, 80
+CAPTION "Bevestigen"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "Bevestigen van", 100, 0x0007, 5, 3, 108, 73
+    CONTROL 0x80, "&Bestand verwijderen", 219, 0x0003, 10, 15, 83, 10
+    CONTROL 0x80, "&Directory verwijderen", 220, 0x0003, 10, 27, 80, 10
+    CONTROL 0x80, "Bestand &vervangen", 221, 0x0003, 10, 39, 77, 10
+    CONTROL 0x80, "&Muisbewerking", 249, 0x0003, 10, 51, 60, 10
+    CONTROL 0x80, "&Schijfopdrachten", 251, 0x0003, 10, 63, 66, 10
+    CONTROL 0x80, "OK", 1, 0x0001, 118, 6, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 118, 23, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 118, 44, 40, 14
+END
+
+35 DIALOG 0x80c8, 20, 20, 250, 46
+CAPTION "Bezig met verplaatsen..."
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "", 104, 0x008b, 5, 5, 70, 10
+    CONTROL 0x82, "", 201, 0x008b, 76, 5, 171, 10
+    CONTROL 0x82, "Naar:", 108, 0x008b, 5, 15, 25, 10
+    CONTROL 0x82, "", 109, 0x008b, 55, 15, 192, 10
+    CONTROL 0x80, "Annuleren", 2, 0x0001, 200, 28, 40, 14
+END
+
+36 DIALOG 0x80c8, 20, 20, 120, 58
+CAPTION ""
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Bezig met afdrukken bestand...", -1, 0x0001, 4, 6, 120, 12
+    CONTROL 0x82, "", 100, 0x0081, 4, 20, 120, 12
+    CONTROL 0x80, "Annuleren", 2, 0x0001, 44, 40, 42, 14
+END
+
+12 DIALOG 0x80c8, 31, 39, 221, 96
+CAPTION "Verbinden"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Bes&tanden met toevoeging:", 99, 0x000c, 5, 8, 90, 8
+    CONTROL 0x81, "", 112, 0x0400, 100, 6, 35, 12
+    CONTROL 0x82, "&Verbinden met:", 99, 0x000c, 5, 22, 150, 10
+    CONTROL 0x81, "", 113, 0x0080, 6, 32, 148, 12
+    CONTROL 0x83, "", 111, 0x1003, 7, 44, 147, 40
+    CONTROL 0x80, "OK", 1, 0x0001, 165, 6, 45, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 165, 23, 45, 14
+    CONTROL 0x80, "&Bladeren...", 232, 0x0000, 165, 43, 45, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 165, 60, 45, 14
+END
+
+46 DIALOG 0x80c8, 11, 28, 250, 78
+CAPTION "Bestandsnaam selecteren"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x82, "Dit pad komt niet overeen met de MS-DOS-indeling voor bestandsnamen. Voer een nieuwe naam in.", 99, 0x0000, 4, 4, 190, 24
+    CONTROL 0x82, "&Nieuwe naam:", 99, 0x0002, 19, 56, 50, 12
+    CONTROL 0x81, "", 103, 0x0000, 70, 55, 130, 12
+    CONTROL 0x82, "Oorspronkelijk pad:", 99, 0x0002, 5, 28, 64, 8
+    CONTROL 0x81, "", 102, 0x0880, 70, 28, 130, 12
+    CONTROL 0x82, "Naar directory:", 99, 0x0002, 19, 42, 50, 11
+    CONTROL 0x81, "", 101, 0x0880, 70, 42, 130, 12
+    CONTROL 0x80, "OK", 1, 0x0001, 205, 4, 40, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 205, 20, 40, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 205, 36, 40, 14
+END
+
+48 DIALOG 0x80c8, 23, 13, 250, 107
+CAPTION "Gegevens van %s"
+FONT 8, "Helv"
+STYLE 0x00c0
+    CONTROL 0x80, "OK", 1, 0x0001, 194, 6, 50, 14
+    CONTROL 0x80, "Annuleren", 2, 0x0000, 194, 23, 50, 14
+    CONTROL 0x80, "&Help", 254, 0x0000, 194, 43, 50, 14
+    CONTROL 0x82, "Besta&ndsnaam:", 261, 0x000c, 5, 5, 55, 10
+    CONTROL 0x81, "", 201, 0x0880, 60, 5, 134, 10
+    CONTROL 0x82, "&Pad:", 100, 0x000c, 5, 16, 51, 10
+    CONTROL 0x81, "", 101, 0x0880, 60, 16, 134, 10
+    CONTROL 0x82, "Laatst gewijzigd:", 100, 0x000c, 5, 27, 62, 10
+    CONTROL 0x82, "", 204, 0x000c, 72, 27, 103, 10
+    CONTROL 0x82, "Omvang:", 260, 0x000c, 5, 38, 45, 10
+    CONTROL 0x82, "", 203, 0x000c, 60, 38, 90, 10
+    CONTROL 0x80, "Kenmerken", 100, 0x0007, 4, 52, 120, 42
+    CONTROL 0x80, "&Alleen-lezen", 215, 0x0003, 9, 64, 51, 10
+    CONTROL 0x80, "&Verborgen", 216, 0x0003, 71, 64, 45, 10
+    CONTROL 0x80, "A&rchief", 217, 0x0003, 9, 76, 34, 10
+    CONTROL 0x80, "&Systeem", 218, 0x0003, 71, 76, 38, 10
+END
+
+
+Ordinal  String
+---------------------------------------------------------------
+0x0101   "(Hoofddirectory)"
+0x0102   "(Niet van toepassing)"
+0x0103   "Gedeeld als %s"
+0x0104   "Niet gedeeld"
+0x0107   "Bezig met bestanden kopiëren naar %s"
+0x0108   "Bezig met bestanden verplaatsen naar %s"
+0x0109   "Bestanden gestart met %s"
+0x010a   "%s bytes"
+0x010b   "%s kB"
+0x010c   "%sMB"
+0x010d   "%sGB"
+0x010e   "%sTB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0028   "Windows afsluiten"
+0x0029   "Hiermee beëindigt u de Windows-sessie."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0032   "Diskette kopiëren"
+0x0033   "Plaats de doeldiskette."
+0x0034   "Plaats de brondiskette."
+0x0035   "Plaats de bron- en doeldiskettes."
+0x0036   "Doelschijf wordt geformatteerd."
+0x0037   "Fout bij kopiëren diskette"
+0x0038   "Kan schijf niet kopiëren."
+0x003a   "Bron- en doelstations zijn niet compatibel."
+0x003c   "%d%% voltooid"
+0x003d   "Bezig met het maken van hoofddirectory..."
+0x003e   "Bezig met systeembestanden kopiëren..."
+0x003f   "Fout bij formatteren van diskette"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00c0   "Onvoldoende schijfruimte om af te drukken.
+
+Verwijder een of meer bestanden en probeer het opnieuw."
+0x00c1   "Onvoldoende geheugen om af te drukken.
+
+Sluit een of meer toepassingen af en probeer het opnieuw."
+0x00c2   "Fout bij het afdrukken.
+
+Controleer of de printer is geselecteerd en juist is geconfigureerd."
+0x00c3   "Onvolledige directorystructuur weergegeven"
+0x00c5   "Diskette in doelstation is vol.
+
+Plaats een nieuwe diskette om door te gaan."
+0x00c6   "Dit is een systeem-, verborgen of alleen-lezen-bestand."
+0x00c7   "Bestandsbeheer kan niet snelformatteren.
+
+Normaal formatteren?"
+0x00c8   "De opgegeven toepassing is geen Windows- of MS-DOS-toepassing."
+0x00c9   "Deze toepassing vereist een nieuwere versie van Microsoft Windows."
+0x00ca   "Deze toepassing vereist Windows."
+0x00cb   "Tijdens het verzenden van de opdracht naar de toepassing is een fout opgetreden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0040   "Kan diskette niet formatteren."
+0x0042   "Formatteren voltooid"
+0x0043   "%ld bytes totale schijfruimte
+%ld bytes beschikbaar op diskette
+
+Wilt u nog een diskette formatteren?"
+0x0046   "Systeemdiskette maken"
+0x0047   "Weet u zeker dat u systeembestanden naar de diskette in station %c wilt kopiëren?"
+0x0048   "Fout systeemdiskette"
+0x0049   "Het opstartstation van MS-DOS bevat geen systeembestanden of is niet beschikbaar."
+0x004a   "U kunt geen systeembestanden kopiëren naar het opstartstation van MS-DOS."
+0x004b   "U kunt geen systeembestanden aan deze diskette toevoegen.
+
+Controleer of een geformatteerde diskette in het station aanwezig is en of het station is gesloten."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0406   "Bestandsbeheer kan %s niet maken of vervangen: %s"
+0x0408   "Bestandsbeheer kan geen MS-DOS-systeemdiskette maken omdat Windows NT multiboot op uw systeem is geïnstalleerd.  Een systeemdiskette maakt u met behulp van het hulpprogramma SYS in de MS-DOS-opdrachtregel."
+0x0409   "Wilt u de diskette nu formatteren zonder het systeem over te brengen?"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0050   "Netwerkfout"
+0x0053   "Deze schijf bevat de Windows-systeembestanden. De verbinding ermee kan niet worden beëindigd."
+0x005b   "Bestandsbeheer kan de kenmerken niet wijzigen.
+
+Controleer of de schijf niet schrijfbeveiligd is."
+0x005c   "Bestandsbeheer kan geen directory maken.
+
+Controleer of de schijf niet schrijfbeveiligd is."
+0x005d   "Bestandsbeheer kan de schijf geen naam geven.
+
+Controleer of de schijf niet schrijfbeveiligd is en geen netwerkstation is en of de naam geldig is.
+Namen mogen volgende tekens niet bevatten:
+[space] * ? / \ | . , ; : + = [ ] ( )"
+0x005f   "Geen overeenkomstige bestanden gevonden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00b4   "%d bestand(en) (%s)"
+0x00b5   "Directory's gelezen: %d "
+0x00b6   "%c: %s vrij,  %s totaal"
+0x00b7   "%d bestand(en) gevonden"
+0x00b9   "de geselecteerde bestanden"
+0x00ba   "Bestandsbeheer kan de verbinding met het netwerkstation niet verbreken omdat er bestanden open staan."
+0x00bb   "%d bestand(en) gesel. (%s)"
+0x00bc   "Station %c: bevat geen diskette.
+
+Plaats een diskette en probeer het opnieuw."
+0x00bd   "De schijf in station %c: is niet geformatteerd.
+
+Wilt u de schijf nu formatteren?"
+0x00bf   "Kan het af te drukken bestand niet vinden. Controleer of het pad en de bestandsnaam juist zijn ingevoerd."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0060   "De opgegeven directory bestaat al."
+0x0061   "De inhoud van dit station is gewijzigd. Wilt u het venster Zoekresultaten bijwerken?"
+0x0065   "Station %c:%c"
+0x006e   "Kan programma niet starten"
+0x006f   "Onverwachte fout: %d."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00d2   "Hierdoor worden ALLE gegevens van de schijf verwijderd. Weet u zeker dat u de schijf in station %c  wilt formatteren?"
+0x00d3   "Diskette formatteren bevestigen"
+0x00d4   "Deze bewerking zal ALLE gegevens van de doeldiskette verwijderen. Weet u zeker dat u wilt doorgaan?"
+0x00d5   "Diskette kopiëren bevestigen"
+0x00d6   "&Sluiten"
+0x00da   "Directory %s bestaat niet.
+
+Wilt u deze maken?"
+0x00db   "Programma's#*.exe;*.pif;*.com;*.bat#Alle Bestanden (*.*)#*.*#"
+0x00dc   "Bladeren"
+0x00dd   "Starten"
+0x00de   "Kan bestand niet afdrukken"
+0x00df   "Kan Help-informatie niet weergeven."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0070   "Onvoldoende geheugen voor het starten van de opgegeven toepassing.
+
+Sluit een of meer toepassingen af en probeer het opnieuw."
+0x0071   "Bestandsbeheer kan het opgegeven bestand (of een onderdeel ervan) niet vinden.
+
+Controleer of het pad en de bestandsnaam juist zijn ingevoerd en of alle vereiste bibliotheken beschikbaar zijn."
+0x0072   "Het opgegeven pad is ongeldig."
+0x0073   "Er zijn momenteel te veel bestanden in gebruik.
+
+Sluit een of meer toepassingen af of vergroot de waarde van de opdracht Files in CONFIG.SYS en probeer het opnieuw."
+0x0074   "Er is geen toepassing verbonden met dit bestand.
+
+Kies Verbinden in het menu Bestand om een verbinding te maken."
+0x0075   "U kunt niet meer dan een versie van het opgegeven programma starten."
+0x0076   "Bestandsbeheer kan het opgegeven bestand niet openen of afdrukken.
+
+Start de toepassing waarin dit bestand is gemaakt en open het daar of druk het van daaruit af."
+0x0078   "Muisbewerking bevestigen"
+0x0079   "Weet u zeker dat u de geselecteerde bestanden of directory's naar %s wilt kopiëren?"
+0x007a   "Weet u zeker dat u de geselecteerde bestanden of directory's naar %s wilt verplaatsen?"
+0x007b   "Weet u zeker dat u %s wilt starten met %s als opstartbestand?"
+0x007c   "Bestandsbeheer"
+0x007e   "Directorystructuur"
+0x007f   "Zoekresultaten: "
+
+Ordinal  String
+---------------------------------------------------------------
+0x00e0   "Bestanden met de toevoeging %s zijn programma's en kunnen niet worden verbonden met een andere toepassing."
+0x00e1   "%s is geen programma en kan niet met een bestandstoevoeging worden verbonden."
+0x00e2   "(Geen)"
+0x00e4   "Bestandsbeheer kan niet meerdere bestanden afdrukken.
+
+Selecteer één bestand en probeer het opnieuw."
+0x00e5   "Dit programma of een van de onderdelen is gecomprimeerd.
+
+Gebruik de MS-DOS-opdracht Expand om het bestand vanaf de setup-diskettes te kopiëren."
+0x00e6   "Een van de bibliotheekbestanden dat nodig is voor het starten van deze toepassing is beschadigd. Installeer deze toepassing opnieuw."
+0x00e7   "Dit bestand wordt door een andere toepassing gebruikt."
+0x00e8   "Het kan zijn dat Bestandsbeheer geen toegang krijgt tot bestanden die gemaakt zijn in de directory "%s".
+
+Wilt u doorgaan?"
+0x00e9   "Directory maken"
+0x00ea   "%ld bytes"
+0x00eb   "%s bytes"
+0x00ec   "U kunt geen meervoudige bestanden of directory's naar het Klembord kopiëren. 
+
+Selecteer een enkelvoudig bestand en probeer het opnieuw."
+0x00ed   "%s - %s"
+0x00ee   "Station:"
+0x00ef   "%s, "
+
+Ordinal  String
+---------------------------------------------------------------
+0x0084   "Te veel bestanden"
+0x0085   "Bestandsbeheer - Onvoldoende geheugen"
+0x0086   "Kan niet de gehele directory lezen. Deze wordt slechts gedeeltelijk weergegeven."
+0x008c   "Huidige directory: %s"
+0x008d   "Kopiëren"
+0x008f   "Naam wijzigen"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0091   "Diskette formatteren"
+0x0092   "Selecteer de te formatteren diskette."
+0x0096   "Bezig met maken van:"
+0x0097   "Bezig met verwijderen..."
+0x0098   "Bezig met kopiëren:"
+0x0099   "Bezig met naam wijzigen..."
+0x009a   "Bezig met verplaatsen..."
+0x009b   "Bezig met verwijderen..."
+0x009c   "Bezig met afdrukken van: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x00a0   "Station %c bestaat niet."
+0x00a9   "Bezig met kopiëren..."
+0x00aa   "Bezig met verwijderen:"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01a4   "Bezig met openen..."
+0x01a5   "Bezig met sluiten..."
+0x01a6   "Er zijn te veel directory-vensters geopend.
+
+Sluit een of meer vensters en probeer het opnieuw."
+
+Ordinal  String
+---------------------------------------------------------------
+0x03e9   "Fout bij verplaatsen van bestand"
+0x03ea   "Fout bij kopiëren van bestand"
+0x03eb   "Fout bij verwijderen van bestand"
+0x03ec   "Fout bij wijzigen naam van bestand"
+0x03ed   "Fout bij selecteren van station"
+0x03ee   "Fout bij lezen van directory"
+0x03ef   "Fout bij geven van volumenaam aan schijf"
+
+Ordinal  String
+---------------------------------------------------------------
+0x03f3   "Bestandsbeheer kan %s niet verplaatsen: %s"
+0x03f4   "Bestandsbeheer kan %s niet kopiëren: %s"
+0x03f5   "Bestandsbeheer kan %s niet verwijderen: %s"
+0x03f6   "Bestandsbeheer kan naam van %s niet wijzigen: %s"
+0x03fd   "Bestandsbeheer kan directory %s niet maken: %s"
+0x03fe   "Bestandsbeheer kan directory %s niet verwijderen: %s"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0411   "Ongeldige MS-DOS-functie."
+0x0412   "Bestandsbeheer kan het opgegeven bestand niet vinden.
+
+Controleer of het pad en de bestandsnaam juist zijn ingevoerd."
+0x0413   "Bestandsbeheer kan het opgegeven pad niet vinden.
+
+Voer het juiste pad in."
+0x0414   "Te veel andere bestanden zijn in gebruik. Sluit een of meer toepassingen af en probeer het opnieuw."
+0x0415   "Toegang geweigerd.
+
+Controleer of de schijf niet vol is of schrijfbeveiligd."
+0x0416   "Ongeldige bestandsingang."
+0x0418   "Onvoldoende geheugen.
+
+Sluit een of meer toepassingen af en probeer het opnieuw."
+0x041c   "Ongeldige bestandstoegang."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0420   "Bestandsbeheer kan de huidige directory niet verwijderen (interne fout)."
+0x0421   "Ongeldig apparaat."
+0x0422   "Directory is leeg."
+0x0423   "De diskette is schrijfbeveiligd.
+
+Schakel de beveiliging van de diskette uit of gebruik een andere diskette en probeer het opnieuw."
+0x042d   "Bestandsbeheer kan niet naar het doelbestand of naar de doeldiskette schrijven."
+0x042f   "Bestandsbeheer kan niet van het bronbestand of van de brondiskette lezen."
+
+Ordinal  String
+---------------------------------------------------------------
+0x050f   "Ongeldige bewerking."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0451   "Toegang tot netwerk geweigerd. Controleer of u de juiste toegangsrechten tot het netwerk hebt voor het uitvoeren van deze bewerking."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0430   "Inbreuk op gezamenlijk gebruik. Bron- of doelbestanden zijn wellicht al in gebruik."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0480   "Onvoldoende schijfruimte.
+
+Verwijder een of meer bestanden en probeer het opnieuw."
+0x0481   "Bron- en doelbestandsnamen zijn identiek."
+0x0482   "Selecteer één bestand voor het wijzigen van de naam, of gebruik MS-DOS-jokertekens (bijvoorbeeld, *.TXT) voor het wijzigen van de naam van een groep bestanden met dezelfde naam."
+0x0483   "U kunt de naam niet wijzigen in die van een andere directory of schijf."
+0x0484   "Hoofddirectory (interne fout)."
+0x0486   "De doeldirectory is een subdirectory van de brondirectory."
+0x0487   "Het opgegeven bestand is wordt door Windows gebruikt."
+0x0488   "Toegang geweigerd. Bronbestand is wellicht al in gebruik."
+0x0489   "Pad is te diep."
+0x048a   "Geef een bestand of directory op in het vak Naar. Of gebruik, als u een groep bestanden op wilt geven, jokertekens van MS-DOS (bijvoorbeeld *.TXT)."
+0x048b   "De opgegeven bestandsnaam bestaat al. Geef een andere naam op in het vak In en probeer het opnieuw."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0130   "1,2 MB"
+0x0131   "720 kB"
+0x0132   "1,44 MB"
+0x0133   "2,88 MB"
+0x0134   "Capaciteit station"
+
+Ordinal  String
+---------------------------------------------------------------
+0x012f   "360 kB"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0190   "Onvoldoende geheugen."
+0x0192   "U kunt het opstartstation van MS-DOS niet formatteren."
+0x0193   "Het opstartstation van MS-DOS heeft een ongeldig sectorformaat."
+0x0194   "Het opgegeven stationstype is onbekend."
+0x0199   "Bestandsbeheer heeft de systeembestanden niet overgedragen."
+0x019a   "Deze schijf kan geformatteerd worden met een capaciteit van %s. Doorgaan met formatteren met deze capaciteit?"
+0x019b   "Bestandsbeheer kan diskette niet formatteren.
+
+Controleer of de diskette in het station is geplaatst en of de diskette niet is schrijfbeveiligd, beschadigd, of een verkeerde dichtheidswaarde heeft."
+
+Ordinal  String
+---------------------------------------------------------------
+0x00fe   "&Directorynaam:"
+0x00ff   "\StringFileInfo\041304E4\"
+
+Ordinal  String
+---------------------------------------------------------------
+0x01f4   "Opmerkingen"
+0x01f5   "Bedrijfsnaam"
+0x01f6   "Beschrijving bestand"
+0x01f7   "Interne naam"
+0x01f8   "Handelsmerken"
+0x01f9   "Oorspronkelijke bestandsnaam"
+0x01fa   "Beschrijving Private Build"
+0x01fb   "Produktnaam"
+0x01fc   "Produktversie"
+0x01fd   "Beschrijving Special Build"
+0x01fe   "Taal"
+0x01ff   "Talen"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0222   "Geen bestanden gevonden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0255   "De opgegeven computer kan niet worden gevonden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0263   "De gedeelde directory kan niet worden gevonden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0274   "Er zijn teveel doorgestuurde netwerken."
+0x0276   "Ongeldig wachtwoord."
+
+Ordinal  String
+---------------------------------------------------------------
+0x02b0   "Het netwerkstation is niet beschikbaar."
+0x02b1   "Bij het lezen van station %c: is een fout opgetreden."
+
+Ordinal  String
+---------------------------------------------------------------
+0x0f90   "Opdrachten voor het werken met bestanden"
+0x0f91   "Opdrachten voor het werken met diskettes"
+0x0f92   "Opdrachten voor het werken in het directorystructuurvenster"
+0x0f93   "Opdrachten voor het bepalen van weergave van informatie"
+0x0f94   "Opdrachten voor instelling van opties"
+0x0f9a   "Opdrachten voor het schikken van vensters"
+0x0f9b   "Opdrachten voor het weergeven van Help bij Bestandsbeheer"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1005   "Opent het geselecteerde onderdeel"
+0x1006   "Drukt een document af"
+0x1007   "Verbindt een bestand met een toepassing"
+0x1008   "Zoekt naar bestanden en directory's"
+0x1009   "Start of opent een toepassing of document"
+0x100a   "Verplaatst het geselecteerde onderdeel"
+0x100b   "Kopieert bestanden en directory's"
+0x100c   "Verwijdert bestanden en directory's"
+0x100d   "Wijzigt naam van een bestand of directory "
+0x100e   "Bepaalt bestandskenmerken en geeft gegevens weer"
+0x100f   "Maakt een directory"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1013   "Sluit Bestandsbeheer af"
+0x1014   "Selecteert bestanden en directory's"
+0x1015   "Haalt reeds verwijderde bestanden terug"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1069   "Kopieert de inhoud van een diskette"
+0x106a   "Wijzigt de volumenaam van de schijf of wijst een volumenaam toe"
+0x106b   "Formatteert een diskette"
+0x106c   "Kopieert MS-DOS-bestanden naar een diskette"
+0x106d   "Brengt een verbinding tot stand met een netwerkstation"
+0x106e   "Verbreekt de verbinding met een netwerkstation"
+
+Ordinal  String
+---------------------------------------------------------------
+0x109b   "Selecteert een ander station"
+0x109c   "Netwerkverbindingen..."
+0x109d   "Gedeelde directory's weergeven..."
+0x109e   "Deelt een directory"
+0x109f   "Beëindigt het delen van een directory"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10cd   "Geeft een ander niveau van een directory weer"
+0x10ce   "Geeft alle niveau's van een directory weer"
+0x10cf   "Geeft alle niveau's van alle directory's weer"
+
+Ordinal  String
+---------------------------------------------------------------
+0x10d0   "Vouwt alle directory's van een geselecteerde directory samen"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1195   "Beheert bevestigingsberichten"
+0x1197   "Geeft statusbalk weer of verbergt deze"
+0x1198   "Verkleint Bestandsbeheer bij het starten tot een pictogram"
+0x1199   "Geeft aan welke directory's subdirectory's bevatten"
+0x119b   "Geeft stationsbalk weer of verbergt deze"
+0x119c   "Geeft werkbalk weer of verbergt deze"
+0x119d   "Opent een nieuw venster bij het verbinden"
+0x119e   "Wijzigt het lettertype van Bestandsbeheer"
+0x119f   "Slaat uw instellingen op bij het afsluiten van Bestandsbeheer"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1131   "Geeft alleen bestandsnamen weer"
+0x1132   "Geeft alle bestandsgegevens weer"
+0x1133   "Geeft bepaalde bestandsgegevens weer "
+0x1134   "Sorteert bestanden op naam"
+0x1135   "Sorteert bestanden op type"
+0x1136   "Sorteert bestanden op omvang"
+0x1137   "Sorteert bestanden op datum"
+0x1139   "Geeft bestanden weer van een bepaald type..."
+0x113b   "Geeft de directorystructuur weer"
+0x113c   "Geeft de inhoud van de huidige directory weer"
+0x113d   "Geeft de directorystructuur weer en de inhoud van de huidige directory"
+0x113e   "Splitst een directoryvenster of verplaatst de splitsbalk"
+
+Ordinal  String
+---------------------------------------------------------------
+0x11a0   "Past de werkbalk aan"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13f0   "Werkt de inhoud van een venster bij"
+0x13f1   "Schikt pictogrammen"
+0x13f2   "Opent nieuw venster"
+
+Ordinal  String
+---------------------------------------------------------------
+0x13ed   "Schikt vensters"
+0x13ee   "Schikt vensters"
+0x13ef   "Schikt vensters"
+
+Ordinal  String
+---------------------------------------------------------------
+0x1451   "Geeft Help-index weer van Help bij Bestandsbeheer "
+0x1452   "Geeft informatie weer over Help gebruiken"
+0x1453   "Geeft informatie over Bestandsbeheer"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0fbe   "Zoekt naar een onderwerp in Help bij Bestandsbeheer"
+
+Ordinal  String
+---------------------------------------------------------------
+0x0320   "Netwe&rkstation verbinden..."
+0x0321   "Ver&binding netwerkstation verbreken..."
+0x0322   "&Netwerkverbindingen..."
+0x0323   "Delen &als..."
+0x0324   "D&elen beëindigen..."
+0x0325   "&Gedeelde directory's weergeven..."
+0x0326   "Verwijderen o&ngedaan maken..."
+0x0327   "Bij ve&rbinden nieuw venster openen"
+
+

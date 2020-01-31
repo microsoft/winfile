@@ -10,21 +10,30 @@ so that it compiles with Visual Studio and runs on current Windows.
 
 2. current master: contains my personal changes / additions to WinFile.
 
-I will consider bugs fixes and suggestions for minor changes to the master branch.  Feel free to create a pull request or post issues as you see fit.
+I will consider bugs fixes and suggestions for minor changes to the master branch. Feel free to create a pull request or post issues as you see fit.
 
 I will not be changing the original_plus sources nor creating other branches for other purposes.
-You are welcome do that on your own.
+You are welcome to do that on your own.
 
 ## Download The App
-If you just want to download the WinFile application without worrying about compiling from the source code, we have precompiled versions available for both original_plus as well as the latest stable release for you to download. Source code for the corresponding release is also, optionally, available.
+
+If you are running Windows 10, you can download the app from the store
+
+<a href="https://www.microsoft.com/store/apps/9p7vbbbc49rb?ocid=badge"><img src="https://assets.windowsphone.com/85864462-9c82-451e-9355-a3d5f874397a/English_get-it-from-MS_InvariantCulture_Default.png" alt="Get it from Microsoft" width="150px"></a>
+
+If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of precompiled versions available.
 
 Please select the version which you would like to download.
 
-Latest build from master: coming soon
+- Latest build from master (located on Azure): [Win32 (x86)](https://winfilerelease.blob.core.windows.net/craigwi/Win32/Winfile.exe), [x64](https://winfilerelease.blob.core.windows.net/craigwi/x64/Winfile.exe), [ARM](https://winfilerelease.blob.core.windows.net/craigwi/ARM/Winfile.exe).
 
-[Latest Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
+- [Chocolatey release](https://chocolatey.org/packages/winfile)
 
-[Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
+- [Latest Release on Github (v10.1901.1)](https://github.com/microsoft/winfile/releases/tag/v10.0.1901.1)
+
+- [First Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
+
+- [Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
 
 To see more release binaries, including of older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
 
@@ -42,9 +51,9 @@ Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded
 
 ## Changes in original_plus
 
-The source code provided here (in the src directory) was copied from the Windows NT 4 source tree in November
+The source code provided here (in the `src` directory) was copied from the Windows NT 4 source tree in November
 2007.  The tag named original_plus contains a very limited set of  modifications
-from the original sources to enable WinFile.exe to run on current Windows.
+from the original sources to enable `WinFile.exe` to run on current Windows.
 The most significant changes are:
 
 1. converted to Visual Studio solution; works on VS 2015 and 2017
@@ -56,10 +65,10 @@ The most significant changes are:
 
 The help directory contains both winfile.hlp and winfile.chm.  Winfile.hlp was in the NT4
 source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from 
-a regular installation of Windows 98 and works on Windows 10.  As is, WinFile.exe 
+a regular installation of Windows 98 and works on Windows 10.  As is, `WinFile.exe` 
 tries to launch winfile.hlp which fails.
 
-To create your own local branch referring to this release, run "git checkout -b <your branch> original_plus".
+To create your own local branch referring to this release, run `git checkout -b <your branch> original_plus`.
 
 ## Changes in master v10.0 after original_plus
 
@@ -75,22 +84,22 @@ was created.  For changes post v10.0, see the commit and release history.
 In summary v10.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
-2. control characters (e.g., ctrl+C) map to current short cut (e.g., ctrl+c -> copy)
+2. control characters (e.g., ctrl+C) map to current short cut (e.g., `ctrl+c` -> `copy`)
 instead of changing drives
-3. cut (ctrl+X) followed by paste (ctrl+V) translates into a file move as one would expect
+3. cut (`ctrl+X`) followed by paste (`ctrl+V`) translates into a file move as one would expect
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer
 5. added context menus in both panes
 6. improved the means by which icons are displayed for files
 7. F12 runs notepad or notepad++ on the selected file
-8. moved the ini file location to %AppData%\Roaming\Microsoft\WinFile
+8. moved the ini file location to `%AppData%\Roaming\Microsoft\WinFile`
 9. File.Search can include a date which limits the files returned to those after the date provided;
 the output is also sorted by the date instead of by the name
 10. File.Search includes an option as to whether to include sub-directories
-11. ctrl+K starts a command shell (ConEmu if installed) in the current directory; shift+ctrl+K
-starts an elevated command shell (cmd.exe only)
-12. File.Goto (ctrl+G) enables one to type a few words of a path and get a list of directories;
+11. `ctrl+K` starts a command shell (ConEmu if installed) in the current directory; `shift+ctrl+K`
+starts an elevated command shell (`cmd.exe` only)
+12. File.Goto (`ctrl+G`) enables one to type a few words of a path and get a list of directories;
 selecting one changes to that directory.  Only drive c: is indexed.
-13. UI shows  reparse points (e.g., Junction points) as such
+13. UI shows reparse points (e.g., Junction points) as such
 14. added simple forward / back navigation (probably needs to be improved)
 15. View command has a new option to sort by date forward (oldest on top);
 normal date sorting is newest on top

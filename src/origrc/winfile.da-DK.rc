@@ -1,0 +1,1468 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Danish (Denmark) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_DAN)
+LANGUAGE LANG_DANISH, SUBLANG_DEFAULT
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "&Filer"
+    BEGIN
+        MENUITEM "Å&bn\tEnter",                 101
+        MENUITEM "&Flyt...\tF7",                106
+        MENUITEM "K&opier...\tF8",              107
+        MENUITEM "Kopier til Udklipsbo&g...\tF9", 118
+        MENUITEM "&Slet...\tDel",               108
+        MENUITEM "Om&døb...",                   109
+        MENUITEM "Ege&nskaber...\tAlt+Enter",   110
+        MENUITEM SEPARATOR
+        MENUITEM "Komp&rimer...",               119
+        MENUITEM "Dekompr&imer...",             120
+        MENUITEM SEPARATOR
+        MENUITEM "&Kør...",                     105
+        MENUITEM "&Udskriv...",                 102
+        MENUITEM "Asso&cier...",                103
+        MENUITEM SEPARATOR
+        MENUITEM "Opr&et mappe...",             111
+        MENUITEM "S&øg...",                     104
+        MENUITEM "&Marker filer...",            116
+        MENUITEM SEPARATOR
+        MENUITEM "&Afslut",                     115
+    END
+    POPUP "&Disk"
+    BEGIN
+        MENUITEM "&Kopier diskette...",         201
+        MENUITEM "&Navngiv disk...",            202
+        MENUITEM SEPARATOR
+        MENUITEM "&Formater diskette...",       203
+        MENUITEM SEPARATOR
+        MENUITEM "&Vælg drev...",               251
+    END
+    POPUP "&Træ"
+    BEGIN
+        MENUITEM "Udvid med et &niveau\t+",     301
+        MENUITEM "&Udvid gren\t*",              302
+        MENUITEM "U&dvid alle\tCtrl+*",         303
+        MENUITEM "&Skjul gren\t-",              304
+        MENUITEM SEPARATOR
+        MENUITEM "&Vis udvidelige grene",       505
+    END
+    POPUP "&Vis"
+    BEGIN
+        MENUITEM "Mapp&etræ og filliste",       413
+        MENUITEM "Kun &mappetræ",               411
+        MENUITEM "Kun &filliste",               412
+        MENUITEM SEPARATOR
+        MENUITEM "&Opdel",                      414
+        MENUITEM SEPARATOR
+        MENUITEM "&Kun filnavn",                401
+        MENUITEM "&Alle filinformationer",      402, CHECKED
+        MENUITEM "&Udvalgte informationer...",  403
+        MENUITEM SEPARATOR
+        MENUITEM "Sorter efter &navn",          404
+        MENUITEM "Sor&ter efter type",          405
+        MENUITEM "Sorter efter &størrelse",     406
+        MENUITEM "Sorter efter &dato",          407
+        MENUITEM SEPARATOR
+        MENUITEM "Udva&lgte filtyper...",       409
+    END
+    POPUP "&Indstillinger"
+    BEGIN
+        MENUITEM "&Bekræftelse...",             501
+        MENUITEM "&Skrifttype...",              510
+        MENUITEM "&Tilpas værktøjslinje...",    512
+        MENUITEM SEPARATOR
+        MENUITEM "&Værktøjslinje",              508
+        MENUITEM "&Drevlinje",                  507
+        MENUITEM "Status&linje",                503
+        MENUITEM SEPARATOR
+        MENUITEM "&Minimer ved brug",           504
+        MENUITEM "Gem indstillinger ved &afslutning", 511
+    END
+    POPUP "&Sikkerhed"
+    BEGIN
+        MENUITEM "&Tilladelser...",             605
+        MENUITEM "&Overvågning...",             606
+        MENUITEM "&Ejer...",                    607
+    END
+    POPUP "Vind&ue"
+    BEGIN
+        MENUITEM "&Nyt vindue",                 1706
+        MENUITEM "&Overlappet\tSkift+F5",       1701
+        MENUITEM "Delt &vandret",               1703
+        MENUITEM "De&lt lodret\tSkift+F4",      1702
+        MENUITEM "&Arranger ikoner",            1705
+        MENUITEM "Op&dater\tF5",                1704
+    END
+    POPUP "&Hjælp"
+    BEGIN
+        MENUITEM "&Indhold",                    1801
+        MENUITEM "&Søg efter hjælp om...",      30
+        MENUITEM "&Brug af Hjælp",              1802
+        MENUITEM SEPARATOR
+        MENUITEM "&Om Filhåndtering...",        1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 210, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kør"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,162,10
+    CONTROL         "&Kommandolinje:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,62,10
+    EDITTEXT        201,3,29,134,12,ES_AUTOHSCROLL
+    CONTROL         "Kør &minimeret",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,45,56,12
+    DEFPUSHBUTTON   "OK",1,165,6,40,14
+    PUSHBUTTON      "Annuller",2,165,23,40,14
+    PUSHBUTTON      "&Hjælp",254,165,43,40,14
+END
+
+11 DIALOG 20, 20, 240, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Udskriv"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,193,10
+    CONTROL         "&Udskriv:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,28,10
+    EDITTEXT        102,33,18,154,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,36,190,10
+    DEFPUSHBUTTON   "OK",1,197,6,40,14
+    PUSHBUTTON      "Annuller",2,197,23,40,14
+    PUSHBUTTON      "&Hjælp",254,197,43,40,14
+END
+
+12 DIALOG 20, 20, 255, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Associer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Filer med filtypenavnet:",-1,6,7,75,8
+    COMBOBOX        315,82,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Associer med:",-1,6,31,47,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Gennemse...",318,129,24,50,14
+    DEFPUSHBUTTON   "OK",1,187,6,62,14,WS_GROUP
+    PUSHBUTTON      "Annuller",2,187,23,62,14
+    PUSHBUTTON      "&Ny type...",300,187,42,62,14
+    PUSHBUTTON      "&Indstil type...",251,187,59,62,14
+    PUSHBUTTON      "&Slet type",219,187,76,62,14
+    PUSHBUTTON      "&Hjælp",254,187,95,62,14
+END
+
+13 DIALOG 20, 20, 263, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Søg"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Søg efter:",-1,"Static",SS_LEFTNOWORDWRAP,5,6,34,12
+    EDITTEXT        201,52,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "Start &fra:",-1,"Static",SS_LEFTNOWORDWRAP,5,21,30,12
+    EDITTEXT        101,52,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "&Gennemsøg alle undermapper",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,52,34,119,12
+    DEFPUSHBUTTON   "OK",1,217,6,40,14
+    PUSHBUTTON      "Annuller",2,217,23,40,14
+    PUSHBUTTON      "&Hjælp",254,217,43,40,14
+END
+
+14 DIALOG 47, 59, 231, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Flyt"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Nuværende mappe: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,179,10
+    CONTROL         "&Til:",2001,"Static",SS_LEFTNOWORDWRAP,3,33,12,10
+    EDITTEXT        103,45,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,40,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,45,49,140,10
+    DEFPUSHBUTTON   "OK",1,186,6,40,14
+    PUSHBUTTON      "Annuller",2,186,23,40,14
+    PUSHBUTTON      "&Hjælp",254,186,40,40,14
+    CONTROL         "&Fra:",2002,"Static",SS_LEFTNOWORDWRAP,3,19,14,10
+    EDITTEXT        102,45,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Slet"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Nuværende mappe: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "&Slet:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,16,10
+    EDITTEXT        102,40,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,35,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,40,35,155,10
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "Annuller",2,200,23,40,14
+    PUSHBUTTON      "&Hjælp",254,200,40,40,14
+END
+
+16 DIALOG 23, 13, 265, 234
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Egenskaber for %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,212,6,46,14,WS_GROUP
+    PUSHBUTTON      "Annuller",2,212,23,46,14
+    PUSHBUTTON      "&Hjælp",254,212,40,46,14
+    CONTROL         "&Filnavn:",261,"Static",SS_LEFTNOWORDWRAP,5,2,46,10
+    EDITTEXT        201,82,3,126,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "S&ti:",-1,"Static",SS_LEFTNOWORDWRAP,5,14,12,10
+    EDITTEXT        101,82,14,126,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Seneste ændring:",-1,"Static",SS_LEFTNOWORDWRAP,5,26,59,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,82,26,127,10
+    CONTROL         "Version:",258,"Static",SS_LEFTNOWORDWRAP,5,39,32,10
+    CONTROL         "Ikke markeret",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,82,38,127,10
+    LTEXT           "&Copyright:",-1,5,52,40,9
+    EDITTEXT        265,82,52,126,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Størrelse:",260,"Static",SS_LEFTNOWORDWRAP,5,64,32,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,82,64,90,10
+    CONTROL         "Komprimeret størrelse:",268,"Static",SS_LEFTNOWORDWRAP,5,77,73,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,82,77,90,10
+    CONTROL         "Komprimeringsforhold:",270,"Static",SS_LEFTNOWORDWRAP,5,90,72,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,82,90,90,10
+    GROUPBOX        "Attributter",-1,4,101,137,54
+    CONTROL         "&Skrivebeskyttet",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,113,71,12
+    CONTROL         "Skj&ult",216,"Button",BS_AUTOCHECKBOX,87,113,49,12
+    CONTROL         "A&rkiv",217,"Button",BS_AUTOCHECKBOX,9,125,71,12
+    CONTROL         "Syst&em",218,"Button",BS_AUTOCHECKBOX,87,125,49,12
+    CONTROL         "K&omprimeret",267,"Button",BS_AUTOCHECKBOX,9,137,63,12
+    GROUPBOX        "&Versionsinformation",262,4,155,254,72
+    LISTBOX         263,9,168,91,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,110,168,138,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 200, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Opret mappe"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,154,10
+    CONTROL         "&Navn:",-1,"Static",SS_LEFTNOWORDWRAP,3,23,21,10
+    EDITTEXT        201,30,22,90,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "OK",1,157,6,40,14
+    PUSHBUTTON      "Annuller",2,157,23,40,14
+    PUSHBUTTON      "&Hjælp",254,157,43,40,14
+END
+
+19 DIALOG 20, 20, 157, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopier diskette"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Kilde:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,20,10
+    COMBOBOX        245,55,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Destination:",206,"Static",SS_LEFTNOWORDWRAP,5,22,40,10
+    COMBOBOX        222,55,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Annuller",2,110,23,40,14
+    PUSHBUTTON      "&Hjælp",254,110,43,40,14
+END
+
+22 DIALOG 30, 30, 130, 55
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopierer diskette"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Kopierer nu diskette i ",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "Drev A:",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "Læser kildedisketten",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Annuller",2,44,39,44,14
+END
+
+23 DIALOG 20, 20, 161, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Navngiv diskette"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Navn:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,45,8
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,115,6,40,14
+    PUSHBUTTON      "Annuller",2,115,23,40,14
+    PUSHBUTTON      "&Hjælp",254,115,43,40,14
+END
+
+24 DIALOG 11, 28, 183, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formater diskette"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,140,6,40,14
+    PUSHBUTTON      "Annuller",2,140,23,40,14
+    PUSHBUTTON      "&Hjælp",254,140,43,40,14
+    CONTROL         "&Diskette i:",-1,"Static",SS_LEFTNOWORDWRAP,5,7,35,10
+    COMBOBOX        222,60,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "&Kapacitet:",-1,"Static",SS_LEFTNOWORDWRAP,5,22,35,10
+    COMBOBOX        241,60,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Indstillinger",102,5,39,120,53,WS_GROUP
+    CONTROL         "Disk&navn:",-1,"Static",SS_LEFTNOWORDWRAP,11,51,34,10
+    EDITTEXT        201,60,49,63,12
+    CONTROL         "&Ekspresformatering",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,62,75,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formaterer diskette"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Formaterer nu diskette",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "Initialiserer drevet...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "Annuller",2,54,30,44,14
+END
+
+30 DIALOG 20, 20, 174, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Udvalgte informationer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Detaljer",-1,4,4,121,74
+    CONTROL         "St&ørrelse",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,42,12
+    CONTROL         "&Dato for seneste ændring",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,95,12
+    CONTROL         "&Tidspunkt for seneste ændring",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,112,12
+    CONTROL         "&Filattributter",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,52,12
+    CONTROL         "&MS-DOS-filnavne",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,71,12
+    DEFPUSHBUTTON   "OK",1,132,6,40,14
+    PUSHBUTTON      "Annuller",2,132,23,40,14
+    PUSHBUTTON      "&Hjælp",254,132,60,40,14
+END
+
+32 DIALOG 20, 20, 157, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Udvalgte filtyper"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Navn:",-1,"Static",SS_LEFTNOWORDWRAP,5,8,21,10
+    EDITTEXT        201,34,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "Filtyper",-1,5,20,94,62
+    CONTROL         "&Mapper",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,47,12
+    CONTROL         "&Programmer",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,51,12
+    CONTROL         "&Dokumenter",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,52,12
+    CONTROL         "&Andre filer",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,46,12
+    CONTROL         "Vi&s skjulte filer og systemfiler",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,107,12
+    DEFPUSHBUTTON   "OK",1,110,6,40,14
+    PUSHBUTTON      "Annuller",2,110,23,40,14
+    PUSHBUTTON      "&Hjælp",254,110,43,40,14
+END
+
+33 DIALOG 20, 20, 267, 92
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekræftelse"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    GROUPBOX        "Bekræft",-1,5,3,212,85,WS_TABSTOP
+    CONTROL         "Sletning a&f filer",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,62,12
+    CONTROL         "Sletning af &mapper",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,84,12
+    CONTROL         "&Erstatning af filer",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,68,12
+    CONTROL         "&Brug af musen",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,89,12
+    CONTROL         "&Diskkommandoer",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,68,12
+    CONTROL         "Ændring af &systemfiler, skjulte filer og skrivebeskyttede filer",215,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,75,206,12
+    DEFPUSHBUTTON   "OK",1,223,6,40,14
+    PUSHBUTTON      "Annuller",2,223,23,40,14
+    PUSHBUTTON      "&Hjælp",254,223,44,40,14
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Flytter..."
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "Til:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,12,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "Annuller",2,200,28,40,14,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 121, 58
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "Udskriver fil...",-1,0,6,120,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "Annuller",2,40,38,40,14,WS_GROUP
+END
+
+38 DIALOG 20, 20, 206, 87
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Egenskaber"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "%d filer markeret",100,"Static",SS_LEFTNOWORDWRAP,5,5,144,10
+    CONTROL         "%s bytes i alt",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "Attributter",-1,5,29,120,53
+    CONTROL         "&Skrivebeskyttet",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,64,12
+    CONTROL         "Skj&ult",216,"Button",BS_AUTOCHECKBOX,80,40,41,12
+    CONTROL         "A&rkiv",217,"Button",BS_AUTOCHECKBOX,10,52,40,12
+    CONTROL         "Syst&em",218,"Button",BS_AUTOCHECKBOX,80,52,45,12
+    CONTROL         "K&omprimeret",267,"Button",BS_AUTOCHECKBOX,10,64,57,12
+    DEFPUSHBUTTON   "OK",1,150,6,50,14,WS_GROUP
+    PUSHBUTTON      "Annuller",2,150,23,50,14
+    PUSHBUTTON      "&Hjælp",254,150,43,50,14
+END
+
+39 DIALOG 10, 20, 245, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekræft erstatning af fil"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Erstat filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,12,39,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,12,165,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,75,22,165,10
+    CONTROL         "Med filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,34,34,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,75,34,165,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,75,44,165,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,54,203,10
+    DEFPUSHBUTTON   "&Ja",6,33,73,40,14
+    PUSHBUTTON      "J&a til alle",107,79,73,40,14
+    PUSHBUTTON      "&Nej",7,125,73,40,14
+    PUSHBUTTON      "Annuller",2,171,73,40,14
+END
+
+40 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekræft sletning af fil"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Slet filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,32,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Ja",6,33,42,40,14
+    PUSHBUTTON      "J&a til alle",107,79,42,40,14
+    PUSHBUTTON      "&Nej",7,125,42,40,14
+    PUSHBUTTON      "Annuller",2,171,42,40,14
+END
+
+41 DIALOG 10, 20, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekræft sletning af mappe"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Slet mappen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,52,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Ja",6,33,42,40,14
+    PUSHBUTTON      "J&a til alle",107,79,42,40,14
+    PUSHBUTTON      "&Nej",7,125,42,40,14
+    PUSHBUTTON      "Annuller",2,171,42,40,14
+END
+
+42 DIALOG 10, 22, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekræft flytning af fil"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Flyt filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,31,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Ja",6,33,42,40,14
+    PUSHBUTTON      "J&a til alle",107,79,42,40,14
+    PUSHBUTTON      "&Nej",7,125,42,40,14
+    PUSHBUTTON      "Annuller",2,171,42,40,14
+END
+
+43 DIALOG 10, 22, 245, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekræft omdøbning af fil"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "Omdøb filen:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,42,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "&Ja",6,33,42,40,14
+    PUSHBUTTON      "J&a til alle",107,79,42,40,14
+    PUSHBUTTON      "&Nej",7,125,42,40,14
+    PUSHBUTTON      "Annuller",2,171,42,40,14
+END
+
+44 DIALOG 15, 12, 127, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Marker filer"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Fil(er):",-1,"Static",SS_LEFTNOWORDWRAP,3,6,22,10
+    EDITTEXT        201,3,19,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&Marker",1,68,6,57,14
+    PUSHBUTTON      "Fj&ern markering",6,68,23,57,14
+    PUSHBUTTON      "Annuller",2,68,40,57,14
+    PUSHBUTTON      "&Hjælp",254,68,63,57,14
+END
+
+45 DIALOG 11, 31, 201, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vælg drev"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "&Drev:",245,"Static",SS_LEFTNOWORDWRAP,5,5,19,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",1,155,6,40,14
+    PUSHBUTTON      "Annuller",2,155,23,40,14
+    PUSHBUTTON      "&Hjælp",254,155,44,40,14
+END
+
+46 DIALOG 11, 28, 250, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Vælg filnavn"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Stien passer ikke med FAT-formatet for filnavne. Skriv et nyt navn.",99,5,4,169,24,NOT WS_GROUP
+    RTEXT           "&Nyt navn:",-1,5,56,50,11,NOT WS_GROUP
+    EDITTEXT        103,57,55,130,12
+    RTEXT           "Oprindelig sti:",-1,5,28,50,11,NOT WS_GROUP
+    EDITTEXT        102,57,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "Til mappe:",-1,5,42,50,11,NOT WS_GROUP
+    EDITTEXT        101,57,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "OK",1,205,4,40,14
+    PUSHBUTTON      "Annuller",2,205,20,40,14
+    PUSHBUTTON      "&Hjælp",254,205,36,40,14
+END
+
+48 DIALOG 23, 13, 250, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Egenskaber for %s"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,194,6,50,14,WS_GROUP
+    PUSHBUTTON      "Annuller",2,194,23,50,14
+    PUSHBUTTON      "&Hjælp",254,194,43,50,14
+    CONTROL         "&Filnavn:",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,65,5,128,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "S&ti:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,12,10
+    EDITTEXT        101,65,16,127,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "Seneste ændring:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,59,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,65,27,97,10
+    CONTROL         "Størrelse:",260,"Static",SS_LEFTNOWORDWRAP,5,38,32,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,65,38,90,10
+    GROUPBOX        "Attributter",-1,4,52,120,52
+    CONTROL         "&Skrivebeskyttet",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,64,12
+    CONTROL         "Skj&ult",216,"Button",BS_AUTOCHECKBOX,78,64,39,12
+    CONTROL         "A&rkiv",217,"Button",BS_AUTOCHECKBOX,9,76,40,12
+    CONTROL         "Syst&em",218,"Button",BS_AUTOCHECKBOX,78,76,39,12
+    CONTROL         "K&omprimeret",267,"Button",BS_AUTOCHECKBOX,9,88,65,12
+END
+
+49 DIALOG 13, 54, 264, 161
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Skrifttype"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Skrifttype:",1088,6,3,35,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Typografi:",1089,108,3,34,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "St&ørrelse:",1090,179,3,32,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Effekter",1072,6,73,94,61,WS_GROUP
+    CONTROL         "&Gennemstreget",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,62,10
+    CONTROL         "&Understreget",1041,"Button",BS_AUTOCHECKBOX,10,95,55,10
+    CONTROL         "Brug små bogsta&ver for FAT-drev",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,136,252,10
+    CONTROL         "Brug små bogstaver for alle &drev",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,148,252,10
+    LTEXT           "&Farve:",1091,10,107,30,9
+    COMBOBOX        1139,10,117,75,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "OK",1,218,6,40,14,WS_GROUP
+    PUSHBUTTON      "Annuller",2,218,23,40,14,WS_GROUP
+    PUSHBUTTON      "&Anvend",1026,218,40,40,14,WS_GROUP
+    PUSHBUTTON      "&Hjælp",1038,218,57,40,14,WS_GROUP
+    GROUPBOX        "Eksempel",1073,107,73,151,49,WS_GROUP
+    CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbØøÅå",1092,113,84,140,34,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Formaterer diskette"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "Skjul",110,38,48,40,14
+    PUSHBUTTON      "Annuller",2,82,48,40,14
+END
+
+51 DIALOG 10, 20, 260, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekræft: Ignorer fil eller mappe, og fortsæt"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Adgang nægtet, ignorer:",202,"Static",SS_LEFTNOWORDWRAP,25,13,80,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,108,13,122,10
+    CONTROL         "Du har ikke tilladelse, eller filen er i brug.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,25,230,10
+    CONTROL         "Vælg Ja for at ignorere denne fil og fortsætte.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,35,180,10
+    DEFPUSHBUTTON   "&Ja",6,40,50,40,14
+    PUSHBUTTON      "J&a til alle",107,86,50,40,14
+    PUSHBUTTON      "&Nej",7,132,50,40,14
+    PUSHBUTTON      "Annuller",2,178,50,40,14
+END
+
+52 DIALOG 10, 20, 268, 60
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Bekræft: Ignorer fil eller mappe, og fortsæt"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,3,12,16,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "Der er ikke adgang til destinationen, ignorer:",202,
+                    "Static",SS_LEFTNOWORDWRAP,25,13,147,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,176,13,92,10
+    CONTROL         "Klik på Ja for at ignorere denne fil og fortsætte.",-1,
+                    "Static",SS_LEFTNOWORDWRAP,25,23,154,10
+    DEFPUSHBUTTON   "&Ja",6,41,42,40,14
+    PUSHBUTTON      "J&a til alle",107,87,42,40,14
+    PUSHBUTTON      "&Nej",7,133,42,40,14
+    PUSHBUTTON      "Annuller",2,179,42,40,14
+END
+
+53 DIALOG 77, 109, 177, 65
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Søger på disken"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Søg efter:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,34,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,57,5,120,10
+    CONTROL         "Startende fra:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,46,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,57,15,120,10
+    CONTROL         "Læste mapper:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,60,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,65,25,101,10
+    CONTROL         "Fundne filer:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,42,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,68,35,100,10
+    PUSHBUTTON      "Skjul",110,45,48,40,14
+    PUSHBUTTON      "Annuller",2,89,48,40,14
+END
+
+54 DIALOG 20, 20, 246, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Kopier til Udklipsholder"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    CONTROL         "Nuværende mappe: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "Kopier til &Udklipsholder:",-1,"Static",SS_LEFTNOWORDWRAP,3,20,79,10
+    EDITTEXT        102,81,19,112,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "OK",1,200,6,40,14
+    PUSHBUTTON      "Annuller",2,200,23,40,14
+    PUSHBUTTON      "&Hjælp",254,200,43,40,14
+END
+
+55 DIALOG 18, 14, 298, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Ændring af filtype"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "&Filtype:",302,5,6,25,8
+    EDITTEXT        301,43,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "H&andling: ",-1,5,22,246,126,WS_GROUP
+    COMBOBOX        306,43,22,48,61,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Kommando:",313,9,42,38,8
+    EDITTEXT        304,48,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Gennemse...",318,167,38,48,14
+    CONTROL         "&Benytter DDE",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,8,57,57,10
+    LTEXT           "&DDE-meddelelse:",320,20,72,57,8
+    EDITTEXT        309,122,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "Hv&is DDE-serveren ikke kører:",322,20,89,100,9
+    LTEXT           "(valgfri)",324,224,90,26,8
+    EDITTEXT        311,122,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Program:",321,21,109,39,8
+    EDITTEXT        310,122,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "E&mne:",323,22,127,21,8
+    EDITTEXT        312,122,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "&Nyt filtypenavn:",-1,11,184,52,8
+    EDITTEXT        315,64,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Tilføj ->",303,101,174,41,14
+    PUSHBUTTON      "<- Fj&ern",219,101,191,41,14
+    LTEXT           "Fi&ltyper:",-1,157,162,27,8
+    LISTBOX         317,157,172,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "Filtyper associeret med denne type af filer:",316,5,153,246,66
+    DEFPUSHBUTTON   "OK",1,254,6,40,14
+    PUSHBUTTON      "Annuller",2,254,23,40,14
+    PUSHBUTTON      "&Hjælp",254,254,40,40,14
+END
+
+57 DIALOG 123, 60, 207, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Filkomprimeringsforløb"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Komprimerer fil:",-1,6,8,51,8
+    LTEXT           "filnavn.xxx",341,86,8,90,8
+    LTEXT           "Mappe:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,43,20,150,8
+    LTEXT           "Komprimerede mapper:",-1,6,32,85,8
+    LTEXT           "1,888,888,999",343,134,32,68,8
+    LTEXT           "Komprimerede filer:",-1,6,44,63,8
+    LTEXT           "1,888,888,999",344,134,44,68,8
+    LTEXT           "Total filmængde før komprimering:",-1,6,56,111,8
+    LTEXT           "9,999,999,999,999",345,134,56,68,8
+    LTEXT           "Samlet filmængde efter komprimering:",-1,6,68,118,8
+    LTEXT           "9,999,999,999,999",346,134,69,68,8
+    LTEXT           "Filkomprimeringsforhold:",-1,6,80,79,8
+    LTEXT           "100%",347,91,80,27,8
+    PUSHBUTTON      "Annuller",2,76,97,55,14
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "Fildekomprimeringsforløb"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    LTEXT           "Dekomprimerer fil:",-1,6,8,60,8
+    LTEXT           "filnavn.xxx",351,93,8,66,8
+    LTEXT           "Mappe:",-1,6,20,32,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,45,20,144,8
+    LTEXT           "Dekomprimerede mapper:",-1,6,32,94,8
+    LTEXT           "1,999,999,999",353,103,32,70,8
+    LTEXT           "Dekomprimerede filer:",-1,6,44,72,8
+    LTEXT           "1,999,999,999",354,103,44,70,8
+    PUSHBUTTON      "Annuller",2,74,64,49,14
+END
+
+59 DIALOG 11, 28, 245, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Komprimeringsfejl"
+FONT 8, "MS Shell Dlg"
+BEGIN
+    ICON            32515,-1,8,8,21,20
+    LTEXT           "",100,35,8,190,20
+    DEFPUSHBUTTON   "&Ignorer",5,33,47,43,14,WS_GROUP
+    PUSHBUTTON      "I&gnorer alle",112,79,47,43,14
+    PUSHBUTTON      "&Forsøg igen",4,125,47,43,14
+    PUSHBUTTON      "&Afbryd",3,171,47,43,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,318
+ PRODUCTVERSION 4,0,1381,318
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040604B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "Filhåndtering"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Microsoft(R) Windows NT(TM) Operativsystem"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x406, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "Kopier diskette"
+    51                      "Indsæt destinationsdiskette."
+    52                      "Indsæt kildediskette."
+    53                      "Indsæt kilde- og destinationsdisketterne."
+    54                      "Formaterer destinationsdisketten"
+    55                      "Fejl under kopiering af diskette"
+    56                      "Kan ikke kopiere diskette."
+    58                      "Kilde- og destinationsdisketterne er ikke kompatible."
+    60                      "%d%% fuldført"
+    61                      "Opretter rodmappe..."
+    62                      "Kopierer systemfiler..."
+    63                      "Fejl under formatering af diskette"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "Formatering fuldført"
+    67                      "%ld byte disketteplads i alt\n%ld byte til rådighed på disketten.\n\nVil du formatere en anden diskette?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "Netværksfejl"
+    83                      "Dette drev indeholder Windows-systemfilerne og kan ikke frakobles."
+    91                      "Filhåndtering kan ikke ændre attributterne. "
+    92                      "Filhåndtering kan ikke oprette mappen. "
+    93                      "Filhåndtering kan ikke navngive disketten.\n\nKontroller, at disketten ikke er skrivebeskyttet, ikke er et netværksdrev, og at navnet er gyldigt.\nNavnet kan ikke indeholde følgende tegn:\n[mellemrum] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "Kan ikke finde nogen matchende filer."
+END
+
+STRINGTABLE
+BEGIN
+    97                      "Indholdet af dette drev er blevet ændret. Vil du opdatere vinduet med søgeresultater?"
+    98                      "Du skal være logget på arbejdsstationen som administrator for at kunne udføre denne operation på harddiske."
+    101                     "Drev %c:%c"
+    110                     "Kan ikke køre program"
+    111                     "Uventet fejl: %d."
+END
+
+STRINGTABLE
+BEGIN
+    112                     "Der er ikke hukommelse nok til at starte det angivne program.\n\nAfslut et eller flere programmer, og prøv igen."
+    113                     "Filhåndtering kan ikke finde filen (eller en af dens komponenter).\n\nKontroller, at stien og filnavnet er korrekte, og at de nødvendige mapper er tilgængelige."
+    114                     "Den angivne sti er forkert."
+    116                     "Der er ikke associeret noget program med denne fil.\n\nVælg Associer i menuen Filer for at oprette en association."
+    118                     "Filhåndtering kan ikke åbne eller udskrive filen.\n\nStart det program, som blev brugt til at oprette denne fil, og åbn eller udskriv den derfra."
+    120                     "Bekræft handlinger med musen"
+    121                     "Skal de valgte filer og/eller mapper kopieres til %s?"
+    122                     "Skal de valgte filer og/eller mapper flyttes til %s?"
+    123                     "Skal %s startes med %s som initialiseringsfil?"
+    124                     "Filhåndtering"
+    126                     "Mappetræ"
+    127                     "Søgeresultater: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "For mange filer"
+    133                     "Filhåndtering - Der er ikke mere hukommelse"
+    134                     "Hele mappen kunne ikke læses.  Der vil kun blive vist en delvis liste."
+    140                     "Nuværende mappe: %s"
+    141                     "Kopier"
+    143                     "Omdøb"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "Formater diskette"
+    146                     "Vælg disketten, der skal formateres."
+    150                     "Opretter:"
+    151                     "Fjerner..."
+    152                     "Kopierer:"
+    153                     "Omdøber..."
+    154                     "Flytter..."
+    155                     "Sletter..."
+    156                     "Udskriver: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "Kopierer..."
+    170                     "Fjerner:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "I alt %d fil(er) (%s)"
+    181                     "Læste mapper: %d "
+    182                     "%c: %s fri, %s i alt"
+    183                     "%d fil(er) fundet"
+    185                     "de markerede filer"
+    186                     "Filhåndtering kan ikke koble dette netværksdrev fra.\n\nDer er åbne filer på drevet."
+    187                     "%d markerede fil(er) (%s)"
+    188                     "Der er ingen diskette i drev %c.\n\nIndsæt en diskette, og prøv igen."
+    189                     "Disketten i drev %c er ikke formateret.\n\nVil du formatere den nu?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "Der er ikke diskplads nok til at udskrive.\n\nSlet en eller flere filer for at gøre plads, og prøv igen."
+    193                     "Der er ikke hukommelse nok til at udskrive.\n\nAfslut et eller flere programmer, og prøv igen."
+    194                     "Der opstod en fejl under udskrivningen.\n\nKontroller, at printeren er korrekt konfigureret og valgt."
+    195                     "Der vises et ikke-komplet mappetræ"
+    197                     "Der er ikke mere plads på destinationsdisketten.Indsæt en ny diskette for at fortsætte."
+    198                     "Dette er en systemfil, skjult eller skrivebeskyttet fil."
+    199                     "Filhåndtering kan ikke udføre en ekspresformatering.\n\nSkal der fortsættes med normal formatering?"
+    203                     "Der opstod en fejl, da kommandoen blev sendt til programmet."
+    204                     "En mappe, som er nødvendig for denne operation, kan ikke indlæses."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "&Delte mapper..."
+    210                     "Formatering vil slette ALLE data fra din diskette. Vil du formatere disketten i drev %c?"
+    211                     "Bekræft formatering af diskette"
+    212                     "Denne operation vil slette ALLE data fra distinationsdisketten.Vil du fortsætte?"
+    213                     "Bekræft kopiering af diskette"
+    214                     "&Luk"
+    215                     "Luk"
+    218                     "Mappen %s findes ikke.\n\nVil du oprette det?"
+    219                     "Programmer#*.exe;*.pif;*.com;*.bat#Alle filer (*.*)#*.*#"
+    220                     "Gennemse"
+    221                     "Kør"
+    222                     "Filen kan ikke udskrives"
+    223                     "Kan ikke vise Hjælp-information."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "Filer med filtypenavnet %s er programmer og kan ikke associeres med andre programmer."
+    225                     "%s er ikke et program og kan ikke associeres med et filtypenavn."
+    226                     "(ingen)"
+    227                     "Ingen filer fundet."
+    228                     "Filhåndtering kan ikke udskrive flere filer samtidigt.\n\nMarker en enkelt fil, og prøv igen."
+    230                     "En af de biblioteksfiler, som er nødvendige for at køre dette program, er beskadiget. Geninstaller programmet."
+    231                     "Denne fil bruges i øjeblikket af et andet program."
+    232                     "Filhåndtering vil muligvis ikke kunne få adgang til filer i mappen ""%s"".\n\nVil du fortsætte?"
+    233                     "Opret mappe"
+    234                     "%ld byte"
+    235                     "%s byte"
+    236                     "Filhåndtering kan ikke kopiere flere filer eller mapper til Udklipsbog samtidigt.\n\nMarker en enkelt fil, og prøv igen."
+    237                     "%s - %s"
+    238                     "Drev:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "Tilslut netværksdrev"
+    241                     "Afbryd forbindelse til netværksdrev"
+    242                     "Netværkstilslutninger"
+    243                     "Del mappe"
+    244                     "Ophæv deling af mappe"
+    245                     "Vis alle filinformationer"
+    246                     "Vis kun filnavn"
+    247                     "Sorter efter navn"
+    248                     "Sorter efter type"
+    249                     "Sorter efter størrelse"
+    250                     "Sorter efter dato"
+    251                     "Nyt vindue"
+    252                     "Kopier filer"
+    253                     "Flyt filer"
+    254                     "&Mappenavn:"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "Netværksdrevet er ikke tilgængeligt."
+    259                     "Sharenavn: %s"
+    260                     "Ikke delt"
+    261                     "Slet filer"
+    262                     " - COMPRESSED"
+    263                     "Kopierer filer til %s"
+    264                     "Flytter filer til %s"
+    265                     "Kører filer med %s"
+    266                     "%s byte"
+    267                     "%s KB"
+    268                     "%s MB"
+    269                     "%s GB"
+    270                     "%s TB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "Du har ikke tilladelse til at benytte denne mappe."
+    281                     "Du har ikke tilladelse til at benytte denne fil."
+    283                     "Drev %c: er optaget og kan ikke benyttes.\nFilhåndtering udfører diskkopiering."
+    284                     "Drev %c: er optaget og kan ikke benyttes.\nFilhåndtering formaterer denne disk."
+    285                     "Operationen er ikke fuldført"
+    286                     "Kan ikke fuldføre operationen på alle filer og mapper."
+    287                     "Kan ikke læse mappen"
+END
+
+STRINGTABLE
+BEGIN
+    288                     "Mappen eksisterer ikke."
+    289                     "Kan ikke tilslutte netværksdrevet"
+    290                     "Kan ikke finde netværksnavnet."
+    292                     "Ja til alle vedrører alle filer, inkl. systemfiler, skjulte og skrivebeskyttede filer."
+    294                     "Åbn"
+    295                     "Udskriv"
+    298                     "Tilføj filtypenavn"
+    299                     "Filtypenavnet ""%s"" er i øjeblikket associeret med ""%s"". Skal denne association overskrives?"
+    300                     "Filassocieringseditor"
+    301                     "Kan ikke associere filtypenavnet. "
+    302                     "Kan ikke slette filtypenavnet. "
+    303                     "Kan ikke tilføje filtype. "
+END
+
+STRINGTABLE
+BEGIN
+    304                     "Kan ikke slette filtype. "
+    305                     "Kan ikke læse filtype. "
+    306                     "Filtypebeskrivelsen kan ikke være tom. Indtast en ny filtype."
+    307                     "Kan ikke generere en unik identifikation på grundlag af din filtype. Indtast en ny filtype."
+    308                     "Slet filtype"
+    309                     "Dette vil slette filtypen og alle associerede filtypenavne. Vil du slette %s?"
+    312                     "Filtypen skal have en kommando til mindst en af dens handlinger. Indtast et programnavn i kommandofeltet."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "Ny filtype"
+    321                     "Kopierer diskette"
+    322                     "Søger..."
+    324                     "Filhåndtering formaterer i øjeblikket en disk. Denne operation vil blive afbrudt, hvis du afslutter Filhåndtering."
+    325                     "Filhåndtering kopierer i øjeblikket en disk. Denne operation vil blive afbrudt, hvis du afslutter Filhåndtering."
+    326                     "Procent udført"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360 KB"
+    354                     "1%s2 MB"
+    355                     "720 KB"
+    356                     "1%s44 MB"
+    357                     "2%s88 MB"
+    358                     "Drevkapacitet"
+    359                     "Filhåndtering kan ikke få adgang til diskinformationen.\n\nKontroller, at disketten er sat i drevet."
+    360                     "20%s8 MB"
+    361                     "Ukendt disktype"
+    362                     "Ukendt disktype"
+    363                     "Disktypen i drev %s kan ikke formateres med Filhåndtering. Benyt Diskadministrator til at formatere denne disk."
+END
+
+STRINGTABLE
+BEGIN
+    400                     "Inkompatibelt filsystem."
+    401                     "Adgang nægtet."
+    402                     "Disketten er skrivebeskyttet."
+    403                     "Filhåndtering kan ikke låse enheden."
+    404                     "Filhåndtering kan ikke ekspresformatere disketten.\n\nKontroller, at disketten har den rette datatæthed."
+    405                     "IO-fejl på kildedisketten."
+    406                     "IO-fejl på destinationsdisketten."
+    407                     "IO-fejl på både kilde- og destinationsdisketten."
+    408                     "Der opstod en IO-fejl."
+    411                     "Filhåndtering kan ikke formatere disketten.\n\nKontroller, at disketten er sat i drevet og ikke er skrivebeskyttet, beskadiget eller har forkert datatæthed."
+    412                     "Filhåndtering kan ikke navngive disken.\n\nDet angivne disknavn er ugyldigt. Kontroller, at disknavnet ikke indeholder følgende tegn:\n\n[blank] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "Åbner..."
+    421                     "Lukker..."
+    422                     "Der er for mange åbne mappevinduer.\n\nLuk et eller flere vinduer, og prøv igen."
+    423                     "Ekspresformaterer..."
+    424                     "Kan ikke initialisere understøttelse af opdatering i baggrunden. Filhåndtering afslutter. "
+    425                     "Initialisering af Filhåndtering"
+    426                     "Læser mappe, vent..."
+    427                     "Vil du også komprimere alle filer og undermapper i %s ?"
+    428                     "Vil du også dekomprimere alle filer og undermapper i %s ?"
+    429                     "Filstyring kan ikke ændre komprimeringsattributter for %s."
+    430                     "Filen %s vil ikke blive komprimeret. Kompression af denne fil kan gøre det umuligt at boote din computer."
+    431                     "Filhåndtering komprimerer eller dekomprimerer filer for øjeblikket.\nDu bliver nød til at vente indtil dette er overstået, før du kan komprimere eller dekomprimere yderligere filer."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "Kommentarer"
+    501                     "Firmanavn"
+    502                     "Filbeskrivelse"
+    503                     "Internt navn"
+    504                     "Registrerede varemærker"
+    505                     "Oprindeligt filnavn"
+    506                     "Privat build-beskrivelse"
+    507                     "Produktnavn"
+    508                     "Produktversion"
+    509                     "Speciel build-beskrivelse"
+    510                     "Sprog"
+    511                     "Sprog"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "&Tilslut netværksdrev..."
+    801                     "Afb&ryd forbindelse til netværksdrev..."
+    802                     "&Netværkstilslutninger..."
+    803                     "&Del som..."
+    804                     "&Ophæv deling..."
+    805                     "&Vis delte mapper..."
+    806                     "Fo&rtryd sletning..."
+    807                     "&Åbn nyt vindue ved tilslutning"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "Fejl under flytning af fil"
+    1002                    "Fejl under kopiering af fil"
+    1003                    "Fejl under sletning af fil"
+    1004                    "Fejl under omdøbning af fil"
+    1005                    "Fejl under valg af drev"
+    1006                    "Fejl under læsning af mappe"
+    1007                    "Fejl under navngivning af disk"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "Filhåndtering kan ikke flytte %s: %s"
+    1012                    "Filhåndtering kan ikke kopiere %s: %s"
+    1013                    "Filhåndtering kan ikke slette %s: %s"
+    1014                    "Filhåndtering kan ikke omdøbe %s: %s"
+    1021                    "Filhåndtering kan ikke oprette mappen %s: %s"
+    1022                    "Filhåndtering kan ikke fjerne mappen %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "Filhåndtering kan ikke oprette eller erstatte %s: %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "Kilde og destination er det samme."
+    1102                    "Marker kun en fil, som skal omdøbes, eller brug jokertegn (f.eks. *.TXT) for at omdøbe en gruppe af filer med beslægtede navne."
+    1103                    "Kan ikke omdøbe til en anden mappe eller en anden disk.\nBrug i stedet kommandoen Flyt ."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "Du kan ikke omdøbe rodmappen."
+    1105                    "Destinationsmappen er en undermappe til kildemappen."
+    1106                    "Filen benyttes i øjeblikket af Windows."
+    1107                    "Angiv kun en fil eller en mappe i boksen Til. Brug jokertegn, hvis du vil angive en gruppe af filer (f.eks. *.TXT)."
+    1108                    "Der eksisterer allerede en fil eller en mappe med dette navn. I en mappe skal fil- og mappenavne være unikke."
+    1109                    "Kontroller, at der er angivet korrekt sti og filnavn."
+    1110                    "Kontroller, at der er angivet korrekt sti."
+    1111                    "Afslut et eller flere programmer, og prøv igen. Brug eventuelt indstillingen System i Kontrolpanel til at forøge din virtuelle hukommelse."
+    1113                    "Slå skrivebeskyttelsen på denne diskette fra, og prøv igen."
+    1114                    "Kontroller, at du har korrekte netværkstilladelser til at udføre denne operation."
+    1115                    "Slet en eller flere filer for at gøre plads, og prøv igen."
+    1116                    "Der blev ikke fundet data på dette medie."
+    1117                    "Mappen findes allerede."
+    1118                    "Det angivne navn bruges allerede af en fil."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "Forkert diskette i drevet."
+    1151                    "Programmet kan ikke køres i Windows NT-tilstand."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "Operativsystemet kan ikke køre denne komponent."
+    1153                    "Komponenten kan ikke køres i Windows NT-tilstand."
+    1154                    "Dette program er ikke et gyldigt Windows NT-program."
+    1155                    "Der opstod en fejl. Der er ingen meddelelse til denne fejl."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "ƒRƒs[Œ³(&F):"
+    2001                    "ƒRƒs[æ(&T):"
+    2002                    "Œ³‚Ì–¼‘O(&F):"
+    2003                    "V‚µ‚¢–¼‘O(&T):"
+    2004                    "ƒRƒs[æ:"
+    2005                    "‚±‚ÌƒtƒHƒ“ƒg‚ğ?g—p‚·‚é‚ÆŠ¿?š‚Ì•\\?¦‚ª\n‚Å‚«‚È‚­‚È‚è‚Ü‚·B"
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "Kommandoer til arbejde med filer"
+    3985                    "Kommandoer til arbejde med disketter"
+    3986                    "Kommandoer til arbejde i træ-vinduet"
+    3987                    "Kommandoer, som bestemmer, hvordan informationen skal vises"
+    3988                    "Kommandoer, som sætter indstillingerne"
+    3989                    "Kommandoer til styring af fil- og mappesikkerhed"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "Kommandoer til arrangering af vinduer"
+    4001                    "Kommandoer til visning af hjælp"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "Søger efter et emne i Hjælp til Filhåndtering"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "Åbner det markerede objekt"
+    4102                    "Udskriver et dokument"
+    4103                    "Associerer en fil med et program"
+    4104                    "Søger efter filer og mapper"
+    4105                    "Starter et program eller åbner et dokument"
+    4106                    "Flytter det markerede element"
+    4107                    "Kopierer filer og mapper"
+    4108                    "Sletter filer og mapper"
+    4109                    "Omdøber en fil eller mappe"
+    4110                    "Sætter filattributter og viser egenskaber"
+    4111                    "Opretter en mappe"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "Afslutter Filhåndtering"
+    4116                    "Markerer filer og mapper"
+    4117                    "Genkalder tidligere slettede filer"
+    4118                    "Kopierer en fil til Udklipsbog"
+    4119                    "Komprimerer en fil eller mappe"
+    4120                    "Dekomprimerer en fil eller mappe"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "Kopierer indholdet af en diskette"
+    4202                    "Tildeler eller ændrer en disks navn"
+    4203                    "Formaterer en diskette"
+    4205                    "Slutter til et netværksdrev"
+    4206                    "Kobler fra et netværksdrev"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "Vælger et andet drev"
+    4254                    "Deler en mappe"
+    4255                    "Ophæver deling af en mappe"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "Viser et niveau mere af en mappe"
+    4302                    "Viser alle niveauer af en mappe"
+    4303                    "Viser alle niveauer af alle mapper"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "Skjuler alle undermapper i en markeret mappe"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "Viser kun filnavne"
+    4402                    "Viser alle data om filerne"
+    4403                    "Viser udvalgte filoplysninger"
+    4404                    "Sorterer filerne efter navn"
+    4405                    "Sorterer filerne efter filtype"
+    4406                    "Sorterer filerne efter størrelse"
+    4407                    "Sorterer filerne efter dato"
+    4409                    "Viser filer af specificeret type"
+    4411                    "Viser mappetræet"
+    4412                    "Viser indholdet af den nuværende mappe"
+    4413                    "Viser mappetræet og indholdet af den nuværende mappe"
+    4414                    "Opdeler et mappevindue eller flytter delelinjen"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "Kontrollerer, hvilke meddelelser der skal bekræftes"
+    4503                    "Viser eller skjuler statuslinjen"
+    4504                    "Formindsker Filhåndtering til et ikon ved start"
+    4505                    "Indikerer mapper, som har undermapper"
+    4507                    "Viser eller skjuler drevlinjen"
+    4508                    "Viser eller skjuler værktøjslinjen"
+    4509                    "Åbner et nyt vindue, når du tilslutter"
+    4510                    "Ændrer  skrifttypen i Filhåndtering"
+    4511                    "Gemmer indstillingerne, når du afslutter Filhåndtering"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "Tilpasser værktøjslinjen"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "Viser eller indstiller information om tilladelserne for de(t) markerede element(er)"
+    4606                    "Viser eller indstiller information om overvågning af de(t) markerede element(er)"
+    4607                    "Viser eller overtager ejerskabet af de(t) markerede element(er)"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "Vinduer overlappet"
+    5702                    "Arrangerer vinduer lodret side om side"
+    5703                    "Arrangerer vinduer vandret side om side"
+    5704                    "Opdaterer indholdet af et vindue"
+    5705                    "Arrangerer ikoner"
+    5706                    "Åbner et nyt vindue"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "Viser indhold af Hjælp til Filhåndtering"
+    5802                    "Viser information om brug af Hjælp"
+    5803                    "Viser information om Filhåndtering"
+END
+
+#endif    // Danish (Denmark) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

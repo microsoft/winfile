@@ -1,0 +1,1472 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Korean (Korea) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_KOR)
+LANGUAGE LANG_KOREAN, SUBLANG_DEFAULT
+#pragma code_page(949)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP                  "BMP100.BMP"
+
+
+101                     BITMAP                  "BMP101.BMP"
+
+
+102                     BITMAP                  "BMP102.BMP"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+500 MENU
+BEGIN
+    POPUP "파일(&F)"
+    BEGIN
+        MENUITEM "열기(&O)\tEnter",               101
+        MENUITEM "옮기기(&M)...\tF7",              106
+        MENUITEM "복사(&C)...\tF8",               107
+        MENUITEM "클립보드로 복사(&B)...\tF9",         118
+        MENUITEM "지우기(&D)...\tDel",             108
+        MENUITEM "이름 바꾸기(&N)...",               109
+        MENUITEM "등록 정보(&T)...\tAlt+Enter",     110
+        MENUITEM SEPARATOR
+        MENUITEM "압축(&S)...",                   119
+        MENUITEM "압축 풀기(&U)...",                120
+        MENUITEM SEPARATOR
+        MENUITEM "실행(&R)...",                   105
+        MENUITEM "인쇄(&P)...",                   102
+        MENUITEM "프로그램 연결(&A)...",              103
+        MENUITEM SEPARATOR
+        MENUITEM "디렉토리 만들기(&E)...",             111
+        MENUITEM "찾기(&H)...",                   104
+        MENUITEM "파일 선택(&F)...",                116
+        MENUITEM SEPARATOR
+        MENUITEM "마침(&X)",                      115
+    END
+    POPUP "디스크(&D)"
+    BEGIN
+        MENUITEM "디스크 복사(&C)...",               201
+        MENUITEM "디스크 이름(&L)...",               202
+        MENUITEM SEPARATOR
+        MENUITEM "디스크 포맷(&F)...",               203
+        MENUITEM SEPARATOR
+        MENUITEM "드라이브 선택(&S)...",              251
+    END
+    POPUP "트리(&T)"
+    BEGIN
+        MENUITEM "한 수준 확장(&X)\t+",              301
+        MENUITEM "확장(&B)\t*",                   302
+        MENUITEM "모두 확장(&A)\tCtrl+*",           303
+        MENUITEM "축소(&C)\t-",                   304
+        MENUITEM SEPARATOR
+        MENUITEM "확장 가능 표시(&I)",                505
+    END
+    POPUP "보기(&V)"
+    BEGIN
+        MENUITEM "트리 및 디렉토리(&R)",               413
+        MENUITEM "트리만(&E)",                     411
+        MENUITEM "디렉토리만(&O)",                   412
+        MENUITEM SEPARATOR
+        MENUITEM "나누기(&L)",                     414
+        MENUITEM SEPARATOR
+        MENUITEM "이름만(&N)",                     401
+        MENUITEM "자세히(&A)",                     402, CHECKED
+        MENUITEM "일부만 자세히(&P)...",              403
+        MENUITEM SEPARATOR
+        MENUITEM "이름순 정렬(&S)",                  404
+        MENUITEM "종류별 정렬(&B)",                  405
+        MENUITEM "크기순 정렬(&Z)",                  406
+        MENUITEM "날짜순 정렬(&D)",                  407
+        MENUITEM SEPARATOR
+        MENUITEM "파일 형식별(&T)...",               409
+    END
+    POPUP "옵션(&O)"
+    BEGIN
+        MENUITEM "확인(&C)...",                   501
+        MENUITEM "글꼴(&F)...",                   510
+        MENUITEM "도구 모음 사용자 정의(&B)...",         512
+        MENUITEM SEPARATOR
+        MENUITEM "도구 모음(&T)",                   508
+        MENUITEM "드라이브 표시줄(&D)",                507
+        MENUITEM "상태 표시줄(&S)",                  503
+        MENUITEM SEPARATOR
+        MENUITEM "단독 실행(&M)",                   504
+        MENUITEM "마칠 때 설정 내용 저장(&E)",           511
+    END
+    POPUP "보안(&S)"
+    BEGIN
+        MENUITEM "사용 권한(&P)...",                605
+        MENUITEM "감사(&A)...",                   606
+        MENUITEM "사용자(&O)...",                  607
+    END
+    POPUP "창(&W)"
+    BEGIN
+        MENUITEM "새 창(&N)",                     1706
+        MENUITEM "계단식 배열(&C)\tShift+F5",        1701
+        MENUITEM "가로로 배열(&H)",                  1703
+        MENUITEM "세로로 배열(&T)\tShift+F4",        1702
+        MENUITEM "아이콘 정렬(&A)",                  1705
+        MENUITEM "최신 정보로 고침(&R)\tF5",           1704
+    END
+    POPUP "도움말(&H)"
+    BEGIN
+        MENUITEM "목차(&C)",                      1801
+        MENUITEM "찾기(&S)...",                   30
+        MENUITEM "도움말 사용법(&H)",                 1802
+        MENUITEM SEPARATOR
+        MENUITEM "파일 관리자 정보(&A)...",            1803
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+10 DIALOG 15, 12, 211, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "실행"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,162,10
+    CONTROL         "명령줄(&C):",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,3,18,60,10
+    EDITTEXT        201,3,29,134,12,ES_AUTOHSCROLL
+    CONTROL         "아이콘으로 실행(&M)",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,3,45,88,12
+    DEFPUSHBUTTON   "확인",1,165,6,41,16
+    PUSHBUTTON      "취소",2,165,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,165,43,41,16
+END
+
+11 DIALOG 20, 20, 241, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "인쇄"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,193,10
+    CONTROL         "인쇄(&P):",-1,"Static",SS_LEFTNOWORDWRAP,3,20,28,10
+    EDITTEXT        102,32,18,160,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,36,190,10
+    DEFPUSHBUTTON   "확인",1,197,6,41,16
+    PUSHBUTTON      "취소",2,197,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,197,43,41,16
+END
+
+12 DIALOG 20, 20, 268, 118
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "프로그램 연결"
+FONT 9, "굴림"
+BEGIN
+    LTEXT           "파일 확장명(&F):",-1,6,7,68,8
+    COMBOBOX        315,76,5,44,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "연결할 응용 프로그램(&A):",-1,6,30,92,10
+    EDITTEXT        304,6,42,172,12,ES_AUTOHSCROLL
+    LISTBOX         314,11,54,167,62,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "찾아보기(&B)...",318,130,24,56,16
+    DEFPUSHBUTTON   "확인",1,196,6,66,16,WS_GROUP
+    PUSHBUTTON      "취소",2,196,23,66,16
+    PUSHBUTTON      "새 형식(&N)...",300,196,42,66,16
+    PUSHBUTTON      "형식 바꾸기(&C)...",251,196,59,66,16
+    PUSHBUTTON      "형식 지우기(&D)",219,196,76,66,16
+    PUSHBUTTON      "도움말(&H)",254,196,95,66,16
+END
+
+13 DIALOG 20, 20, 277, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "찾기"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "찾을 파일(&S):",-1,"Static",SS_LEFTNOWORDWRAP,5,6,58,12
+    EDITTEXT        201,65,5,160,12,ES_AUTOHSCROLL
+    CONTROL         "찾을 디렉토리(&F):",-1,"Static",SS_LEFTNOWORDWRAP,5,21,58,12
+    EDITTEXT        101,65,20,160,12,ES_AUTOHSCROLL
+    CONTROL         "하위 디렉토리 찾기(&E)",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,65,34,100,12
+    DEFPUSHBUTTON   "확인",1,230,6,41,16
+    PUSHBUTTON      "취소",2,230,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,230,43,41,16
+END
+
+14 DIALOG 47, 59, 257, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "옮기기"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "현재 디렉토리: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,3,6,182,10
+    CONTROL         "원래 위치(&T):",2001,"Static",SS_LEFTNOWORDWRAP,3,33,56,10
+    EDITTEXT        103,61,32,138,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,49,40,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,45,49,140,10
+    DEFPUSHBUTTON   "확인",1,209,6,41,16
+    PUSHBUTTON      "취소",2,209,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,209,40,41,16
+    CONTROL         "옮길 위치(&F):",2002,"Static",SS_LEFTNOWORDWRAP,3,19,56,10
+    EDITTEXT        102,61,18,138,12,ES_AUTOHSCROLL
+END
+
+15 DIALOG 20, 20, 247, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "지우기"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "현재 디렉토리: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "지우기(&L):",-1,"Static",SS_LEFTNOWORDWRAP,3,20,35,10
+    EDITTEXT        102,40,19,155,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,3,35,35,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,40,35,155,10
+    DEFPUSHBUTTON   "확인",1,200,6,41,16
+    PUSHBUTTON      "취소",2,200,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,200,40,41,16
+END
+
+16 DIALOG 23, 13, 259, 229
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s의 등록 정보"
+FONT 9, "굴림"
+BEGIN
+    DEFPUSHBUTTON   "확인",1,197,6,59,16,WS_GROUP
+    PUSHBUTTON      "취소",2,197,23,59,16
+    PUSHBUTTON      "도움말(&H)",254,197,40,59,16
+    CONTROL         "파일 이름(&F):",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,72,5,122,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "경로(&P):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,72,16,122,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "마지막 고친 날짜:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,62,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,72,27,122,10
+    CONTROL         "버전:",258,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "표시 안됨",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,72,38,122,10
+    LTEXT           "저작권(&Y):",-1,5,49,45,10
+    EDITTEXT        265,72,49,122,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "크기:",260,"Static",SS_LEFTNOWORDWRAP,5,60,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,72,60,132,10
+    CONTROL         "압축된 크기:",268,"Static",SS_LEFTNOWORDWRAP,5,71,62,10
+    CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,72,71,132,10
+    CONTROL         "압축 비율:",270,"Static",SS_LEFTNOWORDWRAP,5,82,62,10
+    CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,72,82,132,10
+    GROUPBOX        "속성",-1,4,96,124,54
+    CONTROL         "읽기 전용(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,56,12
+    CONTROL         "숨김(&I)",216,"Button",BS_AUTOCHECKBOX,75,108,49,12
+    CONTROL         "기록(&A)",217,"Button",BS_AUTOCHECKBOX,9,120,56,12
+    CONTROL         "시스템(&S)",218,"Button",BS_AUTOCHECKBOX,75,120,49,12
+    CONTROL         "압축(&C)",267,"Button",BS_AUTOCHECKBOX,9,132,56,12
+    GROUPBOX        "버전 정보(&V)",262,4,155,250,70
+    LISTBOX         263,9,168,91,58,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        264,110,168,138,58,ES_MULTILINE | ES_READONLY | WS_VSCROLL
+END
+
+17 DIALOG 20, 20, 201, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "디렉토리 만들기"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,6,154,10
+    CONTROL         "이름(&N):",-1,"Static",SS_LEFTNOWORDWRAP,3,23,28,10
+    EDITTEXT        201,38,22,90,12,ES_AUTOHSCROLL
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,46,150,10
+    DEFPUSHBUTTON   "확인",1,157,6,41,16
+    PUSHBUTTON      "취소",2,157,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,157,43,41,16
+END
+
+19 DIALOG 20, 20, 166, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "디스크 복사"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "원본 드라이브(&S):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,58,10
+    COMBOBOX        245,66,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "대상 드라이브(&D):",206,"Static",SS_LEFTNOWORDWRAP,5,22,58,10
+    COMBOBOX        222,66,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "확인",1,118,6,41,16
+    PUSHBUTTON      "취소",2,118,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,118,43,41,16
+END
+
+22 DIALOG 30, 30, 130, 59
+STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "디스크 복사중"
+FONT 9, "굴림"
+BEGIN
+    CTEXT           "디스크를 복사합니다:",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "드라이브 A:",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "원본 디스크 읽는 중",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "취소",2,44,38,44,16
+END
+
+23 DIALOG 20, 20, 162, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "디스크 이름"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "이름(&L):",-1,"Static",SS_LEFTNOWORDWRAP,5,15,34,10
+    EDITTEXT        201,5,26,100,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "확인",1,115,6,41,16
+    PUSHBUTTON      "취소",2,115,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,115,43,41,16
+END
+
+24 DIALOG 11, 28, 184, 96
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "디스크 포맷"
+FONT 9, "굴림"
+BEGIN
+    DEFPUSHBUTTON   "확인",1,140,6,41,16
+    PUSHBUTTON      "취소",2,140,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,140,43,41,16
+    CONTROL         "드라이브(&D):",-1,"Static",SS_LEFTNOWORDWRAP,5,7,49,10
+    COMBOBOX        222,55,4,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "용량(&C):",-1,"Static",SS_LEFTNOWORDWRAP,5,20,49,10
+    COMBOBOX        241,55,19,65,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "옵션",102,5,39,115,53,WS_GROUP
+    CONTROL         "이름(&L):",-1,"Static",SS_LEFTNOWORDWRAP,11,51,39,10
+    EDITTEXT        201,52,49,63,12
+    CONTROL         "빠른 포맷(&Q)",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,62,90,12
+END
+
+26 DIALOG 30, 30, 150, 50
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "디스크 포맷 중"
+FONT 9, "굴림"
+BEGIN
+    CTEXT           "지금 디스크를 포맷합니다.",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "드라이브 초기화 중...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "취소",2,53,30,44,16
+END
+
+30 DIALOG 20, 20, 175, 81
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "일부만 자세히"
+FONT 9, "굴림"
+BEGIN
+    GROUPBOX        "자세히",-1,4,4,121,74
+    CONTROL         "크기(&S)",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,15,100,12
+    CONTROL         "마지막 고친 날짜(&M)",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,27,100,12
+    CONTROL         "마지막 고친 시간(&T)",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,39,100,12
+    CONTROL         "파일 속성(&F)",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,51,100,12
+    CONTROL         "MS-DOS 파일 이름(&D)",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,63,100,12
+    DEFPUSHBUTTON   "확인",1,130,6,41,16
+    PUSHBUTTON      "취소",2,130,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,130,60,41,16
+END
+
+32 DIALOG 20, 20, 163, 102
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "파일 형식별"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "이름(&N):",-1,"Static",SS_LEFTNOWORDWRAP,5,8,28,10
+    EDITTEXT        201,39,6,65,12,ES_AUTOHSCROLL
+    GROUPBOX        "파일 형식",-1,5,20,99,62
+    CONTROL         "디렉토리(&D)",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,31,60,12
+    CONTROL         "프로그램(&P)",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,43,60,12
+    CONTROL         "문서(&M)",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,55,60,12
+    CONTROL         "기타 파일(&O)",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,67,60,12
+    CONTROL         "숨김/시스템 파일 표시(&S)",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,5,85,100,12
+    DEFPUSHBUTTON   "확인",1,115,6,41,16
+    PUSHBUTTON      "취소",2,115,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,115,43,41,16
+END
+
+33 DIALOG 20, 20, 215, 92
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "확인"
+FONT 9, "굴림"
+BEGIN
+    GROUPBOX        "확인",-1,5,3,158,85,WS_TABSTOP
+    CONTROL         "파일 지우기(&D)",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,15,80,12
+    CONTROL         "디렉토리 지우기(&I)",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,27,80,12
+    CONTROL         "파일 바꾸기(&R)",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,39,80,12
+    CONTROL         "마우스 동작(&M)",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,51,80,12
+    CONTROL         "디스크 명령(&K)",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,63,80,12
+    CONTROL         "시스템, 숨김, 읽기 전용 파일 수정(&S)",215,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,75,150,12
+    DEFPUSHBUTTON   "확인",1,168,6,41,16
+    PUSHBUTTON      "취소",2,168,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,168,44,41,16
+END
+
+35 DIALOG 20, 20, 250, 46
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "옮기는 중..."
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
+    CONTROL         "옮길 위치:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,49,10
+    CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
+    DEFPUSHBUTTON   "취소",2,200,27,40,16,NOT WS_TABSTOP
+END
+
+36 DIALOG 20, 20, 131, 62
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+FONT 9, "굴림"
+BEGIN
+    CTEXT           "파일 인쇄 중...",-1,4,6,120,12
+    CTEXT           "",-1,4,20,120,12,SS_NOPREFIX
+    DEFPUSHBUTTON   "취소",2,46,39,40,16,WS_GROUP
+END
+
+38 DIALOG 20, 20, 210, 88
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "등록 정보"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "%d개 파일 선택",100,"Static",SS_LEFTNOWORDWRAP,5,5,144,10
+    CONTROL         "총 %s바이트",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "속성",-1,5,29,124,54
+    CONTROL         "읽기 전용(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,56,12
+    CONTROL         "숨김(&I)",216,"Button",BS_AUTOCHECKBOX,76,40,52,12
+    CONTROL         "기록(&A)",217,"Button",BS_AUTOCHECKBOX,10,52,56,12
+    CONTROL         "시스템(&S)",218,"Button",BS_AUTOCHECKBOX,76,52,52,12
+    CONTROL         "압축(&C)",267,"Button",BS_AUTOCHECKBOX,10,64,56,12
+    DEFPUSHBUTTON   "확인",1,154,6,50,16,WS_GROUP
+    PUSHBUTTON      "취소",2,154,23,50,16
+    PUSHBUTTON      "도움말(&H)",254,154,43,50,16
+END
+
+39 DIALOG 10, 20, 235, 95
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "파일 바꾸기 확인"
+FONT 9, "굴림"
+BEGIN
+    ICON            32515,-1,3,12,14,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "현재 파일:",-1,"Static",SS_LEFTNOWORDWRAP,25,12,39,10
+    CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,65,12,165,10
+    CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,65,22,170,10
+    CONTROL         "새 파일:",-1,"Static",SS_LEFTNOWORDWRAP,25,34,39,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,65,34,165,10
+    CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,65,44,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,54,203,10
+    DEFPUSHBUTTON   "예(&Y)",6,17,73,46,16
+    PUSHBUTTON      "예, 모두(&A)",107,69,73,46,16
+    PUSHBUTTON      "아니오(&N)",7,121,73,46,16
+    PUSHBUTTON      "취소",2,173,73,46,16
+END
+
+40 DIALOG 10, 20, 235, 62
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "파일 지우기 확인"
+FONT 9, "굴림"
+BEGIN
+    ICON            32515,-1,3,12,14,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "지울 파일:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,34,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,60,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "예(&Y)",6,17,42,46,16
+    PUSHBUTTON      "예, 모두(&A)",107,69,42,46,16
+    PUSHBUTTON      "아니오(&N)",7,121,42,46,16
+    PUSHBUTTON      "취소",2,173,42,46,16
+END
+
+41 DIALOG 10, 20, 245, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "디렉토리 지우기 확인"
+FONT 9, "굴림"
+BEGIN
+    ICON            32515,-1,3,12,14,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "지울 디렉토리:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,55,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "예(&Y)",6,22,42,46,16
+    PUSHBUTTON      "예, 모두(&A)",107,74,42,46,16
+    PUSHBUTTON      "아니오(&N)",7,126,42,46,16
+    PUSHBUTTON      "취소",2,178,42,46,16
+END
+
+42 DIALOG 10, 22, 245, 63
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "파일 옮기기 확인"
+FONT 9, "굴림"
+BEGIN
+    ICON            32515,-1,3,12,14,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "옮길 파일:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,44,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,70,18,170,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "예(&Y)",6,22,42,46,16
+    PUSHBUTTON      "예, 모두(&A)",107,74,42,46,16
+    PUSHBUTTON      "아니오(&N)",7,126,42,46,16
+    PUSHBUTTON      "취소",2,178,42,46,16
+END
+
+43 DIALOG 10, 22, 245, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "파일 이름 바꾸기 확인 "
+FONT 9, "굴림"
+BEGIN
+    ICON            32515,-1,3,12,14,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,3,203,10
+    CONTROL         "이름 바꿀 파일:",-1,"Static",SS_LEFTNOWORDWRAP,25,18,54,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,80,18,160,10
+    CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,25,28,203,10
+    DEFPUSHBUTTON   "예(&Y)",6,22,42,46,16
+    PUSHBUTTON      "예, 모두(&A)",107,74,42,46,16
+    PUSHBUTTON      "아니오(&N)",7,126,42,46,16
+    PUSHBUTTON      "취소",2,178,42,46,16
+END
+
+44 DIALOG 15, 12, 127, 83
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "파일 선택 "
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "파일(&F):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "선택(&S)",1,70,4,51,16
+    PUSHBUTTON      "선택 해제(&D)",6,70,22,51,16
+    PUSHBUTTON      "취소",2,70,40,51,16
+    PUSHBUTTON      "도움말(&H)",254,70,63,51,16
+END
+
+45 DIALOG 11, 31, 202, 86
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "드라이브 선택 "
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "드라이브(&D):",245,"Static",SS_LEFTNOWORDWRAP,5,5,42,10
+    LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "확인",1,155,6,41,16
+    PUSHBUTTON      "취소",2,155,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,155,44,41,16
+END
+
+46 DIALOG 11, 28, 251, 78
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "파일 이름 선택"
+FONT 9, "굴림"
+BEGIN
+    LTEXT           "이 경로는 FAT 파일 형식에 맞지 않습니다. 새 이름을 입력하십시오.",99,5,4,190,24,NOT WS_GROUP
+    RTEXT           "새 이름(&N):",-1,5,56,50,12,NOT WS_GROUP
+    EDITTEXT        103,57,55,130,12
+    RTEXT           "원래 경로:",-1,5,28,50,11,NOT WS_GROUP
+    EDITTEXT        102,57,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    RTEXT           "대상 디렉토리:",-1,5,42,50,11,NOT WS_GROUP
+    EDITTEXT        101,57,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    DEFPUSHBUTTON   "확인",1,205,4,41,16
+    PUSHBUTTON      "취소",2,205,21,41,16
+    PUSHBUTTON      "도움말(&H)",254,205,38,41,16
+END
+
+48 DIALOG 23, 13, 250, 119
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "%s의 등록 정보"
+FONT 9, "굴림"
+BEGIN
+    DEFPUSHBUTTON   "확인",1,184,6,60,16,WS_GROUP
+    PUSHBUTTON      "취소",2,184,23,60,16
+    PUSHBUTTON      "도움말(&H)",254,184,43,60,16
+    CONTROL         "파일 이름(&F):",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    EDITTEXT        201,60,5,121,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "경로(&P):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    EDITTEXT        101,60,16,121,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
+    CONTROL         "마지막 고친 날짜:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,62,10
+    CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,60,27,97,10
+    CONTROL         "크기:",260,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,60,38,90,10
+    GROUPBOX        "속성",-1,4,52,124,54
+    CONTROL         "읽기 전용(&R)",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,56,12
+    CONTROL         "숨김(&I)",216,"Button",BS_AUTOCHECKBOX,75,64,49,12
+    CONTROL         "기록(&A)",217,"Button",BS_AUTOCHECKBOX,9,76,56,12
+    CONTROL         "시스템(&S)",218,"Button",BS_AUTOCHECKBOX,75,76,49,12
+    CONTROL         "압축(&C)",267,"Button",BS_AUTOCHECKBOX,9,88,56,12
+END
+
+49 DIALOG 13, 54, 265, 154
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "글꼴"
+FONT 9, "굴림"
+BEGIN
+    LTEXT           "글꼴(&F):",1088,6,3,28,9
+    COMBOBOX        1136,6,13,94,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "글꼴 유형(&Y):",1089,108,3,44,9
+    COMBOBOX        1137,108,13,64,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "크기(&S):",1090,179,3,28,9
+    COMBOBOX        1138,179,13,32,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "효과",1072,6,73,84,61,WS_GROUP
+    CONTROL         "취소선(&K)",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,10,83,47,10
+    CONTROL         "밑줄(&U)",1041,"Button",BS_AUTOCHECKBOX,10,95,41,10
+    CONTROL         "FAT 드라이브 소문자 표시(&L)",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,127,253,10
+    CONTROL         "모든 드라이브 소문자 표시(&D)",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,139,253,10
+    LTEXT           "색(&C):",1091,10,107,22,9
+    COMBOBOX        1139,10,117,75,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
+    DEFPUSHBUTTON   "확인",1,218,6,41,16,WS_GROUP
+    PUSHBUTTON      "취소",2,218,23,41,16,WS_GROUP
+    PUSHBUTTON      "적용(&A)",1026,218,40,41,16,WS_GROUP
+    PUSHBUTTON      "도움말(&H)",1038,218,57,41,16,WS_GROUP
+    GROUPBOX        "보기",1073,6,72,253,49,WS_GROUP
+    CTEXT           "",1093,10,137,8,8,SS_NOPREFIX | NOT WS_GROUP
+    CTEXT           "AaBbYyZz",1092,10,81,244,37,SS_NOPREFIX | NOT WS_VISIBLE
+END
+
+50 DIALOG 77, 27, 160, 69
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "디스크 포맷 중"
+FONT 9, "굴림"
+BEGIN
+    CTEXT           "",100,15,36,131,8
+    CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
+    PUSHBUTTON      "숨김",110,38,48,40,16
+    PUSHBUTTON      "취소",2,82,48,40,16
+END
+
+51 DIALOG 10, 20, 261, 73
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "확인: 파일이나 디렉토리를 무시하고 계속"
+FONT 9, "굴림"
+BEGIN
+    ICON            32515,-1,3,12,14,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "액세스할 수 없습니다. 무시:",202,"Static",SS_LEFTNOWORDWRAP,25,10,203,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,118,10,122,10
+    CONTROL         "사용 권한이 없거나 사용중인 파일입니다.",-1,"Static",SS_LEFTNOWORDWRAP,25,25,230,10
+    CONTROL         "이 파일을 무시하고 작업을 계속하려면 [예]를 누르십시오.",-1,"Static",SS_LEFTNOWORDWRAP,25,35,181,10
+    DEFPUSHBUTTON   "예(&Y)",6,33,52,46,16
+    PUSHBUTTON      "예, 모두(&A)",107,85,52,46,16
+    PUSHBUTTON      "아니오(&N)",7,137,52,46,16
+    PUSHBUTTON      "취소",2,189,52,46,16
+END
+
+52 DIALOG 10, 20, 250, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "확인: 파일이나 디렉토리를 무시하고 계속"
+FONT 9, "굴림"
+BEGIN
+    ICON            32515,-1,3,12,14,16
+    CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,25,3,203,10
+    CONTROL         "대상을 액세스할 수 없음, 무시:",202,"Static",SS_LEFTNOWORDWRAP,25,13,203,10
+    CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,126,13,106,10
+    CONTROL         "이 파일을 무시하고 작업을 계속하려면 [예]를 누르십시오.",-1,"Static",SS_LEFTNOWORDWRAP,25,23,181,10
+    DEFPUSHBUTTON   "예(&Y)",6,24,42,46,16
+    PUSHBUTTON      "예, 모두(&A)",107,76,42,46,16
+    PUSHBUTTON      "아니오(&N)",7,128,42,46,16
+    PUSHBUTTON      "취소",2,180,42,46,16
+END
+
+53 DIALOG 77, 109, 186, 69
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "디스크 찾기 중"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "찾기 대상:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,50,10
+    CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,57,5,120,10
+    CONTROL         "찾을 디렉토리:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,50,10
+    CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,57,15,120,10
+    CONTROL         "읽은 디렉토리:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,50,10
+    CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,57,25,120,10
+    CONTROL         "찾은 파일:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,50,10
+    CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,57,35,120,10
+    PUSHBUTTON      "숨김",110,50,48,40,16
+    PUSHBUTTON      "취소",2,94,48,40,16
+END
+
+54 DIALOG 20, 20, 247, 64
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "클립보드로 복사"
+FONT 9, "굴림"
+BEGIN
+    CONTROL         "현재 디렉토리: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,3,5,193,10
+    CONTROL         "클립보드로 복사(&B):",-1,"Static",SS_LEFTNOWORDWRAP,3,20,67,10
+    EDITTEXT        102,70,19,125,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "확인",1,200,4,41,16
+    PUSHBUTTON      "취소",2,200,23,41,16
+    PUSHBUTTON      "도움말(&H)",254,200,43,41,16
+END
+
+55 DIALOG 18, 14, 310, 224
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "파일 형식 바꾸기"
+FONT 9, "굴림"
+BEGIN
+    LTEXT           "파일 형식(&F):",302,5,6,44,8
+    EDITTEXT        301,53,5,95,12,ES_AUTOHSCROLL
+    GROUPBOX        "작업(&A):",-1,5,22,254,126,WS_GROUP
+    COMBOBOX        306,36,22,48,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "명령(&C):",313,9,42,36,8
+    EDITTEXT        304,47,39,111,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "찾아보기(&B)...",318,164,38,56,16
+    CONTROL         "DDE 사용(&U)",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,57,58,10
+    LTEXT           "DDE 메시지(&M):",320,25,72,54,8
+    EDITTEXT        309,120,70,100,12,ES_AUTOHSCROLL
+    LTEXT           "실행하지 않는 DDE 메시지 응용 프로그램(&N):",322,25,85,85,19
+    LTEXT           "(옵션)",324,222,90,21,8
+    EDITTEXT        311,120,88,100,12,ES_AUTOHSCROLL
+    LTEXT           "응용 프로그램(&P):",321,25,109,58,8
+    EDITTEXT        310,120,107,100,12,ES_AUTOHSCROLL
+    LTEXT           "항목(&T):",323,26,127,27,8
+    EDITTEXT        312,120,125,100,12,ES_AUTOHSCROLL
+    LTEXT           "새 확장명(&W):",-1,11,184,52,8
+    EDITTEXT        315,64,183,32,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "추가 (&D)->",303,102,174,48,16
+    PUSHBUTTON      "<- 제거(&R)",219,102,191,48,16
+    LTEXT           "확장명(&E):",-1,161,162,41,8
+    LISTBOX         317,161,172,65,40,LBS_SORT | WS_VSCROLL | WS_TABSTOP
+    GROUPBOX        "파일 형식에 연결된 확장명:",316,5,154,254,66
+    DEFPUSHBUTTON   "확인",1,263,6,41,16
+    PUSHBUTTON      "취소",2,263,25,41,16
+    PUSHBUTTON      "도움말(&H)",254,263,44,41,16
+END
+
+57 DIALOG 123, 60, 207, 117
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "파일 압축 진행 상황"
+FONT 9, "굴림"
+BEGIN
+    LTEXT           "압축 중인 파일:",-1,6,8,79,8
+    LTEXT           "filename.xxx",341,86,8,90,8
+    LTEXT           "디렉토리:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,43,20,151,8
+    LTEXT           "압축된 디렉토리:",-1,6,32,102,8
+    LTEXT           "1,888,888,999",343,90,32,60,8
+    LTEXT           "압축된 파일:",-1,6,44,62,8
+    LTEXT           "1,888,888,999",344,74,44,58,8
+    LTEXT           "압축 전 전체 파일 크기:",-1,6,56,124,8
+    LTEXT           "9,999,999,999,999",345,134,56,68,8
+    LTEXT           "압축 후 전체 파일 크기:",-1,6,68,123,8
+    LTEXT           "9,999,999,999,999",346,134,69,68,8
+    LTEXT           "파일 압축률:",-1,6,80,78,8
+    LTEXT           "100%",347,91,80,27,8
+    PUSHBUTTON      "취소",2,76,97,55,16
+END
+
+58 DIALOG 114, 62, 197, 84
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
+CAPTION "파일 압축 풀기 진행 상황"
+FONT 9, "굴림"
+BEGIN
+    LTEXT           "압축 풀기 중인 파일:",-1,6,8,83,8
+    LTEXT           "filename.xxx",351,93,8,66,8
+    LTEXT           "디렉토리:",-1,6,20,39,8
+    LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,45,20,144,8
+    LTEXT           "압축 풀린 디렉토리:",-1,6,32,91,8
+    LTEXT           "1,999,999,999",353,99,32,70,8
+    LTEXT           "압축 풀린 파일:",-1,6,44,86,8
+    LTEXT           "1,999,999,999",354,92,44,78,8
+    PUSHBUTTON      "취소",2,74,64,49,16
+END
+
+59 DIALOG 11, 28, 275, 70
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "압축 오류"
+FONT 9, "굴림"
+BEGIN
+    ICON            32515,-1,8,8,18,20
+    LTEXT           "",100,35,8,190,20
+    DEFPUSHBUTTON   "무시(&I)",5,27,47,51,16,WS_GROUP
+    PUSHBUTTON      "모두 무시(&G)",112,84,47,51,16
+    PUSHBUTTON      "다시 하기(&R)",4,141,47,51,16
+    PUSHBUTTON      "취소(&A)",3,198,47,51,16
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+400 ACCELERATORS
+BEGIN
+    VK_ESCAPE,      420,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY 
+    VK_RETURN,      101,                    VIRTKEY, SHIFT
+    VK_F7,          106,                    VIRTKEY 
+    VK_F8,          107,                    VIRTKEY 
+    VK_F9,          118,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY 
+    VK_DELETE,      108,                    VIRTKEY, CONTROL
+    VK_F5,          1701,                   VIRTKEY, SHIFT
+    VK_F4,          1702,                   VIRTKEY, SHIFT
+    VK_F5,          1704,                   VIRTKEY 
+    VK_F1,          1801,                   VIRTKEY 
+    "+",            301,                    ASCII   
+    VK_ADD,         301,                    VIRTKEY 
+    "*",            302,                    ASCII   
+    VK_MULTIPLY,    302,                    VIRTKEY 
+    "8",            303,                    VIRTKEY, SHIFT, CONTROL
+    VK_MULTIPLY,    303,                    VIRTKEY, CONTROL
+    "-",            304,                    ASCII   
+    VK_SUBTRACT,    304,                    VIRTKEY 
+    VK_RETURN,      110,                    VIRTKEY, ALT
+    VK_F2,          2000,                   VIRTKEY 
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+300                     CURSOR                  "CUR300.CUR"
+
+
+301                     CURSOR                  "CUR301.CUR"
+
+
+302                     CURSOR                  "CUR302.CUR"
+
+
+303                     CURSOR                  "CUR303.CUR"
+
+
+306                     CURSOR                  "CUR306.CUR"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+200                     ICON                    "ICO200.ICO"
+
+
+201                     ICON                    "ICO201.ICO"
+
+
+202                     ICON                    "ICO202.ICO"
+
+
+204                     ICON                    "ICO204.ICO"
+
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 4,0,1381,52
+ PRODUCTVERSION 4,0,1381,52
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "041204B0"
+        BEGIN
+            VALUE "CompanyName", "Microsoft Corporation"
+            VALUE "FileDescription", "File Manager"
+            VALUE "FileVersion", "4.00"
+            VALUE "InternalName", "fileman"
+            VALUE "LegalCopyright", "Copyright (C) Microsoft Corp. 1981-1996"
+            VALUE "OriginalFilename", "WINFILE.EXE"
+            VALUE "ProductName", "Microsoft(R) Windows NT(TM) Operating System"
+            VALUE "ProductVersion", "4.00"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x412, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE
+BEGIN
+    50                      "디스크 복사"
+    51                      "대상 디스크를 넣으십시오. "
+    52                      "원본 디스크를 넣으십시오. "
+    53                      "원본 및 대상 디스크를 넣으십시오. "
+    54                      "대상 디스크 포맷 중"
+    55                      "디스크 복사 오류"
+    56                      "디스크를 복사할 수 없습니다. "
+    58                      "원본과 대상 디스크가 호환되지 않습니다."
+    60                      "%d%% 완료 "
+    61                      "루트 디렉토리 만드는 중..."
+    62                      "시스템 파일 복사 중..."
+    63                      "디스크 포맷 오류"
+END
+
+STRINGTABLE
+BEGIN
+    66                      "포맷 완료"
+    67                      "총 디스크 공간 : %ld바이트 \n사용할 수 있는 디스크 공간 : %ld바이트\n\n다른 디스크를 포맷하시겠습니까?"
+END
+
+STRINGTABLE
+BEGIN
+    80                      "네트워크 오류"
+    83                      "이 드라이브에 Windows 시스템 파일이 있어서 연결을 끊을 수 없습니다. "
+    91                      "속성을 바꿀 수 없습니다."
+    92                      "디렉토리를 만들 수 없습니다."
+    93                      "디스크에 이름을 만들 수 없습니다.\n\n디스크가 쓰기 금지되어 있지 않은지, 네트워크 드라이브가 아닌지, 이름이 유효한지 확인하십시오. 이름은 다음 문자들을 포함할 수 없습니다:\n[공백] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "일치하는 파일이 없습니다."
+END
+
+STRINGTABLE
+BEGIN
+    97                      "이 드라이브의 내용이 바뀌었습니다. [찾기 결과] 창을 새로 고치시겠습니까?"
+    98                      "하드 디스크에 이 작업을 수행하려면 워크스테이션에 관리자로 로그온해야 합니다."
+    101                     "드라이브 %c:%c"
+    110                     "프로그램을 실행할 수 없음"
+    111                     "예기치 않은 오류: %d."
+END
+
+STRINGTABLE
+BEGIN
+    112                     "메모리가 부족하여 지정한 응용 프로그램을 수행할 수 없습니다.\n\n하나 이상의 응용 프로그램을 마친 다음 다시 해보십시오."
+    113                     "파일(혹은 구성 요소)를 찾을 수 없습니다.\n\n경로와 파일 이름이 올바른지, 필요한 모든 라이브러리를 사용할 수 있는지 확인하십시오."
+    114                     "지정한 경로가 올바르지 않습니다."
+    116                     "이 파일과 연결된 응용 프로그램이 없습니다.\n\n프로그램 연결을 만들려면 파일 메뉴에서 프로그램 연결을 선택하십시오. "
+    118                     "파일을 열거나 인쇄할 수 없습니다.\n\n이 파일을 만드는데 사용된 응용 프로그램을 시작한 다음 그 응용 프로그램에서 파일을 열거나 인쇄하십시오."
+    120                     "마우스 동작 확인"
+    121                     "선택한 파일이나 디렉토리를 %s(으)로 복사하시겠습니까?"
+    122                     "선택한 파일이나 디렉토리를 %s(으)로 옮기시겠습니까?"
+    123                     "%s을(를) 시작하는데 %s을(를) 초기 파일로 이용하시겠습니까?"
+    124                     "파일 관리자"
+    126                     "디렉토리 트리"
+    127                     "찾기 결과: "
+END
+
+STRINGTABLE
+BEGIN
+    132                     "파일이 너무 많습니다."
+    133                     "파일 관리자 - 메모리 부족"
+    134                     "전체 디렉토리를 읽을 수 없습니다. 목록의 일부만 표시됩니다."
+    140                     "현재 디렉토리: %s"
+    141                     "복사"
+    143                     "이름 바꾸기"
+END
+
+STRINGTABLE
+BEGIN
+    145                     "디스크 포맷"
+    146                     "포맷할 디스크를 선택하십시오."
+    150                     "만드는 중:"
+    151                     "제거 중..."
+    152                     "복사하는 중:"
+    153                     "이름 바꾸는 중..."
+    154                     "옮기는 중..."
+    155                     "지우는 중..."
+    156                     "인쇄 중: %s"
+END
+
+STRINGTABLE
+BEGIN
+    169                     "복사하는 중..."
+    170                     "제거 중:"
+END
+
+STRINGTABLE
+BEGIN
+    180                     "총 파일 수 %d (%s)"
+    181                     "읽은 디렉토리 수 : %d"
+    182                     "%c: %s 사용가능, 총 %s "
+    183                     "찾은 파일 : %d"
+    185                     "선택한 파일 "
+    186                     "네트워크 드라이브의 연결을 끊을 수 없습니다.\r\n이 드라이브에 열린 파일이 있습니다."
+    187                     "선택한 파일 수: %d (%s)"
+    188                     "드라이브 %c에 디스크가 없습니다.\n\n디스크를 넣은 다음 다시 해보십시오. "
+    189                     "드라이브 %c에 있는 디스크가 포맷되지 않았습니다.\n\n지금 포맷하시겠습니까?"
+END
+
+STRINGTABLE
+BEGIN
+    192                     "인쇄를 위한 디스크 공간이 부족합니다.\n\n하나 이상의 파일을 지워 디스크 공간을 늘린 후 다시 해보십시오."
+    193                     "인쇄를 위한 메모리가 부족합니다.\n\n하나 이상의 응용 프로그램을 마친 다음 다시 해보십시오."
+    194                     "인쇄 중 오류가 일어났습니다.\n\n프린터가 올바르게 설정되고 선택되었는지 확인하십시오."
+    195                     "디렉토리 트리의 일부만 표시되었습니다."
+    197                     "대상 디스크가 꽉 찼습니다. 계속하려면 다른 디스크를 넣으십시오."
+    198                     "시스템, 숨김, 또는 읽기 전용 파일입니다. "
+    199                     "빠른 포맷을 수행할 수 없습니다.\n\n보통 포맷으로 계속하시겠습니까?"
+    203                     "응용 프로그램으로 명령을 보낼 때 오류가 일어났습니다."
+    204                     "이 작업에 필요한 라이브러리를 읽어들일 수 없습니다."
+END
+
+STRINGTABLE
+BEGIN
+    209                     "공유 디렉토리(&H)..."
+    210                     "포맷은 디스크에 있는 모든 데이터를 지웁니다. %c 드라이브에 있는 디스크를 포맷하시겠습니까?"
+    211                     "디스크 포맷 확인"
+    212                     "이 작업을 하면 대상 디스크의 모든 데이터가 지워집니다. 계속하시겠습니까?"
+    213                     "디스크 복사 확인"
+    214                     "닫기(&C)"
+    215                     "닫기"
+    218                     "%s 디렉토리가 없습니다.\n\n새로 만드시겠습니까?"
+    219                     "프로그램#*.exe;*.pif;*.com;*.bat#모든 파일 (*.*)#*.*#"
+    220                     "찾아보기"
+    221                     "실행"
+    222                     "파일을 인쇄할 수 없습니다."
+    223                     "도움말 정보를 표시할 수 없습니다."
+END
+
+STRINGTABLE
+BEGIN
+    224                     "확장명이 %s인 파일은 프로그램이므로 다른 응용 프로그램과 연결할 수 없습니다."
+    225                     "%s은(는) 프로그램이 아니므로 파일 확장명과 연결할 수 없습니다."
+    226                     "(없음)"
+    227                     "찾은 파일이 없습니다. "
+    228                     "여러 파일을 인쇄할 수 없습니다.\n\n파일을 하나만 선택한 다음 다시 하십시오."
+    230                     "이 응용 프로그램을 실행하는데 필요한 라이브러리 파일 중 하나가 손상되었습니다. 이 프로그램을 다시 설치하십시오."
+    231                     "이 파일을 다른 응용 프로그램에서 사용중입니다."
+    232                     "'%s' 디렉토리에 만들어진 파일을 액세스할 수 없습니다.\n\n계속하시겠습니까?"
+    233                     "디렉토리 만들기"
+    234                     "%ld바이트"
+    235                     "%s바이트"
+    236                     "여러 개의 파일 혹은 디렉토리를 클립보드로 복사할 수 없습니다.\n\n파일을 하나만 선택하고 다시 하십시오."
+    237                     "%s - %s"
+    238                     "드라이브:"
+    239                     "%s, "
+END
+
+STRINGTABLE
+BEGIN
+    240                     "네트워크 드라이브 연결"
+    241                     "네트워크 드라이브 연결 끊기"
+    242                     "네트워크 연결"
+    243                     "디렉토리 공유"
+    244                     "디렉토리 공유 멈춤"
+    245                     "자세히 보기"
+    246                     "이름만 보기"
+    247                     "이름순 정렬"
+    248                     "종류별 정렬"
+    249                     "크기순 정렬"
+    250                     "날짜순 정렬"
+    251                     "새 창"
+    252                     "파일 복사"
+    253                     "파일 옮기기"
+    254                     "디렉토리 이름(&D):"
+END
+
+STRINGTABLE
+BEGIN
+    256                     "네트워크 드라이브를 사용할 수 없습니다."
+    259                     "%s(으)로 공유 "
+    260                     "공유되지 않음"
+    261                     "파일 지우기"
+    262                     " - 압축"
+    263                     "%s(으)로 파일 복사 중 "
+    264                     "%s(으)로 파일 옮기는 중 "
+    265                     "%s(으)로 파일 실행 중 "
+    266                     "%s바이트"
+    267                     "%sKB"
+    268                     "%sMB"
+    269                     "%sGB"
+    270                     "%sTB"
+END
+
+STRINGTABLE
+BEGIN
+    280                     "이 디렉토리에 대한 사용 권한이 없습니다."
+    281                     "이 파일에 대한 사용 권한이 없습니다."
+    283                     "%c: 드라이브가 사용중이므로 액세스할 수 없습니다.\n[파일 관리자]가 디스크를 복사하고 있습니다."
+    284                     "%c: 드라이브가 사용중이므로 액세스할 수 없습니다.\n[디스크 관리자]가 디스크를 포맷하고 있습니다."
+    285                     "작업이 완전히 끝나지 않았습니다."
+    286                     "작업을 모든 파일과 디렉토리에 대해 하지 못했습니다."
+    287                     "디렉토리를 읽을 수 없습니다."
+END
+
+STRINGTABLE
+BEGIN
+    288                     "디렉토리가 없습니다."
+    289                     "네트워크 드라이브를 연결할 수 없습니다."
+    290                     "네트워크 이름을 찾을 수 없습니다."
+    292                     "[예, 모두]는 시스템, 숨김, 읽기 전용을 포함한 모든 파일에 영향을 줍니다."
+    294                     "열기"
+    295                     "인쇄"
+    298                     "확장명 추가"
+    299                     "'%s' 확장명은 현재 '%s' 와(과) 연결되어 있습니다. 프로그램 연결을 겹쳐쓰시겠습니까?"
+    300                     "파일 연결 편집기"
+    301                     "확장명을 연결할 수 없습니다."
+    302                     "확장명을 삭제할 수 없습니다."
+    303                     "파일 형식을 추가할 수 없습니다."
+END
+
+STRINGTABLE
+BEGIN
+    304                     "파일 형식을 삭제할 수 없습니다.  "
+    305                     "파일 형식을 읽을 수 없습니다.  "
+    306                     "[파일 형식] 설명을 비워 둘 수 없습니다. 새 파일 형식을 입력하십시오."
+    307                     "입력한 파일 형식으로 고유한 식별자를 만들 수 없습니다. 새 파일 형식을 입력하십시오."
+    308                     "파일 형식 삭제"
+    309                     "파일 형식 및 연결된 모든 확장자를 삭제합니다. '%s'을(를) 삭제하시겠습니까?"
+    312                     "[파일 형식]은 명령에 적어도 하나의 동작을 가지고 있어야 합니다. 명령 필드에 응용 프로그램을 입력하십시오."
+END
+
+STRINGTABLE
+BEGIN
+    320                     "새 파일 형식"
+    321                     "디스크 복사 중"
+    322                     "찾는 중..."
+    324                     "지금 디스크를 포맷하고 있습니다. [파일 관리자]를 마치면 이 동작은 취소됩니다."
+    325                     "지금 디스크 복사를 하고 있습니다. [파일 관리자]를 마치면 이 동작은 취소됩니다."
+    326                     "진행률"
+END
+
+STRINGTABLE
+BEGIN
+    353                     "360K"
+    354                     "1%s2MB"
+    355                     "720K"
+    356                     "1%s44MB"
+    357                     "2%s88MB"
+    358                     "드라이브 용량"
+    359                     "디스크 정보를 얻을 수 없습니다.\n\n드라이브에 디스크가 있는지 확인하십시오."
+    360                     "20%s8MB"
+    361                     "알 수 없는 디스크 종류"
+    362                     "알 수 없는 디스크 종류"
+    363                     "%s 드라이브에 디스크 종류는 [파일 관리자]로 포맷할 수 없습니다. [디스크 관리자]를 사용하여 포맷하십시오."
+END
+
+STRINGTABLE
+BEGIN
+    370                     "128MB"
+    371                     "230MB"
+    375                     "1%s23MB"
+    376                     "640K"
+    377                     "1%s25 MB"
+    378                     "256K"
+END
+
+STRINGTABLE
+BEGIN
+    400                     "호환되지 않는 파일 시스템입니다."
+    401                     "액세스할 수 없습니다."
+    402                     "디스크가 쓰기 금지되어있습니다."
+    403                     "볼륨을 잠글 수 없습니다."
+    404                     "디스크를 빠른 포맷할 수 없습니다.\n\n디스크 밀도가 올바른지 확인하십시오."
+    405                     "원본 디스크의 I/O 오류입니다."
+    406                     "대상 디스크의 I/O 오류입니다."
+    407                     "원본 및 대상 디스크의 I/O 오류입니다."
+    408                     "I/O 오류가 발생했습니다."
+    411                     "디스크를 포맷할 수 없습니다.\n\n디스크가 드라이브에 들어있는지, 쓰기 금지되지 않았는지, 손상되지 않았는지 또는 밀도가 틀리지 않은지 확인하십시오."
+    412                     "디스크에 이름을 붙일 수 없습니다.\n\n지정된 이름표가 올바르지 않습니다. 이름표에 다음 문자가 포함되지 않았는지 확인하십시오:\n[공백] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+END
+
+STRINGTABLE
+BEGIN
+    420                     "여는 중..."
+    421                     "닫는 중..."
+    422                     "너무 많은 디렉토리 창이 열려 있습니다.\n\n하나 이상의 창을 닫고 다시 하십시오."
+    423                     "빠른 포맷 중..."
+    424                     "백그라운드 새로 고침 지원을 초기화할 수 없습니다. [파일 관리자]를 마칩니다.  "
+    425                     "파일 관리자 초기화"
+    426                     "디렉토리를 읽고 있습니다. 기다리십시오...."
+    427                     "%s에 있는 모든 파일과 하위 디렉토리도 압축하시겠습니까?"
+    428                     "%s에 있는 모든 파일과 하위 디렉토리의 압축을 푸시겠습니까?"
+    429                     "%s의 압축 속성을 바꿀 수 없습니다."
+    430                     "%s 파일은 압축할 수 없습니다. 이 파일을 압축하면 시스템이 부팅되지 않을 수도 있습니다."
+    431                     "지금 파일 압축/압축 풀기를 하고 있습니다.\n다른 파일을 압축/압축 풀기하려면  지금 작업이 끝날 때까지 기다려야 합니다."
+END
+
+STRINGTABLE
+BEGIN
+    500                     "설명"
+    501                     "회사 이름"
+    502                     "파일 설명"
+    503                     "내부 이름"
+    504                     "등록 상표"
+    505                     "원본 파일 이름"
+    506                     "개인 빌드 설명"
+    507                     "제품 이름"
+    508                     "제품 버전"
+    509                     "특수 빌드 설명"
+    510                     "언어"
+    511                     "언어"
+END
+
+STRINGTABLE
+BEGIN
+    800                     "네트워크 드라이브 연결(&N)..."
+    801                     "네트워크 드라이브 연결 끊기(&D)..."
+    802                     "네트워크 연결(&N)..."
+    803                     "공유(&A)..."
+    804                     "공유 멈춤(&T)..."
+    805                     "공유 디렉토리 표시(&H)..."
+    806                     "삭제 취소(&U)..."
+    807                     "연결할 때 새 창 열기(&O)"
+END
+
+STRINGTABLE
+BEGIN
+    1001                    "파일 옮기기 오류"
+    1002                    "파일 복사 오류"
+    1003                    "파일 지우기 오류"
+    1004                    "파일 이름 바꾸기 오류"
+    1005                    "드라이브 선택 오류"
+    1006                    "디렉토리 읽기 오류"
+    1007                    "디스크 이름 붙이기 오류"
+END
+
+STRINGTABLE
+BEGIN
+    1011                    "%s(을)를 옮길 수 없습니다. %s"
+    1012                    "%s을(를) 복사할 수 없습니다. %s"
+    1013                    "%s을(를) 지울 수 없습니다. %s"
+    1014                    "%s의 이름을 바꿀 수 없습니다. %s"
+    1021                    "%s 디렉토리를 만들 수 없습니다. %s"
+    1022                    "%s 디렉토리를 지울 수 없습니다. %s"
+END
+
+STRINGTABLE
+BEGIN
+    1030                    "%s을(를) 만들거나 바꿀 수 없습니다. %s"
+END
+
+STRINGTABLE
+BEGIN
+    1101                    "원본과 대상이 같습니다."
+    1102                    "이름을 바꾸려는 파일을 하나만 선택하거나, 여러 파일을 비슷한 이름으로 바꾸려면 대표문자(예, *.TXT)를 사용하십시오. "
+    1103                    "다른 디렉토리나 디스크로 이름 바꾸기 할 수 없습니다.\n파일 옮기기 명령을 사용하십시오."
+END
+
+STRINGTABLE
+BEGIN
+    1104                    "루트 디렉토리의 이름은 바꿀 수 없습니다."
+    1105                    "대상 디렉토리가 원본 디렉토리의 하위 디렉토리입니다."
+    1106                    "Windows가 파일을 사용 중입니다."
+    1107                    "[대상] 상자에 하나의 파일 또는 디렉토리를 지정하십시오. 여러 개의 그룹을 선택하려면 대표문자를 사용하십시오(예, *.TXT)."
+    1108                    "같은 이름의 파일 또는 디렉토리가 이미 있습니다. 한 디렉토리 안에서는 파일이나 디렉토리 이름이 고유해야 합니다."
+    1109                    "지정된 경로와 파일 이름이 올바른지 확인하십시오."
+    1110                    "지정된 경로가 올바른지 확인하십시오."
+    1111                    "하나 이상의 응용 프로그램을 마친 후 다시 해보십시오. 또는 [제어판]에서 [시스템 옵션]을 사용하여 가상 메모리를 증가시키십시오."
+    1113                    "디스크 쓰기 금지를 풀거나 다른 디스크를 사용하여 다시 해보십시오."
+    1114                    "이 작업을 수행하기 위한 올바른 네트워크 사용 권한이 있는지 확인하십시오."
+    1115                    "파일을 지워 디스크 공간을 늘린 후 다시 하십시오."
+    1116                    "매체에서 발견된 데이터가 없습니다."
+    1117                    "디렉토리가 이미 있습니다."
+    1118                    "지정된 이름은 이미 있는 파일 이름입니다."
+END
+
+STRINGTABLE
+BEGIN
+    1150                    "드라이브에 잘못된 디스크가 있습니다."
+    1151                    "이 응용 프로그램은 Windows NT 모드에서 실행될수 없습니다."
+END
+
+STRINGTABLE
+BEGIN
+    1152                    "운영 체제가 이 구성 요소를 실행할 수 없습니다."
+    1153                    "이 구성 요소는 Windows NT 모드에서 실행될 수 없습니다."
+    1154                    "이 프로그램은 올바른 Windows NT 응용 프로그램이 아닙니다."
+    1155                    "오류가 일어났습니다. 오류에 대한 메시지 내용이 없습니다."
+END
+
+STRINGTABLE
+BEGIN
+    2000                    "원래 위치(&F):"
+    2001                    "복사할 위치(&T):"
+    2002                    "이전 이름(&F):"
+    2003                    "새 이름(&T):"
+    2004                    "이 글꼴이 설정되어 있지 않으면, 한글을 \n표시할 수 없을 것입니다."
+END
+
+STRINGTABLE
+BEGIN
+    3984                    "파일로 작업하는 명령"
+    3985                    "디스크로 작업하는 명령"
+    3986                    "트리 창에서 작업하는 명령"
+    3987                    "정보 표시 방법을 결정하는 명령"
+    3988                    "옵션 설정을 위한 명령"
+    3989                    "파일 및 디렉토리 보안 조작 명령"
+END
+
+STRINGTABLE
+BEGIN
+    4000                    "창 정렬을 위한 명령"
+    4001                    "파일 관리자 도움말을 표시하기 위한 명령"
+END
+
+STRINGTABLE
+BEGIN
+    4030                    "파일 관리자 도움말 항목을 검색"
+END
+
+STRINGTABLE
+BEGIN
+    4101                    "선택한 항목 열기"
+    4102                    "문서를 인쇄"
+    4103                    "파일을 응용 프로그램과 연결"
+    4104                    "파일 및 디렉토리 찾기"
+    4105                    "응용 프로그램이나 문서를 시작하거나 열기"
+    4106                    "선택한 항목을 옮기기"
+    4107                    "파일 및 디렉토리 복사"
+    4108                    "파일 및 디렉토리 지우기"
+    4109                    "파일 및 디렉토리 이름 바꾸기"
+    4110                    "파일 속성을 설정하고 등록 정보를 표시"
+    4111                    "디렉토리 만들기"
+END
+
+STRINGTABLE
+BEGIN
+    4115                    "파일 관리자 마침"
+    4116                    "파일 및 디렉토리 선택"
+    4117                    "이전에 지워진 파일 찾기"
+    4118                    "파일을 클립보드로 복사"
+    4119                    "파일 또는 디렉토리 압축"
+    4120                    "파일 또는 디렉토리 압축 풀기"
+END
+
+STRINGTABLE
+BEGIN
+    4201                    "플로피 디스크의 내용을 복사"
+    4202                    "디스크 볼륨 이름을 지정하거나 바꾸기"
+    4203                    "플로피 디스크를 포맷"
+    4205                    "네트워크 드라이브 연결"
+    4206                    "네트워크 드라이브 연결 끊기"
+END
+
+STRINGTABLE
+BEGIN
+    4251                    "다른 드라이브를 선택"
+    4254                    "디렉토리를 공유"
+    4255                    "디렉토리 공유를 멈춤"
+END
+
+STRINGTABLE
+BEGIN
+    4301                    "다른 수준의 디렉토리를 표시"
+    4302                    "특정 디렉토리의 하위 디렉토리를 표시"
+    4303                    "모든 디렉토리의 하위 디렉토리를 표시"
+END
+
+STRINGTABLE
+BEGIN
+    4304                    "선택한 디렉토리의 하위 디렉토리를 표시하지 않음"
+END
+
+STRINGTABLE
+BEGIN
+    4401                    "파일 이름만 보여 줌"
+    4402                    "모든 파일 정보를 자세히 보여 줌"
+    4403                    "파일 정보를 일부만 보여 줌"
+    4404                    "파일을 이름순으로 정렬"
+    4405                    "파일을 종류별로 정렬"
+    4406                    "파일을 크기순으로 정렬"
+    4407                    "파일을 날짜순으로 정렬"
+    4409                    "지정한 종류의 파일만 보여 줌"
+    4411                    "디렉토리 트리를 표시"
+    4412                    "현재 디렉토리의 내용을 표시"
+    4413                    "디렉토리 트리 및 현재 디렉토리의 내용을 표시"
+    4414                    "디렉토리 창을 분할하거나 분할줄을 옮기기"
+END
+
+STRINGTABLE
+BEGIN
+    4501                    "확인 메시지를 제어"
+    4503                    "상태 표시줄을 표시하거나 숨김"
+    4504                    "파일 관리자를 시작할 때 아이콘으로 표시"
+    4505                    "하위 디렉토리를 갖는 디렉토리를 표시"
+    4507                    "드라이브 줄 표시하거나 숨김"
+    4508                    "도구 모음을 표시하거나 숨김"
+    4509                    "연결할 때 새 창 열기"
+    4510                    "파일 관리자 글꼴을 바꿈"
+    4511                    "파일 관리자를 마칠 때 설정 내용을 저장"
+END
+
+STRINGTABLE
+BEGIN
+    4512                    "도구 모음을 사용자 정의"
+END
+
+STRINGTABLE
+BEGIN
+    4605                    "선택된 항목에 대한 사용 권한 정보를 보거나 설정"
+    4606                    "선택된 항목에 대한 감사 정보를 보거나 설정"
+    4607                    "선택된 항목에 대한 소유권을 보거나 가져오기"
+END
+
+STRINGTABLE
+BEGIN
+    5701                    "창을 계단식 배열"
+    5702                    "바둑판식 창 세로로 배열"
+    5703                    "바둑판식 창 가로로 배열"
+    5704                    "창 내용을 새로 고치기"
+    5705                    "아이콘을 정렬"
+    5706                    "새 창 열기"
+END
+
+STRINGTABLE
+BEGIN
+    5801                    "파일 관리자의 도움말 목차를 표시"
+    5802                    "도움말 사용법에 관한 정보를 표시"
+    5803                    "파일 관리자 정보를 표시"
+END
+
+#endif    // Korean (Korea) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
