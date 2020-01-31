@@ -41,101 +41,101 @@ LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
 
 500 MENU
 BEGIN
-    POPUP "&Файл"
+    POPUP "&Р¤Р°Р№Р»"
     BEGIN
-        MENUITEM "&Открыть\tEnter",             101
-        MENUITEM "П&ереместить...\tF7",         106
-        MENUITEM "&Копировать...\tF8",          107
-        MENUITEM "Копировать в &буфер...\tF9",  118
-        MENUITEM "&Удалить...\tDel",            108
-        MENUITEM "Переи&меновать...",           109
-        MENUITEM "Сво&йства...\tAlt+Enter",     110
+        MENUITEM "&РћС‚РєСЂС‹С‚СЊ\tEnter",             101
+        MENUITEM "Рџ&РµСЂРµРјРµСЃС‚РёС‚СЊ...\tF7",         106
+        MENUITEM "&РљРѕРїРёСЂРѕРІР°С‚СЊ...\tF8",          107
+        MENUITEM "РљРѕРїРёСЂРѕРІР°С‚СЊ РІ &Р±СѓС„РµСЂ...\tF9",  118
+        MENUITEM "&РЈРґР°Р»РёС‚СЊ...\tDel",            108
+        MENUITEM "РџРµСЂРµРё&РјРµРЅРѕРІР°С‚СЊ...",           109
+        MENUITEM "РЎРІРѕ&Р№СЃС‚РІР°...\tAlt+Enter",     110
         MENUITEM SEPARATOR
-        MENUITEM "С&жать...",                   119
-        MENUITEM "&Развернуть...",              120
+        MENUITEM "РЎ&Р¶Р°С‚СЊ...",                   119
+        MENUITEM "&Р Р°Р·РІРµСЂРЅСѓС‚СЊ...",              120
         MENUITEM SEPARATOR
-        MENUITEM "&Выполнить...",               105
-        MENUITEM "&Печать...",                  102
-        MENUITEM "&Сопоставить...",             103
+        MENUITEM "&Р’С‹РїРѕР»РЅРёС‚СЊ...",               105
+        MENUITEM "&РџРµС‡Р°С‚СЊ...",                  102
+        MENUITEM "&РЎРѕРїРѕСЃС‚Р°РІРёС‚СЊ...",             103
         MENUITEM SEPARATOR
-        MENUITEM "Созд&ать каталог...",         111
-        MENUITEM "&Найти...",                   104
-        MENUITEM "Выде&лить...",                116
+        MENUITEM "РЎРѕР·Рґ&Р°С‚СЊ РєР°С‚Р°Р»РѕРі...",         111
+        MENUITEM "&РќР°Р№С‚Рё...",                   104
+        MENUITEM "Р’С‹РґРµ&Р»РёС‚СЊ...",                116
         MENUITEM SEPARATOR
-        MENUITEM "В&ыход",                      115
+        MENUITEM "Р’&С‹С…РѕРґ",                      115
     END
-    POPUP "&Диск"
+    POPUP "&Р”РёСЃРє"
     BEGIN
-        MENUITEM "&Копировать...",              201
-        MENUITEM "&Метка...",                   202
+        MENUITEM "&РљРѕРїРёСЂРѕРІР°С‚СЊ...",              201
+        MENUITEM "&РњРµС‚РєР°...",                   202
         MENUITEM SEPARATOR
-        MENUITEM "&Форматировать...",           203
+        MENUITEM "&Р¤РѕСЂРјР°С‚РёСЂРѕРІР°С‚СЊ...",           203
         MENUITEM SEPARATOR
-        MENUITEM "&Выбрать...",                 251
+        MENUITEM "&Р’С‹Р±СЂР°С‚СЊ...",                 251
     END
-    POPUP "&Каталоги"
+    POPUP "&РљР°С‚Р°Р»РѕРіРё"
     BEGIN
-        MENUITEM "&Раскрыть уровень\t+",        301
-        MENUITEM "Р&аскрыть ветвь\t*",          302
-        MENUITEM "Раскрыть &все\tCtrl+*",       303
-        MENUITEM "&Свернуть ветвь\t-",          304
+        MENUITEM "&Р Р°СЃРєСЂС‹С‚СЊ СѓСЂРѕРІРµРЅСЊ\t+",        301
+        MENUITEM "Р &Р°СЃРєСЂС‹С‚СЊ РІРµС‚РІСЊ\t*",          302
+        MENUITEM "Р Р°СЃРєСЂС‹С‚СЊ &РІСЃРµ\tCtrl+*",       303
+        MENUITEM "&РЎРІРµСЂРЅСѓС‚СЊ РІРµС‚РІСЊ\t-",          304
         MENUITEM SEPARATOR
-        MENUITEM "&Обозначить подкаталоги",     505
+        MENUITEM "&РћР±РѕР·РЅР°С‡РёС‚СЊ РїРѕРґРєР°С‚Р°Р»РѕРіРё",     505
     END
-    POPUP "&Вид"
+    POPUP "&Р’РёРґ"
     BEGIN
-        MENUITEM "&Структура и содержимое",     413
-        MENUITEM "Т&олько структура",           411
-        MENUITEM "Только содер&жимое",          412
+        MENUITEM "&РЎС‚СЂСѓРєС‚СѓСЂР° Рё СЃРѕРґРµСЂР¶РёРјРѕРµ",     413
+        MENUITEM "Рў&РѕР»СЊРєРѕ СЃС‚СЂСѓРєС‚СѓСЂР°",           411
+        MENUITEM "РўРѕР»СЊРєРѕ СЃРѕРґРµСЂ&Р¶РёРјРѕРµ",          412
         MENUITEM SEPARATOR
-        MENUITEM "&Граница областей",           414
+        MENUITEM "&Р“СЂР°РЅРёС†Р° РѕР±Р»Р°СЃС‚РµР№",           414
         MENUITEM SEPARATOR
-        MENUITEM "Только и&мена файлов",        401
-        MENUITEM "&Полные сведения",            402, CHECKED
-        MENUITEM "&Выбранные сведения...",      403
+        MENUITEM "РўРѕР»СЊРєРѕ Рё&РјРµРЅР° С„Р°Р№Р»РѕРІ",        401
+        MENUITEM "&РџРѕР»РЅС‹Рµ СЃРІРµРґРµРЅРёСЏ",            402, CHECKED
+        MENUITEM "&Р’С‹Р±СЂР°РЅРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ...",      403
         MENUITEM SEPARATOR
-        MENUITEM "Сортировать по &имени",       404
-        MENUITEM "Сортировать по &типу",        405
-        MENUITEM "Сортировать по ра&змеру",     406
-        MENUITEM "Сортировать по дат&е",        407
+        MENUITEM "РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ &РёРјРµРЅРё",       404
+        MENUITEM "РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ &С‚РёРїСѓ",        405
+        MENUITEM "РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ СЂР°&Р·РјРµСЂСѓ",     406
+        MENUITEM "РЎРѕСЂС‚РёСЂРѕРІР°С‚СЊ РїРѕ РґР°С‚&Рµ",        407
         MENUITEM SEPARATOR
-        MENUITEM "Типы &файлов...",             409
+        MENUITEM "РўРёРїС‹ &С„Р°Р№Р»РѕРІ...",             409
     END
-    POPUP "&Параметры"
+    POPUP "&РџР°СЂР°РјРµС‚СЂС‹"
     BEGIN
-        MENUITEM "&Подтверждение...",           501
-        MENUITEM "&Шрифт...",                   510
-        MENUITEM "&Настройка панели инструментов...", 512
+        MENUITEM "&РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ...",           501
+        MENUITEM "&РЁСЂРёС„С‚...",                   510
+        MENUITEM "&РќР°СЃС‚СЂРѕР№РєР° РїР°РЅРµР»Рё РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ...", 512
         MENUITEM SEPARATOR
-        MENUITEM "Панель &инструментов",        508
-        MENUITEM "Панель дис&ков",              507
-        MENUITEM "&Строка состояния",           503
+        MENUITEM "РџР°РЅРµР»СЊ &РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ",        508
+        MENUITEM "РџР°РЅРµР»СЊ РґРёСЃ&РєРѕРІ",              507
+        MENUITEM "&РЎС‚СЂРѕРєР° СЃРѕСЃС‚РѕСЏРЅРёСЏ",           503
         MENUITEM SEPARATOR
-        MENUITEM "Свертывать при &запуске",     504
-        MENUITEM "Со&хранять настройку при выходе", 511
+        MENUITEM "РЎРІРµСЂС‚С‹РІР°С‚СЊ РїСЂРё &Р·Р°РїСѓСЃРєРµ",     504
+        MENUITEM "РЎРѕ&С…СЂР°РЅСЏС‚СЊ РЅР°СЃС‚СЂРѕР№РєСѓ РїСЂРё РІС‹С…РѕРґРµ", 511
     END
-    POPUP "&Безопасность"
+    POPUP "&Р‘РµР·РѕРїР°СЃРЅРѕСЃС‚СЊ"
     BEGIN
-        MENUITEM "Разре&шения...",              605
-        MENUITEM "&Аудит...",                   606
-        MENUITEM "&Владелец...",                607
+        MENUITEM "Р Р°Р·СЂРµ&С€РµРЅРёСЏ...",              605
+        MENUITEM "&РђСѓРґРёС‚...",                   606
+        MENUITEM "&Р’Р»Р°РґРµР»РµС†...",                607
     END
-    POPUP "&Окно"
+    POPUP "&РћРєРЅРѕ"
     BEGIN
-        MENUITEM "Созд&ать",                    1706
-        MENUITEM "&Каскадом\tShift+F5",         1701
-        MENUITEM "С&верху вниз",                1703
-        MENUITEM "&Слева направо\tShift+F4",    1702
-        MENUITEM "&Упорядочить значки",         1705
-        MENUITEM "О&бновить\tF5",               1704
+        MENUITEM "РЎРѕР·Рґ&Р°С‚СЊ",                    1706
+        MENUITEM "&РљР°СЃРєР°РґРѕРј\tShift+F5",         1701
+        MENUITEM "РЎ&РІРµСЂС…Сѓ РІРЅРёР·",                1703
+        MENUITEM "&РЎР»РµРІР° РЅР°РїСЂР°РІРѕ\tShift+F4",    1702
+        MENUITEM "&РЈРїРѕСЂСЏРґРѕС‡РёС‚СЊ Р·РЅР°С‡РєРё",         1705
+        MENUITEM "Рћ&Р±РЅРѕРІРёС‚СЊ\tF5",               1704
     END
     POPUP "&?"
     BEGIN
-        MENUITEM "&Содержание",                 1801
-        MENUITEM "&Найти...",                   30
-        MENUITEM "По&льзование справкой",       1802
+        MENUITEM "&РЎРѕРґРµСЂР¶Р°РЅРёРµ",                 1801
+        MENUITEM "&РќР°Р№С‚Рё...",                   30
+        MENUITEM "РџРѕ&Р»СЊР·РѕРІР°РЅРёРµ СЃРїСЂР°РІРєРѕР№",       1802
         MENUITEM SEPARATOR
-        MENUITEM "&О программе...",             1803
+        MENUITEM "&Рћ РїСЂРѕРіСЂР°РјРјРµ...",             1803
     END
 END
 
@@ -147,640 +147,640 @@ END
 
 10 DIALOG 15, 12, 255, 63
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Запуск программы"
+CAPTION "Р—Р°РїСѓСЃРє РїСЂРѕРіСЂР°РјРјС‹"
 FONT 8, "MS Shell Dlg"
 BEGIN
     CONTROL         "",101,"Static",SS_SIMPLE | SS_NOPREFIX,6,6,191,10
-    CONTROL         "&Командная строка:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,6,18,86,10
+    CONTROL         "&РљРѕРјР°РЅРґРЅР°СЏ СЃС‚СЂРѕРєР°:",-1,"Static",SS_LEFTNOWORDWRAP | WS_GROUP,6,18,86,10
     EDITTEXT        201,6,29,188,12,ES_AUTOHSCROLL
-    CONTROL         "&Выполнять в свернутом окне",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,45,152,12
-    DEFPUSHBUTTON   "ОК",1,205,6,44,14
-    PUSHBUTTON      "Отмена",2,205,23,44,14
-    PUSHBUTTON      "&Справка",254,205,43,44,14
+    CONTROL         "&Р’С‹РїРѕР»РЅСЏС‚СЊ РІ СЃРІРµСЂРЅСѓС‚РѕРј РѕРєРЅРµ",214,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,45,152,12
+    DEFPUSHBUTTON   "РћРљ",1,205,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,205,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,205,43,44,14
 END
 
 11 DIALOG 20, 20, 280, 63
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Печать"
+CAPTION "РџРµС‡Р°С‚СЊ"
 FONT 8, "MS Shell Dlg"
 BEGIN
     CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,6,215,10
-    CONTROL         "&Печатать:",-1,"Static",SS_LEFTNOWORDWRAP,6,20,42,10
+    CONTROL         "&РџРµС‡Р°С‚Р°С‚СЊ:",-1,"Static",SS_LEFTNOWORDWRAP,6,20,42,10
     EDITTEXT        102,48,18,174,12,ES_AUTOHSCROLL
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,36,215,10
-    DEFPUSHBUTTON   "ОК",1,230,6,44,14
-    PUSHBUTTON      "Отмена",2,230,23,44,14
-    PUSHBUTTON      "&Справка",254,230,43,44,14
+    DEFPUSHBUTTON   "РћРљ",1,230,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,230,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,230,43,44,14
 END
 
 12 DIALOG 20, 20, 260, 119
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Сопоставление типа файлов и приложения"
+CAPTION "РЎРѕРїРѕСЃС‚Р°РІР»РµРЅРёРµ С‚РёРїР° С„Р°Р№Р»РѕРІ Рё РїСЂРёР»РѕР¶РµРЅРёСЏ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "&Расширению имен файлов:",-1,6,7,112,10
+    LTEXT           "&Р Р°СЃС€РёСЂРµРЅРёСЋ РёРјРµРЅ С„Р°Р№Р»РѕРІ:",-1,6,7,112,10
     COMBOBOX        315,130,5,60,55,CBS_DROPDOWN | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Со&поставить тип и приложение:",-1,6,30,122,10
+    LTEXT           "РЎРѕ&РїРѕСЃС‚Р°РІРёС‚СЊ С‚РёРї Рё РїСЂРёР»РѕР¶РµРЅРёРµ:",-1,6,30,122,10
     EDITTEXT        304,6,42,184,12,ES_AUTOHSCROLL
     LISTBOX         314,11,54,179,52,LBS_SORT | WS_VSCROLL | WS_TABSTOP
-    PUSHBUTTON      "Об&зор...",318,130,24,60,14
-    DEFPUSHBUTTON   "ОК",1,200,6,53,14,WS_GROUP
-    PUSHBUTTON      "Отмена",2,200,23,53,14
-    PUSHBUTTON      "&Новый тип...",300,200,42,53,14
-    PUSHBUTTON      "Из&менить...",251,200,59,53,14
-    PUSHBUTTON      "&Удалить",219,200,76,53,14
-    PUSHBUTTON      "&Справка",254,200,95,53,14
+    PUSHBUTTON      "РћР±&Р·РѕСЂ...",318,130,24,60,14
+    DEFPUSHBUTTON   "РћРљ",1,200,6,53,14,WS_GROUP
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,200,23,53,14
+    PUSHBUTTON      "&РќРѕРІС‹Р№ С‚РёРї...",300,200,42,53,14
+    PUSHBUTTON      "РР·&РјРµРЅРёС‚СЊ...",251,200,59,53,14
+    PUSHBUTTON      "&РЈРґР°Р»РёС‚СЊ",219,200,76,53,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,200,95,53,14
 END
 
 13 DIALOG 20, 20, 280, 63
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Поиск"
+CAPTION "РџРѕРёСЃРє"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "Образец &имени:",-1,"Static",SS_LEFTNOWORDWRAP,6,7,60,10
+    CONTROL         "РћР±СЂР°Р·РµС† &РёРјРµРЅРё:",-1,"Static",SS_LEFTNOWORDWRAP,6,7,60,10
     EDITTEXT        201,69,5,152,12,ES_AUTOHSCROLL
-    CONTROL         "&Начальный путь:",-1,"Static",SS_LEFTNOWORDWRAP,6,22,61,10
+    CONTROL         "&РќР°С‡Р°Р»СЊРЅС‹Р№ РїСѓС‚СЊ:",-1,"Static",SS_LEFTNOWORDWRAP,6,22,61,10
     EDITTEXT        101,69,20,152,12,ES_AUTOHSCROLL
-    CONTROL         "&Просмотреть подкаталоги",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,69,36,147,12
-    DEFPUSHBUTTON   "ОК",1,230,5,44,14
-    PUSHBUTTON      "Отмена",2,230,23,44,14
-    PUSHBUTTON      "&Справка",254,230,43,44,14
+    CONTROL         "&РџСЂРѕСЃРјРѕС‚СЂРµС‚СЊ РїРѕРґРєР°С‚Р°Р»РѕРіРё",232,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,69,36,147,12
+    DEFPUSHBUTTON   "РћРљ",1,230,5,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,230,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,230,43,44,14
 END
 
 14 DIALOG 47, 59, 290, 64
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Перемещение"
+CAPTION "РџРµСЂРµРјРµС‰РµРЅРёРµ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "Текущий каталог: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,6,6,227,10
-    CONTROL         "&Конечный файл/каталог:",2001,"Static",SS_LEFTNOWORDWRAP,6,34,88,10
+    CONTROL         "РўРµРєСѓС‰РёР№ РєР°С‚Р°Р»РѕРі: N",101,"Static",SS_SIMPLE | SS_NOPREFIX,6,6,227,10
+    CONTROL         "&РљРѕРЅРµС‡РЅС‹Р№ С„Р°Р№Р»/РєР°С‚Р°Р»РѕРі:",2001,"Static",SS_LEFTNOWORDWRAP,6,34,88,10
     EDITTEXT        103,95,32,138,12,ES_AUTOHSCROLL
     CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,6,49,88,10
     CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,95,49,138,10
-    DEFPUSHBUTTON   "ОК",1,240,6,44,14
-    PUSHBUTTON      "Отмена",2,240,23,44,14
-    PUSHBUTTON      "&Справка",254,240,40,44,14
-    CONTROL         "&Исходный файл/каталог:",2002,"Static",SS_LEFTNOWORDWRAP,6,20,88,10
+    DEFPUSHBUTTON   "РћРљ",1,240,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,240,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,240,40,44,14
+    CONTROL         "&РСЃС…РѕРґРЅС‹Р№ С„Р°Р№Р»/РєР°С‚Р°Р»РѕРі:",2002,"Static",SS_LEFTNOWORDWRAP,6,20,88,10
     EDITTEXT        102,95,18,138,12,ES_AUTOHSCROLL
 END
 
 15 DIALOG 20, 20, 280, 64
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Удаление"
+CAPTION "РЈРґР°Р»РµРЅРёРµ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "Текущий каталог: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,5,215,10
-    CONTROL         "&Удалить:",-1,"Static",SS_LEFTNOWORDWRAP,6,21,39,10
+    CONTROL         "РўРµРєСѓС‰РёР№ РєР°С‚Р°Р»РѕРі: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,5,215,10
+    CONTROL         "&РЈРґР°Р»РёС‚СЊ:",-1,"Static",SS_LEFTNOWORDWRAP,6,21,39,10
     EDITTEXT        102,47,19,174,12,ES_AUTOHSCROLL
     CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,6,35,39,10
     CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,47,35,174,10
-    DEFPUSHBUTTON   "ОК",1,230,6,44,14
-    PUSHBUTTON      "Отмена",2,230,23,44,14
-    PUSHBUTTON      "&Справка",254,230,40,44,14
+    DEFPUSHBUTTON   "РћРљ",1,230,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,230,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,230,40,44,14
 END
 
 16 DIALOG 23, 13, 270, 229
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Свойства: %s"
+CAPTION "РЎРІРѕР№СЃС‚РІР°: %s"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    DEFPUSHBUTTON   "ОК",1,196,6,68,14,WS_GROUP
-    PUSHBUTTON      "Отмена",2,196,23,68,14
-    PUSHBUTTON      "&Справка",254,196,40,68,14
-    CONTROL         "И&мя файла:",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
+    DEFPUSHBUTTON   "РћРљ",1,196,6,68,14,WS_GROUP
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,196,23,68,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,196,40,68,14
+    CONTROL         "Р&РјСЏ С„Р°Р№Р»Р°:",261,"Static",SS_LEFTNOWORDWRAP,5,5,55,10
     EDITTEXT        201,72,5,119,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
-    CONTROL         "&Путь:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
+    CONTROL         "&РџСѓС‚СЊ:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,51,10
     EDITTEXT        101,72,16,119,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
-    CONTROL         "Изменен:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,66,10
+    CONTROL         "РР·РјРµРЅРµРЅ:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,66,10
     CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,72,27,119,10
-    CONTROL         "Версия:",258,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
-    CONTROL         "Не указана",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,72,38,119,10
-    LTEXT           "А&вторские права:",-1,5,49,65,10
+    CONTROL         "Р’РµСЂСЃРёСЏ:",258,"Static",SS_LEFTNOWORDWRAP,5,38,45,10
+    CONTROL         "РќРµ СѓРєР°Р·Р°РЅР°",259,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,72,38,119,10
+    LTEXT           "Рђ&РІС‚РѕСЂСЃРєРёРµ РїСЂР°РІР°:",-1,5,49,65,10
     EDITTEXT        265,72,49,119,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
-    CONTROL         "Размер:",260,"Static",SS_LEFTNOWORDWRAP,5,60,45,10
+    CONTROL         "Р Р°Р·РјРµСЂ:",260,"Static",SS_LEFTNOWORDWRAP,5,60,45,10
     CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,72,60,119,10
-    CONTROL         "После сжатия:",268,"Static",SS_LEFTNOWORDWRAP,5,71,60,10
+    CONTROL         "РџРѕСЃР»Рµ СЃР¶Р°С‚РёСЏ:",268,"Static",SS_LEFTNOWORDWRAP,5,71,60,10
     CONTROL         "",269,"Static",SS_LEFTNOWORDWRAP,72,71,119,10
-    CONTROL         "Степень сжатия:",270,"Static",SS_LEFTNOWORDWRAP,5,82,63,10
+    CONTROL         "РЎС‚РµРїРµРЅСЊ СЃР¶Р°С‚РёСЏ:",270,"Static",SS_LEFTNOWORDWRAP,5,82,63,10
     CONTROL         "",271,"Static",SS_LEFTNOWORDWRAP,72,82,119,10
-    GROUPBOX        "Атрибуты",-1,4,96,150,54
-    CONTROL         "Только &чтение",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,68,12
-    CONTROL         "Скр&ытый",216,"Button",BS_AUTOCHECKBOX,91,108,56,12
-    CONTROL         "&Архивный",217,"Button",BS_AUTOCHECKBOX,9,120,52,12
-    CONTROL         "С&истемный",218,"Button",BS_AUTOCHECKBOX,91,120,60,12
-    CONTROL         "С&жатый",267,"Button",BS_AUTOCHECKBOX,9,132,73,12
-    GROUPBOX        "Св&едения о версии",262,4,155,260,70
+    GROUPBOX        "РђС‚СЂРёР±СѓС‚С‹",-1,4,96,150,54
+    CONTROL         "РўРѕР»СЊРєРѕ &С‡С‚РµРЅРёРµ",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,108,68,12
+    CONTROL         "РЎРєСЂ&С‹С‚С‹Р№",216,"Button",BS_AUTOCHECKBOX,91,108,56,12
+    CONTROL         "&РђСЂС…РёРІРЅС‹Р№",217,"Button",BS_AUTOCHECKBOX,9,120,52,12
+    CONTROL         "РЎ&РёСЃС‚РµРјРЅС‹Р№",218,"Button",BS_AUTOCHECKBOX,91,120,60,12
+    CONTROL         "РЎ&Р¶Р°С‚С‹Р№",267,"Button",BS_AUTOCHECKBOX,9,132,73,12
+    GROUPBOX        "РЎРІ&РµРґРµРЅРёСЏ Рѕ РІРµСЂСЃРёРё",262,4,155,260,70
     LISTBOX         263,9,168,91,54,LBS_SORT | LBS_DISABLENOSCROLL | WS_VSCROLL | WS_TABSTOP
     EDITTEXT        264,110,168,148,50,ES_MULTILINE | ES_READONLY | WS_VSCROLL
 END
 
 17 DIALOG 20, 20, 220, 63
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Создание каталога"
+CAPTION "РЎРѕР·РґР°РЅРёРµ РєР°С‚Р°Р»РѕРіР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
     CONTROL         "",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,6,158,10
-    CONTROL         "&Имя:",-1,"Static",SS_LEFTNOWORDWRAP,6,24,23,10
+    CONTROL         "&РРјСЏ:",-1,"Static",SS_LEFTNOWORDWRAP,6,24,23,10
     EDITTEXT        201,30,22,133,12,ES_AUTOHSCROLL
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,46,157,10
-    DEFPUSHBUTTON   "ОК",1,170,6,44,14
-    PUSHBUTTON      "Отмена",2,170,23,44,14
-    PUSHBUTTON      "&Справка",254,170,43,44,14
+    DEFPUSHBUTTON   "РћРљ",1,170,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,170,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,170,43,44,14
 END
 
 19 DIALOG 20, 20, 165, 64
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Копирование диска"
+CAPTION "РљРѕРїРёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "&Исходный диск:",-1,"Static",SS_LEFTNOWORDWRAP,6,8,59,10
+    CONTROL         "&РСЃС…РѕРґРЅС‹Р№ РґРёСЃРє:",-1,"Static",SS_LEFTNOWORDWRAP,6,8,59,10
     COMBOBOX        245,66,6,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "&Конечный диск:",206,"Static",SS_LEFTNOWORDWRAP,6,22,59,10
+    CONTROL         "&РљРѕРЅРµС‡РЅС‹Р№ РґРёСЃРє:",206,"Static",SS_LEFTNOWORDWRAP,6,22,59,10
     COMBOBOX        222,66,20,40,37,CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP
-    DEFPUSHBUTTON   "ОК",1,115,6,44,14
-    PUSHBUTTON      "Отмена",2,115,23,44,14
-    PUSHBUTTON      "&Справка",254,115,43,44,14
+    DEFPUSHBUTTON   "РћРљ",1,115,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,115,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,115,43,44,14
 END
 
 22 DIALOG 30, 30, 130, 55
 STYLE DS_SYSMODAL | DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Копирование диска"
+CAPTION "РљРѕРїРёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CTEXT           "Копирование диска в ",-1,0,5,130,10,NOT WS_GROUP
-    CTEXT           "устройстве A:",222,0,15,130,10,NOT WS_GROUP
-    CTEXT           "Чтение исходного диска",243,0,26,130,10,NOT WS_GROUP
-    DEFPUSHBUTTON   "Отмена",2,44,38,44,14
+    CTEXT           "РљРѕРїРёСЂРѕРІР°РЅРёРµ РґРёСЃРєР° РІ ",-1,0,5,130,10,NOT WS_GROUP
+    CTEXT           "СѓСЃС‚СЂРѕР№СЃС‚РІРµ A:",222,0,15,130,10,NOT WS_GROUP
+    CTEXT           "Р§С‚РµРЅРёРµ РёСЃС…РѕРґРЅРѕРіРѕ РґРёСЃРєР°",243,0,26,130,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "РћС‚РјРµРЅР°",2,44,38,44,14
 END
 
 23 DIALOG 20, 20, 170, 63
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Метка диска"
+CAPTION "РњРµС‚РєР° РґРёСЃРєР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "&Метка:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,38,10
+    CONTROL         "&РњРµС‚РєР°:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,38,10
     EDITTEXT        201,5,26,108,12,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "ОК",1,120,6,44,14
-    PUSHBUTTON      "Отмена",2,120,23,44,14
-    PUSHBUTTON      "&Справка",254,120,43,44,14
+    DEFPUSHBUTTON   "РћРљ",1,120,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,120,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,120,43,44,14
 END
 
 24 DIALOG 11, 28, 200, 96
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Форматирование диска"
+CAPTION "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    DEFPUSHBUTTON   "ОК",1,150,6,44,14
-    PUSHBUTTON      "Отмена",2,150,23,44,14
-    PUSHBUTTON      "&Справка",254,150,43,44,14
-    CONTROL         "&Устройство:",-1,"Static",SS_LEFTNOWORDWRAP,5,7,46,10
+    DEFPUSHBUTTON   "РћРљ",1,150,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,150,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,150,43,44,14
+    CONTROL         "&РЈСЃС‚СЂРѕР№СЃС‚РІРѕ:",-1,"Static",SS_LEFTNOWORDWRAP,5,7,46,10
     COMBOBOX        222,52,4,83,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    CONTROL         "&Емкость:",-1,"Static",SS_LEFTNOWORDWRAP,5,20,46,10
+    CONTROL         "&Р•РјРєРѕСЃС‚СЊ:",-1,"Static",SS_LEFTNOWORDWRAP,5,20,46,10
     COMBOBOX        241,52,19,83,40,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Параметры",102,5,39,136,53,WS_GROUP
-    CONTROL         "&Метка:",-1,"Static",SS_LEFTNOWORDWRAP,11,51,39,10
+    GROUPBOX        "РџР°СЂР°РјРµС‚СЂС‹",102,5,39,136,53,WS_GROUP
+    CONTROL         "&РњРµС‚РєР°:",-1,"Static",SS_LEFTNOWORDWRAP,11,51,39,10
     EDITTEXT        201,52,49,83,12
-    CONTROL         "&Быстрое форматирование",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,64,116,12
+    CONTROL         "&Р‘С‹СЃС‚СЂРѕРµ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ",244,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,11,64,116,12
 END
 
 26 DIALOG 30, 30, 150, 50
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Форматирование"
+CAPTION "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CTEXT           "Идет форматирование диска",-1,0,5,150,10,NOT WS_GROUP
-    CTEXT           "Инициализация устройства...",243,0,17,150,10,NOT WS_GROUP
-    DEFPUSHBUTTON   "Отмена",2,54,30,44,14
+    CTEXT           "РРґРµС‚ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°",-1,0,5,150,10,NOT WS_GROUP
+    CTEXT           "РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СѓСЃС‚СЂРѕР№СЃС‚РІР°...",243,0,17,150,10,NOT WS_GROUP
+    DEFPUSHBUTTON   "РћС‚РјРµРЅР°",2,54,30,44,14
 END
 
 30 DIALOG 20, 20, 207, 86
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Выбор отображаемых сведений"
+CAPTION "Р’С‹Р±РѕСЂ РѕС‚РѕР±СЂР°Р¶Р°РµРјС‹С… СЃРІРµРґРµРЅРёР№"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    GROUPBOX        "Сведения",-1,6,4,142,74
-    CONTROL         "&Размер",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,15,132,12
-    CONTROL         "&Дата последнего изменения",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,27,132,12
-    CONTROL         "&Время последнего изменения",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,39,132,12
-    CONTROL         "&Атрибуты файла",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,51,132,12
-    CONTROL         "&Имена файлов MS-DOS",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,63,132,12
-    DEFPUSHBUTTON   "ОК",1,157,8,44,14
-    PUSHBUTTON      "Отмена",2,157,25,44,14
-    PUSHBUTTON      "&Справка",254,157,42,44,14
+    GROUPBOX        "РЎРІРµРґРµРЅРёСЏ",-1,6,4,142,74
+    CONTROL         "&Р Р°Р·РјРµСЂ",203,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,15,132,12
+    CONTROL         "&Р”Р°С‚Р° РїРѕСЃР»РµРґРЅРµРіРѕ РёР·РјРµРЅРµРЅРёСЏ",204,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,27,132,12
+    CONTROL         "&Р’СЂРµРјСЏ РїРѕСЃР»РµРґРЅРµРіРѕ РёР·РјРµРЅРµРЅРёСЏ",205,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,39,132,12
+    CONTROL         "&РђС‚СЂРёР±СѓС‚С‹ С„Р°Р№Р»Р°",206,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,51,132,12
+    CONTROL         "&РРјРµРЅР° С„Р°Р№Р»РѕРІ MS-DOS",266,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,13,63,132,12
+    DEFPUSHBUTTON   "РћРљ",1,157,8,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,157,25,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,157,42,44,14
 END
 
 32 DIALOG 20, 20, 200, 102
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Выбор типов файлов"
+CAPTION "Р’С‹Р±РѕСЂ С‚РёРїРѕРІ С„Р°Р№Р»РѕРІ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "&Образец имени:",-1,"Static",SS_LEFTNOWORDWRAP,6,8,64,10
+    CONTROL         "&РћР±СЂР°Р·РµС† РёРјРµРЅРё:",-1,"Static",SS_LEFTNOWORDWRAP,6,8,64,10
     EDITTEXT        201,75,6,65,12,ES_AUTOHSCROLL
-    GROUPBOX        "Типы файлов",-1,6,20,135,62
-    CONTROL         "&Каталоги",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,31,95,12
-    CONTROL         "&Программы",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,43,95,12
-    CONTROL         "&Документы",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,55,95,12
-    CONTROL         "Про&чие файлы",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,67,95,12
-    CONTROL         "Скр&ытые/системные файлы",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,85,135,12
-    DEFPUSHBUTTON   "ОК",1,150,6,44,14
-    PUSHBUTTON      "Отмена",2,150,23,44,14
-    PUSHBUTTON      "&Справка",254,150,43,44,14
+    GROUPBOX        "РўРёРїС‹ С„Р°Р№Р»РѕРІ",-1,6,20,135,62
+    CONTROL         "&РљР°С‚Р°Р»РѕРіРё",101,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,31,95,12
+    CONTROL         "&РџСЂРѕРіСЂР°РјРјС‹",210,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,43,95,12
+    CONTROL         "&Р”РѕРєСѓРјРµРЅС‚С‹",211,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,55,95,12
+    CONTROL         "РџСЂРѕ&С‡РёРµ С„Р°Р№Р»С‹",212,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,67,95,12
+    CONTROL         "РЎРєСЂ&С‹С‚С‹Рµ/СЃРёСЃС‚РµРјРЅС‹Рµ С„Р°Р№Р»С‹",250,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,6,85,135,12
+    DEFPUSHBUTTON   "РћРљ",1,150,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,150,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,150,43,44,14
 END
 
 33 DIALOG 20, 20, 240, 92
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Подтверждение"
+CAPTION "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    GROUPBOX        "Запрашивать подтверждение на",-1,6,3,228,64,WS_TABSTOP
-    CONTROL         "удаление &файлов",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,15,105,12
-    CONTROL         "удаление &каталогов",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,27,105,12
-    CONTROL         "&замену файлов",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,39,105,12
-    CONTROL         "действия &мышью",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,137,15,86,12
-    CONTROL         "&действия с дисками",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,137,27,86,12
-    CONTROL         "&изменение файлов системных/скрытых/только для чтения",215,
+    GROUPBOX        "Р—Р°РїСЂР°С€РёРІР°С‚СЊ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РЅР°",-1,6,3,228,64,WS_TABSTOP
+    CONTROL         "СѓРґР°Р»РµРЅРёРµ &С„Р°Р№Р»РѕРІ",219,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,15,105,12
+    CONTROL         "СѓРґР°Р»РµРЅРёРµ &РєР°С‚Р°Р»РѕРіРѕРІ",220,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,27,105,12
+    CONTROL         "&Р·Р°РјРµРЅСѓ С„Р°Р№Р»РѕРІ",221,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,39,105,12
+    CONTROL         "РґРµР№СЃС‚РІРёСЏ &РјС‹С€СЊСЋ",249,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,137,15,86,12
+    CONTROL         "&РґРµР№СЃС‚РІРёСЏ СЃ РґРёСЃРєР°РјРё",251,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,137,27,86,12
+    CONTROL         "&РёР·РјРµРЅРµРЅРёРµ С„Р°Р№Р»РѕРІ СЃРёСЃС‚РµРјРЅС‹С…/СЃРєСЂС‹С‚С‹С…/С‚РѕР»СЊРєРѕ РґР»СЏ С‡С‚РµРЅРёСЏ",215,
                     "Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,51,216,12
-    DEFPUSHBUTTON   "ОК",1,38,72,44,14
-    PUSHBUTTON      "Отмена",2,98,72,44,14
-    PUSHBUTTON      "&Справка",254,158,72,44,14
+    DEFPUSHBUTTON   "РћРљ",1,38,72,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,98,72,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,158,72,44,14
 END
 
 35 DIALOG 20, 20, 250, 46
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Перемещение..."
+CAPTION "РџРµСЂРµРјРµС‰РµРЅРёРµ..."
 FONT 8, "MS Shell Dlg"
 BEGIN
     CONTROL         "",104,"Static",SS_SIMPLE | SS_NOPREFIX,5,5,49,10
     CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,55,5,192,10
-    CONTROL         "в:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,25,10
+    CONTROL         "РІ:",108,"Static",SS_SIMPLE | SS_NOPREFIX,5,15,25,10
     CONTROL         "",109,"Static",SS_SIMPLE | SS_NOPREFIX,55,15,192,10
-    DEFPUSHBUTTON   "Отмена",2,103,28,44,14,NOT WS_TABSTOP
+    DEFPUSHBUTTON   "РћС‚РјРµРЅР°",2,103,28,44,14,NOT WS_TABSTOP
 END
 
 36 DIALOG 20, 20, 120, 58
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CTEXT           "Печать файла...",-1,0,6,120,12
+    CTEXT           "РџРµС‡Р°С‚СЊ С„Р°Р№Р»Р°...",-1,0,6,120,12
     CTEXT           "",-1,0,20,120,12,SS_NOPREFIX
-    DEFPUSHBUTTON   "Отмена",2,38,40,44,14,WS_GROUP
+    DEFPUSHBUTTON   "РћС‚РјРµРЅР°",2,38,40,44,14,WS_GROUP
 END
 
 38 DIALOG 20, 20, 206, 88
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Свойства"
+CAPTION "РЎРІРѕР№СЃС‚РІР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "Выделено файлов: %d",100,"Static",SS_LEFTNOWORDWRAP,5,5,144,10
-    CONTROL         "Всего байт: %s",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
-    GROUPBOX        "Атрибуты",-1,5,29,144,54
-    CONTROL         "Только &чтение",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,73,12
-    CONTROL         "Скр&ытый",216,"Button",BS_AUTOCHECKBOX,88,40,58,12
-    CONTROL         "&Архивный",217,"Button",BS_AUTOCHECKBOX,10,52,73,12
-    CONTROL         "С&истемный",218,"Button",BS_AUTOCHECKBOX,88,52,58,12
-    CONTROL         "С&жатый",267,"Button",BS_AUTOCHECKBOX,10,64,73,12
-    DEFPUSHBUTTON   "ОК",1,156,6,44,14,WS_GROUP
-    PUSHBUTTON      "Отмена",2,156,23,44,14
-    PUSHBUTTON      "&Справка",254,156,43,44,14
+    CONTROL         "Р’С‹РґРµР»РµРЅРѕ С„Р°Р№Р»РѕРІ: %d",100,"Static",SS_LEFTNOWORDWRAP,5,5,144,10
+    CONTROL         "Р’СЃРµРіРѕ Р±Р°Р№С‚: %s",111,"Static",SS_LEFTNOWORDWRAP,5,16,144,10
+    GROUPBOX        "РђС‚СЂРёР±СѓС‚С‹",-1,5,29,144,54
+    CONTROL         "РўРѕР»СЊРєРѕ &С‡С‚РµРЅРёРµ",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,10,40,73,12
+    CONTROL         "РЎРєСЂ&С‹С‚С‹Р№",216,"Button",BS_AUTOCHECKBOX,88,40,58,12
+    CONTROL         "&РђСЂС…РёРІРЅС‹Р№",217,"Button",BS_AUTOCHECKBOX,10,52,73,12
+    CONTROL         "РЎ&РёСЃС‚РµРјРЅС‹Р№",218,"Button",BS_AUTOCHECKBOX,88,52,58,12
+    CONTROL         "РЎ&Р¶Р°С‚С‹Р№",267,"Button",BS_AUTOCHECKBOX,10,64,73,12
+    DEFPUSHBUTTON   "РћРљ",1,156,6,44,14,WS_GROUP
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,156,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,156,43,44,14
 END
 
 39 DIALOG 10, 20, 276, 107
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Подтверждение замены файла"
+CAPTION "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ Р·Р°РјРµРЅС‹ С„Р°Р№Р»Р°"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            32515,-1,3,12,18,20
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,3,235,10
-    CONTROL         "Заменить файл:",-1,"Static",SS_LEFTNOWORDWRAP,33,12,61,10
+    CONTROL         "Р—Р°РјРµРЅРёС‚СЊ С„Р°Р№Р»:",-1,"Static",SS_LEFTNOWORDWRAP,33,12,61,10
     CONTROL         "",103,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,92,12,176,10
     CONTROL         "",105,"Static",SS_LEFTNOWORDWRAP,92,22,176,10
-    CONTROL         "Файлом:",-1,"Static",SS_LEFTNOWORDWRAP,33,34,49,10
+    CONTROL         "Р¤Р°Р№Р»РѕРј:",-1,"Static",SS_LEFTNOWORDWRAP,33,34,49,10
     CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,92,34,176,10
     CONTROL         "",106,"Static",SS_LEFTNOWORDWRAP,92,44,176,10
     CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,56,235,22
-    DEFPUSHBUTTON   "&Да",6,15,87,55,14
-    PUSHBUTTON      "Да для &всех",107,80,87,55,14
-    PUSHBUTTON      "&Нет",7,145,87,55,14
-    PUSHBUTTON      "Отмена",2,210,87,55,14
+    DEFPUSHBUTTON   "&Р”Р°",6,15,87,55,14
+    PUSHBUTTON      "Р”Р° РґР»СЏ &РІСЃРµС…",107,80,87,55,14
+    PUSHBUTTON      "&РќРµС‚",7,145,87,55,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,210,87,55,14
 END
 
 40 DIALOG 10, 20, 285, 71
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Подтверждение удаления файла"
+CAPTION "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ СѓРґР°Р»РµРЅРёСЏ С„Р°Р№Р»Р°"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            32515,-1,3,12,21,20
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,33,4,248,10
-    CONTROL         "Удалить файл:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,55,10
+    CONTROL         "РЈРґР°Р»РёС‚СЊ С„Р°Р№Р»:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,55,10
     CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,89,16,191,10
     CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,28,246,22
-    DEFPUSHBUTTON   "&Да",6,15,52,55,14
-    PUSHBUTTON      "Да для &всех",107,80,52,55,14
-    PUSHBUTTON      "&Нет",7,145,52,55,14
-    PUSHBUTTON      "Отмена",2,210,52,55,14
+    DEFPUSHBUTTON   "&Р”Р°",6,15,52,55,14
+    PUSHBUTTON      "Р”Р° РґР»СЏ &РІСЃРµС…",107,80,52,55,14
+    PUSHBUTTON      "&РќРµС‚",7,145,52,55,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,210,52,55,14
 END
 
 41 DIALOG 10, 20, 285, 71
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Подтверждение удаления каталога"
+CAPTION "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ СѓРґР°Р»РµРЅРёСЏ РєР°С‚Р°Р»РѕРіР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            32515,-1,3,12,18,20
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,4,247,10
-    CONTROL         "Удалить каталог:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,65,10
+    CONTROL         "РЈРґР°Р»РёС‚СЊ РєР°С‚Р°Р»РѕРі:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,65,10
     CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,98,16,182,10
     CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,28,246,22
-    DEFPUSHBUTTON   "&Да",6,15,52,55,14
-    PUSHBUTTON      "Да для &всех",107,80,52,55,14
-    PUSHBUTTON      "&Нет",7,145,52,55,14
-    PUSHBUTTON      "Отмена",2,210,52,55,14
+    DEFPUSHBUTTON   "&Р”Р°",6,15,52,55,14
+    PUSHBUTTON      "Р”Р° РґР»СЏ &РІСЃРµС…",107,80,52,55,14
+    PUSHBUTTON      "&РќРµС‚",7,145,52,55,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,210,52,55,14
 END
 
 42 DIALOG 10, 22, 285, 71
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Подтверждение перемещения файла"
+CAPTION "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РїРµСЂРµРјРµС‰РµРЅРёСЏ С„Р°Р№Р»Р°"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            32515,-1,3,12,18,20
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,4,250,10
-    CONTROL         "Переместить файл:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,71,10
+    CONTROL         "РџРµСЂРµРјРµСЃС‚РёС‚СЊ С„Р°Р№Р»:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,71,10
     CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,105,16,175,10
     CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,28,247,22
-    DEFPUSHBUTTON   "&Да",6,15,52,55,14
-    PUSHBUTTON      "Да для &всех",107,80,52,55,14
-    PUSHBUTTON      "&Нет",7,145,52,55,14
-    PUSHBUTTON      "Отмена",2,210,52,55,14
+    DEFPUSHBUTTON   "&Р”Р°",6,15,52,55,14
+    PUSHBUTTON      "Р”Р° РґР»СЏ &РІСЃРµС…",107,80,52,55,14
+    PUSHBUTTON      "&РќРµС‚",7,145,52,55,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,210,52,55,14
 END
 
 43 DIALOG 10, 22, 285, 71
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Подтверждение переименования файла"
+CAPTION "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёСЏ С„Р°Р№Р»Р°"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            32515,-1,3,12,18,20
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,4,250,10
-    CONTROL         "Переименовать файл:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,80,10
+    CONTROL         "РџРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ С„Р°Р№Р»:",-1,"Static",SS_LEFTNOWORDWRAP,33,16,80,10
     CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,114,16,167,10
     CONTROL         "",212,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,33,28,247,22
-    DEFPUSHBUTTON   "&Да",6,15,52,55,14
-    PUSHBUTTON      "Да для &всех",107,80,52,55,14
-    PUSHBUTTON      "&Нет",7,145,52,55,14
-    PUSHBUTTON      "Отмена",2,210,52,55,14
+    DEFPUSHBUTTON   "&Р”Р°",6,15,52,55,14
+    PUSHBUTTON      "Р”Р° РґР»СЏ &РІСЃРµС…",107,80,52,55,14
+    PUSHBUTTON      "&РќРµС‚",7,145,52,55,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,210,52,55,14
 END
 
 44 DIALOG 15, 12, 150, 82
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Выделение файлов"
+CAPTION "Р’С‹РґРµР»РµРЅРёРµ С„Р°Р№Р»РѕРІ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "&Файл(ы):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
+    CONTROL         "&Р¤Р°Р№Р»(С‹):",-1,"Static",SS_LEFTNOWORDWRAP,5,16,60,10
     EDITTEXT        201,5,29,60,12,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "&Выделить",1,72,6,72,14
-    PUSHBUTTON      "Сн&ять выделение",6,72,23,72,14
-    PUSHBUTTON      "Отмена",2,72,40,72,14
-    PUSHBUTTON      "&Справка",254,72,63,72,14
+    DEFPUSHBUTTON   "&Р’С‹РґРµР»РёС‚СЊ",1,72,6,72,14
+    PUSHBUTTON      "РЎРЅ&СЏС‚СЊ РІС‹РґРµР»РµРЅРёРµ",6,72,23,72,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,72,40,72,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,72,63,72,14
 END
 
 45 DIALOG 11, 31, 205, 86
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Выбор диска"
+CAPTION "Р’С‹Р±РѕСЂ РґРёСЃРєР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "&Диски:",245,"Static",SS_LEFTNOWORDWRAP,5,5,41,10
+    CONTROL         "&Р”РёСЃРєРё:",245,"Static",SS_LEFTNOWORDWRAP,5,5,41,10
     LISTBOX         222,5,16,140,60,LBS_SORT | LBS_USETABSTOPS | WS_VSCROLL | WS_TABSTOP
-    DEFPUSHBUTTON   "ОК",1,155,6,44,14
-    PUSHBUTTON      "Отмена",2,155,23,44,14
-    PUSHBUTTON      "&Справка",254,155,44,44,14
+    DEFPUSHBUTTON   "РћРљ",1,155,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,155,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,155,44,44,14
 END
 
 46 DIALOG 11, 28, 259, 78
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Выбор имени файла"
+CAPTION "Р’С‹Р±РѕСЂ РёРјРµРЅРё С„Р°Р№Р»Р°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "Указанный путь не соответствует формату имен файлов FAT. Введите новое имя.",99,5,4,190,24,NOT WS_GROUP
-    RTEXT           "&Новое имя:",-1,4,56,64,12,NOT WS_GROUP
+    LTEXT           "РЈРєР°Р·Р°РЅРЅС‹Р№ РїСѓС‚СЊ РЅРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ С„РѕСЂРјР°С‚Сѓ РёРјРµРЅ С„Р°Р№Р»РѕРІ FAT. Р’РІРµРґРёС‚Рµ РЅРѕРІРѕРµ РёРјСЏ.",99,5,4,190,24,NOT WS_GROUP
+    RTEXT           "&РќРѕРІРѕРµ РёРјСЏ:",-1,4,56,64,12,NOT WS_GROUP
     EDITTEXT        103,73,55,130,12
-    RTEXT           "Исходный путь:",-1,4,28,64,11,NOT WS_GROUP
+    RTEXT           "РСЃС…РѕРґРЅС‹Р№ РїСѓС‚СЊ:",-1,4,28,64,11,NOT WS_GROUP
     EDITTEXT        102,73,28,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
-    RTEXT           "Конечный путь:",-1,4,42,64,11,NOT WS_GROUP
+    RTEXT           "РљРѕРЅРµС‡РЅС‹Р№ РїСѓС‚СЊ:",-1,4,42,64,11,NOT WS_GROUP
     EDITTEXT        101,73,42,130,12,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
-    DEFPUSHBUTTON   "ОК",1,209,4,44,14
-    PUSHBUTTON      "Отмена",2,209,20,44,14
-    PUSHBUTTON      "&Справка",254,209,36,44,14
+    DEFPUSHBUTTON   "РћРљ",1,209,4,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,209,20,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,209,36,44,14
 END
 
 48 DIALOG 23, 13, 260, 119
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Свойства: %s"
+CAPTION "РЎРІРѕР№СЃС‚РІР°: %s"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    DEFPUSHBUTTON   "ОК",1,187,6,66,14,WS_GROUP
-    PUSHBUTTON      "Отмена",2,187,23,66,14
-    PUSHBUTTON      "&Справка",254,187,43,66,14
-    CONTROL         "И&мя файла:",261,"Static",SS_LEFTNOWORDWRAP,5,5,44,10
+    DEFPUSHBUTTON   "РћРљ",1,187,6,66,14,WS_GROUP
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,187,23,66,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,187,43,66,14
+    CONTROL         "Р&РјСЏ С„Р°Р№Р»Р°:",261,"Static",SS_LEFTNOWORDWRAP,5,5,44,10
     EDITTEXT        201,50,5,131,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
-    CONTROL         "&Путь:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,44,10
+    CONTROL         "&РџСѓС‚СЊ:",-1,"Static",SS_LEFTNOWORDWRAP,5,16,44,10
     EDITTEXT        101,50,16,131,10,ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
-    CONTROL         "Изменен:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,44,10
+    CONTROL         "РР·РјРµРЅРµРЅ:",-1,"Static",SS_LEFTNOWORDWRAP,5,27,44,10
     CONTROL         "",204,"Static",SS_LEFTNOWORDWRAP,50,27,131,10
-    CONTROL         "Размер:",260,"Static",SS_LEFTNOWORDWRAP,5,38,44,10
+    CONTROL         "Р Р°Р·РјРµСЂ:",260,"Static",SS_LEFTNOWORDWRAP,5,38,44,10
     CONTROL         "",203,"Static",SS_LEFTNOWORDWRAP,50,38,131,10
-    GROUPBOX        "Атрибуты",-1,4,52,173,54
-    CONTROL         "Только &чтение",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,74,12
-    CONTROL         "Скр&ытый",216,"Button",BS_AUTOCHECKBOX,91,64,68,12
-    CONTROL         "&Архивный",217,"Button",BS_AUTOCHECKBOX,9,76,74,12
-    CONTROL         "С&истемный",218,"Button",BS_AUTOCHECKBOX,91,76,68,12
-    CONTROL         "С&жатый",267,"Button",BS_AUTOCHECKBOX,9,88,74,12
+    GROUPBOX        "РђС‚СЂРёР±СѓС‚С‹",-1,4,52,173,54
+    CONTROL         "РўРѕР»СЊРєРѕ &С‡С‚РµРЅРёРµ",215,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,9,64,74,12
+    CONTROL         "РЎРєСЂ&С‹С‚С‹Р№",216,"Button",BS_AUTOCHECKBOX,91,64,68,12
+    CONTROL         "&РђСЂС…РёРІРЅС‹Р№",217,"Button",BS_AUTOCHECKBOX,9,76,74,12
+    CONTROL         "РЎ&РёСЃС‚РµРјРЅС‹Р№",218,"Button",BS_AUTOCHECKBOX,91,76,68,12
+    CONTROL         "РЎ&Р¶Р°С‚С‹Р№",267,"Button",BS_AUTOCHECKBOX,9,88,74,12
 END
 
 49 DIALOG 13, 54, 290, 154
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Выбор шрифта"
+CAPTION "Р’С‹Р±РѕСЂ С€СЂРёС„С‚Р°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "&Шрифт:",1088,6,3,40,9
+    LTEXT           "&РЁСЂРёС„С‚:",1088,6,3,40,9
     COMBOBOX        1136,6,13,103,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "&Начертание:",1089,115,3,44,9
+    LTEXT           "&РќР°С‡РµСЂС‚Р°РЅРёРµ:",1089,115,3,44,9
     COMBOBOX        1137,115,13,80,54,CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "&Размер:",1090,200,3,30,9
+    LTEXT           "&Р Р°Р·РјРµСЂ:",1090,200,3,30,9
     COMBOBOX        1138,200,13,27,54,CBS_SIMPLE | CBS_OWNERDRAWFIXED | CBS_SORT | CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Атрибуты",1072,6,73,103,62,WS_GROUP
-    CONTROL         "&Зачеркнутый",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,83,73,10
-    CONTROL         "Под&черкнутый",1041,"Button",BS_AUTOCHECKBOX,15,95,73,10
-    CONTROL         "С&трочные буквы для дисков FAT",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,127,149,10
-    CONTROL         "Строчные &буквы для всех дисков",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,139,149,10
-    LTEXT           "Ц&вет:",1091,15,107,30,9
+    GROUPBOX        "РђС‚СЂРёР±СѓС‚С‹",1072,6,73,103,62,WS_GROUP
+    CONTROL         "&Р—Р°С‡РµСЂРєРЅСѓС‚С‹Р№",1040,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,83,73,10
+    CONTROL         "РџРѕРґ&С‡РµСЂРєРЅСѓС‚С‹Р№",1041,"Button",BS_AUTOCHECKBOX,15,95,73,10
+    CONTROL         "РЎ&С‚СЂРѕС‡РЅС‹Рµ Р±СѓРєРІС‹ РґР»СЏ РґРёСЃРєРѕРІ FAT",1042,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,127,149,10
+    CONTROL         "РЎС‚СЂРѕС‡РЅС‹Рµ &Р±СѓРєРІС‹ РґР»СЏ РІСЃРµС… РґРёСЃРєРѕРІ",1043,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,115,139,149,10
+    LTEXT           "Р¦&РІРµС‚:",1091,15,107,30,9
     COMBOBOX        1139,15,117,85,50,CBS_DROPDOWNLIST | CBS_OWNERDRAWFIXED | CBS_AUTOHSCROLL | CBS_HASSTRINGS | WS_BORDER | WS_VSCROLL
-    DEFPUSHBUTTON   "ОК",1,235,6,47,14,WS_GROUP
-    PUSHBUTTON      "Отмена",2,235,23,47,14,WS_GROUP
-    PUSHBUTTON      "При&менить",1026,235,40,47,14,WS_GROUP
-    PUSHBUTTON      "&Справка",1038,235,57,47,14,WS_GROUP
-    GROUPBOX        "Образец",1073,115,72,167,49,WS_GROUP
+    DEFPUSHBUTTON   "РћРљ",1,235,6,47,14,WS_GROUP
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,235,23,47,14,WS_GROUP
+    PUSHBUTTON      "РџСЂРё&РјРµРЅРёС‚СЊ",1026,235,40,47,14,WS_GROUP
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",1038,235,57,47,14,WS_GROUP
+    GROUPBOX        "РћР±СЂР°Р·РµС†",1073,115,72,167,49,WS_GROUP
     CTEXT           "",1093,10,137,1,2,SS_NOPREFIX | NOT WS_GROUP
-    CTEXT           "AaBbБбФф",1092,121,82,155,34,SS_NOPREFIX | NOT WS_VISIBLE
+    CTEXT           "AaBbР‘Р±Р¤С„",1092,121,82,155,34,SS_NOPREFIX | NOT WS_VISIBLE
 END
 
 50 DIALOG 77, 27, 160, 65
 STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Форматирование диска"
+CAPTION "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
 FONT 8, "MS Shell Dlg"
 BEGIN
     CTEXT           "",100,15,36,131,8
     CONTROL         "",4001,"Static",SS_BLACKFRAME,15,10,131,22
-    PUSHBUTTON      "Скрыть",110,28,48,44,14
-    PUSHBUTTON      "Отмена",2,88,48,44,14
+    PUSHBUTTON      "РЎРєСЂС‹С‚СЊ",110,28,48,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,88,48,44,14
 END
 
 51 DIALOG 10, 20, 280, 76
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Подтверждение: пропустить файл или каталог и продолжить"
+CAPTION "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ: РїСЂРѕРїСѓСЃС‚РёС‚СЊ С„Р°Р№Р» РёР»Рё РєР°С‚Р°Р»РѕРі Рё РїСЂРѕРґРѕР»Р¶РёС‚СЊ"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            32515,-1,3,12,18,20
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,33,3,242,10
-    CONTROL         "Нет доступа, пропустить:",202,"Static",SS_LEFTNOWORDWRAP,33,15,86,10
+    CONTROL         "РќРµС‚ РґРѕСЃС‚СѓРїР°, РїСЂРѕРїСѓСЃС‚РёС‚СЊ:",202,"Static",SS_LEFTNOWORDWRAP,33,15,86,10
     CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,124,15,150,10
-    CONTROL         "Нет разрешения на доступ или файл уже используется.",-1,
+    CONTROL         "РќРµС‚ СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° РґРѕСЃС‚СѓРї РёР»Рё С„Р°Р№Р» СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ.",-1,
                     "Static",SS_LEFTNOWORDWRAP,33,27,241,10
-    CONTROL         "Выберите ''Да'' для пропуска файла и продолжения выполнения.",-1,
+    CONTROL         "Р’С‹Р±РµСЂРёС‚Рµ ''Р”Р°'' РґР»СЏ РїСЂРѕРїСѓСЃРєР° С„Р°Р№Р»Р° Рё РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ.",-1,
                     "Static",SS_LEFTNOWORDWRAP,33,39,241,10
-    DEFPUSHBUTTON   "&Да",6,15,54,55,14
-    PUSHBUTTON      "Да для &всех",107,77,54,55,14
-    PUSHBUTTON      "&Нет",7,139,54,55,14
-    PUSHBUTTON      "Отмена",2,201,54,55,14
+    DEFPUSHBUTTON   "&Р”Р°",6,15,54,55,14
+    PUSHBUTTON      "Р”Р° РґР»СЏ &РІСЃРµС…",107,77,54,55,14
+    PUSHBUTTON      "&РќРµС‚",7,139,54,55,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,201,54,55,14
 END
 
 52 DIALOG 10, 20, 280, 65
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Подтверждение: пропустить файл или каталог и продолжить"
+CAPTION "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ: РїСЂРѕРїСѓСЃС‚РёС‚СЊ С„Р°Р№Р» РёР»Рё РєР°С‚Р°Р»РѕРі Рё РїСЂРѕРґРѕР»Р¶РёС‚СЊ"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            32515,-1,3,12,18,20
     CONTROL         "",104,"Static",SS_LEFTNOWORDWRAP,33,3,242,10
-    CONTROL         "Нет доступа, пропустить:",202,"Static",SS_LEFTNOWORDWRAP,33,15,86,10
+    CONTROL         "РќРµС‚ РґРѕСЃС‚СѓРїР°, РїСЂРѕРїСѓСЃС‚РёС‚СЊ:",202,"Static",SS_LEFTNOWORDWRAP,33,15,86,10
     CONTROL         "",102,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,124,15,151,10
-    CONTROL         "Выберите ''Да'' для пропуска файла и продолжения выполнения.",-1,
+    CONTROL         "Р’С‹Р±РµСЂРёС‚Рµ ''Р”Р°'' РґР»СЏ РїСЂРѕРїСѓСЃРєР° С„Р°Р№Р»Р° Рё РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ.",-1,
                     "Static",SS_LEFTNOWORDWRAP,33,27,241,10
-    DEFPUSHBUTTON   "&Да",6,11,44,55,14
-    PUSHBUTTON      "Да для &всех",107,73,44,55,14
-    PUSHBUTTON      "&Нет",7,135,44,55,14
-    PUSHBUTTON      "Отмена",2,197,44,55,14
+    DEFPUSHBUTTON   "&Р”Р°",6,11,44,55,14
+    PUSHBUTTON      "Р”Р° РґР»СЏ &РІСЃРµС…",107,73,44,55,14
+    PUSHBUTTON      "&РќРµС‚",7,135,44,55,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,197,44,55,14
 END
 
 53 DIALOG 77, 109, 190, 65
 STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Поиск на диске"
+CAPTION "РџРѕРёСЃРє РЅР° РґРёСЃРєРµ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "Образец имени:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,64,10
+    CONTROL         "РћР±СЂР°Р·РµС† РёРјРµРЅРё:",-1,"Static",SS_LEFTNOWORDWRAP,5,5,64,10
     CONTROL         "",201,"Static",SS_SIMPLE | SS_NOPREFIX,94,5,91,10
-    CONTROL         "Начальный путь:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,64,10
+    CONTROL         "РќР°С‡Р°Р»СЊРЅС‹Р№ РїСѓС‚СЊ:",-1,"Static",SS_LEFTNOWORDWRAP,5,15,64,10
     CONTROL         "",223,"Static",SS_SIMPLE | SS_NOPREFIX,94,15,91,10
-    CONTROL         "Просмотрено каталогов:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,88,10
+    CONTROL         "РџСЂРѕСЃРјРѕС‚СЂРµРЅРѕ РєР°С‚Р°Р»РѕРіРѕРІ:",-1,"Static",SS_LEFTNOWORDWRAP,5,25,88,10
     CONTROL         "",205,"Static",SS_SIMPLE | SS_NOPREFIX,94,25,91,10
-    CONTROL         "Результаты поиска:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,81,10
+    CONTROL         "Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°:",-1,"Static",SS_LEFTNOWORDWRAP,5,35,81,10
     CONTROL         "",213,"Static",SS_SIMPLE | SS_NOPREFIX,94,35,91,10
-    PUSHBUTTON      "Скрыть",110,47,47,44,14
-    PUSHBUTTON      "Отмена",2,103,47,44,14
+    PUSHBUTTON      "РЎРєСЂС‹С‚СЊ",110,47,47,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,103,47,44,14
 END
 
 54 DIALOG 20, 20, 256, 64
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Копирование в буфер"
+CAPTION "РљРѕРїРёСЂРѕРІР°РЅРёРµ РІ Р±СѓС„РµСЂ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    CONTROL         "Текущий каталог: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,5,193,10
-    CONTROL         "Копировать в &буфер:",-1,"Static",SS_LEFTNOWORDWRAP,6,21,76,10
+    CONTROL         "РўРµРєСѓС‰РёР№ РєР°С‚Р°Р»РѕРі: C",101,"Static",SS_LEFTNOWORDWRAP | SS_NOPREFIX,6,5,193,10
+    CONTROL         "РљРѕРїРёСЂРѕРІР°С‚СЊ РІ &Р±СѓС„РµСЂ:",-1,"Static",SS_LEFTNOWORDWRAP,6,21,76,10
     EDITTEXT        102,83,19,115,12,ES_AUTOHSCROLL
-    DEFPUSHBUTTON   "ОК",1,206,6,44,14
-    PUSHBUTTON      "Отмена",2,206,23,44,14
-    PUSHBUTTON      "&Справка",254,206,43,44,14
+    DEFPUSHBUTTON   "РћРљ",1,206,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,206,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,206,43,44,14
 END
 
 55 DIALOG 18, 14, 335, 224
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Изменение типа файла"
+CAPTION "РР·РјРµРЅРµРЅРёРµ С‚РёРїР° С„Р°Р№Р»Р°"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "&Тип файлов:",302,6,6,46,8
+    LTEXT           "&РўРёРї С„Р°Р№Р»РѕРІ:",302,6,6,46,8
     EDITTEXT        301,53,4,95,12,ES_AUTOHSCROLL
-    GROUPBOX        "&Команда:    ",-1,6,22,273,126,WS_GROUP
+    GROUPBOX        "&РљРѕРјР°РЅРґР°:    ",-1,6,22,273,126,WS_GROUP
     COMBOBOX        306,53,20,95,33,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
-    LTEXT           "Ко&мандная строка:",313,11,42,69,8
+    LTEXT           "РљРѕ&РјР°РЅРґРЅР°СЏ СЃС‚СЂРѕРєР°:",313,11,42,69,8
     EDITTEXT        304,82,40,130,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "Об&зор...",318,223,38,44,14
-    CONTROL         "&Использовать DDE",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,11,57,90,10
-    LTEXT           "Соо&бщение DDE:",320,23,71,81,8
+    PUSHBUTTON      "РћР±&Р·РѕСЂ...",318,223,38,44,14
+    CONTROL         "&РСЃРїРѕР»СЊР·РѕРІР°С‚СЊ DDE",308,"Button",BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,11,57,90,10
+    LTEXT           "РЎРѕРѕ&Р±С‰РµРЅРёРµ DDE:",320,23,71,81,8
     EDITTEXT        309,112,69,100,12,ES_AUTOHSCROLL
-    LTEXT           "Сооб&щение DDE (приложение неактивно):",322,23,84,89,19
-    LTEXT           "(необязательно)",324,217,90,59,8
+    LTEXT           "РЎРѕРѕР±&С‰РµРЅРёРµ DDE (РїСЂРёР»РѕР¶РµРЅРёРµ РЅРµР°РєС‚РёРІРЅРѕ):",322,23,84,89,19
+    LTEXT           "(РЅРµРѕР±СЏР·Р°С‚РµР»СЊРЅРѕ)",324,217,90,59,8
     EDITTEXT        311,112,87,100,12,ES_AUTOHSCROLL
-    LTEXT           "&Приложение:",321,23,108,54,8
+    LTEXT           "&РџСЂРёР»РѕР¶РµРЅРёРµ:",321,23,108,54,8
     EDITTEXT        310,112,106,100,12,ES_AUTOHSCROLL
-    LTEXT           "Д&окумент:",323,24,126,46,8
+    LTEXT           "Р”&РѕРєСѓРјРµРЅС‚:",323,24,126,46,8
     EDITTEXT        312,112,124,100,12,ES_AUTOHSCROLL
-    LTEXT           "&Новое расширение:",-1,12,182,73,10
+    LTEXT           "&РќРѕРІРѕРµ СЂР°СЃС€РёСЂРµРЅРёРµ:",-1,12,182,73,10
     EDITTEXT        315,87,181,32,12,ES_AUTOHSCROLL
-    PUSHBUTTON      "&Добавить ->",303,133,172,52,14
-    PUSHBUTTON      "<- &Удалить",219,133,189,52,14
-    LTEXT           "&Расширения:",-1,197,162,67,8
+    PUSHBUTTON      "&Р”РѕР±Р°РІРёС‚СЊ ->",303,133,172,52,14
+    PUSHBUTTON      "<- &РЈРґР°Р»РёС‚СЊ",219,133,189,52,14
+    LTEXT           "&Р Р°СЃС€РёСЂРµРЅРёСЏ:",-1,197,162,67,8
     LISTBOX         317,197,172,65,29,LBS_SORT | WS_VSCROLL | WS_TABSTOP
-    GROUPBOX        "Расширения, связанные с типом файлов:",316,6,154,273,60
-    DEFPUSHBUTTON   "ОК",1,286,6,44,14
-    PUSHBUTTON      "Отмена",2,286,23,44,14
-    PUSHBUTTON      "&Справка",254,286,40,44,14
+    GROUPBOX        "Р Р°СЃС€РёСЂРµРЅРёСЏ, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ С‚РёРїРѕРј С„Р°Р№Р»РѕРІ:",316,6,154,273,60
+    DEFPUSHBUTTON   "РћРљ",1,286,6,44,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,286,23,44,14
+    PUSHBUTTON      "&РЎРїСЂР°РІРєР°",254,286,40,44,14
 END
 
 57 DIALOG 123, 60, 207, 117
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
-CAPTION "Ход сжатия файлов"
+CAPTION "РҐРѕРґ СЃР¶Р°С‚РёСЏ С„Р°Р№Р»РѕРІ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "Идет сжатие файла:",-1,6,8,79,8
+    LTEXT           "РРґРµС‚ СЃР¶Р°С‚РёРµ С„Р°Р№Р»Р°:",-1,6,8,79,8
     LTEXT           "filename.xxx",341,86,8,116,8
-    LTEXT           "Каталог:",-1,6,20,36,8
+    LTEXT           "РљР°С‚Р°Р»РѕРі:",-1,6,20,36,8
     LTEXT           "d:\\aa\\bb\\......\\xx\\yy\\zz\\",342,86,20,116,8
-    LTEXT           "Сжато каталогов:",-1,6,32,79,8
+    LTEXT           "РЎР¶Р°С‚Рѕ РєР°С‚Р°Р»РѕРіРѕРІ:",-1,6,32,79,8
     LTEXT           "1 888 888 999",343,86,32,60,8
-    LTEXT           "Сжато файлов:",-1,6,44,79,8
+    LTEXT           "РЎР¶Р°С‚Рѕ С„Р°Р№Р»РѕРІ:",-1,6,44,79,8
     LTEXT           "1 888 888 999",344,86,44,60,8
-    LTEXT           "Объем до сжатия:",-1,6,56,79,8
+    LTEXT           "РћР±СЉРµРј РґРѕ СЃР¶Р°С‚РёСЏ:",-1,6,56,79,8
     LTEXT           "9 999 999 999 999",345,86,56,68,8
-    LTEXT           "Объем после сжатия:",-1,6,68,79,8
+    LTEXT           "РћР±СЉРµРј РїРѕСЃР»Рµ СЃР¶Р°С‚РёСЏ:",-1,6,68,79,8
     LTEXT           "9 999 999 999 999",346,86,68,68,8
-    LTEXT           "Степень сжатия:",-1,6,80,79,8
+    LTEXT           "РЎС‚РµРїРµРЅСЊ СЃР¶Р°С‚РёСЏ:",-1,6,80,79,8
     LTEXT           "100%",347,86,80,27,8
-    PUSHBUTTON      "Отмена",2,79,97,48,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,79,97,48,14
 END
 
 58 DIALOG 114, 62, 207, 84
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
-CAPTION "Снятие сжатия с файлов"
+CAPTION "РЎРЅСЏС‚РёРµ СЃР¶Р°С‚РёСЏ СЃ С„Р°Р№Р»РѕРІ"
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "Снимается сжатие с файла:",-1,6,8,99,8
+    LTEXT           "РЎРЅРёРјР°РµС‚СЃСЏ СЃР¶Р°С‚РёРµ СЃ С„Р°Р№Р»Р°:",-1,6,8,99,8
     LTEXT           "filename.xxx",351,106,8,94,8
-    LTEXT           "Каталог:",-1,6,20,35,8
+    LTEXT           "РљР°С‚Р°Р»РѕРі:",-1,6,20,35,8
     LTEXT           "d:\\aa\\bb\\..........\\xx\\yy\\zz\\",352,42,20,158,8
-    LTEXT           "Развернуто каталогов:",-1,6,32,83,8
+    LTEXT           "Р Р°Р·РІРµСЂРЅСѓС‚Рѕ РєР°С‚Р°Р»РѕРіРѕРІ:",-1,6,32,83,8
     LTEXT           "1 999 999 999",353,91,32,78,8
-    LTEXT           "Развернуто файлов:",-1,6,44,78,8
+    LTEXT           "Р Р°Р·РІРµСЂРЅСѓС‚Рѕ С„Р°Р№Р»РѕРІ:",-1,6,44,78,8
     LTEXT           "1 999 999 999",354,91,44,78,8
-    PUSHBUTTON      "Отмена",2,79,64,48,14
+    PUSHBUTTON      "РћС‚РјРµРЅР°",2,79,64,48,14
 END
 
 59 DIALOG 11, 28, 245, 65
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "Ошибка сжатия"
+CAPTION "РћС€РёР±РєР° СЃР¶Р°С‚РёСЏ"
 FONT 8, "MS Shell Dlg"
 BEGIN
     ICON            32515,-1,8,8,21,20
     LTEXT           "",100,35,8,203,20
-    DEFPUSHBUTTON   "&Пропуск",5,18,45,50,14,WS_GROUP
-    PUSHBUTTON      "Пр&опустить все",112,71,45,63,14
-    PUSHBUTTON      "По&втор",4,137,45,50,14
-    PUSHBUTTON      "С&топ",3,190,45,50,14
+    DEFPUSHBUTTON   "&РџСЂРѕРїСѓСЃРє",5,18,45,50,14,WS_GROUP
+    PUSHBUTTON      "РџСЂ&РѕРїСѓСЃС‚РёС‚СЊ РІСЃРµ",112,71,45,63,14
+    PUSHBUTTON      "РџРѕ&РІС‚РѕСЂ",4,137,45,50,14
+    PUSHBUTTON      "РЎ&С‚РѕРї",3,190,45,50,14
 END
 
 
@@ -880,12 +880,12 @@ BEGIN
         BLOCK "041904B0"
         BEGIN
             VALUE "CompanyName", "Microsoft Corporation"
-            VALUE "FileDescription", "Диспетчер файлов"
+            VALUE "FileDescription", "Р”РёСЃРїРµС‚С‡РµСЂ С„Р°Р№Р»РѕРІ"
             VALUE "FileVersion", "4.00"
             VALUE "InternalName", "fileman"
-            VALUE "LegalCopyright", "© Microsoft Corp. 1981-1996"
+            VALUE "LegalCopyright", "В© Microsoft Corp. 1981-1996"
             VALUE "OriginalFilename", "WINFILE.EXE"
-            VALUE "ProductName", "Операционная система Microsoft® Windows NT™"
+            VALUE "ProductName", "РћРїРµСЂР°С†РёРѕРЅРЅР°СЏ СЃРёСЃС‚РµРјР° MicrosoftВ® Windows NTв„ў"
             VALUE "ProductVersion", "4.00"
         END
     END
@@ -903,515 +903,515 @@ END
 
 STRINGTABLE
 BEGIN
-    50                      "Копирование диска"
-    51                      "Вставьте конечный диск."
-    52                      "Вставьте исходный диск."
-    53                      "Вставьте исходный и конечный диски."
-    54                      "Форматирование конечного диска"
-    55                      "Ошибка при копировании диска"
-    56                      "Копирование невозможно."
-    58                      "Исходный и конечный диски несовместимы."
-    60                      "%d%% завершено"
-    61                      "Создание корневого каталога..."
-    62                      "Копирование системных файлов..."
-    63                      "Ошибка при форматировании диска"
+    50                      "РљРѕРїРёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
+    51                      "Р’СЃС‚Р°РІСЊС‚Рµ РєРѕРЅРµС‡РЅС‹Р№ РґРёСЃРє."
+    52                      "Р’СЃС‚Р°РІСЊС‚Рµ РёСЃС…РѕРґРЅС‹Р№ РґРёСЃРє."
+    53                      "Р’СЃС‚Р°РІСЊС‚Рµ РёСЃС…РѕРґРЅС‹Р№ Рё РєРѕРЅРµС‡РЅС‹Р№ РґРёСЃРєРё."
+    54                      "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РєРѕРЅРµС‡РЅРѕРіРѕ РґРёСЃРєР°"
+    55                      "РћС€РёР±РєР° РїСЂРё РєРѕРїРёСЂРѕРІР°РЅРёРё РґРёСЃРєР°"
+    56                      "РљРѕРїРёСЂРѕРІР°РЅРёРµ РЅРµРІРѕР·РјРѕР¶РЅРѕ."
+    58                      "РСЃС…РѕРґРЅС‹Р№ Рё РєРѕРЅРµС‡РЅС‹Р№ РґРёСЃРєРё РЅРµСЃРѕРІРјРµСЃС‚РёРјС‹."
+    60                      "%d%% Р·Р°РІРµСЂС€РµРЅРѕ"
+    61                      "РЎРѕР·РґР°РЅРёРµ РєРѕСЂРЅРµРІРѕРіРѕ РєР°С‚Р°Р»РѕРіР°..."
+    62                      "РљРѕРїРёСЂРѕРІР°РЅРёРµ СЃРёСЃС‚РµРјРЅС‹С… С„Р°Р№Р»РѕРІ..."
+    63                      "РћС€РёР±РєР° РїСЂРё С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРё РґРёСЃРєР°"
 END
 
 STRINGTABLE
 BEGIN
-    66                      "Форматирование завершено"
-    67                      "Полный объем диска: %ld байт\nСвободно: %ld байт\n\nФорматировать следующий диск?"
+    66                      "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ"
+    67                      "РџРѕР»РЅС‹Р№ РѕР±СЉРµРј РґРёСЃРєР°: %ld Р±Р°Р№С‚\nРЎРІРѕР±РѕРґРЅРѕ: %ld Р±Р°Р№С‚\n\nР¤РѕСЂРјР°С‚РёСЂРѕРІР°С‚СЊ СЃР»РµРґСѓСЋС‰РёР№ РґРёСЃРє?"
 END
 
 STRINGTABLE
 BEGIN
-    80                      "Сетевая ошибка"
-    83                      "Диск содержит системные файлы Windows и не может быть отключен."
-    91                      "Изменение атрибутов невозможно. "
-    92                      "Не удается создать каталог. "
-    93                      "Создание метки диска невозможно.\n\nУбедитесь, что диск не защищен от записи и не является сетевым, а также проверьте правильность метки. В метках запрещается использовать следующие символы:\n[пробел] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
-    95                      "Соответствующие образцу файлы не найдены."
+    80                      "РЎРµС‚РµРІР°СЏ РѕС€РёР±РєР°"
+    83                      "Р”РёСЃРє СЃРѕРґРµСЂР¶РёС‚ СЃРёСЃС‚РµРјРЅС‹Рµ С„Р°Р№Р»С‹ Windows Рё РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚РєР»СЋС‡РµРЅ."
+    91                      "РР·РјРµРЅРµРЅРёРµ Р°С‚СЂРёР±СѓС‚РѕРІ РЅРµРІРѕР·РјРѕР¶РЅРѕ. "
+    92                      "РќРµ СѓРґР°РµС‚СЃСЏ СЃРѕР·РґР°С‚СЊ РєР°С‚Р°Р»РѕРі. "
+    93                      "РЎРѕР·РґР°РЅРёРµ РјРµС‚РєРё РґРёСЃРєР° РЅРµРІРѕР·РјРѕР¶РЅРѕ.\n\nРЈР±РµРґРёС‚РµСЃСЊ, С‡С‚Рѕ РґРёСЃРє РЅРµ Р·Р°С‰РёС‰РµРЅ РѕС‚ Р·Р°РїРёСЃРё Рё РЅРµ СЏРІР»СЏРµС‚СЃСЏ СЃРµС‚РµРІС‹Рј, Р° С‚Р°РєР¶Рµ РїСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РјРµС‚РєРё. Р’ РјРµС‚РєР°С… Р·Р°РїСЂРµС‰Р°РµС‚СЃСЏ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃР»РµРґСѓСЋС‰РёРµ СЃРёРјРІРѕР»С‹:\n[РїСЂРѕР±РµР»] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    95                      "РЎРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ РѕР±СЂР°Р·С†Сѓ С„Р°Р№Р»С‹ РЅРµ РЅР°Р№РґРµРЅС‹."
 END
 
 STRINGTABLE
 BEGIN
-    97                      "Содержимое диска изменилось. Обновить окно результатов поиска?"
-    98                      "Для выполнения этой операции с жесткими дисками необходимо войти на рабочую станцию с правами администратора."
-    101                     "Диск %c:%c"
-    110                     "Запуск программы невозможен"
-    111                     "Неопознанная ошибка: %d."
+    97                      "РЎРѕРґРµСЂР¶РёРјРѕРµ РґРёСЃРєР° РёР·РјРµРЅРёР»РѕСЃСЊ. РћР±РЅРѕРІРёС‚СЊ РѕРєРЅРѕ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РїРѕРёСЃРєР°?"
+    98                      "Р”Р»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё СЃ Р¶РµСЃС‚РєРёРјРё РґРёСЃРєР°РјРё РЅРµРѕР±С…РѕРґРёРјРѕ РІРѕР№С‚Рё РЅР° СЂР°Р±РѕС‡СѓСЋ СЃС‚Р°РЅС†РёСЋ СЃ РїСЂР°РІР°РјРё Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂР°."
+    101                     "Р”РёСЃРє %c:%c"
+    110                     "Р—Р°РїСѓСЃРє РїСЂРѕРіСЂР°РјРјС‹ РЅРµРІРѕР·РјРѕР¶РµРЅ"
+    111                     "РќРµРѕРїРѕР·РЅР°РЅРЅР°СЏ РѕС€РёР±РєР°: %d."
 END
 
 STRINGTABLE
 BEGIN
-    112                     "Недостаточно памяти для запуска приложения.\n\nЗакройте ненужные приложения и повторите попытку."
-    113                     "Диспетчеру файлов не удалось найти файл или один из его компонентов.\n\nПроверьте правильность ввода пути и имени файла, а также наличие необходимых библиотек."
-    114                     "Указан неверный путь."
-    116                     "Этому типу файлов не сопоставлено ни одно приложение.\n\nДля сопоставления приложения и типа файлов воспользуйтесь командой 'Сопоставить' из меню 'Файл'."
-    118                     "Не удается открыть или напечатать файл.\n\nЗапустите приложение, в котором файл был создан, и выполните нужную операцию из приложения."
-    120                     "Подтверждение действия с помощью мыши"
-    121                     "Копировать выбранные файлы или каталоги в каталог '%s'?"
-    122                     "Переместить выбранные файлы или каталоги в каталог '%s'?"
-    123                     "Запустить %s с исходным файлом %s?"
-    124                     "Диспетчер файлов"
-    126                     "Структура каталогов"
-    127                     "Результаты поиска: "
+    112                     "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїР°РјСЏС‚Рё РґР»СЏ Р·Р°РїСѓСЃРєР° РїСЂРёР»РѕР¶РµРЅРёСЏ.\n\nР—Р°РєСЂРѕР№С‚Рµ РЅРµРЅСѓР¶РЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
+    113                     "Р”РёСЃРїРµС‚С‡РµСЂСѓ С„Р°Р№Р»РѕРІ РЅРµ СѓРґР°Р»РѕСЃСЊ РЅР°Р№С‚Рё С„Р°Р№Р» РёР»Рё РѕРґРёРЅ РёР· РµРіРѕ РєРѕРјРїРѕРЅРµРЅС‚РѕРІ.\n\nРџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРѕРґР° РїСѓС‚Рё Рё РёРјРµРЅРё С„Р°Р№Р»Р°, Р° С‚Р°РєР¶Рµ РЅР°Р»РёС‡РёРµ РЅРµРѕР±С…РѕРґРёРјС‹С… Р±РёР±Р»РёРѕС‚РµРє."
+    114                     "РЈРєР°Р·Р°РЅ РЅРµРІРµСЂРЅС‹Р№ РїСѓС‚СЊ."
+    116                     "Р­С‚РѕРјСѓ С‚РёРїСѓ С„Р°Р№Р»РѕРІ РЅРµ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅРѕ РЅРё РѕРґРЅРѕ РїСЂРёР»РѕР¶РµРЅРёРµ.\n\nР”Р»СЏ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅРёСЏ РїСЂРёР»РѕР¶РµРЅРёСЏ Рё С‚РёРїР° С„Р°Р№Р»РѕРІ РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РєРѕРјР°РЅРґРѕР№ 'РЎРѕРїРѕСЃС‚Р°РІРёС‚СЊ' РёР· РјРµРЅСЋ 'Р¤Р°Р№Р»'."
+    118                     "РќРµ СѓРґР°РµС‚СЃСЏ РѕС‚РєСЂС‹С‚СЊ РёР»Рё РЅР°РїРµС‡Р°С‚Р°С‚СЊ С„Р°Р№Р».\n\nР—Р°РїСѓСЃС‚РёС‚Рµ РїСЂРёР»РѕР¶РµРЅРёРµ, РІ РєРѕС‚РѕСЂРѕРј С„Р°Р№Р» Р±С‹Р» СЃРѕР·РґР°РЅ, Рё РІС‹РїРѕР»РЅРёС‚Рµ РЅСѓР¶РЅСѓСЋ РѕРїРµСЂР°С†РёСЋ РёР· РїСЂРёР»РѕР¶РµРЅРёСЏ."
+    120                     "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РґРµР№СЃС‚РІРёСЏ СЃ РїРѕРјРѕС‰СЊСЋ РјС‹С€Рё"
+    121                     "РљРѕРїРёСЂРѕРІР°С‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ С„Р°Р№Р»С‹ РёР»Рё РєР°С‚Р°Р»РѕРіРё РІ РєР°С‚Р°Р»РѕРі '%s'?"
+    122                     "РџРµСЂРµРјРµСЃС‚РёС‚СЊ РІС‹Р±СЂР°РЅРЅС‹Рµ С„Р°Р№Р»С‹ РёР»Рё РєР°С‚Р°Р»РѕРіРё РІ РєР°С‚Р°Р»РѕРі '%s'?"
+    123                     "Р—Р°РїСѓСЃС‚РёС‚СЊ %s СЃ РёСЃС…РѕРґРЅС‹Рј С„Р°Р№Р»РѕРј %s?"
+    124                     "Р”РёСЃРїРµС‚С‡РµСЂ С„Р°Р№Р»РѕРІ"
+    126                     "РЎС‚СЂСѓРєС‚СѓСЂР° РєР°С‚Р°Р»РѕРіРѕРІ"
+    127                     "Р РµР·СѓР»СЊС‚Р°С‚С‹ РїРѕРёСЃРєР°: "
 END
 
 STRINGTABLE
 BEGIN
-    132                     "Слишком много файлов"
-    133                     "Диспетчер файлов: недостаточно памяти"
-    134                     "Не удается прочитать каталог полностью. Только часть каталога будет отображена."
-    140                     "Текущий каталог: %s"
-    141                     "Копирование"
-    143                     "Переименование"
+    132                     "РЎР»РёС€РєРѕРј РјРЅРѕРіРѕ С„Р°Р№Р»РѕРІ"
+    133                     "Р”РёСЃРїРµС‚С‡РµСЂ С„Р°Р№Р»РѕРІ: РЅРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїР°РјСЏС‚Рё"
+    134                     "РќРµ СѓРґР°РµС‚СЃСЏ РїСЂРѕС‡РёС‚Р°С‚СЊ РєР°С‚Р°Р»РѕРі РїРѕР»РЅРѕСЃС‚СЊСЋ. РўРѕР»СЊРєРѕ С‡Р°СЃС‚СЊ РєР°С‚Р°Р»РѕРіР° Р±СѓРґРµС‚ РѕС‚РѕР±СЂР°Р¶РµРЅР°."
+    140                     "РўРµРєСѓС‰РёР№ РєР°С‚Р°Р»РѕРі: %s"
+    141                     "РљРѕРїРёСЂРѕРІР°РЅРёРµ"
+    143                     "РџРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ"
 END
 
 STRINGTABLE
 BEGIN
-    145                     "Форматирование диска"
-    146                     "Укажите форматируемый диск."
-    150                     "Создание:"
-    151                     "Удаление..."
-    152                     "Копирование:"
-    153                     "Переименование..."
-    154                     "Перемещение..."
-    155                     "Удаление..."
-    156                     "Печать: %s"
+    145                     "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
+    146                     "РЈРєР°Р¶РёС‚Рµ С„РѕСЂРјР°С‚РёСЂСѓРµРјС‹Р№ РґРёСЃРє."
+    150                     "РЎРѕР·РґР°РЅРёРµ:"
+    151                     "РЈРґР°Р»РµРЅРёРµ..."
+    152                     "РљРѕРїРёСЂРѕРІР°РЅРёРµ:"
+    153                     "РџРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ..."
+    154                     "РџРµСЂРµРјРµС‰РµРЅРёРµ..."
+    155                     "РЈРґР°Р»РµРЅРёРµ..."
+    156                     "РџРµС‡Р°С‚СЊ: %s"
 END
 
 STRINGTABLE
 BEGIN
-    169                     "Копирование..."
-    170                     "Удаление:"
+    169                     "РљРѕРїРёСЂРѕРІР°РЅРёРµ..."
+    170                     "РЈРґР°Р»РµРЅРёРµ:"
 END
 
 STRINGTABLE
 BEGIN
-    180                     "Всего файлов: %d (%s)"
-    181                     "Найдено каталогов: %d "
-    182                     "%c: свободно %s; всего %s"
-    183                     "Найдено файлов: %d"
-    185                     "выделенные файлы"
-    186                     "Отключение сетевого диска невозможно.\n\nНа этом диске открыты файлы."
-    187                     "Выделено файлов: %d (%s)"
-    188                     "В устройстве %c нет диска.\n\nВставьте диск и повторите попытку."
-    189                     "Диск в устройстве %c не отформатирован.\n\nВыполнить его форматирование?"
+    180                     "Р’СЃРµРіРѕ С„Р°Р№Р»РѕРІ: %d (%s)"
+    181                     "РќР°Р№РґРµРЅРѕ РєР°С‚Р°Р»РѕРіРѕРІ: %d "
+    182                     "%c: СЃРІРѕР±РѕРґРЅРѕ %s; РІСЃРµРіРѕ %s"
+    183                     "РќР°Р№РґРµРЅРѕ С„Р°Р№Р»РѕРІ: %d"
+    185                     "РІС‹РґРµР»РµРЅРЅС‹Рµ С„Р°Р№Р»С‹"
+    186                     "РћС‚РєР»СЋС‡РµРЅРёРµ СЃРµС‚РµРІРѕРіРѕ РґРёСЃРєР° РЅРµРІРѕР·РјРѕР¶РЅРѕ.\n\nРќР° СЌС‚РѕРј РґРёСЃРєРµ РѕС‚РєСЂС‹С‚С‹ С„Р°Р№Р»С‹."
+    187                     "Р’С‹РґРµР»РµРЅРѕ С„Р°Р№Р»РѕРІ: %d (%s)"
+    188                     "Р’ СѓСЃС‚СЂРѕР№СЃС‚РІРµ %c РЅРµС‚ РґРёСЃРєР°.\n\nР’СЃС‚Р°РІСЊС‚Рµ РґРёСЃРє Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
+    189                     "Р”РёСЃРє РІ СѓСЃС‚СЂРѕР№СЃС‚РІРµ %c РЅРµ РѕС‚С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅ.\n\nР’С‹РїРѕР»РЅРёС‚СЊ РµРіРѕ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ?"
 END
 
 STRINGTABLE
 BEGIN
-    192                     "Недостаточно места на диске для печати.\n\nУдалите ненужные файлы и повторите попытку."
-    193                     "Недостаточно памяти для печати.\n\nЗакройте ненужные приложения и повторите попытку."
-    194                     "Ошибка при печати.\n\nПроверьте правильность настройки принтера."
-    195                     "Структура каталогов отображается не полностью"
-    197                     "Конечный диск полон. Для продолжения операции поместите в устройство другой диск."
-    198                     "Файл является системным, скрытым или доступен только для чтения."
-    199                     "Быстрое форматирование невозможно.\n\nВыполнить обычное форматирование?"
-    203                     "Ошибка при отправке команды в приложение."
-    204                     "Не удается загрузить нужную библиотеку."
+    192                     "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РјРµСЃС‚Р° РЅР° РґРёСЃРєРµ РґР»СЏ РїРµС‡Р°С‚Рё.\n\nРЈРґР°Р»РёС‚Рµ РЅРµРЅСѓР¶РЅС‹Рµ С„Р°Р№Р»С‹ Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
+    193                     "РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ РїР°РјСЏС‚Рё РґР»СЏ РїРµС‡Р°С‚Рё.\n\nР—Р°РєСЂРѕР№С‚Рµ РЅРµРЅСѓР¶РЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
+    194                     "РћС€РёР±РєР° РїСЂРё РїРµС‡Р°С‚Рё.\n\nРџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РЅР°СЃС‚СЂРѕР№РєРё РїСЂРёРЅС‚РµСЂР°."
+    195                     "РЎС‚СЂСѓРєС‚СѓСЂР° РєР°С‚Р°Р»РѕРіРѕРІ РѕС‚РѕР±СЂР°Р¶Р°РµС‚СЃСЏ РЅРµ РїРѕР»РЅРѕСЃС‚СЊСЋ"
+    197                     "РљРѕРЅРµС‡РЅС‹Р№ РґРёСЃРє РїРѕР»РѕРЅ. Р”Р»СЏ РїСЂРѕРґРѕР»Р¶РµРЅРёСЏ РѕРїРµСЂР°С†РёРё РїРѕРјРµСЃС‚РёС‚Рµ РІ СѓСЃС‚СЂРѕР№СЃС‚РІРѕ РґСЂСѓРіРѕР№ РґРёСЃРє."
+    198                     "Р¤Р°Р№Р» СЏРІР»СЏРµС‚СЃСЏ СЃРёСЃС‚РµРјРЅС‹Рј, СЃРєСЂС‹С‚С‹Рј РёР»Рё РґРѕСЃС‚СѓРїРµРЅ С‚РѕР»СЊРєРѕ РґР»СЏ С‡С‚РµРЅРёСЏ."
+    199                     "Р‘С‹СЃС‚СЂРѕРµ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РЅРµРІРѕР·РјРѕР¶РЅРѕ.\n\nР’С‹РїРѕР»РЅРёС‚СЊ РѕР±С‹С‡РЅРѕРµ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ?"
+    203                     "РћС€РёР±РєР° РїСЂРё РѕС‚РїСЂР°РІРєРµ РєРѕРјР°РЅРґС‹ РІ РїСЂРёР»РѕР¶РµРЅРёРµ."
+    204                     "РќРµ СѓРґР°РµС‚СЃСЏ Р·Р°РіСЂСѓР·РёС‚СЊ РЅСѓР¶РЅСѓСЋ Р±РёР±Р»РёРѕС‚РµРєСѓ."
 END
 
 STRINGTABLE
 BEGIN
-    209                     "О&бщие каталоги..."
-    210                     "При форматировании ВСЕ данные на диске будут уничтожены. Форматировать диск в устройстве %c?"
-    211                     "Подтверждение форматирования диска"
-    212                     "Эта операция приведет к уничтожению ВСЕХ файлов на конечном диске. Продолжить?"
-    213                     "Подтверждение копирования диска"
-    214                     "&Закрыть"
-    215                     "Закрыть"
-    218                     "Каталог %s не существует.\n\nСоздать его?"
-    219                     "Программы#*.exe;*.pif;*.com;*.bat#Все файлы (*.*)#*.*#"
-    220                     "Обзор"
-    221                     "Выполнить"
-    222                     "Печать файла невозможна"
-    223                     "Не удается отобразить справку."
+    209                     "Рћ&Р±С‰РёРµ РєР°С‚Р°Р»РѕРіРё..."
+    210                     "РџСЂРё С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРё Р’РЎР• РґР°РЅРЅС‹Рµ РЅР° РґРёСЃРєРµ Р±СѓРґСѓС‚ СѓРЅРёС‡С‚РѕР¶РµРЅС‹. Р¤РѕСЂРјР°С‚РёСЂРѕРІР°С‚СЊ РґРёСЃРє РІ СѓСЃС‚СЂРѕР№СЃС‚РІРµ %c?"
+    211                     "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёСЏ РґРёСЃРєР°"
+    212                     "Р­С‚Р° РѕРїРµСЂР°С†РёСЏ РїСЂРёРІРµРґРµС‚ Рє СѓРЅРёС‡С‚РѕР¶РµРЅРёСЋ Р’РЎР•РҐ С„Р°Р№Р»РѕРІ РЅР° РєРѕРЅРµС‡РЅРѕРј РґРёСЃРєРµ. РџСЂРѕРґРѕР»Р¶РёС‚СЊ?"
+    213                     "РџРѕРґС‚РІРµСЂР¶РґРµРЅРёРµ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РґРёСЃРєР°"
+    214                     "&Р—Р°РєСЂС‹С‚СЊ"
+    215                     "Р—Р°РєСЂС‹С‚СЊ"
+    218                     "РљР°С‚Р°Р»РѕРі %s РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚.\n\nРЎРѕР·РґР°С‚СЊ РµРіРѕ?"
+    219                     "РџСЂРѕРіСЂР°РјРјС‹#*.exe;*.pif;*.com;*.bat#Р’СЃРµ С„Р°Р№Р»С‹ (*.*)#*.*#"
+    220                     "РћР±Р·РѕСЂ"
+    221                     "Р’С‹РїРѕР»РЅРёС‚СЊ"
+    222                     "РџРµС‡Р°С‚СЊ С„Р°Р№Р»Р° РЅРµРІРѕР·РјРѕР¶РЅР°"
+    223                     "РќРµ СѓРґР°РµС‚СЃСЏ РѕС‚РѕР±СЂР°Р·РёС‚СЊ СЃРїСЂР°РІРєСѓ."
 END
 
 STRINGTABLE
 BEGIN
-    224                     "Файлы с расширением %s являются программами и не могут быть сопоставлены другому приложению."
-    225                     "Файл '%s' не является программой и не может быть сопоставлен для файлов с указанным расширением."
-    226                     "(Нет)"
-    227                     "Файлы не найдены."
-    228                     "Одновременная печать нескольких файлов не допускается.\n\nВыберите один файл и повторите попытку."
-    230                     "Поврежден один из файлов, необходимых для запуска приложения. Переустановите приложение."
-    231                     "Файл используется другим приложением."
-    232                     "Доступ к файлам, созданным в каталоге '%s', может отсутствовать.\n\nПродолжить?"
-    233                     "Создание каталога"
-    234                     "%ld байт"
-    235                     "%s байт"
-    236                     "Копирование в буфер обмена нескольких файлов или целых каталогов не допускается.\n\nВыберите один файл и повторите попытку."
+    224                     "Р¤Р°Р№Р»С‹ СЃ СЂР°СЃС€РёСЂРµРЅРёРµРј %s СЏРІР»СЏСЋС‚СЃСЏ РїСЂРѕРіСЂР°РјРјР°РјРё Рё РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅС‹ РґСЂСѓРіРѕРјСѓ РїСЂРёР»РѕР¶РµРЅРёСЋ."
+    225                     "Р¤Р°Р№Р» '%s' РЅРµ СЏРІР»СЏРµС‚СЃСЏ РїСЂРѕРіСЂР°РјРјРѕР№ Рё РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅ РґР»СЏ С„Р°Р№Р»РѕРІ СЃ СѓРєР°Р·Р°РЅРЅС‹Рј СЂР°СЃС€РёСЂРµРЅРёРµРј."
+    226                     "(РќРµС‚)"
+    227                     "Р¤Р°Р№Р»С‹ РЅРµ РЅР°Р№РґРµРЅС‹."
+    228                     "РћРґРЅРѕРІСЂРµРјРµРЅРЅР°СЏ РїРµС‡Р°С‚СЊ РЅРµСЃРєРѕР»СЊРєРёС… С„Р°Р№Р»РѕРІ РЅРµ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ.\n\nР’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ С„Р°Р№Р» Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
+    230                     "РџРѕРІСЂРµР¶РґРµРЅ РѕРґРёРЅ РёР· С„Р°Р№Р»РѕРІ, РЅРµРѕР±С…РѕРґРёРјС‹С… РґР»СЏ Р·Р°РїСѓСЃРєР° РїСЂРёР»РѕР¶РµРЅРёСЏ. РџРµСЂРµСѓСЃС‚Р°РЅРѕРІРёС‚Рµ РїСЂРёР»РѕР¶РµРЅРёРµ."
+    231                     "Р¤Р°Р№Р» РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РґСЂСѓРіРёРј РїСЂРёР»РѕР¶РµРЅРёРµРј."
+    232                     "Р”РѕСЃС‚СѓРї Рє С„Р°Р№Р»Р°Рј, СЃРѕР·РґР°РЅРЅС‹Рј РІ РєР°С‚Р°Р»РѕРіРµ '%s', РјРѕР¶РµС‚ РѕС‚СЃСѓС‚СЃС‚РІРѕРІР°С‚СЊ.\n\nРџСЂРѕРґРѕР»Р¶РёС‚СЊ?"
+    233                     "РЎРѕР·РґР°РЅРёРµ РєР°С‚Р°Р»РѕРіР°"
+    234                     "%ld Р±Р°Р№С‚"
+    235                     "%s Р±Р°Р№С‚"
+    236                     "РљРѕРїРёСЂРѕРІР°РЅРёРµ РІ Р±СѓС„РµСЂ РѕР±РјРµРЅР° РЅРµСЃРєРѕР»СЊРєРёС… С„Р°Р№Р»РѕРІ РёР»Рё С†РµР»С‹С… РєР°С‚Р°Р»РѕРіРѕРІ РЅРµ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ.\n\nР’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ С„Р°Р№Р» Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
     237                     "%s - %s"
-    238                     "Диск:"
+    238                     "Р”РёСЃРє:"
     239                     "%s, "
 END
 
 STRINGTABLE
 BEGIN
-    240                     "Подключение сетевого диска"
-    241                     "Отключение сетевого диска"
-    242                     "Сетевые устройства"
-    243                     "Установка общего доступа к каталогу"
-    244                     "Прекращение общего доступа к каталогу"
-    245                     "Отображение полных сведений о файлах"
-    246                     "Отображение только имен файлов"
-    247                     "Сортировка по имени"
-    248                     "Сортировка по типу"
-    249                     "Сортировка по размеру"
-    250                     "Сортировка по дате"
-    251                     "Открытие нового окна"
-    252                     "Копирование файлов"
-    253                     "Перемещение файлов"
-    254                     "&Каталог:"
+    240                     "РџРѕРґРєР»СЋС‡РµРЅРёРµ СЃРµС‚РµРІРѕРіРѕ РґРёСЃРєР°"
+    241                     "РћС‚РєР»СЋС‡РµРЅРёРµ СЃРµС‚РµРІРѕРіРѕ РґРёСЃРєР°"
+    242                     "РЎРµС‚РµРІС‹Рµ СѓСЃС‚СЂРѕР№СЃС‚РІР°"
+    243                     "РЈСЃС‚Р°РЅРѕРІРєР° РѕР±С‰РµРіРѕ РґРѕСЃС‚СѓРїР° Рє РєР°С‚Р°Р»РѕРіСѓ"
+    244                     "РџСЂРµРєСЂР°С‰РµРЅРёРµ РѕР±С‰РµРіРѕ РґРѕСЃС‚СѓРїР° Рє РєР°С‚Р°Р»РѕРіСѓ"
+    245                     "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РїРѕР»РЅС‹С… СЃРІРµРґРµРЅРёР№ Рѕ С„Р°Р№Р»Р°С…"
+    246                     "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ С‚РѕР»СЊРєРѕ РёРјРµРЅ С„Р°Р№Р»РѕРІ"
+    247                     "РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РёРјРµРЅРё"
+    248                     "РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ С‚РёРїСѓ"
+    249                     "РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ СЂР°Р·РјРµСЂСѓ"
+    250                     "РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ РґР°С‚Рµ"
+    251                     "РћС‚РєСЂС‹С‚РёРµ РЅРѕРІРѕРіРѕ РѕРєРЅР°"
+    252                     "РљРѕРїРёСЂРѕРІР°РЅРёРµ С„Р°Р№Р»РѕРІ"
+    253                     "РџРµСЂРµРјРµС‰РµРЅРёРµ С„Р°Р№Р»РѕРІ"
+    254                     "&РљР°С‚Р°Р»РѕРі:"
 END
 
 STRINGTABLE
 BEGIN
-    256                     "Сетевой диск недоступен."
-    259                     "Сетевое имя: %s"
-    260                     "Нет совместного доступа"
-    261                     "Удаление файлов"
-    262                     " - УПЛОТНЕН"
-    263                     "Копирование файлов в '%s'"
-    264                     "Перемещение файлов в '%s'"
-    265                     "Запуск файлов с помощью '%s'"
-    266                     "%s байт"
-    267                     "%s Кбайт"
-    268                     "%s Мбайт"
-    269                     "%s Гбайт"
-    270                     "%s Тбайт"
+    256                     "РЎРµС‚РµРІРѕР№ РґРёСЃРє РЅРµРґРѕСЃС‚СѓРїРµРЅ."
+    259                     "РЎРµС‚РµРІРѕРµ РёРјСЏ: %s"
+    260                     "РќРµС‚ СЃРѕРІРјРµСЃС‚РЅРѕРіРѕ РґРѕСЃС‚СѓРїР°"
+    261                     "РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»РѕРІ"
+    262                     " - РЈРџР›РћРўРќР•Рќ"
+    263                     "РљРѕРїРёСЂРѕРІР°РЅРёРµ С„Р°Р№Р»РѕРІ РІ '%s'"
+    264                     "РџРµСЂРµРјРµС‰РµРЅРёРµ С„Р°Р№Р»РѕРІ РІ '%s'"
+    265                     "Р—Р°РїСѓСЃРє С„Р°Р№Р»РѕРІ СЃ РїРѕРјРѕС‰СЊСЋ '%s'"
+    266                     "%s Р±Р°Р№С‚"
+    267                     "%s РљР±Р°Р№С‚"
+    268                     "%s РњР±Р°Р№С‚"
+    269                     "%s Р“Р±Р°Р№С‚"
+    270                     "%s РўР±Р°Р№С‚"
 END
 
 STRINGTABLE
 BEGIN
-    280                     "Отсутствует разрешение на доступ к каталогу."
-    281                     "Отсутствует разрешение на доступ к файлу."
-    283                     "Диск %c: занят и недоступен.\nВыполняется копирование диска."
-    284                     "Диск %c: занят и недоступен.\nВыполняется форматирование диска."
-    285                     "Операция завершена не полностью"
-    286                     "Завершение операции для всех файлов и каталогов невозможно."
-    287                     "Не удается прочитать каталог"
+    280                     "РћС‚СЃСѓС‚СЃС‚РІСѓРµС‚ СЂР°Р·СЂРµС€РµРЅРёРµ РЅР° РґРѕСЃС‚СѓРї Рє РєР°С‚Р°Р»РѕРіСѓ."
+    281                     "РћС‚СЃСѓС‚СЃС‚РІСѓРµС‚ СЂР°Р·СЂРµС€РµРЅРёРµ РЅР° РґРѕСЃС‚СѓРї Рє С„Р°Р№Р»Сѓ."
+    283                     "Р”РёСЃРє %c: Р·Р°РЅСЏС‚ Рё РЅРµРґРѕСЃС‚СѓРїРµРЅ.\nР’С‹РїРѕР»РЅСЏРµС‚СЃСЏ РєРѕРїРёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°."
+    284                     "Р”РёСЃРє %c: Р·Р°РЅСЏС‚ Рё РЅРµРґРѕСЃС‚СѓРїРµРЅ.\nР’С‹РїРѕР»РЅСЏРµС‚СЃСЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°."
+    285                     "РћРїРµСЂР°С†РёСЏ Р·Р°РІРµСЂС€РµРЅР° РЅРµ РїРѕР»РЅРѕСЃС‚СЊСЋ"
+    286                     "Р—Р°РІРµСЂС€РµРЅРёРµ РѕРїРµСЂР°С†РёРё РґР»СЏ РІСЃРµС… С„Р°Р№Р»РѕРІ Рё РєР°С‚Р°Р»РѕРіРѕРІ РЅРµРІРѕР·РјРѕР¶РЅРѕ."
+    287                     "РќРµ СѓРґР°РµС‚СЃСЏ РїСЂРѕС‡РёС‚Р°С‚СЊ РєР°С‚Р°Р»РѕРі"
 END
 
 STRINGTABLE
 BEGIN
-    288                     "Каталог не существует."
-    289                     "Не удается подключить сетевой диск"
-    290                     "Не найдено сетевое имя."
-    292                     "Кнопка ""Да для всех"" выполняет операцию для всех файлов, \nвключая системные, скрытые и доступные только для чтения."
-    294                     "Открыть"
-    295                     "Печать"
-    298                     "Добавить расширение"
-    299                     "Расширению '%s' в настоящее время сопоставлено приложение '%s'. Переопределить сопоставление?"
-    300                     "Редактор сопоставлений файлов"
-    301                     "Не удается сопоставить расширение. "
-    302                     "Не удается удалить расширение. "
-    303                     "Не удается добавить тип файла. "
+    288                     "РљР°С‚Р°Р»РѕРі РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚."
+    289                     "РќРµ СѓРґР°РµС‚СЃСЏ РїРѕРґРєР»СЋС‡РёС‚СЊ СЃРµС‚РµРІРѕР№ РґРёСЃРє"
+    290                     "РќРµ РЅР°Р№РґРµРЅРѕ СЃРµС‚РµРІРѕРµ РёРјСЏ."
+    292                     "РљРЅРѕРїРєР° ""Р”Р° РґР»СЏ РІСЃРµС…"" РІС‹РїРѕР»РЅСЏРµС‚ РѕРїРµСЂР°С†РёСЋ РґР»СЏ РІСЃРµС… С„Р°Р№Р»РѕРІ, \nРІРєР»СЋС‡Р°СЏ СЃРёСЃС‚РµРјРЅС‹Рµ, СЃРєСЂС‹С‚С‹Рµ Рё РґРѕСЃС‚СѓРїРЅС‹Рµ С‚РѕР»СЊРєРѕ РґР»СЏ С‡С‚РµРЅРёСЏ."
+    294                     "РћС‚РєСЂС‹С‚СЊ"
+    295                     "РџРµС‡Р°С‚СЊ"
+    298                     "Р”РѕР±Р°РІРёС‚СЊ СЂР°СЃС€РёСЂРµРЅРёРµ"
+    299                     "Р Р°СЃС€РёСЂРµРЅРёСЋ '%s' РІ РЅР°СЃС‚РѕСЏС‰РµРµ РІСЂРµРјСЏ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅРѕ РїСЂРёР»РѕР¶РµРЅРёРµ '%s'. РџРµСЂРµРѕРїСЂРµРґРµР»РёС‚СЊ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅРёРµ?"
+    300                     "Р РµРґР°РєС‚РѕСЂ СЃРѕРїРѕСЃС‚Р°РІР»РµРЅРёР№ С„Р°Р№Р»РѕРІ"
+    301                     "РќРµ СѓРґР°РµС‚СЃСЏ СЃРѕРїРѕСЃС‚Р°РІРёС‚СЊ СЂР°СЃС€РёСЂРµРЅРёРµ. "
+    302                     "РќРµ СѓРґР°РµС‚СЃСЏ СѓРґР°Р»РёС‚СЊ СЂР°СЃС€РёСЂРµРЅРёРµ. "
+    303                     "РќРµ СѓРґР°РµС‚СЃСЏ РґРѕР±Р°РІРёС‚СЊ С‚РёРї С„Р°Р№Р»Р°. "
 END
 
 STRINGTABLE
 BEGIN
-    304                     "Не удается удалить тип файла. "
-    305                     "Не удается прочитать тип файла. "
-    306                     "Описание типа файлов не может быть пусто. Введите новый тип файлов."
-    307                     "Не удается создать уникальный идентификатор для типа файлов. Введите новый тип файлов."
-    308                     "Удаление типа файлов"
-    309                     "Выполнение этой операции приведет к удалению типа файлов '%s' и всех сопоставленных ему расширений. Продолжить?"
-    312                     "Необходимо определить команду хотя бы для одного действия, связанного с типом файлов. Введите имя приложения в поле командной строки."
+    304                     "РќРµ СѓРґР°РµС‚СЃСЏ СѓРґР°Р»РёС‚СЊ С‚РёРї С„Р°Р№Р»Р°. "
+    305                     "РќРµ СѓРґР°РµС‚СЃСЏ РїСЂРѕС‡РёС‚Р°С‚СЊ С‚РёРї С„Р°Р№Р»Р°. "
+    306                     "РћРїРёСЃР°РЅРёРµ С‚РёРїР° С„Р°Р№Р»РѕРІ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚Рѕ. Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ С‚РёРї С„Р°Р№Р»РѕРІ."
+    307                     "РќРµ СѓРґР°РµС‚СЃСЏ СЃРѕР·РґР°С‚СЊ СѓРЅРёРєР°Р»СЊРЅС‹Р№ РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ РґР»СЏ С‚РёРїР° С„Р°Р№Р»РѕРІ. Р’РІРµРґРёС‚Рµ РЅРѕРІС‹Р№ С‚РёРї С„Р°Р№Р»РѕРІ."
+    308                     "РЈРґР°Р»РµРЅРёРµ С‚РёРїР° С„Р°Р№Р»РѕРІ"
+    309                     "Р’С‹РїРѕР»РЅРµРЅРёРµ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё РїСЂРёРІРµРґРµС‚ Рє СѓРґР°Р»РµРЅРёСЋ С‚РёРїР° С„Р°Р№Р»РѕРІ '%s' Рё РІСЃРµС… СЃРѕРїРѕСЃС‚Р°РІР»РµРЅРЅС‹С… РµРјСѓ СЂР°СЃС€РёСЂРµРЅРёР№. РџСЂРѕРґРѕР»Р¶РёС‚СЊ?"
+    312                     "РќРµРѕР±С…РѕРґРёРјРѕ РѕРїСЂРµРґРµР»РёС‚СЊ РєРѕРјР°РЅРґСѓ С…РѕС‚СЏ Р±С‹ РґР»СЏ РѕРґРЅРѕРіРѕ РґРµР№СЃС‚РІРёСЏ, СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃ С‚РёРїРѕРј С„Р°Р№Р»РѕРІ. Р’РІРµРґРёС‚Рµ РёРјСЏ РїСЂРёР»РѕР¶РµРЅРёСЏ РІ РїРѕР»Рµ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё."
 END
 
 STRINGTABLE
 BEGIN
-    320                     "Новый тип файлов"
-    321                     "Копирование диска"
-    322                     "Идет поиск..."
-    324                     "Выполняется форматирование диска. Выход из диспетчера файлов приведет к прерыванию этой операции."
-    325                     "Выполняется копирование диска. Выход из диспетчера файлов приведет к прерыванию этой операции."
-    326                     "Степень завершения"
+    320                     "РќРѕРІС‹Р№ С‚РёРї С„Р°Р№Р»РѕРІ"
+    321                     "РљРѕРїРёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
+    322                     "РРґРµС‚ РїРѕРёСЃРє..."
+    324                     "Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°. Р’С‹С…РѕРґ РёР· РґРёСЃРїРµС‚С‡РµСЂР° С„Р°Р№Р»РѕРІ РїСЂРёРІРµРґРµС‚ Рє РїСЂРµСЂС‹РІР°РЅРёСЋ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё."
+    325                     "Р’С‹РїРѕР»РЅСЏРµС‚СЃСЏ РєРѕРїРёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°. Р’С‹С…РѕРґ РёР· РґРёСЃРїРµС‚С‡РµСЂР° С„Р°Р№Р»РѕРІ РїСЂРёРІРµРґРµС‚ Рє РїСЂРµСЂС‹РІР°РЅРёСЋ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё."
+    326                     "РЎС‚РµРїРµРЅСЊ Р·Р°РІРµСЂС€РµРЅРёСЏ"
 END
 
 STRINGTABLE
 BEGIN
-    353                     "360 Кбайт"
-    354                     "1%s2 Мбайт"
-    355                     "720 Кбайт"
-    356                     "1%s44 Мбайт"
-    357                     "2%s88 Мбайт"
-    358                     "Емкость диска"
-    359                     "Не удается получить сведения о диске.\n\nПроверьте наличие диска в дисководе."
-    360                     "20%s8 Мбайт"
-    361                     "Неизвестный тип диска"
-    362                     "Неизвестный тип диска"
-    363                     "Диск в устройстве %s нельзя форматировать с помощью диспетчера файлов. Воспользуйтесь диспетчером дисков."
+    353                     "360 РљР±Р°Р№С‚"
+    354                     "1%s2 РњР±Р°Р№С‚"
+    355                     "720 РљР±Р°Р№С‚"
+    356                     "1%s44 РњР±Р°Р№С‚"
+    357                     "2%s88 РњР±Р°Р№С‚"
+    358                     "Р•РјРєРѕСЃС‚СЊ РґРёСЃРєР°"
+    359                     "РќРµ СѓРґР°РµС‚СЃСЏ РїРѕР»СѓС‡РёС‚СЊ СЃРІРµРґРµРЅРёСЏ Рѕ РґРёСЃРєРµ.\n\nРџСЂРѕРІРµСЂСЊС‚Рµ РЅР°Р»РёС‡РёРµ РґРёСЃРєР° РІ РґРёСЃРєРѕРІРѕРґРµ."
+    360                     "20%s8 РњР±Р°Р№С‚"
+    361                     "РќРµРёР·РІРµСЃС‚РЅС‹Р№ С‚РёРї РґРёСЃРєР°"
+    362                     "РќРµРёР·РІРµСЃС‚РЅС‹Р№ С‚РёРї РґРёСЃРєР°"
+    363                     "Р”РёСЃРє РІ СѓСЃС‚СЂРѕР№СЃС‚РІРµ %s РЅРµР»СЊР·СЏ С„РѕСЂРјР°С‚РёСЂРѕРІР°С‚СЊ СЃ РїРѕРјРѕС‰СЊСЋ РґРёСЃРїРµС‚С‡РµСЂР° С„Р°Р№Р»РѕРІ. Р’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РґРёСЃРїРµС‚С‡РµСЂРѕРј РґРёСЃРєРѕРІ."
 END
 
 STRINGTABLE
 BEGIN
-    400                     "Несовместимая файловая система."
-    401                     "Нет доступа."
-    402                     "Диск защищен от записи."
-    403                     "Блокировка тома невозможна."
-    404                     "Быстрое форматирование диска невозможно.\n\nПроверьте правильность емкости диска."
-    405                     "Ошибка ввода/вывода для исходного диска."
-    406                     "Ошибка ввода/вывода для конечного диска."
-    407                     "Ошибка ввода/вывода для обоих дисков."
-    408                     "Ошибка ввода/вывода."
-    411                     "Форматирование диска невозможно.\n\nПроверьте наличие диска в дисководе, убедитесь, что он не защищен от записи, не поврежден и имеет нужную емкость."
-    412                     "Создание метки диска невозможно.\n\nУказана недопустимая метка. В метках дисков запрещается использовать следующие символы:\n[пробел] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    400                     "РќРµСЃРѕРІРјРµСЃС‚РёРјР°СЏ С„Р°Р№Р»РѕРІР°СЏ СЃРёСЃС‚РµРјР°."
+    401                     "РќРµС‚ РґРѕСЃС‚СѓРїР°."
+    402                     "Р”РёСЃРє Р·Р°С‰РёС‰РµРЅ РѕС‚ Р·Р°РїРёСЃРё."
+    403                     "Р‘Р»РѕРєРёСЂРѕРІРєР° С‚РѕРјР° РЅРµРІРѕР·РјРѕР¶РЅР°."
+    404                     "Р‘С‹СЃС‚СЂРѕРµ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР° РЅРµРІРѕР·РјРѕР¶РЅРѕ.\n\nРџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РµРјРєРѕСЃС‚Рё РґРёСЃРєР°."
+    405                     "РћС€РёР±РєР° РІРІРѕРґР°/РІС‹РІРѕРґР° РґР»СЏ РёСЃС…РѕРґРЅРѕРіРѕ РґРёСЃРєР°."
+    406                     "РћС€РёР±РєР° РІРІРѕРґР°/РІС‹РІРѕРґР° РґР»СЏ РєРѕРЅРµС‡РЅРѕРіРѕ РґРёСЃРєР°."
+    407                     "РћС€РёР±РєР° РІРІРѕРґР°/РІС‹РІРѕРґР° РґР»СЏ РѕР±РѕРёС… РґРёСЃРєРѕРІ."
+    408                     "РћС€РёР±РєР° РІРІРѕРґР°/РІС‹РІРѕРґР°."
+    411                     "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР° РЅРµРІРѕР·РјРѕР¶РЅРѕ.\n\nРџСЂРѕРІРµСЂСЊС‚Рµ РЅР°Р»РёС‡РёРµ РґРёСЃРєР° РІ РґРёСЃРєРѕРІРѕРґРµ, СѓР±РµРґРёС‚РµСЃСЊ, С‡С‚Рѕ РѕРЅ РЅРµ Р·Р°С‰РёС‰РµРЅ РѕС‚ Р·Р°РїРёСЃРё, РЅРµ РїРѕРІСЂРµР¶РґРµРЅ Рё РёРјРµРµС‚ РЅСѓР¶РЅСѓСЋ РµРјРєРѕСЃС‚СЊ."
+    412                     "РЎРѕР·РґР°РЅРёРµ РјРµС‚РєРё РґРёСЃРєР° РЅРµРІРѕР·РјРѕР¶РЅРѕ.\n\nРЈРєР°Р·Р°РЅР° РЅРµРґРѕРїСѓСЃС‚РёРјР°СЏ РјРµС‚РєР°. Р’ РјРµС‚РєР°С… РґРёСЃРєРѕРІ Р·Р°РїСЂРµС‰Р°РµС‚СЃСЏ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СЃР»РµРґСѓСЋС‰РёРµ СЃРёРјРІРѕР»С‹:\n[РїСЂРѕР±РµР»] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 END
 
 STRINGTABLE
 BEGIN
-    420                     "Открытие..."
-    421                     "Закрытие..."
-    422                     "Открыто слишком много окон.\n\nЗакройте ненужные окна и повторите попытку."
-    423                     "Быстрое форматирование..."
-    424                     "Инициализация поддержки фонового обновления невозможна. Диспетчер файлов прекращает работу. "
-    425                     "Инициализация диспетчера файлов"
-    426                     "Идет чтение каталога, немного подождите..."
-    427                     "Сжать также все файлы и подкаталоги в %s?"
-    428                     "Развернуть также все сжатые файлы и подкаталоги в %s?"
-    429                     "Изменение атрибутов сжатия для %s невозможно."
-    430                     "Файл %s сжат не будет, так как при этом система перестанет загружаться."
-    431                     "Проводится сжатие или развертывание файлов.\nНеобходимо дождаться завершения этой операции перед обработкой дополнительных файлов."
+    420                     "РћС‚РєСЂС‹С‚РёРµ..."
+    421                     "Р—Р°РєСЂС‹С‚РёРµ..."
+    422                     "РћС‚РєСЂС‹С‚Рѕ СЃР»РёС€РєРѕРј РјРЅРѕРіРѕ РѕРєРѕРЅ.\n\nР—Р°РєСЂРѕР№С‚Рµ РЅРµРЅСѓР¶РЅС‹Рµ РѕРєРЅР° Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
+    423                     "Р‘С‹СЃС‚СЂРѕРµ С„РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ..."
+    424                     "РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РїРѕРґРґРµСЂР¶РєРё С„РѕРЅРѕРІРѕРіРѕ РѕР±РЅРѕРІР»РµРЅРёСЏ РЅРµРІРѕР·РјРѕР¶РЅР°. Р”РёСЃРїРµС‚С‡РµСЂ С„Р°Р№Р»РѕРІ РїСЂРµРєСЂР°С‰Р°РµС‚ СЂР°Р±РѕС‚Сѓ. "
+    425                     "РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РґРёСЃРїРµС‚С‡РµСЂР° С„Р°Р№Р»РѕРІ"
+    426                     "РРґРµС‚ С‡С‚РµРЅРёРµ РєР°С‚Р°Р»РѕРіР°, РЅРµРјРЅРѕРіРѕ РїРѕРґРѕР¶РґРёС‚Рµ..."
+    427                     "РЎР¶Р°С‚СЊ С‚Р°РєР¶Рµ РІСЃРµ С„Р°Р№Р»С‹ Рё РїРѕРґРєР°С‚Р°Р»РѕРіРё РІ %s?"
+    428                     "Р Р°Р·РІРµСЂРЅСѓС‚СЊ С‚Р°РєР¶Рµ РІСЃРµ СЃР¶Р°С‚С‹Рµ С„Р°Р№Р»С‹ Рё РїРѕРґРєР°С‚Р°Р»РѕРіРё РІ %s?"
+    429                     "РР·РјРµРЅРµРЅРёРµ Р°С‚СЂРёР±СѓС‚РѕРІ СЃР¶Р°С‚РёСЏ РґР»СЏ %s РЅРµРІРѕР·РјРѕР¶РЅРѕ."
+    430                     "Р¤Р°Р№Р» %s СЃР¶Р°С‚ РЅРµ Р±СѓРґРµС‚, С‚Р°Рє РєР°Рє РїСЂРё СЌС‚РѕРј СЃРёСЃС‚РµРјР° РїРµСЂРµСЃС‚Р°РЅРµС‚ Р·Р°РіСЂСѓР¶Р°С‚СЊСЃСЏ."
+    431                     "РџСЂРѕРІРѕРґРёС‚СЃСЏ СЃР¶Р°С‚РёРµ РёР»Рё СЂР°Р·РІРµСЂС‚С‹РІР°РЅРёРµ С„Р°Р№Р»РѕРІ.\nРќРµРѕР±С…РѕРґРёРјРѕ РґРѕР¶РґР°С‚СЊСЃСЏ Р·Р°РІРµСЂС€РµРЅРёСЏ СЌС‚РѕР№ РѕРїРµСЂР°С†РёРё РїРµСЂРµРґ РѕР±СЂР°Р±РѕС‚РєРѕР№ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… С„Р°Р№Р»РѕРІ."
 END
 
 STRINGTABLE
 BEGIN
-    500                     "Заметки"
-    501                     "Производитель"
-    502                     "Описание файла"
-    503                     "Внутреннее имя"
-    504                     "Товарные знаки"
-    505                     "Исходное имя файла"
-    506                     "Вариант"
-    507                     "Название продукта"
-    508                     "Версия продукта"
-    509                     "Дополнительные сведения"
-    510                     "Язык"
-    511                     "Языки"
+    500                     "Р—Р°РјРµС‚РєРё"
+    501                     "РџСЂРѕРёР·РІРѕРґРёС‚РµР»СЊ"
+    502                     "РћРїРёСЃР°РЅРёРµ С„Р°Р№Р»Р°"
+    503                     "Р’РЅСѓС‚СЂРµРЅРЅРµРµ РёРјСЏ"
+    504                     "РўРѕРІР°СЂРЅС‹Рµ Р·РЅР°РєРё"
+    505                     "РСЃС…РѕРґРЅРѕРµ РёРјСЏ С„Р°Р№Р»Р°"
+    506                     "Р’Р°СЂРёР°РЅС‚"
+    507                     "РќР°Р·РІР°РЅРёРµ РїСЂРѕРґСѓРєС‚Р°"
+    508                     "Р’РµСЂСЃРёСЏ РїСЂРѕРґСѓРєС‚Р°"
+    509                     "Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ СЃРІРµРґРµРЅРёСЏ"
+    510                     "РЇР·С‹Рє"
+    511                     "РЇР·С‹РєРё"
 END
 
 STRINGTABLE
 BEGIN
-    800                     "Подклю&чить сетевой диск..."
-    801                     "Отк&лючить сетевой диск..."
-    802                     "С&етевые подключения..."
-    803                     "О&бщий доступ..."
-    804                     "&Запретить доступ..."
-    805                     "&Показать общие каталоги..."
-    806                     "Восс&тановить..."
-    807                     "Новое &окно при подключении диска"
+    800                     "РџРѕРґРєР»СЋ&С‡РёС‚СЊ СЃРµС‚РµРІРѕР№ РґРёСЃРє..."
+    801                     "РћС‚Рє&Р»СЋС‡РёС‚СЊ СЃРµС‚РµРІРѕР№ РґРёСЃРє..."
+    802                     "РЎ&РµС‚РµРІС‹Рµ РїРѕРґРєР»СЋС‡РµРЅРёСЏ..."
+    803                     "Рћ&Р±С‰РёР№ РґРѕСЃС‚СѓРї..."
+    804                     "&Р—Р°РїСЂРµС‚РёС‚СЊ РґРѕСЃС‚СѓРї..."
+    805                     "&РџРѕРєР°Р·Р°С‚СЊ РѕР±С‰РёРµ РєР°С‚Р°Р»РѕРіРё..."
+    806                     "Р’РѕСЃСЃ&С‚Р°РЅРѕРІРёС‚СЊ..."
+    807                     "РќРѕРІРѕРµ &РѕРєРЅРѕ РїСЂРё РїРѕРґРєР»СЋС‡РµРЅРёРё РґРёСЃРєР°"
 END
 
 STRINGTABLE
 BEGIN
-    1001                    "Ошибка при перемещении файла"
-    1002                    "Ошибка при копировании файла"
-    1003                    "Ошибка при удалении файла"
-    1004                    "Ошибка при переименовании файла"
-    1005                    "Ошибка при выборе диска"
-    1006                    "Ошибка при чтении каталога"
-    1007                    "Ошибка при назначении диску метки"
+    1001                    "РћС€РёР±РєР° РїСЂРё РїРµСЂРµРјРµС‰РµРЅРёРё С„Р°Р№Р»Р°"
+    1002                    "РћС€РёР±РєР° РїСЂРё РєРѕРїРёСЂРѕРІР°РЅРёРё С„Р°Р№Р»Р°"
+    1003                    "РћС€РёР±РєР° РїСЂРё СѓРґР°Р»РµРЅРёРё С„Р°Р№Р»Р°"
+    1004                    "РћС€РёР±РєР° РїСЂРё РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёРё С„Р°Р№Р»Р°"
+    1005                    "РћС€РёР±РєР° РїСЂРё РІС‹Р±РѕСЂРµ РґРёСЃРєР°"
+    1006                    "РћС€РёР±РєР° РїСЂРё С‡С‚РµРЅРёРё РєР°С‚Р°Р»РѕРіР°"
+    1007                    "РћС€РёР±РєР° РїСЂРё РЅР°Р·РЅР°С‡РµРЅРёРё РґРёСЃРєСѓ РјРµС‚РєРё"
 END
 
 STRINGTABLE
 BEGIN
-    1011                    "Не удается переместить %s. %s"
-    1012                    "Не удается скопировать %s. %s"
-    1013                    "Не удается удалить %s. %s"
-    1014                    "Не удается переименовать %s. %s"
-    1021                    "Не удается создать каталог %s. %s"
-    1022                    "Не удается удалить каталог %s. %s"
+    1011                    "РќРµ СѓРґР°РµС‚СЃСЏ РїРµСЂРµРјРµСЃС‚РёС‚СЊ %s. %s"
+    1012                    "РќРµ СѓРґР°РµС‚СЃСЏ СЃРєРѕРїРёСЂРѕРІР°С‚СЊ %s. %s"
+    1013                    "РќРµ СѓРґР°РµС‚СЃСЏ СѓРґР°Р»РёС‚СЊ %s. %s"
+    1014                    "РќРµ СѓРґР°РµС‚СЃСЏ РїРµСЂРµРёРјРµРЅРѕРІР°С‚СЊ %s. %s"
+    1021                    "РќРµ СѓРґР°РµС‚СЃСЏ СЃРѕР·РґР°С‚СЊ РєР°С‚Р°Р»РѕРі %s. %s"
+    1022                    "РќРµ СѓРґР°РµС‚СЃСЏ СѓРґР°Р»РёС‚СЊ РєР°С‚Р°Р»РѕРі %s. %s"
 END
 
 STRINGTABLE
 BEGIN
-    1030                    "Не удается создать или заменить %s. %s"
+    1030                    "РќРµ СѓРґР°РµС‚СЃСЏ СЃРѕР·РґР°С‚СЊ РёР»Рё Р·Р°РјРµРЅРёС‚СЊ %s. %s"
 END
 
 STRINGTABLE
 BEGIN
-    1101                    "Исходный и конечный объекты совпадают."
-    1102                    "Выберите один файл для переименования или воспользуйтесь подстановочными знаками (например *.TXT) для переименования группы файлов с похожими именами."
-    1103                    "Переименование в другой каталог или на другой диск не допускается.\nВоспользуйтесь вместо этого командой ''Переместить''."
+    1101                    "РСЃС…РѕРґРЅС‹Р№ Рё РєРѕРЅРµС‡РЅС‹Р№ РѕР±СЉРµРєС‚С‹ СЃРѕРІРїР°РґР°СЋС‚."
+    1102                    "Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ С„Р°Р№Р» РґР»СЏ РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёСЏ РёР»Рё РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РїРѕРґСЃС‚Р°РЅРѕРІРѕС‡РЅС‹РјРё Р·РЅР°РєР°РјРё (РЅР°РїСЂРёРјРµСЂ *.TXT) РґР»СЏ РїРµСЂРµРёРјРµРЅРѕРІР°РЅРёСЏ РіСЂСѓРїРїС‹ С„Р°Р№Р»РѕРІ СЃ РїРѕС…РѕР¶РёРјРё РёРјРµРЅР°РјРё."
+    1103                    "РџРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ РІ РґСЂСѓРіРѕР№ РєР°С‚Р°Р»РѕРі РёР»Рё РЅР° РґСЂСѓРіРѕР№ РґРёСЃРє РЅРµ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ.\nР’РѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РІРјРµСЃС‚Рѕ СЌС‚РѕРіРѕ РєРѕРјР°РЅРґРѕР№ ''РџРµСЂРµРјРµСЃС‚РёС‚СЊ''."
 END
 
 STRINGTABLE
 BEGIN
-    1104                    "Переименование корневого каталога невозможно."
-    1105                    "Конечный каталог является подкаталогом исходного."
-    1106                    "Файл используется системой Windows."
-    1107                    "Укажите один файл или каталог, либо воспользуйтесь подстановочными знаками (например *.TXT) для операций с группами файлов."
-    1108                    "Файл или каталог с данным именем уже существует. В пределах каталога имена всех файлов и каталогов должны быть уникальными."
-    1109                    "Проверьте правильность ввода пути и имени файла."
-    1110                    "Проверьте правильность ввода пути."
-    1111                    "Закройте ненужные приложения и повторите попытку, либо увеличьте объем виртуальной памяти с помощью раздела ''Система'' панели управления."
-    1113                    "Снимите защиту диска от записи или возьмите другой диск, а затем повторите попытку."
-    1114                    "Проверьте наличие необходимых разрешений для данной операции."
-    1115                    "Удалите ненужные файлы и повторите попытку."
-    1116                    "Носитель не содержит данных."
-    1117                    "Каталог уже существует."
-    1118                    "Указанное имя уже используется файлом."
+    1104                    "РџРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ РєРѕСЂРЅРµРІРѕРіРѕ РєР°С‚Р°Р»РѕРіР° РЅРµРІРѕР·РјРѕР¶РЅРѕ."
+    1105                    "РљРѕРЅРµС‡РЅС‹Р№ РєР°С‚Р°Р»РѕРі СЏРІР»СЏРµС‚СЃСЏ РїРѕРґРєР°С‚Р°Р»РѕРіРѕРј РёСЃС…РѕРґРЅРѕРіРѕ."
+    1106                    "Р¤Р°Р№Р» РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ СЃРёСЃС‚РµРјРѕР№ Windows."
+    1107                    "РЈРєР°Р¶РёС‚Рµ РѕРґРёРЅ С„Р°Р№Р» РёР»Рё РєР°С‚Р°Р»РѕРі, Р»РёР±Рѕ РІРѕСЃРїРѕР»СЊР·СѓР№С‚РµСЃСЊ РїРѕРґСЃС‚Р°РЅРѕРІРѕС‡РЅС‹РјРё Р·РЅР°РєР°РјРё (РЅР°РїСЂРёРјРµСЂ *.TXT) РґР»СЏ РѕРїРµСЂР°С†РёР№ СЃ РіСЂСѓРїРїР°РјРё С„Р°Р№Р»РѕРІ."
+    1108                    "Р¤Р°Р№Р» РёР»Рё РєР°С‚Р°Р»РѕРі СЃ РґР°РЅРЅС‹Рј РёРјРµРЅРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. Р’ РїСЂРµРґРµР»Р°С… РєР°С‚Р°Р»РѕРіР° РёРјРµРЅР° РІСЃРµС… С„Р°Р№Р»РѕРІ Рё РєР°С‚Р°Р»РѕРіРѕРІ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СѓРЅРёРєР°Р»СЊРЅС‹РјРё."
+    1109                    "РџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРѕРґР° РїСѓС‚Рё Рё РёРјРµРЅРё С„Р°Р№Р»Р°."
+    1110                    "РџСЂРѕРІРµСЂСЊС‚Рµ РїСЂР°РІРёР»СЊРЅРѕСЃС‚СЊ РІРІРѕРґР° РїСѓС‚Рё."
+    1111                    "Р—Р°РєСЂРѕР№С‚Рµ РЅРµРЅСѓР¶РЅС‹Рµ РїСЂРёР»РѕР¶РµРЅРёСЏ Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ, Р»РёР±Рѕ СѓРІРµР»РёС‡СЊС‚Рµ РѕР±СЉРµРј РІРёСЂС‚СѓР°Р»СЊРЅРѕР№ РїР°РјСЏС‚Рё СЃ РїРѕРјРѕС‰СЊСЋ СЂР°Р·РґРµР»Р° ''РЎРёСЃС‚РµРјР°'' РїР°РЅРµР»Рё СѓРїСЂР°РІР»РµРЅРёСЏ."
+    1113                    "РЎРЅРёРјРёС‚Рµ Р·Р°С‰РёС‚Сѓ РґРёСЃРєР° РѕС‚ Р·Р°РїРёСЃРё РёР»Рё РІРѕР·СЊРјРёС‚Рµ РґСЂСѓРіРѕР№ РґРёСЃРє, Р° Р·Р°С‚РµРј РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
+    1114                    "РџСЂРѕРІРµСЂСЊС‚Рµ РЅР°Р»РёС‡РёРµ РЅРµРѕР±С…РѕРґРёРјС‹С… СЂР°Р·СЂРµС€РµРЅРёР№ РґР»СЏ РґР°РЅРЅРѕР№ РѕРїРµСЂР°С†РёРё."
+    1115                    "РЈРґР°Р»РёС‚Рµ РЅРµРЅСѓР¶РЅС‹Рµ С„Р°Р№Р»С‹ Рё РїРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ."
+    1116                    "РќРѕСЃРёС‚РµР»СЊ РЅРµ СЃРѕРґРµСЂР¶РёС‚ РґР°РЅРЅС‹С…."
+    1117                    "РљР°С‚Р°Р»РѕРі СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚."
+    1118                    "РЈРєР°Р·Р°РЅРЅРѕРµ РёРјСЏ СѓР¶Рµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ С„Р°Р№Р»РѕРј."
 END
 
 STRINGTABLE
 BEGIN
-    1150                    "Неверный диск в устройстве."
-    1151                    "Приложение не предназначено для работы с Windows NT."
+    1150                    "РќРµРІРµСЂРЅС‹Р№ РґРёСЃРє РІ СѓСЃС‚СЂРѕР№СЃС‚РІРµ."
+    1151                    "РџСЂРёР»РѕР¶РµРЅРёРµ РЅРµ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅРѕ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Windows NT."
 END
 
 STRINGTABLE
 BEGIN
-    1152                    "Выполнение данного компонента невозможно."
-    1153                    "Компонент не предназначен для работы с Windows NT."
-    1154                    "Данная программа не является приложением для Windows NT."
-    1155                    "Возникла ошибка. Текст сообщения об ошибке отсутствует."
+    1152                    "Р’С‹РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅРѕРіРѕ РєРѕРјРїРѕРЅРµРЅС‚Р° РЅРµРІРѕР·РјРѕР¶РЅРѕ."
+    1153                    "РљРѕРјРїРѕРЅРµРЅС‚ РЅРµ РїСЂРµРґРЅР°Р·РЅР°С‡РµРЅ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ Windows NT."
+    1154                    "Р”Р°РЅРЅР°СЏ РїСЂРѕРіСЂР°РјРјР° РЅРµ СЏРІР»СЏРµС‚СЃСЏ РїСЂРёР»РѕР¶РµРЅРёРµРј РґР»СЏ Windows NT."
+    1155                    "Р’РѕР·РЅРёРєР»Р° РѕС€РёР±РєР°. РўРµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєРµ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚."
 END
 
 STRINGTABLE
 BEGIN
-    2000                    "ѓRѓsЃ[Њі(&F):"
-    2001                    "ѓRѓsЃ[ђж(&T):"
-    2002                    "Њі‚М–ј‘O(&F):"
-    2003                    "ђV‚µ‚ў–ј‘O(&T):"
-    2004                    "ѓRѓsЃ[ђж:"
-    2005                    "‚±‚МѓtѓHѓ“ѓg‚рЋg—p‚·‚й‚ЖЉїЋљ‚М•\\Ћ¦‚Є\n‚Е‚«‚И‚­‚И‚и‚Ь‚·ЃB"
+    2000                    "С“RС“sРѓ[РЉС–(&F):"
+    2001                    "С“RС“sРѓ[С’Р¶(&T):"
+    2002                    "РЉС–вЂљРњвЂ“СвЂO(&F):"
+    2003                    "С’VвЂљВµвЂљСћвЂ“СвЂO(&T):"
+    2004                    "С“RС“sРѓ[С’Р¶:"
+    2005                    "вЂљВ±вЂљРњС“tС“HС“вЂњС“gвЂљСЂР‹gвЂ”pвЂљВ·вЂљР№вЂљР–Р‰С—Р‹С™вЂљРњвЂў\\Р‹В¦вЂљР„\nвЂљР•вЂљВ«вЂљРвЂљВ­вЂљРвЂљРёвЂљР¬вЂљВ·РѓB"
 END
 
 STRINGTABLE
 BEGIN
-    3984                    "Команды для работы с файлами"
-    3985                    "Команды для работы с дисками"
-    3986                    "Команды для работы в окне структуры каталогов"
-    3987                    "Команды установки режима вывода данных"
-    3988                    "Команды настройки параметров"
-    3989                    "Команды управления безопасностью файлов и каталогов"
+    3984                    "РљРѕРјР°РЅРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С„Р°Р№Р»Р°РјРё"
+    3985                    "РљРѕРјР°РЅРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РґРёСЃРєР°РјРё"
+    3986                    "РљРѕРјР°РЅРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ РІ РѕРєРЅРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РєР°С‚Р°Р»РѕРіРѕРІ"
+    3987                    "РљРѕРјР°РЅРґС‹ СѓСЃС‚Р°РЅРѕРІРєРё СЂРµР¶РёРјР° РІС‹РІРѕРґР° РґР°РЅРЅС‹С…"
+    3988                    "РљРѕРјР°РЅРґС‹ РЅР°СЃС‚СЂРѕР№РєРё РїР°СЂР°РјРµС‚СЂРѕРІ"
+    3989                    "РљРѕРјР°РЅРґС‹ СѓРїСЂР°РІР»РµРЅРёСЏ Р±РµР·РѕРїР°СЃРЅРѕСЃС‚СЊСЋ С„Р°Р№Р»РѕРІ Рё РєР°С‚Р°Р»РѕРіРѕРІ"
 END
 
 STRINGTABLE
 BEGIN
-    4000                    "Команды для работы с окнами"
-    4001                    "Команды для работы со справкой"
+    4000                    "РљРѕРјР°РЅРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РѕРєРЅР°РјРё"
+    4001                    "РљРѕРјР°РЅРґС‹ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃРѕ СЃРїСЂР°РІРєРѕР№"
 END
 
 STRINGTABLE
 BEGIN
-    4030                    "Поиск нужного раздела в справочной системе"
+    4030                    "РџРѕРёСЃРє РЅСѓР¶РЅРѕРіРѕ СЂР°Р·РґРµР»Р° РІ СЃРїСЂР°РІРѕС‡РЅРѕР№ СЃРёСЃС‚РµРјРµ"
 END
 
 STRINGTABLE
 BEGIN
-    4101                    "Открытие выбранного элемента"
-    4102                    "Печать документа"
-    4103                    "Сопоставление файла и приложения"
-    4104                    "Поиск файлов и каталогов"
-    4105                    "Запуск приложения или открытие документа"
-    4106                    "Перемещение выбранных элементов"
-    4107                    "Копирование файлов и каталогов"
-    4108                    "Удаление файлов и каталогов"
-    4109                    "Переименование файлов и каталогов"
-    4110                    "Установка атрибутов и отображение свойств файлов"
-    4111                    "Создание каталога"
+    4101                    "РћС‚РєСЂС‹С‚РёРµ РІС‹Р±СЂР°РЅРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°"
+    4102                    "РџРµС‡Р°С‚СЊ РґРѕРєСѓРјРµРЅС‚Р°"
+    4103                    "РЎРѕРїРѕСЃС‚Р°РІР»РµРЅРёРµ С„Р°Р№Р»Р° Рё РїСЂРёР»РѕР¶РµРЅРёСЏ"
+    4104                    "РџРѕРёСЃРє С„Р°Р№Р»РѕРІ Рё РєР°С‚Р°Р»РѕРіРѕРІ"
+    4105                    "Р—Р°РїСѓСЃРє РїСЂРёР»РѕР¶РµРЅРёСЏ РёР»Рё РѕС‚РєСЂС‹С‚РёРµ РґРѕРєСѓРјРµРЅС‚Р°"
+    4106                    "РџРµСЂРµРјРµС‰РµРЅРёРµ РІС‹Р±СЂР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ"
+    4107                    "РљРѕРїРёСЂРѕРІР°РЅРёРµ С„Р°Р№Р»РѕРІ Рё РєР°С‚Р°Р»РѕРіРѕРІ"
+    4108                    "РЈРґР°Р»РµРЅРёРµ С„Р°Р№Р»РѕРІ Рё РєР°С‚Р°Р»РѕРіРѕРІ"
+    4109                    "РџРµСЂРµРёРјРµРЅРѕРІР°РЅРёРµ С„Р°Р№Р»РѕРІ Рё РєР°С‚Р°Р»РѕРіРѕРІ"
+    4110                    "РЈСЃС‚Р°РЅРѕРІРєР° Р°С‚СЂРёР±СѓС‚РѕРІ Рё РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРІРѕР№СЃС‚РІ С„Р°Р№Р»РѕРІ"
+    4111                    "РЎРѕР·РґР°РЅРёРµ РєР°С‚Р°Р»РѕРіР°"
 END
 
 STRINGTABLE
 BEGIN
-    4115                    "Завершение работы с диспетчером файлов"
-    4116                    "Выделение файлов и каталогов"
-    4117                    "Восстановление удаленных файлов"
-    4118                    "Копирование файла в буфер обмена"
-    4119                    "Уплотнение файла или каталога"
-    4120                    "Распаковка файла или каталога"
+    4115                    "Р—Р°РІРµСЂС€РµРЅРёРµ СЂР°Р±РѕС‚С‹ СЃ РґРёСЃРїРµС‚С‡РµСЂРѕРј С„Р°Р№Р»РѕРІ"
+    4116                    "Р’С‹РґРµР»РµРЅРёРµ С„Р°Р№Р»РѕРІ Рё РєР°С‚Р°Р»РѕРіРѕРІ"
+    4117                    "Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ СѓРґР°Р»РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ"
+    4118                    "РљРѕРїРёСЂРѕРІР°РЅРёРµ С„Р°Р№Р»Р° РІ Р±СѓС„РµСЂ РѕР±РјРµРЅР°"
+    4119                    "РЈРїР»РѕС‚РЅРµРЅРёРµ С„Р°Р№Р»Р° РёР»Рё РєР°С‚Р°Р»РѕРіР°"
+    4120                    "Р Р°СЃРїР°РєРѕРІРєР° С„Р°Р№Р»Р° РёР»Рё РєР°С‚Р°Р»РѕРіР°"
 END
 
 STRINGTABLE
 BEGIN
-    4201                    "Копирование диска"
-    4202                    "Изменение метки диска"
-    4203                    "Форматирование диска"
-    4205                    "Подключение сетевого диска"
-    4206                    "Отключение сетевого диска"
+    4201                    "РљРѕРїРёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
+    4202                    "РР·РјРµРЅРµРЅРёРµ РјРµС‚РєРё РґРёСЃРєР°"
+    4203                    "Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ РґРёСЃРєР°"
+    4205                    "РџРѕРґРєР»СЋС‡РµРЅРёРµ СЃРµС‚РµРІРѕРіРѕ РґРёСЃРєР°"
+    4206                    "РћС‚РєР»СЋС‡РµРЅРёРµ СЃРµС‚РµРІРѕРіРѕ РґРёСЃРєР°"
 END
 
 STRINGTABLE
 BEGIN
-    4251                    "Выбор текущего диска"
-    4254                    "Установка общего доступа к каталогу"
-    4255                    "Отмена общего доступа к каталогу"
+    4251                    "Р’С‹Р±РѕСЂ С‚РµРєСѓС‰РµРіРѕ РґРёСЃРєР°"
+    4254                    "РЈСЃС‚Р°РЅРѕРІРєР° РѕР±С‰РµРіРѕ РґРѕСЃС‚СѓРїР° Рє РєР°С‚Р°Р»РѕРіСѓ"
+    4255                    "РћС‚РјРµРЅР° РѕР±С‰РµРіРѕ РґРѕСЃС‚СѓРїР° Рє РєР°С‚Р°Р»РѕРіСѓ"
 END
 
 STRINGTABLE
 BEGIN
-    4301                    "Отображение подкаталогов первого уровня"
-    4302                    "Отображение подкаталогов всех уровней"
-    4303                    "Отображение полной структуры каталогов"
+    4301                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РїРѕРґРєР°С‚Р°Р»РѕРіРѕРІ РїРµСЂРІРѕРіРѕ СѓСЂРѕРІРЅСЏ"
+    4302                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РїРѕРґРєР°С‚Р°Р»РѕРіРѕРІ РІСЃРµС… СѓСЂРѕРІРЅРµР№"
+    4303                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РїРѕР»РЅРѕР№ СЃС‚СЂСѓРєС‚СѓСЂС‹ РєР°С‚Р°Р»РѕРіРѕРІ"
 END
 
 STRINGTABLE
 BEGIN
-    4304                    "Свертывание структуры выбранного подкаталога"
+    4304                    "РЎРІРµСЂС‚С‹РІР°РЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РІС‹Р±СЂР°РЅРЅРѕРіРѕ РїРѕРґРєР°С‚Р°Р»РѕРіР°"
 END
 
 STRINGTABLE
 BEGIN
-    4401                    "Отображение только имен файлов"
-    4402                    "Отображение полных сведений о файлах"
-    4403                    "Отображение выбранных сведений о файлах"
-    4404                    "Сортировка файлов по имени"
-    4405                    "Сортировка файлов по типу"
-    4406                    "Сортировка файлов по размеру"
-    4407                    "Сортировка файлов по дате"
-    4409                    "Отображение файлов выбранных типов"
-    4411                    "Отображение структуры каталогов"
-    4412                    "Отображение содержимого текущего каталога"
-    4413                    "Отображение структуры каталогов и содержимого текущего каталога"
-    4414                    "Перемещение разделителя областей в окне просмотра"
+    4401                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ С‚РѕР»СЊРєРѕ РёРјРµРЅ С„Р°Р№Р»РѕРІ"
+    4402                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РїРѕР»РЅС‹С… СЃРІРµРґРµРЅРёР№ Рѕ С„Р°Р№Р»Р°С…"
+    4403                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РІС‹Р±СЂР°РЅРЅС‹С… СЃРІРµРґРµРЅРёР№ Рѕ С„Р°Р№Р»Р°С…"
+    4404                    "РЎРѕСЂС‚РёСЂРѕРІРєР° С„Р°Р№Р»РѕРІ РїРѕ РёРјРµРЅРё"
+    4405                    "РЎРѕСЂС‚РёСЂРѕРІРєР° С„Р°Р№Р»РѕРІ РїРѕ С‚РёРїСѓ"
+    4406                    "РЎРѕСЂС‚РёСЂРѕРІРєР° С„Р°Р№Р»РѕРІ РїРѕ СЂР°Р·РјРµСЂСѓ"
+    4407                    "РЎРѕСЂС‚РёСЂРѕРІРєР° С„Р°Р№Р»РѕРІ РїРѕ РґР°С‚Рµ"
+    4409                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ С„Р°Р№Р»РѕРІ РІС‹Р±СЂР°РЅРЅС‹С… С‚РёРїРѕРІ"
+    4411                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РєР°С‚Р°Р»РѕРіРѕРІ"
+    4412                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ С‚РµРєСѓС‰РµРіРѕ РєР°С‚Р°Р»РѕРіР°"
+    4413                    "РћС‚РѕР±СЂР°Р¶РµРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ РєР°С‚Р°Р»РѕРіРѕРІ Рё СЃРѕРґРµСЂР¶РёРјРѕРіРѕ С‚РµРєСѓС‰РµРіРѕ РєР°С‚Р°Р»РѕРіР°"
+    4414                    "РџРµСЂРµРјРµС‰РµРЅРёРµ СЂР°Р·РґРµР»РёС‚РµР»СЏ РѕР±Р»Р°СЃС‚РµР№ РІ РѕРєРЅРµ РїСЂРѕСЃРјРѕС‚СЂР°"
 END
 
 STRINGTABLE
 BEGIN
-    4501                    "Управление сообщениями о подтверждении операций"
-    4503                    "Вывод и скрытие строки состояния"
-    4504                    "Свертывание окна диспетчера файлов в значок при запуске программы"
-    4505                    "Обозначение каталогов, содержащих подкаталоги"
-    4507                    "Вывод и скрытие панели дисков"
-    4508                    "Вывод и скрытие панели инструментов"
-    4509                    "Открытие новых окон при подключении сетевых устройств"
-    4510                    "Изменение шрифта для диспетчера файлов"
-    4511                    "Сохранение настройки при выходе из программы"
+    4501                    "РЈРїСЂР°РІР»РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёСЏРјРё Рѕ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёРё РѕРїРµСЂР°С†РёР№"
+    4503                    "Р’С‹РІРѕРґ Рё СЃРєСЂС‹С‚РёРµ СЃС‚СЂРѕРєРё СЃРѕСЃС‚РѕСЏРЅРёСЏ"
+    4504                    "РЎРІРµСЂС‚С‹РІР°РЅРёРµ РѕРєРЅР° РґРёСЃРїРµС‚С‡РµСЂР° С„Р°Р№Р»РѕРІ РІ Р·РЅР°С‡РѕРє РїСЂРё Р·Р°РїСѓСЃРєРµ РїСЂРѕРіСЂР°РјРјС‹"
+    4505                    "РћР±РѕР·РЅР°С‡РµРЅРёРµ РєР°С‚Р°Р»РѕРіРѕРІ, СЃРѕРґРµСЂР¶Р°С‰РёС… РїРѕРґРєР°С‚Р°Р»РѕРіРё"
+    4507                    "Р’С‹РІРѕРґ Рё СЃРєСЂС‹С‚РёРµ РїР°РЅРµР»Рё РґРёСЃРєРѕРІ"
+    4508                    "Р’С‹РІРѕРґ Рё СЃРєСЂС‹С‚РёРµ РїР°РЅРµР»Рё РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ"
+    4509                    "РћС‚РєСЂС‹С‚РёРµ РЅРѕРІС‹С… РѕРєРѕРЅ РїСЂРё РїРѕРґРєР»СЋС‡РµРЅРёРё СЃРµС‚РµРІС‹С… СѓСЃС‚СЂРѕР№СЃС‚РІ"
+    4510                    "РР·РјРµРЅРµРЅРёРµ С€СЂРёС„С‚Р° РґР»СЏ РґРёСЃРїРµС‚С‡РµСЂР° С„Р°Р№Р»РѕРІ"
+    4511                    "РЎРѕС…СЂР°РЅРµРЅРёРµ РЅР°СЃС‚СЂРѕР№РєРё РїСЂРё РІС‹С…РѕРґРµ РёР· РїСЂРѕРіСЂР°РјРјС‹"
 END
 
 STRINGTABLE
 BEGIN
-    4512                    "Настройка панели инструментов"
+    4512                    "РќР°СЃС‚СЂРѕР№РєР° РїР°РЅРµР»Рё РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ"
 END
 
 STRINGTABLE
 BEGIN
-    4605                    "Просмотр и установка разрешений для выделенных объектов"
-    4606                    "Просмотр и установка параметров аудита для выделенных объектов"
-    4607                    "Просмотр и смена владельца выделенных объектов"
+    4605                    "РџСЂРѕСЃРјРѕС‚СЂ Рё СѓСЃС‚Р°РЅРѕРІРєР° СЂР°Р·СЂРµС€РµРЅРёР№ РґР»СЏ РІС‹РґРµР»РµРЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ"
+    4606                    "РџСЂРѕСЃРјРѕС‚СЂ Рё СѓСЃС‚Р°РЅРѕРІРєР° РїР°СЂР°РјРµС‚СЂРѕРІ Р°СѓРґРёС‚Р° РґР»СЏ РІС‹РґРµР»РµРЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ"
+    4607                    "РџСЂРѕСЃРјРѕС‚СЂ Рё СЃРјРµРЅР° РІР»Р°РґРµР»СЊС†Р° РІС‹РґРµР»РµРЅРЅС‹С… РѕР±СЉРµРєС‚РѕРІ"
 END
 
 STRINGTABLE
 BEGIN
-    5701                    "Расположение окон каскадом (с наложением)"
-    5702                    "Расположение окон справа налево без наложения"
-    5703                    "Расположение окон сверху вниз без наложения"
-    5704                    "Обновление содержимого окна"
-    5705                    "Упорядочивание значков в окне"
-    5706                    "Открытие нового окна"
+    5701                    "Р Р°СЃРїРѕР»РѕР¶РµРЅРёРµ РѕРєРѕРЅ РєР°СЃРєР°РґРѕРј (СЃ РЅР°Р»РѕР¶РµРЅРёРµРј)"
+    5702                    "Р Р°СЃРїРѕР»РѕР¶РµРЅРёРµ РѕРєРѕРЅ СЃРїСЂР°РІР° РЅР°Р»РµРІРѕ Р±РµР· РЅР°Р»РѕР¶РµРЅРёСЏ"
+    5703                    "Р Р°СЃРїРѕР»РѕР¶РµРЅРёРµ РѕРєРѕРЅ СЃРІРµСЂС…Сѓ РІРЅРёР· Р±РµР· РЅР°Р»РѕР¶РµРЅРёСЏ"
+    5704                    "РћР±РЅРѕРІР»РµРЅРёРµ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ РѕРєРЅР°"
+    5705                    "РЈРїРѕСЂСЏРґРѕС‡РёРІР°РЅРёРµ Р·РЅР°С‡РєРѕРІ РІ РѕРєРЅРµ"
+    5706                    "РћС‚РєСЂС‹С‚РёРµ РЅРѕРІРѕРіРѕ РѕРєРЅР°"
 END
 
 STRINGTABLE
 BEGIN
-    5801                    "Вывод содержания справочной системы диспетчера файлов"
-    5802                    "Вывод сведений о работе со справкой"
-    5803                    "Вывод сведений о диспетчере файлов"
+    5801                    "Р’С‹РІРѕРґ СЃРѕРґРµСЂР¶Р°РЅРёСЏ СЃРїСЂР°РІРѕС‡РЅРѕР№ СЃРёСЃС‚РµРјС‹ РґРёСЃРїРµС‚С‡РµСЂР° С„Р°Р№Р»РѕРІ"
+    5802                    "Р’С‹РІРѕРґ СЃРІРµРґРµРЅРёР№ Рѕ СЂР°Р±РѕС‚Рµ СЃРѕ СЃРїСЂР°РІРєРѕР№"
+    5803                    "Р’С‹РІРѕРґ СЃРІРµРґРµРЅРёР№ Рѕ РґРёСЃРїРµС‚С‡РµСЂРµ С„Р°Р№Р»РѕРІ"
 END
 
 #endif    // Russian (Russia) resources
