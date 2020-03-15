@@ -10,6 +10,7 @@
 ********************************************************************/
 
 #include <windows.h>
+#include <stdexcept>
 
 const unsigned int YIELD_ITERATION = 30; // yield after 30 iterations
 const unsigned int MAX_SLEEP_ITERATION = 40;
