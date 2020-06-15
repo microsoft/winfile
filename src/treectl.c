@@ -1176,6 +1176,8 @@ FillOutTreeList(HWND hwndTC,
 	p++;
 	*p = CHAR_NULL;  // double null terminated
 
+    bCancelTree = 0;
+
 	if (!ReadDirLevel(hwndTC, pNode, szExists, pNode->nLevels + 1, nIndex, dwAttribs, FALSE, szExpand, FALSE)) {
 		SPC_SET_NOTREE(qFreeSpace);
 	}
