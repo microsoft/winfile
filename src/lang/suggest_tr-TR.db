@@ -1,0 +1,91 @@
+
+// Suggestion database info
+// Used to automate the suggestions compiled into winfile
+//
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+//
+// Usage: Just add a new entry of the format:
+
+// SUGGEST( resource_number, error-code, flags, "your-reason-string" )
+//  resource_number = incremental number for string ID
+//  error-code = error this suggestion corresponds to
+//  "your-reason-string" string displayed for error
+//  flags: SUG_IGN_FORMATMESSAGE = prepend system FormatMessage text
+
+// Ok, so it's not perfect: your resource number can't clash
+// with any others in winfile.h.  Use 1 .. 99 (1101 to 1199)
+// resource # 0 is reserved.
+
+// What it does:
+// For system errors (defined here in winfile land as < DE_BEGIN (bit 29 off)),
+// it puts the "suggestion" below the error text (a blank line is between
+// them.
+//
+// For our errors (>= DE_BEGIN), it places the text below (1 blank line)
+// the previous string.  There is no longer any corresponding text called
+// "IDS_REASONS+DE_MYERROR" or "DE_MYERROR" in the resources.
+// Internal error messages and their reasons must be stored here in
+// the same string.
+
+#ifndef IDS_SUGGESTBEGIN
+#define IDS_SUGGESTBEGIN 1100
+#endif
+
+SUGGEST( 1, DE_SAMEFILE, 0L, \
+ "Hedef ve kaynak aynı." )
+SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
+ "Adını değiştirmek için yalnızca bir dosya seçin veya birden çok aynı adlı dosyanın adını değiştirmek için joker karakteri kullanın (örn. *.TXT)." )
+SUGGEST( 3, DE_DIFFDIR, 0L, \
+ "Başka bir dizine veya diske ad değiştirme yapılamıyor.\nBunun yerine Dosya Taşı komutunu kullanın." )
+SUGGEST( 4, DE_ROOTDIR, 0L, \
+ "Kök dizin adını değiştiremezsiniz." )
+SUGGEST( 5, DE_DESTSUBTREE, 0L, \
+ "Hedef dizin, kaynak dizinin bir alt dizini." )
+SUGGEST( 6, DE_WINDOWSFILE, 0L, \
+ "Dosya, Windows tarafından kullanılıyor." )
+SUGGEST( 7, DE_MANYDEST, 0L, \
+ "\"Şuraya\" kutusuna bir dosya veya dizin adı belirtin. Birden çok dosya belirtmek isterseniz joker karakteri kullanın (örn. *.TXT)." )
+SUGGEST( 8, DE_RENAMREPLACE, 0L, \
+ "Bu adda bir dosya/dizin zaten var. Bir dizin içindeki dosya adları benzersiz olmalıdır." )
+
+// This error is returned when selecting a grayed network drive and the rdr is not started
+SUGGEST( 9, ERROR_FILE_NOT_FOUND, 0L, \
+ "Doğru yol ve dosya adının belirtilmiş olduğundan emin olun." )
+SUGGEST(10, ERROR_PATH_NOT_FOUND, 0L, \
+ "Doğru yolun belirtilmiş olduğundan emin olun." )
+SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
+ "Bir veya daha fazla uygulamadan çıkıp yeniden deneyin. Bunun dışında Denetim Masası'ndaki Sistem panelinden sanal belleğinizi artırmayı deneyebilirsiniz." )
+// 12
+SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
+ "Bu diskteki yazma korumasını kapatın veya başka bir disk kullanıp yeniden deneyin. )
+SUGGEST(14, ERROR_NETWORK_ACCESS_DENIED, 0L, \
+ "Bu işlemi gerçekleştirmek için gerekli ağ izinlerine sahip olduğunuzdan emin olun." )
+SUGGEST(15, ERROR_DISK_FULL, 0L, \
+  "Disk alanını artırmak için bir veya daha fazla dosyayı silin ve yeniden deneyin." )
+SUGGEST(16, ERROR_NO_DATA_DETECTED, SUG_IGN_FORMATMESSAGE, \
+  "Bu ortamda veri algılanamadı." )
+
+SUGGEST(17, DE_MAKEDIREXISTS, 0L, \
+  "Bu dizin zaten var." )
+SUGGEST(18, DE_DIREXISTSASFILE, 0L, \
+  "Belirtilen ad zaten başka bir dosya tarafından kullanılıyor." )
+#ifdef ASSOC
+SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
+  "Bu, yalnızca Ortak Dosya Türleri ve uzantıları görüntülenirken silinebilir." )
+#endif
+
+// Block out errors that require arguments
+SUGGEST(50, ERROR_WRONG_DISK, SUG_IGN_FORMATMESSAGE, \
+  "Sürücüde yanlış disk var." )
+SUGGEST(51, ERROR_CHILD_NOT_COMPLETE, SUG_IGN_FORMATMESSAGE, \
+  "Bu uygulama Windows NT kipinde çalıştırılamaz. )
+SUGGEST(52, ERROR_INVALID_ORDINAL, SUG_IGN_FORMATMESSAGE, \
+  "İşletim sistemi bu bileşeni çalıştıramıyor." )
+SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
+  "Bu bileşen Windows NT kipinde çalıştırılamaz." )
+SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
+  "Bu program, geçerli bir Windows NT uygulaması değil." )
+SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
+  "Bir hata oluştu. Bunun için bir ileti mevcut değil." )
+
