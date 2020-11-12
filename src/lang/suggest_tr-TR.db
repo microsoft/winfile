@@ -45,7 +45,7 @@ SUGGEST( 5, DE_DESTSUBTREE, 0L, \
 SUGGEST( 6, DE_WINDOWSFILE, 0L, \
  "Dosya, Windows tarafından kullanılıyor." )
 SUGGEST( 7, DE_MANYDEST, 0L, \
- "\"Şuraya\" kutusuna bir dosya veya dizin adı belirtin. Birden çok dosya belirtmek isterseniz joker karakteri kullanın (örn. *.TXT)." )
+ "'Şuraya' kutusuna bir dosya veya dizin adı belirtin. Birden çok dosya belirtmek isterseniz joker karakteri kullanın (örn. *.TXT)." )
 SUGGEST( 8, DE_RENAMREPLACE, 0L, \
  "Bu adda bir dosya/dizin zaten var. Bir dizin içindeki dosya adları benzersiz olmalıdır." )
 
@@ -58,7 +58,7 @@ SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
  "Bir veya daha fazla uygulamadan çıkıp yeniden deneyin. Bunun dışında Denetim Masası'ndaki Sistem panelinden sanal belleğinizi artırmayı deneyebilirsiniz." )
 // 12
 SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
- "Bu diskteki yazma korumasını kapatın veya başka bir disk kullanıp yeniden deneyin. )
+ "Bu diskteki yazma korumasını kapatın veya başka bir disk kullanıp yeniden deneyin." )
 SUGGEST(14, ERROR_NETWORK_ACCESS_DENIED, 0L, \
  "Bu işlemi gerçekleştirmek için gerekli ağ izinlerine sahip olduğunuzdan emin olun." )
 SUGGEST(15, ERROR_DISK_FULL, 0L, \
@@ -79,7 +79,7 @@ SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
 SUGGEST(50, ERROR_WRONG_DISK, SUG_IGN_FORMATMESSAGE, \
   "Sürücüde yanlış disk var." )
 SUGGEST(51, ERROR_CHILD_NOT_COMPLETE, SUG_IGN_FORMATMESSAGE, \
-  "Bu uygulama Windows NT kipinde çalıştırılamaz. )
+  "Bu uygulama Windows NT kipinde çalıştırılamaz." )
 SUGGEST(52, ERROR_INVALID_ORDINAL, SUG_IGN_FORMATMESSAGE, \
   "İşletim sistemi bu bileşeni çalıştıramıyor." )
 SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
