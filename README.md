@@ -19,7 +19,7 @@ You are welcome to do that on your own.
 
 If you are running Windows 10, you can download the app from the store
 
-<a href="https://www.microsoft.com/store/apps/9p7vbbbc49rb?ocid=badge"><img src="https://assets.windowsphone.com/85864462-9c82-451e-9355-a3d5f874397a/English_get-it-from-MS_InvariantCulture_Default.png" alt="Get it from Microsoft" width="150px"></a>
+<a href="https://www.microsoft.com/store/apps/9p7vbbbc49rb?ocid=badge"><img src="https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png" alt="Get it from Microsoft" width="150px"></a>
 
 If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of precompiled versions available.
 
