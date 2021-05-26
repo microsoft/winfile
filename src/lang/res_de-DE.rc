@@ -212,8 +212,8 @@ BEGIN
 //    IDS_PMODEONLYMSG        "Diese Anwendung benötigt Windows."                                                             /* 128 */
     IDS_DDEFAIL             "Ein Fehler ist während des Senden des Befehls zur Anwendung aufgetreten."                                                                /* 128 */
 //    IDS_COMPRESSEDEXE       "Dies Anwendung oder einer ihrer Komponenten ist komprimiert.\n\nBenutzen sie das MS-DOS expand tool um die Datei vom Setup-Datenträger zu kopieren."
-    IDS_INVALIDDLL          "Eine Bibliotheksdatei, die zum Betrieb der gewählten Anwendung benötigt wird ist defekt. Bitte installieren Sie sie Anwendung erneut."
-    IDS_SHAREERROR          "Diese Datei wird von einer anderen Anwednung verwendet."
+    IDS_INVALIDDLL          "Eine Bibliotheksdatei, die zum Betrieb der gewählten Anwendung benötigt wird ist defekt. Bitte installieren Sie die Anwendung erneut."
+    IDS_SHAREERROR          "Diese Datei wird von einer anderen Anwendung verwendet."
 
     IDS_CREATELONGDIR       "Datei-Manager kann auf die Datei im Verzeichnis '%s' nicht zugreifen.\n\nMöchten Sie weitermachen?"
     IDS_CREATELONGDIRTITLE  "Erstelle Verzeichnis"
