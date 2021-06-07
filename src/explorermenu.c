@@ -1,11 +1,17 @@
 #include <ShlObj.h>
 
 //
-// How to host an IContextMenu, part 1 – Initial foray
+// How to host an IContextMenu, part 1 - Initial foray
 // https://devblogs.microsoft.com/oldnewthing/20040920-00/?p=37823
 // 
-// How to host an IContextMenu, part 2 – Displaying the context menu
+// How to host an IContextMenu, part 2 - Displaying the context menu
 // https://devblogs.microsoft.com/oldnewthing/20040922-00/?p=37793
+// 
+// How to host an IContextMenu, part 3 - Invocation location
+// https://devblogs.microsoft.com/oldnewthing/20040923-00/?p=37773
+//
+// How to host an IContextMenu, part 4 - Key context
+// https://devblogs.microsoft.com/oldnewthing/20040924-00/?p=37753
 //
 
 static HRESULT GetUIObjectOfFile(HWND hwnd, LPCWSTR pszPath, REFIID riid, void **ppv)
@@ -53,12 +59,22 @@ void ShowExplorerContextMenu(HWND hwnd, LPCWSTR pFileName, UINT xPos, UINT yPos)
 				{
 					CMINVOKECOMMANDINFOEX info = { 0 };
 					info.cbSize = sizeof(info);
-					info.fMask = CMIC_MASK_UNICODE;
+					info.fMask = CMIC_MASK_UNICODE | CMIC_MASK_PTINVOKE;
+					if (GetKeyState(VK_CONTROL) < 0)
+					{
+						info.fMask |= CMIC_MASK_CONTROL_DOWN;
+					}
+					if (GetKeyState(VK_SHIFT) < 0)
+					{
+						info.fMask |= CMIC_MASK_SHIFT_DOWN;
+					}
 					info.hwnd = hwnd;
 					auto i = iCmd - SCRATCH_QCM_FIRST;
 					info.lpVerb = MAKEINTRESOURCEA(i);
 					info.lpVerbW = MAKEINTRESOURCEW(i);
 					info.nShow = SW_SHOWNORMAL;
+					info.ptInvoke.x = xPos;
+					info.ptInvoke.y = yPos;
 					HRESULT hr = pcm->lpVtbl->InvokeCommand(pcm, (LPCMINVOKECOMMANDINFO)&info);
 				}
 			}
