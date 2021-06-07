@@ -12,7 +12,13 @@
 //
 // How to host an IContextMenu, part 4 - Key context
 // https://devblogs.microsoft.com/oldnewthing/20040924-00/?p=37753
+// 
+// How to host an IContextMenu, part 5 - Handling menu messages
+// https://devblogs.microsoft.com/oldnewthing/20040927-00/?p=37733
 //
+
+IContextMenu2 *pExplorerCm2;
+IContextMenu3 *pExplorerCm3;
 
 static HRESULT GetUIObjectOfFile(HWND hwnd, LPCWSTR pszPath, REFIID riid, void **ppv)
 {
@@ -54,7 +60,19 @@ void ShowExplorerContextMenu(HWND hwnd, LPCWSTR pFileName, UINT xPos, UINT yPos)
 		{
 			if (SUCCEEDED(pcm->lpVtbl->QueryContextMenu(pcm, hmenu, 0, SCRATCH_QCM_FIRST, SCRATCH_QCM_LAST, CMF_NORMAL)))
 			{
+				pcm->lpVtbl->QueryInterface(pcm, &IID_IContextMenu2, (void **)&pExplorerCm2);
+				pcm->lpVtbl->QueryInterface(pcm, &IID_IContextMenu3, (void **)&pExplorerCm3);
 				int iCmd = TrackPopupMenuEx(hmenu, TPM_RETURNCMD, pt.x, pt.y, hwnd, NULL);
+				if (pExplorerCm2)
+				{
+					pExplorerCm2->lpVtbl->Release(pExplorerCm2);
+					pExplorerCm2 = NULL;
+				}
+				if (pExplorerCm3)
+				{
+					pExplorerCm3->lpVtbl->Release(pExplorerCm3);
+					pExplorerCm3 = NULL;
+				}
 				if (iCmd > 0)
 				{
 					CMINVOKECOMMANDINFOEX info = { 0 };

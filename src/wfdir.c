@@ -16,6 +16,7 @@
 #include <commctrl.h>
 
 #include "wfdrop.h"
+#include "explorermenu.h"
 
 WCHAR   szAttr[]        = L"RHSACE";
 
@@ -428,6 +429,19 @@ DirWndProc(
    HWND hwndParent = GetParent(hwnd);
 
    static HWND   hwndOwnerDraw = NULL;
+
+   // Process messages for the explorer context menu
+   if (pExplorerCm3) {
+       LRESULT lres;
+       if (SUCCEEDED(pExplorerCm3->lpVtbl->HandleMenuMsg2(pExplorerCm3, uMsg, wParam, lParam, &lres))) {
+           return lres;
+       }
+   }
+   else if (pExplorerCm2) {
+       if (SUCCEEDED(pExplorerCm2->lpVtbl->HandleMenuMsg(pExplorerCm2, uMsg, wParam, lParam))) {
+           return 0;
+       }
+   }
 
 #ifdef PROGMANHSCROLL
    //
