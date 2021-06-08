@@ -40,10 +40,12 @@ static HRESULT GetUIObjectOfFile(HWND hwnd, LPCWSTR pszPath, REFIID riid, void *
 	return hr;
 }
 
-#define SCRATCH_QCM_FIRST 1
-#define SCRATCH_QCM_LAST  0x7FFF
+// Since we are combining the WinFile menu with the explorer menu
+// all of the WinFile command IDs must be below this range
+#define EXPLORER_QCM_FIRST 0x1001
+#define EXPLORER_QCM_LAST  0x7FFF
 
-void ShowExplorerContextMenu(HWND hwnd, LPCWSTR pFileName, UINT xPos, UINT yPos)
+int ShowExplorerContextMenu(HWND hwnd, LPCWSTR pFileName, HMENU hMenuWinFile, UINT xPos, UINT yPos)
 {
 	POINT pt = { (long)xPos, (long)yPos };
 	if (pt.x == -1 && pt.y == -1)
@@ -52,17 +54,19 @@ void ShowExplorerContextMenu(HWND hwnd, LPCWSTR pFileName, UINT xPos, UINT yPos)
 		ClientToScreen(hwnd, &pt);
 	}
 
+	int ret = 0;
 	IContextMenu *pcm;
 	if (SUCCEEDED(GetUIObjectOfFile(hwnd, pFileName, &IID_IContextMenu, (void **)&pcm)))
 	{
 		HMENU hmenu = CreatePopupMenu();
 		if (hmenu)
 		{
-			if (SUCCEEDED(pcm->lpVtbl->QueryContextMenu(pcm, hmenu, 0, SCRATCH_QCM_FIRST, SCRATCH_QCM_LAST, CMF_NORMAL)))
+			if (SUCCEEDED(pcm->lpVtbl->QueryContextMenu(pcm, hmenu, 0, EXPLORER_QCM_FIRST, EXPLORER_QCM_LAST, CMF_NORMAL)))
 			{
+				InsertMenu(hMenuWinFile, (UINT)-1, MF_BYPOSITION | MF_POPUP, (UINT_PTR)hmenu, L"Explorer");
 				pcm->lpVtbl->QueryInterface(pcm, &IID_IContextMenu2, (void **)&pExplorerCm2);
 				pcm->lpVtbl->QueryInterface(pcm, &IID_IContextMenu3, (void **)&pExplorerCm3);
-				int iCmd = TrackPopupMenuEx(hmenu, TPM_RETURNCMD, pt.x, pt.y, hwnd, NULL);
+				int iCmd = TrackPopupMenuEx(hMenuWinFile, TPM_RETURNCMD, pt.x, pt.y, hwnd, NULL);
 				if (pExplorerCm2)
 				{
 					pExplorerCm2->lpVtbl->Release(pExplorerCm2);
@@ -73,7 +77,12 @@ void ShowExplorerContextMenu(HWND hwnd, LPCWSTR pFileName, UINT xPos, UINT yPos)
 					pExplorerCm3->lpVtbl->Release(pExplorerCm3);
 					pExplorerCm3 = NULL;
 				}
-				if (iCmd > 0)
+				if (iCmd > 0 && iCmd <= EXPLORER_QCM_FIRST)
+				{
+					// The command selected was in the caller's range, they will have to execute it
+					ret = iCmd;
+				}
+				else if (iCmd > 0)
 				{
 					CMINVOKECOMMANDINFOEX info = { 0 };
 					info.cbSize = sizeof(info);
@@ -87,7 +96,7 @@ void ShowExplorerContextMenu(HWND hwnd, LPCWSTR pFileName, UINT xPos, UINT yPos)
 						info.fMask |= CMIC_MASK_SHIFT_DOWN;
 					}
 					info.hwnd = hwnd;
-					auto i = iCmd - SCRATCH_QCM_FIRST;
+					int i = iCmd - EXPLORER_QCM_FIRST;
 					info.lpVerb = MAKEINTRESOURCEA(i);
 					info.lpVerbW = MAKEINTRESOURCEW(i);
 					info.nShow = SW_SHOWNORMAL;
@@ -100,4 +109,5 @@ void ShowExplorerContextMenu(HWND hwnd, LPCWSTR pFileName, UINT xPos, UINT yPos)
 		}
 		pcm->lpVtbl->Release(pcm);
 	}
+	return ret;
 }

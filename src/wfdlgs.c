@@ -891,14 +891,14 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 	}
 
 	if (pSelectedFile != NULL) {
-		ShowExplorerContextMenu(hwnd, pSelectedFile, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+		cmd = ShowExplorerContextMenu(hwnd, pSelectedFile, hMenu, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
 	}
 	else
 	{
 		cmd = TrackPopupMenu(hMenu, TPM_LEFTALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 0, hwnd, NULL);
-		if (cmd != 0)
-			PostMessage(hwndFrame, WM_COMMAND, GET_WM_COMMAND_MPS(cmd, 0, 0));
 	}
+	if (cmd != 0)
+		PostMessage(hwndFrame, WM_COMMAND, GET_WM_COMMAND_MPS(cmd, 0, 0));
 
 	DestroyMenu(hMenu);
 }
