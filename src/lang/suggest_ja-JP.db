@@ -40,7 +40,7 @@ SUGGEST( 3, DE_DIFFDIR, 0L, \
 SUGGEST( 4, DE_ROOTDIR, 0L, \
  "ルート ディレクトリの名前は変更できません。" )
 SUGGEST( 5, DE_DESTSUBTREE, 0L, \
- "宛先のディレクトリが子ディレクトリにあります。" )
+ "宛先のディレクトリがサブディレクトリにあります。" )
 SUGGEST( 6, DE_WINDOWSFILE, 0L, \
  "Windows がファイルを使用しています。" )
 SUGGEST( 7, DE_MANYDEST, 0L, \
@@ -87,4 +87,3 @@ SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
   "このプログラムは有効な Windows NT アプリケーションではありません。" )
 SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
   "エラーが発生しました。このエラーに関するメッセージはありません。" )
-

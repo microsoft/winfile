@@ -53,11 +53,11 @@ BEGIN
     POPUP       "ツリー(&T)"
     BEGIN
     MENUITEM    "1つ展開(&X)\t+", IDM_EXPONE
-    MENUITEM    "子ディレクトリを展開(&B)\t*",    IDM_EXPSUB
+    MENUITEM    "サブディレクトリを展開(&B)\t*",    IDM_EXPSUB
     MENUITEM    "全て展開(&A)\tCtrl+*",  IDM_EXPALL
-    MENUITEM    "子ディレクトリを折り畳む(&C)\t-",  IDM_COLLAPSE
+    MENUITEM    "サブディレクトリを折り畳む(&C)\t-",  IDM_COLLAPSE
     MENUITEM    SEPARATOR
-    MENUITEM    "展開可能な子ディレクトリーを表示(&I)",    IDM_ADDPLUSES
+    MENUITEM    "展開可能なサブディレクトリーを表示(&I)",    IDM_ADDPLUSES
     END
     POPUP       "表示(&V)"
     BEGIN
@@ -124,7 +124,7 @@ BEGIN
 
 END
 
-CTXMENU MENU PRELOAD 
+CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
@@ -495,8 +495,8 @@ JAPANEND
     IDS_INITUPDATEFAIL          "バックグラウンドでの更新を行う機能を初期化できませんでした。ファイル マネージャーを終了します。"
     IDS_INITUPDATEFAILTITLE     "ファイル マネージャーの情報"
 
-    IDS_COMPRESSDIR             "%s 内の全てのファイルと子ディレクトリを圧縮しますか?"
-    IDS_UNCOMPRESSDIR           "%s 内の全てのファイルと子ディレクトリを解凍しますか?"
+    IDS_COMPRESSDIR             "%s 内の全てのファイルとサブディレクトリを圧縮しますか?"
+    IDS_UNCOMPRESSDIR           "%s 内の全てのファイルとサブディレクトリを解凍しますか?"
     IDS_COMPRESS_ATTRIB_ERR     "ファイル マネージャーは %s の圧縮属性を変更できません。"
     IDS_NTLDRCOMPRESSERR        "ファイル %s は圧縮されません。このファイルを圧縮するとシステムが起動しなくなるかもしれません。"
     IDS_MULTICOMPRESSERR        "ファイル マネージャーは現在、ファイルを圧縮または解凍しています。\n他のファイルを圧縮するには、全てのファイルを圧縮また解凍が完了するまでお待ち下さい。"
@@ -560,10 +560,10 @@ BEGIN
     MH_MYITEMS+IDM_DRIVESMORE,  "別のドライブを選択する"
 
     MH_MYITEMS+IDM_EXPONE,      "1つ展開する"
-    MH_MYITEMS+IDM_EXPSUB,      "子ディレクトリを展開する"
+    MH_MYITEMS+IDM_EXPSUB,      "サブディレクトリを展開する"
     MH_MYITEMS+IDM_EXPALL,      "全て展開する"
-    MH_MYITEMS+IDM_COLLAPSE,    "子ディレクトリを折り畳む"
-    MH_MYITEMS+IDM_ADDPLUSES,   "展開可能な子ディレクトリを表示する"
+    MH_MYITEMS+IDM_COLLAPSE,    "サブディレクトリを折り畳む"
+    MH_MYITEMS+IDM_ADDPLUSES,   "展開可能なサブディレクトリを表示する"
 
     MH_MYITEMS+IDM_BOTH,        "ディレクトリのツリーと作業ディレクトリの内容を表示する"
     MH_MYITEMS+IDM_TREEONLY,    "ディレクトリのツリーを表示する"
@@ -626,4 +626,3 @@ BEGIN
 END
 
 #include "winfile_ja-JP.dlg"
-
