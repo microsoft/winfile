@@ -239,7 +239,7 @@ BEGIN
     IDS_PRINTERROR          "印刷中にエラーが発生しました。\n\nプリンタが正しく設定/選択されているか確認して下さい。"             /* 128 */
     IDS_PRINTONLYONE        "ファイル マネージャーは同時に複数のファイルを印刷する事はできません。\n\nファイルを1つだけ選択しもう一度試して下さい。"                                               /* 128 */
 
-    IDS_CURDIRIS,           "作業ディレクトリ: %s"                                                                                                    /* 128 */
+    IDS_CURDIRIS,           "現在のディレクトリ: %s"                                                                                                    /* 128 */
     IDS_COPY,               "コピー"                          /* 32 */
     IDS_RENAME,             "名前を変更"                        /* 32 */
     IDS_FORMAT,             "ディスクのフォーマット"                   /* 32 */
@@ -531,7 +531,7 @@ BEGIN
     MH_MYITEMS+IDM_COPY,        "ファイルまたはディレクトリをコピーする"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "1つまたは複数のファイルをクリップボードにコピーする"
 	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "1つまたは複数のファイルをクリップボードに切り取る"
-    MH_MYITEMS+IDM_PASTE,		"作業ディレクトリにクリップボードから貼り付ける"
+    MH_MYITEMS+IDM_PASTE,		"現在のディレクトリにクリップボードから貼り付ける"
     MH_MYITEMS+IDM_COMPRESS,    "ファイルまたはディレクトリを圧縮する"
     MH_MYITEMS+IDM_UNCOMPRESS,  "ファイルまたはディレクトリを解凍する"
     MH_MYITEMS+IDM_DELETE,      "ファイルまたはディレクトリを削除する"
@@ -565,9 +565,9 @@ BEGIN
     MH_MYITEMS+IDM_COLLAPSE,    "サブディレクトリを折り畳む"
     MH_MYITEMS+IDM_ADDPLUSES,   "展開可能なサブディレクトリを表示する"
 
-    MH_MYITEMS+IDM_BOTH,        "ディレクトリのツリーと作業ディレクトリの内容を表示する"
+    MH_MYITEMS+IDM_BOTH,        "ディレクトリのツリーと現在のディレクトリの内容を表示する"
     MH_MYITEMS+IDM_TREEONLY,    "ディレクトリのツリーを表示する"
-    MH_MYITEMS+IDM_DIRONLY,     "作業ディレクトリの内容を表示する"
+    MH_MYITEMS+IDM_DIRONLY,     "現在のディレクトリの内容を表示する"
     MH_MYITEMS+IDM_SPLIT,       "ディレクトリ ウィンドウを分割または分割バーを移動する"
     MH_MYITEMS+IDM_VNAME,       "名前だけ表示する"
     MH_MYITEMS+IDM_VDETAILS,    "全てのファイルの詳細を表示する"
