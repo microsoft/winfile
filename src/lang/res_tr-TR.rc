@@ -149,8 +149,8 @@ END
 #define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 STRINGTABLE DISCARDABLE PRELOAD
 BEGIN
-   // IDS_ENDSESSION           "Windows'dan Çıkış"
-   // IDS_ENDSESSIONMSG        "Bu işlem Windows oturumunu kapayacaktır."
+   // IDS_ENDSESSION           "Windows'tan Çıkış"
+   // IDS_ENDSESSIONMSG        "Bu işlem Windows oturumunu kapatacaktır."
    IDS_COPYDISK             "Disk Kopyala"
    IDS_INSERTDEST           "Hedef diski yerleştirin."
    IDS_INSERTSRC            "Kaynak diski yerleştirin."
@@ -195,7 +195,7 @@ BEGIN
    // IDS_MULTIPLEDSMSG        "Belitilen programın birden fazla kopyası başlatılamaz."
    // IDS_OS2APPMSG            "Belirtilen uygulama bir Windows veya MS-DOS programı değil."
    // IDS_NEWWGNDOWSMSG        "Bu uygulama Microsoft Windows'un daha yeni bir sürümünü gerektiriyor."
-   // IDS_PMODEONLYMSG         "Bu uygulama Windows'u gerektiriyor."
+   // IDS_PMODEONLYMSG         "Bu uygulama Windows gerektiriyor."
    // IDS_COMPRESSEDEXE        "Bu program veya ögelerinden biri sıkıştırılmış.\n\nDosyayı kurma disketlerinden kopyalamak için, MS-DOS expand hizmet programını kullanın."
    IDS_NOASSOCMSG           "Bu dosya bir uygulama ile ilişkilendirilmemiş.\n\nBir ilişki oluşturmak için Dosya menüsünden İlişkilendir komutunu seçin."
    IDS_ASSOCINCOMPLETE      "Dosya Yöneticisi dosyayı açamıyor veya yazdıramıyor.\n\nBu dosyayı oluşturmada kullanılan uygulamayı başlatıp dosyayı o uygulamadan açın veya yazdırın."
@@ -274,7 +274,7 @@ JAPANEND
 #include "suggest_tr-TR.db"
 
     IDS_DESTFULL                "Hedef sürücüde yer yok.\n\nSürücüye yeni bir disk yerleştirin."
-    IDS_WRITEPROTECTFILE        "Bu, gizli, saltokunur veya bir sistem dosyası."
+    IDS_WRITEPROTECTFILE        "Bu; gizli, saltokunur veya bir sistem dosyası."
     IDS_COPYINGTITLE            "Kopyalanıyor..."
 
 JAPANBEGIN
@@ -400,7 +400,7 @@ JAPANEND
     IDS_NOSUCHDIR               "Dizin yok."
     IDS_BADNETNAMETITLE         "Ağ sürücüsü bağlanamıyor."
     IDS_BADNETNAME              "Ağ adı bulunamadı."
-    IDS_ALLFILES                "'Tümüne evet'; sistem, gizli, saltokunur da dahil olmak üzere tüm dosyaları etkiler."
+    IDS_ALLFILES                "'Tümüne Evet'; sistem, gizli, saltokunur da dahil olmak üzere tüm dosyaları etkiler."
     IDS_ASSOC_OPEN              "Aç"
     IDS_ASSOC_PRINT             "Yazdır"
     IDS_ADDEXTTITLE             "Uzantı Ekle"
@@ -428,7 +428,7 @@ JAPANBEGIN
     IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
 JAPANEND
 
-    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak.  "
+    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak."
     IDS_INITUPDATEFAILTITLE     "Dosya Yöneticisi Başlatımı"
     IDS_COMPRESSDIR             "%s içindeki tüm dosyaları ve alt dizinleri de sıkıştırmak istediğinizden emin misiniz?"
     IDS_UNCOMPRESSDIR           "%s içindeki tüm dosyaların ve alt dizinlerin de sıkıştırmasını açmak istediğinizden emin misiniz?"
