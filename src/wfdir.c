@@ -924,17 +924,10 @@ DirWndProc(
          return -2;
 
       default:
-         {
-#if 0
-          // check for Ctrl-[DRIVE LETTER] and pass on to drives
-          // window
-
-          if ((GetKeyState(VK_CONTROL) < 0) && hwndDriveBar) {
-               return SendMessage(hwndDriveBar, uMsg, wParam, lParam);
-          }
-#endif
-            break;
-         }
+        // Select disc by pressing CTRL + ALT + letter
+        if ((GetKeyState(VK_CONTROL) < 0) && (GetKeyState(VK_MENU) < 0) && hwndDriveBar)
+              return SendMessage(hwndDriveBar, uMsg, wParam, lParam);
+        break;
       }
       return -1;
 
