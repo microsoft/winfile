@@ -463,7 +463,7 @@ FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse, BOOL bIncludeS
    INT iFileCount;
    WCHAR szFileSpec[MAXPATHLEN+1];
    WCHAR szPathName[MAXPATHLEN+1];
-   WCHAR szWildCard[20];
+   WCHAR szWildCard[MAXPATHLEN+1];
    LPWCH lpszCurrentFileSpecStart;
    LPWCH lpszCurrentFileSpecEnd;
    LPXDTALINK lpStart = NULL;
