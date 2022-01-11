@@ -3089,6 +3089,7 @@ SameSelection:
         if ((GetKeyState(VK_CONTROL) < 0) && (GetKeyState(VK_MENU) < 0))
             return SendMessage(hwndDriveBar, uMsg, wParam, lParam);
 
+        return -1L;
       }
       break;
 
