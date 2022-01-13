@@ -35,11 +35,16 @@ SRCS = \
 OBJS = $(subst .c,.o,$(SRCS)) src/wfgoto.o src/res.o
 
 CFLAGS = -DUNICODE -DFASTMOVE -DSTRSAFE_NO_DEPRECATE -DWINVER=0x0600
-LIBS = -mwindows -lgdi32 -lcomctl32 -lole32 -lshlwapi -loleaut32 -lversion
+LDLIBS = -mwindows -lgdi32 -lcomctl32 -lole32 -lshlwapi -loleaut32 -lversion
 TARGET = winfile
 ifeq ($(OS),Windows_NT)
 TARGET := $(TARGET).exe
 endif
+
+CC = gcc
+CXX = g++
+WINDRES = windres
+RM = rm -f
 
 .PHONY: all depend clean
 .SUFFIXES: .c .cpp .o .res
@@ -47,21 +52,21 @@ endif
 all : $(TARGET)
 
 $(TARGET) : $(OBJS)
-	g++ -o $@ $(OBJS) $(LIBS)
+	$(CXX) $(LDFLAGS) -o $@ $(OBJS) $(LDLIBS)
 
 .c.o :
-	gcc -c $(CFLAGS) -I. $< -o $@
+	$(CC) -c $(CFLAGS) -I. $< -o $@
 
 .cpp.o :
-	g++ -c $(CFLAGS) -I. $< -o $@
+	$(CXX) -c $(CFLAGS) -I. $< -o $@
 
 src/res.o : src/res.rc src/lang/*.rc src/lang/*.dlg
-	windres -DNOWINRES -I. -i src/res.rc -o src/res.o
+	$(WINDRES) -DNOWINRES -I. -i src/res.rc -o src/res.o
 
 clean :
-	rm -f $(OBJS) $(TARGET)
+	$(RM) $(OBJS) $(TARGET)
 
 depend:
-	gcc -E -MM -w src/*.c > Makefile.depends
+	$(CC) -E -MM -w src/*.c > Makefile.depends
 
 -include Makefile.depends
