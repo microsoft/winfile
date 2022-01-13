@@ -3085,12 +3085,11 @@ SameSelection:
       }
 
       default:
-#if 0
-          // OLD: select disk with that letter
-          if (GetKeyState(VK_CONTROL) < 0)
+        // Select disc by pressing CTRL + ALT + letter
+        if ((GetKeyState(VK_CONTROL) < 0) && (GetKeyState(VK_MENU) < 0))
             return SendMessage(hwndDriveBar, uMsg, wParam, lParam);
-#endif
-         return -1L;
+
+        return -1L;
       }
       break;
 
