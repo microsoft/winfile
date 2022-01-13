@@ -29,6 +29,8 @@ Please select the version which you would like to download.
 
 - [Chocolatey release](https://chocolatey.org/packages/winfile)
 
+- [MSYS2 release](https://packages.msys2.org/base/mingw-w64-winfile)
+
 - [Latest Release on Github (v10.1901.1)](https://github.com/microsoft/winfile/releases/tag/v10.0.1901.1)
 
 - [First Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
