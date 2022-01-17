@@ -2829,6 +2829,30 @@ UsedAltname:
                   // if filename part, strip path
                   StripPath(szFile);
                }
+               else
+               {
+                 // Resolve reparse point
+                 DecodeReparsePoint(szPath, szFile, szTemp, MAXPATHLEN);
+
+                 // Check if it started with namespace root
+                 int prefix = 0;
+                 if (lstrlen(szTemp) >= SZ_NS_ROOT_SIZE)
+                   if (!wcsncmp(szTemp, SZ_NS_ROOT, SZ_NS_ROOT_SIZE))
+                     prefix = SZ_NS_ROOT_SIZE;
+                 
+                 // Check if it was a relatve or absolute reparse point
+                 if (isalpha(szTemp[prefix])) {
+                   if (szTemp[prefix + 1] == CHAR_COLON) {
+                     // junction and absolute symlink
+                     lstrcpy(szFile, &szTemp[prefix]);
+                   }
+                   else {
+                     // relative symlink
+                     lstrcpy(szFile, szPath);
+                     lstrcat(szFile, &szTemp[prefix]);      // fully qualified
+                   }
+                 }
+               }
             }
             //
             // parent dir?

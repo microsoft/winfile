@@ -147,6 +147,8 @@ INT atoiW(LPWSTR sz);
 #define SZ_DOTSTAR        TEXT(".*")
 #define SZ_COLONONE       TEXT(":1")
 #define SZ_SPACEDASHSPACE TEXT(" - ")
+#define SZ_NS_ROOT        TEXT("\\??\\")
+#define SZ_NS_ROOT_SIZE   (sizeof(SZ_NS_ROOT) - 1) / sizeof(wchar_t)
 
 
 #define CHAR_DASH TEXT('-')
