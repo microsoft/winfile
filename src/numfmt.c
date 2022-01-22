@@ -81,14 +81,3 @@ AddOrder:
    return(szBuf);
 }
 
-
-LARGE_INTEGER
-TriMultiply(DWORD dw1, DWORD dw2, DWORD dwSmall)
-{
-   LARGE_INTEGER Result;
-
-   Result.QuadPart = UInt32x32To64(dw1, dw2);
-   Result.QuadPart = Result.QuadPart * dwSmall;
-
-   return Result;
-}
