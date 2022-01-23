@@ -2829,6 +2829,14 @@ UsedAltname:
                   // if filename part, strip path
                   StripPath(szFile);
                }
+               else
+               {
+                 // reparse point also need fully qualified path as return
+                 lstrcpy(szTemp, szPath);
+
+                 lstrcat(szTemp, szFile);
+                 lstrcpy(szFile, szTemp);
+               }
             }
             //
             // parent dir?
