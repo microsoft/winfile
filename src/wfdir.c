@@ -2821,7 +2821,7 @@ UsedAltname:
 
          if (hwndDir) {
 
-            // reparse point; szFile is full path
+            // reparse point; szFile is filename only
             if (lpxdta->dwAttrs & (ATTR_JUNCTION | ATTR_SYMBOLIC))
             {
                if (iSelType & 8) 
@@ -2831,7 +2831,7 @@ UsedAltname:
                }
                else
                {
-                 // reparse point also need fully qualified path as return
+                 // reparse points also need fully qualified path as return
                  lstrcpy(szTemp, szPath);
 
                  lstrcat(szTemp, szFile);
