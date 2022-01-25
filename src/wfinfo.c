@@ -103,16 +103,16 @@ U_CLOSE(Type)
 
 U_HEAD(Space)
 
-   LARGE_INTEGER qFreeSpace;
-   LARGE_INTEGER qTotalSpace;
+   ULARGE_INTEGER qFreeSpace;
+   ULARGE_INTEGER qTotalSpace;
 
    IF_READ(Space)
       GetDiskSpace(drive, &qFreeSpace, &qTotalSpace);
 
       ENTER_MODIFY(Space)
 
-         aDriveInfo[drive].qFreeSpace = qFreeSpace;
-         aDriveInfo[drive].qTotalSpace= qTotalSpace;
+         aDriveInfo[drive].qFreeSpace.QuadPart = qFreeSpace.QuadPart;
+         aDriveInfo[drive].qTotalSpace.QuadPart = qTotalSpace.QuadPart;
 
       EXIT_MODIFY(Space)
 

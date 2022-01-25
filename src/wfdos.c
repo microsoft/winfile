@@ -11,32 +11,22 @@
 
 #include "winfile.h"
 
-// Warning: assumes bytes per sector < 2 gigs
-
 VOID
 GetDiskSpace(DRIVE drive,
-   PLARGE_INTEGER pqFreeSpace,
-   PLARGE_INTEGER pqTotalSpace)
+   PULARGE_INTEGER pqFreeSpace,
+   PULARGE_INTEGER pqTotalSpace)
 {
-   DWORD dwSectorsPerCluster;
-   DWORD dwBytesPerSector;
-   DWORD dwFreeClusters;
-   DWORD dwTotalClusters;
+   ULARGE_INTEGER qBytesAvailableToCaller;
 
    TCHAR szDriveRoot[] = SZ_ACOLONSLASH;
 
    DRIVESET(szDriveRoot, drive);
 
-   if (GetDiskFreeSpace(szDriveRoot,
-      &dwSectorsPerCluster,
-      &dwBytesPerSector,
-      &dwFreeClusters,
-      &dwTotalClusters)) {
+   if (!GetDiskFreeSpaceEx(szDriveRoot,
+      &qBytesAvailableToCaller,
+      pqTotalSpace,
+      pqFreeSpace)) {
 
-      *pqFreeSpace = TriMultiply(dwFreeClusters,dwSectorsPerCluster,dwBytesPerSector);
-      *pqTotalSpace= TriMultiply(dwTotalClusters,dwSectorsPerCluster,dwBytesPerSector);
-
-   } else {
       LARGE_INTEGER_NULL(*pqFreeSpace);
       LARGE_INTEGER_NULL(*pqTotalSpace);
    }

@@ -21,5 +21,3 @@ LPTSTR ShortSizeFormatInternal(LPTSTR szBuf, LARGE_INTEGER qw);
 
 #define LARGE_INTEGER_NULL(q) ((q).LowPart = 0, (q).HighPart = 0)
 
-LARGE_INTEGER TriMultiply(DWORD dw1, DWORD dw2, DWORD dwSmall);
-
