@@ -2821,13 +2821,21 @@ UsedAltname:
 
          if (hwndDir) {
 
-            // reparse point; szFile is full path
+            // reparse point; szFile is filename only
             if (lpxdta->dwAttrs & (ATTR_JUNCTION | ATTR_SYMBOLIC))
             {
                if (iSelType & 8) 
                {
                   // if filename part, strip path
                   StripPath(szFile);
+               }
+               else
+               {
+                 // reparse points also need fully qualified path as return
+                 lstrcpy(szTemp, szPath);
+
+                 lstrcat(szTemp, szFile);
+                 lstrcpy(szFile, szTemp);
                }
             }
             //
