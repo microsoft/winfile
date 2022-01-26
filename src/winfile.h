@@ -372,7 +372,7 @@ VOID UpdateMoveStatus(DWORD dwEffect);
 
 // WFDOS.C
 
-VOID GetDiskSpace(DRIVE drive, PLARGE_INTEGER pqFreeSpace, PLARGE_INTEGER pqTotalSpace);
+VOID GetDiskSpace(DRIVE drive, PULARGE_INTEGER pqFreeSpace, PULARGE_INTEGER pqTotalSpace);
 INT   ChangeVolumeLabel(DRIVE, LPTSTR);
 DWORD GetVolumeLabel(DRIVE, LPTSTR*, BOOL);
 DWORD
