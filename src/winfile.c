@@ -1182,8 +1182,8 @@ DefHook:
 // Synopsis: Check if we enable the Properties... menu item
 //           Disable if:
 //
-//           2. _ONLY_ the .. dir is sel
-//           3. Nothing is selected in the window with focus
+//           1. _ONLY_ the .. dir is sel
+//           2. Nothing is selected in the window with focus
 //
 // IN    hwndActive   Current active window, has listbox in LASTFOCUS
 // IN    pSel         Current sel
@@ -1217,9 +1217,7 @@ EnablePropertiesMenu(
    bRet = FALSE;
 
    //
-   // Can't get properties on root directory
-   //
-   // Also quit if pSel == NULL (File selected before any window created)
+   // Quit if pSel == NULL (File selected before any window created)
    //
    if (!pSel)
       return (FALSE);
@@ -1286,7 +1284,7 @@ ReturnFalse:
 
    //
    // If this is the tree window and we are not in the middle of ReadDirLevel
-   // and it is not the root, then it is OK to change properties.
+   // then it is OK to change properties.
    //
    if (hwndParent == hwndTree) {
       if (SendMessage(hwndLB, LB_GETCURSEL, 0, 0L) != LB_ERR &&
