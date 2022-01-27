@@ -1570,7 +1570,7 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
 BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 {
    static DWORD tick64 = 0;
-   static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
+   static WCHAR rgchTA[MAXPATHLEN + 1] = { '\0' };
    DWORD tickT;
    size_t ich;
    BOOL rVal = FALSE;
@@ -1591,7 +1591,7 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
       szT[0] = ch;
       szT[1] = '\0';
 
-      if (tickT - tick64 > 500 || MAXPATHLEN - 1 == ich)
+      if (tickT - tick64 > 500 || ich > MAXPATHLEN - 1)
          ich = 0;
 
       // But in the background keep the typed characters even if there are many
@@ -1604,7 +1604,7 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
       return FALSE;
    }
 
-   if (tickT - tick64 < 500) {
+   if (tickT - tick64 < 500 && ich < MAXPATHLEN ) {
       // Keep on recording and match with buffer
       rVal = TRUE;
    }
