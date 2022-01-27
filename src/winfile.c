@@ -1182,7 +1182,6 @@ DefHook:
 // Synopsis: Check if we enable the Properties... menu item
 //           Disable if:
 //
-//           1. The rootdir is selected
 //           2. _ONLY_ the .. dir is sel
 //           3. Nothing is selected in the window with focus
 //
@@ -1222,7 +1221,7 @@ EnablePropertiesMenu(
    //
    // Also quit if pSel == NULL (File selected before any window created)
    //
-   if (!pSel || (lstrlen (pSel) == 3 && pSel[2] == CHAR_BACKSLASH))
+   if (!pSel)
       return (FALSE);
 
    hwndLB = (HWND)GetWindowLongPtr(hwndActive, GWL_LASTFOCUS);
@@ -1290,7 +1289,7 @@ ReturnFalse:
    // and it is not the root, then it is OK to change properties.
    //
    if (hwndParent == hwndTree) {
-      if (SendMessage(hwndLB, LB_GETCURSEL, 0, 0L) > 0L &&
+      if (SendMessage(hwndLB, LB_GETCURSEL, 0, 0L) != LB_ERR &&
          !GetWindowLongPtr(hwndTree, GWL_READLEVEL))
 
       return(TRUE);
