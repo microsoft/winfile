@@ -34,9 +34,9 @@ BEGIN
     MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+N",          IDM_MAKEDIR
     MENUITEM    "&Suchen...\tUmschalt+F",                         IDM_SEARCH
     MENUITEM    "Dateien aus&wählen...",                          IDM_SELECT
-    MENUITEM    "Starte Bash Shell...",                           IDM_STARTBASHSHELL
-    MENUITEM    "Starte Cmd Shel&l...",                           IDM_STARTCMDSHELL
-    MENUITEM    "Starte Po&werShell...",                          IDM_STARTPOWERSHELL
+    MENUITEM    "Starte Bash Shell...\tUmschalt+B",               IDM_STARTBASHSHELL
+    MENUITEM    "Starte Cmd Shel&l...\tUmschalt+K",               IDM_STARTCMDSHELL
+    MENUITEM    "Starte Po&werShell...\tUmschalt+P",              IDM_STARTPOWERSHELL
     MENUITEM    "&Gehe ins Verzeichnis...\tUmschalt+G",           IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "&Beenden",                                       IDM_EXIT
@@ -614,8 +614,8 @@ END
 
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
-    IDS_CONNECT,                "Netzlaufwerk &verbinden..."
-    IDS_DISCONNECT,             "Netzlaufwerk &trennen..."
+    IDS_CONNECT,                "Netzlaufwerk &verbinden...\tUmschalt+N"
+    IDS_DISCONNECT,             "Netzlaufwerk &trennen...\tUmschalt+D"
     IDS_CONNECTIONS,            "&Netzwerk-Verbindungen"
     IDS_SHAREDDIR               "Freigege&bene Verzeichnisse..."
     IDS_SHAREAS,                "F&reigeben als..."
