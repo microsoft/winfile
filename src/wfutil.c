@@ -1575,8 +1575,7 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
    size_t ich;
    BOOL rVal = FALSE;
 
-   if (ch == '\0')
-   {
+   if (ch == '\0') {
       tick64 = 0;
       rgchTA[0] = '\0';
       return FALSE;
@@ -1587,7 +1586,7 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
    ich = wcslen(rgchTA);
 
    if (rgchTA[0] == ch) {
-      // If one pressed the same character as the first anyhow jump ahad by one
+      // If one pressed the same character as the first anyhow jump ahead by one
       szT[0] = ch;
       szT[1] = '\0';
 
@@ -1607,8 +1606,7 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
    if (tickT - tick64 < 500 && ich < MAXPATHLEN ) {
       // Keep on recording and match with buffer
       rVal = TRUE;
-   }
-   else {
+   } else {
       // Roll over with the buffer
       ich = 0;
       rVal = FALSE;
