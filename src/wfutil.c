@@ -1569,32 +1569,39 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
 // ch == '\0' resets the tick and buffer
 BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 {
-	static DWORD tick64 = 0;
-	static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
-	DWORD tickT;
-	size_t ich;
+   static DWORD tick64 = 0;
+   static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
+   DWORD tickT;
+   size_t ich;
 
-	if (ch == '\0')
-	{
-		tick64 = 0;
-		rgchTA[0] = '\0';
-		return FALSE;
-	}
+   if (ch == '\0') {
+      tick64 = 0;
+      rgchTA[0] = '\0';
+      return FALSE;
+   }
 
-	tickT = GetTickCount();
-	ch = (WCHAR)CharUpper((LPWSTR)ch);
-	ich = wcslen(rgchTA);
+   tickT = GetTickCount();
+   ch = (WCHAR)CharUpper((LPWSTR)ch);
+   ich = wcslen(rgchTA);
 
-	// if only one char and it repeats or more than .5s since last char, start over
-	if (ich == 1 && rgchTA[0] == ch || tickT - tick64 > 500)
-		ich = 0;
+   // if out of space or more than .5s since last char, start over
+   if (tickT - tick64 > 500 || ich > MAXPATHLEN - 2)
+      ich = 0;
 
-	rgchTA[ich] = ch;
-	rgchTA[ich+1] = '\0';
+   rgchTA[ich] = ch;
+   rgchTA[ich + 1] = '\0';
 
-	tick64 = tickT;
-	lstrcpy(szT, rgchTA);
+   tick64 = tickT;
 
-	return ich != 0;
+   if (rgchTA[0] == ch) {
+      // If one pressed the same character as the first anyhow jump ahead by one
+      szT[0] = ch;
+      szT[1] = '\0';
+
+      return FALSE;
+   }
+
+   lstrcpy(szT, rgchTA);
+
+   return ich != 0;
 }
-
