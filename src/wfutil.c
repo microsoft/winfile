@@ -1570,10 +1570,9 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
 BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 {
    static DWORD tick64 = 0;
-   static WCHAR rgchTA[MAXPATHLEN + 1] = { '\0' };
+   static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
    DWORD tickT;
    size_t ich;
-   BOOL rVal = FALSE;
 
    if (ch == '\0') {
       tick64 = 0;
@@ -1585,38 +1584,24 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
    ch = (WCHAR)CharUpper((LPWSTR)ch);
    ich = wcslen(rgchTA);
 
-   if (rgchTA[0] == ch) {
-      // If one pressed the same character as the first anyhow jump ahead by one
-      szT[0] = ch;
-      szT[1] = '\0';
-
-      if (tickT - tick64 > 500 || ich > MAXPATHLEN - 1)
-         ich = 0;
-
-      // But in the background keep the typed characters even if there are many
-      rgchTA[ich] = ch;
-      rgchTA[ich + 1] = '\0';
-
-      tick64 = tickT;
-
-      // we are done, jump ahead by one
-      return FALSE;
-   }
-
-   if (tickT - tick64 < 500 && ich < MAXPATHLEN ) {
-      // Keep on recording and match with buffer
-      rVal = TRUE;
-   } else {
-      // Roll over with the buffer
+   // if out of space or more than .5s since last char, start over
+   if (tickT - tick64 > 500 || ich > MAXPATHLEN - 2)
       ich = 0;
-      rVal = FALSE;
-   }
 
    rgchTA[ich] = ch;
    rgchTA[ich + 1] = '\0';
 
    tick64 = tickT;
+
+   if (rgchTA[0] == ch) {
+      // If one pressed the same character as the first anyhow jump ahead by one
+      szT[0] = ch;
+      szT[1] = '\0';
+
+      return FALSE;
+   }
+
    lstrcpy(szT, rgchTA);
 
-   return rVal;
+   return ich != 0;
 }
