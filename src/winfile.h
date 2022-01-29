@@ -1179,6 +1179,7 @@ Extern TCHAR        szDisableVisualStyles[] EQ( TEXT("DisableVisualStyles") );
 Extern TCHAR        szUILanguage[]          EQ( TEXT("UILanguage") );
 Extern TCHAR        szEditorPath[]          EQ( TEXT("EditorPath"));
 Extern TCHAR        szMirrorContent[]       EQ( TEXT("MirrorContent") );
+Extern TCHAR        szCachedPath[]          EQ( TEXT("CachedPath"));
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );

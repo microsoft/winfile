@@ -92,7 +92,7 @@ instead of changing drives. Change drives now via CTRL + ALT + letter
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer
 5. added context menus in both panes
 6. improved the means by which icons are displayed for files
-7. F12 runs notepad or notepad++ on the selected file
+7. F12 runs notepad or notepad++ on the selected file. Confgigure via Winfile.ini[Settings]EditorPath
 8. moved the ini file location to `%AppData%\Roaming\Microsoft\WinFile`
 9. File.Search can include a date which limits the files returned to those after the date provided;
 the output is also sorted by the date instead of by the name
@@ -100,8 +100,8 @@ the output is also sorted by the date instead of by the name
 11. `ctrl+K` starts a command shell (ConEmu if installed) in the current directory; `shift+ctrl+K`
 starts an elevated command shell (`cmd.exe` only)
 12. File.Goto (`ctrl+G`) enables one to type a few words of a path and get a list of directories;
-selecting one changes to that directory.  Only drive c: is indexed.
-13. UI shows reparse points (e.g., Junction points) as such
+selecting one changes to that directory.  Default = c:\. Confgigure via Winfile.ini[Settings]CachedPath
+13. UI shows reparse points (e.g., Junction points and Symbolic Links) as such
 14. added simple forward / back navigation (probably needs to be improved)
 15. View command has a new option to sort by date forward (oldest on top);
 normal date sorting is newest on top
