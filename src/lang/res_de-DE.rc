@@ -337,7 +337,6 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "Momentan wird ein Datenträger vom Datei-Manager formatiert. Wenn Sie den Datei-Manager beenden, wird dieser Vorgang abgebrochen."
     IDS_BUSYCOPYQUITVERIFY      "Momentan wird ein Datenträger vom Datei-Manager kopiert. Wenn Sie den Datei-Manager beenden, wird dieser Vorgang abgebrochen."
     IDS_PERCENTCOMPLETE         "Prozent bearbeitet"
-    IDS_FORMATSELECTDLGTITLE    "Formatiere Laufwerk"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
