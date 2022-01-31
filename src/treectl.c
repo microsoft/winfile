@@ -786,7 +786,7 @@ ReadDirLevel(
                  bResult = FALSE;
                  goto DONE;
               }
-          } else /* if (dwView & VIEW_PLUSES)  ALWAYS DO THIS for arrow-driven expand/collapse */ {
+          } else if (dwView & VIEW_PLUSES) {
              ScanDirLevel(pNode, szPath, dwAttribs & ATTR_HS);
           }
       }
@@ -2953,11 +2953,11 @@ UpdateSelection:
       case VK_LEFT:
          TypeAheadString('\0', NULL);
 
-		 // if node is expanded and no control key, just collapse
-		 if ((pNode->wFlags & TF_EXPANDED) != 0 && GetKeyState(VK_CONTROL) >= 0) {
-			 CollapseLevel(hwndLB, pNode, i);
-			 return(i);
-		 }
+         // if node is expanded and no control key, just collapse
+         if ((pNode->wFlags & TF_EXPANDED) != 0 && GetKeyState(VK_CONTROL) >= 0) {
+            CollapseLevel(hwndLB, pNode, i);
+            return(i);
+         }
 
          while (SendMessage(hwndLB, LB_GETTEXT, --i, (LPARAM)&pNodeNext) != LB_ERR) {
             if (pNodeNext == pNode->pParent)
@@ -2968,13 +2968,13 @@ UpdateSelection:
       case VK_RIGHT:
          TypeAheadString('\0', NULL);
 
-		 // if node has children (due to ScanDirLevel happening often) and not expanded and no control key, just expand
-		 if ((pNode->wFlags & TF_HASCHILDREN) != 0 && !(pNode->wFlags & TF_EXPANDED) && GetKeyState(VK_CONTROL) >= 0) {
-			 ExpandLevel(hwnd, 0, i, szPath);
-			 return(i);
-		 }
+         // if node is not expanded and no control key, just expand
+         if (!(pNode->wFlags & TF_EXPANDED) && GetKeyState(VK_CONTROL) >= 0) {
+            ExpandLevel(hwnd, 0, i, szPath);
+            return(i);
+         }
 
-		 if ((SendMessage(hwndLB, LB_GETTEXT, i+1, (LPARAM)&pNodeNext) == LB_ERR)
+         if ((SendMessage(hwndLB, LB_GETTEXT, i+1, (LPARAM)&pNodeNext) == LB_ERR)
             || (pNodeNext->pParent != pNode)) {
             goto SameSelection;
          }
