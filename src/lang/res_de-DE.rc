@@ -31,7 +31,7 @@ BEGIN
     MENUITEM    "&Drucken...",                                    IDM_PRINT
     MENUITEM    "Zuord&nen...",                                   IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "Ver&zeichnis erstellen...\tStrg+N",              IDM_MAKEDIR
+    MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+Strg+N",              IDM_MAKEDIR
     MENUITEM    "&Suchen...\tStrg+F",                             IDM_SEARCH
     MENUITEM    "Dateien aus&wählen...",                          IDM_SELECT
     MENUITEM    "Starte Bash Shell...\tStrg+B",                   IDM_STARTBASHSHELL
@@ -107,9 +107,9 @@ BEGIN
     POPUP       "&Fenster"
     BEGIN
     MENUITEM    "Neues &Fenster",                                 IDM_NEWWINDOW
-    MENUITEM    "Über&lappend\tStrg+F5",                      IDM_CASCADE
+    MENUITEM    "Über&lappend\tUmschalt+F5",                      IDM_CASCADE
     MENUITEM    "&Untereinander",                                 IDM_TILEHORIZONTALLY
-    MENUITEM    "&Nebeneinander\tStrg+F4",                    IDM_TILE
+    MENUITEM    "&Nebeneinander\tUmschalt+F4",                    IDM_TILE
     MENUITEM    "&Symbole anordnen",                              IDM_ARRANGE
     MENUITEM    "&Aktualisieren\tF5",                             IDM_REFRESH
     END
