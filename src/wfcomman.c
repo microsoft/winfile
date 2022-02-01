@@ -1230,29 +1230,41 @@ AppCommandProc(register DWORD id)
    case IDM_CUTTOCLIPBOARD:
 	  {
          LPTSTR  pszFiles;
-		 HANDLE hMemLongW, hDrop;
+		 HANDLE hMemLongW, hMemTextW, hDrop;
 		 LONG cbMemLong;
 		 HANDLE hMemDropEffect;
 		 TCHAR szPathLong[MAXPATHLEN];
 		 POINT pt;
+		 INT iMultipleResult;
 
-         pszFiles=GetSelection(4, NULL);
+		 pszFiles=GetSelection(4, NULL);
 		 if (pszFiles == NULL) {
 			 break;
 		 }
 
-		 // LongFileNameW (only if one file)
+		 // LongFileNameW (only if one file or directory)
+		 // This is allocated twice to record a text form also;
+		 // clipboard requires one handle per format despite them
+		 // having identical contents
 		 hMemLongW = NULL;
-		 if (!CheckMultiple(pszFiles))
+		 hMemTextW = NULL;
+		 iMultipleResult = CheckMultiple(pszFiles);
+		 if (iMultipleResult == 2 || iMultipleResult == 0)
 		 {
 			 GetNextFile(pszFiles, szPathLong, COUNTOF(szPathLong));
-		     cbMemLong = ByteCountOf(lstrlen(szPathLong)+1);
-		     hMemLongW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
-		     if (hMemLongW)
-		     {
-			     lstrcpy(GlobalLock(hMemLongW), szPathLong);
-			     GlobalUnlock(hMemLongW);
-		     }
+			 cbMemLong = ByteCountOf(lstrlen(szPathLong)+1);
+			 hMemLongW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
+			 if (hMemLongW)
+			 {
+				 lstrcpy(GlobalLock(hMemLongW), szPathLong);
+				 GlobalUnlock(hMemLongW);
+			 }
+			 hMemTextW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
+			 if (hMemTextW)
+			 {
+				 lstrcpy(GlobalLock(hMemTextW), szPathLong);
+				 GlobalUnlock(hMemTextW);
+			 }
 		 }
 
 		 hMemDropEffect = NULL;
@@ -1277,6 +1289,7 @@ AppCommandProc(register DWORD id)
 			}
 
 			SetClipboardData(RegisterClipboardFormat(TEXT("LongFileNameW")), hMemLongW);
+			SetClipboardData(CF_UNICODETEXT, hMemTextW);
 			SetClipboardData(CF_HDROP, hDrop);
 
 			CloseClipboard();
@@ -1284,6 +1297,7 @@ AppCommandProc(register DWORD id)
 		 else 
 		 {
 			  GlobalFree(hMemLongW);
+			  GlobalFree(hMemTextW);
 			  GlobalFree(hDrop);
 		 }
 
