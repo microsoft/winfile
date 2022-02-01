@@ -655,7 +655,23 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 
 	SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
-	if (BuildDirectoryBagOValues(pBagNew, pNodes, TEXT("c:\\"), nullptr, scanEpocNew))
+   // Read pathes, which shall be cached from winfile.ini
+   TCHAR szCached[MAX_PATH];
+   GetPrivateProfileString(szSettings, szCachedPath, TEXT("c:\\"), szCached, MAX_PATH, szTheINIFile);
+
+   // Iterate through ; seperated list of to be cached pathes
+   BOOL     buildBag{ FALSE };
+   WCHAR 	seps[]{ L";" };
+   PWCHAR   token{ nullptr };
+   PWCHAR	firsttoken = wcstok_s(szCached, seps, &token);
+   if (firsttoken)
+      buildBag = BuildDirectoryBagOValues(pBagNew, pNodes, firsttoken, nullptr, scanEpocNew);
+
+   while (PWCHAR nexttoken = wcstok_s(NULL, seps, &token))
+      buildBag |= BuildDirectoryBagOValues(pBagNew, pNodes, nexttoken, nullptr, scanEpocNew);
+
+	// If at least one cache location has been read successfully, build the bag
+   if (buildBag)
 	{
 		pBagNew->Sort();
 
