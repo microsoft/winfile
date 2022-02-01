@@ -18,7 +18,6 @@
 
 BOOL IsFATName(LPTSTR pName);
 
-
 /* WFFindFirst -
  *
  * returns:
@@ -68,6 +67,14 @@ WFFindFirst(
 	   ATTR_TEMPORARY | ATTR_COMPRESSED | ATTR_ENCRYPTED | ATTR_NOT_INDEXED;
 
    lpFind->fd.dwFileAttributes &= ATTR_USED;
+
+   if (lpFind->fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) {
+       if (lpFind->fd.dwReserved0 == IO_REPARSE_TAG_MOUNT_POINT) {
+           lpFind->fd.dwFileAttributes |= ATTR_JUNCTION;
+       } else if (lpFind->fd.dwReserved0 == IO_REPARSE_TAG_SYMLINK) {
+           lpFind->fd.dwFileAttributes |= ATTR_SYMBOLIC;
+       }
+   }
 
    Wow64RevertWow64FsRedirection(oldValue);
 
@@ -139,7 +146,16 @@ WFFindNext(LPLFNDTA lpFind)
          lstrcpy(lpFind->fd.cFileName, lpFind->fd.cAlternateFileName);
       }
 
+      if (lpFind->fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) {
+          if (lpFind->fd.dwReserved0 == IO_REPARSE_TAG_MOUNT_POINT) {
+              lpFind->fd.dwFileAttributes |= ATTR_JUNCTION;
+          } else if (lpFind->fd.dwReserved0 == IO_REPARSE_TAG_SYMLINK) {
+              lpFind->fd.dwFileAttributes |= ATTR_SYMBOLIC;
+          }
+      }
+
 	  Wow64RevertWow64FsRedirection(oldValue);
+
       lpFind->err = 0;
       return TRUE;
    }
