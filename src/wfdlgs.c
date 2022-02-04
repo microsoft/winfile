@@ -233,6 +233,7 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
   TCHAR szTemp[2*MAXPATHLEN];
   TCHAR szInclude[MAXFILENAMELEN];
   HWND hwndDir;
+  HWND hwndTree;
 
   UNREFERENCED_PARAMETER(lParam);
 
@@ -296,15 +297,16 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                   EndDialog(hDlg, TRUE);        // here to avoid excess repaints
 
-                  // we need to update the tree if they changed the system/hidden
-                  // flags.  ...  FIX31
-
                   if (hwndDir = HasDirWindow(hwndActive)) {
                       SendMessage(hwndDir, FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
                       lstrcat(szTemp, szInclude);
 
                       SetWindowLongPtr(hwndActive, GWL_ATTRIBS, dwAttribs);
                       SendMessage(hwndDir, FS_CHANGEDISPLAY, CD_PATH_FORCE, (LPARAM)szTemp);
+                  }
+
+                  if (hwndTree = HasTreeWindow(hwndActive)) {
+                      SendMessage(hwndTree, TC_SETDRIVE, 0L, 0L);
                   }
 
                   break;
