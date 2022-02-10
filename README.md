@@ -86,7 +86,7 @@ was created.  For changes post v10.0, see the commit and release history.
 In summary v10.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
-2. control characters (e.g., ctrl+C) map to current short cut (e.g., `ctrl+c` -> `copy`)
+2. control characters (e.g., ctrl+C) map to current short cut (e.g., `ctrl+c` -> `copy` and copy path to clipboard)
 instead of changing drives. Change drives now via CTRL + ALT + letter
 3. cut (`ctrl+X`) followed by paste (`ctrl+V`) translates into a file move as one would expect
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer

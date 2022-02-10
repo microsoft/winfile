@@ -34,9 +34,9 @@ BEGIN
     MENUITEM    "Cr&eate Directory...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "Select &Files...", IDM_SELECT
-	MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
-	MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
-    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM    "Start Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
+	MENUITEM    "Start Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...\tCtrl+P", IDM_STARTPOWERSHELL
 	MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "E&xit",            IDM_EXIT

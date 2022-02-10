@@ -34,9 +34,9 @@ BEGIN
         MENUITEM    "Dizi&n Oluştur...\tCtrl+Shift+N", IDM_MAKEDIR
         MENUITEM    "A&ra...\tCtrl+F",              IDM_SEARCH
         MENUITEM    "Dosyaları Se&ç...",            IDM_SELECT
-        MENUITEM    "Bash Kabuğu &Başlat...",       IDM_STARTBASHSHELL
-        MENUITEM    "Cmd Kabuğu Ba&şlat...",        IDM_STARTCMDSHELL
-        MENUITEM    "Po&wershell'i Başlat...",      IDM_STARTPOWERSHELL
+        MENUITEM    "Bash Kabuğu &Başlat...\tCtrl+B",  IDM_STARTBASHSHELL
+        MENUITEM    "Cmd Kabuğu Ba&şlat...\tCtrl+K",   IDM_STARTCMDSHELL
+        MENUITEM    "Po&wershell'i Başlat...\tCtrl+P", IDM_STARTPOWERSHELL
         MENUITEM    "Dizine &Git...",               IDM_GOTODIR
         MENUITEM    SEPARATOR
         MENUITEM    "Çı&kış",                       IDM_EXIT

@@ -34,9 +34,9 @@ BEGIN
     MENUITEM    "创建目录(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "搜索(&H)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "选择文件(&F)...", IDM_SELECT
-	MENUITEM    "打开 Bash...", IDM_STARTBASHSHELL
-	MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
-    MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
+	MENUITEM    "打开 Bash...\tCtrl+B", IDM_STARTBASHSHELL
+	MENUITEM    "打开命令提示符(&L)...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "打开 PowerShell(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
 	MENUITEM    "转到目录(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "退出(&X)",            IDM_EXIT

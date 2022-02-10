@@ -17,9 +17,9 @@ BEGIN
     MENUITEM    "Bearbeiten\tF12",                                IDM_EDIT
     MENUITEM    "&Verschieben...\tF7",                            IDM_MOVE
     MENUITEM    "&Kopieren...\tF8",                               IDM_COPY
-    MENUITEM    "&In Zwischenablage...\tUmschalt+C",              IDM_COPYTOCLIPBOARD
-    MENUITEM    "Ausschneiden in Zwischenablage...\tUmschalt+X",  IDM_CUTTOCLIPBOARD
-    MENUITEM    "&Einfügen\tUmschalt+V",                          IDM_PASTE
+    MENUITEM    "&In Zwischenablage...\tStrg+C",				  IDM_COPYTOCLIPBOARD
+    MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",	  IDM_CUTTOCLIPBOARD
+    MENUITEM    "&Einfügen\tStrg+V",                              IDM_PASTE
     MENUITEM    "&Löschen...\tEntf",                              IDM_DELETE
     MENUITEM    "&Umbenennen...\tF2",                             IDM_RENAME
     MENUITEM    "Ei&genschaften...\tAlt+Eingabetaste",            IDM_ATTRIBS
@@ -31,13 +31,13 @@ BEGIN
     MENUITEM    "&Drucken...",                                    IDM_PRINT
     MENUITEM    "Zuord&nen...",                                   IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+N",          IDM_MAKEDIR
-    MENUITEM    "&Suchen...\tUmschalt+F",                         IDM_SEARCH
+    MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+Strg+N",              IDM_MAKEDIR
+    MENUITEM    "&Suchen...\tStrg+F",                             IDM_SEARCH
     MENUITEM    "Dateien aus&wählen...",                          IDM_SELECT
-    MENUITEM    "Starte Bash Shell...",                           IDM_STARTBASHSHELL
-    MENUITEM    "Starte Cmd Shel&l...",                           IDM_STARTCMDSHELL
-    MENUITEM    "Starte Po&werShell...",                          IDM_STARTPOWERSHELL
-    MENUITEM    "&Gehe ins Verzeichnis...\tUmschalt+G",           IDM_GOTODIR
+    MENUITEM    "Starte Bash Shell...\tStrg+B",                   IDM_STARTBASHSHELL
+    MENUITEM    "Starte Cmd Shel&l...\tStrg+K",                   IDM_STARTCMDSHELL
+    MENUITEM    "Starte Po&werShell...\tStrg+P",                  IDM_STARTPOWERSHELL
+    MENUITEM    "&Gehe ins Verzeichnis...\tStrg+G",               IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "&Beenden",                                       IDM_EXIT
     END
@@ -54,7 +54,7 @@ BEGIN
     BEGIN
     MENUITEM    "&Nächste Ebene einblenden\t+",                   IDM_EXPONE
     MENUITEM    "&Zweig einblenden\t*",                           IDM_EXPSUB
-    MENUITEM    "Alle &Ebenen einblenden\tUmschalt+*",            IDM_EXPALL
+    MENUITEM    "Alle &Ebenen einblenden\tStrg+*",            IDM_EXPALL
     MENUITEM    "Zweig &ausblenden\t-",                           IDM_COLLAPSE
     MENUITEM    SEPARATOR
     MENUITEM    "&Verzweigungen kennzeichnen",                    IDM_ADDPLUSES
@@ -132,9 +132,9 @@ BEGIN
   MENUITEM    "Bearbeiten\tF12",	                                IDM_EDIT
   MENUITEM    "&Verschieben...\tF7",                              IDM_MOVE
   MENUITEM    "&Kopieren...\tF8",                                 IDM_COPY
-  MENUITEM    "&In Zwischenablage...\tUmschalt+C",                IDM_COPYTOCLIPBOARD
-  MENUITEM    "Ausschneiden in Zwischenablage...\tUmschalt+X",    IDM_CUTTOCLIPBOARD
-  MENUITEM    "&Einfügen\tUmschalt+V",                            IDM_PASTE
+  MENUITEM    "&In Zwischenablage...\tStrg+C",                IDM_COPYTOCLIPBOARD
+  MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",    IDM_CUTTOCLIPBOARD
+  MENUITEM    "&Einfügen\tStrg+V",                            IDM_PASTE
   MENUITEM    "&Löschen...\tEntf",                                IDM_DELETE
   MENUITEM    "&Umbenennen...\tF2",                               IDM_RENAME
   MENUITEM    "&Eigenschaften...\tAlt+Eingabetaste",              IDM_ATTRIBS
@@ -614,8 +614,8 @@ END
 
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
-    IDS_CONNECT,                "Netzlaufwerk &verbinden..."
-    IDS_DISCONNECT,             "Netzlaufwerk &trennen..."
+    IDS_CONNECT,                "Netzlaufwerk &verbinden...\tStrg+N"
+    IDS_DISCONNECT,             "Netzlaufwerk &trennen...\tStrg+D"
     IDS_CONNECTIONS,            "&Netzwerk-Verbindungen"
     IDS_SHAREDDIR               "Freigege&bene Verzeichnisse..."
     IDS_SHAREAS,                "F&reigeben als..."

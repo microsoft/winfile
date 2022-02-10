@@ -34,9 +34,9 @@ BEGIN
     MENUITEM    "ディレクトリーを作成(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "検索(&C)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "ファイルを選択(&F)...", IDM_SELECT
-	MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
-	MENUITEM    "Cmd シェルを起動...(&L)...", IDM_STARTCMDSHELL
-    MENUITEM    "PowerShell を起動...(&W)...", IDM_STARTPOWERSHELL
+	MENUITEM    "Bash を起動...\tCtrl+B", IDM_STARTBASHSHELL
+	MENUITEM    "Cmd シェルを起動...(&L)...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "PowerShell を起動...(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
 	MENUITEM    "別のディレクトリーへ移動(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "終了(&X)",            IDM_EXIT
