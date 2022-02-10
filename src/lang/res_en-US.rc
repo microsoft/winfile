@@ -616,8 +616,8 @@ END
 
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
-    IDS_CONNECT,                "Connect &Network Drive...\tCtrl+N"
-    IDS_DISCONNECT,             "&Disconnect Network Drive...\tCtrl+D"
+    IDS_CONNECT,                "Connect &Network Drive..."
+    IDS_DISCONNECT,             "&Disconnect Network Drive..."
     IDS_CONNECTIONS,            "&Network Connections..."
     IDS_SHAREDDIR               "S&hared Directories..."
     IDS_SHAREAS,                "Share &As..."

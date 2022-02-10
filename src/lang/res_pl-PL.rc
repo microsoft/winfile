@@ -616,8 +616,8 @@ END
 
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
-    IDS_CONNECT,                "&Podłącz dysk sieciowy...\tCtrl+N"
-    IDS_DISCONNECT,             "O&dłącz dysk sieciowy...\tCtrl+D"
+    IDS_CONNECT,                "&Podłącz dysk sieciowy..."
+    IDS_DISCONNECT,             "O&dłącz dysk sieciowy..."
     IDS_CONNECTIONS,            "&Połączenia sieciowe..."
     IDS_SHAREDDIR               "&Udostępnione katalogi..."
     IDS_SHAREAS,                "Udos&tępnij jako..."

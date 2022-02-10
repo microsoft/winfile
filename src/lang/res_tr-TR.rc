@@ -540,8 +540,8 @@ END
 
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
-    IDS_CONNECT,                "&Ağ Sürücüsü Bağla...\tCtrl+N"
-    IDS_DISCONNECT,             "Ağ &Sürücüsü Bağlantısı Kes...\tCtrl+D"
+    IDS_CONNECT,                "&Ağ Sürücüsü Bağla..."
+    IDS_DISCONNECT,             "Ağ &Sürücüsü Bağlantısı Kes..."
     IDS_CONNECTIONS,            "Ağ &Bağlantıları..."
     IDS_SHAREDDIR               "&Paylaşılan Dizinler..."
     IDS_SHAREAS,                "&Farklı Paylaş..."

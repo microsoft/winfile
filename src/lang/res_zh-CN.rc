@@ -599,8 +599,8 @@ END
 
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
-    IDS_CONNECT,                "映射网络驱动器(&N)...\tCtrl+N"
-    IDS_DISCONNECT,             "断开网络驱动器(&D)...\tCtrl+D"
+    IDS_CONNECT,                "映射网络驱动器(&N)..."
+    IDS_DISCONNECT,             "断开网络驱动器(&D)..."
     IDS_CONNECTIONS,            "网络连接(&N)..."
     IDS_SHAREDDIR               "共享目录(&H)..."
     IDS_SHAREAS,                "共享为(&A)..."
