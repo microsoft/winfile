@@ -887,6 +887,8 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define BM_IND_CLOSEMINUS   10
 #define BM_IND_CLOSEDFS     11
 #define BM_IND_OPENDFS      12
+#define BM_IND_CLOSEREPARSE 15
+#define BM_IND_OPENREPARSE  16
 
 typedef struct _DRIVE_INFO {
 

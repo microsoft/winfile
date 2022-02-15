@@ -1631,9 +1631,15 @@ TCWP_DrawItem(
 
             } else if (!(view & VIEW_PLUSES) || !(pNode->wFlags & TF_HASCHILDREN)) {
                 if (bDrawSelected)
-                        iBitmap = BM_IND_OPEN;
+                   if (pNode->dwAttribs & ATTR_REPARSE_POINT)
+                        iBitmap = BM_IND_OPENREPARSE;
+                   else
+                      iBitmap = BM_IND_OPEN;
                 else
-                        iBitmap = BM_IND_CLOSE;
+                   if (pNode->dwAttribs & ATTR_REPARSE_POINT)
+                      iBitmap = BM_IND_CLOSEREPARSE;
+                   else
+                      iBitmap = BM_IND_CLOSE;
             } else {
                 if (pNode->wFlags & TF_EXPANDED) {
                         if (bDrawSelected)

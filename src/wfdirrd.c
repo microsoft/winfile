@@ -812,10 +812,16 @@ Fail:
 					 lpxdta->dwAttrs |= ATTR_LOWERCASE;
 
                     if (tag == IO_REPARSE_TAG_MOUNT_POINT)
+                    {
                         lpxdta->dwAttrs |= ATTR_JUNCTION;
+                        lpxdta->byBitmap = BM_IND_CLOSEREPARSE;
+                    }
 
                     else if (tag == IO_REPARSE_TAG_SYMLINK)
+                    {
                         lpxdta->dwAttrs |= ATTR_SYMBOLIC;
+                        lpxdta->byBitmap = BM_IND_CLOSEREPARSE;
+                    }
 
 					else
 					{
@@ -968,7 +974,12 @@ Fail:
          if (IsNetDir(szPath,pName))
             iBitmap = BM_IND_CLOSEDFS;
          else
-            iBitmap = BM_IND_CLOSE;
+         {
+            if (lfndta.fd.dwFileAttributes & ATTR_REPARSE_POINT)
+               iBitmap = BM_IND_CLOSEREPARSE;
+            else
+               iBitmap = BM_IND_CLOSE;
+         }
       } else if (lfndta.fd.dwFileAttributes & (ATTR_HIDDEN | ATTR_SYSTEM)) {
          iBitmap = BM_IND_RO;
       } else if (pProgram) {
