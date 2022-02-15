@@ -987,7 +987,10 @@ Fail:
       } else if (pDoc) {
          iBitmap = BM_IND_DOC;
       } else {
-         iBitmap = BM_IND_FIL;
+         if (lfndta.fd.dwFileAttributes & ATTR_REPARSE_POINT)
+            iBitmap = BM_IND_FILREPARSE;
+         else
+            iBitmap = BM_IND_FIL;
       }
 
       lpxdta = MemAdd(&lpLinkLast,
