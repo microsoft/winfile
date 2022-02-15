@@ -2684,6 +2684,10 @@ DoMkDir:
 
          // set attributes of new directory to those of the source
 
+         // If it was an reparse point don't copy its children, because they are already there
+         if (pDTA->fd.dwFileAttributes & ATTR_REPARSE_POINT)
+            pDTA->fd.dwFileAttributes |= ATTR_SYMBOLIC;
+
 #ifdef NETCHECK
 SkipMKDir:
 #endif
