@@ -1445,6 +1445,7 @@ GetNextPair(PCOPYROOT pcr, LPTSTR pFrom,
             // Check if we should skip an entry because it was e.g. an reparse point
             if (pDTA->fd.dwFileAttributes & ATTR_SYMBOLIC) {
                pDTA->fd.dwFileAttributes &= ~ATTR_SYMBOLIC;
+               RemoveLast(pcr->szDest);
                goto SkipThisFile;
             }
 
