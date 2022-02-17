@@ -92,8 +92,10 @@ WFFindFirst(
    lpFind->nSpaceLeft = MAXPATHLEN-nLen-1;
 
    if (lpFind->hFindFile != INVALID_HANDLE_VALUE) {
+      DWORD compareAttributes;
+      compareAttributes = lpFind->fd.dwFileAttributes & ATTR_USED;
       lpFind->dwAttrFilter = dwAttrFilter;
-      if ((~dwAttrFilter & lpFind->fd.dwFileAttributes) == 0L ||
+      if ((~dwAttrFilter & compareAttributes) == 0L ||
          WFFindNext(lpFind)) {
          return(TRUE);
       } else {
