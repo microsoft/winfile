@@ -753,7 +753,6 @@ InvalidDirectory:
                lpTemp[0] = CHAR_BACKSLASH;
                if (attr & ATTR_REPARSE_POINT) {
                   // For dead Reparse Points just tell that the directory could not be read
-                  iError = IDS_COPYERROR + FUNC_EXPAND;
                   break;
                } else {
                   //
