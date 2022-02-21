@@ -748,7 +748,10 @@ InvalidDirectory:
             if (hwndTree=HasTreeWindow(hwnd)) {
 
                // Check if it is a Reparse Point
-               if (dwAttribs & (ATTR_JUNCTION | ATTR_SYMBOLIC)) {
+               lpTemp[0] = '\0';
+               DWORD attr = GetFileAttributes(szPath);
+               lpTemp[0] = CHAR_BACKSLASH;
+               if (attr & ATTR_REPARSE_POINT) {
                   // For dead Reparse Points just tell that the directory could not be read
                   break;
                } else {
