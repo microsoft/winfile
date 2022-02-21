@@ -106,6 +106,7 @@ selecting one changes to that directory.  Default = c:\. Confgigure via Winfile.
 15. View command has a new option to sort by date forward (oldest on top);
 normal date sorting is newest on top
 16. CTRL + ENTER executes associated files as administrator
+19. The delimiters for splitting words for the GotoCache can be configured via Winfile.ini[Settings]GotoCachePunctuation. The default is - _.
 
 You can read the code for more details.
 

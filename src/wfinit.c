@@ -1312,6 +1312,14 @@ JAPANEND
    win.rc.right -= win.rc.left;
    win.rc.bottom -= win.rc.top;
 
+   // We need to know about all reaprse tags
+   hNtdll = LoadLibrary(L"ntdll.dll");
+   if (hNtdll)
+   {
+      pfnRtlSetProcessPlaceholderCompatibilityMode = (RtlSetProcessPlaceholderCompatibilityMode_t)GetProcAddress(hNtdll, "RtlSetProcessPlaceholderCompatibilityMode");
+      if (pfnRtlSetProcessPlaceholderCompatibilityMode)
+         pfnRtlSetProcessPlaceholderCompatibilityMode(PHCM_EXPOSE_PLACEHOLDERS);
+   }
 
    //
    // Check to see if another copy of winfile is running.  If

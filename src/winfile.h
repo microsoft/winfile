@@ -1006,6 +1006,7 @@ BOOL LoadUxTheme(VOID);
 #define MPR_DLL      TEXT("mpr.dll")
 #define NTSHRUI_DLL  TEXT("Ntshrui.dll")
 #define ACLEDIT_DLL  TEXT("acledit.dll")
+#define NTDLL_DLL    TEXT("ntdll.dll")
 
 #define WAITNET()      WaitLoadEvent(TRUE)
 #define WAITACLEDIT()  WaitLoadEvent(FALSE)
@@ -1090,6 +1091,7 @@ Extern HANDLE hVersion             EQ( NULL );
 Extern HANDLE hMPR                 EQ( NULL );
 Extern HANDLE hNtshrui             EQ( NULL );
 Extern HANDLE hAcledit             EQ( NULL );
+Extern HANDLE hNtdll               EQ (NULL );
 
 
 //--------------------------------------------------------------------------
@@ -1183,6 +1185,9 @@ Extern TCHAR        szUILanguage[]          EQ( TEXT("UILanguage") );
 Extern TCHAR        szEditorPath[]          EQ( TEXT("EditorPath"));
 Extern TCHAR        szMirrorContent[]       EQ( TEXT("MirrorContent") );
 Extern TCHAR        szCachedPath[]          EQ( TEXT("CachedPath"));
+Extern TCHAR        szCachedRootLower[MAXPATHLEN];
+Extern TCHAR        szGotoCachePunctuation[] EQ(TEXT("GotoCachePunctuation"));
+Extern TCHAR        szPunctuation[MAXPATHLEN];
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );
@@ -1370,6 +1375,13 @@ Extern   SEARCH_INFO SearchInfo;
 
 // this value is an index into dwMenuIDs and used to workaround a bug
 #define MHPOP_CURRENT 2
+
+Extern CHAR PHCM_EXPOSE_PLACEHOLDERS    EQ(2);
+typedef NTSYSAPI CHAR (*RtlSetProcessPlaceholderCompatibilityMode_t)(
+   CHAR aMode
+   );
+RtlSetProcessPlaceholderCompatibilityMode_t pfnRtlSetProcessPlaceholderCompatibilityMode;
+
 
 #ifdef _GLOBALS
    DWORD dwMenuIDs[] = {
