@@ -166,6 +166,7 @@ ScanDirLevel(PDNODE pParentNode, LPTSTR szPath, DWORD view)
 {
   BOOL bFound;
   LFNDTA lfndta;
+  BOOL bExclude;
 
   /* Add '*.*' to the current path. */
   lstrcpy(szMessage, szPath);
@@ -178,9 +179,18 @@ ScanDirLevel(PDNODE pParentNode, LPTSTR szPath, DWORD view)
 
   while (bFound)
     {
+      /* Is this a junction and are those displayed? */
+      bExclude = FALSE;
+      if ((view & ATTR_JUNCTION) == 0 &&
+          (lfndta.fd.dwFileAttributes & ATTR_JUNCTION)) {
+
+          bExclude = TRUE;
+      }
+
       /* Is this not a '.' or '..' directory? */
       if (!ISDOTDIR(lfndta.fd.cFileName) &&
-         (lfndta.fd.dwFileAttributes & ATTR_DIR)) {
+         (lfndta.fd.dwFileAttributes & ATTR_DIR) &&
+         !bExclude) {
 
          pParentNode->wFlags |= TF_HASCHILDREN;
          bFound = FALSE;
@@ -482,6 +492,39 @@ wfYield()
    }
 }
 
+/////////////////////////////////////////////////////////////////////
+//
+// Name:     WFFindNextNonJunction
+//
+// Synopsis: Returns the next non-junction entry, which may be the
+//           current entry.  Continually calls WFFindNext so long as
+//           the current entry is a junction.
+//
+// lpFind               Pointer to the find context, which may (or may
+//                      not) be advanced to a later entry.
+//
+// Return:              TRUE  = non-junction successfully found
+//                      FALSE = no non-junction remaining.
+BOOL
+WFFindNextNonJunction(LPLFNDTA lpFind)
+{
+    BOOL bFound;
+
+    bFound = TRUE;
+
+    while (bFound)
+    {
+        // If it's not a junction, return it.
+        if (!(lpFind->fd.dwFileAttributes & ATTR_JUNCTION))
+        {
+            return bFound;
+        }
+
+        bFound = WFFindNext(lpFind);
+    }
+
+    return bFound;
+}
 
 
 /////////////////////////////////////////////////////////////////////
@@ -663,6 +706,14 @@ ReadDirLevel(
       lstrcpy(szMessage, szPath);
 
       bFound = WFFindFirst(&lfndta, szMessage, dwAttribs);
+
+      //
+      // if junctions are not displayed, continue to the next non-junction
+      //
+      if (bFound && !(dwAttribs & ATTR_JUNCTION))
+      {
+          bFound = WFFindNextNonJunction(&lfndta);
+      }
    }
 
    // for net drive case where we can't actually see what is in these
@@ -787,7 +838,7 @@ ReadDirLevel(
                  goto DONE;
               }
           } else if (dwView & VIEW_PLUSES) {
-             ScanDirLevel(pNode, szPath, dwAttribs & ATTR_HS);
+             ScanDirLevel(pNode, szPath, dwAttribs & (ATTR_HS | ATTR_JUNCTION));
           }
       }
 
@@ -837,6 +888,14 @@ ReadDirLevel(
       else
       {
           bFound = WFFindNext(&lfndta); // get it from dos
+
+          //
+          // if junctions are not displayed, continue to the next non-junction
+          //
+          if (bFound && !(dwAttribs & ATTR_JUNCTION))
+          {
+              bFound = WFFindNextNonJunction(&lfndta);
+          }
       }
   }
 
@@ -932,7 +991,7 @@ StealTreeData(
    // we need to match on these attributes as well as the name
    //
    dwView    = GetWindowLongPtr(GetParent(hwndTC), GWL_VIEW) & VIEW_PLUSES;
-   dwAttribs = GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS) & ATTR_HS;
+   dwAttribs = GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS) & (ATTR_HS | ATTR_JUNCTION);
 
    //
    // get the dir of this new window for compare below
@@ -948,7 +1007,7 @@ StealTreeData(
          (hwndT != hwndTC) &&
          !GetWindowLongPtr(hwndT, GWL_READLEVEL) &&
          (dwView  == (DWORD)(GetWindowLongPtr(hwndSrc, GWL_VIEW) & VIEW_PLUSES)) &&
-         (dwAttribs == (DWORD)(GetWindowLongPtr(hwndSrc, GWL_ATTRIBS) & ATTR_HS))) {
+         (dwAttribs == (DWORD)(GetWindowLongPtr(hwndSrc, GWL_ATTRIBS) & (ATTR_HS | ATTR_JUNCTION)))) {
 
          SendMessage(hwndSrc, FS_GETDIRECTORY, COUNTOF(szSrc), (LPARAM)szSrc);
          StripBackslash(szSrc);
@@ -1084,7 +1143,8 @@ FillTreeListbox(HWND hwndTC,
 
       if (pNode) {
 
-         dwAttribs = ATTR_DIR | (GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS) & ATTR_HS);
+         dwAttribs = GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS);
+         dwAttribs = ATTR_DIR | (dwAttribs & (ATTR_HS | ATTR_JUNCTION));
          cNodes = 0;
          bCancelTree = FALSE;
 
@@ -1155,7 +1215,8 @@ FillOutTreeList(HWND hwndTC,
 
 	SendMessage(hwndLB, WM_SETREDRAW, FALSE, 0L);
 
-	dwAttribs = ATTR_DIR | (GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS) & ATTR_HS);
+	dwAttribs = GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS);
+	dwAttribs = ATTR_DIR | (dwAttribs & (ATTR_HS | ATTR_JUNCTION));
 
 	// get path to node that already exists in tree; will start reading from there
 	GetTreePath(pNode, szExists);
@@ -1861,6 +1922,7 @@ ExpandLevel(HWND hWnd, WPARAM wParam, INT nIndex, LPTSTR szPath)
   INT iExpandInView;
   INT iCurrentIndex;
   RECT rc;
+  DWORD dwAttribs;
 
   //
   // Don't do anything while the tree is being built.
@@ -1916,8 +1978,9 @@ ExpandLevel(HWND hWnd, WPARAM wParam, INT nIndex, LPTSTR szPath)
 
   if (IsTheDiskReallyThere(hWnd, szPath, FUNC_EXPAND, FALSE))
   {
-     ReadDirLevel(hWnd, pNode, szPath, pNode->nLevels + 1, nIndex,
-        (DWORD)(ATTR_DIR | (GetWindowLongPtr(GetParent(hWnd), GWL_ATTRIBS) & ATTR_HS)),
+     dwAttribs = GetWindowLongPtr(GetParent(hWnd), GWL_ATTRIBS);
+     dwAttribs = ATTR_DIR | (dwAttribs & (ATTR_HS | ATTR_JUNCTION));
+     ReadDirLevel(hWnd, pNode, szPath, pNode->nLevels + 1, nIndex, dwAttribs,
         (BOOL)wParam, NULL, IS_PARTIALSORT(DRIVEID(szPath)));
   }
 
@@ -2355,7 +2418,7 @@ TreeControlWndProc(
             lstrcpy(szPath, (LPTSTR)lParam);
             ScanDirLevel( (PDNODE)pNodeT,
                           szPath,
-                          (GetWindowLongPtr(hwndParent, GWL_ATTRIBS) & ATTR_HS));
+                          (GetWindowLongPtr(hwndParent, GWL_ATTRIBS) & (ATTR_HS | ATTR_JUNCTION)));
 
             //
             // Invalidate the window so the plus gets drawn if needed

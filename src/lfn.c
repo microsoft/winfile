@@ -18,7 +18,6 @@
 
 BOOL IsFATName(LPTSTR pName);
 
-
 /* WFFindFirst -
  *
  * returns:
@@ -86,8 +85,16 @@ WFFindFirst(
 
    if (lpFind->hFindFile != INVALID_HANDLE_VALUE) {
       lpFind->dwAttrFilter = dwAttrFilter;
-      if ((~dwAttrFilter & lpFind->fd.dwFileAttributes) == 0L ||
-         WFFindNext(lpFind)) {
+      if ((~dwAttrFilter & lpFind->fd.dwFileAttributes) == 0L) {
+         if (lpFind->fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) {
+            if (lpFind->fd.dwReserved0 == IO_REPARSE_TAG_MOUNT_POINT) {
+               lpFind->fd.dwFileAttributes |= ATTR_JUNCTION;
+            } else if (lpFind->fd.dwReserved0 == IO_REPARSE_TAG_SYMLINK) {
+               lpFind->fd.dwFileAttributes |= ATTR_SYMBOLIC;
+            }
+         }
+         return(TRUE);
+      } else if (WFFindNext(lpFind)) {
          return(TRUE);
       } else {
          WFFindClose(lpFind);
@@ -103,8 +110,8 @@ WFFindFirst(
 /* WFFindNext -
  *
  *  Performs a single file FindNext operation.  Only returns TRUE if a
- *  file matching the dwAttrFilter is found.  On failure WFFindClose is
- *  called.
+ *  file matching the dwAttrFilter is found.  On failure the caller is
+ *  expected to call WFFindClose.
  */
 BOOL
 WFFindNext(LPLFNDTA lpFind)
@@ -139,7 +146,16 @@ WFFindNext(LPLFNDTA lpFind)
          lstrcpy(lpFind->fd.cFileName, lpFind->fd.cAlternateFileName);
       }
 
+      if (lpFind->fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT) {
+          if (lpFind->fd.dwReserved0 == IO_REPARSE_TAG_MOUNT_POINT) {
+              lpFind->fd.dwFileAttributes |= ATTR_JUNCTION;
+          } else if (lpFind->fd.dwReserved0 == IO_REPARSE_TAG_SYMLINK) {
+              lpFind->fd.dwFileAttributes |= ATTR_SYMBOLIC;
+          }
+      }
+
 	  Wow64RevertWow64FsRedirection(oldValue);
+
       lpFind->err = 0;
       return TRUE;
    }
