@@ -492,6 +492,39 @@ wfYield()
    }
 }
 
+/////////////////////////////////////////////////////////////////////
+//
+// Name:     WFFindNextNonJunction
+//
+// Synopsis: Returns the next non-junction entry, which may be the
+//           current entry.  Continually calls WFFindNext so long as
+//           the current entry is a junction.
+//
+// lpFind               Pointer to the find context, which may (or may
+//                      not) be advanced to a later entry.
+//
+// Return:              TRUE  = non-junction successfully found
+//                      FALSE = no non-junction remaining.
+BOOL
+WFFindNextNonJunction(LPLFNDTA lpFind)
+{
+    BOOL bFound;
+
+    bFound = TRUE;
+
+    while (bFound)
+    {
+        // If it's not a junction, return it.
+        if (!(lpFind->fd.dwFileAttributes & ATTR_JUNCTION))
+        {
+            return bFound;
+        }
+
+        bFound = WFFindNext(lpFind);
+    }
+
+    return bFound;
+}
 
 
 /////////////////////////////////////////////////////////////////////
@@ -673,21 +706,13 @@ ReadDirLevel(
       lstrcpy(szMessage, szPath);
 
       bFound = WFFindFirst(&lfndta, szMessage, dwAttribs);
-      if (bFound)
-      {
-          while (TRUE)
-          {
-              //  If it's a junction and we're not displaying those,
-              //  loop again for the next entry
-              if (lfndta.fd.dwFileAttributes & ATTR_JUNCTION &&
-                  (!(dwAttribs & ATTR_JUNCTION)))
-              {
 
-                  bFound = WFFindNext(&lfndta); // get it from dos
-                  continue;
-              }
-              break;
-          }
+      //
+      // if junctions are not displayed, continue to the next non-junction
+      //
+      if (bFound && !(dwAttribs & ATTR_JUNCTION))
+      {
+          bFound = WFFindNextNonJunction(&lfndta);
       }
    }
 
@@ -862,21 +887,14 @@ ReadDirLevel(
       }
       else
       {
-          while (TRUE)
-          {
-              bFound = WFFindNext(&lfndta); // get it from dos
-              if (bFound)
-              {
-                  //  If it's a junction and we're not displaying those,
-                  //  loop again for the next entry
-                  if (lfndta.fd.dwFileAttributes & ATTR_JUNCTION &&
-                      (!(dwAttribs & ATTR_JUNCTION)))
-                  {
+          bFound = WFFindNext(&lfndta); // get it from dos
 
-                      continue;
-                  }
-              }
-              break;
+          //
+          // if junctions are not displayed, continue to the next non-junction
+          //
+          if (bFound && !(dwAttribs & ATTR_JUNCTION))
+          {
+              bFound = WFFindNextNonJunction(&lfndta);
           }
       }
   }

@@ -906,25 +906,7 @@ Fail:
       //
       // be safe, zero unused DOS dta bits
       //
-      lfndta.fd.dwFileAttributes &= ATTR_USED;
-
-      //
-      // if reparse point, figure out whether it is a junction point
-	  if (lfndta.fd.dwFileAttributes & ATTR_REPARSE_POINT)
-      {
-          DWORD tag = DecodeReparsePoint(szPath, pName, szLinkDest, COUNTOF(szLinkDest));
-
-          if (tag == IO_REPARSE_TAG_MOUNT_POINT)
-              lfndta.fd.dwFileAttributes |= ATTR_JUNCTION;
-
-          else if (tag == IO_REPARSE_TAG_SYMLINK)
-              lfndta.fd.dwFileAttributes |= ATTR_SYMBOLIC;
-
-          else
-          {
-              // DebugBreak();
-          }
-      }
+      lfndta.fd.dwFileAttributes &= (ATTR_USED | ATTR_JUNCTION | ATTR_SYMBOLIC);
 
 	  //
       // filter unwanted stuff here based on current view settings
