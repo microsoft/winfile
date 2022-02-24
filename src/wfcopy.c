@@ -1443,8 +1443,7 @@ GetNextPair(PCOPYROOT pcr, LPTSTR pFrom,
                goto FastMoveSkipDir;
 #endif
             // Check if we should skip an entry because it was e.g. an reparse point
-            if (pDTA->fd.dwFileAttributes & ATTR_SYMBOLIC) {
-               pDTA->fd.dwFileAttributes &= ~ATTR_SYMBOLIC;
+            if (pDTA->fd.dwFileAttributes & ( ATTR_SYMBOLIC | ATTR_JUNCTION) ) {
                RemoveLast(pcr->szDest);
                goto SkipThisFile;
             }
@@ -1693,7 +1692,7 @@ SearchStartFail:
                }
 
                // Skip reparse points
-               if (dwFunc == FUNC_DELETE && pDTA->fd.dwFileAttributes & ATTR_REPARSE_POINT) {
+               if (dwFunc == FUNC_DELETE && pDTA->fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION)) {
                   pcr->fRecurse = FALSE;
                   dwOp = OPER_RMDIR;
                   goto ReturnPair;
@@ -2738,13 +2737,10 @@ SkipMKDir:
             }
 #endif
             
-            // Check if we came a long a reparse point
-            dwAttr = GetFileAttributes(szSource);
-            if (dwAttr & ATTR_REPARSE_POINT) {
-               // Yes, lets unlink it, but signal GetNextPair() that it should not crawl down the reparse point.
-               // We are using ATTR_SYMBOLIC to flag Junctions and Symbolic Links here
+            // Check if we came a long a junction or symbolic link
+            if (pDTA->fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION)) {
+               // Just unlink it
                ret = RMDir(szSource);
-               pDTA->fd.dwFileAttributes |= ATTR_SYMBOLIC;
             }
 			break;
 
