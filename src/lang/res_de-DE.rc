@@ -221,6 +221,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "Mausaktion bestätigen"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s kopieren möchten?"
     IDS_MOVEMOUSECONFIRM,   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s verschieben möchten?"
+    IDS_LINKMOUSECONFIRM,   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s verlinken möchten?"
     IDS_EXECMOUSECONFIRM,   "Sind Sie sicher, daß Sie %s mit %s als Dokument ausführen möchten?"                                                          /* 128 */
 
     IDS_WINFILE,            "Datei-Manager"                  /* 32 */
@@ -289,6 +290,9 @@ JAPANEND
     IDS_COPYERROR + FUNC_SETDRIVE "Fehler beim Auswählen des Laufwerks"
     IDS_COPYERROR + FUNC_EXPAND   "Fehler beim Lesen eines Verzeichnisses"
     IDS_COPYERROR + FUNC_LABEL    "Fehler beim Benennen des Datenträgers"
+    IDS_COPYERROR + FUNC_LINK     "Fehler beim Erstellen eines Symbolischen Links"
+    IDS_COPYERROR + FUNC_HARD     "Fehler beim Erstellen eines Hardlinks"
+    IDS_COPYERROR + FUNC_JUNC     "Fehler beim Erstellen einer Junction"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -297,6 +301,9 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "%s kann nicht verschoben werden.\n%s"
     IDS_VERBS + FUNC_DELETE     "%s kann nicht gelöscht werden.\n%s"
     IDS_VERBS + FUNC_RENAME     "%s kann nicht umbenannt werden.\n%s"
+    IDS_VERBS + FUNC_LINK       "%s kann nicht symbolisch verlinkt werden.\n%s"
+    IDS_VERBS + FUNC_HARD       "%s kann nicht verlinkt werden.\n%s"
+    IDS_VERBS + FUNC_JUNC       "%s kann als Junction nicht erstellt werden.\n%s"
     IDS_ACTIONS + 1             "Verzeichnis %s kann nicht erzeugt werden.\n%s"
     IDS_ACTIONS + 2             "Verzeichnis %s kann nicht gelöscht werden.\n%s"
     IDS_REPLACING               "%s kann nicht erstellt oder ersetzt werden.\n%s"
@@ -410,6 +417,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "Datei(en) kopieren nach %s"
     IDS_DRAG_MOVING             "Datei(en) verschieben nach %s"
+    IDS_DRAG_LINKING            "Datei(en) verlinken nach %s"
     IDS_DRAG_EXECUTING          "Starten von Datei(en) mit %s"
 
     IDS_ORDERB                  "%s Bytes"

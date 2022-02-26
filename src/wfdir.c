@@ -720,7 +720,7 @@ DirWndProc(
    case WM_DRAGMOVE:
 
       {
-         static BOOL fOldShowSourceBitmaps = 0;
+         static INT fOldShowSourceBitmaps = 0;
 
          // WM_DRAGMOVE is sent to a sink as the object is being dragged
          // within it.
@@ -730,7 +730,7 @@ DirWndProc(
 
          // DRAGMOVE is used to move our selection rectangle among sub-items.
 
-#define lpds ((LPDROPSTRUCT)lParam)
+         LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
          // Get the subitem we are over.
          iSel = lpds->dwControlData;
@@ -749,8 +749,6 @@ DirWndProc(
          iSelHighlight = iSel;
          DSRectItem(hwndLB, iSel, TRUE, FALSE);
          break;
-
-#undef lpds
       }
 
    case WM_DRAWITEM:

@@ -39,6 +39,10 @@ VOID DialogEnterFileStuff(register HWND hwnd);
 DWORD SafeFileRemove(LPTSTR szFileOEM);
 BOOL IsWindowsFile(LPTSTR szFileOEM);
 
+DWORD WFHardLink(LPTSTR pszFrom, LPTSTR pszTo);
+DWORD WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags);
+DWORD WFJunction(LPCWSTR LinkDirectory, LPCWSTR LinkTarget);
+
 INT_PTR CALLBACK ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
 
@@ -948,7 +952,7 @@ ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
    switch (wMsg) {
    case WM_INITDIALOG:
       {
-         #define lpdlgparams ((LPPARAM_REPLACEDLG)lParam)
+         LPPARAM_REPLACEDLG lpdlgparams = (LPPARAM_REPLACEDLG)lParam;
 
          if (lpdlgparams->bWriteProtect) {
             LoadString(hAppInstance, IDS_WRITEPROTECTFILE, szMessage, COUNTOF(szMessage));
@@ -977,8 +981,6 @@ ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
          }
 
          SetWindowLongPtr(hDlg, GWLP_USERDATA, (LPARAM)lpdlgparams);
-
-         #undef lpdlgparams
          break;
       }
 
@@ -1802,15 +1804,29 @@ MergeNames:
    if (dwOp == OPER_MKDIR) {
 
       //
-      // For a directory copy to the same name, append the "- Copy" suffix
+      // For a directory copy to the same name, append the "- Copy", "- Symlink", "-Hardlink" suffix
       // to both the target of this operation, and the target directory for
       // recursive operations.  Unlike the regular file case, this does not
       // consider file name extensions, since it is specific to directories.
       //
 
-      if (dwFunc == FUNC_COPY && !_wcsicmp(pFrom, pToPath)) {
-         lstrcat(pToPath, L" - Copy");
-         lstrcat(pcr->szDest, L" - Copy");
+      if (!_wcsicmp(pFrom, pToPath)) {
+         switch (dwFunc) {
+         case FUNC_COPY:
+            lstrcat(pToPath, L" - Copy");
+            lstrcat(pcr->szDest, L" - Copy");
+            break;
+
+         case FUNC_LINK:
+            lstrcat(pToPath, L" - Symlink");
+            lstrcat(pcr->szDest, L" - Symlink");
+            break;
+
+         case FUNC_HARD:
+            lstrcat(pToPath, L" - Junction");
+            lstrcat(pcr->szDest, L" - Junction");
+            break;
+         }
       } else {
          //
          // Make sure the new directory is not a subdir of the original...
@@ -2422,7 +2438,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
 
       bConfirmed = FALSE;
 
-TRY_COPY_AGAIN:
+   TRY_COPY_AGAIN:
 
       if (pCopyInfo->dwFunc != FUNC_DELETE) {
 
@@ -2430,7 +2446,9 @@ TRY_COPY_AGAIN:
          // If same name and copying, attempt to add a "- Copy" suffix.
          //
          bSameFile = !lstrcmpi(szSource, szDest);
-         if (bSameFile && pCopyInfo->dwFunc == FUNC_COPY && (oper != OPER_RMDIR)) {
+         if (bSameFile &&
+            (pCopyInfo->dwFunc == FUNC_COPY || pCopyInfo->dwFunc == FUNC_LINK || pCopyInfo->dwFunc == FUNC_HARD || pCopyInfo->dwFunc == FUNC_JUNC) &&
+            (oper != OPER_RMDIR)) {
 
             // Source and destination are exactly the same
             WCHAR szDestAlt[MAX_PATH + 2] = { 0 };
@@ -2448,9 +2466,22 @@ TRY_COPY_AGAIN:
             }
 
             // Postfix the operation
-            lstrcat(szDestAlt, L" - Copy");
+            switch (pCopyInfo->dwFunc) {
+            case FUNC_COPY:
+               lstrcat(szDestAlt, L" - Copy");
+               break;
+
+            case FUNC_LINK:
+               lstrcat(szDestAlt, L" - Symlink");
+               break;
+
+            case FUNC_HARD:
+               lstrcat(szDestAlt, L" - Hardlink");
+               break;
+            }
+
             lstrcat(szDestAlt, szExtension);
-            
+
             // We only do a one level '- Copy' postfixing, and do intentionally not go for a '- Copy (n)' postfix
             if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(szDestAlt)) {
                lstrcpy(szDest, szDestAlt);
@@ -2461,8 +2492,8 @@ TRY_COPY_AGAIN:
                goto ShowMessageBox;
             }
 
-         } 
-         if (ret = IsInvalidPath (szDest)) {
+         }
+         if (ret = IsInvalidPath(szDest)) {
 
             bErrorOnDest = TRUE;
             goto ShowMessageBox;
@@ -2530,9 +2561,9 @@ TRY_COPY_AGAIN:
 
                case IDYES:       // Perform the delete
 
-                  if (pCopyInfo->dwFunc == FUNC_MOVE) {
+                  if ((pCopyInfo->dwFunc == FUNC_MOVE) || (pCopyInfo->dwFunc == FUNC_HARD) || (pCopyInfo->dwFunc == FUNC_LINK)) {
 
-                     // For FUNC_MOVE we need to delete the
+                     // For FUNC_MOVE/FUNC_HARD/FUNC_LINK we need to delete the
                      // destination first.  Do that now.
 
                      if (DTADest.fd.dwFileAttributes & ATTR_DIR) {
@@ -2745,6 +2776,71 @@ SkipMKDir:
 #endif
          break;
 
+      case OPER_MKDIR | FUNC_HARD:
+      case OPER_MKDIR | FUNC_JUNC:
+      case OPER_MKDIR | FUNC_LINK:  
+      {
+         // Create symbolic link or junction
+         if (WFFindFirst(&DTADest, szDest, ATTR_ALL)) {
+            WFFindClose(&DTADest);
+
+            dwResponse = ConfirmDialog(hdlgProgress, CONFIRMREPLACE,
+               szDest, &DTADest, szSource, pDTA,
+               bConfirmSubDel,
+               &bSubtreeDelAll,
+               bConfirmReadOnly,
+               &bSubtreeDelReadOnlyAll);
+
+            switch (dwResponse) {
+            case IDYES:       // Perform the delete
+               RMDir(szDest);
+               break;
+
+            case IDNO:
+            case IDCANCEL:
+               goto CancelWholeOperation;
+            }
+         }
+         CurIDS = IDS_CREATINGMSG;
+         Notify(hdlgProgress, IDS_CREATINGMSG, szDest, szNULL);
+         switch (pCopyInfo->dwFunc) {
+         case FUNC_LINK:
+            ret = WFSymbolicLink(szSource, szDest, SYMBOLIC_LINK_FLAG_DIRECTORY);
+            break;
+
+         case FUNC_HARD:
+         case FUNC_JUNC:
+            ret = WFJunction(szDest, szSource);
+            break;
+         }
+
+
+         if (ERROR_SUCCESS == ret)
+            //
+            // set attributes of dest to source (not including the
+            // subdir and vollabel bits)
+            //
+            WFSetAttr(szDest, pDTA->fd.dwFileAttributes & ~(ATTR_DIR | ATTR_VOLUME));
+
+         //
+         // If symlink dir already exists ignore the error. return
+         // as long as it is a directory and not a file.
+         //
+         if (ERROR_ALREADY_EXISTS == ret) {
+
+            ret = WFIsDir(szDest) ?
+               ERROR_SUCCESS :
+               DE_DIREXISTSASFILE;
+         }
+
+         // Don't follow a reparse point in the source. Stop recursion of GetNextPair for this entry
+         pcr->cDepth = 0;
+
+         if (ret != ERROR_SUCCESS)
+            bErrorOnDest = TRUE;
+      }
+      break;
+
       case OPER_MKDIR | FUNC_DELETE:
 
          // Confirm removal of directory on this pass.  The directories
@@ -2779,7 +2875,7 @@ SkipMKDir:
                goto CancelWholeOperation;
             }
 #endif
-			break;
+            break;
 
          case IDNO:
          case IDCANCEL:
@@ -2841,6 +2937,8 @@ SkipMKDir:
       case OPER_RMDIR | FUNC_COPY:
          break;
 
+      case OPER_DOFILE | FUNC_HARD:
+      case OPER_DOFILE | FUNC_LINK:
       case OPER_DOFILE | FUNC_COPY:
 
 
@@ -2852,7 +2950,7 @@ SkipMKDir:
          }
 
          //
-         // Now try to copy the file.  Do extra error processing only
+         // Now try to process the file.  Do extra error processing only
          //      in 2 cases:
          //
          //  1) If a floppy is full let the user stick in a new disk
@@ -2865,7 +2963,19 @@ SkipMKDir:
          //              to support this error condition here.  Modified by
          //    C. Stevens, August 1991
 
-         ret = WFCopy(szSource, szDest);
+         switch (pCopyInfo->dwFunc) {
+         case FUNC_COPY:
+            ret = WFCopy(szSource, szDest);
+            break;
+
+         case FUNC_LINK:
+            ret = WFSymbolicLink(szSource, szDest, 0);
+            break;
+
+         case FUNC_HARD:
+            ret = WFHardLink(szSource, szDest);
+            break;
+         }
 
          if (pCopyInfo->bUserAbort)
             goto CancelWholeOperation;
@@ -3283,7 +3393,7 @@ DWORD
 DMMoveCopyHelper(
    register LPTSTR pFrom,
    register LPTSTR pTo,
-   BOOL bCopy)
+   INT iOperation)
 {
    DWORD       dwStatus;
    LPWSTR      pTemp;
@@ -3302,8 +3412,22 @@ DMMoveCopyHelper(
    // Confirm mouse operations.
    //
    if (bConfirmMouse) {
-      LoadString(hAppInstance, bCopy ? IDS_COPYMOUSECONFIRM : IDS_MOVEMOUSECONFIRM,
-         szTitle, COUNTOF(szTitle));
+      INT iConfirmMsg = IDS_MOVEMOUSECONFIRM;
+      switch (iOperation) {
+      case DROP_COPY:
+         iConfirmMsg = IDS_COPYMOUSECONFIRM;
+         break;
+      case DROP_LINK:
+      case DROP_HARD:
+      case DROP_JUNC:
+         iConfirmMsg = IDS_LINKMOUSECONFIRM;
+         break;
+
+      default:
+      case DROP_MOVE:
+         iConfirmMsg = IDS_MOVEMOUSECONFIRM;
+      }
+      LoadString(hAppInstance, iConfirmMsg, szTitle, COUNTOF(szTitle));
 
       lstrcpy(szConfirmFile,pTo);
       pTemp = FindFileName(szConfirmFile);
@@ -3369,7 +3493,25 @@ Error:
       goto Error;
    }
 
-   pCopyInfo->dwFunc =  bCopy ? FUNC_COPY : FUNC_MOVE;
+   switch (iOperation) {
+   case DROP_COPY:
+      pCopyInfo->dwFunc = FUNC_COPY;
+      break;
+   case DROP_LINK:
+      pCopyInfo->dwFunc = FUNC_LINK;
+      break;
+   case DROP_HARD:
+      pCopyInfo->dwFunc = FUNC_HARD;
+      break;
+   case DROP_JUNC:
+      pCopyInfo->dwFunc = FUNC_JUNC;
+      break;
+
+   default:
+   case DROP_MOVE:
+      pCopyInfo->dwFunc = FUNC_MOVE;
+      break;
+   }
    pCopyInfo->bUserAbort = FALSE;
 
    lstrcpy(pCopyInfo->pFrom, pFrom);

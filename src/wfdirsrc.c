@@ -18,17 +18,26 @@
 HWND hwndGlobalSink = NULL;
 
 VOID  SelectItem(HWND hwndLB, WPARAM wParam, BOOL bSel);
-VOID  ShowItemBitmaps(HWND hwndLB, BOOL bShow);
+VOID  ShowItemBitmaps(HWND hwndLB, INT iShow);
+int GetDragStatusText(int iOperation);
 
 HCURSOR
 GetMoveCopyCursor()
 {
-   if (fShowSourceBitmaps) {
-      // copy
-      return LoadCursor(hAppInstance, (LPTSTR) MAKEINTRESOURCE(iCurDrag | 1));
-   } else {
-      // move
-      return LoadCursor(hAppInstance, (LPTSTR) MAKEINTRESOURCE(iCurDrag & ~1));
+   switch (fShowSourceBitmaps) {
+   case DROP_COPY:
+      return LoadCursor(hAppInstance, (LPTSTR)MAKEINTRESOURCE(iCurDrag | 0b0001));
+
+   case DROP_LINK:
+      return LoadCursor(hAppInstance, (LPTSTR)MAKEINTRESOURCE((iCurDrag | 0b0100) & ~0b0001));
+
+   case DROP_JUNC:
+   case DROP_HARD:
+      return LoadCursor(hAppInstance, (LPTSTR)MAKEINTRESOURCE((iCurDrag | 0b1000) & ~0b0101));
+
+   case DROP_MOVE:
+   default:
+      return LoadCursor(hAppInstance, (LPTSTR)MAKEINTRESOURCE(iCurDrag & ~0b0001));
    }
 }
 
@@ -150,7 +159,7 @@ DSSetSelection(
 /*--------------------------------------------------------------------------*/
 
 VOID
-ShowItemBitmaps(HWND hwndLB, BOOL bShow)
+ShowItemBitmaps(HWND hwndLB, INT iShow)
 {
    INT i;
    INT iMac;
@@ -159,10 +168,10 @@ ShowItemBitmaps(HWND hwndLB, BOOL bShow)
    INT dx;
    LPINT lpSelItems;
 
-   if (bShow == fShowSourceBitmaps)
+   if (iShow == fShowSourceBitmaps)
       return;
 
-   fShowSourceBitmaps = bShow;
+   fShowSourceBitmaps = iShow;
 
    dx = dxFolder + dyBorderx2 + dyBorder;
 
@@ -271,7 +280,7 @@ SelectItem(HWND hwndLB, WPARAM wParam, BOOL bSel)
 VOID
 DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
 {
-   BOOL bShowBitmap;
+   INT iShowBitmap;
    LPXDTA lpxdta;
    HWND hwndMDIChildSink, hwndDir;
    BOOL bForceMoveCur = FALSE;
@@ -288,7 +297,7 @@ DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
    //
    // default to move
    //
-   bShowBitmap = FALSE;
+   iShowBitmap = DROP_MOVE;
 
    //
    // can't drop here
@@ -300,7 +309,13 @@ DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
    // Is the user holding down the CTRL key (which forces a copy)?
    //
    if (GetKeyState(VK_CONTROL) < 0) {
-       bShowBitmap = TRUE;
+       iShowBitmap = DROP_COPY;
+       if (GetKeyState(VK_SHIFT) < 0) {
+          iShowBitmap = DROP_LINK;
+          if (GetKeyState(VK_MENU) < 0) {
+             iShowBitmap = DROP_HARD;
+          }
+       }
        goto DragLoopCont;
    }
 
@@ -308,7 +323,7 @@ DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
    // Is the user holding down the ALT or SHIFT key (which forces a move)?
    //
    if (GetKeyState(VK_MENU)<0 || GetKeyState(VK_SHIFT)<0) {
-      bShowBitmap = FALSE;
+      iShowBitmap = DROP_MOVE;
       goto DragLoopCont;
    }
 
@@ -383,12 +398,12 @@ DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
    //
    // Are we dropping into the same drive (check the source and dest drives)
    //
-   bShowBitmap = ((INT)SendMessage(GetParent(hwndLB), FS_GETDRIVE, 0, 0L) !=
+   iShowBitmap = ((INT)SendMessage(GetParent(hwndLB), FS_GETDRIVE, 0, 0L) !=
                   GetDrive(lpds->hwndSink, lpds->ptDrop));
 
 DragLoopCont:
 
-   ShowItemBitmaps(hwndLB, bShowBitmap);
+   ShowItemBitmaps(hwndLB, iShowBitmap);
 
    //
    // hack, set the cursor to match the move/copy state
@@ -457,9 +472,7 @@ DSRectItem(
 
          SetStatusText(SBT_NOBORDERS|255,
                        SST_RESOURCE|SST_FORMAT,
-                       (LPWSTR)(DWORD_PTR)(fShowSourceBitmaps ?
-                          IDS_DRAG_COPYING :
-                          IDS_DRAG_MOVING),
+                       (LPWSTR)(DWORD_PTR)(GetDragStatusText(fShowSourceBitmaps)),
                        szTemp);
 
          UpdateWindow(hwndStatus);
@@ -519,9 +532,7 @@ ClearStatus:
 
       SetStatusText(SBT_NOBORDERS|255,
                     SST_FORMAT | SST_RESOURCE,
-                    (LPWSTR)(DWORD_PTR)(fShowSourceBitmaps ?
-                        IDS_DRAG_COPYING :
-                        IDS_DRAG_MOVING),
+                    (LPWSTR)(DWORD_PTR)(GetDragStatusText(fShowSourceBitmaps)),
                     szTemp);
 
       UpdateWindow(hwndStatus);
@@ -558,9 +569,7 @@ ClearStatus:
                     SST_FORMAT | SST_RESOURCE,
                     (LPWSTR)(DWORD_PTR)(pIsProgram ?
                        IDS_DRAG_EXECUTING :
-                       (fShowSourceBitmaps ?
-                          IDS_DRAG_COPYING :
-                          IDS_DRAG_MOVING)),
+                       (GetDragStatusText(fShowSourceBitmaps))),
                    pszFile);
 
       UpdateWindow(hwndStatus);
@@ -1235,6 +1244,11 @@ DirMoveCopy:
    //
    CheckEsc(szTemp);
 
+   // fShowSourceBitmaps is either
+   // 1 == TRUE  == DROP_COPY
+   // 0 == FALSE == DROP_MOVE
+   // 2 ==       == DROP_LINK
+   // 3 ==       == DROP_HARD
    ret = DMMoveCopyHelper(pFrom, szTemp, fShowSourceBitmaps);
 
    DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);

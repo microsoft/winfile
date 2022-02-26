@@ -222,6 +222,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "マウス操作の確認"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "選択しているファイルまたはディレクトリーを %s にコピーしますか?"
     IDS_MOVEMOUSECONFIRM,   "選択しているファイルまたはディレクトリーを %s に移動しますか?"
+    IDS_LINKMOUSECONFIRM,   "選択したファイルまたはディレクトリを ％ sにリンクしてもよろしいですか？"
     IDS_EXECMOUSECONFIRM,   "%s を起動して最初のファイルとして %s を使用しますか?"                                                          /* 128 */
 
     IDS_WINFILE,            "ファイル マネージャー"                  /* 32 */
@@ -290,6 +291,9 @@ JAPANEND
     IDS_COPYERROR + FUNC_SETDRIVE "ドライブの選択中のエラー"
     IDS_COPYERROR + FUNC_EXPAND   "ディレクトリーの読み込み中のエラー"
     IDS_COPYERROR + FUNC_LABEL    "ディスクのボリューム ラベル設定中のエラー"
+    IDS_COPYERROR + FUNC_LINK        "シンボリックリンクの作成に失敗しました。"
+    IDS_COPYERROR + FUNC_HARD        "ハードリンクの作成に失敗しました。"
+    IDS_COPYERROR + FUNC_JUNC        "ジャンクションの作成に失敗しました。"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -298,6 +302,9 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "ファイル マネージャーは %s を移動できません: %s"
     IDS_VERBS + FUNC_DELETE     "ファイル マネージャーは %s を削除できません: %s"
     IDS_VERBS + FUNC_RENAME     "ファイル マネージャーは %s の名前を変更できません: %s"
+    IDS_VERBS + FUNC_LINK       "ファイルマネージャはシンボリックリンク ％s を作成できません: %s"
+    IDS_VERBS + FUNC_HARD       "ファイルマネージャはハードリンク ％s を作成できません: %s"
+    IDS_VERBS + FUNC_JUNC       "ファイルマネージャはジャンクション ％s を作成できません: %s"
     IDS_ACTIONS + 1             "ファイル マネージャーはディレクトリー %s を作成できません: %s"
     IDS_ACTIONS + 2             "ファイル マネージャーはディレクトリー %s を削除できません: %s"
     IDS_REPLACING               "ファイル マネージャーは %s を作成または置き換える事ができません: %s"
@@ -410,6 +417,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "%s へファイルをコピー中"
     IDS_DRAG_MOVING             "%s へファイルを移動中"
+    IDS_DRAG_LINKING            "ファイルを ％s にリンクする"
     IDS_DRAG_EXECUTING          "%s でファイルを実行中"
 
     IDS_ORDERB                  "%s バイト"

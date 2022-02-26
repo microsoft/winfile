@@ -516,7 +516,7 @@ DWORD StartBuildingDirectoryTrie();
 
 // WFCOPY.C
 
-DWORD  DMMoveCopyHelper(LPTSTR pFrom, LPTSTR pTo, BOOL bCopy);
+DWORD  DMMoveCopyHelper(LPTSTR pFrom, LPTSTR pTo, INT iOperation);
 DWORD  WFMoveCopyDriver(PCOPYINFO pCopyInfo);
 DWORD WINAPI WFMoveCopyDriverThread(LPVOID lpParameter);
 
@@ -1164,7 +1164,7 @@ Extern BOOL bConfirmReadOnly EQ( TRUE );
 Extern BOOL bSaveSettings   EQ( TRUE );
 
 Extern BOOL bConnectable       EQ( FALSE );
-Extern BOOL fShowSourceBitmaps EQ( TRUE );
+Extern INT  fShowSourceBitmaps EQ( 1 );
 Extern BOOL bFSCTimerSet       EQ( FALSE );
 
 Extern TCHAR        chFirstDrive;           // 'A' or 'a'
@@ -1371,6 +1371,8 @@ Extern TCHAR szFmifsDll[]    EQ( TEXT("fmifs.dll") );
 
 Extern   CANCEL_INFO CancelInfo;
 Extern   SEARCH_INFO SearchInfo;
+
+Extern BOOL  bDeveloperModeAvailable EQ(FALSE);
 
 // this value is an index into dwMenuIDs and used to workaround a bug
 #define MHPOP_CURRENT 2

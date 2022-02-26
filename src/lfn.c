@@ -493,7 +493,7 @@ WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotificatio
    WCHAR szReparseDest[2 * MAXPATHLEN];
    DWORD dwReparseTag = DecodeReparsePoint(pszFrom, szReparseDest, 2 * MAXPATHLEN);
    if (IO_REPARSE_TAG_SYMLINK == dwReparseTag) {
-      CreateSymbolicLink(pszTo, szReparseDest, dwFlags);
+      CreateSymbolicLink(pszTo, szReparseDest, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0));
       dwRet = GetLastError();
       if (ERROR_SUCCESS == dwRet)
          ChangeFileSystem(dwNotification, pszTo, NULL);
@@ -544,12 +544,54 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
           break;
 
        case ERROR_PRIVILEGE_NOT_HELD:
-          dwRet = WFCopyIfSymlink(pszFrom, pszTo, SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE, FSC_CREATE);
+          dwRet = WFCopyIfSymlink(pszFrom, pszTo, 0, FSC_CREATE);
           break;
        }
     }
 
     return dwRet;
+}
+
+/* WFHardlink
+ *
+ *  Creates a Hardlink
+ */
+DWORD
+WFHardLink(LPTSTR pszFrom, LPTSTR pszTo)
+{
+   DWORD dwRet;
+
+   Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
+
+   if (CreateHardLink(pszTo, pszFrom, NULL)) {
+      ChangeFileSystem(FSC_CREATE, pszTo, NULL);
+      dwRet = ERROR_SUCCESS;
+   } else {
+      dwRet = GetLastError();
+   }
+
+   return dwRet;
+}
+
+/* WFSymbolicLink
+ *
+ *  Creates a Symbolic Link
+ */
+DWORD
+WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags)
+{
+   DWORD dwRet;
+
+   Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
+
+   if (CreateSymbolicLink(pszTo, pszFrom, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0))) {
+      ChangeFileSystem(FSC_CREATE, pszTo, NULL);
+      dwRet = ERROR_SUCCESS;
+   } else {
+      dwRet = GetLastError();
+   }
+
+   return dwRet;
 }
 
 /* WFRemove

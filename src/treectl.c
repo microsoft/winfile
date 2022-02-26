@@ -102,7 +102,30 @@ ResetTreeMax(
     BOOL fReCalcExtent);
 
 
+/*--------------------------------------------------------------------------*/
+/*                                                                          */
+/*  GetDragStatusText() -                                                   */
+/*                                                                          */
+/*  return IDS_<id> with respect to iOperation                              */
+/*                                                                          */
+/*--------------------------------------------------------------------------*/
 
+int GetDragStatusText(int iOperation)
+{
+   int iStatusText = IDS_DRAG_MOVING;
+   switch (iOperation) {
+   case DROP_COPY:
+      iStatusText = IDS_DRAG_COPYING;
+      break;
+
+   case DROP_JUNC:
+   case DROP_HARD:
+   case DROP_LINK:
+      iStatusText = IDS_DRAG_LINKING;
+      break;
+   }
+   return iStatusText;
+}
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
@@ -596,19 +619,19 @@ ReadDirLevel(
    LPTSTR  szAutoExpand,
    BOOL bPartialSort)
 {
-   LPWSTR    szEndPath;
+   LPWSTR      szEndPath;
    LFNDTA    lfndta;
    INT       iNode;
    BOOL      bFound;
-   PDNODE    pNode;
+   PDNODE     pNode;
    BOOL      bAutoExpand;
    BOOL      bResult = TRUE;
    DWORD     dwView;
    HWND      hwndParent;
    HWND      hwndDir;
    LPXDTALINK lpStart;
-   LPXDTA*   plpxdta;
-   LPXDTA    lpxdta;
+   LPXDTA*  plpxdta;
+   LPXDTA   lpxdta;
    INT       count;
 
    UINT      uYieldCount = 0;
@@ -1484,7 +1507,7 @@ EmptyStatusAndReturn:
       StripBackslash(szPath);
 
       SetStatusText(SBT_NOBORDERS|255, SST_FORMAT|SST_RESOURCE,
-               (LPCTSTR)(DWORD_PTR)(fShowSourceBitmaps ? IDS_DRAG_COPYING : IDS_DRAG_MOVING),
+               (LPCTSTR)(DWORD_PTR)GetDragStatusText(fShowSourceBitmaps),
                szPath);
       UpdateWindow(hwndStatus);
 
@@ -2808,7 +2831,7 @@ UpdateSelection:
 
    case WM_DRAGMOVE:
    {
-      static BOOL fOldShowSourceBitmaps = 0;
+      static INT fOldShowSourceBitmaps = 0;
 
       //
       // WM_DRAGMOVE is sent when two consecutive TRUE QUERYDROPOBJECT
@@ -2854,9 +2877,9 @@ UpdateSelection:
       // wParam     TRUE on dropable target
       //            FALSE not dropable target
       // lParam     lpds
-      BOOL bCopy;
+      INT iOperation;
 
-#define lpds ((LPDROPSTRUCT)lParam)
+      LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
       // based on current drop location scroll the sink up or down
       DSDragScrollSink(lpds);
@@ -2871,20 +2894,28 @@ UpdateSelection:
       // Are we over a drop-able sink?
       //
       if (wParam) {
-         if (GetKeyState(VK_CONTROL) < 0)     // CTRL
-            bCopy = TRUE;
-            else if (GetKeyState(VK_MENU)<0 || GetKeyState(VK_SHIFT)<0) // ALT || SHIFT
-               bCopy = FALSE;
+         if (GetKeyState(VK_CONTROL) < 0) {
+            iOperation = DROP_COPY;
+            if (GetKeyState(VK_SHIFT) < 0) {
+               iOperation = DROP_LINK;
+               if (GetKeyState(VK_MENU) < 0) {
+                  iOperation = DROP_JUNC;
+               }
+            }
+         }
+         else if (GetKeyState(VK_MENU) < 0 || GetKeyState(VK_SHIFT) < 0) 
+            // ALT || SHIFT forces a move even if not on same drive
+            iOperation = DROP_MOVE;
             else
-               bCopy = (GetDrive(lpds->hwndSink, lpds->ptDrop) != GetDrive(lpds->hwndSource, lpds->ptDrop));
+            iOperation = (GetDrive(lpds->hwndSink, lpds->ptDrop) != GetDrive(lpds->hwndSource, lpds->ptDrop));
       } else {
-         bCopy = TRUE;
+         iOperation = DROP_COPY;
       }
 
-      if (bCopy != fShowSourceBitmaps) {
+      if (iOperation != fShowSourceBitmaps) {
          RECT  rc;
 
-         fShowSourceBitmaps = bCopy;
+         fShowSourceBitmaps = iOperation;
 
          iSel = (WORD)SendMessage(hwndLB, LB_GETCURSEL, 0, 0L);
 
@@ -2906,12 +2937,12 @@ UpdateSelection:
          SetCursor(GetMoveCopyCursor());
       }
       break;
-#undef lpds
    }
 
    case WM_QUERYDROPOBJECT:
+   {
+      LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
-#define lpds ((LPDROPSTRUCT)lParam)
       //
       // wParam     TRUE on NC area
       //            FALSE on client area
@@ -2947,12 +2978,11 @@ UpdateSelection:
          return FALSE;
 
       return(TRUE);
-#undef lpds
+   }
 
    case WM_DROPOBJECT:
    {
-
-#define lpds ((LPDROPSTRUCT)lParam)
+      LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
       //
       // tree being dropped on do your thing
@@ -3012,21 +3042,25 @@ UpdateSelection:
       //              if ((HWND)(lpds->hwndSource) == hwnd)
       //                 CheckEsc(pFrom);
 
+      // fShowSourceBitmaps is either
+      // 1 == TRUE  == DROP_COPY
+      // 0 == FALSE == DROP_MOVE
+      // 2 ==       == DROP_LINK
+      // 4 ==       == DROP_JUNC
       DMMoveCopyHelper(pFrom, szPath, fShowSourceBitmaps);
 
       RectTreeItem(hwndLB, nIndex, FALSE);
       return TRUE;
 
-#undef lpds
    }
 
    case WM_MEASUREITEM:
-#define pLBMItem ((LPMEASUREITEMSTRUCT)lParam)
+   {
+      LPMEASUREITEMSTRUCT pLBMItem = (LPMEASUREITEMSTRUCT)lParam;
 
       pLBMItem->itemHeight = (WORD)dyFileName;
       break;
-
-#undef pLBMItem
+   }
 
    case WM_VKEYTOITEM:
 
