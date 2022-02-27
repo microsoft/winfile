@@ -1445,7 +1445,8 @@ GetNextPair(PCOPYROOT pcr, LPTSTR pFrom,
             // Check if we should skip an entry because it was e.g. an reparse point
             if (pDTA->fd.dwFileAttributes & ( ATTR_SYMBOLIC | ATTR_JUNCTION) ) {
                RemoveLast(pcr->szDest);
-               goto SkipThisFile;
+               dwOp = OPER_RMDIR;
+               goto ReturnPair;
             }
 
             pcr->cDepth++;
@@ -1691,7 +1692,7 @@ SearchStartFail:
                   goto ReturnPair;
                }
 
-               // Skip reparse points
+               // Return reparse point and delete it via OPER_RMDIR
                if (dwFunc == FUNC_DELETE && pDTA->fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION)) {
                   pcr->fRecurse = FALSE;
                   dwOp = OPER_RMDIR;
@@ -2736,12 +2737,6 @@ SkipMKDir:
                goto CancelWholeOperation;
             }
 #endif
-            
-            // Check if we came a long a junction or symbolic link
-            if (pDTA->fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION)) {
-               // Just unlink it
-               ret = RMDir(szSource);
-            }
 			break;
 
          case IDNO:
