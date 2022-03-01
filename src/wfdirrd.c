@@ -704,6 +704,7 @@ CreateDTABlockWorker(
    lpHead = MemLinkToHead(lpStart);
    lpLinkLast = lpStart;
 
+ RestartOverFindFirst:
    if (!WFFindFirst(&lfndta, szPath, dwAttribs & ATTR_ALL)) {
 
       //
@@ -775,71 +776,20 @@ Fail:
             break;
 
          case ERROR_ACCESS_DENIED:
-
-            iError = IDS_NOACCESSDIR;
+         {
+            DWORD tag = DecodeReparsePoint(szPath, NULL, szLinkDest, COUNTOF(szLinkDest));
+            if (tag != IO_REPARSE_TAG_RESERVED_ZERO)
             {
-                DWORD tag = DecodeReparsePoint(szPath, NULL, szLinkDest, COUNTOF(szLinkDest));
-                if (tag != IO_REPARSE_TAG_RESERVED_ZERO && WFFindFirst(&lfndta, szLinkDest, ATTR_ALL))
-		        {
-		        	// TODO: make add routine to share with below
-
-					lpxdta = MemAdd(&lpLinkLast, lstrlen(szLinkDest), 0);
-
-					if (!lpxdta)
-					 goto CDBMemoryErr;
-
-					lpHead->dwEntries++;
-
-					lpxdta->dwAttrs = ATTR_DIR | ATTR_REPARSE_POINT;
-					lpxdta->ftLastWriteTime = lfndta.fd.ftLastWriteTime;
-
-					//
-					// files > 2^63 will come out negative, so tough.
-					// (WIN32_FIND_DATA.nFileSizeHigh is not signed, but
-					// LARGE_INTEGER is)
-					//
-					lpxdta->qFileSize.LowPart = lfndta.fd.nFileSizeLow;
-					lpxdta->qFileSize.HighPart = lfndta.fd.nFileSizeHigh;
-
-					lpxdta->byBitmap = BM_IND_CLOSE;
-					lpxdta->pDocB = NULL;
-
-					if (IsLFN(szLinkDest)) {
-					 lpxdta->dwAttrs |= ATTR_LFN;
-					}
-
-					if (!bCasePreserved)
-					 lpxdta->dwAttrs |= ATTR_LOWERCASE;
-
-                    if (tag == IO_REPARSE_TAG_MOUNT_POINT)
-                    {
-                        lpxdta->dwAttrs |= ATTR_JUNCTION;
-                        lpxdta->byBitmap = BM_IND_CLOSEREPARSE;
-                    }
-
-                    else if (tag == IO_REPARSE_TAG_SYMLINK)
-                    {
-                        lpxdta->dwAttrs |= ATTR_SYMBOLIC;
-                        lpxdta->byBitmap = BM_IND_CLOSEREPARSE;
-                    }
-
-					else
-					{
-						// DebugBreak();
-					}
-
-					lstrcpy(MemGetFileName(lpxdta), szLinkDest);
-				    MemGetAlternateFileName(lpxdta)[0] = CHAR_NULL;
-				    
-					lpHead->dwTotalCount++;
-					(lpHead->qTotalSize).QuadPart = (lpxdta->qFileSize).QuadPart +
-					                              (lpHead->qTotalSize).QuadPart;					
-
-			        iError = 0;
-			        goto Done;
-		        }
-		    }
-            break;
+               lstrcpy(szPath, szLinkDest);
+               AppendToPath(szPath, szStarDotStar);
+               goto RestartOverFindFirst;
+            }
+            else
+            {
+               iError = IDS_NOACCESSDIR;
+            }
+         }
+         break;
 
          default:
             {
