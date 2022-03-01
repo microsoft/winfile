@@ -1442,6 +1442,13 @@ GetNextPair(PCOPYROOT pcr, LPTSTR pFrom,
             if (pcr->bFastMove)
                goto FastMoveSkipDir;
 #endif
+            // Check if we should skip an entry because it was e.g. an reparse point
+            if (pDTA->fd.dwFileAttributes & ( ATTR_SYMBOLIC | ATTR_JUNCTION) ) {
+               RemoveLast(pcr->szDest);
+               dwOp = OPER_RMDIR;
+               goto ReturnPair;
+            }
+
             pcr->cDepth++;
             pDTA++;
 
@@ -1685,7 +1692,14 @@ SearchStartFail:
                   goto ReturnPair;
                }
 
-               //
+               // Return reparse point and delete it via OPER_RMDIR
+               if (dwFunc == FUNC_DELETE && pDTA->fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION)) {
+                  pcr->fRecurse = FALSE;
+                  dwOp = OPER_RMDIR;
+                  goto ReturnPair;
+               }
+
+			   //
                // Directory: operation is recursive.
                //
                pcr->fRecurse = TRUE;
@@ -2723,7 +2737,7 @@ SkipMKDir:
                goto CancelWholeOperation;
             }
 #endif
-            break;
+			break;
 
          case IDNO:
          case IDCANCEL:
