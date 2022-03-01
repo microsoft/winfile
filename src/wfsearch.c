@@ -307,11 +307,12 @@ MemoryError:
          if (!SearchInfo.bCasePreserved)
             lpxdta->dwAttrs |= ATTR_LOWERCASE;
 
-         if (dwAttrs & ATTR_DIR)
+         if (dwAttrs & ATTR_DIR) {
             if (dwAttrs & ATTR_REPARSE_POINT)
                iBitmap = BM_IND_CLOSEREPARSE;
             else
                iBitmap = BM_IND_CLOSE;
+         }
          else if (dwAttrs & (ATTR_HIDDEN | ATTR_SYSTEM))
             iBitmap = BM_IND_RO;
          else if (IsProgramFile(lfndta.fd.cFileName))
