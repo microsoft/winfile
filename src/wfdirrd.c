@@ -747,17 +747,26 @@ InvalidDirectory:
 
             if (hwndTree=HasTreeWindow(hwnd)) {
 
-               //
-               // If we changed dirs, and there is a tree window, set the
-               // dir to the root and collapse it
-               // Note that lpTemp-szPath>2, szPath[3] is not in the file spec
-               //
-               szPath[3] = CHAR_NULL;
-               SendMessage(hwndTree, TC_SETDIRECTORY, 0, (LPARAM)szPath);
-               SendMessage(hwndTree, TC_COLLAPSELEVEL, 0, 0L);
+               // Check if it is a Reparse Point
+               lpTemp[0] = '\0';
+               DWORD attr = GetFileAttributes(szPath);
+               lpTemp[0] = CHAR_BACKSLASH;
+               if (attr & ATTR_REPARSE_POINT) {
+                  // For dead Reparse Points just tell that the directory could not be read
+                  break;
+               } else {
+                  //
+                  // If we changed dirs, and there is a tree window, set the
+                  // dir to the root and collapse it
+                  // Note that lpTemp-szPath>2, szPath[3] is not in the file spec
+                  //
+                  szPath[3] = CHAR_NULL;
+                  SendMessage(hwndTree, TC_SETDIRECTORY, 0, (LPARAM)szPath);
+                  SendMessage(hwndTree, TC_COLLAPSELEVEL, 0, 0L);
 Fail:
-               MemDelete(lpStart);
-               return NULL;
+                  MemDelete(lpStart);
+                  return NULL;
+               }
             }
 
             lstrcpy(szPath+3, lpTemp+1);
