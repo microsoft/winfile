@@ -714,7 +714,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
       }
       else
       {
-          ret = ExecProgram(szPath, szNULL, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
+          ret = ExecProgram(szPath, szNULL, NULL, (GetKeyState(VK_SHIFT) < 0), (GetKeyState(VK_CONTROL) < 0));
       }
       if (ret)
          MyMessageBox(hwndFrame, IDS_EXECERRTITLE, ret, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
