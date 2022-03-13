@@ -286,9 +286,9 @@ DSDragLoop(HWND hwndLB, WPARAM wParam, LPDROPSTRUCT lpds)
    hwndGlobalSink = lpds->hwndSink;
 
    //
-   // default to copy
+   // default to move
    //
-   bShowBitmap = TRUE;
+   bShowBitmap = FALSE;
 
    //
    // can't drop here
@@ -1046,8 +1046,16 @@ DSDropObject(
    // so, don't do anything.
    //
    if (hwndHolder == lpds->hwndSource) {
-      if ((dwSelSink == (DWORD)-1) || SendMessage(hwndLB, LB_GETSEL, dwSelSink, 0L))
-         return TRUE;
+      if ((dwSelSink == (DWORD)-1) || SendMessage(hwndLB, LB_GETSEL, dwSelSink, 0L)) {
+
+         // set the destination, assume move/copy case below (c:\foo\)
+         //
+         SendMessage(hwndHolder, FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
+
+         if (fShowSourceBitmaps == FALSE)
+            return TRUE;
+         goto DirMoveCopy;
+      }
    }
 
    //
