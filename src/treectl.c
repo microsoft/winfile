@@ -1692,12 +1692,12 @@ TCWP_DrawItem(
 
             } else if (!(view & VIEW_PLUSES) || !(pNode->wFlags & TF_HASCHILDREN)) {
                if (bDrawSelected)  {
-                  if (pNode->dwAttribs & ATTR_REPARSE_POINT)
+                  if (pNode->dwAttribs & (ATTR_SYMBOLIC | ATTR_JUNCTION))
                      iBitmap = BM_IND_OPENREPARSE;
                   else
                      iBitmap = BM_IND_OPEN;
                } else {
-                  if (pNode->dwAttribs & ATTR_REPARSE_POINT)
+                  if (pNode->dwAttribs & (ATTR_SYMBOLIC | ATTR_JUNCTION))
                      iBitmap = BM_IND_CLOSEREPARSE;
                   else
                      iBitmap = BM_IND_CLOSE;

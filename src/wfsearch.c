@@ -308,7 +308,7 @@ MemoryError:
             lpxdta->dwAttrs |= ATTR_LOWERCASE;
 
          if (dwAttrs & ATTR_DIR) {
-            if (dwAttrs & ATTR_REPARSE_POINT)
+            if (dwAttrs & (ATTR_SYMBOLIC | ATTR_JUNCTION))
                iBitmap = BM_IND_CLOSEREPARSE;
             else
                iBitmap = BM_IND_CLOSE;
