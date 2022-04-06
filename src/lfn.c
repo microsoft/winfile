@@ -483,12 +483,12 @@ LFNMergePath(LPTSTR lpMask, LPTSTR lpFile)
    return TRUE;
 }
 
-/* WFCopySymlink
+/* WFCopyIfSymlink
  *
  *  Copies symbolic links 
  */
 DWORD
-WFCopySymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotification)
+WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotification)
 {
    DWORD dwRet;
    WCHAR szReparseDest[2 * MAXPATHLEN];
@@ -545,7 +545,7 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
           break;
 
        case ERROR_PRIVILEGE_NOT_HELD:
-          dwRet = WFCopySymlink(pszFrom, pszTo, SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE, FSC_CREATE);
+          dwRet = WFCopyIfSymlink(pszFrom, pszTo, SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE, FSC_CREATE);
           break;
        }
     }

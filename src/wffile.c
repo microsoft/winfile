@@ -105,14 +105,6 @@ OpenFileForCompress(
     PHANDLE phFile,
     LPTSTR szFile);
 
-DWORD
-WFCopySymlink(
-   LPTSTR pszFrom,
-   LPTSTR pszTo,
-   DWORD dwFlags,
-   DWORD dwNotification);
-
-
 
 /////////////////////////////////////////////////////////////////////////////
 //
@@ -137,7 +129,7 @@ DWORD MKDir(
 
       // CreateDirectoryEx does not support developer mode, so create symbolic ourselves
       if (ERROR_PRIVILEGE_NOT_HELD == dwErr)
-         dwErr = WFCopySymlink(pSrc, pName, SYMBOLIC_LINK_FLAG_DIRECTORY | SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE, FSC_MKDIR);
+         dwErr = WFCopyIfSymlink(pSrc, pName, SYMBOLIC_LINK_FLAG_DIRECTORY | SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE, FSC_MKDIR);
    }
 
    return dwErr;

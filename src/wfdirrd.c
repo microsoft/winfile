@@ -1202,7 +1202,7 @@ DWORD DecodeReparsePoint(LPCWSTR szFullPath, LPWSTR szDest, DWORD cwcDest)
 			}
 			else
 				// Handle \??\ prefix
-				if (szT[0] == '\\' && szT[1] == '?')
+				if (szT[0] == '\\' && szT[1] == '?' && szT[2] == '?' && szT[3] == '\\')
 				{
 					szT += 4;
 					cwcLink -= 4;
