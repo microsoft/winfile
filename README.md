@@ -92,7 +92,7 @@ instead of changing drives. Change drives now via CTRL + ALT + letter
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer
 5. added context menus in both panes
 6. improved the means by which icons are displayed for files
-7. F12 runs notepad or notepad++ on the selected file. Confgigure via Winfile.ini[Settings]EditorPath
+7. F12 runs notepad or notepad++ on the selected file. Configure via Winfile.ini[Settings]EditorPath
 8. moved the ini file location to `%AppData%\Roaming\Microsoft\WinFile`
 9. File.Search can include a date which limits the files returned to those after the date provided;
 the output is also sorted by the date instead of by the name
@@ -105,6 +105,7 @@ selecting one changes to that directory.  Default = c:\. Confgigure via Winfile.
 14. added simple forward / back navigation (probably needs to be improved)
 15. View command has a new option to sort by date forward (oldest on top);
 normal date sorting is newest on top
+16. CTRL + ENTER executes associated files as administrator
 
 You can read the code for more details.
 

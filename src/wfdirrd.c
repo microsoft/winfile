@@ -921,7 +921,7 @@ Fail:
             iBitmap = BM_IND_CLOSEDFS;
          else
          {
-            if (lfndta.fd.dwFileAttributes & ATTR_REPARSE_POINT)
+            if (lfndta.fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION))
                iBitmap = BM_IND_CLOSEREPARSE;
             else
             iBitmap = BM_IND_CLOSE;
@@ -933,7 +933,7 @@ Fail:
       } else if (pDoc) {
          iBitmap = BM_IND_DOC;
       } else {
-         if (lfndta.fd.dwFileAttributes & ATTR_REPARSE_POINT)
+         if (lfndta.fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION))
             iBitmap = BM_IND_FILREPARSE;
          else
          iBitmap = BM_IND_FIL;
