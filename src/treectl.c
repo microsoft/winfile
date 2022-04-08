@@ -450,9 +450,26 @@ InsertDirectory(
    if (dwAttribs == INVALID_FILE_ATTRIBUTES)
    {
        GetTreePath(pNode, szPathName);
-       if ((pNode->dwAttribs = GetFileAttributes(szPathName)) == INVALID_FILE_ATTRIBUTES)
-       {
+       pNode->dwAttribs = GetFileAttributes(szPathName);
+       if (INVALID_FILE_ATTRIBUTES == pNode->dwAttribs) {
            pNode->dwAttribs = 0;
+       }
+
+       //
+       // Determine which kind of Reparse Point
+       // 
+       if (pNode->dwAttribs & ATTR_REPARSE_POINT) {
+
+          TCHAR szDest[MAXPATHLEN];
+          int tag = DecodeReparsePoint(szPathName, szDest, MAXPATHLEN);
+          switch (tag) {
+          case IO_REPARSE_TAG_MOUNT_POINT:
+             pNode->dwAttribs |= ATTR_JUNCTION;
+             break;
+          case IO_REPARSE_TAG_SYMLINK:
+             pNode->dwAttribs |= ATTR_SYMBOLIC;
+             break;
+          }
        }
    }
    else

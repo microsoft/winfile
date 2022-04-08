@@ -17,7 +17,6 @@
 #include "wfcopy.h"
 
 BOOL IsFATName(LPTSTR pName);
-DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPWSTR szDest, DWORD cwcDest);
 
 /* WFFindFirst -
  *
