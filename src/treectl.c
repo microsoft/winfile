@@ -2452,15 +2452,6 @@ TreeControlWndProc(
             }
          }
 
-         //
-         // if we are inserting before or at the current selection
-         // push the current selection down
-         //
-         nIndex = (INT)SendMessage(hwndLB, LB_GETCURSEL, 0, 0L);
-         if ((INT)LOWORD(dwTemp) <= nIndex) {
-            SendMessage(hwndLB, LB_SETCURSEL, nIndex + 1, 0L);
-         }
-
          break;
 
       case FSC_RMDIR:
