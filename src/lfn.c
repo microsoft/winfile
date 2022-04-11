@@ -482,6 +482,28 @@ LFNMergePath(LPTSTR lpMask, LPTSTR lpFile)
    return TRUE;
 }
 
+/* WFCopyIfSymlink
+ *
+ *  Copies symbolic links 
+ */
+DWORD
+WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotification)
+{
+   DWORD dwRet;
+   WCHAR szReparseDest[2 * MAXPATHLEN];
+   DWORD dwReparseTag = DecodeReparsePoint(pszFrom, szReparseDest, 2 * MAXPATHLEN);
+   if (IO_REPARSE_TAG_SYMLINK == dwReparseTag) {
+      CreateSymbolicLink(pszTo, szReparseDest, dwFlags);
+      dwRet = GetLastError();
+      if (ERROR_SUCCESS == dwRet)
+         ChangeFileSystem(dwNotification, pszTo, NULL);
+   }
+   else
+      dwRet = GetLastError();
+
+   return dwRet;
+}
+
 /* WFCopy
  *
  *  Copies files
@@ -494,35 +516,40 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
 
     Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
 
-    if (CopyFile(pszFrom, pszTo, FALSE))
-    {
+    BOOL bCancel = FALSE;
+    if (CopyFileEx(pszFrom, pszTo, NULL, NULL, &bCancel, COPY_FILE_COPY_SYMLINK)) {
         ChangeFileSystem(FSC_CREATE, pszTo, NULL);
         dwRet = 0;
     }
     else
     {
-        dwRet = GetLastError();
-        if (dwRet == ERROR_INVALID_NAME)
-        {
-            //
-            //  Try copying without the file name in the TO field.
-            //  This is for the case where it's trying to copy to a print
-            //  share.  CopyFile fails if the file name is tacked onto the
-            //  end in the case of printer shares.
-            //
-            lstrcpy(szTemp, pszTo);
-            RemoveLast(szTemp);
-            if (CopyFile(pszFrom, szTemp, FALSE))
-            {
-                ChangeFileSystem(FSC_CREATE, szTemp, NULL);
-                dwRet = 0;
-            }
+       dwRet = GetLastError();
+       switch (dwRet) {
+       case ERROR_INVALID_NAME:
+          //
+          //  Try copying without the file name in the TO field.
+          //  This is for the case where it's trying to copy to a print
+          //  share.  CopyFile fails if the file name is tacked onto the
+          //  end in the case of printer shares. 
+          //  We do not handle symlinks here as we did above
+          //
+          lstrcpy(szTemp, pszTo);
+          RemoveLast(szTemp);
+          if (CopyFile(pszFrom, szTemp, FALSE)) {
+             ChangeFileSystem(FSC_CREATE, szTemp, NULL);
+             dwRet = 0;
+          }
 
-            // else ... use the original dwRet value.
-        }
+          // else ... use the original dwRet value.
+          break;
+
+       case ERROR_PRIVILEGE_NOT_HELD:
+          dwRet = WFCopyIfSymlink(pszFrom, pszTo, SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE, FSC_CREATE);
+          break;
+       }
     }
 
-    return (dwRet);
+    return dwRet;
 }
 
 /* WFRemove

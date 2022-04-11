@@ -1699,10 +1699,14 @@ SearchStartFail:
                   goto ReturnPair;
                }
 
-			   //
-               // Directory: operation is recursive.
+			      //
+               // Directory: operation is recursive, but not for junctions and symlinks
                //
-               pcr->fRecurse = TRUE;
+               if (pDTA->fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION))
+                  pcr->fRecurse = FALSE;
+               else
+                  pcr->fRecurse = TRUE;
+
                pcr->cDepth = 1;
                pDTA->fd.cFileName[0] = CHAR_NULL;
                pcr->pRoot = FindFileName (pcr->sz);
