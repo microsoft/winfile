@@ -67,6 +67,7 @@ static TBBUTTON tbButtons[] = {
   { 7, IDM_BYTYPE     , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 8, IDM_BYSIZE     , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 9, IDM_BYDATE     , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
+  {30, IDM_BYFDATE    , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
   {10, IDM_NEWWINDOW  , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
@@ -110,6 +111,7 @@ static struct {
   IDM_BYTYPE,           7,
   IDM_BYSIZE,           8,
   IDM_BYDATE,           9,
+  IDM_BYFDATE,          30,
 
   IDM_FONT,             22,
 
@@ -131,7 +133,7 @@ static struct {
  * some bitmaps may be repeated.
  */
 #define TBAR_ALL_BUTTONS        (sizeof(sAllButtons)/sizeof(sAllButtons[0]))
-#define TBAR_EXTRA_BITMAPS      16
+#define TBAR_EXTRA_BITMAPS      17
 
 static int iSel = -1;
 
@@ -215,8 +217,7 @@ CheckTBButton(DWORD idCommand)
   else if ((UINT)(idCommand-IDM_BYNAME) <= IDM_BYFDATE-IDM_BYNAME)
     {
       begin = IDM_BYNAME;
-      end = IDM_BYDATE;
-      // NOTE: no toolbar button for IDM_BYFDATE yet
+      end = IDM_BYFDATE;
     }
   else
     {
@@ -275,7 +276,7 @@ EnableCheckTBButtons(HWND hwndActive)
       HasDirWindow(hwndActive));
 
    CheckTBButton(dwSort);
-   for (iButton=IDM_BYNAME; iButton<=IDM_BYDATE; ++iButton) {
+   for (iButton=IDM_BYNAME; iButton<=IDM_BYFDATE; ++iButton) {
       SendMessage(hwndToolbar, TB_ENABLEBUTTON, iButton, fEnable);
    }
 
