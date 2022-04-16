@@ -488,6 +488,40 @@ JAPANEND
             }
 
             break;
+         case IDM_HARDLINK:
+
+            p = GetSelection(0, NULL);
+
+            LoadString(hAppInstance, IDS_HARDLINK, szTitle, COUNTOF(szTitle));
+            SetWindowText(hDlg, szTitle);
+
+            if (bJAPAN) {
+
+               //by yutakas 1992/10/29
+               LoadString(hAppInstance, IDS_KK_COPYFROMSTR, szStr, COUNTOF(szStr));
+               SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
+               LoadString(hAppInstance, IDS_KK_COPYTOSTR, szStr, COUNTOF(szStr));
+               SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
+            }
+
+            break;
+         case IDM_SYMLINK:
+
+            p = GetSelection(0, NULL);
+
+            LoadString(hAppInstance, IDS_SYMLINK, szTitle, COUNTOF(szTitle));
+            SetWindowText(hDlg, szTitle);
+
+            if (bJAPAN) {
+
+               //by yutakas 1992/10/29
+               LoadString(hAppInstance, IDS_KK_COPYFROMSTR, szStr, COUNTOF(szStr));
+               SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
+               LoadString(hAppInstance, IDS_KK_COPYTOSTR, szStr, COUNTOF(szStr));
+               SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
+            }
+
+            break;
          case IDM_RENAME:
 
             LoadString(hAppInstance, IDS_RENAME, szTitle, COUNTOF(szTitle));
@@ -659,23 +693,26 @@ SuperDlgExit:
          GetDlgItemText(hDlg, IDD_TO, szTo, COUNTOF(szTo));
 
          //
-         // if dwSuperDlgMode is copy, rename, or move, do checkesc.
+         // if dwSuperDlgMode is copy, rename, symlink, hardlink, or move, do checkesc.
          // Only if no quotes in string!
          //
-         if ( IDM_COPY == dwSuperDlgMode || IDM_MOVE == dwSuperDlgMode ||
-            IDM_RENAME == dwSuperDlgMode) {
-
+         switch (dwSuperDlgMode) {
+         case IDM_RENAME:
+         case IDM_MOVE:
+         case IDM_COPY:
+         case IDM_SYMLINK:
+         case IDM_HARDLINK:
             if (NoQuotes(szTo))
                CheckEsc(szTo);
          }
 
-         if (!szTo[0])
-         {
-             switch (dwSuperDlgMode)
-             {
+         if (!szTo[0]) {
+             switch (dwSuperDlgMode) {
                  case IDM_RENAME:
                  case IDM_MOVE:
                  case IDM_COPY:
+                 case IDM_SYMLINK:
+                 case IDM_HARDLINK:
                  {
                      szTo[0] = CHAR_DOT;
                      szTo[1] = CHAR_NULL;
@@ -729,15 +766,38 @@ Error:
                goto Error;
             }
 
-            pCopyInfo->dwFunc =  dwSuperDlgMode-IDM_MOVE+1;
+            // Map IDM_* to FUNC_*
+            switch (dwSuperDlgMode) {
+            case IDM_MOVE:
+               pCopyInfo->dwFunc = FUNC_MOVE;
+               break;
+            case IDM_COPY:
+               pCopyInfo->dwFunc = FUNC_COPY;
+               break;
+            case IDM_DELETE:
+               pCopyInfo->dwFunc = FUNC_DELETE;
+               break;
+            case IDM_RENAME:
+               pCopyInfo->dwFunc = FUNC_RENAME;
+               break;
+            case IDM_SYMLINK:
+               pCopyInfo->dwFunc = FUNC_LINK;
+               break;
+            case IDM_HARDLINK:
+               // If source is a directory then create a junction
+               if (IsDirectory(pCopyInfo->pFrom))
+                  pCopyInfo->dwFunc = FUNC_JUNC;
+               else
+                  pCopyInfo->dwFunc = FUNC_HARD;
+               break;
+            }
+
             pCopyInfo->bUserAbort = FALSE;
 
             lstrcpy(pCopyInfo->pTo, szTo);
 
             //
             // Move/Copy things.
-            //
-            // HACK: Compute the FUNC_ values from WFCOPY.H
             //
             if (WFMoveCopyDriver(pCopyInfo)) {
 

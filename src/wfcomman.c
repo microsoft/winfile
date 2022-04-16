@@ -1139,6 +1139,8 @@ AppCommandProc(register DWORD id)
    case IDM_MOVE:
    case IDM_COPY:
    case IDM_RENAME:
+   case IDM_SYMLINK:
+   case IDM_HARDLINK:
       dwSuperDlgMode = id;
 
       DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(MOVECOPYDLG), hwndFrame, SuperDlgProc);

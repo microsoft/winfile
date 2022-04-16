@@ -17,6 +17,8 @@ BEGIN
     MENUITEM    "編集\tF12",	    IDM_EDIT
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
     MENUITEM    "コピー(&C)...\tF8",     IDM_COPY
+   MENUITEM    "シンボリックリンク(&Y)...\t10", IDM_SYMLINK
+   MENUITEM    "ハードリンク(&K)...\tShift+F10", IDM_HARDLINK
     MENUITEM    "クリップボードにコピー(&B)...\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"貼り付け(&P)\tCtrl+V", 	IDM_PASTE
@@ -133,6 +135,8 @@ BEGIN
     MENUITEM    "編集\tF12",	    IDM_EDIT
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
     MENUITEM    "コピー(&C)...\tF8",     IDM_COPY
+    MENUITEM    "シンボリックリンク(&Y)...\t10",       IDM_SYMLINK
+    MENUITEM    "ハードリンク(&K)...\tShift+F10", IDM_HARDLINK
 	MENUITEM    "クリップボードにコピー(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
 	MENUITEM	"貼り付け(&P)\tCtrl+V", IDM_PASTE
@@ -245,6 +249,8 @@ BEGIN
     IDS_RENAME,             "名前を変更"                        /* 32 */
     IDS_FORMAT,             "ディスクのフォーマット"                   /* 32 */
     IDS_FORMATSELDISK,      "フォーマットするディスクを選択。"                                                                                               /* 128 */
+    IDS_SYMLINK,            "シンボリックリンク"                       /* 32 */
+    IDS_HARDLINK,           "ハードリンク"                      /* 32 */
 
 JAPANBEGIN
     IDS_KK_COPYFROMSTR,        "コピー元(&F):"
