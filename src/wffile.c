@@ -1715,7 +1715,6 @@ VOID RedrawAllTreeWindows()
     HWND hwnd, hwndTree, hwndLB;
     int cItems, ctr;
     PDNODE pNode;
-    DWORD dwAttribs;
     TCHAR szPathName[MAXPATHLEN * 2];
 
 
@@ -1737,13 +1736,10 @@ VOID RedrawAllTreeWindows()
                SendMessage(hwndLB, LB_GETTEXT, ctr, (LPARAM)&pNode);
 
                //
-               //  Set the attributes for this directory.
+               //  Set the attributes for this directory/junction/symlink.
                //
                GetTreePath(pNode, szPathName);
-               if ((dwAttribs = GetFileAttributes(szPathName)) != INVALID_FILE_ATTRIBUTES)
-               {
-                   pNode->dwAttribs = dwAttribs;
-               }
+               SetNodeAttribs(pNode, szPathName);
            }
 
            InvalidateRect(hwndLB, NULL, FALSE);
