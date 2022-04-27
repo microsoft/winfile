@@ -228,6 +228,8 @@ MemoryError:
       (bRoot ||
          ERROR_ACCESS_DENIED != lfndta.err &&
          ERROR_PATH_NOT_FOUND != lfndta.err &&
+         ERROR_INVALID_REPARSE_DATA != lfndta.err &&
+         ERROR_CANT_ACCESS_FILE != lfndta.err &&
          ERROR_INVALID_NAME != lfndta.err)) {
 
       SearchInfo.eStatus = SEARCH_ERROR;

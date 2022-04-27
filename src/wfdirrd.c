@@ -710,7 +710,9 @@ CreateDTABlockWorker(
       //
       // Try again!  But first, see if the directory was invalid!
       //
-      if (ERROR_PATH_NOT_FOUND == lfndta.err) {
+      if (ERROR_PATH_NOT_FOUND == lfndta.err ||
+         ERROR_INVALID_REPARSE_DATA == lfndta.err ||
+         ERROR_CANT_ACCESS_FILE == lfndta.err) {
 
          iError = IDS_BADPATHMSG;
          goto InvalidDirectory;
@@ -730,6 +732,8 @@ CreateDTABlockWorker(
 
          switch (lfndta.err) {
          case ERROR_PATH_NOT_FOUND:
+         case ERROR_CANT_ACCESS_FILE:
+         case ERROR_INVALID_REPARSE_DATA:
 
 InvalidDirectory:
 
