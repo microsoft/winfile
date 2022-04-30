@@ -398,9 +398,9 @@ InitMenus()
       LoadString(hAppInstance, IDS_SHAREAS, szValue, COUNTOF(szValue));
       InsertMenu(hMenu, 8, MF_BYPOSITION | MF_STRING, IDM_SHAREAS, szValue);
 
-      LoadString(hAppInstance, IDS_STOPSHARE, szValue, COUNTOF(szValue));
-      InsertMenu(hMenu, 9, MF_BYPOSITION | MF_STRING, IDM_STOPSHARE, szValue);
-
+      // IDM_STOPSHARE not shown anymore, because there is no way to open then 'Stop Share Dialog' with W7/10/11 
+      // LoadString(hAppInstance, IDS_STOPSHARE, szValue, COUNTOF(szValue));
+      // InsertMenu(hMenu, 9, MF_BYPOSITION | MF_STRING, IDM_STOPSHARE, szValue);
    }
 
    //
@@ -1619,8 +1619,8 @@ FreeFileManager()
    if (hfmifsDll)
       FreeLibrary(hfmifsDll);
 
-   if (hNTLanman)
-      FreeLibrary(hNTLanman);
+   if (hNtshrui)
+      FreeLibrary(hNtshrui);
 
    if (hMPR)
       FreeLibrary(hMPR);

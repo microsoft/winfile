@@ -1736,17 +1736,17 @@ NetLoad(VOID)
 
    if (WNetStat(NS_SHAREDLG)) {
 
-      hNTLanman = LoadLibrary(NTLANMAN_DLL);
+      hNtshrui = LoadLibrary(NTSHRUI_DLL);
 
-      if (hNTLanman) {
+      if (hNtshrui) {
+         lpfnShowShareFolderUI = (PVOID)GetProcAddress(hNtshrui, "ShowShareFolderUI");
+         if (lpfnShowShareFolderUI)
+            PostMessage(hwndToolbar, TB_ENABLEBUTTON, IDM_SHAREAS, TRUE);
+         else {
 
-#define GET_PROC(x) \
-         if (!(lpfn##x = (PVOID) GetProcAddress(hNTLanman, NETWORK_##x))) \
-            goto Fail
-
-         GET_PROC(ShareCreate);
-         GET_PROC(ShareStop);
-#undef GET_PROC
+            PostMessage(hwndToolbar, TB_ENABLEBUTTON, IDM_SHAREAS, FALSE);
+            EnableMenuItem(GetMenu(hwndFrame), IDM_SHAREAS, MF_BYCOMMAND | MF_GRAYED);
+         }
 
          //
          // If bNetShareLoad is FALSE, then we know that the share stuff
@@ -1756,22 +1756,10 @@ NetLoad(VOID)
          //
          bNetShareLoad = TRUE;
 
-      } else {
-Fail:
-         //
-         // Disable the share buttons/menus
-         // Since WNetStat(NS_SHAREDLG) ret'd true, then we added the
-         // buttons.  Mistake.  Disable them now.
-         //
-         PostMessage(hwndToolbar, TB_ENABLEBUTTON, IDM_SHAREAS, FALSE);
          PostMessage(hwndToolbar, TB_ENABLEBUTTON, IDM_STOPSHARE, FALSE);
-
-         EnableMenuItem(GetMenu(hwndFrame), IDM_SHAREAS,
-            MF_BYCOMMAND | MF_GRAYED );
-
-         EnableMenuItem(GetMenu(hwndFrame), IDM_STOPSHARE,
-            MF_BYCOMMAND | MF_GRAYED );
+         EnableMenuItem(GetMenu(hwndFrame), IDM_STOPSHARE, MF_BYCOMMAND | MF_GRAYED);
       }
+
    }
 
    SetEvent(hEventNetLoad);
