@@ -1043,7 +1043,7 @@ DSDropObject(
    //
    // Are we dropping onto ourselves? (i.e. a selected item in the
    // source listbox OR an unused area of the source listbox)  If
-   // so, don't do anything.
+   // so, apply the '- Copy' postfix for the copy operation
    //
    if (hwndHolder == lpds->hwndSource) {
       if ((dwSelSink == (DWORD)-1) || SendMessage(hwndLB, LB_GETSEL, dwSelSink, 0L)) {
