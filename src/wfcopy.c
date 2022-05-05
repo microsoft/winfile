@@ -2448,9 +2448,6 @@ TRY_COPY_AGAIN:
             case FUNC_COPY:
                lstrcat(szDestAlt, L" - Copy");
                break;
-            
-            default:
-               break;
             }
 
             lstrcat(szDestAlt, szExtension);
