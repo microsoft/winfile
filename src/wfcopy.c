@@ -1803,7 +1803,10 @@ MergeNames:
             lstrcat(pToPath, L" - Copy");
             lstrcat(pcr->szDest, L" - Copy");
             break;
+
          default:
+            dwOp = OPER_ERROR;
+            *pdwError = DE_DESTSUBTREE;
             break;
          }
       } else {
