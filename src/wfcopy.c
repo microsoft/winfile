@@ -2423,13 +2423,10 @@ TRY_COPY_AGAIN:
       if (pCopyInfo->dwFunc != FUNC_DELETE) {
 
          //
-         // If same name and NOT renaming, then post an error
+         // If same name and copying, attempt to add a "- Copy" suffix.
          //
          bSameFile = !lstrcmpi(szSource, szDest);
-         bDoMoveRename = OPER_DOFILE == oper &&
-            (FUNC_RENAME == pCopyInfo->dwFunc || FUNC_MOVE == pCopyInfo->dwFunc);
-
-         if (bSameFile && !bDoMoveRename && (oper != OPER_RMDIR)) {
+         if (bSameFile && pCopyInfo->dwFunc == FUNC_COPY && (oper != OPER_RMDIR)) {
 
             // Source and destination are exactly the same
             WCHAR szDestAlt[MAX_PATH + 2] = { 0 };
@@ -2445,24 +2442,21 @@ TRY_COPY_AGAIN:
             }
 
             // Postfix the operation
-            switch (pCopyInfo->dwFunc) {
-            case FUNC_COPY:
-               lstrcat(szDestAlt, L" - Copy");
-               break;
-            }
-
+            lstrcat(szDestAlt, L" - Copy");
             lstrcat(szDestAlt, szExtension);
             
             // We only do a one level '- Copy' postfixing, and do intentionally not go for a '- Copy (n)' postfix
             if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(szDestAlt)) {
                lstrcpy(szDest, szDestAlt);
+               bSameFile = FALSE;
             } else {
                // If one already used this '- Copy' postfix, bail out. Just one level.
                ret = DE_RENAMREPLACE;
                goto ShowMessageBox;
             }
 
-         } else if (ret = IsInvalidPath (szDest)) {
+         } 
+         if (ret = IsInvalidPath (szDest)) {
 
             bErrorOnDest = TRUE;
             goto ShowMessageBox;
@@ -2472,6 +2466,8 @@ TRY_COPY_AGAIN:
          // Check to see if we are overwriting an existing file.  If so,
          // better confirm.
          //
+         bDoMoveRename = OPER_DOFILE == oper &&
+            (FUNC_RENAME == pCopyInfo->dwFunc || FUNC_MOVE == pCopyInfo->dwFunc);
          if (oper == OPER_DOFILE && !(bSameFile && bDoMoveRename)) {
 
             if (WFFindFirst(&DTADest, szDest, ATTR_ALL)) {
