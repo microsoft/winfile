@@ -1797,18 +1797,16 @@ MergeNames:
 
    if (dwOp == OPER_MKDIR) {
 
-      if (!_wcsicmp(pFrom, pToPath)) {
-         switch (dwFunc) {
-         case FUNC_COPY:
-            lstrcat(pToPath, L" - Copy");
-            lstrcat(pcr->szDest, L" - Copy");
-            break;
+      //
+      // For a directory copy to the same name, append the "- Copy" suffix
+      // to both the target of this operation, and the target directory for
+      // recursive operations.  Unlike the regular file case, this does not
+      // consider file name extensions, since it is specific to directories.
+      //
 
-         default:
-            dwOp = OPER_ERROR;
-            *pdwError = DE_DESTSUBTREE;
-            break;
-         }
+      if (dwFunc == FUNC_COPY && !_wcsicmp(pFrom, pToPath)) {
+         lstrcat(pToPath, L" - Copy");
+         lstrcat(pcr->szDest, L" - Copy");
       } else {
          //
          // Make sure the new directory is not a subdir of the original...
