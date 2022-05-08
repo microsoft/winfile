@@ -2437,11 +2437,11 @@ TRY_COPY_AGAIN:
 
             // Source and destination are exactly the same
             WCHAR szDestAlt[MAX_PATH + 2] = { 0 };
-            lstrcpy(szDestAlt, szDest);
+            WCHAR szExtension[MAX_PATH + 2] = { 0 };
+            LPTSTR pExt;
 
             // Lets try to apply the 'Copy' pattern, e.g. 'file.ext' -> 'file - Copy.ext'
-            WCHAR szExtension[MAX_PATH + 2] = { 0 };
-            LPTSTR pExt = PathFindExtension(szDestAlt);
+            pExt = PathFindExtension(szDestAlt);
             if (*pExt) {
                // Split of extension if available
                lstrcpy(szExtension, pExt);
@@ -2462,7 +2462,7 @@ TRY_COPY_AGAIN:
                lstrcpy(szDest, szDestAlt);
             } else {
                // If one already used this '- Copy' postfix, bail out. Just one level.
-               ret = DE_SAMEFILE;
+               ret = DE_RENAMREPLACE;
                goto ShowMessageBox;
             }
 
