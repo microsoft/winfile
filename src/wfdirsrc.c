@@ -1041,21 +1041,15 @@ DSDropObject(
    dwSelSink = lpds->dwControlData;
 
    //
-   // Are we dropping onto ourselves? (i.e. a selected item in the
-   // source listbox OR an unused area of the source listbox)  If
-   // so, apply the '- Copy' postfix for the copy operation
+   // Are we dropping onto ourselves? (i.e. moving a selected item in the
+   // source listbox OR an unused area of the source listbox).  If so,
+   // no-op the request.
    //
-   if (hwndHolder == lpds->hwndSource) {
-      if ((dwSelSink == (DWORD)-1) || SendMessage(hwndLB, LB_GETSEL, dwSelSink, 0L)) {
+   if (hwndHolder == lpds->hwndSource &&
+      fShowSourceBitmaps == FALSE &&
+      ((dwSelSink == (DWORD)-1) || SendMessage(hwndLB, LB_GETSEL, dwSelSink, 0L))) {
 
-         // set the destination, assume move/copy case below (c:\foo\)
-         //
-         SendMessage(hwndHolder, FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
-
-         if (fShowSourceBitmaps == FALSE)
-            return TRUE;
-         goto DirMoveCopy;
-      }
+      return TRUE;
    }
 
    //
@@ -1220,11 +1214,9 @@ NormalMoveCopy:
    //
    // Make sure that we don't move into same dir.
    //
-   if (GetWindowLongPtr(hwndHolder,
-                     GWL_LISTPARMS) == SendMessage(hwndMDIClient,
-                                                   WM_MDIGETACTIVE,
-                                                   0,
-                                                   0L)) {
+   if (fShowSourceBitmaps == FALSE &&
+      GetWindowLongPtr(hwndHolder, GWL_LISTPARMS) == SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L)) {
+
       return TRUE;
    }
 
