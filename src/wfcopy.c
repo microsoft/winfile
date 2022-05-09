@@ -2437,6 +2437,8 @@ TRY_COPY_AGAIN:
             WCHAR szExtension[MAX_PATH + 2] = { 0 };
             LPTSTR pExt;
 
+            lstrcpy(szDestAlt, szDest);
+
             // Lets try to apply the 'Copy' pattern, e.g. 'file.ext' -> 'file - Copy.ext'
             pExt = PathFindExtension(szDestAlt);
             if (*pExt) {
