@@ -645,7 +645,11 @@ DirWndProc(
       if (j == cItems)
          return -2L;
 
-      return((i + j) % cItems);
+      int pos = (i + j) % cItems;
+      if ('_' == LOWORD(wParam))
+         SendMessage(hwndLB, LB_SETSEL, 1, pos);
+
+      return pos;
    }
    case WM_COMPAREITEM:
 
