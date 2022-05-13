@@ -646,8 +646,12 @@ DirWndProc(
          return -2L;
 
       int pos = (i + j) % cItems;
-      if ('_' == LOWORD(wParam))
-         SendMessage(hwndLB, LB_SETSEL, 1, pos);
+
+      // There is a weird behavior in listbox which selects all between anchor an caret
+      // if SHIFT is pressed. Since we return the position here and thus caret will be 
+      // updated, anchor is behind, and pressing shift selects all between anchor and caret
+      // To overcome this we select the current position, and bring anchor and cart in sync.
+      SendMessage(hwndLB, LB_SETSEL, 1, pos);
 
       return pos;
    }
