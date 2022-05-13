@@ -75,7 +75,8 @@ static TBBUTTON tbButtons[] = {
   {12, IDM_MOVE       , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   {13, IDM_DELETE     , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
-  {27, IDM_PERMISSIONS, TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
+  // IDM_PERMISSIONS not shown anymore, because there is no way to use the old acledit functionality with W7/10/11
+  // {27, IDM_PERMISSIONS, TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
 };
 
 #define ICONNECTIONS 1  /* Index of the Connections button */
