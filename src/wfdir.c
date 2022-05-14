@@ -608,6 +608,7 @@ DirWndProc(
       LPWSTR szItem;
       WCHAR rgchMatch[MAXPATHLEN];
       SIZE_T cchMatch;
+      UINT pos;
 
       if ((ch = LOWORD(wParam)) <= CHAR_SPACE || !GetWindowLongPtr(hwnd, GWL_HDTA))
          return(-1L);
@@ -645,7 +646,7 @@ DirWndProc(
       if (j == cItems)
          return -2L;
 
-      int pos = (i + j) % cItems;
+      pos = (i + j) % cItems;
 
       // There is a weird behavior in listbox which selects all between anchor an caret
       // if SHIFT is pressed. Since we return the position here and thus caret will be 
