@@ -608,6 +608,7 @@ DirWndProc(
       LPWSTR szItem;
       WCHAR rgchMatch[MAXPATHLEN];
       SIZE_T cchMatch;
+      UINT pos;
 
       if ((ch = LOWORD(wParam)) <= CHAR_SPACE || !GetWindowLongPtr(hwnd, GWL_HDTA))
          return(-1L);
@@ -645,7 +646,15 @@ DirWndProc(
       if (j == cItems)
          return -2L;
 
-      return((i + j) % cItems);
+      pos = (i + j) % cItems;
+
+      // There is a weird behavior in listbox which selects all between anchor an caret
+      // if SHIFT is pressed. Since we return the position here and thus caret will be 
+      // updated, anchor is behind, and pressing shift selects all between anchor and caret
+      // To overcome this we select the current position, and bring anchor and cart in sync.
+      SendMessage(hwndLB, LB_SETSEL, 1, pos);
+
+      return pos;
    }
    case WM_COMPAREITEM:
 
