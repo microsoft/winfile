@@ -1667,9 +1667,12 @@ AppCommandProc(register DWORD id)
 
       if (lpfnShowShareFolderUI) {
          LPTSTR szDir;
-         BOOL bDir = FALSE;
+         HRESULT hr;
+         BOOL bDir;
+            
+         bDir = FALSE;
          szDir = GetSelection(1 | 4 | 16, &bDir);
-         HRESULT hr = ShowShareFolderUI(hwndFrame, szDir);
+         hr = ShowShareFolderUI(hwndFrame, szDir);
          if (hr != S_OK) {
             FormatError(TRUE, szMessage, COUNTOF(szMessage), ERROR_INVALID_SHARENAME);
 

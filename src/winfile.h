@@ -1038,7 +1038,6 @@ Extern DWORD (CALLBACK *lpfnWNetFormatNetworkNameW)(
                     DWORD    dwAveCharPerLine
                     );
 Extern DWORD (CALLBACK *lpfnShowShareFolderUI)(HWND, LPWSTR);
-Extern DWORD (CALLBACK *lpfnShareStop)(LPCWSTR, LPCWSTR, DWORD, HWND);
 
 #ifdef NETCHECK
 Extern DWORD (CALLBACK *lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
