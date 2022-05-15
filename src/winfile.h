@@ -1004,7 +1004,7 @@ BOOL LoadUxTheme(VOID);
 //----------------------------
 
 #define MPR_DLL      TEXT("mpr.dll")
-#define NTLANMAN_DLL TEXT("ntlanman.dll")
+#define NTSHRUI_DLL  TEXT("Ntshrui.dll")
 #define ACLEDIT_DLL  TEXT("acledit.dll")
 
 #define WAITNET()      WaitLoadEvent(TRUE)
@@ -1037,8 +1037,7 @@ Extern DWORD (CALLBACK *lpfnWNetFormatNetworkNameW)(
                     DWORD    dwFlags,
                     DWORD    dwAveCharPerLine
                     );
-Extern DWORD (CALLBACK *lpfnShareCreate)(HWND);
-Extern DWORD (CALLBACK *lpfnShareStop)(HWND);
+Extern DWORD (CALLBACK *lpfnShowShareFolderUI)(HWND, LPWSTR);
 
 #ifdef NETCHECK
 Extern DWORD (CALLBACK *lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
@@ -1077,8 +1076,7 @@ Extern DWORD (CALLBACK *lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
 #define WNetRestoreConnectionW     (*lpfnWNetRestoreConnectionW)
 #define WNetRestoreSingleConnectionW     (*lpfnWNetRestoreSingleConnectionW)
 #define WNetFormatNetworkNameW     (*lpfnWNetFormatNetworkNameW)
-#define ShareCreate                (*lpfnShareCreate)
-#define ShareStop                  (*lpfnShareStop)
+#define ShowShareFolderUI          (*lpfnShowShareFolderUI)
 
 #ifdef NETCHECK
 #define WNetDirectoryNotifyW       (*lpfnWNetDirectoryNotifyW)
@@ -1090,7 +1088,7 @@ Extern BOOL        bSecMenuDeleted;
 
 Extern HANDLE hVersion             EQ( NULL );
 Extern HANDLE hMPR                 EQ( NULL );
-Extern HANDLE hNTLanman            EQ( NULL );
+Extern HANDLE hNtshrui             EQ( NULL );
 Extern HANDLE hAcledit             EQ( NULL );
 
 

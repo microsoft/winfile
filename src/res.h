@@ -575,7 +575,7 @@
 #define IDS_DISCONNECT        (MS_EXTRA+1)
 #define IDS_CONNECTIONS       (MS_EXTRA+2)
 #define IDS_SHAREAS           (MS_EXTRA+3)
-#define IDS_STOPSHARE         (MS_EXTRA+4)
+#define IDS_STOPSHARE         (MS_EXTRA+4)  // IDS_STOPSHARE not used anymore, because there is no way to open then 'Stop Share Dialog' with W7/10/11
 #define IDS_SHARES            (MS_EXTRA+5)
 #define IDS_UNDELETE          (MS_EXTRA+6)
 #define IDS_NEWWINONCONNECT   (MS_EXTRA+7)

@@ -1665,52 +1665,29 @@ AppCommandProc(register DWORD id)
       //
       WAITNET();
 
-      if (lpfnShareStop) {
+      if (lpfnShowShareFolderUI) {
+         LPTSTR szDir;
+         HRESULT hr;
+         BOOL bDir;
+            
+         bDir = FALSE;
+         szDir = GetSelection(1 | 4 | 16, &bDir);
+         hr = ShowShareFolderUI(hwndFrame, szDir);
+         if (hr != S_OK) {
+            FormatError(TRUE, szMessage, COUNTOF(szMessage), ERROR_INVALID_SHARENAME);
 
-         if (ret = ShareCreate(hwndFrame)) {
-
-            //
-            // Report error
-            // ret must the error code
-            //
-            goto DealWithNetError;
-
-         } else {
-
-            InvalidateAllNetTypes();
+            LoadString(hAppInstance, IDS_NETERR, szTitle, COUNTOF(szTitle));
+            MessageBox(hwndFrame, szMessage, szTitle, MB_OK | MB_ICONSTOP);
          }
+         InvalidateAllNetTypes();
       }
-
       break;
 
    case IDM_STOPSHARE:
 
       //
-      // Check to see if our delayed loading has finished.
+      // IDM_STOPSHARE not shown anymore, because there is no way to open then 'Stop Share Dialog' with W7/10/11 
       //
-      WAITNET();
-
-      if (lpfnShareStop) {
-
-         if (ret = ShareStop(hwndFrame)) {
-
-            //
-            // Report error
-            // ret must the error code
-            //
-
-DealWithNetError:
-
-            FormatError(TRUE, szMessage, COUNTOF(szMessage), ret);
-
-            LoadString(hAppInstance, IDS_NETERR, szTitle, COUNTOF(szTitle));
-            MessageBox(hwndFrame, szMessage, szTitle, MB_OK|MB_ICONSTOP);
-
-         } else {
-
-            InvalidateAllNetTypes();
-         }
-      }
       break;
 
 #if 0

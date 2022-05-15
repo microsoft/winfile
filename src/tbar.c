@@ -58,7 +58,8 @@ static TBBUTTON tbButtons[] = {
   { 1, IDM_DISCONNECT , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
   { 2, IDM_SHAREAS    , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
-  { 3, IDM_STOPSHARE  , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
+// IDM_STOPSHARE not shown anymore, because there is no way to open then 'Stop Share Dialog' with W7/10/11
+//  { 3, IDM_STOPSHARE  , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
   { 4, IDM_VNAME      , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 5, IDM_VDETAILS   , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
