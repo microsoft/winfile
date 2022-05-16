@@ -20,12 +20,6 @@
 
 #include "dbg.h"
 
-typedef VOID (APIENTRY *FNPENAPP)(WORD, BOOL);
-
-VOID (APIENTRY *lpfnRegisterPenApp)(WORD, BOOL);
-
-BYTE chPenReg[] = "RegisterPenApp";    // used in GetProcAddress call
-
 TCHAR szNTlanman[] = TEXT("ntlanman.dll");
 TCHAR szHelv[] = TEXT("MS Shell Dlg");
 /*
@@ -497,9 +491,9 @@ UINT  MapMenuPosToIDM(UINT pos)
         idm++;
     }
 
-    if (idm >= IDM_EXTENSIONS + iNumExtensions)
+    if (idm >= IDM_EXTENSIONS + (UINT)iNumExtensions)
     {
-        idm += MAX_EXTENSIONS - iNumExtensions;
+        idm += MAX_EXTENSIONS - (UINT)iNumExtensions;
     }
 
     return idm;
@@ -643,7 +637,7 @@ LoadBitmaps(VOID)
    //
    //  Skip the color table entries, if any
    //
-   lpBits += (1 << (lpBitmapInfo->biBitCount)) * sizeof(RGBQUAD);
+   lpBits += (DWORD)(1 << (lpBitmapInfo->biBitCount)) * sizeof(RGBQUAD);
 
    //
    // Create a color bitmap compatible with the display device
@@ -1062,10 +1056,6 @@ JAPANEND
 	if (OleInitialize(0) != NOERROR)
 		return FALSE;
 	
-   if (lpfnRegisterPenApp = (FNPENAPP)GetProcAddress((HANDLE)GetSystemMetrics(SM_PENWINDOWS), chPenReg))
-      (*lpfnRegisterPenApp)(1, TRUE);
-
-
    //
    // Remember the current directory.
    //
@@ -1595,9 +1585,6 @@ FreeFileManager()
 
    DocDestruct(ppDocBucket);
    DocDestruct(ppProgBucket);
-
-   if (lpfnRegisterPenApp)
-      (*lpfnRegisterPenApp)(1, FALSE);
 
    DeleteBitmaps();
 

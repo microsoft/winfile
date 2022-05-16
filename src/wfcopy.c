@@ -469,7 +469,7 @@ AddComponent:
              //
              if (lpszDot) {
 
-                nSpaceLeft += pT-lpszDot;
+                nSpaceLeft += (INT)(pT-lpszDot);
                 pT = lpszDot;
              }
 
@@ -1060,7 +1060,7 @@ ConfirmDialog(
 
    if ( CONFIRMNOACCESS == dlg || CONFIRMNOACCESSDEST == dlg) {
       params.bNoAccess = TRUE;
-      nRetVal = DialogBoxParam(hAppInstance, (LPTSTR)MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
+      nRetVal = (INT)DialogBoxParam(hAppInstance, (LPTSTR)MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
 
    } else if (plfndtaDest->fd.dwFileAttributes & (ATTR_READONLY | ATTR_SYSTEM | ATTR_HIDDEN)) {
 
@@ -1070,7 +1070,7 @@ ConfirmDialog(
          nRetVal = IDYES;
       } else {
          params.bWriteProtect = TRUE;
-         nRetVal = DialogBoxParam(hAppInstance, (LPTSTR)MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
+         nRetVal = (INT)DialogBoxParam(hAppInstance, (LPTSTR)MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
       }
 
       if (nRetVal == IDYES) {
@@ -1086,7 +1086,7 @@ ConfirmDialog(
       nRetVal = IDYES;
    } else {
 
-      nRetVal = DialogBoxParam(hAppInstance, (LPTSTR) MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
+      nRetVal = (INT)DialogBoxParam(hAppInstance, (LPTSTR) MAKEINTRESOURCE(dlg), hDlg, ReplaceDlgProc, (LPARAM)(LPPARAM_REPLACEDLG)&params);
    }
 
    if (nRetVal == -1)
@@ -3375,11 +3375,11 @@ Error:
    lstrcpy(pCopyInfo->pFrom, pFrom);
    lstrcpy(pCopyInfo->pTo, pTo);
 
-   dwStatus = DialogBoxParam(hAppInstance,
-                            (LPTSTR) MAKEINTRESOURCE(DMSTATUSDLG),
-                            hwndFrame,
-                            ProgressDlgProc,
-                            (LPARAM)pCopyInfo);
+   dwStatus = (DWORD)DialogBoxParam(hAppInstance,
+                                    (LPTSTR) MAKEINTRESOURCE(DMSTATUSDLG),
+                                    hwndFrame,
+                                    ProgressDlgProc,
+                                    (LPARAM)pCopyInfo);
 
    return dwStatus;
 }

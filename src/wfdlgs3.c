@@ -298,7 +298,7 @@ FormatDiskette(HWND hwnd, BOOL bModal)
 
     CancelInfo.bModal = bModal;
 
-    res = DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(FORMATDLG), hwnd, FormatDlgProc);
+    res = (INT)DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(FORMATDLG), hwnd, FormatDlgProc);
 
     dwContext = dwSave;
 }
@@ -768,7 +768,7 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                     {
                         // Set the drive letter as the string and the drive index as the data.
                         DRIVESET(szDrive, drive);
-                        comboxIndex = SendMessage(hwndSelectDrive, CB_ADDSTRING, 0, (LPARAM)szDrive);
+                        comboxIndex = (INT)SendMessage(hwndSelectDrive, CB_ADDSTRING, 0, (LPARAM)szDrive);
                         SendMessage(hwndSelectDrive, CB_SETITEMDATA, comboxIndex, (LPARAM)drive);
                     }
                 }
@@ -1427,7 +1427,7 @@ UpdateConnections(BOOL bUpdateDriveList)
       if (GetWindow(hwnd, GW_OWNER) || hwnd == hwndSearch)
          continue;
 
-      drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+      drive = (DRIVE)GetWindowLongPtr(hwnd, GWL_TYPE);
 
       //
       // IsValidDisk uses GetDriveType which was updated if

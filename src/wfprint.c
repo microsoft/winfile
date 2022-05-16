@@ -20,7 +20,7 @@
 DWORD
 PrintFile(HWND hwnd, LPTSTR szFile)
 {
-   DWORD          ret;
+   DWORD_PTR     ret;
    INT           iCurCount;
    INT           i;
    HCURSOR       hCursor;
@@ -40,7 +40,7 @@ PrintFile(HWND hwnd, LPTSTR szFile)
    // open the object
    //
    SetErrorMode(0);
-   ret = (DWORD)ShellExecute(hwnd, L"print", szFile, szNULL, szDir, SW_SHOWNORMAL);
+   ret = (DWORD_PTR)ShellExecute(hwnd, L"print", szFile, szNULL, szDir, SW_SHOWNORMAL);
    SetErrorMode(1);
 
    switch (ret) {
@@ -96,7 +96,7 @@ EPExit:
 
    SetCursor(hCursor);
 
-   return(ret);
+   return (DWORD)ret;
 }
 
 /*--------------------------------------------------------------------------*/

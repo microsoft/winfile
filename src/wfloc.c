@@ -50,7 +50,7 @@ VOID InitLangList(HWND hCBox)
 
 VOID SaveLang(HWND hCBox)
 {
-    int iIndex = SendMessage(hCBox, CB_GETCURSEL, 0, 0);
+    int iIndex = (INT)SendMessage(hCBox, CB_GETCURSEL, 0, 0);
 
     if (iIndex == CB_ERR)
         return; // do nothing

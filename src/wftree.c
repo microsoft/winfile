@@ -116,7 +116,7 @@ CompactPath(HDC hDC, LPTSTR lpszPath, DWORD dx)
    GetTextExtentPoint32(hDC, lpFixed, lstrlen(lpFixed), &sizeF);
 
    while (TRUE) {
-      GetTextExtentPoint32(hDC, lpszPath, lpEnd - lpszPath, &sizeT);
+      GetTextExtentPoint32(hDC, lpszPath, (int)(lpEnd - lpszPath), &sizeT);
       len = sizeF.cx + sizeT.cx;
 
       if (bEllipsesIn)
@@ -288,7 +288,7 @@ SwitchDriveSelection(HWND hwndChild, BOOL bSelectToolbarDrive)
    DRIVEIND i, driveIndOld, driveIndOldFocus;
    RECT rc;
 
-   drive = GetWindowLongPtr(hwndChild, GWL_TYPE);
+   drive = (DRIVE)GetWindowLongPtr(hwndChild, GWL_TYPE);
 
    if (TYPE_SEARCH == drive) {
 
@@ -296,8 +296,8 @@ SwitchDriveSelection(HWND hwndChild, BOOL bSelectToolbarDrive)
    }
 
 
-   driveIndOld      = GetWindowLongPtr(hwndDriveBar, GWL_CURDRIVEIND);
-   driveIndOldFocus = GetWindowLongPtr(hwndDriveBar, GWL_CURDRIVEFOCUS);
+   driveIndOld      = (DRIVEIND)GetWindowLongPtr(hwndDriveBar, GWL_CURDRIVEIND);
+   driveIndOldFocus = (DRIVEIND)GetWindowLongPtr(hwndDriveBar, GWL_CURDRIVEFOCUS);
 
    for (i=0; i < cDrives; i++) {
       if (rgiDrive[i] == drive) {

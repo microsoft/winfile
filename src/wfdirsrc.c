@@ -457,7 +457,7 @@ DSRectItem(
 
          SetStatusText(SBT_NOBORDERS|255,
                        SST_RESOURCE|SST_FORMAT,
-                       (LPWSTR)(fShowSourceBitmaps ?
+                       (LPWSTR)(DWORD_PTR)(fShowSourceBitmaps ?
                           IDS_DRAG_COPYING :
                           IDS_DRAG_MOVING),
                        szTemp);
@@ -519,7 +519,7 @@ ClearStatus:
 
       SetStatusText(SBT_NOBORDERS|255,
                     SST_FORMAT | SST_RESOURCE,
-                    (LPWSTR)(fShowSourceBitmaps ?
+                    (LPWSTR)(DWORD_PTR)(fShowSourceBitmaps ?
                         IDS_DRAG_COPYING :
                         IDS_DRAG_MOVING),
                     szTemp);
@@ -556,7 +556,7 @@ ClearStatus:
 
       SetStatusText(SBT_NOBORDERS|255,
                     SST_FORMAT | SST_RESOURCE,
-                    (LPWSTR)(pIsProgram ?
+                    (LPWSTR)(DWORD_PTR)(pIsProgram ?
                        IDS_DRAG_EXECUTING :
                        (fShowSourceBitmaps ?
                           IDS_DRAG_COPYING :
@@ -772,7 +772,7 @@ DSTrackPoint(
    if (GetKeyState(VK_SHIFT) < 0) {
 
       // What is the state of the Anchor point?
-      dwAnchor = SendMessage(hwndLB, LB_GETANCHORINDEX, 0, 0L);
+      dwAnchor = (DWORD)SendMessage(hwndLB, LB_GETANCHORINDEX, 0, 0L);
       bSelected = (BOOL)SendMessage(hwndLB, LB_GETSEL, dwAnchor, 0L);
 
       // If Control is up, turn everything off.

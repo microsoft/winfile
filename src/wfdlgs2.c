@@ -435,6 +435,7 @@ CALLBACK
 SuperDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    UINT          len;
+   INT           iCtrl;
    LPTSTR        pszFrom;
    //
    // WFMoveCopyDrive tries to append \*.* to directories and
@@ -526,7 +527,7 @@ JAPANEND
          SetDlgItemText(hDlg, IDD_FROM, p);
 
          if ((dwSuperDlgMode == IDM_PRINT) || (dwSuperDlgMode == IDM_DELETE))
-            wParam = IDD_FROM;
+            iCtrl = IDD_FROM;
          else
          {
             TCHAR szDirs[MAXPATHLEN];
@@ -534,11 +535,11 @@ JAPANEND
             int drive, driveCur;
         	BOOL fFirst = TRUE;
             
-            wParam = IDD_TO;
+            iCtrl = IDD_TO;
             if (dwSuperDlgMode == IDM_RENAME)
 	            SetDlgItemText(hDlg, IDD_TO, p);
 
-			driveCur = GetWindowLongPtr(hwndActive, GWL_TYPE);
+			driveCur = (int)GetWindowLongPtr(hwndActive, GWL_TYPE);
 
 			lstrcpy(szDirs, TEXT("Other: "));
 
@@ -565,7 +566,7 @@ JAPANEND
 	        SetDlgItemText(hDlg, IDD_DIRS, szDirs);
          }
 
-         SendDlgItemMessage(hDlg, wParam, EM_LIMITTEXT, COUNTOF(szTo) - 1, 0L);
+         SendDlgItemMessage(hDlg, iCtrl, EM_LIMITTEXT, COUNTOF(szTo) - 1, 0L);
          LocalFree((HANDLE)p);
          break;
       }
@@ -1165,7 +1166,7 @@ FillVersionList(HWND hDlg)
 
       goto Done;
 
-   idx = SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)szMessage);
+   idx = (INT)SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)szMessage);
    if (idx == LB_ERR)
       goto Done;
 
@@ -1284,7 +1285,7 @@ InitPropertiesDialog(
       hwndView = hwndActive;
    }
 
-   iMac = SendMessage(hwndLB, LB_GETCOUNT, 0, 0L);
+   iMac = (INT)SendMessage(hwndLB, LB_GETCOUNT, 0, 0L);
 
    szPath[0] = CHAR_NULL;
    szName[0] = CHAR_NULL;
@@ -1513,7 +1514,7 @@ FullPath:
                WS_VISIBLE|WS_CHILD|WS_TABSTOP|BS_PUSHBUTTON,
                rc.left, rc.top,
                rc.right - rc.left, rc.bottom-rc.top,
-               hDlg, (HMENU)(i + IDD_NETWORKFIRST), hAppInstance, NULL);
+               hDlg, (HMENU)(DWORD_PTR)(i + IDD_NETWORKFIRST), hAppInstance, NULL);
 
             if (hwnd) {
                hFont = (HFONT)SendDlgItemMessage(hDlg, IDOK, WM_GETFONT, 0, 0L);

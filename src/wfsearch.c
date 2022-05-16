@@ -686,7 +686,7 @@ SearchWndProc(
       return (LRESULT)DirGetSelection(NULL,
                                    hwnd,
                                    hwndLB,
-                                   wParam,
+                                   (INT)wParam,
                                    (BOOL *)lParam,
                                    NULL);
       break;
@@ -754,7 +754,7 @@ SearchWndProc(
       wParam &= ~CD_DONTSTEAL;
 
       if (wParam == CD_VIEW || wParam == CD_SEARCHFONT) {
-         dwNewView = GetWindowLongPtr(hwnd, GWL_VIEW);
+         dwNewView = (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW);
 
          //
          // in case font changed, update maxExt
@@ -1032,7 +1032,7 @@ SearchWndProc(
    {
       LPDRAWITEMSTRUCT lpLBItem;
       PWORD pwTabs;
-      DWORD dwView = GetWindowLongPtr(hwnd, GWL_VIEW);
+      DWORD dwView = (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW);
 
       lpLBItem = (LPDRAWITEMSTRUCT)lParam;
       iSel = lpLBItem->itemID;
@@ -1068,7 +1068,7 @@ SearchWndProc(
       }
 
       DrawItem(hwnd,
-               GetWindowLongPtr(hwnd, GWL_VIEW),
+               (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW),
                (LPDRAWITEMSTRUCT)lParam,
                TRUE);
       break;
@@ -1369,7 +1369,7 @@ SearchDrive(LPVOID lpParameter)
                     (WORD *)GetWindowLongPtr(hwndSearch, GWL_TABARRAY),
                     maxExtLast,
                     0,
-                    GetWindowLongPtr(hwndSearch, GWL_VIEW));
+                    (DWORD)GetWindowLongPtr(hwndSearch, GWL_VIEW));
 
    SearchInfo.iRet = FillSearchLB(SearchInfo.hwndLB,
                                   SearchInfo.szSearch,

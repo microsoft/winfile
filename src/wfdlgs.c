@@ -63,7 +63,7 @@ DO_AGAIN:
 
    for (hwnd = GetWindow(hwndMDIClient, GW_CHILD); hwnd; hwnd = GetWindow(hwnd, GW_HWNDNEXT)) {
       HWND ht = HasTreeWindow(hwnd);
-      INT nReadLevel = ht ? GetWindowLongPtr(ht, GWL_READLEVEL) : 0;
+      INT nReadLevel = ht ? (INT)GetWindowLongPtr(ht, GWL_READLEVEL) : 0;
 
       // don't save MDI icon title windows or search windows,
       // or any dir window which is currently recursing
@@ -79,9 +79,9 @@ DO_AGAIN:
          wp.length = sizeof(WINDOWPLACEMENT);
          if (!GetWindowPlacement(hwnd, &wp))
              continue;
-         view = GetWindowLongPtr(hwnd, GWL_VIEW);
-         sort = GetWindowLongPtr(hwnd, GWL_SORT);
-         attribs = GetWindowLongPtr(hwnd, GWL_ATTRIBS);
+         view = (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW);
+         sort = (DWORD)GetWindowLongPtr(hwnd, GWL_SORT);
+         attribs = (DWORD)GetWindowLongPtr(hwnd, GWL_ATTRIBS);
 
          GetMDIWindowText(hwnd, szPath, COUNTOF(szPath));
 
@@ -145,7 +145,7 @@ OtherDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     {
       case WM_INITDIALOG:
 
-          dwView = GetWindowLongPtr(hwndActive, GWL_VIEW);
+          dwView = (DWORD)GetWindowLongPtr(hwndActive, GWL_VIEW);
           CheckDlgButton(hDlg, IDD_SIZE,  dwView & VIEW_SIZE);
           CheckDlgButton(hDlg, IDD_DATE,  dwView & VIEW_DATE);
           CheckDlgButton(hDlg, IDD_TIME,  dwView & VIEW_TIME);
@@ -608,7 +608,7 @@ NewFont()
             SetLBFont(hwndT,
                       hwndT2,
                       hFont,
-                      GetWindowLongPtr(hwnd, GWL_VIEW),
+                      (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW),
                       (LPXDTALINK)GetWindowLongPtr(hwndT, GWL_HDTA));
 
             InvalidateRect(hwndT2, NULL, TRUE);
@@ -849,7 +849,7 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 	{
 		RECT rect;
 
-		item = SendMessage(hwndLB, LB_GETCURSEL, 0, 0);
+		item = (DWORD)SendMessage(hwndLB, LB_GETCURSEL, 0, 0);
 		SendMessage(hwndLB, LB_GETITEMRECT, (WPARAM)LOWORD(item), (LPARAM)&rect);
 		pt.x = rect.left;
 		pt.y = rect.bottom;
@@ -861,7 +861,7 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 		POINTSTOPOINT(pt, lParam);
 
 		ScreenToClient(hwndLB, &pt);
-		item = SendMessage(hwndLB, LB_ITEMFROMPOINT, 0, POINTTOPOINTS(pt));
+		item = (DWORD)SendMessage(hwndLB, LB_ITEMFROMPOINT, 0, POINTTOPOINTS(pt));
 
 		if (HIWORD(item) == 0)
 		{

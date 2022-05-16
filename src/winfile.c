@@ -180,8 +180,8 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
 
    hwndTree = HasTreeWindow(hwndActive);
    hwndDir = HasDirWindow(hwndActive);
-   dwSort = GetWindowLongPtr(hwndActive, GWL_SORT);
-   dwView = GetWindowLongPtr(hwndActive, GWL_VIEW);
+   dwSort = (DWORD)GetWindowLongPtr(hwndActive, GWL_SORT);
+   dwView = (DWORD)GetWindowLongPtr(hwndActive, GWL_VIEW);
 
    uMenuFlags = MF_BYCOMMAND | MF_ENABLED;
 

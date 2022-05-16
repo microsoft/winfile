@@ -692,7 +692,7 @@ CreateDTABlockWorker(
 
    LeaveCriticalSection(&CriticalSectionDirRead);
 
-   dwAttribs = GetWindowLongPtr(hwnd, GWL_ATTRIBS);
+   dwAttribs = (DWORD)GetWindowLongPtr(hwnd, GWL_ATTRIBS);
 
    //
    // get the drive index assuming path is
@@ -1049,7 +1049,7 @@ Done:
    SetLBFont(hwndDir,
              GetDlgItem(hwndDir, IDCW_LISTBOX),
              hFont,
-             GetWindowLongPtr(hwnd, GWL_VIEW),
+             (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW),
              lpStart);
 
    R_Space(drive);
