@@ -571,24 +571,37 @@ JAPANEND
       }
 
    case WM_NCACTIVATE:
-      if (IDM_RENAME == dwSuperDlgMode)
-      {
-		size_t ich1, ich2;
-		LPWSTR pchDot;
+      if (IDM_RENAME == dwSuperDlgMode) {
+         size_t ich1, ich2;
+         LPWSTR pchDot;
 
-		GetDlgItemText(hDlg, IDD_TO, szTo, COUNTOF(szTo));
-		ich1 = 0;
-		ich2 = wcslen(szTo);
-		pchDot = wcsrchr(szTo, '.');
-		if (pchDot != NULL)
-			ich2 = pchDot - szTo;
-		if (*szTo == '\"')
-		{
-			ich1 = 1;
-			if (pchDot == NULL)
-				ich2--;
-		}
-		SendDlgItemMessage(hDlg, IDD_TO, EM_SETSEL, ich1, ich2);
+         GetDlgItemText(hDlg, IDD_TO, szTo, COUNTOF(szTo));
+         ich1 = 0;
+         ich2 = wcslen(szTo);
+
+         // Search for extension
+         pchDot = wcsrchr(szTo, '.');
+         if (pchDot != NULL) {
+            TCHAR szTemp[MAXPATHLEN];
+            lstrcpy(szTemp, szTo);
+            QualifyPath(szTemp);
+
+            // Is this a file or directory
+            if (GetFileAttributes(szTemp) & (FILE_ATTRIBUTE_DIRECTORY | FILE_ATTRIBUTE_REPARSE_POINT)) {
+               if (szTo[ich2 - 1] == '\"')
+                  ich2--;
+            }
+            else {
+               ich2 = pchDot - szTo;
+            }
+         }
+         // Make sure we handle " properly with selection
+         if (*szTo == '\"') {
+            ich1 = 1;
+            if (pchDot == NULL)
+               ich2--;
+         }
+         SendDlgItemMessage(hDlg, IDD_TO, EM_SETSEL, ich1, ich2);
       }
       return FALSE;
       
