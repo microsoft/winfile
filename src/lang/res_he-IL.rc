@@ -128,7 +128,7 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "&חלון חדש\tעל בחירה",     IDM_NEWWINDOW
+	MENUITEM    "&חלון חדש\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&פתח\tEnter",     IDM_OPEN
     MENUITEM    "ערוך\tF12",	    IDM_EDIT
     MENUITEM    "העברה...\tF7",     IDM_MOVE

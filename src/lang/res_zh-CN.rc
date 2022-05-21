@@ -128,7 +128,7 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "新建窗口(&N)\t选中",     IDM_NEWWINDOW
+	MENUITEM    "新建窗口(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "打开(&O)\tEnter",     IDM_OPEN
     MENUITEM    "编辑\tF12",	    IDM_EDIT
     MENUITEM    "移动(&M)...\tF7",     IDM_MOVE
