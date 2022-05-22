@@ -262,8 +262,6 @@ DoHelp:
 }
 
 
-#define RUN_LENGTH      MAXPATHLEN
-
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
 /*  RunDlgProc() -                                                          */
@@ -279,7 +277,7 @@ RunDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
   LPTSTR pDir2;
   TCHAR szTemp[MAXPATHLEN];
   TCHAR szTemp2[MAXPATHLEN];
-  TCHAR sz3[RUN_LENGTH];
+  TCHAR sz3[MAXPATHLEN];
 
   UNREFERENCED_PARAMETER(lParam);
 
@@ -587,7 +585,7 @@ JAPANEND
             QualifyPath(szTemp);
 
             // Is this a file or directory
-            if (GetFileAttributes(szTemp) & (FILE_ATTRIBUTE_DIRECTORY | FILE_ATTRIBUTE_REPARSE_POINT)) {
+            if (GetFileAttributes(szTemp) & FILE_ATTRIBUTE_DIRECTORY) {
                if (szTo[ich2 - 1] == '\"')
                   ich2--;
             }
