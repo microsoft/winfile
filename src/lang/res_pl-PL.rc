@@ -128,7 +128,7 @@ CTXMENU MENU PRELOAD
 BEGIN
     POPUP "Menu prawego przycisku"
     BEGIN
-    MENUITEM    "&Nowe okno\tw wybranym",         IDM_NEWWINDOW
+    MENUITEM    "&Nowe okno\tCtrl+Shift Enter",   IDM_NEWWINDOW
     MENUITEM    "&Otwórz\tEnter",                 IDM_OPEN
     MENUITEM    "Edytuj\tF12",                    IDM_EDIT
     MENUITEM    "&Przenieś...\tF7",               IDM_MOVE

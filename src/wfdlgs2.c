@@ -231,7 +231,7 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                       SendMessage(hwndMDIClient, WM_MDICREATE, 0L, (LPARAM)(LPMDICREATESTRUCT)&MDICS);
 
-                      // Forward the attributes to search window
+                      // Forward the attributes to the search window, since hwndSearch was just created by WM_MDICREATE
                       SetWindowLongPtr(hwndSearch, GWL_ATTRIBS, GetWindowLongPtr(hwndMDIChild, GWL_ATTRIBS));
 
                       if (bMaximized)
