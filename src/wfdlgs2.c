@@ -150,33 +150,33 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   GetDlgItemText(hDlg, IDD_DIR, SearchInfo.szSearch, COUNTOF(SearchInfo.szSearch));
                   QualifyPath(SearchInfo.szSearch);
 
-				  GetDlgItemText(hDlg, IDD_DATE, szStart, COUNTOF(szStart));
-				  SearchInfo.ftSince.dwHighDateTime = SearchInfo.ftSince.dwLowDateTime = 0;
-				  if (lstrlen(szStart) != 0)
-				  {
-					  DATE date;
-					  SYSTEMTIME st;
-					  FILETIME ftLocal;
-					  HRESULT hr = VarDateFromStr(szStart, lcid, 0, &date);
-					  BOOL b1 = VariantTimeToSystemTime(date, &st);
-					  BOOL b2 = SystemTimeToFileTime(&st, &ftLocal);
+                  GetDlgItemText(hDlg, IDD_DATE, szStart, COUNTOF(szStart));
+                  SearchInfo.ftSince.dwHighDateTime = SearchInfo.ftSince.dwLowDateTime = 0;
+                  if (lstrlen(szStart) != 0)
+                  {
+                      DATE date;
+                      SYSTEMTIME st;
+                      FILETIME ftLocal;
+                      HRESULT hr = VarDateFromStr(szStart, lcid, 0, &date);
+                      BOOL b1 = VariantTimeToSystemTime(date, &st);
+                      BOOL b2 = SystemTimeToFileTime(&st, &ftLocal);
 
-					  // SearchInfo.ftSince is in UTC (as are FILETIME in files to which this will be compared)
-					  BOOL b3 = LocalFileTimeToFileTime(&ftLocal, &SearchInfo.ftSince);
-					  if (FAILED(hr) || !b1 || !b2 || !b3) {
-						  MessageBeep(0);
-						  break;
-					  }
-				  }
+                      // SearchInfo.ftSince is in UTC (as are FILETIME in files to which this will be compared)
+                      BOOL b3 = LocalFileTimeToFileTime(&ftLocal, &SearchInfo.ftSince);
+                      if (FAILED(hr) || !b1 || !b2 || !b3) {
+                          MessageBeep(0);
+                          break;
+                      }
+                  }
 
                   GetDlgItemText(hDlg, IDD_NAME, szStart, COUNTOF(szStart));
 
-                  KillQuoteTrailSpace( szStart );
+                  KillQuoteTrailSpace(szStart);
 
                   AppendToPath(SearchInfo.szSearch, szStart);
 
                   SearchInfo.bDontSearchSubs = !IsDlgButtonChecked(hDlg, IDD_SEARCHALL);
-				  SearchInfo.bIncludeSubDirs = IsDlgButtonChecked(hDlg, IDD_INCLUDEDIRS);
+                  SearchInfo.bIncludeSubDirs = IsDlgButtonChecked(hDlg, IDD_INCLUDEDIRS);
 
                   EndDialog(hDlg, TRUE);
 
@@ -188,59 +188,62 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   /* Is the search window already up? */
                   if (hwndSearch) {
 
-                     // used to check ret val of change display then
-                     // activate and non-iconize search window.
-                     // now instead pass a flag
+                      // used to check ret val of change display then
+                      // activate and non-iconize search window.
+                      // now instead pass a flag
 
-                     SendMessage(hwndSearch, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)SearchInfo.szSearch);
+                      SendMessage(hwndSearch, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)SearchInfo.szSearch);
 
                   } else {
-					  BOOL bMaximized = FALSE;
-					  HWND hwndMDIChild = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, (LPARAM)&bMaximized);
+                      BOOL bMaximized = FALSE;
+                      HWND hwndMDIChild = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, (LPARAM)&bMaximized);
 
-					  // cf. https://www.codeproject.com/articles/2077/creating-a-new-mdi-child-maximization-and-focus-is
-					  if (bMaximized)
-					  {
-						  SendMessage(hwndMDIClient, WM_SETREDRAW, FALSE, 0);
-					  }
+                      // cf. https://www.codeproject.com/articles/2077/creating-a-new-mdi-child-maximization-and-focus-is
+                      if (bMaximized)
+                      {
+                          SendMessage(hwndMDIClient, WM_SETREDRAW, FALSE, 0);
+                      }
 
-                     //
-                     // !! BUGBUG !!
-                     //
-                     // This is safe since szMessage = MAXPATHLEN*2+MAXSUGGESTLEN
-                     // but it's not portable
-                     //
-                     LoadString(hAppInstance, IDS_SEARCHTITLE, szMessage,
-                        COUNTOF(szMessage));
+                      //
+                      // !! BUGBUG !!
+                      //
+                      // This is safe since szMessage = MAXPATHLEN*2+MAXSUGGESTLEN
+                      // but it's not portable
+                      //
+                      LoadString(hAppInstance, IDS_SEARCHTITLE, szMessage,
+                          COUNTOF(szMessage));
 
-                     lstrcat(szMessage, SearchInfo.szSearch);
+                      lstrcat(szMessage, SearchInfo.szSearch);
 
-                     // Have the MDIClient create the MDI directory window.
+                      // Have the MDIClient create the MDI directory window.
 
-                     MDICS.szClass = szSearchClass;
-                     MDICS.hOwner = hAppInstance;
-                     MDICS.szTitle = szMessage;
+                      MDICS.szClass = szSearchClass;
+                      MDICS.hOwner = hAppInstance;
+                      MDICS.szTitle = szMessage;
 
-                     // Minimize
+                      // Minimize
 
-                     MDICS.style = bMaximized ? WS_MAXIMIZE : WS_MINIMIZE;
-					 MDICS.x  = CW_USEDEFAULT;
-                     MDICS.y  = 0;
-                     MDICS.cx = CW_USEDEFAULT;
-                     MDICS.cy = 0;
+                      MDICS.style = bMaximized ? WS_MAXIMIZE : WS_MINIMIZE;
+                      MDICS.x = CW_USEDEFAULT;
+                      MDICS.y = 0;
+                      MDICS.cx = CW_USEDEFAULT;
+                      MDICS.cy = 0;
 
-                     SendMessage(hwndMDIClient, WM_MDICREATE, 0L, (LPARAM)(LPMDICREATESTRUCT)&MDICS);
+                      SendMessage(hwndMDIClient, WM_MDICREATE, 0L, (LPARAM)(LPMDICREATESTRUCT)&MDICS);
 
-					 if (bMaximized)
-					 {
-						 // the WM_MDICREATE above creates the window maximized;
-						 // here we re-activate the original maximized window
+                      // Forward the attributes to the search window, since hwndSearch was just created by WM_MDICREATE
+                      SetWindowLongPtr(hwndSearch, GWL_ATTRIBS, GetWindowLongPtr(hwndMDIChild, GWL_ATTRIBS));
 
-						 SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndMDIChild, 0L);
+                      if (bMaximized)
+                      {
+                          // the WM_MDICREATE above creates the window maximized;
+                          // here we re-activate the original maximized window
 
-						 SendMessage(hwndMDIClient, WM_SETREDRAW, TRUE, 0);
-						 RedrawWindow(hwndMDIClient, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN);
-					 }
+                          SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndMDIChild, 0L);
+
+                          SendMessage(hwndMDIClient, WM_SETREDRAW, TRUE, 0);
+                          RedrawWindow(hwndMDIClient, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN);
+                      }
                   }
                   break;
 

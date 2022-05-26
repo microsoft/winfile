@@ -127,7 +127,7 @@ CTXMENU MENU PRELOAD
 BEGIN
   POPUP "Dummy Popup"
   BEGIN
-  MENUITEM    "&Neues Fenster\tbeim Markieren",                   IDM_NEWWINDOW
+  MENUITEM    "&Neues Fenster\tStrg+Umschalt Eingabetaste",      IDM_NEWWINDOW
   MENUITEM    "Öffnen\tEnter",                                   IDM_OPEN
   MENUITEM    "Bearbeiten\tF12",	                                IDM_EDIT
   MENUITEM    "&Verschieben...\tF7",                              IDM_MOVE
