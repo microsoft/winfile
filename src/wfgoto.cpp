@@ -133,7 +133,7 @@ vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 	}
 
 	// if just one, return it (after sort above)
-	int count = trees.size();
+	size_t count = trees.size();
 	if (count == 1)
 		return trees.at(0);
 
@@ -147,7 +147,7 @@ vector<PDNODE> TreeIntersection(vector<vector<PDNODE>>& trees)
 	vector<PDNODE>* first = nullptr;
 
 	// for all other result sets, merge
-	for (int i = 1; i < count; i++)
+	for (size_t i = 1; i < count; i++)
 	{
 		size_t out = 0;			// always start writing to the beginning of the output
 
@@ -510,7 +510,7 @@ LRESULT APIENTRY GotoEditSubclassProc(
 
 			if (lpmsg->message == WM_KEYDOWN && (lpmsg->wParam == VK_DOWN || lpmsg->wParam == VK_UP || lpmsg->wParam == VK_HOME || lpmsg->wParam == VK_END)) {
 				HWND hwndDlg = GetParent(hwnd);
-				DWORD iSel = SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
+				DWORD iSel = (DWORD)SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
 				if (iSel == LB_ERR)
 					iSel = 0;
 				else if (lpmsg->wParam == VK_DOWN)
@@ -521,7 +521,7 @@ LRESULT APIENTRY GotoEditSubclassProc(
 					iSel = 0;
 				else if (lpmsg->wParam == VK_END)
 				{
-					iSel = SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCOUNT, 0, 0) - 1;
+					iSel = (DWORD)SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCOUNT, 0, 0) - 1;
 				}
 				if (SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_SETCURSEL, iSel, 0) == LB_ERR) {
 					if (lpmsg->wParam == VK_DOWN)
@@ -594,10 +594,11 @@ GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 		case IDOK:
 		{
 			TCHAR szPath[MAXPATHLEN];
+            DWORD iSel;
 
 			EndDialog(hDlg, TRUE);
 
-			DWORD iSel = SendDlgItemMessage(hDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
+			iSel = (DWORD)SendDlgItemMessage(hDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
 			if (iSel == LB_ERR)
 			{
 				if (GetDlgItemText(hDlg, IDD_GOTODIR, szPath, COUNTOF(szPath)) != 0)

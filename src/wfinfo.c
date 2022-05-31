@@ -1536,7 +1536,7 @@ UpdateDriveListComplete(VOID)
       if (GetWindow(hwnd, GW_OWNER) || hwnd == hwndSearch)
          continue;
 
-      drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+      drive = (DRIVE)GetWindowLongPtr(hwnd, GWL_TYPE);
 
       //
       // Invalidate cache to get real one in case the user reconnected
@@ -1586,7 +1586,7 @@ UpdateDriveListComplete(VOID)
    if (hwndDriveList)
    {
        SendMessage(hwndDriveList, WM_SETREDRAW, FALSE, 0);
-       CurSel = SendMessage(hwndDriveList, CB_GETCURSEL, 0, 0);
+       CurSel = (INT)SendMessage(hwndDriveList, CB_GETCURSEL, 0, 0);
        for (driveInd = 0; driveInd < cDrives; driveInd++)
        {
            if (aDriveInfo[rgiDrive[driveInd]].dwLines[ALTNAME_MULTI] != 1)
@@ -1818,7 +1818,7 @@ NetLoad(VOID)
 
          if (hwnd != hwndSearch && !GetWindow(hwnd, GW_OWNER)) {
 
-            drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+            drive = (DRIVE)GetWindowLongPtr(hwnd, GWL_TYPE);
             DRIVESET(szPath, drive);
 
             if (!aDriveInfo[drive].bShareChkTried  &&

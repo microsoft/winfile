@@ -660,7 +660,7 @@ SetMDIWindowText(
             // if (wTextAttribs & TA_LOWERCASE)
             //    CharLower(szTemp);
 
-            drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+            drive = (DWORD)GetWindowLongPtr(hwnd, GWL_TYPE);
             if (drive != -1) {     /* if not a search window */
                lstrcat(szTemp, SZ_SPACEDASHSPACE);
 
@@ -684,7 +684,7 @@ SetMDIWindowText(
    }
 
 
-   drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+   drive = (DWORD)GetWindowLongPtr(hwnd, GWL_TYPE);
 
    uTitleLen = lstrlen(szTitle);
 
@@ -1417,7 +1417,7 @@ MyMessageBox(HWND hwnd, DWORD idTitle, DWORD idMessage, DWORD wStyle)
 DWORD
 ExecProgram(LPTSTR lpPath, LPTSTR lpParms, LPTSTR lpDir, BOOL bLoadIt, BOOL bRunAs)
 {
-  DWORD          ret;
+  DWORD_PTR     ret;
   INT           iCurCount;
   INT           i;
   HCURSOR       hCursor;
@@ -1447,7 +1447,7 @@ ExecProgram(LPTSTR lpPath, LPTSTR lpParms, LPTSTR lpDir, BOOL bLoadIt, BOOL bRun
      lpszTitle++;
 
   SetErrorMode(0);
-  ret = (DWORD) ShellExecute(hwndFrame, bRunAs ? L"runas" : NULL, lpPath, lpParms, lpDir, bLoadIt ? SW_SHOWMINNOACTIVE : SW_SHOWNORMAL);
+  ret = (DWORD_PTR) ShellExecute(hwndFrame, bRunAs ? L"runas" : NULL, lpPath, lpParms, lpDir, bLoadIt ? SW_SHOWMINNOACTIVE : SW_SHOWNORMAL);
 
   SetErrorMode(1);
 
@@ -1512,7 +1512,7 @@ EPExit:
 
   SetCursor(hCursor);
 
-  return ret;
+  return (DWORD)ret;
 }
 
 

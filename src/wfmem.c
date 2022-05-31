@@ -229,7 +229,7 @@ MemClone(LPXDTALINK lpStart)
    LPXDTALINK lpPrev;
    LPXDTALINK lpLink;
    LPXDTALINK lpNext;
-   DWORD dwSize;
+   SIZE_T dwSize;
 
 #ifdef TESTING
 // TESTING

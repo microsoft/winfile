@@ -273,7 +273,7 @@ FocusOnly:
             rc = lpLBItem->rcItem;
             rc.right = max(rc.right,
                            rc.left +
-                           SendMessage(hwndLB, LB_GETHORIZONTALEXTENT, 0, 0)) -
+                           (INT)SendMessage(hwndLB, LB_GETHORIZONTALEXTENT, 0, 0)) -
                        dyBorder;
             rc.left += dyBorder;
 
@@ -638,7 +638,7 @@ DirWndProc(
                 cchMatch = wcslen(szItem);
 
          if (CompareString( LOCALE_USER_DEFAULT, NORM_IGNORECASE, 
-             rgchMatch, cchMatch, szItem, cchMatch) == 2)
+             rgchMatch, (int)cchMatch, szItem, (int)cchMatch) == 2)
             break;
 
       }
@@ -662,7 +662,7 @@ DirWndProc(
 
       return (LONG)CompareDTA((LPXDTA)lpci->itemData1,
                               (LPXDTA)lpci->itemData2,
-                              GetWindowLongPtr(hwndParent, GWL_SORT));
+                              (DWORD)GetWindowLongPtr(hwndParent, GWL_SORT));
 #undef lpci
 
    case WM_NCDESTROY:
@@ -756,7 +756,7 @@ DirWndProc(
    case WM_DRAWITEM:
 
       DrawItem(hwnd,
-               GetWindowLongPtr(hwndParent, GWL_VIEW),
+               (DWORD)GetWindowLongPtr(hwndParent, GWL_VIEW),
                (LPDRAWITEMSTRUCT)lParam,
                ((LPDRAWITEMSTRUCT)lParam)->hwndItem == GetFocus());
       break;
@@ -1106,7 +1106,7 @@ ChangeDisplay(
          // and Details view.
          //
          dwNewView = LOWORD(lParam);
-         dwCurView = GetWindowLongPtr(hwndListParms, GWL_VIEW);
+         dwCurView = (DWORD)GetWindowLongPtr(hwndListParms, GWL_VIEW);
 
          //
          // hiword lParam == TRUE means always refresh
@@ -1162,8 +1162,8 @@ ChangeDisplay(
          //
          // Create a new one (preserving the Sort setting).
          //
-         dwNewSort = GetWindowLongPtr(hwndListParms, GWL_SORT);
-         dwNewAttribs = GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
+         dwNewSort = (DWORD)GetWindowLongPtr(hwndListParms, GWL_SORT);
+         dwNewAttribs = (DWORD)GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
          SetWindowLongPtr(hwndListParms, GWL_VIEW, dwNewView);
 
          bCreateDTABlock = FALSE;	// and szPath is NOT set
@@ -1294,9 +1294,9 @@ ChangeDisplay(
          //
          // Create a new one (preserving the Sort setting)
          //
-         dwNewSort = GetWindowLongPtr(hwndListParms, GWL_SORT);
-         dwNewView = GetWindowLongPtr(hwndListParms, GWL_VIEW);
-         dwNewAttribs = GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
+         dwNewSort = (DWORD)GetWindowLongPtr(hwndListParms, GWL_SORT);
+         dwNewView = (DWORD)GetWindowLongPtr(hwndListParms, GWL_VIEW);
+         dwNewAttribs = (DWORD)GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
 
          SetWindowLongPtr(hwnd, GWLP_USERDATA, 1);
          SendMessage(hwndLB, LB_RESETCONTENT, 0, 0L);
@@ -1475,7 +1475,7 @@ CreateLB:
       SetLBFont(hwnd,
                 hwndLB,
                 hFont,
-                GetWindowLongPtr(hwndListParms, GWL_VIEW),
+                (DWORD)GetWindowLongPtr(hwndListParms, GWL_VIEW),
                 lpStart);
 
 
@@ -1878,7 +1878,7 @@ PutSize(
      *  unformatted.
      */
     lstrcpy(szOutStr, szBuffer);
-    return (wcslen(szOutStr));
+    return ((INT)wcslen(szOutStr));
 }
 
 
@@ -2354,7 +2354,7 @@ CharCountToTab(LPWSTR pszStr)
       pszStr++;
    }
 
-   return pszStr-pszTmp;
+   return (INT)(pszStr-pszTmp);
 }
 
 
@@ -2943,7 +2943,7 @@ GDSDone:
 
    if (bCompressTest)
    {
-       return ( (LPWSTR)uiAttr );
+       return ( (LPWSTR)(DWORD_PTR)uiAttr );
    }
 
    if (pfDir) {
@@ -3056,7 +3056,7 @@ DirGetAnchorFocus(
       lstrcpy(pSelInfo->szCaret, MemGetFileName(lpxdta));
    }
 
-   iSel = SendMessage(hwndLB, LB_GETTOPINDEX, 0, 0L);
+   iSel = (INT)SendMessage(hwndLB, LB_GETTOPINDEX, 0, 0L);
 
    if (iSel >= 0 && iSel < iCount) {
       SendMessage(hwndLB, LB_GETTEXT, (WPARAM)iSel, (LPARAM)&lpxdta);
@@ -3152,7 +3152,7 @@ UpdateStatus(HWND hwnd)
 
    if (HasTreeWindow(hwnd)) {
 
-      drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+      drive = (DRIVE)GetWindowLongPtr(hwnd, GWL_TYPE);
 
       if (SPC_IS_NOTREE(qFreeSpace)) {
 
@@ -3434,9 +3434,9 @@ SortDirList(
    INT iMax, iMin, iMid;
    LPXDTA lpxdta;
 
-   dwSort = GetWindowLongPtr((HWND)GetWindowLongPtr(hwndDir,
-                                                   GWL_LISTPARMS),
-                               GWL_SORT);
+   dwSort = (DWORD)GetWindowLongPtr((HWND)GetWindowLongPtr(hwndDir,
+                                                           GWL_LISTPARMS),
+                                    GWL_SORT);
 
    lpxdta = MemFirst(lpStart);
 
