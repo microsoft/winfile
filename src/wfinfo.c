@@ -1803,9 +1803,6 @@ NetLoad(VOID)
    SetEvent(hEventAcledit);
    bNetAcleditDone = TRUE;
 
-   if (hNtdll)
-      FreeLibrary(hNtdll);
-
    //
    // We need to check both, since this is a sharing thing,
    // but the api is in network.
