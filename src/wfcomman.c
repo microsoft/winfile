@@ -308,7 +308,7 @@ ChangeFileSystem(
          // Are we renaming a directory?
          lstrcpy(szTemp, szTo);
 
-         if (GetFileAttributes(szTemp) & ATTR_DIR)
+         if (WFGetFileAttributes(szTemp) & ATTR_DIR)
          {
             for (hwnd = GetWindow(hwndMDIClient, GW_CHILD);
                  hwnd;

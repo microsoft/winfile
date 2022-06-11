@@ -770,7 +770,7 @@ DiskNotThere:
 
    case ERROR_INVALID_PARAMETER:
 
-      // Handle INVALID PARAMETER from GetDriveDirectory from GetFileAttributes
+      // Handle INVALID PARAMETER from GetDriveDirectory from WFGetFileAttributes
       dwError = ERROR_NOT_READY;
       break;
 
@@ -2452,7 +2452,7 @@ TRY_COPY_AGAIN:
             lstrcat(szDestAlt, szExtension);
             
             // We only do a one level '- Copy' postfixing, and do intentionally not go for a '- Copy (n)' postfix
-            if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(szDestAlt)) {
+            if (INVALID_FILE_ATTRIBUTES == WFGetFileAttributes(szDestAlt)) {
                lstrcpy(szDest, szDestAlt);
                bSameFile = FALSE;
             } else {
@@ -2512,7 +2512,7 @@ TRY_COPY_AGAIN:
                //
                //  Save the attributes, since ConfirmDialog may change them.
                //
-               dwAttr = GetFileAttributes(szDest);
+               dwAttr = WFGetFileAttributes(szDest);
 
                // we need to check if we are trying to copy a file
                // over a directory and give a reasonable error message
@@ -2809,7 +2809,7 @@ SkipMKDir:
          //
          // Tuck away the attribs in case we fail.
          //
-         dwAttr = GetFileAttributes(szSource);
+         dwAttr = WFGetFileAttributes(szSource);
 
          WFSetAttr(szSource, FILE_ATTRIBUTE_NORMAL);
 
@@ -2955,7 +2955,7 @@ DoMoveRename:
          //
          //  Save the attributes, since ConfirmDialog may change them.
          //
-         dwAttr = GetFileAttributes(szSource);
+         dwAttr = WFGetFileAttributes(szSource);
 
          // Confirm the rename
 
@@ -3088,7 +3088,7 @@ RenameMoveDone:
          //
          //  Save the attributes, since ConfirmDialog may change them.
          //
-         dwAttr = GetFileAttributes(szSource);
+         dwAttr = WFGetFileAttributes(szSource);
 
          // Confirm the delete first
 

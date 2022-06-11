@@ -210,7 +210,7 @@ WFFindClose(LPLFNDTA lpFind)
 BOOL
 WFIsDir(LPTSTR lpDir)
 {
-   DWORD attr = GetFileAttributes(lpDir);
+   DWORD attr = WFGetFileAttributes(lpDir);
 
    if (attr == INVALID_FILE_ATTRIBUTES)
       return FALSE;
@@ -586,4 +586,21 @@ WFMove(LPTSTR pszFrom, LPTSTR pszTo, PBOOL pbErrorOnDest, BOOL bSilent)
    return dwRet;
 }
 
+/* WFGetFileAttributes -
+ *
+ * returns:
+ *      Attributes for a file/directory
+ */
 
+DWORD
+WFGetFileAttributes(LPTSTR lpName)
+{
+   DWORD attrib;
+   PVOID oldValue;
+
+   Wow64DisableWow64FsRedirection(&oldValue);
+   attrib = GetFileAttributes(lpName);
+   Wow64RevertWow64FsRedirection(oldValue);
+
+   return attrib;
+}

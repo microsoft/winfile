@@ -1767,7 +1767,7 @@ AttribsDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
             QualifyPath(szName);
 
-            dwAttribs = GetFileAttributes(szName);
+            dwAttribs = WFGetFileAttributes(szName);
 
             if (dwAttribs == INVALID_FILE_ATTRIBUTES)
                goto AttributeError;

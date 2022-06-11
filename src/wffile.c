@@ -744,7 +744,7 @@ BOOL WFCheckCompress(
     //
     //  Get the file attributes.
     //
-    dwAttribs = GetFileAttributes(szNameSpec);
+    dwAttribs = WFGetFileAttributes(szNameSpec);
 
     //
     //  Determine if ATTR_COMPRESSED is changing state.
@@ -1232,7 +1232,7 @@ DoCompressError:
                 //
                 lstrcpy(DirectorySpecEnd, FindData.cFileName);
 
-                if (GetFileAttributes(DirectorySpec) & ATTR_COMPRESSED)
+                if (WFGetFileAttributes(DirectorySpec) & ATTR_COMPRESSED)
                 {
                     //
                     //  Already compressed, so just get the next file.
@@ -1541,7 +1541,7 @@ DoUncompressError:
                 //
                 lstrcpy(DirectorySpecEnd, FindData.cFileName);
 
-                if (!(GetFileAttributes(DirectorySpec) & ATTR_COMPRESSED))
+                if (!(WFGetFileAttributes(DirectorySpec) & ATTR_COMPRESSED))
                 {
                     //
                     //  Already uncompressed, so get the next file.
