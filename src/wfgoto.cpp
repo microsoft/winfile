@@ -19,7 +19,7 @@ extern "C"
 #include "lfn.h"
 }
 
-void BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, LPTSTR szRoot, PDNODE pNode);
+void BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, LPTSTR szRoot, PDNODE pNode, DWORD scanEpoc, LPTSTR szCachedRootLower);
 void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov);
 
 DWORD g_driveScanEpoc;				// incremented when a refresh is requested; old bags are discarded; scans are aborted if epoc changes
@@ -293,7 +293,7 @@ void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes)
 	delete pbov;
 }
 
-BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, LPCTSTR szRoot, PDNODE pNodeParent, DWORD scanEpoc)
+BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, LPCTSTR szRoot, PDNODE pNodeParent, DWORD scanEpoc, LPTSTR szCachedRootLower)
 {
 	LFNDTA lfndta;
 	WCHAR szPath[MAXPATHLEN];
@@ -418,21 +418,25 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 				// inner peparse points, because they would cause double enumeration
 
 				// If the anchor is not part of the path then it is an outer reparse point
-				// e.g. outer reparsepoint: szCachedRoot == c:\bla, szTemp == d:\foo
-				// e.g. inner reparsepoint: szCachedRoot == c:\bla, szTemp == c:\bla\foo
+				// e.g. outer reparsepoint: szCachedRootLower == c:\bla, szTemp == d:\foo
+				// e.g. inner reparsepoint: szCachedRootLower == c:\bla, szTemp == c:\bla\foo
 				_wcslwr_s(szTemp, MAXPATHLEN);
 				if (!wcsstr(szTemp, szCachedRootLower))
 					bFollow = TRUE;
 				break;
+
+			default:
+				BOOL bFollow = FALSE;
 			}
 		}
-		else
+		else {
 			bFollow = TRUE;
+		}
 
 		if (bFollow)
 		{
 			// add directories in subdir
-			if (!BuildDirectoryBagOValues(pbov, pNodes, szPath, pNodeChild, scanEpoc))
+			if (!BuildDirectoryBagOValues(pbov, pNodes, szPath, pNodeChild, scanEpoc, szCachedRootLower))
 			{
 				WFFindClose(&lfndta);
 				return FALSE;
@@ -718,11 +722,13 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 	WCHAR 	seps[]{ L";" };
 	PWCHAR   token{ nullptr };
 	PWCHAR   szCachedRoot = wcstok_s(szCached, seps, &token);
+	TCHAR    szCachedRootLower[MAXPATHLEN];
+
 	while (szCachedRoot)
 	{
 		lstrcpy(szCachedRootLower, szCachedRoot);
 		_wcslwr_s(szCachedRootLower, MAXPATHLEN - (szCachedRoot - szCached));
-		buildBag |= BuildDirectoryBagOValues(pBagNew, pNodes, szCachedRoot, nullptr, scanEpocNew);
+		buildBag |= BuildDirectoryBagOValues(pBagNew, pNodes, szCachedRoot, nullptr, scanEpocNew, szCachedRootLower);
 
 		szCachedRoot = wcstok_s(NULL, seps, &token);
 	}

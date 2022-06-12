@@ -1313,7 +1313,7 @@ JAPANEND
    win.rc.bottom -= win.rc.top;
 
    // We need to know about all reaprse tags
-   hNtdll = GetModuleHandle(L"ntdll.dll");
+   hNtdll = GetModuleHandle(NTDLL_DLL);
    if (hNtdll)
    {
       pfnRtlSetProcessPlaceholderCompatibilityMode = (RtlSetProcessPlaceholderCompatibilityMode_t)GetProcAddress(hNtdll, "RtlSetProcessPlaceholderCompatibilityMode");
