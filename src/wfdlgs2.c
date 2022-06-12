@@ -589,7 +589,7 @@ JAPANEND
             QualifyPath(szTemp);
 
             // Is this a file or directory
-            if (GetFileAttributes(szTemp) & FILE_ATTRIBUTE_DIRECTORY) {
+            if (WfWowGetFileAttributes(szTemp) & FILE_ATTRIBUTE_DIRECTORY) {
                if (szTo[ich2 - 1] == '\"')
                   ich2--;
             }
@@ -1402,7 +1402,7 @@ FullPath:
       {
          if ((bFileCompression) && (dwAttribsOn & ATTR_COMPRESSED))
          {
-            qCSize.LowPart = GetCompressedFileSize(szName, &(qCSize.HighPart));
+            qCSize.LowPart = WfWowGetCompressedFileSize(szName, &(qCSize.HighPart));
             PutSize(&qCSize, szNum);
             wsprintf(szTemp, szSBytes, szNum);
             SetDlgItemText(hDlg, IDD_CSIZE, szTemp);
@@ -1778,7 +1778,7 @@ AttribsDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
             QualifyPath(szName);
 
-            dwAttribs = GetFileAttributes(szName);
+            dwAttribs = WfWowGetFileAttributes(szName);
 
             if (dwAttribs == INVALID_FILE_ATTRIBUTES)
                goto AttributeError;

@@ -42,18 +42,15 @@ WFFindFirst(
    // and ORDINARY files too.
    //
 
-   PVOID oldValue;
-   Wow64DisableWow64FsRedirection(&oldValue);
-
    if ((dwAttrFilter & ~(ATTR_DIR | ATTR_HS)) == 0)
    {
 	   // directories only (hidden or not)
-	   lpFind->hFindFile = FindFirstFileEx(lpName, FindExInfoStandard, &lpFind->fd, FindExSearchLimitToDirectories, NULL, 0);
+	   lpFind->hFindFile = WfWowFindFirstFileEx(lpName, FindExInfoStandard, &lpFind->fd, FindExSearchLimitToDirectories, NULL, 0);
    }
    else
    {
 	   // normal case: directories and files
-	   lpFind->hFindFile = FindFirstFile(lpName, &lpFind->fd);
+	   lpFind->hFindFile = WfWowFindFirstFile(lpName, &lpFind->fd);
    }
 
    if (lpFind->hFindFile == INVALID_HANDLE_VALUE) {
@@ -67,8 +64,6 @@ WFFindFirst(
 	   ATTR_TEMPORARY | ATTR_COMPRESSED | ATTR_ENCRYPTED | ATTR_NOT_INDEXED;
 
    lpFind->fd.dwFileAttributes &= ATTR_USED;
-
-   Wow64RevertWow64FsRedirection(oldValue);
 
    //
    // Keep track of length
@@ -116,10 +111,7 @@ WFFindFirst(
 BOOL
 WFFindNext(LPLFNDTA lpFind)
 {
-	PVOID oldValue;
-	Wow64DisableWow64FsRedirection(&oldValue);
-	
-   while (FindNextFile(lpFind->hFindFile, &lpFind->fd)) {
+   while (WfWowFindNextFile(lpFind->hFindFile, &lpFind->fd)) {
 
 	  lpFind->fd.dwFileAttributes &= ATTR_USED;
    
@@ -154,15 +146,12 @@ WFFindNext(LPLFNDTA lpFind)
           }
       }
 
-	  Wow64RevertWow64FsRedirection(oldValue);
-
       lpFind->err = 0;
       return TRUE;
    }
 
    lpFind->err = GetLastError();
 
-   Wow64RevertWow64FsRedirection(oldValue);
    return(FALSE);
 }
 
@@ -210,7 +199,7 @@ WFFindClose(LPLFNDTA lpFind)
 BOOL
 WFIsDir(LPTSTR lpDir)
 {
-   DWORD attr = GetFileAttributes(lpDir);
+   DWORD attr = WfWowGetFileAttributes(lpDir);
 
    if (attr == INVALID_FILE_ATTRIBUTES)
       return FALSE;
@@ -493,7 +482,7 @@ WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotificatio
    WCHAR szReparseDest[2 * MAXPATHLEN];
    DWORD dwReparseTag = DecodeReparsePoint(pszFrom, szReparseDest, 2 * MAXPATHLEN);
    if (IO_REPARSE_TAG_SYMLINK == dwReparseTag) {
-      CreateSymbolicLink(pszTo, szReparseDest, dwFlags);
+      WfWowCreateSymbolicLink(pszTo, szReparseDest, dwFlags);
       dwRet = GetLastError();
       if (ERROR_SUCCESS == dwRet)
          ChangeFileSystem(dwNotification, pszTo, NULL);
@@ -517,7 +506,7 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
     Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
 
     BOOL bCancel = FALSE;
-    if (CopyFileEx(pszFrom, pszTo, NULL, NULL, &bCancel, COPY_FILE_COPY_SYMLINK)) {
+    if (WfWowCopyFileEx(pszFrom, pszTo, NULL, NULL, &bCancel, COPY_FILE_COPY_SYMLINK)) {
         ChangeFileSystem(FSC_CREATE, pszTo, NULL);
         dwRet = 0;
     }
@@ -535,7 +524,7 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
           //
           lstrcpy(szTemp, pszTo);
           RemoveLast(szTemp);
-          if (CopyFile(pszFrom, szTemp, FALSE)) {
+          if (WfWowCopyFile(pszFrom, szTemp, FALSE)) {
              ChangeFileSystem(FSC_CREATE, szTemp, NULL);
              dwRet = 0;
           }

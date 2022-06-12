@@ -754,7 +754,7 @@ InvalidDirectory:
 
                // Check if it is a Reparse Point
                lpTemp[0] = '\0';
-               DWORD attr = GetFileAttributes(szPath);
+               DWORD attr = WfWowGetFileAttributes(szPath);
                lpTemp[0] = CHAR_BACKSLASH;
                if (attr & ATTR_REPARSE_POINT) {
                   // For dead Reparse Points just tell that the directory could not be read
@@ -1168,7 +1168,7 @@ DWORD DecodeReparsePoint(LPCWSTR szFullPath, LPWSTR szDest, DWORD cwcDest)
 	DWORD reparseTag;
 	BOOL bRP;
 
-	hFile = CreateFile(szFullPath, FILE_READ_EA, FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, NULL, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT, NULL);
+	hFile = WfWowCreateFile(szFullPath, FILE_READ_EA, FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, NULL, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT, NULL);
 	if (hFile == INVALID_HANDLE_VALUE)
 		return IO_REPARSE_TAG_RESERVED_ZERO;
 		

@@ -2452,7 +2452,7 @@ TRY_COPY_AGAIN:
             lstrcat(szDestAlt, szExtension);
             
             // We only do a one level '- Copy' postfixing, and do intentionally not go for a '- Copy (n)' postfix
-            if (INVALID_FILE_ATTRIBUTES == GetFileAttributes(szDestAlt)) {
+            if (INVALID_FILE_ATTRIBUTES == WfWowGetFileAttributes(szDestAlt)) {
                lstrcpy(szDest, szDestAlt);
                bSameFile = FALSE;
             } else {
@@ -2512,7 +2512,7 @@ TRY_COPY_AGAIN:
                //
                //  Save the attributes, since ConfirmDialog may change them.
                //
-               dwAttr = GetFileAttributes(szDest);
+               dwAttr = WfWowGetFileAttributes(szDest);
 
                // we need to check if we are trying to copy a file
                // over a directory and give a reasonable error message
@@ -2600,7 +2600,7 @@ TRY_COPY_AGAIN:
                          //
                          if (ret)
                          {
-                             SetFileAttributes(szDest, dwAttr);
+                             WfWowSetFileAttributes(szDest, dwAttr);
                          }
                      }
 
@@ -2809,7 +2809,7 @@ SkipMKDir:
          //
          // Tuck away the attribs in case we fail.
          //
-         dwAttr = GetFileAttributes(szSource);
+         dwAttr = WfWowGetFileAttributes(szSource);
 
          WFSetAttr(szSource, FILE_ATTRIBUTE_NORMAL);
 
@@ -2880,8 +2880,8 @@ SkipMKDir:
             // NOTE:  Must first make sure the attributes are clear so that
             //        the delete will always succeed.
             //
-            SetFileAttributes(szDest, FILE_ATTRIBUTE_NORMAL);
-            DeleteFile(szDest);
+            WfWowSetFileAttributes(szDest, FILE_ATTRIBUTE_NORMAL);
+            WfWowDeleteFile(szDest);
 
             //
             // Show retry popup.
@@ -2955,7 +2955,7 @@ DoMoveRename:
          //
          //  Save the attributes, since ConfirmDialog may change them.
          //
-         dwAttr = GetFileAttributes(szSource);
+         dwAttr = WfWowGetFileAttributes(szSource);
 
          // Confirm the rename
 
@@ -3066,7 +3066,7 @@ DoMoveRename:
                 //  Reset the attributes on the source file, since they
                 //  may have been changed by ConfirmDialog.
                 //
-                SetFileAttributes(szSource, dwAttr);
+                WfWowSetFileAttributes(szSource, dwAttr);
             }
 
             if (pCopyInfo->bUserAbort)
@@ -3088,7 +3088,7 @@ RenameMoveDone:
          //
          //  Save the attributes, since ConfirmDialog may change them.
          //
-         dwAttr = GetFileAttributes(szSource);
+         dwAttr = WfWowGetFileAttributes(szSource);
 
          // Confirm the delete first
 
@@ -3131,7 +3131,7 @@ RenameMoveDone:
          //
          if (ret)
          {
-             SetFileAttributes(szSource, dwAttr);
+             WfWowSetFileAttributes(szSource, dwAttr);
          }
 
          break;
@@ -3387,7 +3387,7 @@ Error:
 DWORD
 FileRemove(LPTSTR pSpec)
 {
-   if (DeleteFile(pSpec))
+   if (WfWowDeleteFile(pSpec))
       return (DWORD)0;
    else
       return GetLastError();
@@ -3404,7 +3404,7 @@ FileMove(LPTSTR pFrom, LPTSTR pTo, PBOOL pbErrorOnDest, BOOL bSilent)
    *pbErrorOnDest = FALSE;
 
 TryAgain:
-    if (MoveFile((LPTSTR)pFrom, (LPTSTR)pTo))
+    if (WfWowMoveFile((LPTSTR)pFrom, (LPTSTR)pTo))
         result = 0;
     else
         result = GetLastError();

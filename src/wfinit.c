@@ -987,6 +987,8 @@ InitFileManager(
 
    SetThreadPriority(hThread, THREAD_PRIORITY_ABOVE_NORMAL);
 
+   WfWowInitialize();
+
    InitializeCriticalSection(&CriticalSectionPath);
 
    // ProfStart();
@@ -1004,7 +1006,7 @@ InitFileManager(
    dwRetval = GetEnvironmentVariable(TEXT("APPDATA"), szBuffer, MAXPATHLEN);
    if (dwRetval > 0 && dwRetval <= (DWORD)(MAXPATHLEN - lstrlen(szRoamINIPath) - 1 - lstrlen(szBaseINIFile) - 1)) {
 	   wsprintf(szTheINIFile, TEXT("%s%s"), szBuffer, szRoamINIPath);
-	   if (CreateDirectory(szTheINIFile, NULL) || GetLastError() == ERROR_ALREADY_EXISTS) {
+	   if (WfWowCreateDirectory(szTheINIFile, NULL) || GetLastError() == ERROR_ALREADY_EXISTS) {
 		   wsprintf(szTheINIFile, TEXT("%s%s\\%s"), szBuffer, szRoamINIPath, szBaseINIFile);
 	   }
 	   else {

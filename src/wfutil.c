@@ -242,7 +242,7 @@ BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir)
         drvstr[1] = ('\0');
     }
 
-	if (GetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
+	if (WfWowGetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
 		return FALSE;
 
 //	if (!CheckDirExists(drvstr))
@@ -1447,7 +1447,7 @@ ExecProgram(LPTSTR lpPath, LPTSTR lpParms, LPTSTR lpDir, BOOL bLoadIt, BOOL bRun
      lpszTitle++;
 
   SetErrorMode(0);
-  ret = (DWORD_PTR) ShellExecute(hwndFrame, bRunAs ? L"runas" : NULL, lpPath, lpParms, lpDir, bLoadIt ? SW_SHOWMINNOACTIVE : SW_SHOWNORMAL);
+  ret = (DWORD_PTR) WfWowShellExecute(hwndFrame, bRunAs ? L"runas" : NULL, lpPath, lpParms, lpDir, bLoadIt ? SW_SHOWMINNOACTIVE : SW_SHOWNORMAL);
 
   SetErrorMode(1);
 
