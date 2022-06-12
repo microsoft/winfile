@@ -262,7 +262,7 @@ VOID DecodeDlgItem(WORD **ppwT, BOOL bExtended, DLGITEMDECODE *pdecitem)
     if (pdecitem->cbCreate == 0)
         pwT++;
     else
-        pwT = (WORD *)((char *)pwT + pdecitem->cbCreate);
+        pwT = (WORD *)((char *)pwT + pdecitem->cbCreate + sizeof(WORD));
 
     // align on DWORD boundary
     pwT = (WORD *)RAWINPUT_ALIGN((INT_PTR)pwT);
@@ -439,7 +439,7 @@ VOID VerifyLangDialogs(PROCRES *pprocres)
 
             if (pdecitem->pitem->id != id)
             {
-                printf("Error: dialog %ls for language %ls does not have the required item %d\n", pdecdlgEng->lpszTitle, szLocale, id);
+                printf("Error: dialog %ls item #%d for language %ls has unexpected ID, have %d expect %d\n", pdecdlgEng->lpszTitle, i, szLocale, id, pdecitem->pitem->id);
                 break;
             }
 
