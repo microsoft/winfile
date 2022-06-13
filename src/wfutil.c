@@ -1570,7 +1570,12 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
 BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 {
    static DWORD tick64 = 0;
+   
+   // Ringbuffer for typed chracters
    static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
+   
+   // When typing characters all characters so far are the same
+   static BOOL sameChar = TRUE;
    DWORD tickT;
    size_t ich;
 
@@ -1586,19 +1591,26 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 
    // if out of space or more than .5s since last char, start over
    if (tickT - tick64 > 500 || ich > MAXPATHLEN - 2)
+   {
       ich = 0;
+      sameChar = TRUE;
+   }
 
    rgchTA[ich] = ch;
    rgchTA[ich + 1] = '\0';
 
    tick64 = tickT;
 
-   if (rgchTA[0] == ch) {
-      // If one pressed the same character as the first anyhow jump ahead by one
+   if (rgchTA[0] == ch && TRUE == sameChar) {
+      // Same consecutive character as the first was pressed so jump ahead by one
       szT[0] = ch;
       szT[1] = '\0';
 
       return FALSE;
+   }
+   else {
+      // not the same character as the first
+      sameChar = FALSE;
    }
 
    lstrcpy(szT, rgchTA);
