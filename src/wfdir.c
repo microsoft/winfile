@@ -678,7 +678,24 @@ DirWndProc(
       DirReadDestroyWindow(hwnd);
       break;
 
+   case WM_MDISETMENU:
+	   OutputDebugString(L"WM_MDISETMENU\n");
+	   break;
+
+   case WM_ENTERSIZEMOVE:
+	   OutputDebugString(L"WM_ENTERSIZEMOVE\n");
+	   break;
+
+   case WM_EXITSIZEMOVE:
+	   OutputDebugString(L"WM_EXITSIZEMOVE\n");
+	   break;
+
+   case WM_BEGINDRAG:
+	   OutputDebugString(L"WM_BEGINDRAG\n");
+	   break;
+
    case WM_DRAGLOOP:
+//	   OutputDebugString(L"WM_DRAGLOOP\n");
 
       // WM_DRAGLOOP is sent to the source window as the object is moved.
       //
@@ -693,10 +710,10 @@ DirWndProc(
       break;
 
    case WM_DRAGSELECT:
-
+   {
       // WM_DRAGSELECT is sent to a sink whenever an new object is dragged
       // inside of it.
-      //
+      //y
       //    wParam: TRUE if the sink is being entered, FALSE if it's being
       //            exited.
       //    lParam: LPDROPSTRUCT
@@ -705,6 +722,18 @@ DirWndProc(
       // DRAGSELECT is used to turn our selection rectangle on or off.
       // Turn on/off status bar
 
+	   if (!wParam)
+	   {
+		   OleInitialize(0);
+		   WF_IDropSource *pDropSource;
+		   HRESULT hr = RegisterDropSource(&pDropSource);
+
+		   WCHAR str[MAX_PATH];
+		   wsprintf(str, L"WM_DRAGSELECT RegisterDropSource wparam %d, lparam %d, %08x\n", wParam, lParam, hr);
+		   OutputDebugString(str);
+
+	   }
+	   
       SendMessage(hwndStatus,
                   SB_SETTEXT,
                   SBT_NOBORDERS|255,
@@ -717,13 +746,13 @@ DirWndProc(
 
       UpdateWindow(hwndStatus);
 
-#define lpds ((LPDROPSTRUCT)lParam)
+// #define lpds ((LPDROPSTRUCT)lParam)
+      LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
       iSelHighlight = lpds->dwControlData;
       DSRectItem(hwndLB, iSelHighlight, (BOOL)wParam, FALSE);
       break;
-
-#undef lpds
+   }
 
    case WM_DRAGMOVE:
 
@@ -836,6 +865,9 @@ DirWndProc(
    case WM_LBUTTONDOWN:
       if (hwndLB != GetFocus())
          SetFocus(hwndLB);
+
+      WF_IDropSource *pDropSource;
+//      RegisterDropSource(&pDropSource);
 
       break;
 

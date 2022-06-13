@@ -13,41 +13,73 @@
 #define WFDROP_INC
 #include <ole2.h>
 
-// data object:
 
+//
+// WF_IEnumFORMATETC
+//
 typedef struct {
-    IDataObject ido;
-    int ref_count;
-    FORMATETC *m_pFormatEtc;
-    STGMEDIUM *m_pStgMedium;
-    LONG       m_nNumFormats;
-    LONG m_lRefCount;
-} WF_IDataObject;
-
-
-typedef struct {
-    IEnumFORMATETC ief;
-    int ref_count;
-    int ix;
-    LONG        m_lRefCount;        // Reference count for this COM interface
-    ULONG       m_nIndex;           // current enumerator index
-    ULONG       m_nNumFormats;      // number of FORMATETC members
-    FORMATETC * m_pFormatEtc;
+	IEnumFORMATETC ief;
+	ULONG		m_lRefCount;		// Reference count for this COM interface
+	FORMATETC *m_pFormatEtc;
+	ULONG		m_nNumFormats;		// number of FORMATETC members
+	ULONG		m_nIndex;			// current enumerator index
 } WF_IEnumFORMATETC;
 
-typedef struct {
-    IDropSource ids;
-    LONG        m_lRefCount;
-} WF_IDropSource;
 
+typedef struct WF_IEnumFORMATETCVtbl
+{
+	BEGIN_INTERFACE
+
+	HRESULT(STDMETHODCALLTYPE __RPC_FAR *QueryInterface)(
+		WF_IEnumFORMATETC __RPC_FAR * This,
+		/* [in] */ REFIID riid,
+		/* [iid_is][out] */ void __RPC_FAR *__RPC_FAR *ppvObject);
+
+	ULONG(STDMETHODCALLTYPE __RPC_FAR *AddRef)(
+		WF_IEnumFORMATETC __RPC_FAR * This);
+
+	ULONG(STDMETHODCALLTYPE __RPC_FAR *Release)(
+		WF_IEnumFORMATETC __RPC_FAR * This);
+
+	/* [local] */ HRESULT(STDMETHODCALLTYPE __RPC_FAR *Next)(
+		WF_IEnumFORMATETC __RPC_FAR * This,
+		/* [in] */ ULONG celt,
+		/* [length_is][size_is][out] */ FORMATETC __RPC_FAR *rgelt,
+		/* [out] */ ULONG __RPC_FAR *pceltFetched);
+
+	HRESULT(STDMETHODCALLTYPE __RPC_FAR *Skip)(
+		WF_IEnumFORMATETC __RPC_FAR * This,
+		/* [in] */ ULONG celt);
+
+	HRESULT(STDMETHODCALLTYPE __RPC_FAR *Reset)(
+		WF_IEnumFORMATETC __RPC_FAR * This);
+
+	HRESULT(STDMETHODCALLTYPE __RPC_FAR *Clone)(
+		WF_IEnumFORMATETC __RPC_FAR * This,
+		/* [out] */ WF_IEnumFORMATETC __RPC_FAR *__RPC_FAR *ppenum);
+
+	END_INTERFACE
+} WF_IEnumFORMATETCVtbl;
+
+static HRESULT STDMETHODCALLTYPE ienumformatetc_queryinterface(WF_IEnumFORMATETC* This, REFIID riid, LPVOID *ppvObject);
+static ULONG STDMETHODCALLTYPE ienumformatetc_addref(WF_IEnumFORMATETC* This);
+static ULONG STDMETHODCALLTYPE ienumformatetc_release(WF_IEnumFORMATETC* This);
+
+static WF_IEnumFORMATETC* WF_IEnumFORMATETC_new(FORMATETC **array, ULONG size);
+static WF_IEnumFORMATETC* WF_IEnumFORMATETC_copy(WF_IEnumFORMATETC* src);
+static void WF_IEnumFORMATETC_delete(WF_IEnumFORMATETC* ptr);
+
+//
+// IDataObject
+//
 typedef struct {
-    IDropTarget idt;
-    LONG  m_lRefCount;
-    HWND  m_hWnd;
-    BOOL  m_fAllowDrop;
-    DWORD m_iItemSelected;
-    IDataObject *m_pDataObject;
-} WF_IDropTarget;
+	IDataObject	ido;
+	ULONG		m_lRefCount;
+	FORMATETC**	m_pFormatEtc;
+	STGMEDIUM**	m_pStgMedium;
+	ULONG		m_size;
+} WF_IDataObject;
+
 
 typedef struct WF_IDataObjectVtbl
     {
@@ -112,40 +144,29 @@ typedef struct WF_IDataObjectVtbl
         END_INTERFACE
     } WF_IDataObjectVtbl;
 
-typedef struct WF_IEnumFORMATETCVtbl
-    {
-        BEGIN_INTERFACE
+static HRESULT STDMETHODCALLTYPE idataobject_queryinterface(WF_IDataObject *This, REFIID riid, LPVOID *ppvObject);
+static ULONG STDMETHODCALLTYPE idataobject_addref(WF_IDataObject* This);
+static ULONG STDMETHODCALLTYPE idataobject_release(WF_IDataObject* This);
         
-        HRESULT ( STDMETHODCALLTYPE __RPC_FAR *QueryInterface )( 
-            WF_IEnumFORMATETC __RPC_FAR * This,
-            /* [in] */ REFIID riid,
-            /* [iid_is][out] */ void __RPC_FAR *__RPC_FAR *ppvObject);
+static WF_IDataObject * WF_IDataObject_new();
+static void WF_IDataObject_delete(WF_IDataObject *ptr);
         
-        ULONG ( STDMETHODCALLTYPE __RPC_FAR *AddRef )( 
-            WF_IEnumFORMATETC __RPC_FAR * This);
+//
+// IDropSource 
+//
+typedef HRESULT(*LPOLEDDQUERYCONTINUEDRAG)(LPVOID lpData, BOOL fEscapePressed, DWORD grfKeyState);
+typedef HRESULT(*LPOLEDDGIVEFEEDBACK)(LPVOID lpData, DWORD dwEffect); 
+typedef struct tagOLEDDDROPSOURCE {
+	LPOLEDDQUERYCONTINUEDRAG lpQueryContinueDrag;
+	LPOLEDDGIVEFEEDBACK      lpGiveFeedBack;
+} OLEDDDROPSOURCE, *LPOLEDDDROPSOURCE; 
         
-        ULONG ( STDMETHODCALLTYPE __RPC_FAR *Release )( 
-            WF_IEnumFORMATETC __RPC_FAR * This);
-        
-        /* [local] */ HRESULT ( STDMETHODCALLTYPE __RPC_FAR *Next )( 
-            WF_IEnumFORMATETC __RPC_FAR * This,
-            /* [in] */ ULONG celt,
-            /* [length_is][size_is][out] */ FORMATETC __RPC_FAR *rgelt,
-            /* [out] */ ULONG __RPC_FAR *pceltFetched);
-        
-        HRESULT ( STDMETHODCALLTYPE __RPC_FAR *Skip )( 
-            WF_IEnumFORMATETC __RPC_FAR * This,
-            /* [in] */ ULONG celt);
-        
-        HRESULT ( STDMETHODCALLTYPE __RPC_FAR *Reset )( 
-            WF_IEnumFORMATETC __RPC_FAR * This);
-        
-        HRESULT ( STDMETHODCALLTYPE __RPC_FAR *Clone )( 
-            WF_IEnumFORMATETC __RPC_FAR * This,
-            /* [out] */ WF_IEnumFORMATETC __RPC_FAR *__RPC_FAR *ppenum);
-        
-        END_INTERFACE
-    } WF_IEnumFORMATETCVtbl;
+typedef struct {
+	IDropSource ids;
+	ULONG	   m_lRefCount;
+	OLEDDDROPSOURCE m_funcs;
+	LPVOID m_data;
+}	WF_IDropSource;
 
 
 typedef struct WF_IDropSourceVtbl
@@ -175,6 +196,25 @@ typedef struct WF_IDropSourceVtbl
         END_INTERFACE
     } WF_IDropSourceVtbl;
 
+static HRESULT STDMETHODCALLTYPE idropsource_queryinterface(WF_IDropSource *This, REFIID riid, LPVOID* ppvObject);
+static ULONG STDMETHODCALLTYPE idropsource_addref(WF_IDropSource* This);
+static ULONG STDMETHODCALLTYPE idropsource_release();
+
+HRESULT RegisterDropSource(WF_IDropSource **ppDropSource);
+
+typedef struct {
+	IDropTarget idt;
+	LONG	m_lRefCount;
+	HWND	m_hWnd;
+	BOOL  m_fAllowDrop;
+	DWORD m_iItemSelected;
+	IDataObject *m_pDataObject;
+} WF_IDropTarget;
+
+
+//
+// IDropTarget
+//
 typedef struct WF_IDropTargetVtbl
     {
         BEGIN_INTERFACE
@@ -216,13 +256,12 @@ typedef struct WF_IDropTargetVtbl
         END_INTERFACE
     } WF_IDropTargetVtbl;
 
-typedef WF_IDataObject* LPWBDATAOBJECT;
-typedef WF_IEnumFORMATETC* LPWBFORMATETC;
-
-WF_IEnumFORMATETC *WF_IEnumFORMATETC_new (UINT, FORMATETC *);
 
 void RegisterDropWindow(HWND hwnd, WF_IDropTarget **ppDropTarget);
 void UnregisterDropWindow(HWND hwnd, IDropTarget *pDropTarget);
+
+
+
 #endif
 
 

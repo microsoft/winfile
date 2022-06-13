@@ -9,6 +9,8 @@
 
 #define INITGUID 
 
+#define COBJMACROS
+
 #include "winfile.h"
 #include "wfdrop.h"
 #include "treectl.h"
@@ -365,6 +367,44 @@ static DWORD DropEffect(DWORD grfKeyState, POINTL pt, DWORD dwAllowed)
 	return dwEffect;
 }
 
+static void CopySTGMEDIUM(STGMEDIUM *pdest, const STGMEDIUM *psrc, const FORMATETC *pfmt)
+{
+	pdest->tymed = psrc->tymed;
+	switch (psrc->tymed) {
+	case TYMED_HGLOBAL:
+		pdest->hGlobal = (HGLOBAL)OleDuplicateData(psrc->hGlobal, pfmt->cfFormat, 0);
+		break;
+	case TYMED_GDI:
+		pdest->hBitmap = (HBITMAP)OleDuplicateData(psrc->hBitmap, pfmt->cfFormat, 0);
+		break;
+	case TYMED_MFPICT:
+		pdest->hMetaFilePict = (HMETAFILEPICT)OleDuplicateData(psrc->hMetaFilePict, pfmt->cfFormat, 0);
+		break;
+	case TYMED_ENHMF:
+		pdest->hEnhMetaFile = (HENHMETAFILE)OleDuplicateData(psrc->hEnhMetaFile, pfmt->cfFormat, 0);
+		break;
+	case TYMED_FILE:
+		pdest->lpszFileName = (LPOLESTR)OleDuplicateData(psrc->lpszFileName, pfmt->cfFormat, 0);
+		break;
+	case TYMED_ISTREAM:
+		pdest->pstm = psrc->pstm;
+		IStream_AddRef(psrc->pstm);
+		break;
+	case TYMED_ISTORAGE:
+		pdest->pstg = psrc->pstg;
+		IStorage_AddRef(psrc->pstg);
+		break;
+	case TYMED_NULL:
+	default:
+		break;
+	}
+
+	pdest->pUnkForRelease = psrc->pUnkForRelease;
+	if (psrc->pUnkForRelease != NULL)
+		IUnknown_AddRef(psrc->pUnkForRelease);
+}
+
+
 //
 //	IUnknown::AddRef
 //
@@ -377,48 +417,36 @@ static ULONG STDMETHODCALLTYPE idroptarget_addref (WF_IDropTarget* This)
 //	IUnknown::QueryInterface
 //
 static HRESULT STDMETHODCALLTYPE
-idroptarget_queryinterface (WF_IDropTarget *This,
-			       REFIID          riid,
-			       LPVOID         *ppvObject)
+idroptarget_queryinterface(WF_IDropTarget *This, REFIID riid, LPVOID* ppvObject)
 {
+	*ppvObject = NULL;
 
-  *ppvObject = NULL;
-
-//  PRINT_GUID (riid);
-  if (IsEqualIID (riid, &IID_IUnknown) || IsEqualIID (riid, &IID_IDropTarget))
-    {
-      idroptarget_addref (This);
-      *ppvObject = This;
-      return S_OK;
-    }
-  
-  else
-    {
-      return E_NOINTERFACE;
-    }
+	//  PRINT_GUID (riid);
+	if (IsEqualIID(riid, &IID_IUnknown) || IsEqualIID(riid, &IID_IDropTarget))
+	{
+		idroptarget_addref(This);
+		*ppvObject = This;
+		return S_OK;
+	}
+	else
+	{
+		return E_NOINTERFACE;
+	}
 }
 
 
 //
 //	IUnknown::Release
 //
-static ULONG STDMETHODCALLTYPE
-idroptarget_release (WF_IDropTarget* This)
+static ULONG STDMETHODCALLTYPE idroptarget_release(WF_IDropTarget* This)
 {
-    
-  LONG count = InterlockedDecrement(&This->m_lRefCount);
+	LONG count = InterlockedDecrement(&This->m_lRefCount);
 
-  if(count == 0)
-	{
+	if (count == 0)
 		free(This);
-		return 0;
-	}
-	else
-	{
-		return count;
-	}
-  
+	return count;
 }
+
 //
 //	IDropTarget::DragEnter
 //
@@ -636,4 +664,528 @@ HRESULT CreateDropTarget(HWND hwnd, WF_IDropTarget **ppDropTarget)
 	return (*ppDropTarget) ? S_OK : E_OUTOFMEMORY;
 
 }
+
+//
+// IEnumFORMATETC
+//
+static HRESULT STDMETHODCALLTYPE ienumformatetc_queryinterface(WF_IEnumFORMATETC* This, REFIID riid, LPVOID *ppvObject)
+{
+	*ppvObject = NULL;
+	if (IsEqualIID(riid, &IID_IUnknown) || IsEqualIID(riid, &IID_IEnumFORMATETC)) {
+		*ppvObject = This;
+		ienumformatetc_addref(This);
+		return S_OK;
+	}
+	return E_NOINTERFACE;
+}
+
+static ULONG STDMETHODCALLTYPE ienumformatetc_addref(WF_IEnumFORMATETC* This)
+{
+	return InterlockedIncrement(&This->m_lRefCount);
+}
+
+static ULONG STDMETHODCALLTYPE ienumformatetc_release(WF_IEnumFORMATETC* This)
+{
+	ULONG refCount = InterlockedDecrement(&This->m_lRefCount);
+	if (refCount == 0)
+		WF_IEnumFORMATETC_delete(This);
+	return refCount;
+}
+
+static HRESULT STDMETHODCALLTYPE ienumformatetc_next(WF_IEnumFORMATETC* This, ULONG celt, LPFORMATETC pfmt, ULONG *pceltFetched)
+{
+	ULONG num = celt;
+
+	if (pceltFetched != NULL)
+		*pceltFetched = 0;
+
+	if (celt <= 0 || pfmt == NULL || This->m_nIndex >= This->m_nNumFormats)
+		return S_FALSE;
+
+	if (pceltFetched == NULL && celt != 1)
+		return S_FALSE;
+
+	while (This->m_nIndex < This->m_nNumFormats && num > 0) {
+		*pfmt++ = This->m_pFormatEtc[This->m_nIndex++];
+		--num;
+	}
+	if (pceltFetched != NULL)
+		*pceltFetched = celt - num;
+
+	return (num == 0) ? S_OK : S_FALSE;
+}
+
+static HRESULT STDMETHODCALLTYPE ienumformatetc_skip(WF_IEnumFORMATETC* This, ULONG celt)
+{
+	if ((This->m_nIndex + celt) >= This->m_nNumFormats)
+		return S_FALSE;
+	This->m_nIndex += celt;
+	return S_OK;
+}
+
+static HRESULT STDMETHODCALLTYPE ienumformatetc_reset(WF_IEnumFORMATETC* This)
+{
+	This->m_nIndex = 0;
+	return S_OK;
+}
+
+static HRESULT STDMETHODCALLTYPE ienumformatetc_clone(WF_IEnumFORMATETC* This, WF_IEnumFORMATETC **ppenum)
+{
+	WF_IEnumFORMATETC* pNewFormat;
+
+	if (ppenum == NULL)
+		return E_POINTER;
+
+	pNewFormat = WF_IEnumFORMATETC_copy(This);
+	if (pNewFormat == NULL)
+		return E_OUTOFMEMORY;
+	ienumformatetc_addref(pNewFormat);
+	*ppenum = pNewFormat;
+	return S_OK;
+}
+
+static WF_IEnumFORMATETCVtbl ief_vtbl = {
+  ienumformatetc_queryinterface,
+  ienumformatetc_addref,
+  ienumformatetc_release,
+  ienumformatetc_next,
+  ienumformatetc_skip,
+  ienumformatetc_reset,
+  ienumformatetc_clone
+};
+
+static WF_IEnumFORMATETC* WF_IEnumFORMATETC_new(FORMATETC **array, ULONG size)
+{
+	WF_IEnumFORMATETC* ptr;
+	ULONG i;
+
+	ptr = calloc(1, sizeof(WF_IEnumFORMATETC));
+	if (ptr != NULL) {
+		ptr->ief.lpVtbl = (IEnumFORMATETCVtbl*)&ief_vtbl;
+		ptr->m_lRefCount = 1;
+		ptr->m_pFormatEtc = calloc(size, sizeof(FORMATETC));
+		for (i = 0; i < size; i++)
+			ptr->m_pFormatEtc[i] = *array[i];
+		ptr->m_nNumFormats = size;
+		ptr->m_nIndex = 0;
+	}
+	return ptr;
+}
+
+static WF_IEnumFORMATETC* WF_IEnumFORMATETC_copy(WF_IEnumFORMATETC* src)
+{
+	WF_IEnumFORMATETC* ptr;
+
+	ptr = calloc(1, sizeof(WF_IEnumFORMATETC));
+	if (ptr != NULL) {
+		ptr->ief.lpVtbl = (IEnumFORMATETCVtbl*)&ief_vtbl;
+		ptr->m_lRefCount = 0;
+		ptr->m_pFormatEtc = calloc(src->m_nNumFormats, sizeof(FORMATETC));
+		CopyMemory(ptr->m_pFormatEtc, src->m_pFormatEtc, sizeof(FORMATETC) * src->m_nNumFormats);
+		ptr->m_nNumFormats = src->m_nNumFormats;
+		ptr->m_nIndex = src->m_nIndex;
+	}
+	return ptr;
+}
+
+static void WF_IEnumFORMATETC_delete(WF_IEnumFORMATETC* ptr)
+{
+	free(ptr->m_pFormatEtc);
+	free(ptr);
+}
+
+
+//
+// IDataObject
+//
+static HRESULT STDMETHODCALLTYPE idataobject_queryinterface(WF_IDataObject *This, REFIID riid,	LPVOID *ppvObject)
+{
+	*ppvObject = NULL;
+
+	if (IsEqualIID(riid, &IID_IUnknown) || IsEqualIID(riid, &IID_IDataObject))	{
+		*ppvObject = This;
+		idataobject_addref(This);
+		return S_OK;
+	} 
+	return E_NOINTERFACE;
+}
+
+static ULONG STDMETHODCALLTYPE idataobject_addref(WF_IDataObject* This)
+{
+	return InterlockedIncrement(&This->m_lRefCount);
+}
+
+static ULONG STDMETHODCALLTYPE idataobject_release(WF_IDataObject* This)
+{
+	LONG refCount = InterlockedDecrement(&This->m_lRefCount);
+
+	if (refCount == 0)
+		WF_IDataObject_delete(This);
+
+	return refCount;
+}
+
+static HRESULT STDMETHODCALLTYPE idataobject_getdata(
+	WF_IDataObject* This,
+	FORMATETC* pformatetcIn,
+	STGMEDIUM* pmedium)
+{
+	FORMATETC *pfmt;
+	ULONG i;
+
+	if (pformatetcIn == NULL || pmedium == NULL)
+		return E_INVALIDARG;
+
+	pmedium->hGlobal = NULL;
+	for (i = 0; i < This->m_size; i++) {
+		pfmt = This->m_pFormatEtc[i];
+		if (pformatetcIn->tymed & pfmt->tymed
+			&& pformatetcIn->dwAspect == pfmt->tymed
+			&& pformatetcIn->cfFormat == pfmt->cfFormat) {
+				CopySTGMEDIUM(pmedium, This->m_pStgMedium[i], pfmt);
+				return S_OK;
+		}
+	}
+	return DV_E_FORMATETC;
+}
+
+
+static HRESULT STDMETHODCALLTYPE idataobject_getdatahere(
+	WF_IDataObject* This,
+	FORMATETC* pformatetc,
+	STGMEDIUM* pmedium)
+{
+	return E_NOTIMPL;
+}
+
+
+static HRESULT STDMETHODCALLTYPE idataobject_querygetdata(
+	WF_IDataObject* This,
+	FORMATETC* pformatetc)
+{
+	HRESULT result = DV_E_TYMED;
+	ULONG i;
+
+	if (pformatetc == NULL)
+		return E_INVALIDARG;
+
+	if (!(DVASPECT_CONTENT & pformatetc->dwAspect))
+		return DV_E_DVASPECT;
+
+	for (i = 0; i < This->m_size; i++) {
+		if (pformatetc->tymed & This->m_pFormatEtc[i]->tymed) {
+			if (pformatetc->cfFormat == This->m_pFormatEtc[i]->cfFormat)
+				return S_OK;
+			result = DV_E_CLIPFORMAT;
+		} else {
+			result = DV_E_TYMED;
+		}
+	}
+	return result;
+}
+
+static HRESULT STDMETHODCALLTYPE idataobject_getcanonicalformatetc(
+	WF_IDataObject* This,
+	FORMATETC* pformatetcIn,
+	FORMATETC* pformatetcOut)
+{
+	if (pformatetcOut == NULL)
+		return E_INVALIDARG;
+
+	return DATA_S_SAMEFORMATETC;
+}
+
+
+static HRESULT STDMETHODCALLTYPE idataobject_setdata(
+	WF_IDataObject* This,
+	FORMATETC* pformatetc,
+	STGMEDIUM* pmedium,
+	BOOL fRelease)
+{
+	FORMATETC *pfmt;
+	STGMEDIUM *pstg;
+
+	if (pformatetc == NULL || pmedium == NULL)
+		return E_INVALIDARG;
+
+	pfmt = calloc(1, sizeof(FORMATETC));
+	pstg = calloc(1, sizeof(STGMEDIUM));
+	if (pfmt == NULL || pstg == NULL) {
+		free(pfmt);
+		free(pstg);
+		return E_OUTOFMEMORY;
+	}
+
+	*pfmt = *pformatetc;
+	if (fRelease) {
+		*pstg = *pmedium;
+	}
+	else {
+		CopySTGMEDIUM(pstg, pmedium, pformatetc);
+	}
+
+	if (This->m_size == 0) {
+		This->m_pFormatEtc = calloc(1, sizeof(FORMATETC *));
+		This->m_pStgMedium = calloc(1, sizeof(STGMEDIUM *));
+		This->m_pFormatEtc[0] = pfmt;
+		This->m_pStgMedium[0] = pstg;
+		This->m_size = 1;
+	} else {
+		FORMATETC **oldfmts = This->m_pFormatEtc;
+		STGMEDIUM **oldstgs = This->m_pStgMedium;
+		ULONG oldsize = This->m_size;
+
+		This->m_pFormatEtc = calloc(oldsize + 1, sizeof(FORMATETC *));
+		This->m_pStgMedium = calloc(oldsize + 1, sizeof(STGMEDIUM *));
+		CopyMemory(This->m_pFormatEtc, oldfmts, sizeof(FORMATETC *) * oldsize);
+		CopyMemory(This->m_pStgMedium, oldstgs, sizeof(STGMEDIUM *) * oldsize);
+		This->m_pFormatEtc[oldsize] = pfmt;
+		This->m_pStgMedium[oldsize] = pstg;
+		This->m_size = oldsize + 1;
+		free(oldfmts);
+		free(oldstgs);
+	}
+	return S_OK;
+}
+
+static HRESULT STDMETHODCALLTYPE idataobject_enumformatetc(
+	WF_IDataObject* This,
+	DWORD dwDirection,
+	IEnumFORMATETC** ppenumFormatEtc)
+{
+	if (ppenumFormatEtc == NULL)
+		return E_POINTER;
+
+	*ppenumFormatEtc = NULL;
+	switch (dwDirection) {
+	case DATADIR_GET:
+		*ppenumFormatEtc = (IEnumFORMATETC *)WF_IEnumFORMATETC_new(This->m_pFormatEtc, This->m_size);
+		if (*ppenumFormatEtc == NULL)
+			return E_OUTOFMEMORY;
+		IEnumFORMATETC_AddRef(*ppenumFormatEtc);
+		break;
+	case DATADIR_SET:
+		/* no implementation */
+	default:
+		return E_NOTIMPL;
+	}
+
+	return S_OK;
+}
+
+static HRESULT STDMETHODCALLTYPE idataobject_dadvise(
+	WF_IDataObject* This,
+	FORMATETC* pformatetc,
+	DWORD advf,
+	IAdviseSink* pAdvSink,
+	DWORD* pdwConnection)
+{
+	return OLE_E_ADVISENOTSUPPORTED;
+}
+
+static HRESULT STDMETHODCALLTYPE idataobject_dunadvise(
+	WF_IDataObject* This,
+	DWORD dwConnection)
+{
+	return OLE_E_ADVISENOTSUPPORTED;
+}
+
+static HRESULT STDMETHODCALLTYPE idataobject_enumdadvise(
+	WF_IDataObject* This,
+	IEnumSTATDATA** ppenumAdvise)
+{
+	return OLE_E_ADVISENOTSUPPORTED;
+}
+
+
+
+
+static WF_IDataObjectVtbl ido_vtbl = {
+  idataobject_queryinterface,
+  idataobject_addref,
+  idataobject_release,
+  idataobject_getdata,
+  idataobject_getdatahere,
+  idataobject_querygetdata,
+  idataobject_getcanonicalformatetc,
+  idataobject_setdata,
+  idataobject_enumformatetc,
+  idataobject_dadvise,
+  idataobject_dunadvise,
+  idataobject_enumdadvise
+};
+
+
+WF_IDataObject * WF_IDataObject_new()
+{
+   WF_IDataObject *result;
+
+   result = calloc(1, sizeof(WF_IDataObject));
+
+   if (result)
+   {
+      result->ido.lpVtbl = (IDataObjectVtbl*)&ido_vtbl;
+
+      result->m_lRefCount = 1;
+
+	  result->m_pFormatEtc = NULL;
+	  result->m_pStgMedium = NULL;
+	  result->m_size = 0;
+   }
+
+   return result;
+}
+
+static void WF_IDataObject_delete(WF_IDataObject *ptr)
+{
+	ULONG i;
+	for (i = 0; i < ptr->m_size; i++) {
+      free(ptr->m_pFormatEtc[i]);
+      ReleaseStgMedium(ptr->m_pStgMedium[i]);
+      free(ptr->m_pStgMedium[i]);
+   }
+   free(ptr->m_pFormatEtc);
+   free(ptr->m_pStgMedium);
+   free(ptr);
+}
+
+IDataObject *CreateIDataObject()
+{
+	return (IDataObject *)WF_IDataObject_new();
+}
+
+
+//
+// Drop Source
+//
+static HRESULT STDMETHODCALLTYPE idropsource_queryinterface(
+	WF_IDropSource *This,
+	REFIID          riid,
+	LPVOID         *ppvObject)
+{
+	*ppvObject = NULL;
+
+	//  PRINT_GUID (riid);
+	if (IsEqualIID(riid, &IID_IUnknown) || IsEqualIID(riid, &IID_IDropSource))
+	{
+		idropsource_addref(This);
+		*ppvObject = This;
+		return S_OK;
+	}
+
+	return E_NOINTERFACE;
+}
+
+static ULONG STDMETHODCALLTYPE idropsource_addref(WF_IDropSource* This)
+{
+	return InterlockedIncrement(&This->m_lRefCount);
+}
+
+static ULONG STDMETHODCALLTYPE idropsource_release(
+	WF_IDropSource* This)
+{
+	LONG refCount = InterlockedDecrement(&This->m_lRefCount);
+
+	if (refCount == 0)
+		free(This);
+	return refCount;
+}
+
+static HRESULT STDMETHODCALLTYPE idropsource_querycontinuedrag(WF_IDropSource* This, BOOL fEscapePressed, DWORD grfKeyState)
+{
+	if (fEscapePressed)
+		return DRAGDROP_S_CANCEL;
+
+	if (!(grfKeyState & (MK_LBUTTON | MK_RBUTTON)))
+		return DRAGDROP_S_DROP;
+	
+	return S_OK;
+}
+
+static HRESULT STDMETHODCALLTYPE idropsource_givefeedback(WF_IDropSource* This, DWORD pdwEffect)
+{
+
+	return DRAGDROP_S_USEDEFAULTCURSORS;
+}
+
+static WF_IDropSourceVtbl ids_vtbl = {
+  idropsource_queryinterface,
+  idropsource_addref,
+  idropsource_release,
+  idropsource_querycontinuedrag,
+  idropsource_givefeedback
+};
+
+WF_IDropSource * WF_IDropSource_new()
+{
+	WF_IDropSource *result;
+
+	result = calloc(1, sizeof(WF_IDropSource));
+
+	if (result)
+	{
+		result->ids.lpVtbl = (IDropSourceVtbl*)&ids_vtbl;
+
+		result->m_lRefCount = 1;
+	}
+
+	return result;
+}
+
+HRESULT RegisterDropSource(WF_IDropSource **ppDropSource)
+{
+   WF_IDropSource* pDropSource;
+   WF_IDataObject* pDataObject;
+
+   pDropSource = WF_IDropSource_new();
+   pDataObject = WF_IDataObject_new();
+
+
+   wchar_t *files = L"C:\\tmp\\reparse\\001.jpg\0\0";
+   //wchar_t *files = "C:\\tmp\\reparse\\001.jpg\0C:\\tmp\\reparse\\002.jpg\0\0";
+ //  wchar_t *files = L"C:\\tmp\\AVL_impf.png\0\0";
+
+   FORMATETC fmtetc;
+   STGMEDIUM medium;
+   wchar_t* p;
+   DWORD effect;
+   HRESULT hr;
+
+   fmtetc.cfFormat = CF_HDROP;
+   fmtetc.ptd = NULL;
+   fmtetc.dwAspect = DVASPECT_CONTENT;
+   fmtetc.lindex = -1;
+   fmtetc.tymed = TYMED_HGLOBAL;
+
+   size_t len = (wcslen(files) + 3) * sizeof(wchar_t);
+   medium.tymed = TYMED_HGLOBAL;
+   medium.hGlobal = GlobalAlloc(
+      GMEM_MOVEABLE,
+      sizeof(DROPFILES) + len
+   );
+   medium.pUnkForRelease = NULL;
+   p = GlobalLock(medium.hGlobal);
+   ((DROPFILES *)p)->pFiles = sizeof(DROPFILES);
+   ((DROPFILES *)p)->fWide = TRUE;
+   CopyMemory(p + sizeof(DROPFILES), files, len);
+   GlobalUnlock(medium.hGlobal);
+
+   // Set the data
+   idataobject_setdata(pDataObject, &fmtetc, &medium, FALSE);
+
+   hr = DoDragDrop(
+      (LPDATAOBJECT)pDataObject,
+      (LPDROPSOURCE)pDropSource,
+      DROPEFFECT_MOVE | DROPEFFECT_COPY | DROPEFFECT_LINK,
+      &effect
+   );
+
+   idataobject_release(pDataObject);
+   idropsource_release(pDropSource);
+
+   *ppDropSource = pDropSource;
+
+   return hr;
+}
+
 
