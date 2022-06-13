@@ -1570,7 +1570,11 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
 BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 {
    static DWORD tick64 = 0;
+   
+   // Ringbuffer for typed chracters
    static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
+   
+   // When typing characters all characters so far are the same
    static BOOL sameChar = TRUE;
    DWORD tickT;
    size_t ich;
@@ -1604,9 +1608,10 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 
       return FALSE;
    }
-   else
+   else {
       // not the same character as the first
       sameChar = FALSE;
+   }
 
    lstrcpy(szT, rgchTA);
 
