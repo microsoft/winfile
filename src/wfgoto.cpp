@@ -19,7 +19,7 @@ extern "C"
 #include "lfn.h"
 }
 
-void BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, LPTSTR szRoot, PDNODE pNode);
+void BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, LPTSTR szRoot, PDNODE pNode, DWORD scanEpoc, LPTSTR szCachedRootLower);
 void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov);
 
 DWORD g_driveScanEpoc;				// incremented when a refresh is requested; old bags are discarded; scans are aborted if epoc changes
@@ -267,13 +267,14 @@ vector<wstring> SplitIntoWords(LPCTSTR szText)
 {
 	vector<wstring> words;
 
-	wstringstream ss;
-	ss.str(szText);
-	wstring item;
-	while (getline(ss, item, L' '))
+	wchar_t tempStr[MAXPATHLEN];
+	wcscpy_s(tempStr, szText);
+	PWCHAR token{ nullptr };
+	PWCHAR word = wcstok_s(tempStr, szPunctuation, &token);
+	while (word)
 	{
-		if (item.size() != 0)
-			words.push_back(item);
+		words.push_back(word);
+		word = wcstok_s(nullptr, szPunctuation, &token);
 	}
 
 	return words;
@@ -292,7 +293,7 @@ void FreeDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes)
 	delete pbov;
 }
 
-BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, LPCTSTR szRoot, PDNODE pNodeParent, DWORD scanEpoc)
+BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, LPCTSTR szRoot, PDNODE pNodeParent, DWORD scanEpoc, LPTSTR szCachedRootLower)
 {
 	LFNDTA lfndta;
 	WCHAR szPath[MAXPATHLEN];
@@ -382,11 +383,65 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 		AddBackslash(szPath);
 		lstrcat(szPath, lfndta.fd.cFileName);         // cFileName is ANSI now
 
-		// add directories in subdir
-		if (!BuildDirectoryBagOValues(pbov, pNodes, szPath, pNodeChild, scanEpoc))
+		// do not follow inner reparse points
+		BOOL bFollow = FALSE;
+		if (lfndta.fd.dwFileAttributes & FILE_ATTRIBUTE_REPARSE_POINT)
 		{
-			WFFindClose(&lfndta);
-			return FALSE;
+			// Check which reparsepoint
+			wchar_t szTemp[MAXPATHLEN];
+			DWORD tag = DecodeReparsePoint(szPath, szTemp, MAXPATHLEN);
+			switch (tag) 
+			{
+			// We always want to follow OneDrive
+			case IO_REPARSE_TAG_CLOUD:
+			case IO_REPARSE_TAG_CLOUD_1:
+			case IO_REPARSE_TAG_CLOUD_2:
+			case IO_REPARSE_TAG_CLOUD_3:
+			case IO_REPARSE_TAG_CLOUD_4:
+			case IO_REPARSE_TAG_CLOUD_5:
+			case IO_REPARSE_TAG_CLOUD_6:
+			case IO_REPARSE_TAG_CLOUD_7:
+			case IO_REPARSE_TAG_CLOUD_8:
+			case IO_REPARSE_TAG_CLOUD_9:
+			case IO_REPARSE_TAG_CLOUD_A:
+			case IO_REPARSE_TAG_CLOUD_B:
+			case IO_REPARSE_TAG_CLOUD_C:
+			case IO_REPARSE_TAG_CLOUD_D:
+			case IO_REPARSE_TAG_CLOUD_E:
+			case IO_REPARSE_TAG_CLOUD_F:
+				bFollow = TRUE;
+				break;
+
+			case IO_REPARSE_TAG_SYMLINK:
+			case IO_REPARSE_TAG_MOUNT_POINT:
+				// Check if it is an inner reparsepoint, because we don't want to follow 
+				// inner peparse points, because they would cause double enumeration
+
+				// If the anchor is not part of the path then it is an outer reparse point
+				// e.g. outer reparsepoint: szCachedRootLower == c:\bla, szTemp == d:\foo
+				// e.g. inner reparsepoint: szCachedRootLower == c:\bla, szTemp == c:\bla\foo
+				_wcslwr_s(szTemp, MAXPATHLEN);
+				if (!wcsstr(szTemp, szCachedRootLower))
+					bFollow = TRUE;
+				break;
+
+			default:
+				bFollow = FALSE;
+				break;
+			}
+		}
+		else {
+			bFollow = TRUE;
+		}
+
+		if (bFollow)
+		{
+			// add directories in subdir
+			if (!BuildDirectoryBagOValues(pbov, pNodes, szPath, pNodeChild, scanEpoc, szCachedRootLower))
+			{
+				WFFindClose(&lfndta);
+				return FALSE;
+			}
 		}
 
 		bFound = WFFindNext(&lfndta);
@@ -594,7 +649,7 @@ GotoDirDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 		case IDOK:
 		{
 			TCHAR szPath[MAXPATHLEN];
-            DWORD iSel;
+			DWORD iSel;
 
 			EndDialog(hDlg, TRUE);
 
@@ -656,23 +711,31 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 
 	SendMessage(hwndStatus, SB_SETTEXT, 2, (LPARAM)TEXT("BUILDING GOTO CACHE"));
 
-   // Read pathes, which shall be cached from winfile.ini
-   TCHAR szCached[MAX_PATH];
-   GetPrivateProfileString(szSettings, szCachedPath, TEXT("c:\\"), szCached, MAX_PATH, szTheINIFile);
+	// Read pathes, which shall be cached from winfile.ini
+	GetPrivateProfileString(szSettings, szGotoCachePunctuation, TEXT("- _."), szPunctuation, MAXPATHLEN, szTheINIFile);
 
-   // Iterate through ; seperated list of to be cached pathes
-   BOOL     buildBag{ FALSE };
-   WCHAR 	seps[]{ L";" };
-   PWCHAR   token{ nullptr };
-   PWCHAR	firsttoken = wcstok_s(szCached, seps, &token);
-   if (firsttoken)
-      buildBag = BuildDirectoryBagOValues(pBagNew, pNodes, firsttoken, nullptr, scanEpocNew);
+	// Read pathes, which shall be cached from winfile.ini
+	TCHAR szCached[MAXPATHLEN];
+	GetPrivateProfileString(szSettings, szCachedPath, TEXT("c:\\"), szCached, MAXPATHLEN, szTheINIFile);
 
-   while (PWCHAR nexttoken = wcstok_s(NULL, seps, &token))
-      buildBag |= BuildDirectoryBagOValues(pBagNew, pNodes, nexttoken, nullptr, scanEpocNew);
+	// Iterate through ; seperated list of to be cached pathes
+	BOOL     buildBag{ FALSE };
+	WCHAR 	seps[]{ L";" };
+	PWCHAR   token{ nullptr };
+	PWCHAR   szCachedRoot = wcstok_s(szCached, seps, &token);
+	TCHAR    szCachedRootLower[MAXPATHLEN];
+
+	while (szCachedRoot)
+	{
+		lstrcpy(szCachedRootLower, szCachedRoot);
+		_wcslwr_s(szCachedRootLower, MAXPATHLEN - (szCachedRoot - szCached));
+		buildBag |= BuildDirectoryBagOValues(pBagNew, pNodes, szCachedRoot, nullptr, scanEpocNew, szCachedRootLower);
+
+		szCachedRoot = wcstok_s(NULL, seps, &token);
+	}
 
 	// If at least one cache location has been read successfully, build the bag
-   if (buildBag)
+	if (buildBag)
 	{
 		pBagNew->Sort();
 
