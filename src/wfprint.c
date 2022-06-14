@@ -40,7 +40,7 @@ PrintFile(HWND hwnd, LPTSTR szFile)
    // open the object
    //
    SetErrorMode(0);
-   ret = (DWORD_PTR)WfWowShellExecute(hwnd, L"print", szFile, szNULL, szDir, SW_SHOWNORMAL);
+   ret = (DWORD_PTR)WFWowShellExecute(hwnd, L"print", szFile, szNULL, szDir, SW_SHOWNORMAL);
    SetErrorMode(1);
 
    switch (ret) {

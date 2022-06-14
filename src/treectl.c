@@ -160,7 +160,7 @@ GetTreePath(PDNODE pNode, register LPTSTR szDest)
 VOID
 SetNodeAttribs(PDNODE pNode, LPTSTR szPath)
 {
-   pNode->dwAttribs = WfWowGetFileAttributes(szPath);
+   pNode->dwAttribs = WFWowGetFileAttributes(szPath);
    if (INVALID_FILE_ATTRIBUTES == pNode->dwAttribs) {
       pNode->dwAttribs = 0;
    }

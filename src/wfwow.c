@@ -29,7 +29,7 @@ BOOL (CALLBACK *lpfnWow64RevertWow64FsRedirection)(PVOID);
 
 
 VOID
-WfWowInitialize()
+WFWowInitialize()
 {
    HANDLE hKernel32;
    hKernel32 = GetModuleHandle(KERNEL32_DLL);
@@ -44,7 +44,7 @@ typedef struct _WF_WOW_STATE {
 } WF_WOW_STATE, *PWF_WOW_STATE;
 
 VOID
-WfWowDisableRedirection(PWF_WOW_STATE State)
+WFWowDisableRedirection(PWF_WOW_STATE State)
 {
     State->RevertRequired = FALSE;
     if (lpfnWow64DisableWow64FsRedirection != NULL) {
@@ -55,7 +55,7 @@ WfWowDisableRedirection(PWF_WOW_STATE State)
 }
 
 VOID
-WfWowRevertRedirection(PWF_WOW_STATE State)
+WFWowRevertRedirection(PWF_WOW_STATE State)
 {
     if (State->RevertRequired &&
         lpfnWow64RevertWow64FsRedirection != NULL) {
@@ -65,7 +65,7 @@ WfWowRevertRedirection(PWF_WOW_STATE State)
 }
 
 BOOL
-WfWowCopyFile(
+WFWowCopyFile(
     LPCWSTR lpExistingFileName,
     LPCWSTR lpNewFileName,
     BOOL bFailIfExists
@@ -74,14 +74,14 @@ WfWowCopyFile(
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = CopyFile(lpExistingFileName, lpNewFileName, bFailIfExists);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowCopyFileEx(
+WFWowCopyFileEx(
     LPCWSTR lpExistingFileName,
     LPCWSTR lpNewFileName,
     LPPROGRESS_ROUTINE lpProgressRoutine,
@@ -93,14 +93,14 @@ WfWowCopyFileEx(
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = CopyFileEx(lpExistingFileName, lpNewFileName, lpProgressRoutine, lpData, pbCancel, dwCopyFlags);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowCreateDirectory(
+WFWowCreateDirectory(
     LPCWSTR lpPathName,
     LPSECURITY_ATTRIBUTES lpSecurityAttributes
     )
@@ -108,14 +108,14 @@ WfWowCreateDirectory(
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = CreateDirectory(lpPathName, lpSecurityAttributes);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowCreateDirectoryEx(
+WFWowCreateDirectoryEx(
     LPCWSTR lpTemplateDirectory,
     LPCWSTR lpNewDirectory,
     LPSECURITY_ATTRIBUTES lpSecurityAttributes
@@ -124,14 +124,14 @@ WfWowCreateDirectoryEx(
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = CreateDirectoryEx(lpTemplateDirectory, lpNewDirectory, lpSecurityAttributes);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 HANDLE
-WfWowCreateFile(
+WFWowCreateFile(
     LPCWSTR lpFileName,
     DWORD dwDesiredAccess,
     DWORD dwShareMode,
@@ -144,14 +144,14 @@ WfWowCreateFile(
     WF_WOW_STATE WowState;
     HANDLE Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = CreateFile(lpFileName, dwDesiredAccess, dwShareMode, lpSecurityAttributes, dwCreationDisposition, dwFlagsAndAttributes, hTemplateFile);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOLEAN
-WfWowCreateSymbolicLink (
+WFWowCreateSymbolicLink (
     LPCWSTR lpSymlinkFileName,
     LPCWSTR lpTargetFileName,
     DWORD dwFlags
@@ -160,28 +160,28 @@ WfWowCreateSymbolicLink (
     WF_WOW_STATE WowState;
     BOOLEAN Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = CreateSymbolicLink(lpSymlinkFileName, lpTargetFileName, dwFlags);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowDeleteFile(
+WFWowDeleteFile(
     LPCWSTR lpFileName
     )
 {
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = DeleteFile(lpFileName);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 HANDLE
-WfWowFindFirstFile(
+WFWowFindFirstFile(
     LPCWSTR lpFileName,
     LPWIN32_FIND_DATAW lpFindFileData
     )
@@ -189,14 +189,14 @@ WfWowFindFirstFile(
     WF_WOW_STATE WowState;
     HANDLE Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = FindFirstFile(lpFileName, lpFindFileData);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 HANDLE
-WfWowFindFirstFileEx(
+WFWowFindFirstFileEx(
     LPCWSTR lpFileName,
     FINDEX_INFO_LEVELS fInfoLevelId,
     LPVOID lpFindFileData,
@@ -208,14 +208,14 @@ WfWowFindFirstFileEx(
     WF_WOW_STATE WowState;
     HANDLE Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = FindFirstFileEx(lpFileName, fInfoLevelId, lpFindFileData, fSearchOp, lpSearchFilter, dwAdditionalFlags);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowFindNextFile(
+WFWowFindNextFile(
     HANDLE hFindFile,
     LPWIN32_FIND_DATAW lpFindFileData
     )
@@ -223,14 +223,14 @@ WfWowFindNextFile(
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = FindNextFile(hFindFile, lpFindFileData);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 DWORD
-WfWowGetCompressedFileSize(
+WFWowGetCompressedFileSize(
     LPCWSTR lpFileName,
     LPDWORD lpFileSizeHigh
     )
@@ -238,28 +238,28 @@ WfWowGetCompressedFileSize(
     WF_WOW_STATE WowState;
     DWORD Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = GetCompressedFileSize(lpFileName, lpFileSizeHigh);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 DWORD
-WfWowGetFileAttributes(
+WFWowGetFileAttributes(
     LPCWSTR lpFileName
     )
 {
     WF_WOW_STATE WowState;
     DWORD Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = GetFileAttributes(lpFileName);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowMoveFile(
+WFWowMoveFile(
     LPCWSTR lpExistingFileName,
     LPCWSTR lpNewFileName
     )
@@ -267,28 +267,28 @@ WfWowMoveFile(
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = MoveFile(lpExistingFileName, lpNewFileName);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowRemoveDirectory(
+WFWowRemoveDirectory(
     LPCWSTR lpPathName
     )
 {
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = RemoveDirectory(lpPathName);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowSetFileAttributes(
+WFWowSetFileAttributes(
     LPCWSTR lpFileName,
     DWORD dwFileAttributes
     )
@@ -296,14 +296,14 @@ WfWowSetFileAttributes(
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = SetFileAttributes(lpFileName, dwFileAttributes);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 HINSTANCE
-WfWowShellExecute(
+WFWowShellExecute(
     HWND hwnd,
     LPCWSTR lpOperation,
     LPCWSTR lpFile,
@@ -315,23 +315,23 @@ WfWowShellExecute(
     WF_WOW_STATE WowState;
     HINSTANCE Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = ShellExecute(hwnd, lpOperation, lpFile, lpParameters, lpDirectory, nShowCmd);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 
 BOOL
-WfWowShellExecuteEx(
+WFWowShellExecuteEx(
     SHELLEXECUTEINFOW *pExecInfo
     )
 {
     WF_WOW_STATE WowState;
     BOOL Result;
 
-    WfWowDisableRedirection(&WowState);
+    WFWowDisableRedirection(&WowState);
     Result = ShellExecuteEx(pExecInfo);
-    WfWowRevertRedirection(&WowState);
+    WFWowRevertRedirection(&WowState);
     return Result;
 }
 

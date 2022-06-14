@@ -45,12 +45,12 @@ WFFindFirst(
    if ((dwAttrFilter & ~(ATTR_DIR | ATTR_HS)) == 0)
    {
 	   // directories only (hidden or not)
-	   lpFind->hFindFile = WfWowFindFirstFileEx(lpName, FindExInfoStandard, &lpFind->fd, FindExSearchLimitToDirectories, NULL, 0);
+	   lpFind->hFindFile = WFWowFindFirstFileEx(lpName, FindExInfoStandard, &lpFind->fd, FindExSearchLimitToDirectories, NULL, 0);
    }
    else
    {
 	   // normal case: directories and files
-	   lpFind->hFindFile = WfWowFindFirstFile(lpName, &lpFind->fd);
+	   lpFind->hFindFile = WFWowFindFirstFile(lpName, &lpFind->fd);
    }
 
    if (lpFind->hFindFile == INVALID_HANDLE_VALUE) {
@@ -111,7 +111,7 @@ WFFindFirst(
 BOOL
 WFFindNext(LPLFNDTA lpFind)
 {
-   while (WfWowFindNextFile(lpFind->hFindFile, &lpFind->fd)) {
+   while (WFWowFindNextFile(lpFind->hFindFile, &lpFind->fd)) {
 
 	  lpFind->fd.dwFileAttributes &= ATTR_USED;
    
@@ -199,7 +199,7 @@ WFFindClose(LPLFNDTA lpFind)
 BOOL
 WFIsDir(LPTSTR lpDir)
 {
-   DWORD attr = WfWowGetFileAttributes(lpDir);
+   DWORD attr = WFWowGetFileAttributes(lpDir);
 
    if (attr == INVALID_FILE_ATTRIBUTES)
       return FALSE;
@@ -482,7 +482,7 @@ WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotificatio
    WCHAR szReparseDest[2 * MAXPATHLEN];
    DWORD dwReparseTag = DecodeReparsePoint(pszFrom, szReparseDest, 2 * MAXPATHLEN);
    if (IO_REPARSE_TAG_SYMLINK == dwReparseTag) {
-      WfWowCreateSymbolicLink(pszTo, szReparseDest, dwFlags);
+      WFWowCreateSymbolicLink(pszTo, szReparseDest, dwFlags);
       dwRet = GetLastError();
       if (ERROR_SUCCESS == dwRet)
          ChangeFileSystem(dwNotification, pszTo, NULL);
@@ -506,7 +506,7 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
     Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
 
     BOOL bCancel = FALSE;
-    if (WfWowCopyFileEx(pszFrom, pszTo, NULL, NULL, &bCancel, COPY_FILE_COPY_SYMLINK)) {
+    if (WFWowCopyFileEx(pszFrom, pszTo, NULL, NULL, &bCancel, COPY_FILE_COPY_SYMLINK)) {
         ChangeFileSystem(FSC_CREATE, pszTo, NULL);
         dwRet = 0;
     }
@@ -524,7 +524,7 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
           //
           lstrcpy(szTemp, pszTo);
           RemoveLast(szTemp);
-          if (WfWowCopyFile(pszFrom, szTemp, FALSE)) {
+          if (WFWowCopyFile(pszFrom, szTemp, FALSE)) {
              ChangeFileSystem(FSC_CREATE, szTemp, NULL);
              dwRet = 0;
           }

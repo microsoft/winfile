@@ -308,7 +308,7 @@ ChangeFileSystem(
          // Are we renaming a directory?
          lstrcpy(szTemp, szTo);
 
-         if (WfWowGetFileAttributes(szTemp) & ATTR_DIR)
+         if (WFWowGetFileAttributes(szTemp) & ATTR_DIR)
          {
             for (hwnd = GetWindow(hwndMDIClient, GW_CHILD);
                  hwnd;
@@ -1375,7 +1375,7 @@ AppCommandProc(register DWORD id)
 				sei.lpDirectory = szPath;
 			 }
 
-			 WfWowShellExecuteEx(&sei);
+			 WFWowShellExecuteEx(&sei);
 		 }
          else if (count > 1)
             DialogBox(hAppInstance, (LPTSTR) MAKEINTRESOURCE(MULTIPLEATTRIBSDLG), hwndFrame, AttribsDlgProc);

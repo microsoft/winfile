@@ -657,25 +657,25 @@ VOID  InvalidateAllNetTypes(VOID);
 VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 
-VOID    WfWowInitialize();
+VOID    WFWowInitialize();
 
-BOOL    WfWowCopyFile(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName, BOOL bFailIfExists);
-BOOL    WfWowCopyFileEx(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName, LPPROGRESS_ROUTINE lpProgressRoutine, LPVOID lpData, LPBOOL pbCancel, DWORD dwCopyFlags);
-BOOL    WfWowCreateDirectory(LPCWSTR lpPathName, LPSECURITY_ATTRIBUTES lpSecurityAttributes);
-BOOL    WfWowCreateDirectoryEx(LPCWSTR lpTemplateDirectory, LPCWSTR lpNewDirectory, LPSECURITY_ATTRIBUTES lpSecurityAttributes);
-HANDLE  WfWowCreateFile(LPCWSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile);
-BOOLEAN WfWowCreateSymbolicLink(LPCWSTR lpSymlinkFileName, LPCWSTR lpTargetFileName, DWORD dwFlags);
-BOOL    WfWowDeleteFile(LPCWSTR lpFileName);
-HANDLE  WfWowFindFirstFile(LPCWSTR lpFileName, LPWIN32_FIND_DATAW lpFindFileData);
-HANDLE  WfWowFindFirstFileEx(LPCWSTR lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, LPVOID lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, LPVOID lpSearchFilter, DWORD dwAdditionalFlags);
-BOOL    WfWowFindNextFile(HANDLE hFindFile, LPWIN32_FIND_DATAW lpFindFileData);
-DWORD   WfWowGetCompressedFileSize(LPCWSTR lpFileName, LPDWORD lpFileSizeHigh);
-DWORD   WfWowGetFileAttributes(LPCWSTR lpFileName);
-BOOL    WfWowMoveFile(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName);
-BOOL    WfWowRemoveDirectory(LPCWSTR lpPathName);
-BOOL    WfWowSetFileAttributes(LPCWSTR lpFileName, DWORD dwFileAttributes);
-HINSTANCE WfWowShellExecute(HWND hwnd, LPCWSTR lpOperation, LPCWSTR lpFile, LPCWSTR lpParameters, LPCWSTR lpDirectory, INT nShowCmd);
-BOOL    WfWowShellExecuteEx(SHELLEXECUTEINFOW *pExecInfo);
+BOOL    WFWowCopyFile(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName, BOOL bFailIfExists);
+BOOL    WFWowCopyFileEx(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName, LPPROGRESS_ROUTINE lpProgressRoutine, LPVOID lpData, LPBOOL pbCancel, DWORD dwCopyFlags);
+BOOL    WFWowCreateDirectory(LPCWSTR lpPathName, LPSECURITY_ATTRIBUTES lpSecurityAttributes);
+BOOL    WFWowCreateDirectoryEx(LPCWSTR lpTemplateDirectory, LPCWSTR lpNewDirectory, LPSECURITY_ATTRIBUTES lpSecurityAttributes);
+HANDLE  WFWowCreateFile(LPCWSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode, LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes, HANDLE hTemplateFile);
+BOOLEAN WFWowCreateSymbolicLink(LPCWSTR lpSymlinkFileName, LPCWSTR lpTargetFileName, DWORD dwFlags);
+BOOL    WFWowDeleteFile(LPCWSTR lpFileName);
+HANDLE  WFWowFindFirstFile(LPCWSTR lpFileName, LPWIN32_FIND_DATAW lpFindFileData);
+HANDLE  WFWowFindFirstFileEx(LPCWSTR lpFileName, FINDEX_INFO_LEVELS fInfoLevelId, LPVOID lpFindFileData, FINDEX_SEARCH_OPS fSearchOp, LPVOID lpSearchFilter, DWORD dwAdditionalFlags);
+BOOL    WFWowFindNextFile(HANDLE hFindFile, LPWIN32_FIND_DATAW lpFindFileData);
+DWORD   WFWowGetCompressedFileSize(LPCWSTR lpFileName, LPDWORD lpFileSizeHigh);
+DWORD   WFWowGetFileAttributes(LPCWSTR lpFileName);
+BOOL    WFWowMoveFile(LPCWSTR lpExistingFileName, LPCWSTR lpNewFileName);
+BOOL    WFWowRemoveDirectory(LPCWSTR lpPathName);
+BOOL    WFWowSetFileAttributes(LPCWSTR lpFileName, DWORD dwFileAttributes);
+HINSTANCE WFWowShellExecute(HWND hwnd, LPCWSTR lpOperation, LPCWSTR lpFile, LPCWSTR lpParameters, LPCWSTR lpDirectory, INT nShowCmd);
+BOOL    WFWowShellExecuteEx(SHELLEXECUTEINFOW *pExecInfo);
 
 
 //--------------------------------------------------------------------------
