@@ -427,6 +427,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 
 			default:
 				bFollow = FALSE;
+				break;
 			}
 		}
 		else {
