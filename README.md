@@ -43,7 +43,7 @@ To see more release binaries, including of older versions, [see the releases pag
 ## History
 
 The Windows File manager was originally released with Windows 3.0 in the early 1990s.  You
-can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
+can read more about the history at https://en.wikipedia.org/wiki/Windows_File_Manager.
 
 ## What it looks like
 
