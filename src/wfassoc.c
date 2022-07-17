@@ -17,10 +17,10 @@
 #define DDETYPECOMBOBOXSIZ 20
 #define DDETYPEMAX  (sizeof(aDDEType) / sizeof(aDDEType[0]))
 
-#define STRINGSIZ  MAX_PATH   // at least >= {DESCSIZ, IDENTSIZ}
-#define DESCSIZ    MAX_PATH
-#define COMMANDSIZ MAX_PATH
-#define DDESIZ     MAX_PATH
+#define STRINGSIZ  MAXPATHLEN   // at least >= {DESCSIZ, IDENTSIZ}
+#define DESCSIZ    MAXPATHLEN
+#define COMMANDSIZ MAXPATHLEN
+#define DDESIZ     MAXPATHLEN
 
 #define FILETYPEBLOCK MAX_PATH
 
@@ -306,7 +306,7 @@ UpdateSelectionExt(HWND hDlg, BOOL bForce)
    PTCHAR p;
    PFILETYPE pFileType;
 
-   TCHAR szTemp[MAX_PATH];
+   TCHAR szTemp[MAXPATHLEN];
 
    //
    // bForce is used when we base the ext on GETCURSEL rather than
@@ -926,7 +926,7 @@ Cancel:
             OPENFILENAME ofn;
             DWORD dwSave = dwContext;
 
-            TCHAR szFile[MAX_PATH + 2];
+            TCHAR szFile[MAXPATHLEN + 2];
 
             LPTSTR p;
 
@@ -1509,8 +1509,8 @@ Reload:
          DWORD dwSave = dwContext;
          LPTSTR p;
 
-         TCHAR szFile[MAX_PATH + 2];
-         TCHAR szTemp2[MAX_PATH];
+         TCHAR szFile[MAXPATHLEN + 2];
+         TCHAR szTemp2[MAXPATHLEN];
 
          dwContext = IDH_ASSOC_BROWSE;
 
@@ -2623,7 +2623,7 @@ Error:
 DWORD
 DDERead(PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo, INT i)
 {
-   TCHAR szKey[MAX_PATH];
+   TCHAR szKey[MAXPATHLEN];
    INT iPoint;
    LONG lSize;
    DWORD dwError;
@@ -2756,7 +2756,7 @@ DDERead(PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo, INT i)
 DWORD
 DDEWrite(PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo, INT i)
 {
-   TCHAR szKey[MAX_PATH];
+   TCHAR szKey[MAXPATHLEN];
    INT iPoint;
    DWORD dwSize;
    DWORD dwError;
@@ -3233,9 +3233,9 @@ AssociateFileDlgExtAdd(HWND hDlg,
          // That it belongs to some other pFileType, we must ask
          // the user if we really can do this.
 
-         TCHAR szText[MAX_PATH];
-         TCHAR szTitle[MAX_PATH];
-         TCHAR szTemp[MAX_PATH];
+         TCHAR szText[MAXPATHLEN];
+         TCHAR szTitle[MAXPATHLEN];
+         TCHAR szTemp[MAXPATHLEN];
 
          //
          // If it's already associated to something that's
@@ -3535,7 +3535,7 @@ RegNodeDelete(HKEY hk, LPTSTR lpszKey)
 {
     HKEY hkNode;
     DWORD dwError;
-    TCHAR szKey[MAX_PATH];
+    TCHAR szKey[MAXPATHLEN];
    
    
     dwError = RegOpenKey(hk, lpszKey, &hkNode);
