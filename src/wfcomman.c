@@ -601,7 +601,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
    DWORD ret;
    HCURSOR hCursor;
 
-   WCHAR szPath[MAXPATHLEN+2];  // +2 for quotes if needed
+   WCHAR szPath[MAXPATHLEN * 2 + 2];  // +2 for quotes if needed, * 2 because CreateDirWindow() assumes a filename can be the same length as MAXPATHLEN
 
    HWND hwndTree, hwndDir, hwndFocus;
 
