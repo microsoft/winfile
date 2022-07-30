@@ -1240,20 +1240,20 @@ BOOL IsVeryLongPath(LPCWSTR pszPathName)
 DWORD WFJunction(LPCWSTR pszLinkDirectory, LPCWSTR pszLinkTarget)
 {
    DWORD		dwRet = ERROR_SUCCESS;
-   // Size assumption: We have to copy 2 path with each MAX_PATH long onto the structure. So we take 3 times MAX_PATH
-   char		reparseBuffer[MAX_PATH * 3];
-   WCHAR		szDirectoryName[MAX_PATH];
-   WCHAR		szTargetName[MAX_PATH];
+   // Size assumption: We have to copy 2 path with each MAXPATHLEN long onto the structure. So we take 3 times MAXPATHLEN
+   char		reparseBuffer[MAXPATHLEN * 3];
+   WCHAR		szDirectoryName[MAXPATHLEN];
+   WCHAR		szTargetName[MAXPATHLEN];
    PWCHAR	szFilePart;
    DWORD		dwLength;
 
 
    // Get the full path referenced by the target
-   if (!GetFullPathName(pszLinkTarget, MAX_PATH, szTargetName, &szFilePart))
+   if (!GetFullPathName(pszLinkTarget, MAXPATHLEN, szTargetName, &szFilePart))
       return GetLastError();
 
    // Get the full path referenced by the directory
-   if (!GetFullPathName(pszLinkDirectory, MAX_PATH, szDirectoryName, &szFilePart))
+   if (!GetFullPathName(pszLinkDirectory, MAXPATHLEN, szDirectoryName, &szFilePart))
       return GetLastError();
 
    // Create the link - ignore errors since it might already exist
@@ -1265,7 +1265,7 @@ DWORD WFJunction(LPCWSTR pszLinkDirectory, LPCWSTR pszLinkTarget)
       else {
          // If a Junction already exists, we have to check if it points to the 
          // same location, and if yes then return ERROR_ALREADY_EXISTS
-         wchar_t szDestination[MAX_PATH] = { 0 };
+         wchar_t szDestination[MAXPATHLEN] = { 0 };
          DecodeReparsePoint(pszLinkDirectory, szDestination, COUNTOF(szDestination));
 
          if (!_wcsicmp(szDestination, pszLinkTarget)) {
@@ -1289,19 +1289,19 @@ DWORD WFJunction(LPCWSTR pszLinkDirectory, LPCWSTR pszLinkTarget)
       return GetLastError();
 
    // Make the native target name
-   WCHAR szSubstituteName[MAX_PATH];
+   WCHAR szSubstituteName[MAXPATHLEN];
 
    // The target might be
    if (IsVeryLongPath(szTargetName)) {
       // a very long path: \\?\x:\path\target
-      swprintf_s(szSubstituteName, MAX_PATH, L"\\??\\%s", &szTargetName[PATH_PARSE_SWITCHOFF_SIZE]);
+      swprintf_s(szSubstituteName, MAXPATHLEN, L"\\??\\%s", &szTargetName[PATH_PARSE_SWITCHOFF_SIZE]);
    } else {
       if (szTargetName[0] == L'\\' && szTargetName[1] == L'\\')
          // an UNC name: \\myShare\path\target
-         swprintf_s(szSubstituteName, MAX_PATH, L"\\??\\UNC\\%s", &szTargetName[2]);
+         swprintf_s(szSubstituteName, MAXPATHLEN, L"\\??\\UNC\\%s", &szTargetName[2]);
       else
          // a normal full path: x:\path\target
-         swprintf_s(szSubstituteName, MAX_PATH, L"\\??\\%s", szTargetName);
+         swprintf_s(szSubstituteName, MAXPATHLEN, L"\\??\\%s", szTargetName);
    }
 
    // Delete the trailing slashes for non root path x:\path\foo\ -> x:\path\foo, but keep x:\
@@ -1316,11 +1316,11 @@ DWORD WFJunction(LPCWSTR pszLinkDirectory, LPCWSTR pszLinkTarget)
 
    reparseJunctionInfo->MountPointReparseBuffer.SubstituteNameOffset = 0x00;
    reparseJunctionInfo->MountPointReparseBuffer.SubstituteNameLength = (USHORT)(wcslen(szSubstituteName) * sizeof(wchar_t));
-   wcscpy_s(reparseJunctionInfo->MountPointReparseBuffer.PathBuffer, MAX_PATH, szSubstituteName);
+   wcscpy_s(reparseJunctionInfo->MountPointReparseBuffer.PathBuffer, MAXPATHLEN, szSubstituteName);
 
    reparseJunctionInfo->MountPointReparseBuffer.PrintNameOffset = reparseJunctionInfo->MountPointReparseBuffer.SubstituteNameLength + sizeof(wchar_t);
    reparseJunctionInfo->MountPointReparseBuffer.PrintNameLength = (USHORT)(wcslen(szTargetName) * sizeof(wchar_t));
-   wcscpy_s(reparseJunctionInfo->MountPointReparseBuffer.PathBuffer + wcslen(szSubstituteName) + 1, MAX_PATH, szTargetName);
+   wcscpy_s(reparseJunctionInfo->MountPointReparseBuffer.PathBuffer + wcslen(szSubstituteName) + 1, MAXPATHLEN, szTargetName);
 
    reparseJunctionInfo->ReparseDataLength = (USHORT)(reparseJunctionInfo->MountPointReparseBuffer.SubstituteNameLength +
       reparseJunctionInfo->MountPointReparseBuffer.PrintNameLength + 
