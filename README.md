@@ -107,6 +107,7 @@ selecting one changes to that directory.  Default = c:\. Confgigure via Winfile.
 normal date sorting is newest on top
 16. CTRL + ENTER executes associated files as administrator
 19. The delimiters for splitting words for the GotoCache can be configured via Winfile.ini[Settings]GotoCachePunctuation. The default is - _.
+20. The scroll behavior of the treeview on expand can be configured via Winfile.ini[Settings]ScrollOnExpand. The default is to scroll.
 
 You can read the code for more details.
 
