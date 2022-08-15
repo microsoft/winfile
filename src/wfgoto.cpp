@@ -715,8 +715,11 @@ BuildDirectoryTreeBagOValues(PVOID pv)
 	GetPrivateProfileString(szSettings, szGotoCachePunctuation, TEXT("- _."), szPunctuation, MAXPATHLEN, szTheINIFile);
 
 	// Read pathes, which shall be cached from winfile.ini
+	GetPrivateProfileString(szSettings, szCachedPath, TEXT("c:\\"), szCachedPathIni, MAXPATHLEN, szTheINIFile);
+
+	// Create a local copy, because once we save it to winfile.ini on exit we need the original value
 	TCHAR szCached[MAXPATHLEN];
-	GetPrivateProfileString(szSettings, szCachedPath, TEXT("c:\\"), szCached, MAXPATHLEN, szTheINIFile);
+	lstrcpy(szCached, szCachedPathIni);
 
 	// Iterate through ; seperated list of to be cached pathes
 	BOOL     buildBag{ FALSE };

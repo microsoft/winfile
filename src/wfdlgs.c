@@ -121,6 +121,10 @@ DO_AGAIN:
 
       goto DO_AGAIN;
    }
+
+   // Save CachedPath and GotoCachePunctuation
+   WritePrivateProfileString(szSettings, szCachedPath, szCachedPathIni, szTheINIFile);
+   WritePrivateProfileString(szSettings, szGotoCachePunctuation, szPunctuation, szTheINIFile);
 }
 
 

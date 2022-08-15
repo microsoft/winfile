@@ -1186,6 +1186,7 @@ Extern TCHAR        szUILanguage[]          EQ( TEXT("UILanguage") );
 Extern TCHAR        szEditorPath[]          EQ( TEXT("EditorPath"));
 Extern TCHAR        szMirrorContent[]       EQ( TEXT("MirrorContent") );
 Extern TCHAR        szCachedPath[]          EQ( TEXT("CachedPath"));
+Extern TCHAR        szCachedPathIni[MAXPATHLEN];
 Extern TCHAR        szGotoCachePunctuation[] EQ(TEXT("GotoCachePunctuation"));
 Extern TCHAR        szPunctuation[MAXPATHLEN];
 
