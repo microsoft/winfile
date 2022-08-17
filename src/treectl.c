@@ -2028,7 +2028,9 @@ ExpandLevel(HWND hWnd, WPARAM wParam, INT nIndex, LPTSTR szPath)
 
     iNewTopIndex = min((INT)iCurrentIndex, iTopIndex + iNumExpanded - iExpandInView + 1);
 
-    SendMessage(hwndLB, LB_SETTOPINDEX, (WPARAM)iNewTopIndex, 0L);
+    // Control tree view scroll behavior on expand via winfile.ini[Settings]ScrollOnExpand. Default == TRUE
+    if (TRUE == bScrollOnExpand)
+      SendMessage(hwndLB, LB_SETTOPINDEX, (WPARAM)iNewTopIndex, 0L);
   }
 
   SendMessage(hwndLB, WM_SETREDRAW, TRUE, 0L);

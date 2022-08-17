@@ -53,6 +53,8 @@ SaveWindows(HWND hwndMain)
 
    WritePrivateProfileString(szSettings, szWindow, buf2, szTheINIFile);
 
+   WritePrivateProfileBool(szScrollOnExpand, bScrollOnExpand);
+
    // write out dir window strings in reverse order
    // so that when we read them back in we get the same Z order
 
@@ -119,6 +121,10 @@ DO_AGAIN:
 
       goto DO_AGAIN;
    }
+
+   // Save CachedPath and GotoCachePunctuation
+   WritePrivateProfileString(szSettings, szCachedPath, szCachedPathIni, szTheINIFile);
+   WritePrivateProfileString(szSettings, szGotoCachePunctuation, szPunctuation, szTheINIFile);
 }
 
 
