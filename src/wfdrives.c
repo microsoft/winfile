@@ -561,7 +561,7 @@ DrivesSetDrive(
    DRIVEIND driveIndCur,
    BOOL bDontSteal)
 {
-   WCHAR szPath[MAXPATHLEN * 2];
+   WCHAR szPath[MAXPATHLEN];
 
    HWND hwndChild;
    HWND hwndTree;
@@ -638,8 +638,11 @@ DrivesSetDrive(
    //
    if (hwndDir = HasDirWindow(hwndChild)) {
 
+     WCHAR szFileSpec[MAXPATHLEN];
+     
      AddBackslash(szPath);
-     SendMessage(hwndDir, FS_GETFILESPEC, MAXFILENAMELEN, (LPARAM)(szPath + lstrlen(szPath)));
+     SendMessage(hwndDir, FS_GETFILESPEC, COUNTOF(szFileSpec), (LPARAM)szFileSpec);
+     lstrcat(szPath, szFileSpec);
 
      SendMessage(hwndDir, FS_CHANGEDISPLAY,
         bDontSteal ? CD_PATH_FORCE | CD_DONTSTEAL : CD_PATH_FORCE,
