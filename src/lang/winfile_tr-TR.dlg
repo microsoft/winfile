@@ -11,7 +11,7 @@
 
 CANCELDLG DIALOG 77, 27, 160, 65
 STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
-CAPTION "Disk Biçimleniyor"
+CAPTION "Disk Biçimlendiriliyor"
 FONT 8, "MS Shell Dlg"
 BEGIN
     CTEXT           "", IDD_TEXT1, 15, 36, 131, 8
@@ -33,7 +33,7 @@ BEGIN
     CONTROL "", IDD_DATE, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 50, 15, 120, 10
     CONTROL "Başlangıç:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 25, 70, 10
     CONTROL "", IDD_PATH, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 50, 25, 120, 10
-    CONTROL "Okunan dizin sayısı:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 35, 60, 10
+    CONTROL "Okunan dizin:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 35, 60, 10
     CONTROL "", IDD_TIME, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 66, 35, 100, 10
     CONTROL "Eşleşme sayısı:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 45, 60, 10
     CONTROL "", IDD_FOUND, "static", SS_SIMPLE | SS_NOPREFIX | WS_CHILD, 66, 45, 100, 10
@@ -58,15 +58,15 @@ BEGIN
     COMBOBOX        cmb3, 179, 13, 32, 54, CBS_SIMPLE | WS_VSCROLL | WS_TABSTOP | CBS_HASSTRINGS | CBS_OWNERDRAWFIXED | CBS_SORT
 
     GROUPBOX        "Efektler", grp1, 6, 73, 84, 61, WS_GROUP
-    CONTROL         "Ü&stü çizili", chx1, "Button", BS_AUTOCHECKBOX |
+    CONTROL         "Ü&zeri çizili", chx1, "Button", BS_AUTOCHECKBOX |
                     WS_TABSTOP, 10, 83, 49, 10
     CONTROL         "Al&tı çizili", chx2, "Button", BS_AUTOCHECKBOX, 10, 95,
                     51, 10
 
-    CONTROL         "FAT sü&rücüler için Küçük Harf görüntüle", chx3, "Button", BS_AUTOCHECKBOX |
+    CONTROL         "FAT Sü&rücüler için Küçük Harf Görüntüle", chx3, "Button", BS_AUTOCHECKBOX |
                     WS_TABSTOP, 6, 127, 252, 10
 
-    CONTROL         "Tüm sürü&cüler için Küçük Harf görüntüle", chx4, "Button", BS_AUTOCHECKBOX |
+    CONTROL         "Tüm Sürü&cüler için Küçük Harf Görüntüle", chx4, "Button", BS_AUTOCHECKBOX |
                     WS_TABSTOP, 6, 139, 252, 10
 
     LTEXT           "&Renk:", stc4, 10, 107, 30, 9
@@ -114,7 +114,7 @@ BEGIN
 END
 
 SELECTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 15, 12, 116, 83
-CAPTION "Dosyalar Seç"
+CAPTION "Dosya Seç"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU
 BEGIN
@@ -129,7 +129,7 @@ END
 
 
 CONFIRMREPLACE DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 245, 95
-CAPTION "Dosya Değiştirme Onayla"
+CAPTION "Dosya Değiştirmeyi Onayla"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
@@ -138,7 +138,7 @@ BEGIN
     CONTROL "Dosyayı Değiştir:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 12, 49, 10
     CONTROL "", IDD_TO, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 75, 12, 165, 10
     CONTROL "", IDD_DATE1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 75, 22, 170, 10
-    CONTROL "Şu Dosya İle:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 34, 49, 10
+    CONTROL "Şu Dosyayla:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 34, 49, 10
     CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 75, 34, 165, 10
     CONTROL "", IDD_DATE2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 75, 44, 170, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 54, 203, 10
@@ -149,7 +149,7 @@ BEGIN
 END
 
 CONFIRMDELETE DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 20, 245, 60
-CAPTION "Dosya Silme Onayla"
+CAPTION "Dosya Silmeyi Onayla"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
@@ -217,13 +217,13 @@ BEGIN
 END
 
 CONFIRMMOVE DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 22, 245, 60
-CAPTION "Dosya Taşıma Onayla"
+CAPTION "Dosya Taşımayı Onayla"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
     CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Dosya Taşı:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 44, 10
+    CONTROL "Dosyayı Taşı:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 44, 10
     CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 70, 18, 170, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
     CONTROL "&Evet", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
@@ -233,13 +233,13 @@ BEGIN
 END
 
 CONFIRMRENAME DIALOG LOADONCALL MOVEABLE DISCARDABLE 10, 22, 245, 60
-CAPTION "Dosya Adı Değiştirme Onayla"
+CAPTION "Dosya Adı Değiştirmeyi Onayla"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | DS_MODALFRAME | WS_POPUP
 BEGIN
     CONTROL 32515, IDD_TEXT, "static", SS_ICON | WS_CHILD, 3, 12, 16, 16
     CONTROL "", IDD_STATUS, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 3, 203, 10
-    CONTROL "Dosya Adı Değiştir:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 54, 10
+    CONTROL "Dosya Adını Değiştir:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 25, 18, 54, 10
     CONTROL "", IDD_FROM, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 80, 18, 160, 10
     CONTROL "", IDD_OTHER, "static", SS_LEFTNOWORDWRAP | SS_NOPREFIX | WS_CHILD, 25, 28, 203, 10
     CONTROL "&Evet", IDYES, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 33, 42, 40, 14
@@ -368,7 +368,7 @@ BEGIN
                     5, 38, 45, 10
     CONTROL         "İmlenmemiş", IDD_VERSION, "Static", SS_LEFTNOWORDWRAP |
                     SS_NOPREFIX, 72, 38, 132, 10
-    LTEXT           "&Telif Hakkı:", -1, 5, 49, 45, 10
+    LTEXT           "&Telif hakkı:", -1, 5, 49, 45, 10
     CONTROL         "İmlenmemiş", IDD_COPYRIGHT, "Edit", ES_AUTOHSCROLL |
                     ES_READONLY | WS_TABSTOP, 72, 49, 132, 10
     CONTROL         "Boyut:", IDD_SIZELABEL, "Static", SS_LEFTNOWORDWRAP,
@@ -426,7 +426,7 @@ END
 
 UNCOMPRESSPROGDLG DIALOG 114, 62, 197, 84
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION
-CAPTION "Dosya Sıkıştırma Açımı İlerlemesi"
+CAPTION "Dosya Sıkıştırması Açma İlerlemesi"
 FONT 8, "MS Shell Dlg"
 BEGIN
     LTEXT           "Sıkıştırması açılan dosya:", -1, 6, 8, 83, 8
@@ -493,7 +493,7 @@ FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU | WS_VISIBLE | DS_SYSMODAL
 BEGIN
     CONTROL "Disk Kopyalama Konumu: ", IDD_TEXT, "static", SS_CENTER | WS_CHILD, 0, 5, 130, 10
-    CONTROL "A: Sürücüsü", IDD_DRIVE, "static", SS_CENTER | WS_CHILD, 0, 15, 130, 10
+    CONTROL "A: sürücüsü", IDD_DRIVE, "static", SS_CENTER | WS_CHILD, 0, 15, 130, 10
     CONTROL "Hedef disk okunuyor", IDD_PROGRESS, "static", SS_CENTER | WS_CHILD, 0, 26, 130, 10
     CONTROL "İptal", 2, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 44, 39, 44, 14
 END
@@ -511,7 +511,7 @@ BEGIN
 END
 
 FORMATDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 183, 96
-CAPTION "Disk Biçimle"
+CAPTION "Disk Biçimlendir"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | WS_CAPTION | WS_DLGFRAME | WS_SYSMENU | WS_VISIBLE | DS_MODALFRAME | WS_POPUP
 BEGIN
@@ -526,7 +526,7 @@ BEGIN
     CONTROL "&Etiketler:", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 11, 51, 39, 10
     CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 40, 49, 63, 12
 //    CONTROL "&Sistem Diski Hazırla", IDD_MAKESYS, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD | WS_DISABLED, 11, 62, 90, 12
-    CONTROL "&Hızlı Biçimle", IDD_VERIFY, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 62, 90, 12
+    CONTROL "&Hızlı Biçimlendir", IDD_VERIFY, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 62, 90, 12
 END
 
 FORMATSELECTDLG DIALOG LOADONCALL MOVEABLE DISCARDABLE 11, 28, 183, 44
@@ -611,7 +611,7 @@ BEGIN
     CONTROL "Son Değiştirilme &Tarihi", IDD_DATE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 27, 100, 12
     CONTROL "Son Değiştirilme &Zamanı", IDD_TIME, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 39, 100, 12
     CONTROL "&Dosya Öznitelikleri", IDD_FLAGS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 51, 100, 12
-    CONTROL "&MS-DOS dosya adları", IDD_DOSNAMES, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 63, 100, 12
+    CONTROL "&MS-DOS Dosya Adları", IDD_DOSNAMES, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 63, 100, 12
     CONTROL "Tamam", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 6, 40, 14
     CONTROL "İptal", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 23, 40, 14
     CONTROL "&Yardım", IDD_HELP, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 60, 40, 14
@@ -744,7 +744,7 @@ CAPTION "İlişkilendir"
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 FONT 8, "MS Shell Dlg"
 BEGIN
-    LTEXT           "Ş&u Uzantılı Dosyalar:", -1, 6, 7, 68, 8
+    LTEXT           "Ş&u Uzantılı Dosyaları:", -1, 6, 7, 68, 8
     COMBOBOX        IDD_EXT, 76, 5, 44, 55, CBS_DROPDOWN | CBS_SORT |
                     CBS_HASSTRINGS | WS_VSCROLL | WS_TABSTOP
 
@@ -766,13 +766,13 @@ BEGIN
     PUSHBUTTON      "&Yardım", IDD_HELP, 187, 95, 62, 14
 
 #ifdef ASSOC
-    AUTOCHECKBOX    "Y&alnızca Yaygın Dosya Türlerini ve Uzantılarını Göster", IDD_SYSTEM,
+    AUTOCHECKBOX    "Y&alnızca yaygın dosya türlerini ve uzantılarını göster", IDD_SYSTEM,
                     6, 117, 160, 10, WS_GROUP
 #endif
 END
 
 ASSOCIATEFILEDLG DIALOG 18, 14, 290, 224
-CAPTION "Dosya Türü Değiştir"
+CAPTION "Dosya Türünü Değiştir"
 STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
 FONT 8, "MS Shell Dlg"
 BEGIN
@@ -832,7 +832,7 @@ BEGIN
    CONTROL "Uygulama İçeriğini Yansıla", IDC_MIRROR, "button", BS_AUTOCHECKBOX | WS_CHILD /* | WS_VISIBLE | WS_TABSTOP */, 0, 0, 0, 0    // invisible, not a tabsop; here to satisfy VerifyResources tool.
    CONTROL "Dil:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
-   CONTROL "Bazı ayarların etkili olması için uygulamayı\nyeniden başlatmanız gerekmektedir.",
+   CONTROL "Bazı ayarların etkili olması için\nuygulamayı yeniden başlatmanız gerekmektedir.",
 			IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 90, 180, 20
    CONTROL "Tamam", IDOK, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 55, 120, 40, 14
    CONTROL "İptal", IDCANCEL, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 103, 120, 40, 14
