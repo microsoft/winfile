@@ -712,6 +712,7 @@ CreateDTABlockWorker(
       //
       if (ERROR_PATH_NOT_FOUND == lfndta.err ||
          ERROR_INVALID_REPARSE_DATA == lfndta.err ||
+         ERROR_SYMLINK_CLASS_DISABLED == lfndta.err ||
          ERROR_CANT_ACCESS_FILE == lfndta.err) {
 
          iError = IDS_BADPATHMSG;
@@ -734,6 +735,7 @@ CreateDTABlockWorker(
          case ERROR_PATH_NOT_FOUND:
          case ERROR_CANT_ACCESS_FILE:
          case ERROR_INVALID_REPARSE_DATA:
+         case ERROR_SYMLINK_CLASS_DISABLED:
 
 InvalidDirectory:
 
