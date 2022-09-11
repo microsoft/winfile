@@ -89,20 +89,33 @@ DO_AGAIN:
 
          wsprintf(key, szDirKeyFormat, dir_num--);
 
-         // format:
-         //   x_win, y_win,
-         //   x_win, y_win,
-         //   x_icon, y_icon,
-         //   show_window, view, sort, attribs, split, directory
+         INT drive = DRIVEID(szPath);
+         if (drive < OFFSET_UNC) {
+            // format:
+            //   x_win, y_win,
+            //   x_win, y_win,
+            //   x_icon, y_icon,
+            //   show_window, view, sort, attribs, split, directory
 
-         // NOTE: MDI child windows are in child coordinats; no translation is done.
-         wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld,%ld,%ld,%u,%lu,%lu,%lu,%d,%s"),
-            wp.rcNormalPosition.left, wp.rcNormalPosition.top,
-            wp.rcNormalPosition.right, wp.rcNormalPosition.bottom,
-            wp.ptMinPosition.x, wp.ptMinPosition.y,
-            wp.showCmd, view, sort, attribs,
-            GetSplit(hwnd),
-            szPath);
+            // NOTE: MDI child windows are in child coordinats; no translation is done.
+            wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld,%ld,%ld,%u,%lu,%lu,%lu,%d,%s"),
+               wp.rcNormalPosition.left, wp.rcNormalPosition.top,
+               wp.rcNormalPosition.right, wp.rcNormalPosition.bottom,
+               wp.ptMinPosition.x, wp.ptMinPosition.y,
+               wp.showCmd, view, sort, attribs,
+               GetSplit(hwnd),
+               szPath);
+         } else {
+            // For UNC path we need to save the name of the root too
+            wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld,%ld,%ld,%u,%lu,%lu,%lu,%d,%s\"%s"),
+               wp.rcNormalPosition.left, wp.rcNormalPosition.top,
+               wp.rcNormalPosition.right, wp.rcNormalPosition.bottom,
+               wp.ptMinPosition.x, wp.ptMinPosition.y,
+               wp.showCmd, view, sort, attribs,
+               GetSplit(hwnd),
+               szPath,
+               aDriveInfo[drive].szRoot);
+         }
 
          // the dir is an ANSI string (?)
 

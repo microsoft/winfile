@@ -377,9 +377,9 @@ CreateLBLine(DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
          } 
          else 
          {
-            pch += PutSize(&lpxdta->qFileSize, pch);
-         }
+         pch += PutSize(&lpxdta->qFileSize, pch);
       }
+   }
    }
 
    //
@@ -883,8 +883,8 @@ DirWndProc(
       break;
 
    case WM_CONTEXTMENU:
-      ActivateCommonContextMenu(hwnd, hwndLB, lParam);
-         break;
+	   ActivateCommonContextMenu(hwnd, hwndLB, lParam);
+	   break;
 
    case WM_VKEYTOITEM:
       switch (GET_WM_VKEYTOITEM_CODE(wParam, lParam)) {
@@ -893,10 +893,10 @@ DirWndProc(
          TypeAheadString('\0', NULL);
          return -2L;
 
-      case 'A':         /* Ctrl-A */
-         if (GetKeyState(VK_CONTROL) >= 0)
-            break;
-      case 0xBF:        /* Ctrl-/ */
+	  case 'A':			/* Ctrl-A */
+		  if (GetKeyState(VK_CONTROL) >= 0)
+			  break;
+	  case 0xBF:        /* Ctrl-/ */
          TypeAheadString('\0', NULL);
          SendMessage(hwndFrame, WM_COMMAND, GET_WM_COMMAND_MPS(IDM_SELALL, 0, 0));
          return -2;
@@ -974,7 +974,7 @@ DirWndProc(
 // for WM_CREATE, wParam and lParam are ignored
 // for WM_FSC, wParam is FSC_* and lParam depends on the function (but the cases handled here are limited)
 // for FS_CHANGEDISPLAY, wParam is one of CD_* values; 
-//  for CD_SORT, LOWORD(lParam) == sort value
+//	for CD_SORT, LOWORD(lParam) == sort value
 //  for CD_VIEW, LOWORD(lParam) == view bits and HIWORD(lParam) == TRUE means always refresh
 //  for CD_PATH and CD_PATH_FORCE, lParam is the new path; if NULL, use MDI window text
 
@@ -1172,7 +1172,7 @@ ChangeDisplay(
          dwNewAttribs = (DWORD)GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
          SetWindowLongPtr(hwndListParms, GWL_VIEW, dwNewView);
 
-         bCreateDTABlock = FALSE;   // and szPath is NOT set
+         bCreateDTABlock = FALSE;	// and szPath is NOT set
 
          goto CreateLB;
       }
@@ -1307,7 +1307,7 @@ ChangeDisplay(
          SetWindowLongPtr(hwnd, GWLP_USERDATA, 1);
          SendMessage(hwndLB, LB_RESETCONTENT, 0, 0L);
 
-         // bCreateDTABlock is TRUE and szPath is set
+		 // bCreateDTABlock is TRUE and szPath is set
 
          goto CreateNewPath;
       }
@@ -1356,7 +1356,7 @@ ChangeDisplay(
       //
       GetMDIWindowText(hwndListParms, szPath, COUNTOF(szPath));
 
-      // bCreateDTABlock == TRUE and szPath just set
+	  // bCreateDTABlock == TRUE and szPath just set
 
 CreateLB:
 
@@ -1424,7 +1424,7 @@ CreateLB:
 
   CreateNewPath:
 
-      if (bCreateDTABlock) {
+	  if (bCreateDTABlock) {
 
          //
          // at this point szPath has the directory to read.  this
@@ -1432,11 +1432,9 @@ CreateLB:
          // FS_CHANGEDISPLAY (CD_PATH) directory reset
          //
 
-         CharUpperBuff(szPath, 1);     // make sure
+         SetWindowLongPtr(hwndListParms, GWL_TYPE, DRIVEID(szPath));
 
-         SetWindowLongPtr(hwndListParms, GWL_TYPE, szPath[0] - TEXT('A'));
-
-         SetMDIWindowText(hwndListParms, szPath);
+		 SetMDIWindowText(hwndListParms, szPath);
 
          lpStart = CreateDTABlock(hwnd,
                                   szPath,
@@ -3180,15 +3178,22 @@ UpdateStatus(HWND hwnd)
             }
 
             U_Space(drive);
-
          }
 
          qFreeSpace=aDriveInfo[drive].qFreeSpace;
          qTotalSpace=aDriveInfo[drive].qTotalSpace;
 
+         WCHAR szRoot[MAXPATHLEN] = { 0 };
+         if (drive < OFFSET_UNC) {
+            lstrcpy(szRoot, SZ_ACOLON);
+            DRIVESET(szRoot, drive);
+         } else {
+            lstrcpy(szRoot, aDriveInfo[drive].szRoot);
+         }
+
          SetStatusText(0, SST_RESOURCE|SST_FORMAT,
             (LPWSTR) MAKEINTRESOURCE(IDS_DRIVEFREE),
-            L'A' + drive,
+            szRoot,
             ShortSizeFormatInternal(szNumBuf1, qFreeSpace),
             ShortSizeFormatInternal(szNumBuf2, qTotalSpace));
       }

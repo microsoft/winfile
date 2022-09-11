@@ -14,49 +14,49 @@
 #include <commctrl.h>
 #include <stdlib.h>
 
-LPTSTR CurDirCache[26];
+LPTSTR CurDirCache[MAX_DRIVES];
 
 #define MAXHISTORY 32
 DWORD historyCur = 0;
 typedef struct HistoryDir
 {
-    HWND hwnd;
-    TCHAR szDir[MAXPATHLEN];
+	HWND hwnd;
+	TCHAR szDir[MAXPATHLEN];
 } HistoryDir;
 HistoryDir rghistoryDir[MAXHISTORY];
 
 VOID
 SaveHistoryDir(HWND hwnd, LPWSTR szDir)
 {
-    if (rghistoryDir[historyCur].hwnd == hwnd && lstrcmpi(rghistoryDir[historyCur].szDir, szDir) == 0)
-        return;
+	if (rghistoryDir[historyCur].hwnd == hwnd && lstrcmpi(rghistoryDir[historyCur].szDir, szDir) == 0)
+		return;
 
-    historyCur = (historyCur + 1) % MAXHISTORY;
+	historyCur = (historyCur + 1) % MAXHISTORY;
 
-    rghistoryDir[historyCur].hwnd = hwnd;
-    lstrcpy(rghistoryDir[historyCur].szDir, szDir);
+	rghistoryDir[historyCur].hwnd = hwnd;
+	lstrcpy(rghistoryDir[historyCur].szDir, szDir);
 
-    // always leave one NULL entry after current
-    DWORD historyT = (historyCur + 1) % MAXHISTORY;
-    rghistoryDir[historyT].hwnd = NULL;
-    rghistoryDir[historyT].szDir[0] = '\0';
+	// always leave one NULL entry after current
+	DWORD historyT = (historyCur + 1) % MAXHISTORY;
+	rghistoryDir[historyT].hwnd = NULL;
+	rghistoryDir[historyT].szDir[0] = '\0';
 }
 
 BOOL
 GetPrevHistoryDir(BOOL forward, HWND *phwnd, LPWSTR szDir)
 {
-    DWORD historyNext = (historyCur + 1) % MAXHISTORY;
-    DWORD historyPrev = (historyCur == 0 ? MAXHISTORY : historyCur )- 1;
-    DWORD historyT = forward ? historyNext : historyPrev;
+	DWORD historyNext = (historyCur + 1) % MAXHISTORY;
+	DWORD historyPrev = (historyCur == 0 ? MAXHISTORY : historyCur )- 1;
+	DWORD historyT = forward ? historyNext : historyPrev;
 
-    if (rghistoryDir[historyT].hwnd == NULL)
-        return FALSE;
+	if (rghistoryDir[historyT].hwnd == NULL)
+		return FALSE;
+	
+	historyCur = historyT;
 
-    historyCur = historyT;
-
-    *phwnd = rghistoryDir[historyCur].hwnd;  
-    lstrcpy(szDir, rghistoryDir[historyCur].szDir);
-    return TRUE;
+	*phwnd = rghistoryDir[historyCur].hwnd;  
+	lstrcpy(szDir, rghistoryDir[historyCur].szDir);
+	return TRUE;
 }
 
 LPWSTR
@@ -209,7 +209,7 @@ GetSelectedDirectory(DRIVE drive, LPTSTR pszDir)
              goto hwndfound;
        }
        if (!GetSavedDirectory(drive - 1, pszDir)) {
-          GetDriveDirectory(drive, pszDir);
+	    GetDriveDirectory(drive, pszDir);
        }
        return;
     } else
@@ -224,11 +224,13 @@ hwndfound:
 
 BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir)
 {
-    TCHAR drvstr[4];
     DWORD ret;
+    WCHAR drvstr[MAXPATHLEN];
 
-    pszDir[0] = '\0';
-
+    if (iDrive - 1 < OFFSET_UNC)
+    {
+	pszDir[0] = '\0';
+	
     if(iDrive!=0)
     {
         drvstr[0] = ('A') - 1 + iDrive;
@@ -241,16 +243,18 @@ BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir)
         drvstr[0] = ('.');
         drvstr[1] = ('\0');
     }
+    } 
+    else
+    {
+       lstrcpy(drvstr, aDriveInfo[iDrive - 1].szRoot);
+    }
 
-    if (GetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
-        return FALSE;
-
-//  if (!CheckDirExists(drvstr))
-//      return FALSE;
+	if (GetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
+		return FALSE;
 
     ret = GetFullPathName( drvstr, MAXPATHLEN, pszDir, NULL);
 
-    return ret != 0;
+	return ret != 0;
 }
 
 
@@ -259,42 +263,42 @@ BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir)
 VOID
 GetAllDirectories(LPTSTR rgszDirs[])
 {
-    HWND mpdrivehwnd[MAX_DRIVES];
+	HWND mpdrivehwnd[MAX_DRIVES];
     HWND hwnd;
     DRIVE driveT;
 
-    for (driveT = 0; driveT < MAX_DRIVES; driveT++)
-    {
-        rgszDirs[driveT] = NULL;
-        mpdrivehwnd[driveT] = NULL;
-    }
-
+	for (driveT = 0; driveT < MAX_DRIVES; driveT++)
+	{
+		rgszDirs[driveT] = NULL;
+		mpdrivehwnd[driveT] = NULL;
+	}
+		
     for (hwnd = GetWindow(hwndMDIClient,GW_CHILD); hwnd; hwnd = GetWindow(hwnd,GW_HWNDNEXT)) 
     {
-        driveT = (DRIVE)SendMessage(hwnd,FS_GETDRIVE,0,0L) - CHAR_A;
-        if (mpdrivehwnd[driveT] == NULL)
-            mpdrivehwnd[driveT] = hwnd;
-    }
+    	driveT = (DRIVE)SendMessage(hwnd,FS_GETDRIVE,0,0L) - CHAR_A;
+    	if (mpdrivehwnd[driveT] == NULL)
+			mpdrivehwnd[driveT] = hwnd;    	
+	}
 
-    for (driveT = 0; driveT < MAX_DRIVES; driveT++)
-    {
-        TCHAR szDir[MAXPATHLEN];
+	for (driveT = 0; driveT < MAX_DRIVES; driveT++)
+	{
+		TCHAR szDir[MAXPATHLEN];
+		
+		if (mpdrivehwnd[driveT] != NULL)
+		{
+		    SendMessage(mpdrivehwnd[driveT],FS_GETDIRECTORY,MAXPATHLEN,(LPARAM)szDir);
 
-        if (mpdrivehwnd[driveT] != NULL)
-        {
-            SendMessage(mpdrivehwnd[driveT],FS_GETDIRECTORY,MAXPATHLEN,(LPARAM)szDir);
+		    StripBackslash(szDir);
+		}
+		else if (!GetSavedDirectory(driveT, szDir))
+			szDir[0] = '\0';
 
-            StripBackslash(szDir);
-        }
-        else if (!GetSavedDirectory(driveT, szDir))
-            szDir[0] = '\0';
-
-        if (szDir[0] != '\0')
-        {
-            rgszDirs[driveT] = (LPTSTR) LocalAlloc(LPTR, ByteCountOf(lstrlen(szDir)+1));
-            lstrcpy(rgszDirs[driveT], szDir);
-        }
-    }
+		if (szDir[0] != '\0')
+		{
+			rgszDirs[driveT] = (LPTSTR) LocalAlloc(LPTR, ByteCountOf(lstrlen(szDir)+1));		
+			lstrcpy(rgszDirs[driveT], szDir);
+		}
+	}
 }
 
 
@@ -770,8 +774,6 @@ SetMDIWindowText(
 
    SaveHistoryDir(hwnd, szTitle);
 }
-
-#define ISDIGIT(c)  ((c) >= TEXT('0') && (c) <= TEXT('9'))
 
 INT
 atoiW(LPTSTR sz)
@@ -1616,4 +1618,80 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
    lstrcpy(szT, rgchTA);
 
    return ich != 0;
+}
+
+// Search the list of slots if path would be parent of already existing drive == circularity
+BOOL FindUNCLoop(LPCTSTR path)
+{
+   for (DWORD dwDriveIndex = OFFSET_UNC; dwDriveIndex < MAX_DRIVES; ++dwDriveIndex) {
+      if (aDriveInfo[dwDriveIndex].szRoot[0] && StrStrIW(aDriveInfo[dwDriveIndex].szRoot, path))
+         return TRUE;
+   }
+   return FALSE;
+}
+
+DRIVE FindUNCDrive(LPCTSTR path, PDWORD pdwFreeDriveSlot)
+{
+   // Search the list of slots if drive is already there
+   for (DWORD dwDriveIndex = OFFSET_UNC; dwDriveIndex < MAX_DRIVES; ++dwDriveIndex) {
+      // Found existing slot
+      if (aDriveInfo[dwDriveIndex].szRoot[0] && StrStrIW(path, aDriveInfo[dwDriveIndex].szRoot))
+         // Added an UNC drive which already existed
+         return dwDriveIndex;
+
+      // If we come across an empty one, remember the first one
+      if (!aDriveInfo[dwDriveIndex].szRoot[0] && !(*pdwFreeDriveSlot))
+         *pdwFreeDriveSlot = dwDriveIndex;
+   }
+   return 0;
+}
+
+// Returns drive-id if possible. If not returns 0
+// Possible failure reasons: Exceeded number of free numbered drives or UNC cirularity
+DRIVE AddUNCDrive(LPTSTR path)
+{
+   StripBackslash(path);
+   if (FindUNCLoop(path))
+      return -1;
+
+   DWORD dwFreeDriveSlot = 0;
+   DRIVE drive = FindUNCDrive(path, &dwFreeDriveSlot);
+   if (!drive && dwFreeDriveSlot) {
+      // Havent't found an existing slot, so add new to first free found
+      lstrcpy(aDriveInfo[dwFreeDriveSlot].szRoot, path);
+      lstrcpy(aDriveInfo[dwFreeDriveSlot].szRootBackslash, path);
+      AddBackslash(aDriveInfo[dwFreeDriveSlot].szRootBackslash);
+      drive = dwFreeDriveSlot;
+   }
+
+   return drive;
+}
+
+DRIVE RemoveUNCDrive(LPCTSTR path)
+{
+   DWORD dwFreeDriveSlot = 0;
+   DRIVE drive = FindUNCDrive(path, &dwFreeDriveSlot);
+   if (drive) {
+      // Found an empty slot so mark it free
+      aDriveInfo[drive].szRoot[0] = '\0';
+      aDriveInfo[drive].szRootBackslash[0] = '\0';
+      I_Space(drive);
+   }
+
+   return dwFreeDriveSlot;
+}
+
+DRIVE DRIVEID(LPCTSTR path)
+{
+  DRIVE drive = toupper(path[0]);
+  if (drive >= CHAR_A && drive <= CHAR_Z)
+    // regular drive
+    return drive - CHAR_A;
+
+  DWORD dwFreeDriveSlot = 0;
+  drive = FindUNCDrive(path, &dwFreeDriveSlot);
+  if (drive)
+     return drive;
+ 
+  return MAX_DRIVES;
 }

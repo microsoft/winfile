@@ -781,7 +781,15 @@ Fail:
             }
             }
 
-            lstrcpy(szPath+3, lpTemp+1);
+            // Go back to the root
+            if (drive < OFFSET_UNC) {
+               // Easy for drives
+               lstrcpy(szPath + 3, lpTemp + 1);
+            } else {
+               // for UNC one needs to know the UNC root
+               lstrcpy(szPath, aDriveInfo[drive].szRootBackslash);
+               lstrcat(szPath, lpTemp + 1);
+            }
 
             SendMessage(hwndDir,
                         FS_CHANGEDISPLAY,
@@ -846,10 +854,21 @@ Fail:
    if (!(lpTemp=StrRChr(szPath, NULL, CHAR_BACKSLASH)))
       goto CDBDiskGone;
 
+   // Check if we are at the root of a drive
+   BOOL bShowDotDot;
+   if (drive < OFFSET_UNC)
+      bShowDotDot = (lpTemp - szPath) > 3;
+   else {
+      WCHAR szRoot[MAXPATHLEN] = { 0 };
+      lstrcpy(szRoot, aDriveInfo[drive].szRootBackslash);
+      lstrcat(szRoot, szStarDotStar);
+      bShowDotDot = lstrcmpi(szPath, szRoot);
+   }
+   
    //
    // Always show .. if this is not the root directory.
    //
-   if ((lpTemp - szPath > 3) && (dwAttribs & ATTR_DIR)) {
+   if (bShowDotDot && (dwAttribs & ATTR_DIR)) {
 
       //
       // Add a DTA to the list.

@@ -736,7 +736,20 @@ GetSavedWindow(
       count++;
    }
 
-   lstrcpy(pwin->szDir, szBuf);    // this is the directory
+   // Search for an optional name of the root, which seperated by " from the directory
+   // e.g. 
+   //   dir1==....,\\unc\path1\*.*"\\unc\path1\aurea\prima
+   // It is " because is must be a character, which is not allowed in pathnames
+   LPTSTR szDir = szBuf;
+   while (*szBuf && *szBuf != CHAR_DQUOTE)
+      szBuf++;
+   if (*szBuf) {
+      *szBuf = CHAR_NULL;
+      lstrcpy(pwin->szRoot, ++szBuf);    // name of the root
+   } else {
+      pwin->szRoot[0] = CHAR_NULL;
+   }
+   lstrcpy(pwin->szDir, szDir);    // this is the directory
 }
 
 
@@ -746,13 +759,14 @@ CheckDirExists(
 {
    BOOL bRet = FALSE;
 
-   if (IsNetDrive(DRIVEID(szDir)) == 2) {
+   DRIVE drive = DRIVEID(szDir);
+   if (IsNetDrive(drive) == 2 || drive >= OFFSET_UNC) {
 
-      CheckDrive(hwndFrame, DRIVEID(szDir), FUNC_SETDRIVE);
+      CheckDrive(hwndFrame, drive, FUNC_SETDRIVE);
       return TRUE;
    }
 
-   if (IsValidDisk(DRIVEID(szDir)))
+   if (IsValidDisk(drive))
       bRet = SetCurrentDirectory(szDir);
 
    return bRet;
@@ -790,22 +804,31 @@ CreateSavedWindows()
 
          GetSavedWindow(buf, &win);
 
-         //
-         // clean off some junk so we
-         // can do this test
-         //
          lstrcpy(szDir, win.szDir);
+
+         // clean off some junk so we can do this test
          StripFilespec(szDir);
          StripBackslash(szDir);
 
+         if (win.szRoot[0])
+            // UNC Drive
+            AddUNCDrive(win.szRoot);
+         else
+            // In case of broken .ini file and UNC
+            if (ISUNCPATH(szDir))
+               AddUNCDrive(szDir);
+
          if (!CheckDirExists(szDir))
             continue;
+
+         AddBackslash(szDir);
+         lstrcat(szDir, szStarDotStar);
 
          dwNewView = win.dwView;
          dwNewSort = win.dwSort;
          dwNewAttribs = win.dwAttribs;
 
-         hwnd = CreateTreeWindow(win.szDir,
+         hwnd = CreateTreeWindow(szDir,
                                  win.rc.left,
                                  win.rc.top,
                                  win.rc.right - win.rc.left,
@@ -1051,7 +1074,7 @@ JAPANEND
    //
    SetErrorMode(1);
 
-   for (i=0; i<26;i++) {
+   for (i = 0; i < MAX_DRIVES; i++) {
       I_Space(i);
    }
 
@@ -1095,8 +1118,6 @@ JAPANEND
    hicoTree = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(TREEICON));
    hicoTreeDir = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(TREEDIRICON));
    hicoDir = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(DIRICON));
-
-   chFirstDrive = CHAR_a;
 
    // now build the parameters based on the font we will be using
 

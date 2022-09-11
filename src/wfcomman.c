@@ -41,8 +41,7 @@ NotifySearchFSC(
    if (!hwndSearch)
       return;
 
-   if (DRIVEID(pszPath) ==
-      SendMessage(hwndSearch, FS_GETDRIVE, 0, 0L) - CHAR_A) {
+   if (DRIVEID(pszPath) == SendMessage(hwndSearch, FS_GETDRIVE, 0, 0L) - CHAR_A) {
 
       SendMessage(hwndSearch, WM_FSC, dwFunction, 0L);
    }
@@ -532,10 +531,8 @@ CreateDirWindow(
    // Are we replacing the contents of the currently active child?
    //
    if (bReplaceOpen) {
-	   CharUpperBuff(szPath, 1);     // make sure
-
 	   DRIVE drive = DRIVEID(szPath);
-	   for (INT i = 0; i<cDrives; i++)
+      for (INT i = 0; i < cDrives; i++)
 	   {
 		   if (drive == rgiDrive[i])
 		   {
@@ -1151,7 +1148,15 @@ AppCommandProc(DWORD id)
            HWND      hwndActive;
 
            hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-           PostMessage(hwndActive, WM_CLOSE, 0, 0L);
+
+           if (!IsLastWindow()) {
+              TCHAR szPath[MAXPATHLEN];
+              SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szPath), (LPARAM)szPath);
+              RemoveUNCDrive(szPath);
+              RefreshWindow(hwndActive, TRUE, TRUE);
+
+              PostMessage(hwndActive, WM_CLOSE, 0, 0L);
+           }
        }
        break;
 
@@ -2074,9 +2079,7 @@ CHECK_OPTION:
     case IDM_REFRESH:
        {
           INT i;
-
-#define NUMDRIVES (sizeof(rgiDrive)/sizeof(rgiDrive[0]))
-          INT rgiSaveDrives[NUMDRIVES];
+          INT rgiSaveDrives[MAX_DRIVES];
 
           if (WAITNET_LOADED) {
 
@@ -2088,7 +2091,7 @@ CHECK_OPTION:
              AddNetMenuItems();
           }
 
-          for (i=0; i<NUMDRIVES; ++i)
+          for (i = 0; i < MAX_DRIVES; ++i)
              rgiSaveDrives[i] = rgiDrive[i];
 
           for (i = 0; i < iNumExtensions; i++) {
@@ -2101,7 +2104,7 @@ CHECK_OPTION:
           // (done by sending the WM_SIZE below) and invalidate them so that
           // they will reflect the current status
 
-          for (i=0; i<NUMDRIVES; ++i) {
+          for (i = 0; i < MAX_DRIVES; ++i) {
              if (rgiDrive[i] != rgiSaveDrives[i]) {
 
                 // RedoDriveWindows no longer calls

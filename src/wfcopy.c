@@ -334,7 +334,7 @@ JAPANEND
        //
 
        if ( !(pOrig[0] >= CHAR_A && pOrig[0] <= CHAR_Z) &&
-          !(pOrig[0] >= CHAR_a && pOrig[0] <= TEXT('z')) ) {
+          !(pOrig[0] >= CHAR_a && pOrig[0] <= CHAR_z) ) {
 
           //
           // Invalid drive string; return FALSE!
@@ -375,7 +375,7 @@ JAPANEND
     }
 
     if (CHAR_BACKSLASH == pOrig[0]) {
-      lpszPath[0] = (TCHAR)drive + (TCHAR)'A';
+      lpszPath[0] = (TCHAR)drive + CHAR_A;
       lpszPath[1] = CHAR_COLON;
       lpszPath[2] = CHAR_BACKSLASH;
       lpszPath[3] = CHAR_NULL;
@@ -704,7 +704,7 @@ IsTheDiskReallyThere(
 
    STKCHK();
 
-   if (pPath[1]==CHAR_COLON)
+   if (pPath[1] == CHAR_COLON || ISUNCPATH(pPath))
       drive = DRIVEID(pPath);
    else
       return 1;
@@ -717,7 +717,7 @@ IsTheDiskReallyThere(
       LoadString(hAppInstance, IDS_COPYERROR + FUNC_SETDRIVE, szTitle,
          COUNTOF(szTitle));
 
-      wsprintf(szMessage, szTemp, drive + CHAR_A);
+      wsprintf(szMessage, szTemp, DRIVESET_UC(drive));
       MessageBox(hwnd, szMessage, szTitle, MB_ICONHAND);
 
       return 0;
@@ -794,7 +794,7 @@ DiskNotThere:
       //
       LoadString(hAppInstance, IDS_COPYERROR + dwFunc, szTitle, COUNTOF(szTitle));
       LoadString(hAppInstance, IDS_DRIVENOTREADY, szTemp, COUNTOF(szTemp));
-      wsprintf(szMessage, szTemp, drive + CHAR_A);
+      wsprintf(szMessage, szTemp, DRIVESET_UC(drive));
       if (MessageBox(hwnd, szMessage, szTitle, MB_ICONEXCLAMATION | MB_RETRYCANCEL) == IDRETRY)
          goto Retry;
       else
@@ -815,7 +815,7 @@ DiskNotThere:
 
       if (!CancelInfo.hCancelDlg && IsRemovableDrive(drive)) {
          LoadString(hAppInstance, IDS_UNFORMATTED, szTemp, COUNTOF(szTemp));
-         wsprintf(szMessage, szTemp, drive + CHAR_A);
+         wsprintf(szMessage, szTemp, DRIVESET_UC(drive));
 
          if (MessageBox(hwnd, szMessage, szTitle, MB_ICONEXCLAMATION| MB_YESNO) == IDYES) {
 
