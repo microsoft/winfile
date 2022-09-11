@@ -230,6 +230,7 @@ MemoryError:
          ERROR_PATH_NOT_FOUND != lfndta.err &&
          ERROR_INVALID_REPARSE_DATA != lfndta.err &&
          ERROR_CANT_ACCESS_FILE != lfndta.err &&
+         ERROR_SYMLINK_CLASS_DISABLED != lfndta.err &&
          ERROR_INVALID_NAME != lfndta.err)) {
 
       SearchInfo.eStatus = SEARCH_ERROR;
