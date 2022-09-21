@@ -2580,8 +2580,7 @@ TreeControlWndProc(
          AddBackslash(szPath);
 
          uStrLen = lstrlen(szPath);
-         SendMessage(hwndParent, FS_GETFILESPEC, COUNTOF(szPath)-uStrLen,
-                     (LPARAM)(szPath+uStrLen));
+         SendMessage(hwndParent, FS_GETFILESPEC, COUNTOF(szPath) - uStrLen, (LPARAM)(szPath + uStrLen));
 
          if (hwndDir = HasDirWindow(hwndParent)) {
 
