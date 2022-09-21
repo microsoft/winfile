@@ -2566,7 +2566,7 @@ TreeControlWndProc(
       {
          HWND hwndDir;
          INT CurSel;
-         WCHAR szFileSpec[MAXPATHLEN];
+         UINT uStrLen;
 
          //
          // CurSel is returned from SendMessage
@@ -2579,9 +2579,8 @@ TreeControlWndProc(
 
          AddBackslash(szPath);
 
-         SendMessage(hwndParent, FS_GETFILESPEC, COUNTOF(szFileSpec),
-                     (LPARAM)szFileSpec);
-         lstrcat(szPath, szFileSpec);
+         uStrLen = lstrlen(szPath);
+         SendMessage(hwndParent, FS_GETFILESPEC, COUNTOF(szPath) - uStrLen, (LPARAM)(szPath + uStrLen));
 
          if (hwndDir = HasDirWindow(hwndParent)) {
 
