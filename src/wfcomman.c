@@ -503,7 +503,7 @@ CreateTreeWindow(
 
 HWND
 CreateDirWindow(
-   register LPWSTR szPath,
+   LPWSTR szPath,
    BOOL bReplaceOpen,
    HWND hwndActive)
 {
@@ -550,8 +550,11 @@ CreateDirWindow(
 
 	   if (hwndT = HasDirWindow(hwndActive))
 	   {
+		   WCHAR szFileSpec[MAXPATHLEN];
+
 		   AddBackslash(szPath);                   // default to all files
-		   SendMessage(hwndT, FS_GETFILESPEC, MAXFILENAMELEN, (LPARAM)(szPath + lstrlen(szPath)));
+		   SendMessage(hwndT, FS_GETFILESPEC, COUNTOF(szFileSpec), (LPARAM)szFileSpec);
+		   lstrcat(szPath, szFileSpec);
 		   SendMessage(hwndT, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)szPath);
 		   StripFilespec(szPath);
 	   }

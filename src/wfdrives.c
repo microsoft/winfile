@@ -638,8 +638,10 @@ DrivesSetDrive(
    //
    if (hwndDir = HasDirWindow(hwndChild)) {
 
+     UINT iStrLen;
      AddBackslash(szPath);
-     SendMessage(hwndDir, FS_GETFILESPEC, MAXFILENAMELEN, (LPARAM)(szPath + lstrlen(szPath)));
+     iStrLen = lstrlen(szPath);
+     SendMessage(hwndDir, FS_GETFILESPEC, COUNTOF(szPath) - iStrLen, (LPARAM)(szPath + iStrLen));
 
      SendMessage(hwndDir, FS_CHANGEDISPLAY,
         bDontSteal ? CD_PATH_FORCE | CD_DONTSTEAL : CD_PATH_FORCE,

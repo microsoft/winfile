@@ -363,7 +363,7 @@ VOID vWaitMessage();
 VOID RedoDriveWindows(HWND);
 BOOL FmifsLoaded(VOID);
 VOID  ChangeFileSystem(DWORD dwOper, LPWSTR lpPath, LPWSTR lpTo);
-HWND  CreateDirWindow(register LPWSTR szPath, BOOL bReplaceOpen, HWND hwndActive);
+HWND  CreateDirWindow(LPWSTR szPath, BOOL bReplaceOpen, HWND hwndActive);
 HWND CreateTreeWindow(LPWSTR szPath, INT x, INT y, INT dx, INT dy, INT dxSplit);
 VOID SwitchToSafeDrive();
 DWORD ReadMoveStatus();

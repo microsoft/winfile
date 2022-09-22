@@ -25,7 +25,7 @@ BEGIN
         MENUITEM    "Ö&zellikler...\tAlt+Enter",    IDM_ATTRIBS
         MENUITEM    SEPARATOR
         MENUITEM    "Sı&kıştır...",                 IDM_COMPRESS
-        MENUITEM    "Sıkıştırıl&mışı Aç...",        IDM_UNCOMPRESS
+        MENUITEM    "Sıkıştır&mayı Aç...",          IDM_UNCOMPRESS
         MENUITEM    SEPARATOR
         MENUITEM    "Ça&lıştır...",                 IDM_RUN
         MENUITEM    "&Yazdır...",                   IDM_PRINT
@@ -43,33 +43,33 @@ BEGIN
     END
     POPUP       "Dis&k"
     BEGIN
-        MENUITEM    "Disket &Kopyala...",           IDM_DISKCOPY
+        MENUITEM    "Disk &Kopyala...",             IDM_DISKCOPY
         MENUITEM    "Disk &Etiketle...",            IDM_LABEL
         MENUITEM    SEPARATOR
-        MENUITEM    "Disket &Biçimle...",           IDM_FORMAT
+        MENUITEM    "Sürücü &Biçimlendir...",       IDM_FORMAT
         MENUITEM    SEPARATOR
         MENUITEM    "&Sürücü Seç...",               IDM_DRIVESMORE
     END
     POPUP       "&Ağaç"
     BEGIN
-        MENUITEM    "&Bir Alt Düzeyini Göster\t+",  IDM_EXPONE
+        MENUITEM    "&Bir Alt Düzeyi Göster\t+",    IDM_EXPONE
         MENUITEM    "&Alt Düzeylerini Göster\t*",   IDM_EXPSUB
         MENUITEM    "&Tümünü Göster\tCtrl+*",       IDM_EXPALL
-        MENUITEM    "Alt Düzeylerini Gi&zle\t-",    IDM_COLLAPSE
+        MENUITEM    "Alt Düzeyleri Gi&zle\t-",      IDM_COLLAPSE
         MENUITEM    SEPARATOR
         MENUITEM    "Alt Düzeyi Olanları Be&lirt",  IDM_ADDPLUSES
     END
     POPUP       "&Görünüm"
     BEGIN
         MENUITEM    "Ağaç &ve Dizin",               IDM_BOTH
-        MENUITEM    "&Yalnız Ağaç",                 IDM_TREEONLY
-        MENUITEM    "Yalnız &Dizin",                IDM_DIRONLY
+        MENUITEM    "&Yalnızca Ağaç",               IDM_TREEONLY
+        MENUITEM    "Yalnızca &Dizin",              IDM_DIRONLY
         MENUITEM    SEPARATOR
         MENUITEM    "Bö&l",                         IDM_SPLIT
         MENUITEM    SEPARATOR
         MENUITEM    "&Ad",                          IDM_VNAME
         MENUITEM    "Tü&m Dosya Ayrıntıları",       IDM_VDETAILS,   CHECKED
-        MENUITEM    "&Bazı Dosya Ayrıntıları...",   IDM_VOTHER
+        MENUITEM    "&Kısımsal Dosya Ayrıntıları...", IDM_VOTHER
         MENUITEM    SEPARATOR
         MENUITEM    "Ada Göre &Sırala",             IDM_BYNAME
         MENUITEM    "&Türe Göre Sırala",            IDM_BYTYPE
@@ -121,6 +121,7 @@ BEGIN
         MENUITEM    SEPARATOR
         MENUITEM    "Dosya Yöneticisi &Hakkında...", IDM_ABOUT
     END
+
 END
 
 CTXMENU MENU PRELOAD
@@ -146,19 +147,24 @@ BEGIN
     END
 END
 
+
 #define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
+/*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
 STRINGTABLE DISCARDABLE PRELOAD
 BEGIN
-   // IDS_ENDSESSION           "Windows'dan Çıkış"
-   // IDS_ENDSESSIONMSG        "Bu işlem Windows oturumunu kapayacaktır."
+   // IDS_ENDSESSION           "Windows'tan Çık"
+   // IDS_ENDSESSIONMSG        "Bu işlem, Windows oturumunu kapatacaktır."
+
    IDS_COPYDISK             "Disk Kopyala"
    IDS_INSERTDEST           "Hedef diski yerleştirin."
    IDS_INSERTSRC            "Kaynak diski yerleştirin."
    IDS_INSERTSRCDEST        "Kaynak ve hedef diski yerleştirin."
-   IDS_FORMATTINGDEST       "Hedef disk biçimleniyor..."
+   IDS_FORMATTINGDEST       "Hedef disk biçimlendiriliyor..."
+
    IDS_COPYDISKERR          "Disk Kopyalama Hatası"
    IDS_COPYDISKERRMSG       "Disk kopyalanamıyor."
    IDS_COPYSRCDESTINCOMPAT  "Kaynak sürücü ve hedef sürücü birbiriyle uyumsuz."
+
    IDS_PERCENTCOMP          "%%%d tamamlandı."
    IDS_CREATEROOT           "Kök dizin hazırlanıyor..."
    IDS_COPYSYSFILES         "Sistem dosyaları kopyalanıyor..."
@@ -167,63 +173,77 @@ BEGIN
    // IDS_FORMATERRMSG         "Disk biçimlendirilemiyor."
    // IDS_FORMATCURERR         "Geçerli sürücüyü biçimlendiremezsiniz."
    IDS_FORMATCOMPLETE          "Biçimlendirme tamamlandı."
-   IDS_FORMATANOTHER           "Diskteki toplam yer %ld bayt\n\nDiskteki boş yer %ld bayt\n\nBaşka bir disk biçimlemek istiyor musunuz?"
+   IDS_FORMATANOTHER           "Diskteki toplam yer %ld bayt\n\nDiskteki boş yer %ld bayt\n\nBaşka bir disk biçimlendirmek istiyor musunuz?"
+
    // IDS_SYSDISK              "Sistem Diski Hazırla"
    // IDS_SYSDISKREUSE         "%c sürücüsündeki diskete sistem dosyalarını kopyalamak istediğinizden emin misiniz?"
    // IDS_SYSDISKERR           "Sistem Diski Hatası"
    // IDS_SYSDISKNOFILES       "MS-DOS başlangıç sürücüsü sistem dosyası içermiyor veya kullanılabilir değil."
    // IDS_SYSDISKSAMEDRIVE     "Sistem dosyaları MS-DOS başlangıç sürücüsüne kopyalanamıyor."
-   // IDS_SYSDISKADDERROR      "Sistem dosyaları diske eklenemiyor.\n\nSürücüde biçimlenmiş bir disket bulunduğunu ve sürücü kapısını kapalı olduğunu denetleyiniz."
+   // IDS_SYSDISKADDERROR      "Sistem dosyaları diske eklenemiyor.\n\nSürücüde biçimlendirilmiş bir disket bulunduğunu ve sürücü kapısını kapalı olduğunu denetleyin."
+
    IDS_NETERR               "Ağ Hatası"
    IDS_NETDISCONWINERR      "Bu sürücü Windows sistem dosyalarını içermekte; bağlantı kesilemez."
-   IDS_NETDISCONOPEN        "Dosya Yöneticisi ağ sürücüsünün bağlantısını kesemiyor.\n\nBu sürücüde açık olan dosyalar var."
-   IDS_ATTRIBERR            "Dosya Yöneticisi öznitelikleri değiştiremiyor.  "
-   IDS_MAKEDIRERR           "Dosya Yöneticisi yeni dizinler oluşturamıyor.  "
+   IDS_NETDISCONOPEN        "Dosya Yöneticisi, ağ sürücüsünün bağlantısını kesemiyor.\n\nBu sürücüde açık olan dosyalar var."
+
+   IDS_ATTRIBERR            "Dosya Yöneticisi, öznitelikleri değiştiremiyor.  "
+   IDS_MAKEDIRERR           "Dosya Yöneticisi, yeni dizinler oluşturamıyor.  "
+
    IDS_LABELDISKERR         "Disk etiketlendirilemiyor.\n\nDiskin yazmaya karşı korunmuş olmadığını, ağ sürücüsü olmadığını ve etiketin geçerli olduğunu denetleyin.\
                             Etiketler ilerideki işaretleri içeremez:\n[Boşluk] * ? / \ | . , ; : + = [ ] ( ) & ^ < > "" "
    IDS_SEARCHNOMATCHES      "Eşleşen hiçbir dosya bulunamadı."
    IDS_SEARCHREFRESH        "Bu sürücünün içeriği değişti. Arama Sonuçları penceresinin güncellenmesini istiyor musunuz?"
    IDS_LABELACCESSDENIED    "Sabit diskler üzerinde bu işlemi uygulamak için bu bilgisayara bir yönetici olarak giriş yapmış olmanız gerekmektedir."
+
    IDS_DRIVETEMP            "Sürücü %c:%c"
+
    IDS_EXECERRTITLE         "Program çalıştırılamıyor."
    IDS_PRINTERRTITLE        "Dosya yazdırılamıyor."
+
    IDS_UNKNOWNMSG           "Beklenmedik hata: %d."
    IDS_NOMEMORYMSG          "Belirtilen uygulamayı başlatmak için bellek yetersiz.\n\nBir veya birkaç uygulamayı kapatıp yeniden deneyin."
-   IDS_FILENOTFOUNDMSG      "Dosya Yöneticisi dosyayı (veya bileşenlerinden birini) bulamadı.\n\nYolun ve dosya adının doğruluğunu ve gerekli kitaplıkların tümünün var olduğunu denetleyin."
+   IDS_FILENOTFOUNDMSG      "Dosya Yöneticisi, dosyayı (veya bileşenlerinden birini) bulamadı.\n\nYolun ve dosya adının doğruluğunu ve gerekli kitaplıkların tümünün var olduğunu denetleyin."
    IDS_BADPATHMSG           "Belirtilen yol geçersiz."
    // IDS_MANYOPENFILESMSG     "Çok fazla sayıda dosya kullanılıyor.\n\nBir veya birkaç uygulamayı kapatın veya CONFIG.SYS'deki FILES komutunun değerini yükseltip yeniden deneyin."
    // IDS_MULTIPLEDSMSG        "Belitilen programın birden fazla kopyası başlatılamaz."
    // IDS_OS2APPMSG            "Belirtilen uygulama bir Windows veya MS-DOS programı değil."
-   // IDS_NEWWGNDOWSMSG        "Bu uygulama Microsoft Windows'un daha yeni bir sürümünü gerektiriyor."
-   // IDS_PMODEONLYMSG         "Bu uygulama Windows'u gerektiriyor."
-   // IDS_COMPRESSEDEXE        "Bu program veya ögelerinden biri sıkıştırılmış.\n\nDosyayı kurma disketlerinden kopyalamak için, MS-DOS expand hizmet programını kullanın."
-   IDS_NOASSOCMSG           "Bu dosya bir uygulama ile ilişkilendirilmemiş.\n\nBir ilişki oluşturmak için Dosya menüsünden İlişkilendir komutunu seçin."
+   // IDS_NEWWGNDOWSMSG        "Bu uygulama, Microsoft Windows'un daha yeni bir sürümünü gerektiriyor."
+   // IDS_PMODEONLYMSG         "Bu uygulama, Windows gerektiriyor."
+   // IDS_COMPRESSEDEXE        "Bu program veya öğelerinden biri sıkıştırılmış.\n\nDosyayı kurma disketlerinden kopyalamak için, MS-DOS expand hizmet programını kullanın."
+   IDS_NOASSOCMSG           "Bu dosya, bir uygulama ile ilişkilendirilmemiş.\n\nBir ilişki oluşturmak için Dosya menüsünden İlişkilendir komutunu seçin."
    IDS_ASSOCINCOMPLETE      "Dosya Yöneticisi dosyayı açamıyor veya yazdıramıyor.\n\nBu dosyayı oluşturmada kullanılan uygulamayı başlatıp dosyayı o uygulamadan açın veya yazdırın."
    IDS_DDEFAIL              "Komut uygulamaya gönderilirken bir hata oluştu."
    IDS_INVALIDDLL           "Bu uygulamayı çalıştırmak için gerekli olan kitaplık dosyalarından biri hasar görmüş. Lütfen bu uygulamayı yeniden yükleyin."
-   IDS_SHAREERROR           "Bu dosya başka bir uygulama tarafından kullanımda."
+   IDS_SHAREERROR           "Bu dosya, başka bir uygulama tarafından kullanımda."
+
    IDS_CREATELONGDIR        "Dosya Yöneticisi '%s' dizininde oluşturulan dosyalara ulaşamayabilir.\n\nSürdürmek istiyor musunuz?"
+    IDS_CREATELONGDIRTITLE  "Dizin Oluştur"
+
    IDS_MOUSECONFIRM,        "Fare İşlemini Onayla"
    IDS_COPYMOUSECONFIRM,    "Seçili dosyaları veya dizinleri %s dizinine kopyalamak istediğinizden emin misiniz?"
    IDS_MOVEMOUSECONFIRM,    "Seçili dosyaları veya dizinleri %s dizinine taşımak istediğinizden emin misiniz?"
    IDS_EXECMOUSECONFIRM,    "%s dosyasının, %s başlatıldığında açılan ilk dosya olmasını istediğinizden emin misiniz?"
+
    IDS_WINFILE,             "Dosya Yöneticisi"
    IDS_TREETITLE,           "Dizin Ağacı"
    IDS_SEARCHTITLE,         "Arama Sonuçları: "
+
    IDS_READING              "Dizin okunuyor, lütfen bekleyin..."
    IDS_TOOMANYTITLE,        "Çok Fazla Dosya"
    IDS_OOMTITLE,            "Dosya Yöneticisi - Yetersiz Bellek"
    IDS_OOMREADINGDIRMSG,    "Dizin okunamadı. Yalnızca bir kısmı görüntülenecek."
+
    // IDS_PRINTFNF             "Yazdırılacak dosya bulunamadı. Doğru yolun ve dosya adının belirtildiğinden emin olun."
    IDS_PRINTMEMORY          "Yazdırma işlemi için bellek yeterli değil.\n\nBir veya birkaç uygulamayı kapatıp yeniden deneyin."
    IDS_PRINTDISK            "Yazdırma işlemi için diskte yeterli yer yok.\n\nGerekli olmayan bazı dosyaları silip yeniden deneyin."
    IDS_PRINTERROR           "Yazdırma işlemi sırasında hata oluştu.\n\nYazıcı ayarlarının doğruluğunu ve yazıcının seçili olduğunu denetleyin."
    IDS_PRINTONLYONE         "Birden fazla dosya yazdırılamıyor.\n\nTek bir dosya seçip yeniden deneyin."
+
    IDS_CURDIRIS,            "Geçerli Dizin: %s"
    IDS_COPY,                "Kopyala"
    IDS_RENAME,              "Ad Değiştir"
-   IDS_FORMAT,              "Disk Biçimle"
-   IDS_FORMATSELDISK,       "Biçimlenecek diski seçin."
+   IDS_FORMAT,              "Disk Biçimlendir"
+   IDS_FORMATSELDISK,       "Biçimlendirilecek diski seçin."
    // IDS_MAKESYSDISK,         "Sistem Disketi Hazırla"
    IDS_CREATINGMSG,         "Oluşturuluyor:"
    IDS_REMOVINGDIRMSG,      "Kaldırılıyor:"
@@ -237,7 +257,7 @@ BEGIN
    IDS_PRINTINGMSG,         "Yazdırılıyor: %s"
    // IDS_NOSUCHDRIVE,         "%c sürücüsü yok."
    IDS_DRIVENOTREADY,       "%c sürücüsünde disk yok.\n\nSürücüye bir disk yerleştirip yeniden deneyin."
-   IDS_UNFORMATTED,         "%c sürücüsündeki disk biçimlenmemiş.\n\nŞimdi biçimlenmesini ister misiniz?"
+   IDS_UNFORMATTED,         "%c sürücüsündeki disk biçimlendirilmemiş.\n\nŞimdi biçimlendirmek istiyor musunuz?"
    IDS_STATUSMSG,           "Toplam %d dosya (%s bayt)"
    IDS_STATUSMSG2,          "%d dosya seçili (%s bayt)"
    IDS_DRIVEFREE,           "%c: %s boş, toplam %s"
@@ -254,14 +274,14 @@ BEGIN
    IDS_COPYERROR + FUNC_SETDRIVE    "Sürücü Seçmede Hata"
    IDS_COPYERROR + FUNC_EXPAND      "Dizin Okumada Hata"
    IDS_COPYERROR + FUNC_LABEL       "Disk Etiketlemede Hata"
-   IDS_VERBS + FUNC_COPY    "Dosya Yöneticisi %s ögesini kopyalayamıyor: %s"
-   IDS_VERBS + FUNC_MOVE    "Dosya Yöneticisi %s ögesini taşıyamıyor: %s"
-   IDS_VERBS + FUNC_DELETE  "Dosya Yöneticisi %s ögesini silemiyor: %s"
-   IDS_VERBS + FUNC_RENAME  "Dosya Yöneticisi %s ögesinin adını değiştiremiyor: %s"
+   IDS_VERBS + FUNC_COPY    "Dosya Yöneticisi %s öğesini kopyalayamıyor: %s"
+   IDS_VERBS + FUNC_MOVE    "Dosya Yöneticisi %s öğesini taşıyamıyor: %s"
+   IDS_VERBS + FUNC_DELETE  "Dosya Yöneticisi %s öğesini silemiyor: %s"
+   IDS_VERBS + FUNC_RENAME  "Dosya Yöneticisi %s öğesinin adını değiştiremiyor: %s"
    IDS_ACTIONS + 1          "Dosya Yöneticisi %s dizinini oluşturamıyor: %s"
    IDS_ACTIONS + 2          "Dosya Yöneticisi %s dizinini kaldıramıyor: %s"
-   IDS_REPLACING            "Dosya Yöneticisi %s ögesini oluşturamıyor veya değiştiremiyor: %s"
-   // IDS_CREATING              "Dosya Yöneticisi %s ögesini oluşturamıyor: %s"
+   IDS_REPLACING            "Dosya Yöneticisi %s öğesini oluşturamıyor veya değiştiremiyor: %s"
+   // IDS_CREATING              "Dosya Yöneticisi %s öğesini oluşturamıyor: %s"
 
 JAPANBEGIN
     IDS_KK_COPYFROMSTR,     "コピー元(&F):"
@@ -274,18 +294,18 @@ JAPANEND
 #include "suggest_tr-TR.db"
 
     IDS_DESTFULL                "Hedef sürücüde yer yok.\n\nSürücüye yeni bir disk yerleştirin."
-    IDS_WRITEPROTECTFILE        "Bu, gizli, saltokunur veya bir sistem dosyası."
+    IDS_WRITEPROTECTFILE        "Bu; gizli, saltokunur veya bir sistem dosyası."
     IDS_COPYINGTITLE            "Kopyalanıyor..."
 
 JAPANBEGIN
     IDS_KK_COPY                 "コピー先:"
 JAPANEND
 
-    IDS_QUICKFORMATTINGTITLE    "Hızlı biçimleniyor..."
-    IDS_BUSYFORMATQUITVERIFY    "Dosya Yöneticisi şu anda bir diski biçimliyor. Dosya Yöneticisi'nden çıkmak bu işlemi iptal edecektir."
+    IDS_QUICKFORMATTINGTITLE    "Hızlı biçimlendiriliyor..."
+    IDS_BUSYFORMATQUITVERIFY    "Dosya Yöneticisi şu anda bir diski biçimlendiriyor. Dosya Yöneticisi'nden çıkmak bu işlemi iptal edecektir."
     IDS_BUSYCOPYQUITVERIFY      "Dosya Yöneticisi şu anda bir diski kopyalıyor. Dosya Yöneticisi'nden çıkmak bu işlemi iptal edecektir."
     IDS_PERCENTCOMPLETE         "Tamamlanan Yüzde"
-    IDS_FORMATSELECTDLGTITLE    "Disk Biçimle"
+    IDS_FORMATSELECTDLGTITLE    "Diski Biçimlendir"
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
     IDS_144MB                   "1%s44 MB"
@@ -326,17 +346,17 @@ JAPANEND
     IDS_FFERR_DSTIOERR          "Hedef diskte girdi/çıktı hatası."
     IDS_FFERR_SRCDSTIOERR       "Hem kaynak hem hedef diskte girdi/çıktı hatası."
     IDS_FFERR_GENIOERR          "Bir girdi/çıktı hatası oluştu."
-// IDS_FFERR_MEDIASENSE            "Bu disk %s sığasında biçimlenebilir. Sürdürülsün mü?"
-    IDS_FFERR                   "Dosya Yöneticisi diski biçimleyemiyor.\n\nDiskin sürücüde olduğundan ve yazma korumalı, hasarlı veya yanlış yoğunlukta olmadığından emin olun."
+// IDS_FFERR_MEDIASENSE            "Bu disk %s sığasında biçimlendirilebilir. Sürdürülsün mü?"
+    IDS_FFERR                   "Dosya Yöneticisi diski biçimlendiremiyor.\n\nDiskin sürücüde olduğundan ve yazma korumalı, hasarlı veya yanlış yoğunlukta olmadığından emin olun."
     IDS_FFERR_BADLABEL          "Dosya Yöneticisi diski etiketleyemiyor.\n\nBelirtilen etiket geçersiz. Etiketin aşağıdaki karakterlerden herhangi birini içermediğinden emin olun:\n\
                                 [space] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
-    IDS_FORMATCONFIRM           "Biçimleme diskteki TÜM veriyi silecektir. %c sürücüsündeki diski biçimlemek istediğinizden emin misiniz?"
-    IDS_FORMATCONFIRMTITLE      "Disk Biçimlemeyi Onayla"
-    IDS_DISKCOPYCONFIRM         "Bu işlem hedef diskteki TÜM veriyi silecektir. Sürdürmek istediğinizden emin misiniz?"
+    IDS_FORMATCONFIRM           "Biçimlendirme, diskteki TÜM veriyi silecektir. %c sürücüsündeki diski biçimlendirmek istediğinizden emin misiniz?"
+    IDS_FORMATCONFIRMTITLE      "Disk Biçimlendirmeyi Onayla"
+    IDS_DISKCOPYCONFIRM         "Bu işlem, hedef diskteki TÜM veriyi silecektir. Sürdürmek istediğinizden emin misiniz?"
     IDS_DISKCOPYCONFIRMTITLE    "Disk Kopyalamayı Onayla"
     IDS_ANDCLOSE                "&Kapat"        // goes on Selection dialog
     IDS_CLOSE                   "Kapat"         // braindead "&Change"
-    IDS_PATHNOTTHERE            "%s dizini yok.\n\nOluşturmak ister misiniz?"
+    IDS_PATHNOTTHERE            "%s dizini yok.\n\nOluşturmak istiyor musunuz?"
     IDS_PROGRAMS                "Programlar#*.exe;*.pif;*.com;*.bat#Tüm Dosyalar (*.*)#*.*#"
     IDS_MENUANDITEM             "%s - %s"
     IDS_DRIVELABEL              "Sürücü:"
@@ -400,7 +420,7 @@ JAPANEND
     IDS_NOSUCHDIR               "Dizin yok."
     IDS_BADNETNAMETITLE         "Ağ sürücüsü bağlanamıyor."
     IDS_BADNETNAME              "Ağ adı bulunamadı."
-    IDS_ALLFILES                "'Tümüne evet'; sistem, gizli, saltokunur da dahil olmak üzere tüm dosyaları etkiler."
+    IDS_ALLFILES                "'Tümüne Evet'; sistem, gizli, saltokunur da dahil olmak üzere tüm dosyaları etkiler."
     IDS_ASSOC_OPEN              "Aç"
     IDS_ASSOC_PRINT             "Yazdır"
     IDS_ADDEXTTITLE             "Uzantı Ekle"
@@ -414,9 +434,9 @@ JAPANEND
     IDS_FILETYPENULLDESCERROR   "Dosya Türü açıklaması boş olamaz. Lütfen yeni bir Dosya Türü girin."
     IDS_FILETYPEDUPDESCERROR    "Dosya Türünüz temel alınarak bir benzersiz tanımlayıcı oluşturulamıyor. Lütfen yeni bir Dosya Türü girin."
     IDS_FILETYPEDELCONFIRMTITLE "Dosya Türünü Sil"
-    IDS_FILETYPEDELCONFIRMTEXT  "Bu işlem Dosya Türünü ve tüm ilişkili uzantıları silecektir. '%s' ögesini silmek istediğinizden emin misiniz?"
+    IDS_FILETYPEDELCONFIRMTEXT  "Bu işlem, Dosya Türünü ve tüm ilişkili uzantıları silecektir. '%s' öğesini silmek istediğinizden emin misiniz?"
 #ifdef ASSOC
-    IDS_FILETYPEDELCONFIRMUSERTEXT "Bir Kişisel Dosya Türünü siliyorsunuz. Bu, Ortak Dosya Türüne döndürülecek ve tüm uzantıları olduğu gibi bırakılacaktır. '%s' ögesini eski haline döndürmek istediğinizden emin misiniz?"
+    IDS_FILETYPEDELCONFIRMUSERTEXT "Bir Kişisel Dosya Türünü siliyorsunuz. Bu, Ortak Dosya Türüne döndürülecek ve tüm uzantıları olduğu gibi bırakılacaktır. '%s' öğesini eski haline döndürmek istediğinizden emin misiniz?"
     IDS_FILETYPEUSERIZETEXT     "Bir Ortak Dosya Türünü özelleştiriyorsunuz. Dosya Yöneticisi, değişikliklerinizi bir Kişisel Dosya Türü olarak kaydedecektir. Sürdürülsün mü?"
 #endif
     IDS_FILETYPECOMMANDNULLTEXT "Dosya Türünün  en azından eylemlerinden biri için bir komutu olmalıdır. Lütgen komut alanına bir uygulama adı girin."
@@ -428,7 +448,7 @@ JAPANBEGIN
     IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
 JAPANEND
 
-    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak.  "
+    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak."
     IDS_INITUPDATEFAILTITLE     "Dosya Yöneticisi Başlatımı"
     IDS_COMPRESSDIR             "%s içindeki tüm dosyaları ve alt dizinleri de sıkıştırmak istediğinizden emin misiniz?"
     IDS_UNCOMPRESSDIR           "%s içindeki tüm dosyaların ve alt dizinlerin de sıkıştırmasını açmak istediğinizden emin misiniz?"
@@ -458,9 +478,9 @@ END
 
 STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
 BEGIN
-    MH_MYITEMS+IDM_OPEN,        "Seçili ögeyi açar"
-    MH_MYITEMS+IDM_EDIT,        "Seçili ögeyi notepad.exe kullanarak düzenler"
-    MH_MYITEMS+IDM_MOVE,        "Seçili ögeyi taşır"
+    MH_MYITEMS+IDM_OPEN,        "Seçili öğeyi açar"
+    MH_MYITEMS+IDM_EDIT,        "Seçili öğeyi notepad.exe kullanarak düzenler"
+    MH_MYITEMS+IDM_MOVE,        "Seçili öğeyi taşır"
     MH_MYITEMS+IDM_COPY,        "Dosyaları ve dizinleri kopyalar"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "Bir veya birden çok dosyayı panoya kopyalar"
 	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "Bir veya birden çok dosyayı panoya keser"
@@ -481,7 +501,7 @@ BEGIN
 
     MH_MYITEMS+IDM_DISKCOPY,    "Bir diskin içeriğini kopyalar"
     MH_MYITEMS+IDM_LABEL,       "Bir disk bölümüne etiket atar veya değiştirir"
-    MH_MYITEMS+IDM_FORMAT,      "Bir sürücüyü biçimler"
+    MH_MYITEMS+IDM_FORMAT,      "Bir sürücüyü biçimlendirir"
 //    MH_MYITEMS+IDM_SYSDISK,      "MS-DOS dosyalarını bir diskete kopyalar"
     MH_MYITEMS+IDM_CONNECT,     "Bir ağ sürücüsüne bağlanır"
     MH_MYITEMS+IDM_DISCONNECT,  "Bir ağ sürücüsünün bağlantısını keser"
@@ -526,9 +546,9 @@ BEGIN
     MH_MYITEMS+IDM_TILE,        "Pencereleri dikey olarak döşer"
     MH_MYITEMS+IDM_ARRANGE,     "Simgeleri düzenler"
     MH_MYITEMS+IDM_REFRESH,     "Bir pencerenin içeriğini günceller"
-    MH_MYITEMS+IDM_PERMISSIONS  "Seçili öge(ler) için izinler bilgisini görüntüler veya ayarlar"
-    MH_MYITEMS+IDM_AUDITING     "Seçili öge(ler) için denetim bilgisini görüntüler veya ayarlar"
-    MH_MYITEMS+IDM_OWNER        "Seçili öge(ler) için sahiplik bilgisi görüntüler veya sahipliğini alır"
+    MH_MYITEMS+IDM_PERMISSIONS  "Seçili öğe(ler) için izinler bilgisini görüntüler veya ayarlar"
+    MH_MYITEMS+IDM_AUDITING     "Seçili öğe(ler) için denetim bilgisini görüntüler veya ayarlar"
+    MH_MYITEMS+IDM_OWNER        "Seçili öğe(ler) için sahiplik bilgisi görüntüler veya sahipliğini alır"
     MH_MYITEMS+IDM_HELPINDEX,   "Dosya Yöneticisi Yardımı içeriğini görüntüler"
     MH_MYITEMS+IDM_HELPKEYS,    "Dosya Yöneticsisi Yardımı içinde bir konu arar"
     MH_MYITEMS+IDM_HELPHELP,    "Yardım kullanımı hakkında bilgi görüntüler"
