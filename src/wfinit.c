@@ -234,6 +234,7 @@ GetSettings()
    bConfirmReadOnly= GetPrivateProfileInt(szSettings, szConfirmReadOnly, bConfirmReadOnly, szTheINIFile);
    uChangeNotifyTime= GetPrivateProfileInt(szSettings, szChangeNotifyTime, uChangeNotifyTime, szTheINIFile);
    bSaveSettings   = GetPrivateProfileInt(szSettings, szSaveSettings,  bSaveSettings, szTheINIFile);
+   bScrollOnExpand = GetPrivateProfileInt(szSettings, szScrollOnExpand, bScrollOnExpand, szTheINIFile);
    weight = GetPrivateProfileInt(szSettings, szFaceWeight, 400, szTheINIFile);
 
    GetPrivateProfileString(szSettings,

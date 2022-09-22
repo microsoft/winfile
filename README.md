@@ -43,7 +43,7 @@ To see more release binaries, including of older versions, [see the releases pag
 ## History
 
 The Windows File manager was originally released with Windows 3.0 in the early 1990s.  You
-can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
+can read more about the history at https://en.wikipedia.org/wiki/Windows_File_Manager.
 
 ## What it looks like
 
@@ -109,6 +109,7 @@ normal date sorting is newest on top
 17. Symbolic Link directories/files and can be created by pressing CTRL + SHIFT during drag and drop of directories/files
 18. Hardlinks and Junctions and can be created by pressing CTRL + SHIFT + ALT during drag and drop of directories/files
 19. The delimiters for splitting words for the GotoCache can be configured via Winfile.ini[Settings]GotoCachePunctuation. The default is - _.
+20. The scroll behavior of the treeview on expand can be configured via Winfile.ini[Settings]ScrollOnExpand. The default is to scroll.
 
 You can read the code for more details.
 

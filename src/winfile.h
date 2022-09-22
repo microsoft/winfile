@@ -363,7 +363,7 @@ VOID vWaitMessage();
 VOID RedoDriveWindows(HWND);
 BOOL FmifsLoaded(VOID);
 VOID  ChangeFileSystem(DWORD dwOper, LPWSTR lpPath, LPWSTR lpTo);
-HWND  CreateDirWindow(register LPWSTR szPath, BOOL bReplaceOpen, HWND hwndActive);
+HWND  CreateDirWindow(LPWSTR szPath, BOOL bReplaceOpen, HWND hwndActive);
 HWND CreateTreeWindow(LPWSTR szPath, INT x, INT y, INT dx, INT dy, INT dxSplit);
 VOID SwitchToSafeDrive();
 DWORD ReadMoveStatus();
@@ -1161,7 +1161,8 @@ Extern BOOL bConfirmMouse    EQ( TRUE );
 Extern BOOL bConfirmFormat   EQ( TRUE );
 Extern BOOL bConfirmReadOnly EQ( TRUE );
 
-Extern BOOL bSaveSettings   EQ( TRUE );
+Extern BOOL bSaveSettings    EQ( TRUE );
+Extern BOOL bScrollOnExpand  EQ( TRUE );
 
 Extern BOOL bConnectable       EQ( FALSE );
 Extern INT  fShowSourceBitmaps EQ( 1 );
@@ -1185,6 +1186,7 @@ Extern TCHAR        szUILanguage[]          EQ( TEXT("UILanguage") );
 Extern TCHAR        szEditorPath[]          EQ( TEXT("EditorPath"));
 Extern TCHAR        szMirrorContent[]       EQ( TEXT("MirrorContent") );
 Extern TCHAR        szCachedPath[]          EQ( TEXT("CachedPath"));
+Extern TCHAR        szCachedPathIni[MAXPATHLEN];
 Extern TCHAR        szGotoCachePunctuation[] EQ(TEXT("GotoCachePunctuation"));
 Extern TCHAR        szPunctuation[MAXPATHLEN];
 
@@ -1192,6 +1194,7 @@ Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );
 Extern TCHAR        szStatusBar[]           EQ( TEXT("StatusBar") );
 Extern TCHAR        szSaveSettings[]        EQ( TEXT("Save Settings") );
+Extern TCHAR        szScrollOnExpand[]      EQ( TEXT("ScrollOnExpand"));
 
 Extern TCHAR        szConfirmDelete[]       EQ( TEXT("ConfirmDelete") );
 Extern TCHAR        szConfirmSubDel[]       EQ( TEXT("ConfirmSubDel") );
