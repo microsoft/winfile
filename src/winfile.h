@@ -1172,7 +1172,7 @@ Extern BOOL bSaveSettings    EQ( TRUE );
 Extern BOOL bScrollOnExpand  EQ( TRUE );
 
 Extern BOOL bConnectable       EQ( FALSE );
-Extern INT  fShowSourceBitmaps EQ( 1 );
+Extern INT  iShowSourceBitmaps EQ( 1 );
 Extern BOOL bFSCTimerSet       EQ( FALSE );
 
 Extern TCHAR        chFirstDrive;           // 'A' or 'a'

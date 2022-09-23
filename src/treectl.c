@@ -1507,7 +1507,7 @@ EmptyStatusAndReturn:
       StripBackslash(szPath);
 
       SetStatusText(SBT_NOBORDERS|255, SST_FORMAT|SST_RESOURCE,
-               (LPCTSTR)(DWORD_PTR)GetDragStatusText(fShowSourceBitmaps),
+               (LPCTSTR)(DWORD_PTR)GetDragStatusText(iShowSourceBitmaps),
                szPath);
       UpdateWindow(hwndStatus);
 
@@ -1728,7 +1728,7 @@ TCWP_DrawItem(
 
       // HACK: Don't draw the bitmap when moving
 
-      if (fShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected)
+      if (iShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected)
       {
             // Blt the proper folder bitmap
 
@@ -2798,7 +2798,7 @@ UpdateSelection:
       DragObject(hwndFrame, hwnd, (UINT)DOF_DIRECTORY, (ULONG_PTR)szPath, NULL);
 
       hwndDragging = NULL;
-      fShowSourceBitmaps = TRUE;
+      iShowSourceBitmaps = TRUE;
       InvalidateRect(hwndLB, NULL, FALSE);
 
       return 2;
@@ -2855,10 +2855,10 @@ UpdateSelection:
       //
       // Is it a new one?
       //
-      if (iSel == iSelHighlight && iOldShowSourceBitmaps == fShowSourceBitmaps)
+      if (iSel == iSelHighlight && iOldShowSourceBitmaps == iShowSourceBitmaps)
          break;
 
-      iOldShowSourceBitmaps = fShowSourceBitmaps;
+      iOldShowSourceBitmaps = iShowSourceBitmaps;
 
       //
       // Yup, un-select the old item.
@@ -2913,10 +2913,10 @@ UpdateSelection:
          iOperation = DROP_COPY;
       }
 
-      if (iOperation != fShowSourceBitmaps) {
+      if (iOperation != iShowSourceBitmaps) {
          RECT  rc;
 
-         fShowSourceBitmaps = iOperation;
+         iShowSourceBitmaps = iOperation;
 
          iSel = (WORD)SendMessage(hwndLB, LB_GETCURSEL, 0, 0L);
 
@@ -3043,12 +3043,12 @@ UpdateSelection:
       //              if ((HWND)(lpds->hwndSource) == hwnd)
       //                 CheckEsc(pFrom);
 
-      // fShowSourceBitmaps is either
+      // iShowSourceBitmaps is either
       // 1 == TRUE  == DROP_COPY
       // 0 == FALSE == DROP_MOVE
       // 2 ==       == DROP_LINK
       // 4 ==       == DROP_JUNC
-      DMMoveCopyHelper(pFrom, szPath, fShowSourceBitmaps);
+      DMMoveCopyHelper(pFrom, szPath, iShowSourceBitmaps);
 
       RectTreeItem(hwndLB, nIndex, FALSE);
       return TRUE;

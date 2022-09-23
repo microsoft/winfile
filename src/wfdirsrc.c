@@ -24,7 +24,7 @@ int GetDragStatusText(int iOperation);
 HCURSOR
 GetMoveCopyCursor()
 {
-   switch (fShowSourceBitmaps) {
+   switch (iShowSourceBitmaps) {
    case DROP_COPY:
       return LoadCursor(hAppInstance, (LPTSTR)MAKEINTRESOURCE(iCurDrag | 0b0001));
 
@@ -168,10 +168,10 @@ ShowItemBitmaps(HWND hwndLB, INT iShow)
    INT dx;
    LPINT lpSelItems;
 
-   if (iShow == fShowSourceBitmaps)
+   if (iShow == iShowSourceBitmaps)
       return;
 
-   fShowSourceBitmaps = iShow;
+   iShowSourceBitmaps = iShow;
 
    dx = dxFolder + dyBorderx2 + dyBorder;
 
@@ -472,7 +472,7 @@ DSRectItem(
 
          SetStatusText(SBT_NOBORDERS|255,
                        SST_RESOURCE|SST_FORMAT,
-                       (LPWSTR)(DWORD_PTR)(GetDragStatusText(fShowSourceBitmaps)),
+                       (LPWSTR)(DWORD_PTR)(GetDragStatusText(iShowSourceBitmaps)),
                        szTemp);
 
          UpdateWindow(hwndStatus);
@@ -532,7 +532,7 @@ ClearStatus:
 
       SetStatusText(SBT_NOBORDERS|255,
                     SST_FORMAT | SST_RESOURCE,
-                    (LPWSTR)(DWORD_PTR)(GetDragStatusText(fShowSourceBitmaps)),
+                    (LPWSTR)(DWORD_PTR)(GetDragStatusText(iShowSourceBitmaps)),
                     szTemp);
 
       UpdateWindow(hwndStatus);
@@ -569,7 +569,7 @@ ClearStatus:
                     SST_FORMAT | SST_RESOURCE,
                     (LPWSTR)(DWORD_PTR)(pIsProgram ?
                        IDS_DRAG_EXECUTING :
-                       (GetDragStatusText(fShowSourceBitmaps))),
+                       (GetDragStatusText(iShowSourceBitmaps))),
                    pszFile);
 
       UpdateWindow(hwndStatus);
@@ -1055,7 +1055,7 @@ DSDropObject(
    // no-op the request.
    //
    if (hwndHolder == lpds->hwndSource &&
-      fShowSourceBitmaps == FALSE &&
+      iShowSourceBitmaps == FALSE &&
       ((dwSelSink == (DWORD)-1) || SendMessage(hwndLB, LB_GETSEL, dwSelSink, 0L))) {
 
       return TRUE;
@@ -1223,7 +1223,7 @@ NormalMoveCopy:
    //
    // Make sure that we don't move into same dir.
    //
-   if (fShowSourceBitmaps == FALSE &&
+   if (iShowSourceBitmaps == FALSE &&
       GetWindowLongPtr(hwndHolder, GWL_LISTPARMS) == SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L)) {
 
       return TRUE;
@@ -1244,12 +1244,12 @@ DirMoveCopy:
    //
    CheckEsc(szTemp);
 
-   // fShowSourceBitmaps is either
+   // iShowSourceBitmaps is either
    // 1 == TRUE  == DROP_COPY
    // 0 == FALSE == DROP_MOVE
    // 2 ==       == DROP_LINK
    // 3 ==       == DROP_HARD
-   ret = DMMoveCopyHelper(pFrom, szTemp, fShowSourceBitmaps);
+   ret = DMMoveCopyHelper(pFrom, szTemp, iShowSourceBitmaps);
 
    DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
 
@@ -1257,7 +1257,7 @@ DirMoveCopy:
       return TRUE;
 
 #if 0
-   if (!fShowSourceBitmaps)
+   if (!iShowSourceBitmaps)
       SendMessage(lpds->hwndSource, WM_FSC, FSC_REFRESH, 0L);
 
    //

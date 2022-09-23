@@ -178,7 +178,7 @@ DrawItem(
       }
    }
 
-   if (fShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected) {
+   if (iShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected) {
 
          HICON hIcon = DocGetIcon(lpxdta->pDocB);
 
@@ -737,10 +737,10 @@ DirWndProc(
 
          // Is it a new one?
 
-         if (iSel == iSelHighlight && iOldShowSourceBitmaps == fShowSourceBitmaps)
+         if (iSel == iSelHighlight && iOldShowSourceBitmaps == iShowSourceBitmaps)
             break;
 
-         iOldShowSourceBitmaps = fShowSourceBitmaps;
+         iOldShowSourceBitmaps = iShowSourceBitmaps;
 
          // Yup, un-select the old item.
          DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);

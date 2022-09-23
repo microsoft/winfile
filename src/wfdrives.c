@@ -490,7 +490,7 @@ UseCurDir:
     pFrom = (LPTSTR)lpds->dwData;
 
     CheckEsc(szPath);
-    DMMoveCopyHelper(pFrom, szPath, fShowSourceBitmaps);
+    DMMoveCopyHelper(pFrom, szPath, iShowSourceBitmaps);
 
     if (!bIconic)
         RectDrive(driveInd, FALSE);
@@ -851,8 +851,8 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
 // Handle if user hits control while dragging to drive
 
-         if (nDrive == nDriveDragging && iOldShowSourceBitmaps != fShowSourceBitmaps) {
-            iOldShowSourceBitmaps = fShowSourceBitmaps;
+         if (nDrive == nDriveDragging && iOldShowSourceBitmaps != iShowSourceBitmaps) {
+            iOldShowSourceBitmaps = iShowSourceBitmaps;
             RectDrive(nDrive, TRUE);
             nDriveDragging = -1;
          }
@@ -887,7 +887,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
          }
 
          SetStatusText(SBT_NOBORDERS|255, SST_FORMAT|SST_RESOURCE,
-            (LPTSTR)(DWORD_PTR)(GetDragStatusText(fShowSourceBitmaps)),
+            (LPTSTR)(DWORD_PTR)(GetDragStatusText(iShowSourceBitmaps)),
             szDir);
          UpdateWindow(hwndStatus);
 
@@ -915,7 +915,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
              }
 
          SetStatusText(SBT_NOBORDERS|255, SST_RESOURCE|SST_FORMAT,
-            (LPTSTR)(DWORD_PTR)(GetDragStatusText(fShowSourceBitmaps)),
+            (LPTSTR)(DWORD_PTR)(GetDragStatusText(iShowSourceBitmaps)),
             szDir);
          UpdateWindow(hwndStatus);
 
