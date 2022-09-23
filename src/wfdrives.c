@@ -841,7 +841,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
       case WM_DRAGMOVE:
       {
-         static INT fOldShowSourceBitmaps = 0;
+         static INT iOldShowSourceBitmaps = 0;
 
          LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
@@ -851,8 +851,8 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
 // Handle if user hits control while dragging to drive
 
-         if (nDrive == nDriveDragging && fOldShowSourceBitmaps != fShowSourceBitmaps) {
-            fOldShowSourceBitmaps = fShowSourceBitmaps;
+         if (nDrive == nDriveDragging && iOldShowSourceBitmaps != fShowSourceBitmaps) {
+            iOldShowSourceBitmaps = fShowSourceBitmaps;
             RectDrive(nDrive, TRUE);
             nDriveDragging = -1;
          }

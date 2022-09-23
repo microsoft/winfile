@@ -2832,7 +2832,7 @@ UpdateSelection:
 
    case WM_DRAGMOVE:
    {
-      static INT fOldShowSourceBitmaps = 0;
+      static INT iOldShowSourceBitmaps = 0;
 
       //
       // WM_DRAGMOVE is sent when two consecutive TRUE QUERYDROPOBJECT
@@ -2855,10 +2855,10 @@ UpdateSelection:
       //
       // Is it a new one?
       //
-      if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
+      if (iSel == iSelHighlight && iOldShowSourceBitmaps == fShowSourceBitmaps)
          break;
 
-      fOldShowSourceBitmaps = fShowSourceBitmaps;
+      iOldShowSourceBitmaps = fShowSourceBitmaps;
 
       //
       // Yup, un-select the old item.

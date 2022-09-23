@@ -39,10 +39,6 @@ VOID DialogEnterFileStuff(register HWND hwnd);
 DWORD SafeFileRemove(LPTSTR szFileOEM);
 BOOL IsWindowsFile(LPTSTR szFileOEM);
 
-DWORD WFHardLink(LPTSTR pszFrom, LPTSTR pszTo);
-DWORD WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags);
-DWORD WFJunction(LPCWSTR LinkDirectory, LPCWSTR LinkTarget);
-
 INT_PTR CALLBACK ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
 
