@@ -243,6 +243,13 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                           SendMessage(hwndMDIClient, WM_SETREDRAW, TRUE, 0);
                           RedrawWindow(hwndMDIClient, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN);
+                      } else {
+                        // Show search window immediatley
+                        SendMessage(hwndSearch, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)SearchInfo.szSearch);
+                        ShowWindow(hwndSearch,
+                          GetWindowLongPtr(hwndMDIChild, GWL_STYLE) & WS_MAXIMIZE ?
+                          SW_SHOWMAXIMIZED :
+                          SW_SHOWNORMAL);
                       }
                   }
                   break;
