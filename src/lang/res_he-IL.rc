@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "&חלון"
     BEGIN
-    MENUITEM    "ח&לון חדש",          IDM_NEWWINDOW
+    MENUITEM    "ח&לון חדש\tCtrl+Shift Enter",          IDM_NEWWINDOW
     MENUITEM    "&מדורג\tShift+F5",   IDM_CASCADE
     MENUITEM    "פרוש &אופקית",   IDM_TILEHORIZONTALLY
     MENUITEM    "&פרוש אנכית\tShift+F4",      IDM_TILE

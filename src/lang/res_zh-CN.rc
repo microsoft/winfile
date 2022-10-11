@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "窗口(&W)"
     BEGIN
-    MENUITEM    "新建窗口(&N)",          IDM_NEWWINDOW
+    MENUITEM    "新建窗口(&N)\tCtrl+Shift Enter",          IDM_NEWWINDOW
     MENUITEM    "层叠(&C)\tShift+F5",   IDM_CASCADE
     MENUITEM    "水平平铺(&H)",   IDM_TILEHORIZONTALLY
     MENUITEM    "垂直平铺(&T)\tShift+F4",      IDM_TILE

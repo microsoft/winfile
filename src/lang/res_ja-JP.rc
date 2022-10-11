@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "ウィンドウ(&W)"
     BEGIN
-    MENUITEM    "新しいウィンドウ(&N)",          IDM_NEWWINDOW
+    MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",          IDM_NEWWINDOW
     MENUITEM    "縦に重ねる(&C)\tShift+F5",   IDM_CASCADE
     MENUITEM    "横に並べる(&H)",   IDM_TILEHORIZONTALLY
     MENUITEM    "縦に並べる(&T)\tShift+F4",      IDM_TILE

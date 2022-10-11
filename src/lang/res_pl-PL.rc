@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "O&kno"
     BEGIN
-    MENUITEM    "&Nowe okno",                       IDM_NEWWINDOW
+    MENUITEM    "&Nowe okno\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&Kaskada\tShift+F5",               IDM_CASCADE
     MENUITEM    "&Sąsiadująco w poziomie",          IDM_TILEHORIZONTALLY
     MENUITEM    "Sąsia&dująco w pionie\tShift+F4",  IDM_TILE
