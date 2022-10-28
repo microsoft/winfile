@@ -187,7 +187,7 @@ static HRESULT StreamToFile(IStream *stream, TCHAR *szFile)
     HRESULT hr;
 	HANDLE hFile;
 
-    hFile = CreateFile( szFile,
+    hFile = WFWowCreateFile( szFile,
           FILE_READ_DATA | FILE_WRITE_DATA,
           FILE_SHARE_READ | FILE_SHARE_WRITE,
           NULL,
@@ -210,7 +210,7 @@ static HRESULT StreamToFile(IStream *stream, TCHAR *szFile)
         } while (S_OK == hr && bytes_written != 0);
         CloseHandle(hFile);
 		if (FAILED(hr))
-			DeleteFile(szFile);
+			WFWowDeleteFile(szFile);
 		else
 			hr = S_OK;
     }

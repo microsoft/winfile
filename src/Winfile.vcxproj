@@ -404,6 +404,7 @@
     <ClCompile Include="wfsearch.c" />
     <ClCompile Include="wftree.c" />
     <ClCompile Include="wfutil.c" />
+    <ClCompile Include="wfwow.c" />
     <ClCompile Include="winfile.c" />
     <ClCompile Include="wnetcaps.c" />
   </ItemGroup>

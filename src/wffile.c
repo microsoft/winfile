@@ -121,8 +121,8 @@ DWORD MKDir(
    DWORD dwErr = ERROR_SUCCESS;
 
    if ((pSrc && *pSrc) ?
-         CreateDirectoryEx(pSrc, pName, NULL) :
-         CreateDirectory(pName, NULL)) {
+         WFWowCreateDirectoryEx(pSrc, pName, NULL) :
+         WFWowCreateDirectory(pName, NULL)) {
       ChangeFileSystem(FSC_MKDIR, pName, NULL);
    } else {
       dwErr = GetLastError();
@@ -149,7 +149,7 @@ DWORD RMDir(
 {
    DWORD dwErr = 0;
 
-   if (RemoveDirectory(pName))
+   if (WFWowRemoveDirectory(pName))
    {
       ChangeFileSystem(FSC_RMDIR, pName, NULL);
    }
@@ -182,7 +182,7 @@ BOOL WFSetAttr(
    //
    dwAttr = dwAttr & ~(ATTR_COMPRESSED | ATTR_ENCRYPTED);
 
-   bRet = SetFileAttributes(lpFile, dwAttr);
+   bRet = WFWowSetFileAttributes(lpFile, dwAttr);
 
    if (bRet)
    {
@@ -744,7 +744,7 @@ BOOL WFCheckCompress(
     //
     //  Get the file attributes.
     //
-    dwAttribs = GetFileAttributes(szNameSpec);
+    dwAttribs = WFWowGetFileAttributes(szNameSpec);
 
     //
     //  Determine if ATTR_COMPRESSED is changing state.
@@ -1054,8 +1054,8 @@ BOOL CompressFile(
     //
     FileSize.LowPart = FindData->nFileSizeLow;
     FileSize.HighPart = FindData->nFileSizeHigh;
-    CompressedSize.LowPart = GetCompressedFileSize( FileSpec,
-                                                    &(CompressedSize.HighPart) );
+    CompressedSize.LowPart = WFWowGetCompressedFileSize( FileSpec,
+                                                         &(CompressedSize.HighPart) );
 
     //
     //  Increment the running total.
@@ -1187,7 +1187,7 @@ DoCompressError:
     //
     lstrcpy(DirectorySpecEnd, FileSpec);
 
-    if ((FindHandle = FindFirstFile(DirectorySpec, &FindData)) != INVALID_HANDLE_VALUE)
+    if ((FindHandle = WFWowFindFirstFile(DirectorySpec, &FindData)) != INVALID_HANDLE_VALUE)
     {
         do
         {
@@ -1232,7 +1232,7 @@ DoCompressError:
                 //
                 lstrcpy(DirectorySpecEnd, FindData.cFileName);
 
-                if (GetFileAttributes(DirectorySpec) & ATTR_COMPRESSED)
+                if (WFWowGetFileAttributes(DirectorySpec) & ATTR_COMPRESSED)
                 {
                     //
                     //  Already compressed, so just get the next file.
@@ -1294,7 +1294,7 @@ CompressFileError:
                 }
             }
 
-        } while (FindNextFile(FindHandle, &FindData));
+        } while (WFWowFindNextFile(FindHandle, &FindData));
 
         FindClose(FindHandle);
 
@@ -1312,7 +1312,7 @@ CompressFileError:
         //
         lstrcpy(DirectorySpecEnd, SZ_STAR);
 
-        if ((FindHandle = FindFirstFile(DirectorySpec, &FindData)) != INVALID_HANDLE_VALUE)
+        if ((FindHandle = WFWowFindFirstFile(DirectorySpec, &FindData)) != INVALID_HANDLE_VALUE)
         {
             do
             {
@@ -1344,7 +1344,7 @@ CompressFileError:
                     }
                 }
 
-            } while (FindNextFile(FindHandle, &FindData));
+            } while (WFWowFindNextFile(FindHandle, &FindData));
 
             FindClose(FindHandle);
         }
@@ -1513,7 +1513,7 @@ DoUncompressError:
     //
     lstrcpy(DirectorySpecEnd, FileSpec);
 
-    if ((FindHandle = FindFirstFile(DirectorySpec, &FindData)) != INVALID_HANDLE_VALUE)
+    if ((FindHandle = WFWowFindFirstFile(DirectorySpec, &FindData)) != INVALID_HANDLE_VALUE)
     {
         do
         {
@@ -1541,7 +1541,7 @@ DoUncompressError:
                 //
                 lstrcpy(DirectorySpecEnd, FindData.cFileName);
 
-                if (!(GetFileAttributes(DirectorySpec) & ATTR_COMPRESSED))
+                if (!(WFWowGetFileAttributes(DirectorySpec) & ATTR_COMPRESSED))
                 {
                     //
                     //  Already uncompressed, so get the next file.
@@ -1603,7 +1603,7 @@ UncompressFileError:
                 }
             }
 
-        } while (FindNextFile(FindHandle, &FindData));
+        } while (WFWowFindNextFile(FindHandle, &FindData));
 
         FindClose(FindHandle);
 
@@ -1621,7 +1621,7 @@ UncompressFileError:
         //
         lstrcpy(DirectorySpecEnd, SZ_STAR);
 
-        if ((FindHandle = FindFirstFile(DirectorySpec, &FindData)) != INVALID_HANDLE_VALUE)
+        if ((FindHandle = WFWowFindFirstFile(DirectorySpec, &FindData)) != INVALID_HANDLE_VALUE)
         {
             do
             {
@@ -1653,7 +1653,7 @@ UncompressFileError:
                     }
                 }
 
-            } while (FindNextFile(FindHandle, &FindData));
+            } while (WFWowFindNextFile(FindHandle, &FindData));
 
             FindClose(FindHandle);
         }
@@ -1900,13 +1900,13 @@ BOOL OpenFileForCompress(
     //
     //  Try to open the file - READ_DATA | WRITE_DATA.
     //
-    if ((*phFile = CreateFile( szFile,
-                               FILE_READ_DATA | FILE_WRITE_DATA,
-                               FILE_SHARE_READ | FILE_SHARE_WRITE,
-                               NULL,
-                               OPEN_EXISTING,
-                               FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_SEQUENTIAL_SCAN,
-                               NULL )) != INVALID_HANDLE_VALUE)
+    if ((*phFile = WFWowCreateFile( szFile,
+                                    FILE_READ_DATA | FILE_WRITE_DATA,
+                                    FILE_SHARE_READ | FILE_SHARE_WRITE,
+                                    NULL,
+                                    OPEN_EXISTING,
+                                    FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_SEQUENTIAL_SCAN,
+                                    NULL )) != INVALID_HANDLE_VALUE)
     {
         //
         //  Successfully opened the file.
@@ -1922,13 +1922,13 @@ BOOL OpenFileForCompress(
     //
     //  Try to open the file - READ_ATTRIBUTES | WRITE_ATTRIBUTES.
     //
-    if ((hAttr = CreateFile( szFile,
-                             FILE_READ_ATTRIBUTES | FILE_WRITE_ATTRIBUTES,
-                             FILE_SHARE_READ | FILE_SHARE_WRITE,
-                             NULL,
-                             OPEN_EXISTING,
-                             FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_SEQUENTIAL_SCAN,
-                             NULL )) == INVALID_HANDLE_VALUE)
+    if ((hAttr = WFWowCreateFile( szFile,
+                                  FILE_READ_ATTRIBUTES | FILE_WRITE_ATTRIBUTES,
+                                  FILE_SHARE_READ | FILE_SHARE_WRITE,
+                                  NULL,
+                                  OPEN_EXISTING,
+                                  FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_SEQUENTIAL_SCAN,
+                                  NULL )) == INVALID_HANDLE_VALUE)
     {
         return (FALSE);
     }
@@ -1951,7 +1951,7 @@ BOOL OpenFileForCompress(
     //  Turn OFF the READONLY attribute.
     //
     fi.dwFileAttributes &= ~FILE_ATTRIBUTE_READONLY;
-    if (!SetFileAttributes(szFile, fi.dwFileAttributes))
+    if (!WFWowSetFileAttributes(szFile, fi.dwFileAttributes))
     {
         CloseHandle(hAttr);
         return (FALSE);
@@ -1960,13 +1960,13 @@ BOOL OpenFileForCompress(
     //
     //  Try again to open the file - READ_DATA | WRITE_DATA.
     //
-    *phFile = CreateFile( szFile,
-                          FILE_READ_DATA | FILE_WRITE_DATA,
-                          FILE_SHARE_READ | FILE_SHARE_WRITE,
-                          NULL,
-                          OPEN_EXISTING,
-                          FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_SEQUENTIAL_SCAN,
-                          NULL );
+    *phFile = WFWowCreateFile( szFile,
+                               FILE_READ_DATA | FILE_WRITE_DATA,
+                               FILE_SHARE_READ | FILE_SHARE_WRITE,
+                               NULL,
+                               OPEN_EXISTING,
+                               FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_SEQUENTIAL_SCAN,
+                               NULL );
 
     //
     //  Close the file handle opened for READ_ATTRIBUTE | WRITE_ATTRIBUTE.
@@ -1986,7 +1986,7 @@ BOOL OpenFileForCompress(
     //  Turn the READONLY attribute back ON.
     //
     fi.dwFileAttributes |= FILE_ATTRIBUTE_READONLY;
-    if (!SetFileAttributes(szFile, fi.dwFileAttributes))
+    if (!WFWowSetFileAttributes(szFile, fi.dwFileAttributes))
     {
         CloseHandle(*phFile);
         *phFile = INVALID_HANDLE_VALUE;
