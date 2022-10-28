@@ -221,6 +221,7 @@ BEGIN
 
    IDS_MOUSECONFIRM,        "Fare İşlemini Onayla"
    IDS_COPYMOUSECONFIRM,    "Seçili dosyaları veya dizinleri %s dizinine kopyalamak istediğinizden emin misiniz?"
+   IDS_LINKMOUSECONFIRM,    "Seçilen dosyaları veya dizinleri %s'ye bağlamak istediğinizden emin misiniz? %s?"
    IDS_MOVEMOUSECONFIRM,    "Seçili dosyaları veya dizinleri %s dizinine taşımak istediğinizden emin misiniz?"
    IDS_EXECMOUSECONFIRM,    "%s dosyasının, %s başlatıldığında açılan ilk dosya olmasını istediğinizden emin misiniz?"
 
@@ -267,6 +268,7 @@ BEGIN
    IDS_BYTES,               "%ld bayt"
    IDS_SBYTES,              "%s bayt"
    IDS_SELECTEDFILES,       "seçili dosya"
+
    IDS_COPYERROR + FUNC_COPY        "Dosya Kopyalamada Hata"
    IDS_COPYERROR + FUNC_MOVE        "Dosya Taşımada Hata"
    IDS_COPYERROR + FUNC_DELETE      "Dosya Silmede Hata"
@@ -383,6 +385,7 @@ JAPANEND
     IDS_DRIVE_COMPRESSED        " - SIKIŞTIRILMIŞ"
     IDS_DRAG_COPYING            "Dosyalar %s konumuna kopyalanıyor"
     IDS_DRAG_MOVING             "Dosyalar %s konumuna taşınıyor"
+    IDS_DRAG_LINKING            "Dosyalar %s 'e bağlanıyor"
     IDS_DRAG_EXECUTING          "Dosyalar %s ile çalıştırılıyor"
     IDS_ORDERB                  "%s bayt"
     IDS_ORDERKB                 "%sKB"
@@ -448,7 +451,7 @@ JAPANBEGIN
     IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
 JAPANEND
 
-    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak."
+    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak.  "
     IDS_INITUPDATEFAILTITLE     "Dosya Yöneticisi Başlatımı"
     IDS_COMPRESSDIR             "%s içindeki tüm dosyaları ve alt dizinleri de sıkıştırmak istediğinizden emin misiniz?"
     IDS_UNCOMPRESSDIR           "%s içindeki tüm dosyaların ve alt dizinlerin de sıkıştırmasını açmak istediğinizden emin misiniz?"

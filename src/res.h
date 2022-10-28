@@ -36,9 +36,25 @@
 // These should not be used in the move/copy code;
 // only for IsTheDiskReallyThere
 //
-#define FUNC_SETDRIVE       0x0005
+#define FUNC_SETDRIVE   0x0005
 #define FUNC_EXPAND     0x0006
 #define FUNC_LABEL      0x0007
+
+// 
+// Needed for reparse point creation 
+//
+#define FUNC_LINK       0x0008
+#define FUNC_HARD       0x0009
+#define FUNC_JUNC       0x000A
+
+//
+// Operations received during droping on a sink
+//
+#define DROP_MOVE 0x00
+#define DROP_COPY 0x01
+#define DROP_LINK 0x02
+#define DROP_HARD 0x03
+#define DROP_JUNC 0x04
 
 
 /* This is for the menuhelp messages.  Pretty much all ID's after this should
@@ -211,10 +227,14 @@
 #define WINDOWSICON         203
 #define TREEDIRICON         204
 
-#define SINGLEMOVECURSOR    300 // move is even
-#define MULTMOVECURSOR      302
-#define SINGLECOPYCURSOR    301 // copy is odd
-#define MULTCOPYCURSOR      303
+#define SINGLEMOVECURSOR    288 // move is even == bit 0
+#define SINGLECOPYCURSOR    289 // copy is odd == bit 0
+#define MULTMOVECURSOR      290 // multi == bit 1
+#define MULTCOPYCURSOR      291
+#define SINGLELINKCURSOR    292 // link == bit 2
+#define MULTLINKCURSOR      294
+#define SINGLEHARDCURSOR    296 // hard == bit 3
+#define MULTHARDCURSOR      298
 
 #define APPCURSOR           300
 #define DIRCURSOR           301
@@ -291,7 +311,7 @@
 #define IDS_MOVEMOUSECONFIRM    122
 #define IDS_EXECMOUSECONFIRM    123
 #define IDS_WINFILE         124
-//#define IDS_ONLYONE         125
+#define IDS_LINKMOUSECONFIRM    125
 #define IDS_TREETITLE       126
 #define IDS_SEARCHTITLE     127
 //#define IDS_NOFILESTITLE    130
@@ -338,7 +358,6 @@
 #define IDS_DRIVENOTREADY   188
 #define IDS_UNFORMATTED     189
 
-//#define IDS_CANTPRINTTITLE  190
 //#define IDS_PRINTFNF        191
 #define IDS_PRINTDISK       192
 #define IDS_PRINTMEMORY     193
@@ -422,6 +441,7 @@
 
 #define IDS_DRAG_COPYING        263
 #define IDS_DRAG_MOVING         264
+#define IDS_DRAG_LINKING        190
 #define IDS_DRAG_EXECUTING      265
 
 #define IDS_ORDERB      266
@@ -583,10 +603,10 @@
 // TODO: there should be NUMEXTRACOMMANDS strings above; see usage in tbar.c in LoadDesc().
 
 #define IDS_COPYERROR       1000
-#define IDS_VERBS           1010
-#define IDS_ACTIONS         1020
-#define IDS_REPLACING       1030
-#define IDS_CREATING        1031
+#define IDS_VERBS           1020
+#define IDS_ACTIONS         1040
+#define IDS_REPLACING       1060
+#define IDS_CREATING        1061
 
 //#define IDS_REASONS       1040    // error codes strings (range += 255)
 

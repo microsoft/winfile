@@ -178,7 +178,7 @@ DrawItem(
       }
    }
 
-   if (fShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected) {
+   if (iShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected) {
 
          HICON hIcon = DocGetIcon(lpxdta->pDocB);
 
@@ -720,7 +720,7 @@ DirWndProc(
    case WM_DRAGMOVE:
 
       {
-         static BOOL fOldShowSourceBitmaps = 0;
+         static INT iOldShowSourceBitmaps = 0;
 
          // WM_DRAGMOVE is sent to a sink as the object is being dragged
          // within it.
@@ -730,17 +730,17 @@ DirWndProc(
 
          // DRAGMOVE is used to move our selection rectangle among sub-items.
 
-#define lpds ((LPDROPSTRUCT)lParam)
+         LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
          // Get the subitem we are over.
          iSel = lpds->dwControlData;
 
          // Is it a new one?
 
-         if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
+         if (iSel == iSelHighlight && iOldShowSourceBitmaps == iShowSourceBitmaps)
             break;
 
-         fOldShowSourceBitmaps = fShowSourceBitmaps;
+         iOldShowSourceBitmaps = iShowSourceBitmaps;
 
          // Yup, un-select the old item.
          DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
@@ -749,8 +749,6 @@ DirWndProc(
          iSelHighlight = iSel;
          DSRectItem(hwndLB, iSel, TRUE, FALSE);
          break;
-
-#undef lpds
       }
 
    case WM_DRAWITEM:

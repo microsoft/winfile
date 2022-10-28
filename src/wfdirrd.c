@@ -50,7 +50,6 @@ LPXDTALINK CreateDTABlockWorker(HWND hwnd, HWND hwndDir);
 LPXDTALINK StealDTABlock(HWND hwndCur, LPWSTR pPath, DWORD dwAttribs);
 BOOL IsNetDir(LPWSTR pPath, LPWSTR pName);
 VOID DirReadAbort(HWND hwnd, LPXDTALINK lpStart, EDIRABORT eDirAbort);
-DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPWSTR szDest, DWORD cwcDest);
 LONG WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
 
 BOOL
@@ -1133,97 +1132,6 @@ IsNetDir(LPWSTR pPath, LPWSTR pName)
 
    aDriveInfo[drive].bShareChkTried = TRUE;
    return dwType;
-}
-
-typedef struct _REPARSE_DATA_BUFFER {
-  ULONG  ReparseTag;
-  USHORT  ReparseDataLength;
-  USHORT  Reserved;
-  union {
-    struct {
-      USHORT  SubstituteNameOffset;
-      USHORT  SubstituteNameLength;
-      USHORT  PrintNameOffset;
-      USHORT  PrintNameLength;
-      ULONG   Flags; // it seems that the docu is missing this entry (at least 2008-03-07)
-      WCHAR  PathBuffer[1];
-      } SymbolicLinkReparseBuffer;
-    struct {
-      USHORT  SubstituteNameOffset;
-      USHORT  SubstituteNameLength;
-      USHORT  PrintNameOffset;
-      USHORT  PrintNameLength;
-      WCHAR  PathBuffer[1];
-      } MountPointReparseBuffer;
-    struct {
-      UCHAR  DataBuffer[1];
-    } GenericReparseBuffer;
-  };
-} REPARSE_DATA_BUFFER, *PREPARSE_DATA_BUFFER;
-
-DWORD DecodeReparsePoint(LPCWSTR szFullPath, LPWSTR szDest, DWORD cwcDest)
-{
-	HANDLE hFile;
-	DWORD dwBufSize = MAXIMUM_REPARSE_DATA_BUFFER_SIZE;
-	REPARSE_DATA_BUFFER* rdata;
-	DWORD dwRPLen, cwcLink = 0;
-	DWORD reparseTag;
-	BOOL bRP;
-
-	hFile = CreateFile(szFullPath, FILE_READ_EA, FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, NULL, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT, NULL);
-	if (hFile == INVALID_HANDLE_VALUE)
-		return IO_REPARSE_TAG_RESERVED_ZERO;
-		
-	// Allocate the reparse data structure
-	rdata = (REPARSE_DATA_BUFFER*)LocalAlloc(LMEM_FIXED, dwBufSize);
-	
-	// Query the reparse data
-	bRP = DeviceIoControl(hFile, FSCTL_GET_REPARSE_POINT, NULL, 0, rdata, dwBufSize, &dwRPLen, NULL);
-
-	CloseHandle(hFile);
-
-	if (!bRP)
-	{
-		LocalFree(rdata);
-		return IO_REPARSE_TAG_RESERVED_ZERO;
-	}
-
-	reparseTag = rdata->ReparseTag;
-
-	if (IsReparseTagMicrosoft(rdata->ReparseTag) && 
-		(rdata->ReparseTag == IO_REPARSE_TAG_MOUNT_POINT || rdata->ReparseTag == IO_REPARSE_TAG_SYMLINK)
-		)		
-	{
-		cwcLink = rdata->SymbolicLinkReparseBuffer.SubstituteNameLength / sizeof(WCHAR);
-        // NOTE: cwcLink does not include any '\0' termination character
-		if (cwcLink < cwcDest)
-		{
-			LPWSTR szT = &rdata->SymbolicLinkReparseBuffer.PathBuffer[rdata->SymbolicLinkReparseBuffer.SubstituteNameOffset / sizeof(WCHAR)];
-         
-			// Handle ?\ prefix
-			if (szT[0] == '?' && szT[1] == '\\')
-			{
-				szT += 2;
-				cwcLink -= 2;
-			}
-			else
-				// Handle \??\ prefix
-				if (szT[0] == '\\' && szT[1] == '?' && szT[2] == '?' && szT[3] == '\\')
-				{
-					szT += 4;
-					cwcLink -= 4;
-				}
-			wcsncpy_s(szDest, MAXPATHLEN, szT, cwcLink);
-			szDest[cwcLink] = 0;
-		}
-		else
-		{
-			lstrcpy(szDest, L"<symbol link reference too long>");
-		}
-	}
-
-	LocalFree(rdata);
-	return reparseTag;
 }
 
 // RegGetValue isn't available on Windows XP

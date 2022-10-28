@@ -22,6 +22,7 @@ VOID InvalidateDrive(DRIVEIND driveInd);
 INT  DriveFromPoint(HWND hwnd, POINT pt);
 VOID DrawDrive(HDC hdc, INT x, INT y, DRIVEIND driveInd, BOOL bCurrent, BOOL bFocus);
 INT  KeyToItem(HWND hWnd, WORD nDriveLetter);
+int GetDragStatusText(int iOperation);
 
 
 /////////////////////////////////////////////////////////////////////
@@ -489,7 +490,7 @@ UseCurDir:
     pFrom = (LPTSTR)lpds->dwData;
 
     CheckEsc(szPath);
-    DMMoveCopyHelper(pFrom, szPath, fShowSourceBitmaps);
+    DMMoveCopyHelper(pFrom, szPath, iShowSourceBitmaps);
 
     if (!bIconic)
         RectDrive(driveInd, FALSE);
@@ -840,9 +841,9 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
       case WM_DRAGMOVE:
       {
-         static BOOL fOldShowSourceBitmaps = 0;
+         static INT iOldShowSourceBitmaps = 0;
 
-         #define lpds ((LPDROPSTRUCT)lParam)
+         LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
          nDrive = DriveFromPoint(lpds->hwndSink, lpds->ptDrop);
 
@@ -850,8 +851,8 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
 // Handle if user hits control while dragging to drive
 
-         if (nDrive == nDriveDragging && fOldShowSourceBitmaps != fShowSourceBitmaps) {
-            fOldShowSourceBitmaps = fShowSourceBitmaps;
+         if (nDrive == nDriveDragging && iOldShowSourceBitmaps != iShowSourceBitmaps) {
+            iOldShowSourceBitmaps = iShowSourceBitmaps;
             RectDrive(nDrive, TRUE);
             nDriveDragging = -1;
          }
@@ -886,7 +887,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
          }
 
          SetStatusText(SBT_NOBORDERS|255, SST_FORMAT|SST_RESOURCE,
-            (LPTSTR)(DWORD_PTR)(fShowSourceBitmaps ? IDS_DRAG_COPYING : IDS_DRAG_MOVING),
+            (LPTSTR)(DWORD_PTR)(GetDragStatusText(iShowSourceBitmaps)),
             szDir);
          UpdateWindow(hwndStatus);
 
@@ -914,7 +915,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
              }
 
          SetStatusText(SBT_NOBORDERS|255, SST_RESOURCE|SST_FORMAT,
-            (LPTSTR)(DWORD_PTR)(fShowSourceBitmaps ? IDS_DRAG_COPYING : IDS_DRAG_MOVING),
+            (LPTSTR)(DWORD_PTR)(GetDragStatusText(iShowSourceBitmaps)),
             szDir);
          UpdateWindow(hwndStatus);
 

@@ -516,7 +516,7 @@ DWORD StartBuildingDirectoryTrie();
 
 // WFCOPY.C
 
-DWORD  DMMoveCopyHelper(LPTSTR pFrom, LPTSTR pTo, BOOL bCopy);
+DWORD  DMMoveCopyHelper(LPTSTR pFrom, LPTSTR pTo, INT iOperation);
 DWORD  WFMoveCopyDriver(PCOPYINFO pCopyInfo);
 DWORD WINAPI WFMoveCopyDriverThread(LPVOID lpParameter);
 
@@ -648,6 +648,10 @@ DWORD WFRemove(LPTSTR pszFile);
 DWORD WFMove(LPTSTR pszFrom, LPTSTR pszTo, PBOOL pbErrorOnDest, BOOL bSilent);
 DWORD WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotification);
 DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPWSTR szDest, DWORD cwcDest);
+DWORD WFHardLink(LPTSTR pszFrom, LPTSTR pszTo);
+DWORD WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags);
+DWORD WFJunction(LPCWSTR LinkDirectory, LPCWSTR LinkTarget);
+
 
 
 // TREECTL.C
@@ -656,6 +660,7 @@ VOID  wfYield(VOID);
 VOID  InvalidateAllNetTypes(VOID);
 VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
+
 
 
 //--------------------------------------------------------------------------
@@ -1165,7 +1170,7 @@ Extern BOOL bSaveSettings    EQ( TRUE );
 Extern BOOL bScrollOnExpand  EQ( TRUE );
 
 Extern BOOL bConnectable       EQ( FALSE );
-Extern BOOL fShowSourceBitmaps EQ( TRUE );
+Extern INT  iShowSourceBitmaps EQ( 1 );
 Extern BOOL bFSCTimerSet       EQ( FALSE );
 
 Extern TCHAR        chFirstDrive;           // 'A' or 'a'
@@ -1374,6 +1379,8 @@ Extern TCHAR szFmifsDll[]    EQ( TEXT("fmifs.dll") );
 
 Extern   CANCEL_INFO CancelInfo;
 Extern   SEARCH_INFO SearchInfo;
+
+Extern BOOL  bDeveloperModeAvailable EQ(FALSE);
 
 // this value is an index into dwMenuIDs and used to workaround a bug
 #define MHPOP_CURRENT 2
