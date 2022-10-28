@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "&Window"
     BEGIN
-    MENUITEM    "&New Window",          IDM_NEWWINDOW
+    MENUITEM    "&New Window\tCtrl+Shift Enter",          IDM_NEWWINDOW
     MENUITEM    "&Cascade\tShift+F5",   IDM_CASCADE
     MENUITEM    "Tile &Horizontally",   IDM_TILEHORIZONTALLY
     MENUITEM    "&Tile Vertically\tShift+F4",      IDM_TILE

@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "&Fenster"
     BEGIN
-    MENUITEM    "Neues &Fenster",                                 IDM_NEWWINDOW
+    MENUITEM    "Neues &Fenster\tCtrl+Shift Enter",               IDM_NEWWINDOW
     MENUITEM    "Über&lappend\tUmschalt+F5",                      IDM_CASCADE
     MENUITEM    "&Untereinander",                                 IDM_TILEHORIZONTALLY
     MENUITEM    "&Nebeneinander\tUmschalt+F4",                    IDM_TILE

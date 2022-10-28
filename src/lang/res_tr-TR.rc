@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "&Pencere"
     BEGIN
-        MENUITEM    "&Yeni Pencere",                IDM_NEWWINDOW
+        MENUITEM    "&Yeni Pencere\tCtrl+Shift Enter", IDM_NEWWINDOW
         MENUITEM    "&Basamakla\tÜstKrkt+F5",       IDM_CASCADE
         MENUITEM    "Yatay &Döşe",                  IDM_TILEHORIZONTALLY
         MENUITEM    "Döş&e\tÜstKrkt+F4",            IDM_TILE
