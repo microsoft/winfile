@@ -648,6 +648,10 @@ DWORD WFRemove(LPTSTR pszFile);
 DWORD WFMove(LPTSTR pszFrom, LPTSTR pszTo, PBOOL pbErrorOnDest, BOOL bSilent);
 DWORD WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotification);
 DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPWSTR szDest, DWORD cwcDest);
+DWORD WFHardLink(LPTSTR pszFrom, LPTSTR pszTo);
+DWORD WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags);
+DWORD WFJunction(LPCWSTR LinkDirectory, LPCWSTR LinkTarget);
+
 
 
 // TREECTL.C
@@ -656,12 +660,6 @@ VOID  wfYield(VOID);
 VOID  InvalidateAllNetTypes(VOID);
 VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
-
-// WFCOPY.C
-
-DWORD WFHardLink(LPTSTR pszFrom, LPTSTR pszTo);
-DWORD WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags);
-DWORD WFJunction(LPCWSTR LinkDirectory, LPCWSTR LinkTarget);
 
 
 
