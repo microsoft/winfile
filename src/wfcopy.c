@@ -2793,6 +2793,8 @@ SkipMKDir:
                break;
 
             case IDNO:
+               continue;
+
             case IDCANCEL:
                goto CancelWholeOperation;
             }
