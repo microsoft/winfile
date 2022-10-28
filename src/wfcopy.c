@@ -2433,8 +2433,8 @@ TRY_COPY_AGAIN:
          if (bSameFile && pCopyInfo->dwFunc == FUNC_COPY && (oper != OPER_RMDIR)) {
 
             // Source and destination are exactly the same
-            WCHAR szDestAlt[MAX_PATH + 2] = { 0 };
-            WCHAR szExtension[MAX_PATH + 2] = { 0 };
+            WCHAR szDestAlt[MAXPATHLEN + 2] = { 0 };
+            WCHAR szExtension[MAXPATHLEN + 2] = { 0 };
             LPTSTR pExt;
 
             lstrcpy(szDestAlt, szDest);

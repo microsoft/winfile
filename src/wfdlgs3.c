@@ -1830,14 +1830,14 @@ DestroyCancelWindow()
 BOOL GetProductVersion(WORD * pwMajor, WORD * pwMinor, WORD * pwBuild, WORD * pwRevision)
 {
     BOOL               success = FALSE;
-    TCHAR              szCurrentModulePath[MAX_PATH];
+    TCHAR              szCurrentModulePath[MAXPATHLEN];
     DWORD              cchPath;
     DWORD              cbVerInfo;
     LPVOID             pFileVerInfo;
     UINT               uLen;
     VS_FIXEDFILEINFO * pFixedFileInfo;
 
-    cchPath = GetModuleFileName(NULL, szCurrentModulePath, MAX_PATH);
+    cchPath = GetModuleFileName(NULL, szCurrentModulePath, MAXPATHLEN);
 
     if (cchPath && GetLastError() != ERROR_INSUFFICIENT_BUFFER)
     {

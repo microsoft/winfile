@@ -248,7 +248,7 @@ LPWSTR QuotedContentList(IDataObject *pDataObject)
             STGMEDIUM sm_content = {0,0,0};
 			unsigned int file_index;
             size_t cchTempPath, cchFiles;
-            WCHAR szTempPath[MAX_PATH+1];
+            WCHAR szTempPath[MAXPATHLEN +1];
 
             hr = pDataObject->lpVtbl->GetData(pDataObject, &descriptor_format, &sm_desc);
 			if (hr != S_OK)
@@ -256,7 +256,7 @@ LPWSTR QuotedContentList(IDataObject *pDataObject)
 
             file_group_descriptor = (FILEGROUPDESCRIPTOR *) GlobalLock(sm_desc.hGlobal);
 
-			GetTempPath(MAX_PATH, szTempPath);
+			GetTempPath(MAXPATHLEN, szTempPath);
 			cchTempPath = wcslen(szTempPath);
 
 			// calc total size of file names

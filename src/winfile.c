@@ -295,7 +295,7 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
          //
 
          // get a buffer big enough for a quoted path
-         TCHAR szTemp[MAX_PATH + 2 * sizeof(TCHAR)];
+         TCHAR szTemp[MAXPATHLEN + 2 * sizeof(TCHAR)];
 
          lstrcpy( szTemp, pSel);
 

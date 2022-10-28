@@ -92,8 +92,8 @@ INT atoiW(LPWSTR sz);
 #define MAXDOSFILENAMELEN   (12+1)            // includes the NULL
 #define MAXDOSPATHLEN       (68+MAXDOSFILENAMELEN)  // includes the NULL
 
-#define MAXLFNFILENAMELEN   260
-#define MAXLFNPATHLEN       260
+#define MAXLFNFILENAMELEN   1024
+#define MAXLFNPATHLEN       1024
 
 #define MAXFILENAMELEN      MAXLFNFILENAMELEN
 #define MAXPATHLEN          MAXLFNPATHLEN

@@ -604,7 +604,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
    DWORD ret;
    HCURSOR hCursor;
 
-   WCHAR szPath[MAXPATHLEN + 2];  // +2 for quotes if needed
+   WCHAR szPath[MAXPATHLEN+2];  // +2 for quotes if needed
 
    HWND hwndTree, hwndDir, hwndFocus;
 
@@ -695,8 +695,8 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
       //
       if (fEdit)
       {
-          TCHAR szEditPath[MAX_PATH];
-          TCHAR szNotepad[MAX_PATH];
+          TCHAR szEditPath[MAXPATHLEN];
+          TCHAR szNotepad[MAXPATHLEN];
 
           // NOTE: assume system directory and "\\notepad.exe" never exceed MAXPATHLEN
           if (GetSystemDirectory(szNotepad, MAXPATHLEN) != 0)
@@ -704,7 +704,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
           else
               lstrcpy(szNotepad, TEXT("notepad.exe"));
 
-          GetPrivateProfileString(szSettings, szEditorPath, szNotepad, szEditPath, MAX_PATH, szTheINIFile);
+          GetPrivateProfileString(szSettings, szEditorPath, szNotepad, szEditPath, MAXPATHLEN, szTheINIFile);
 
           CheckEsc(szPath);     // add quotes if necessary; reserved space for them above
 

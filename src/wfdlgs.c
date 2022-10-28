@@ -714,11 +714,11 @@ DoHelp:
 INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     /* Editor prefrence variables*/
-    TCHAR szTempEditPath[MAX_PATH];
-    TCHAR szPath[MAX_PATH];
-    TCHAR szFilter[MAX_PATH] = { 0 };
+    TCHAR szTempEditPath[MAXPATHLEN];
+    TCHAR szPath[MAXPATHLEN];
+    TCHAR szFilter[MAXPATHLEN] = { 0 };
 
-    LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAX_PATH);
+    LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAXPATHLEN);
 
     OPENFILENAME ofn;
 
@@ -743,7 +743,7 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
         case WM_INITDIALOG:
             InitLangList(hLangComboBox);
 
-            GetPrivateProfileString(szSettings, szEditorPath, NULL, szTempEditPath, MAX_PATH, szTheINIFile);
+            GetPrivateProfileString(szSettings, szEditorPath, NULL, szTempEditPath, MAXPATHLEN, szTheINIFile);
             SetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath);
 
             CheckDlgButton(hDlg, IDC_VSTYLE, bDisableVisualStyles);
@@ -763,7 +763,7 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                     if ((*lpfnGetOpenFileNameW)(&ofn))
                     {
-                        wcscpy_s(szPath, MAX_PATH, ofn.lpstrFile);
+                        wcscpy_s(szPath, MAXPATHLEN, ofn.lpstrFile);
                         SetDlgItemText(hDlg, IDD_EDITOR, szPath);
                     }
                     break;
@@ -771,7 +771,7 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 case IDOK:
                     SaveLang(hLangComboBox);
 
-                    GetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath, MAX_PATH);
+                    GetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath, MAXPATHLEN);
                     WritePrivateProfileString(szSettings, szEditorPath, szTempEditPath, szTheINIFile);
 
                     bDisableVisualStyles = IsDlgButtonChecked(hDlg, IDC_VSTYLE);
