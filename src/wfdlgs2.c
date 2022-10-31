@@ -185,6 +185,10 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   SearchInfo.eStatus = SEARCH_NULL;
                   SearchInfo.bCancel = FALSE;
 
+                  // Retrieve state of search window
+                  BOOL bMaximized = FALSE;
+                  HWND hwndMDIChild = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, (LPARAM)&bMaximized);
+
                   /* Is the search window already up? */
                   if (hwndSearch) {
 
@@ -195,10 +199,8 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                       SendMessage(hwndSearch, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)SearchInfo.szSearch);
 
                   } else {
-                      BOOL bMaximized = FALSE;
-                      HWND hwndMDIChild = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, (LPARAM)&bMaximized);
-
-                      // cf. https://www.codeproject.com/articles/2077/creating-a-new-mdi-child-maximization-and-focus-is
+                    
+                     // cf. https://www.codeproject.com/articles/2077/creating-a-new-mdi-child-maximization-and-focus-is
                       if (bMaximized)
                       {
                           SendMessage(hwndMDIClient, WM_SETREDRAW, FALSE, 0);
@@ -234,9 +236,8 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                       // Forward the attributes to the search window, since hwndSearch was just created by WM_MDICREATE
                       SetWindowLongPtr(hwndSearch, GWL_ATTRIBS, GetWindowLongPtr(hwndMDIChild, GWL_ATTRIBS));
 
-                      if (bMaximized)
-                      {
-                          // the WM_MDICREATE above creates the window maximized;
+                      if (bMaximized) {
+                         // the WM_MDICREATE above creates the window maximized;
                           // here we re-activate the original maximized window
 
                           SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndMDIChild, 0L);
@@ -244,14 +245,16 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                           SendMessage(hwndMDIClient, WM_SETREDRAW, TRUE, 0);
                           RedrawWindow(hwndMDIClient, NULL, NULL, RDW_INVALIDATE | RDW_ALLCHILDREN);
                       } else {
-                        // Show search window immediatley
-                        SendMessage(hwndSearch, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)SearchInfo.szSearch);
-                        ShowWindow(hwndSearch,
-                          GetWindowLongPtr(hwndMDIChild, GWL_STYLE) & WS_MAXIMIZE ?
-                          SW_SHOWMAXIMIZED :
-                          SW_SHOWNORMAL);
+                         SendMessage(hwndSearch, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)SearchInfo.szSearch);
                       }
                   }
+
+                  // Show search window immediatley
+                  ShowWindow(hwndSearch,
+                     GetWindowLongPtr(hwndMDIChild, GWL_STYLE) & WS_MAXIMIZE ?
+                     SW_SHOWMAXIMIZED :
+                     SW_SHOWNORMAL);
+                  
                   break;
 
               default:
