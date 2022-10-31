@@ -17,8 +17,8 @@ BEGIN
     MENUITEM    "Bearbeiten\tF12",                                IDM_EDIT
     MENUITEM    "&Verschieben...\tF7",                            IDM_MOVE
     MENUITEM    "&Kopieren...\tF8",                               IDM_COPY
-    MENUITEM    "S&ymlink...\tF10",                               IDM_SYMLINK
-    MENUITEM    "H&ardlink...\tUmschalt+F10",                     IDM_HARDLINK
+    MENUITEM    "S&ymlink...\tF11",                               IDM_SYMLINK
+    MENUITEM    "H&ardlink...\tUmschalt+F11",                     IDM_HARDLINK
     MENUITEM    "&In Zwischenablage...\tStrg+C",				  IDM_COPYTOCLIPBOARD
     MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",	  IDM_CUTTOCLIPBOARD
     MENUITEM    "&Einfügen\tStrg+V",                              IDM_PASTE
@@ -135,7 +135,7 @@ BEGIN
   MENUITEM    "&Verschieben...\tF7",                              IDM_MOVE
   MENUITEM    "&Kopieren...\tF8",                                 IDM_COPY
   MENUITEM    "S&ymlinken...\t10",                                IDM_SYMLINK
-  MENUITEM    "H&ardlinken...\tUmschalt+F10",                     IDM_HARDLINK
+  MENUITEM    "H&ardlinken...\tUmschalt+F11",                     IDM_HARDLINK
   MENUITEM    "&In Zwischenablage...\tStrg+C",                IDM_COPYTOCLIPBOARD
   MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",    IDM_CUTTOCLIPBOARD
   MENUITEM    "&Einfügen\tStrg+V",                            IDM_PASTE
@@ -248,7 +248,8 @@ BEGIN
     IDS_RENAME,             "Umbenennen"                        /* 32 */
     IDS_FORMAT,             "Datenträger formatieren"                   /* 32 */
     IDS_FORMATSELDISK,      "Wählen Sie den Datenträger aus, den Sie formatieren möchten."                                                                                               /* 128 */
-    IDS_SYMLINK, 			"Symlinken"                       /* 32 */
+    IDS_SYMLINK,            "Symlinken"                       /* 32 */
+    IDS_HARDLINK,           "Hardlinken"                      /* 32 */
 
 JAPANBEGIN
     IDS_KK_COPYFROMSTR,        "コピー元(&F):"

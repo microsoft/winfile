@@ -17,8 +17,8 @@ BEGIN
         MENUITEM    "&Düzenle\tF12",                IDM_EDIT
         MENUITEM    "&Taşı...\tF7",                 IDM_MOVE
         MENUITEM    "K&opyala...\tF8",              IDM_COPY
-        MENUITEM    "S&embolik bağlantı...\tF10",   IDM_SYMLINK
-        MENUITEM    "Sabi&t bağlantı...\tShift+F10",IDM_HARDLINK
+        MENUITEM    "S&embolik bağlantı...\tF11",   IDM_SYMLINK
+        MENUITEM    "Sabi&t bağlantı...\tShift+F11",IDM_HARDLINK
         MENUITEM    "&Pano'ya Kopyala\tCtrl+C",     IDM_COPYTOCLIPBOARD
         MENUITEM    "Pano'ya Kes\tCtrl+X",          IDM_CUTTOCLIPBOARD
         MENUITEM    "Yapıştı&r\tCtrl+V",            IDM_PASTE
@@ -135,8 +135,8 @@ BEGIN
     MENUITEM    "&Düzenle\tF12",                    IDM_EDIT
     MENUITEM    "&Taşı...\tF7",                     IDM_MOVE
     MENUITEM    "K&opyala...\tF8",                  IDM_COPY
-    MENUITEM    "S&embolik bağlantı...\tF10",       IDM_SYMLINK
-    MENUITEM    "Sabi&t bağlantı...\tShift+F10",  IDM_HARDLINK
+    MENUITEM    "S&embolik bağlantı...\tF11",       IDM_SYMLINK
+    MENUITEM    "Sabi&t bağlantı...\tShift+F11",  IDM_HARDLINK
     MENUITEM    "&Pano'ya Kopyala\tCtrl+C",         IDM_COPYTOCLIPBOARD
     MENUITEM    "Pa&no'ya Kes\tCtrl+X",             IDM_CUTTOCLIPBOARD
     MENUITEM    "Yapıştı&r\tCtrl+V",                IDM_PASTE

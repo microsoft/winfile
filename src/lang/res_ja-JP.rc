@@ -18,7 +18,7 @@ BEGIN
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
     MENUITEM    "コピー(&C)...\tF8",     IDM_COPY
    MENUITEM    "シンボリックリンク(&Y)...\t10", IDM_SYMLINK
-   MENUITEM    "ハードリンク(&K)...\tShift+F10", IDM_HARDLINK
+   MENUITEM    "ハードリンク(&K)...\tShift+F11", IDM_HARDLINK
     MENUITEM    "クリップボードにコピー(&B)...\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"貼り付け(&P)\tCtrl+V", 	IDM_PASTE
@@ -136,7 +136,7 @@ BEGIN
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
     MENUITEM    "コピー(&C)...\tF8",     IDM_COPY
     MENUITEM    "シンボリックリンク(&Y)...\t10",       IDM_SYMLINK
-    MENUITEM    "ハードリンク(&K)...\tShift+F10", IDM_HARDLINK
+    MENUITEM    "ハードリンク(&K)...\tShift+F11", IDM_HARDLINK
 	MENUITEM    "クリップボードにコピー(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
 	MENUITEM	"貼り付け(&P)\tCtrl+V", IDM_PASTE
