@@ -250,10 +250,7 @@ SearchDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   }
 
                   // Show search window immediatley
-                  ShowWindow(hwndSearch,
-                     GetWindowLongPtr(hwndMDIChild, GWL_STYLE) & WS_MAXIMIZE ?
-                     SW_SHOWMAXIMIZED :
-                     SW_SHOWNORMAL);
+                  ShowWindow(hwndSearch, bMaximized ? SW_SHOWMAXIMIZED : SW_SHOWNORMAL);
                   
                   break;
 
