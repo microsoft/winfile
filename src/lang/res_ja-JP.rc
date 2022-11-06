@@ -222,7 +222,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "マウス操作の確認"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "選択しているファイルまたはディレクトリーを %s にコピーしますか?"
     IDS_MOVEMOUSECONFIRM,   "選択しているファイルまたはディレクトリーを %s に移動しますか?"
-    IDS_LINKMOUSECONFIRM,   "選択したファイルまたはディレクトリを ％ sにリンクしてもよろしいですか？"
+    IDS_LINKMOUSECONFIRM,   "選択したファイルまたはディレクトリを %s にリンクしてもよろしいですか？"
     IDS_EXECMOUSECONFIRM,   "%s を起動して最初のファイルとして %s を使用しますか?"                                                          /* 128 */
 
     IDS_WINFILE,            "ファイル マネージャー"                  /* 32 */
@@ -302,9 +302,9 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "ファイル マネージャーは %s を移動できません: %s"
     IDS_VERBS + FUNC_DELETE     "ファイル マネージャーは %s を削除できません: %s"
     IDS_VERBS + FUNC_RENAME     "ファイル マネージャーは %s の名前を変更できません: %s"
-    IDS_VERBS + FUNC_LINK       "ファイルマネージャはシンボリックリンク ％s を作成できません: %s"
-    IDS_VERBS + FUNC_HARD       "ファイルマネージャはハードリンク ％s を作成できません: %s"
-    IDS_VERBS + FUNC_JUNC       "ファイルマネージャはジャンクション ％s を作成できません: %s"
+    IDS_VERBS + FUNC_LINK       "ファイル マネージャーはシンボリックリンク %s を作成できません: %s"
+    IDS_VERBS + FUNC_HARD       "ファイル マネージャーはハードリンク %s を作成できません: %s"
+    IDS_VERBS + FUNC_JUNC       "ファイル マネージャーはジャンクション %s を作成できません: %s"
     IDS_ACTIONS + 1             "ファイル マネージャーはディレクトリー %s を作成できません: %s"
     IDS_ACTIONS + 2             "ファイル マネージャーはディレクトリー %s を削除できません: %s"
     IDS_REPLACING               "ファイル マネージャーは %s を作成または置き換える事ができません: %s"
