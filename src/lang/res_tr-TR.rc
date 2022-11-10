@@ -225,7 +225,7 @@ BEGIN
 
    IDS_MOUSECONFIRM,        "Fare İşlemini Onayla"
    IDS_COPYMOUSECONFIRM,    "Seçili dosyaları veya dizinleri %s dizinine kopyalamak istediğinizden emin misiniz?"
-   IDS_LINKMOUSECONFIRM,    "Seçilen dosyaları veya dizinleri %s'ye bağlamak istediğinizden emin misiniz? %s?"
+   IDS_LINKMOUSECONFIRM,    "Seçilen dosyaları veya dizinleri %s 'ye bağlamak istediğinizden emin misiniz?"
    IDS_MOVEMOUSECONFIRM,    "Seçili dosyaları veya dizinleri %s dizinine taşımak istediğinizden emin misiniz?"
    IDS_EXECMOUSECONFIRM,    "%s dosyasının, %s başlatıldığında açılan ilk dosya olmasını istediğinizden emin misiniz?"
 
@@ -456,7 +456,7 @@ JAPANBEGIN
     IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
 JAPANEND
 
-    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak.  "
+    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak."
     IDS_INITUPDATEFAILTITLE     "Dosya Yöneticisi Başlatımı"
     IDS_COMPRESSDIR             "%s içindeki tüm dosyaları ve alt dizinleri de sıkıştırmak istediğinizden emin misiniz?"
     IDS_UNCOMPRESSDIR           "%s içindeki tüm dosyaların ve alt dizinlerin de sıkıştırmasını açmak istediğinizden emin misiniz?"
