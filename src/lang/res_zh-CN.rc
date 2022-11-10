@@ -249,8 +249,8 @@ BEGIN
     IDS_RENAME,             "重命名"                        /* 32 */
     IDS_FORMAT,             "格式化磁盘"                   /* 32 */
     IDS_FORMATSELDISK,      "选择要格式化的磁盘。"
-    IDS_SYMLINK,            "符號鏈接"                       /* 32 */
-    IDS_HARDLINK,           "硬鏈接"                      /* 32 */
+    IDS_SYMLINK,            "符号链接"                       /* 32 */
+    IDS_HARDLINK,           "硬链接"                      /* 32 */
 
     IDS_CREATINGMSG,        "创建:"                     /* 32 */
     IDS_REMOVINGDIRMSG,     "正在删除:"                     /* 32 */

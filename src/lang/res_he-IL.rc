@@ -135,7 +135,7 @@ BEGIN
     MENUITEM    "ערוך\tF12",	    IDM_EDIT
     MENUITEM    "העברה...\tF7",     IDM_MOVE
     MENUITEM    "ה&עתקה...\tF8",     IDM_COPY
-    MENUITEM    "קישור סימלי...\t10",   IDM_SYMLINK
+    MENUITEM    "קישור סימלי...\tF11",   IDM_SYMLINK
     MENUITEM    "קישור קשה...\tShift+F11", IDM_HARDLINK
 	MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD

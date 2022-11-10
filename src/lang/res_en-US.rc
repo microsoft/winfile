@@ -135,7 +135,7 @@ BEGIN
     MENUITEM    "Edit\tF12",	    IDM_EDIT
     MENUITEM    "&Move...\tF7",     IDM_MOVE
     MENUITEM    "&Copy...\tF8",     IDM_COPY
-    MENUITEM    "S&ymlink...\t10", IDM_SYMLINK
+    MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
     MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
 	MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
