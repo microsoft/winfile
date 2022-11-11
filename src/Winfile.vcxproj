@@ -271,7 +271,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
-      <AdditionalOptions>/stack:15000000 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/stack:15000000 /guard:cf %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
