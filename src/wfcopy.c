@@ -2773,7 +2773,9 @@ SkipMKDir:
 #endif
          break;
 
-      case OPER_MKDIR | FUNC_HARD:
+      // FUNC_HARD is here, because one can select a directory in the file-pane and have SHIFT+CTRL+ALT pressed to 
+      // create a junction. In this very case we get a Junction creation 'disguised' as FUNC_HARD
+      case OPER_MKDIR | FUNC_HARD: 
       case OPER_MKDIR | FUNC_JUNC:
       case OPER_MKDIR | FUNC_LINK:  
       {
