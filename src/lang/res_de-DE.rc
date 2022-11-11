@@ -17,9 +17,9 @@ BEGIN
     MENUITEM    "Bearbeiten\tF12",                                IDM_EDIT
     MENUITEM    "&Verschieben...\tF7",                            IDM_MOVE
     MENUITEM    "&Kopieren...\tF8",                               IDM_COPY
-    MENUITEM    "&In Zwischenablage...\tUmschalt+C",              IDM_COPYTOCLIPBOARD
-    MENUITEM    "Ausschneiden in Zwischenablage...\tUmschalt+X",  IDM_CUTTOCLIPBOARD
-    MENUITEM    "&Einfügen\tUmschalt+V",                          IDM_PASTE
+    MENUITEM    "&In Zwischenablage...\tStrg+C",				  IDM_COPYTOCLIPBOARD
+    MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",	  IDM_CUTTOCLIPBOARD
+    MENUITEM    "&Einfügen\tStrg+V",                              IDM_PASTE
     MENUITEM    "&Löschen...\tEntf",                              IDM_DELETE
     MENUITEM    "&Umbenennen...\tF2",                             IDM_RENAME
     MENUITEM    "Ei&genschaften...\tAlt+Eingabetaste",            IDM_ATTRIBS
@@ -31,13 +31,13 @@ BEGIN
     MENUITEM    "&Drucken...",                                    IDM_PRINT
     MENUITEM    "Zuord&nen...",                                   IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+N",          IDM_MAKEDIR
-    MENUITEM    "&Suchen...\tUmschalt+F",                         IDM_SEARCH
+    MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+Strg+N",              IDM_MAKEDIR
+    MENUITEM    "&Suchen...\tStrg+F",                             IDM_SEARCH
     MENUITEM    "Dateien aus&wählen...",                          IDM_SELECT
-    MENUITEM    "Starte Bash Shell...",                           IDM_STARTBASHSHELL
-    MENUITEM    "Starte Cmd Shel&l...",                           IDM_STARTCMDSHELL
-    MENUITEM    "Starte Po&werShell...",                          IDM_STARTPOWERSHELL
-    MENUITEM    "&Gehe ins Verzeichnis...\tUmschalt+G",           IDM_GOTODIR
+    MENUITEM    "Starte Bash Shell...\tStrg+B",                   IDM_STARTBASHSHELL
+    MENUITEM    "Starte Cmd Shel&l...\tStrg+K",                   IDM_STARTCMDSHELL
+    MENUITEM    "Starte Po&werShell...\tStrg+P",                  IDM_STARTPOWERSHELL
+    MENUITEM    "&Gehe ins Verzeichnis...\tStrg+G",               IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "&Beenden",                                       IDM_EXIT
     END
@@ -54,7 +54,7 @@ BEGIN
     BEGIN
     MENUITEM    "&Nächste Ebene einblenden\t+",                   IDM_EXPONE
     MENUITEM    "&Zweig einblenden\t*",                           IDM_EXPSUB
-    MENUITEM    "Alle &Ebenen einblenden\tUmschalt+*",            IDM_EXPALL
+    MENUITEM    "Alle &Ebenen einblenden\tStrg+*",            IDM_EXPALL
     MENUITEM    "Zweig &ausblenden\t-",                           IDM_COLLAPSE
     MENUITEM    SEPARATOR
     MENUITEM    "&Verzweigungen kennzeichnen",                    IDM_ADDPLUSES
@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "&Fenster"
     BEGIN
-    MENUITEM    "Neues &Fenster",                                 IDM_NEWWINDOW
+    MENUITEM    "Neues &Fenster\tStrg+Umschalt Enter",            IDM_NEWWINDOW
     MENUITEM    "Über&lappend\tUmschalt+F5",                      IDM_CASCADE
     MENUITEM    "&Untereinander",                                 IDM_TILEHORIZONTALLY
     MENUITEM    "&Nebeneinander\tUmschalt+F4",                    IDM_TILE
@@ -127,14 +127,14 @@ CTXMENU MENU PRELOAD
 BEGIN
   POPUP "Dummy Popup"
   BEGIN
-  MENUITEM    "&Neues Fenster\tbeim Markieren",                   IDM_NEWWINDOW
+  MENUITEM    "&Neues Fenster\tStrg+Umschalt Eingabetaste",      IDM_NEWWINDOW
   MENUITEM    "Öffnen\tEnter",                                   IDM_OPEN
   MENUITEM    "Bearbeiten\tF12",	                                IDM_EDIT
   MENUITEM    "&Verschieben...\tF7",                              IDM_MOVE
   MENUITEM    "&Kopieren...\tF8",                                 IDM_COPY
-  MENUITEM    "&In Zwischenablage...\tUmschalt+C",                IDM_COPYTOCLIPBOARD
-  MENUITEM    "Ausschneiden in Zwischenablage...\tUmschalt+X",    IDM_CUTTOCLIPBOARD
-  MENUITEM    "&Einfügen\tUmschalt+V",                            IDM_PASTE
+  MENUITEM    "&In Zwischenablage...\tStrg+C",                IDM_COPYTOCLIPBOARD
+  MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",    IDM_CUTTOCLIPBOARD
+  MENUITEM    "&Einfügen\tStrg+V",                            IDM_PASTE
   MENUITEM    "&Löschen...\tEntf",                                IDM_DELETE
   MENUITEM    "&Umbenennen...\tF2",                               IDM_RENAME
   MENUITEM    "&Eigenschaften...\tAlt+Eingabetaste",              IDM_ATTRIBS
@@ -221,6 +221,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "Mausaktion bestätigen"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s kopieren möchten?"
     IDS_MOVEMOUSECONFIRM,   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s verschieben möchten?"
+    IDS_LINKMOUSECONFIRM,   "Sind Sie sicher, daß Sie die ausgewählten Dateien oder Verzeichnisse nach %s verlinken möchten?"
     IDS_EXECMOUSECONFIRM,   "Sind Sie sicher, daß Sie %s mit %s als Dokument ausführen möchten?"                                                          /* 128 */
 
     IDS_WINFILE,            "Datei-Manager"                  /* 32 */
@@ -289,6 +290,9 @@ JAPANEND
     IDS_COPYERROR + FUNC_SETDRIVE "Fehler beim Auswählen des Laufwerks"
     IDS_COPYERROR + FUNC_EXPAND   "Fehler beim Lesen eines Verzeichnisses"
     IDS_COPYERROR + FUNC_LABEL    "Fehler beim Benennen des Datenträgers"
+    IDS_COPYERROR + FUNC_LINK     "Fehler beim Erstellen eines Symbolischen Links"
+    IDS_COPYERROR + FUNC_HARD     "Fehler beim Erstellen eines Hardlinks"
+    IDS_COPYERROR + FUNC_JUNC     "Fehler beim Erstellen einer Junction"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -297,6 +301,9 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "%s kann nicht verschoben werden.\n%s"
     IDS_VERBS + FUNC_DELETE     "%s kann nicht gelöscht werden.\n%s"
     IDS_VERBS + FUNC_RENAME     "%s kann nicht umbenannt werden.\n%s"
+    IDS_VERBS + FUNC_LINK       "%s kann nicht symbolisch verlinkt werden.\n%s"
+    IDS_VERBS + FUNC_HARD       "%s kann nicht verlinkt werden.\n%s"
+    IDS_VERBS + FUNC_JUNC       "%s kann als Junction nicht erstellt werden.\n%s"
     IDS_ACTIONS + 1             "Verzeichnis %s kann nicht erzeugt werden.\n%s"
     IDS_ACTIONS + 2             "Verzeichnis %s kann nicht gelöscht werden.\n%s"
     IDS_REPLACING               "%s kann nicht erstellt oder ersetzt werden.\n%s"
@@ -410,6 +417,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "Datei(en) kopieren nach %s"
     IDS_DRAG_MOVING             "Datei(en) verschieben nach %s"
+    IDS_DRAG_LINKING            "Datei(en) verlinken nach %s"
     IDS_DRAG_EXECUTING          "Starten von Datei(en) mit %s"
 
     IDS_ORDERB                  "%s Bytes"
@@ -614,8 +622,8 @@ END
 
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
-    IDS_CONNECT,                "Netzlaufwerk &verbinden..."
-    IDS_DISCONNECT,             "Netzlaufwerk &trennen..."
+    IDS_CONNECT,                "Netzlaufwerk &verbinden...\tStrg+N"
+    IDS_DISCONNECT,             "Netzlaufwerk &trennen...\tStrg+D"
     IDS_CONNECTIONS,            "&Netzwerk-Verbindungen"
     IDS_SHAREDDIR               "Freigege&bene Verzeichnisse..."
     IDS_SHAREAS,                "F&reigeben als..."

@@ -34,9 +34,9 @@ BEGIN
     MENUITEM    "Cr&eate Directory...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "Select &Files...", IDM_SELECT
-	MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
-	MENUITEM    "Start Cmd Shel&l...", IDM_STARTCMDSHELL
-    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM    "Start Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
+	MENUITEM    "Start Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...\tCtrl+P", IDM_STARTPOWERSHELL
 	MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "E&xit",            IDM_EXIT
@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "&Window"
     BEGIN
-    MENUITEM    "&New Window",          IDM_NEWWINDOW
+    MENUITEM    "&New Window\tCtrl+Shift Enter",          IDM_NEWWINDOW
     MENUITEM    "&Cascade\tShift+F5",   IDM_CASCADE
     MENUITEM    "Tile &Horizontally",   IDM_TILEHORIZONTALLY
     MENUITEM    "&Tile Vertically\tShift+F4",      IDM_TILE
@@ -128,7 +128,7 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "&New Window\ton Selection",     IDM_NEWWINDOW
+	MENUITEM    "&New Window\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&Open\tEnter",     IDM_OPEN
     MENUITEM    "Edit\tF12",	    IDM_EDIT
     MENUITEM    "&Move...\tF7",     IDM_MOVE
@@ -223,6 +223,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "Confirm Mouse Operation"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "Are you sure you want to copy the selected files or directories to %s?"
     IDS_MOVEMOUSECONFIRM,   "Are you sure you want to move the selected files or directories to %s?"
+    IDS_LINKMOUSECONFIRM,   "Are you sure you want to link the selected files or directories to %s?"
     IDS_EXECMOUSECONFIRM,   "Are you sure you want to start %s using %s as the initial file?"                                                          /* 128 */
 
     IDS_WINFILE,            "File Manager"                  /* 32 */
@@ -284,13 +285,16 @@ JAPANEND
     /* These strings are used for generating error messages
      * from the Copy, Move, and Delete code. */
 
-    IDS_COPYERROR + FUNC_COPY   "Error Copying File"
-    IDS_COPYERROR + FUNC_MOVE   "Error Moving File"
-    IDS_COPYERROR + FUNC_DELETE "Error Deleting File"
-    IDS_COPYERROR + FUNC_RENAME "Error Renaming File"
+    IDS_COPYERROR + FUNC_COPY     "Error Copying File"
+    IDS_COPYERROR + FUNC_MOVE     "Error Moving File"
+    IDS_COPYERROR + FUNC_DELETE   "Error Deleting File"
+    IDS_COPYERROR + FUNC_RENAME   "Error Renaming File"
     IDS_COPYERROR + FUNC_SETDRIVE "Error Selecting Drive"
     IDS_COPYERROR + FUNC_EXPAND   "Error Reading Directory"
     IDS_COPYERROR + FUNC_LABEL    "Error Labeling Disk"
+    IDS_COPYERROR + FUNC_LINK     "Error Creating Symbolic Link"
+    IDS_COPYERROR + FUNC_HARD     "Error Creating Hardlink"
+    IDS_COPYERROR + FUNC_JUNC     "Error Creating Junction"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -299,6 +303,9 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "File Manager cannot move %s: %s"
     IDS_VERBS + FUNC_DELETE     "File Manager cannot delete %s: %s"
     IDS_VERBS + FUNC_RENAME     "File Manager cannot rename %s: %s"
+    IDS_VERBS + FUNC_LINK       "File Manager cannot create symbolic link %s: %s"
+    IDS_VERBS + FUNC_HARD       "File Manager cannot create hardlink %s: %s"
+    IDS_VERBS + FUNC_JUNC       "File Manager cannot create junction %s: %s"
     IDS_ACTIONS + 1             "File Manager cannot create directory %s: %s"
     IDS_ACTIONS + 2             "File Manager cannot remove directory %s: %s"
     IDS_REPLACING               "File Manager cannot create or replace %s: %s"
@@ -412,6 +419,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "Copying files to %s"
     IDS_DRAG_MOVING             "Moving files to %s"
+    IDS_DRAG_LINKING            "Linking files to %s"
     IDS_DRAG_EXECUTING          "Running files with %s"
 
     IDS_ORDERB                  "%s bytes"

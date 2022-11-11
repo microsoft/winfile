@@ -180,8 +180,8 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
 
    hwndTree = HasTreeWindow(hwndActive);
    hwndDir = HasDirWindow(hwndActive);
-   dwSort = GetWindowLongPtr(hwndActive, GWL_SORT);
-   dwView = GetWindowLongPtr(hwndActive, GWL_VIEW);
+   dwSort = (DWORD)GetWindowLongPtr(hwndActive, GWL_SORT);
+   dwView = (DWORD)GetWindowLongPtr(hwndActive, GWL_VIEW);
 
    uMenuFlags = MF_BYCOMMAND | MF_ENABLED;
 
@@ -295,7 +295,7 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
          //
 
          // get a buffer big enough for a quoted path
-         TCHAR szTemp[MAX_PATH + 2 * sizeof(TCHAR)];
+         TCHAR szTemp[MAXPATHLEN + 2 * sizeof(TCHAR)];
 
          lstrcpy( szTemp, pSel);
 
@@ -1182,9 +1182,8 @@ DefHook:
 // Synopsis: Check if we enable the Properties... menu item
 //           Disable if:
 //
-//           1. The rootdir is selected
-//           2. _ONLY_ the .. dir is sel
-//           3. Nothing is selected in the window with focus
+//           1. _ONLY_ the .. dir is sel
+//           2. Nothing is selected in the window with focus
 //
 // IN    hwndActive   Current active window, has listbox in LASTFOCUS
 // IN    pSel         Current sel
@@ -1218,11 +1217,9 @@ EnablePropertiesMenu(
    bRet = FALSE;
 
    //
-   // Can't get properties on root directory
+   // Quit if pSel == NULL (File selected before any window created)
    //
-   // Also quit if pSel == NULL (File selected before any window created)
-   //
-   if (!pSel || (lstrlen (pSel) == 3 && pSel[2] == CHAR_BACKSLASH))
+   if (!pSel)
       return (FALSE);
 
    hwndLB = (HWND)GetWindowLongPtr(hwndActive, GWL_LASTFOCUS);
@@ -1287,10 +1284,10 @@ ReturnFalse:
 
    //
    // If this is the tree window and we are not in the middle of ReadDirLevel
-   // and it is not the root, then it is OK to change properties.
+   // then it is OK to change properties.
    //
    if (hwndParent == hwndTree) {
-      if (SendMessage(hwndLB, LB_GETCURSEL, 0, 0L) > 0L &&
+      if (SendMessage(hwndLB, LB_GETCURSEL, 0, 0L) != LB_ERR &&
          !GetWindowLongPtr(hwndTree, GWL_READLEVEL))
 
       return(TRUE);

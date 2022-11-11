@@ -58,7 +58,8 @@ static TBBUTTON tbButtons[] = {
   { 1, IDM_DISCONNECT , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
   { 2, IDM_SHAREAS    , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
-  { 3, IDM_STOPSHARE  , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
+// IDM_STOPSHARE not shown anymore, because there is no way to open then 'Stop Share Dialog' with W7/10/11
+//  { 3, IDM_STOPSHARE  , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
   { 4, IDM_VNAME      , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 5, IDM_VDETAILS   , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
@@ -67,14 +68,16 @@ static TBBUTTON tbButtons[] = {
   { 7, IDM_BYTYPE     , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 8, IDM_BYSIZE     , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 9, IDM_BYDATE     , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
+  {30, IDM_BYFDATE    , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
   {10, IDM_NEWWINDOW  , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
   {11, IDM_COPY       , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   {12, IDM_MOVE       , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
   {13, IDM_DELETE     , TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
-  { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
-  {27, IDM_PERMISSIONS, TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
+  // IDM_PERMISSIONS not shown anymore, because there is no way to use the old acledit functionality with W7/10/11
+  // { 0, 0              , TBSTATE_ENABLED, TBSTYLE_SEP   , 0 },
+  // {27, IDM_PERMISSIONS, TBSTATE_ENABLED, TBSTYLE_BUTTON, 0 },
 };
 
 #define ICONNECTIONS 1  /* Index of the Connections button */
@@ -110,6 +113,7 @@ static struct {
   IDM_BYTYPE,           7,
   IDM_BYSIZE,           8,
   IDM_BYDATE,           9,
+  IDM_BYFDATE,          30,
 
   IDM_FONT,             22,
 
@@ -131,7 +135,7 @@ static struct {
  * some bitmaps may be repeated.
  */
 #define TBAR_ALL_BUTTONS        (sizeof(sAllButtons)/sizeof(sAllButtons[0]))
-#define TBAR_EXTRA_BITMAPS      16
+#define TBAR_EXTRA_BITMAPS      17
 
 static int iSel = -1;
 
@@ -215,8 +219,7 @@ CheckTBButton(DWORD idCommand)
   else if ((UINT)(idCommand-IDM_BYNAME) <= IDM_BYFDATE-IDM_BYNAME)
     {
       begin = IDM_BYNAME;
-      end = IDM_BYDATE;
-      // NOTE: no toolbar button for IDM_BYFDATE yet
+      end = IDM_BYFDATE;
     }
   else
     {
@@ -269,13 +272,13 @@ EnableCheckTBButtons(HWND hwndActive)
    // if the active window is a search window or lacks a directory pane,
    // else enable them all.
 
-   dwSort = GetWindowLongPtr(hwndActive, GWL_SORT) - IDD_NAME + IDM_BYNAME;
+   dwSort = (DWORD)GetWindowLongPtr(hwndActive, GWL_SORT) - IDD_NAME + IDM_BYNAME;
 
    fEnable = ((int)GetWindowLongPtr(hwndActive, GWL_TYPE) >= 0 &&
       HasDirWindow(hwndActive));
 
    CheckTBButton(dwSort);
-   for (iButton=IDM_BYNAME; iButton<=IDM_BYDATE; ++iButton) {
+   for (iButton=IDM_BYNAME; iButton<=IDM_BYFDATE; ++iButton) {
       SendMessage(hwndToolbar, TB_ENABLEBUTTON, iButton, fEnable);
    }
 
@@ -713,7 +716,7 @@ UnlockAndReturn:
       if (lpButton->fsStyle & TBSTYLE_SEP)
          goto LoadDescription;
 
-      iExt = lpButton->dwData - 1; // can now directly determine the extension with which the button is associated
+      iExt = (INT)(lpButton->dwData - 1); // can now directly determine the extension with which the button is associated
 
       if ((UINT)iExt < (UINT)iNumExtensions) {
          tbl.idCommand = lpButton->idCommand % 100;
@@ -770,7 +773,7 @@ HandleToolbarSave(LPNMTBSAVE lpnmtSave)
         // for extension buttons, remove bias for both idCommand and iBitmap
         if (lpnmtSave->tbButton.dwData != 0)
         {
-            INT iExt = lpnmtSave->tbButton.dwData - 1;
+            INT iExt = (INT)(lpnmtSave->tbButton.dwData - 1);
             baseId = extensions[iExt].Delta;
             baseIbm = extensions[iExt].iStartBmp;
         }
@@ -1057,7 +1060,7 @@ NormalHelp:
            FMS_HELPSTRING tbl;
 
 
-           iExt = lpTT->hdr.idFrom/100 - IDM_EXTENSIONS - 1;
+           iExt = (int)(lpTT->hdr.idFrom/100 - IDM_EXTENSIONS - 1);
 
            if (hwndExtensions && ((UINT)iExt < (UINT)iNumExtensions)) {
                tbl.idCommand = lpTT->hdr.idFrom % 100;
@@ -1078,7 +1081,7 @@ NormalHelp:
                StrNCpy(lpTT->szText, tbl.szHelp, MAXDESCLEN - 1);
 
            } else {
-               idString = lpTT->hdr.idFrom + MH_MYITEMS;
+               idString = (UINT)(lpTT->hdr.idFrom + MH_MYITEMS);
 
                if (lpTT->hdr.idFrom == IDM_CONNECTIONS) {
                    idString = IDM_CONNECT + MH_MYITEMS;
@@ -1474,6 +1477,7 @@ AddExtensionToolbarButtons(BOOL bAll)
     nExtButtons = (INT)SendMessage(hwndExtensions, TB_BUTTONCOUNT, 0, 0L);
     for (INT nItem = 0; nItem < nExtButtons; ++nItem)
     {
+        INT iExt;
         SendMessage(hwndExtensions, TB_GETBUTTON, nItem,
             (LPARAM)(LPTBBUTTON)&tbButton);
 
@@ -1484,7 +1488,7 @@ AddExtensionToolbarButtons(BOOL bAll)
         }
 
         // map idCommand and iBitmap if this is a valid extension
-        INT iExt = tbButton.dwData - 1;
+        iExt = (INT)(tbButton.dwData - 1);
         if ((UINT)iExt < (UINT)iNumExtensions)
         {
             // if we are not loading them all and this button's extension was seen during toolbar restore, skip

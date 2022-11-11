@@ -53,6 +53,8 @@ SaveWindows(HWND hwndMain)
 
    WritePrivateProfileString(szSettings, szWindow, buf2, szTheINIFile);
 
+   WritePrivateProfileBool(szScrollOnExpand, bScrollOnExpand);
+
    // write out dir window strings in reverse order
    // so that when we read them back in we get the same Z order
 
@@ -63,7 +65,7 @@ DO_AGAIN:
 
    for (hwnd = GetWindow(hwndMDIClient, GW_CHILD); hwnd; hwnd = GetWindow(hwnd, GW_HWNDNEXT)) {
       HWND ht = HasTreeWindow(hwnd);
-      INT nReadLevel = ht ? GetWindowLongPtr(ht, GWL_READLEVEL) : 0;
+      INT nReadLevel = ht ? (INT)GetWindowLongPtr(ht, GWL_READLEVEL) : 0;
 
       // don't save MDI icon title windows or search windows,
       // or any dir window which is currently recursing
@@ -79,9 +81,9 @@ DO_AGAIN:
          wp.length = sizeof(WINDOWPLACEMENT);
          if (!GetWindowPlacement(hwnd, &wp))
              continue;
-         view = GetWindowLongPtr(hwnd, GWL_VIEW);
-         sort = GetWindowLongPtr(hwnd, GWL_SORT);
-         attribs = GetWindowLongPtr(hwnd, GWL_ATTRIBS);
+         view = (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW);
+         sort = (DWORD)GetWindowLongPtr(hwnd, GWL_SORT);
+         attribs = (DWORD)GetWindowLongPtr(hwnd, GWL_ATTRIBS);
 
          GetMDIWindowText(hwnd, szPath, COUNTOF(szPath));
 
@@ -119,6 +121,10 @@ DO_AGAIN:
 
       goto DO_AGAIN;
    }
+
+   // Save CachedPath and GotoCachePunctuation
+   WritePrivateProfileString(szSettings, szCachedPath, szCachedPathIni, szTheINIFile);
+   WritePrivateProfileString(szSettings, szGotoCachePunctuation, szPunctuation, szTheINIFile);
 }
 
 
@@ -145,7 +151,7 @@ OtherDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     {
       case WM_INITDIALOG:
 
-          dwView = GetWindowLongPtr(hwndActive, GWL_VIEW);
+          dwView = (DWORD)GetWindowLongPtr(hwndActive, GWL_VIEW);
           CheckDlgButton(hDlg, IDD_SIZE,  dwView & VIEW_SIZE);
           CheckDlgButton(hDlg, IDD_DATE,  dwView & VIEW_DATE);
           CheckDlgButton(hDlg, IDD_TIME,  dwView & VIEW_TIME);
@@ -233,6 +239,7 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
   TCHAR szTemp[2*MAXPATHLEN];
   TCHAR szInclude[MAXFILENAMELEN];
   HWND hwndDir;
+  HWND hwndTree;
 
   UNREFERENCED_PARAMETER(lParam);
 
@@ -296,15 +303,16 @@ IncludeDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                   EndDialog(hDlg, TRUE);        // here to avoid excess repaints
 
-                  // we need to update the tree if they changed the system/hidden
-                  // flags.  ...  FIX31
-
                   if (hwndDir = HasDirWindow(hwndActive)) {
                       SendMessage(hwndDir, FS_GETDIRECTORY, COUNTOF(szTemp), (LPARAM)szTemp);
                       lstrcat(szTemp, szInclude);
 
                       SetWindowLongPtr(hwndActive, GWL_ATTRIBS, dwAttribs);
                       SendMessage(hwndDir, FS_CHANGEDISPLAY, CD_PATH_FORCE, (LPARAM)szTemp);
+                  }
+
+                  if (hwndTree = HasTreeWindow(hwndActive)) {
+                      SendMessage(hwndTree, TC_SETDRIVE, 0L, 0L);
                   }
 
                   break;
@@ -606,7 +614,7 @@ NewFont()
             SetLBFont(hwndT,
                       hwndT2,
                       hFont,
-                      GetWindowLongPtr(hwnd, GWL_VIEW),
+                      (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW),
                       (LPXDTALINK)GetWindowLongPtr(hwndT, GWL_HDTA));
 
             InvalidateRect(hwndT2, NULL, TRUE);
@@ -706,11 +714,11 @@ DoHelp:
 INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     /* Editor prefrence variables*/
-    TCHAR szTempEditPath[MAX_PATH];
-    TCHAR szPath[MAX_PATH];
-    TCHAR szFilter[MAX_PATH] = { 0 };
+    TCHAR szTempEditPath[MAXPATHLEN];
+    TCHAR szPath[MAXPATHLEN];
+    TCHAR szFilter[MAXPATHLEN] = { 0 };
 
-    LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAX_PATH);
+    LoadString(hAppInstance, IDS_EDITFILTER, szFilter, MAXPATHLEN);
 
     OPENFILENAME ofn;
 
@@ -735,7 +743,7 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
         case WM_INITDIALOG:
             InitLangList(hLangComboBox);
 
-            GetPrivateProfileString(szSettings, szEditorPath, NULL, szTempEditPath, MAX_PATH, szTheINIFile);
+            GetPrivateProfileString(szSettings, szEditorPath, NULL, szTempEditPath, MAXPATHLEN, szTheINIFile);
             SetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath);
 
             CheckDlgButton(hDlg, IDC_VSTYLE, bDisableVisualStyles);
@@ -755,7 +763,7 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
                     if ((*lpfnGetOpenFileNameW)(&ofn))
                     {
-                        wcscpy_s(szPath, MAX_PATH, ofn.lpstrFile);
+                        wcscpy_s(szPath, MAXPATHLEN, ofn.lpstrFile);
                         SetDlgItemText(hDlg, IDD_EDITOR, szPath);
                     }
                     break;
@@ -763,7 +771,7 @@ INT_PTR CALLBACK PrefDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 case IDOK:
                     SaveLang(hLangComboBox);
 
-                    GetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath, MAX_PATH);
+                    GetDlgItemText(hDlg, IDD_EDITOR, szTempEditPath, MAXPATHLEN);
                     WritePrivateProfileString(szSettings, szEditorPath, szTempEditPath, szTheINIFile);
 
                     bDisableVisualStyles = IsDlgButtonChecked(hDlg, IDC_VSTYLE);
@@ -847,7 +855,7 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 	{
 		RECT rect;
 
-		item = SendMessage(hwndLB, LB_GETCURSEL, 0, 0);
+		item = (DWORD)SendMessage(hwndLB, LB_GETCURSEL, 0, 0);
 		SendMessage(hwndLB, LB_GETITEMRECT, (WPARAM)LOWORD(item), (LPARAM)&rect);
 		pt.x = rect.left;
 		pt.y = rect.bottom;
@@ -859,7 +867,7 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 		POINTSTOPOINT(pt, lParam);
 
 		ScreenToClient(hwndLB, &pt);
-		item = SendMessage(hwndLB, LB_ITEMFROMPOINT, 0, POINTTOPOINTS(pt));
+		item = (DWORD)SendMessage(hwndLB, LB_ITEMFROMPOINT, 0, POINTTOPOINTS(pt));
 
 		if (HIWORD(item) == 0)
 		{

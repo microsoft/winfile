@@ -20,12 +20,6 @@
 
 #include "dbg.h"
 
-typedef VOID (APIENTRY *FNPENAPP)(WORD, BOOL);
-
-VOID (APIENTRY *lpfnRegisterPenApp)(WORD, BOOL);
-
-BYTE chPenReg[] = "RegisterPenApp";    // used in GetProcAddress call
-
 TCHAR szNTlanman[] = TEXT("ntlanman.dll");
 TCHAR szHelv[] = TEXT("MS Shell Dlg");
 /*
@@ -240,6 +234,7 @@ GetSettings()
    bConfirmReadOnly= GetPrivateProfileInt(szSettings, szConfirmReadOnly, bConfirmReadOnly, szTheINIFile);
    uChangeNotifyTime= GetPrivateProfileInt(szSettings, szChangeNotifyTime, uChangeNotifyTime, szTheINIFile);
    bSaveSettings   = GetPrivateProfileInt(szSettings, szSaveSettings,  bSaveSettings, szTheINIFile);
+   bScrollOnExpand = GetPrivateProfileInt(szSettings, szScrollOnExpand, bScrollOnExpand, szTheINIFile);
    weight = GetPrivateProfileInt(szSettings, szFaceWeight, 400, szTheINIFile);
 
    GetPrivateProfileString(szSettings,
@@ -398,9 +393,9 @@ InitMenus()
       LoadString(hAppInstance, IDS_SHAREAS, szValue, COUNTOF(szValue));
       InsertMenu(hMenu, 8, MF_BYPOSITION | MF_STRING, IDM_SHAREAS, szValue);
 
-      LoadString(hAppInstance, IDS_STOPSHARE, szValue, COUNTOF(szValue));
-      InsertMenu(hMenu, 9, MF_BYPOSITION | MF_STRING, IDM_STOPSHARE, szValue);
-
+      // IDM_STOPSHARE not shown anymore, because there is no way to open then 'Stop Share Dialog' with W7/10/11 
+      // LoadString(hAppInstance, IDS_STOPSHARE, szValue, COUNTOF(szValue));
+      // InsertMenu(hMenu, 9, MF_BYPOSITION | MF_STRING, IDM_STOPSHARE, szValue);
    }
 
    //
@@ -497,9 +492,9 @@ UINT  MapMenuPosToIDM(UINT pos)
         idm++;
     }
 
-    if (idm >= IDM_EXTENSIONS + iNumExtensions)
+    if (idm >= IDM_EXTENSIONS + (UINT)iNumExtensions)
     {
-        idm += MAX_EXTENSIONS - iNumExtensions;
+        idm += MAX_EXTENSIONS - (UINT)iNumExtensions;
     }
 
     return idm;
@@ -643,7 +638,7 @@ LoadBitmaps(VOID)
    //
    //  Skip the color table entries, if any
    //
-   lpBits += (1 << (lpBitmapInfo->biBitCount)) * sizeof(RGBQUAD);
+   lpBits += (DWORD)(1 << (lpBitmapInfo->biBitCount)) * sizeof(RGBQUAD);
 
    //
    // Create a color bitmap compatible with the display device
@@ -1062,10 +1057,6 @@ JAPANEND
 	if (OleInitialize(0) != NOERROR)
 		return FALSE;
 	
-   if (lpfnRegisterPenApp = (FNPENAPP)GetProcAddress((HANDLE)GetSystemMetrics(SM_PENWINDOWS), chPenReg))
-      (*lpfnRegisterPenApp)(1, TRUE);
-
-
    //
    // Remember the current directory.
    //
@@ -1322,6 +1313,14 @@ JAPANEND
    win.rc.right -= win.rc.left;
    win.rc.bottom -= win.rc.top;
 
+   // We need to know about all reaprse tags
+   hNtdll = GetModuleHandle(NTDLL_DLL);
+   if (hNtdll)
+   {
+      pfnRtlSetProcessPlaceholderCompatibilityMode = (RtlSetProcessPlaceholderCompatibilityMode_t)GetProcAddress(hNtdll, "RtlSetProcessPlaceholderCompatibilityMode");
+      if (pfnRtlSetProcessPlaceholderCompatibilityMode)
+         pfnRtlSetProcessPlaceholderCompatibilityMode(PHCM_EXPOSE_PLACEHOLDERS);
+   }
 
    //
    // Check to see if another copy of winfile is running.  If
@@ -1333,6 +1332,16 @@ JAPANEND
       HWND hwnd;
 
       hwndPrev = NULL; // FindWindow (szFrameClass, NULL);
+
+      // Check if developer mode is available in Windows10
+      OSVERSIONINFO  osversion;
+      osversion.dwOSVersionInfoSize = sizeof(OSVERSIONINFO);
+#pragma warning ( push )
+#pragma warning( disable : 4996 )
+	  GetVersionEx(&osversion);
+#pragma warning ( pop )
+	  if (osversion.dwMajorVersion >= 10 && osversion.dwBuildNumber >= 14972)
+        bDeveloperModeAvailable = TRUE;
 
       if (hwndPrev != NULL) {
          //  For Win32, this will accomplish almost the same effect as the
@@ -1596,9 +1605,6 @@ FreeFileManager()
    DocDestruct(ppDocBucket);
    DocDestruct(ppProgBucket);
 
-   if (lpfnRegisterPenApp)
-      (*lpfnRegisterPenApp)(1, FALSE);
-
    DeleteBitmaps();
 
    if (hFont)
@@ -1619,8 +1625,8 @@ FreeFileManager()
    if (hfmifsDll)
       FreeLibrary(hfmifsDll);
 
-   if (hNTLanman)
-      FreeLibrary(hNTLanman);
+   if (hNtshrui)
+      FreeLibrary(hNtshrui);
 
    if (hMPR)
       FreeLibrary(hMPR);

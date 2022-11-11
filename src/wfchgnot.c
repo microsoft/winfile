@@ -273,7 +273,7 @@ NotifyResume(DRIVE drive, UINT uType)
       hwnd;
       hwnd = GetWindow(hwnd, GW_HWNDNEXT)) {
 
-      driveCurrent = GetWindowLongPtr(hwnd, GWL_TYPE);
+      driveCurrent = (DRIVE)GetWindowLongPtr(hwnd, GWL_TYPE);
 
       //
       // Skip search window

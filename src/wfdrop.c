@@ -50,7 +50,7 @@ void PaintRectItem(WF_IDropTarget *This, POINTL *ppt)
 		pt.y = ppt->y;
 		ScreenToClient(hwndLB, &pt);
 	
-		iItem = SendMessage(hwndLB, LB_ITEMFROMPOINT, 0, MAKELPARAM(pt.x, pt.y));
+		iItem = (DWORD)SendMessage(hwndLB, LB_ITEMFROMPOINT, 0, MAKELPARAM(pt.x, pt.y));
 		iItem &= 0xffff;
 		if (This->m_iItemSelected != -1 && This->m_iItemSelected == iItem)
 			return;
@@ -133,7 +133,7 @@ HDROP CreateDropFiles(POINT pt, BOOL fNC, LPTSTR pszFiles)
 {
     HANDLE hDrop;
     LPBYTE lpList;
-    UINT cbList;
+    SIZE_T cbList;
 	LPTSTR szSrc;
 
     LPDROPFILES lpdfs;
@@ -246,8 +246,9 @@ LPWSTR QuotedContentList(IDataObject *pDataObject)
             // Get the descriptor information
             STGMEDIUM sm_desc= {0,0,0};
             STGMEDIUM sm_content = {0,0,0};
-			unsigned int file_index, cchTempPath, cchFiles;
-            WCHAR szTempPath[MAX_PATH+1];
+			unsigned int file_index;
+            size_t cchTempPath, cchFiles;
+            WCHAR szTempPath[MAXPATHLEN +1];
 
             hr = pDataObject->lpVtbl->GetData(pDataObject, &descriptor_format, &sm_desc);
 			if (hr != S_OK)
@@ -255,7 +256,7 @@ LPWSTR QuotedContentList(IDataObject *pDataObject)
 
             file_group_descriptor = (FILEGROUPDESCRIPTOR *) GlobalLock(sm_desc.hGlobal);
 
-			GetTempPath(MAX_PATH, szTempPath);
+			GetTempPath(MAXPATHLEN, szTempPath);
 			cchTempPath = wcslen(szTempPath);
 
 			// calc total size of file names

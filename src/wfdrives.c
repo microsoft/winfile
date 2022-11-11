@@ -22,6 +22,7 @@ VOID InvalidateDrive(DRIVEIND driveInd);
 INT  DriveFromPoint(HWND hwnd, POINT pt);
 VOID DrawDrive(HDC hdc, INT x, INT y, DRIVEIND driveInd, BOOL bCurrent, BOOL bFocus);
 INT  KeyToItem(HWND hWnd, WORD nDriveLetter);
+int GetDragStatusText(int iOperation);
 
 
 /////////////////////////////////////////////////////////////////////
@@ -146,9 +147,9 @@ NewTree(
    // take all the attributes from the current window
    // (except the filespec, we may want to change this)
    //
-   dwNewSort    = GetWindowLongPtr(hwndSrc, GWL_SORT);
-   dwNewView    = GetWindowLongPtr(hwndSrc, GWL_VIEW);
-   dwNewAttribs = GetWindowLongPtr(hwndSrc, GWL_ATTRIBS);
+   dwNewSort    = (DWORD)GetWindowLongPtr(hwndSrc, GWL_SORT);
+   dwNewView    = (DWORD)GetWindowLongPtr(hwndSrc, GWL_VIEW);
+   dwNewAttribs = (DWORD)GetWindowLongPtr(hwndSrc, GWL_ATTRIBS);
 
    hwnd = CreateTreeWindow(szDir, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, dxSplit);
 
@@ -489,7 +490,7 @@ UseCurDir:
     pFrom = (LPTSTR)lpds->dwData;
 
     CheckEsc(szPath);
-    DMMoveCopyHelper(pFrom, szPath, fShowSourceBitmaps);
+    DMMoveCopyHelper(pFrom, szPath, iShowSourceBitmaps);
 
     if (!bIconic)
         RectDrive(driveInd, FALSE);
@@ -638,8 +639,10 @@ DrivesSetDrive(
    //
    if (hwndDir = HasDirWindow(hwndChild)) {
 
+     UINT iStrLen;
      AddBackslash(szPath);
-     SendMessage(hwndDir, FS_GETFILESPEC, MAXFILENAMELEN, (LPARAM)(szPath + lstrlen(szPath)));
+     iStrLen = lstrlen(szPath);
+     SendMessage(hwndDir, FS_GETFILESPEC, COUNTOF(szPath) - iStrLen, (LPARAM)(szPath + iStrLen));
 
      SendMessage(hwndDir, FS_CHANGEDISPLAY,
         bDontSteal ? CD_PATH_FORCE | CD_DONTSTEAL : CD_PATH_FORCE,
@@ -694,8 +697,8 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
   hwndChild = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
 
-  nDriveCurrent = GetWindowLongPtr(hWnd, GWL_CURDRIVEIND);
-  nDriveFocus = GetWindowLongPtr(hWnd, GWL_CURDRIVEFOCUS);
+  nDriveCurrent = (INT)GetWindowLongPtr(hWnd, GWL_CURDRIVEIND);
+  nDriveFocus = (INT)GetWindowLongPtr(hWnd, GWL_CURDRIVEFOCUS);
 
   switch (wMsg) {
       case WM_CREATE:
@@ -707,7 +710,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
           if (hwndChild == 0)
              nDrive = 0;
           else
-             nDrive = GetWindowLongPtr(hwndChild, GWL_TYPE);
+             nDrive = (INT)GetWindowLongPtr(hwndChild, GWL_TYPE);
 
 
 
@@ -751,7 +754,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
                    {
                       HWND hwndLB;
 
-                      bChangeDisplay = GetWindowLongPtr(hwndDir, GWLP_USERDATA);
+                      bChangeDisplay = (BOOL)GetWindowLongPtr(hwndDir, GWLP_USERDATA);
 
                       hwndLB = GetDlgItem (hwndDir, IDCW_LISTBOX);
                       if (hwndLB && !bChangeDisplay)
@@ -838,9 +841,9 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
       case WM_DRAGMOVE:
       {
-         static BOOL fOldShowSourceBitmaps = 0;
+         static INT iOldShowSourceBitmaps = 0;
 
-         #define lpds ((LPDROPSTRUCT)lParam)
+         LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
          nDrive = DriveFromPoint(lpds->hwndSink, lpds->ptDrop);
 
@@ -848,8 +851,8 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
 // Handle if user hits control while dragging to drive
 
-         if (nDrive == nDriveDragging && fOldShowSourceBitmaps != fShowSourceBitmaps) {
-            fOldShowSourceBitmaps = fShowSourceBitmaps;
+         if (nDrive == nDriveDragging && iOldShowSourceBitmaps != iShowSourceBitmaps) {
+            iOldShowSourceBitmaps = iShowSourceBitmaps;
             RectDrive(nDrive, TRUE);
             nDriveDragging = -1;
          }
@@ -884,7 +887,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
          }
 
          SetStatusText(SBT_NOBORDERS|255, SST_FORMAT|SST_RESOURCE,
-            (LPTSTR)(DWORD)(fShowSourceBitmaps ? IDS_DRAG_COPYING : IDS_DRAG_MOVING),
+            (LPTSTR)(DWORD_PTR)(GetDragStatusText(iShowSourceBitmaps)),
             szDir);
          UpdateWindow(hwndStatus);
 
@@ -912,7 +915,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
              }
 
          SetStatusText(SBT_NOBORDERS|255, SST_RESOURCE|SST_FORMAT,
-            (LPTSTR)(DWORD)(fShowSourceBitmaps ? IDS_DRAG_COPYING : IDS_DRAG_MOVING),
+            (LPTSTR)(DWORD_PTR)(GetDragStatusText(iShowSourceBitmaps)),
             szDir);
          UpdateWindow(hwndStatus);
 

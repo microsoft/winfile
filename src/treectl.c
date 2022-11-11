@@ -102,7 +102,30 @@ ResetTreeMax(
     BOOL fReCalcExtent);
 
 
+/*--------------------------------------------------------------------------*/
+/*                                                                          */
+/*  GetDragStatusText() -                                                   */
+/*                                                                          */
+/*  return IDS_<id> with respect to iOperation                              */
+/*                                                                          */
+/*--------------------------------------------------------------------------*/
 
+int GetDragStatusText(int iOperation)
+{
+   int iStatusText = IDS_DRAG_MOVING;
+   switch (iOperation) {
+   case DROP_COPY:
+      iStatusText = IDS_DRAG_COPYING;
+      break;
+
+   case DROP_JUNC:
+   case DROP_HARD:
+   case DROP_LINK:
+      iStatusText = IDS_DRAG_LINKING;
+      break;
+   }
+   return iStatusText;
+}
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
@@ -153,6 +176,36 @@ GetTreePath(PDNODE pNode, register LPTSTR szDest)
 
 
 
+//  SetNodeAttribs
+//                              
+//  Set node attributes for directory/junction/symlink
+//
+VOID
+SetNodeAttribs(PDNODE pNode, LPTSTR szPath)
+{
+   pNode->dwAttribs = GetFileAttributes(szPath);
+   if (INVALID_FILE_ATTRIBUTES == pNode->dwAttribs) {
+      pNode->dwAttribs = 0;
+   }
+
+   //
+   // Determine which kind of Reparse Point
+   // 
+   if (pNode->dwAttribs & ATTR_REPARSE_POINT) {
+
+      TCHAR szTemp[MAXPATHLEN];
+      int tag = DecodeReparsePoint(szPath, szTemp, MAXPATHLEN);
+      switch (tag) {
+      case IO_REPARSE_TAG_MOUNT_POINT:
+         pNode->dwAttribs |= ATTR_JUNCTION;
+         break;
+      case IO_REPARSE_TAG_SYMLINK:
+         pNode->dwAttribs |= ATTR_SYMBOLIC;
+         break;
+      }
+   }
+}
+
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
 /*  ScanDirLevel() -                                                        */
@@ -166,6 +219,7 @@ ScanDirLevel(PDNODE pParentNode, LPTSTR szPath, DWORD view)
 {
   BOOL bFound;
   LFNDTA lfndta;
+  BOOL bExclude;
 
   /* Add '*.*' to the current path. */
   lstrcpy(szMessage, szPath);
@@ -178,9 +232,18 @@ ScanDirLevel(PDNODE pParentNode, LPTSTR szPath, DWORD view)
 
   while (bFound)
     {
+      /* Is this a junction and are those displayed? */
+      bExclude = FALSE;
+      if ((view & ATTR_JUNCTION) == 0 &&
+          (lfndta.fd.dwFileAttributes & ATTR_JUNCTION)) {
+
+          bExclude = TRUE;
+      }
+
       /* Is this not a '.' or '..' directory? */
       if (!ISDOTDIR(lfndta.fd.cFileName) &&
-         (lfndta.fd.dwFileAttributes & ATTR_DIR)) {
+         (lfndta.fd.dwFileAttributes & ATTR_DIR) &&
+         !bExclude) {
 
          pParentNode->wFlags |= TF_HASCHILDREN;
          bFound = FALSE;
@@ -336,7 +399,7 @@ InsertDirectory(
    x = GetRealExtent(pNode, hwndLB, NULL, &len);
    x = CALC_EXTENT(pNode);
 
-   xTreeMax = GetWindowLongPtr(hwndTreeCtl, GWL_XTREEMAX);
+   xTreeMax = (UINT)GetWindowLongPtr(hwndTreeCtl, GWL_XTREEMAX);
    if (x > xTreeMax)
    {
        SetWindowLongPtr(hwndTreeCtl, GWL_XTREEMAX, x);
@@ -435,15 +498,12 @@ InsertDirectory(
    }
 
    //
-   //  Set the attributes for this directory.
+   //  Set the attributes for this directory/junction/symlink.
    //
    if (dwAttribs == INVALID_FILE_ATTRIBUTES)
    {
        GetTreePath(pNode, szPathName);
-       if ((pNode->dwAttribs = GetFileAttributes(szPathName)) == INVALID_FILE_ATTRIBUTES)
-       {
-           pNode->dwAttribs = 0;
-       }
+       SetNodeAttribs(pNode, szPathName);
    }
    else
    {
@@ -482,6 +542,39 @@ wfYield()
    }
 }
 
+/////////////////////////////////////////////////////////////////////
+//
+// Name:     WFFindNextNonJunction
+//
+// Synopsis: Returns the next non-junction entry, which may be the
+//           current entry.  Continually calls WFFindNext so long as
+//           the current entry is a junction.
+//
+// lpFind               Pointer to the find context, which may (or may
+//                      not) be advanced to a later entry.
+//
+// Return:              TRUE  = non-junction successfully found
+//                      FALSE = no non-junction remaining.
+BOOL
+WFFindNextNonJunction(LPLFNDTA lpFind)
+{
+    BOOL bFound;
+
+    bFound = TRUE;
+
+    while (bFound)
+    {
+        // If it's not a junction, return it.
+        if (!(lpFind->fd.dwFileAttributes & ATTR_JUNCTION))
+        {
+            return bFound;
+        }
+
+        bFound = WFFindNext(lpFind);
+    }
+
+    return bFound;
+}
 
 
 /////////////////////////////////////////////////////////////////////
@@ -545,7 +638,7 @@ ReadDirLevel(
 
    hwndParent = GetParent(hwndTreeCtl);
 
-   dwView = GetWindowLongPtr(hwndParent, GWL_VIEW);
+   dwView = (DWORD)GetWindowLongPtr(hwndParent, GWL_VIEW);
 
    //
    // we optimize the tree read if we are not adding pluses and
@@ -663,6 +756,14 @@ ReadDirLevel(
       lstrcpy(szMessage, szPath);
 
       bFound = WFFindFirst(&lfndta, szMessage, dwAttribs);
+
+      //
+      // if junctions are not displayed, continue to the next non-junction
+      //
+      if (bFound && !(dwAttribs & ATTR_JUNCTION))
+      {
+          bFound = WFFindNextNonJunction(&lfndta);
+      }
    }
 
    // for net drive case where we can't actually see what is in these
@@ -715,7 +816,7 @@ ReadDirLevel(
 
       if (bCancelTree) {
 
-         INT iDrive = GetWindowLongPtr(hwndParent, GWL_TYPE);
+         INT iDrive = (INT)GetWindowLongPtr(hwndParent, GWL_TYPE);
 
          if (!IsValidDisk(iDrive))
             PostMessage(hwndParent, WM_SYSCOMMAND, SC_CLOSE, 0L);
@@ -786,8 +887,8 @@ ReadDirLevel(
                  bResult = FALSE;
                  goto DONE;
               }
-          } else /* if (dwView & VIEW_PLUSES)  ALWAYS DO THIS for arrow-driven expand/collapse */ {
-             ScanDirLevel(pNode, szPath, dwAttribs & ATTR_HS);
+          } else if (dwView & VIEW_PLUSES) {
+             ScanDirLevel(pNode, szPath, dwAttribs & (ATTR_HS | ATTR_JUNCTION));
           }
       }
 
@@ -837,6 +938,14 @@ ReadDirLevel(
       else
       {
           bFound = WFFindNext(&lfndta); // get it from dos
+
+          //
+          // if junctions are not displayed, continue to the next non-junction
+          //
+          if (bFound && !(dwAttribs & ATTR_JUNCTION))
+          {
+              bFound = WFFindNextNonJunction(&lfndta);
+          }
       }
   }
 
@@ -932,7 +1041,7 @@ StealTreeData(
    // we need to match on these attributes as well as the name
    //
    dwView    = GetWindowLongPtr(GetParent(hwndTC), GWL_VIEW) & VIEW_PLUSES;
-   dwAttribs = GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS) & ATTR_HS;
+   dwAttribs = GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS) & (ATTR_HS | ATTR_JUNCTION);
 
    //
    // get the dir of this new window for compare below
@@ -948,7 +1057,7 @@ StealTreeData(
          (hwndT != hwndTC) &&
          !GetWindowLongPtr(hwndT, GWL_READLEVEL) &&
          (dwView  == (DWORD)(GetWindowLongPtr(hwndSrc, GWL_VIEW) & VIEW_PLUSES)) &&
-         (dwAttribs == (DWORD)(GetWindowLongPtr(hwndSrc, GWL_ATTRIBS) & ATTR_HS))) {
+         (dwAttribs == (DWORD)(GetWindowLongPtr(hwndSrc, GWL_ATTRIBS) & (ATTR_HS | ATTR_JUNCTION)))) {
 
          SendMessage(hwndSrc, FS_GETDIRECTORY, COUNTOF(szSrc), (LPARAM)szSrc);
          StripBackslash(szSrc);
@@ -1084,7 +1193,8 @@ FillTreeListbox(HWND hwndTC,
 
       if (pNode) {
 
-         dwAttribs = ATTR_DIR | (GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS) & ATTR_HS);
+         dwAttribs = (DWORD)GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS);
+         dwAttribs = ATTR_DIR | (dwAttribs & (ATTR_HS | ATTR_JUNCTION));
          cNodes = 0;
          bCancelTree = FALSE;
 
@@ -1155,7 +1265,8 @@ FillOutTreeList(HWND hwndTC,
 
 	SendMessage(hwndLB, WM_SETREDRAW, FALSE, 0L);
 
-	dwAttribs = ATTR_DIR | (GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS) & ATTR_HS);
+	dwAttribs = (DWORD)GetWindowLongPtr(GetParent(hwndTC), GWL_ATTRIBS);
+	dwAttribs = ATTR_DIR | (dwAttribs & (ATTR_HS | ATTR_JUNCTION));
 
 	// get path to node that already exists in tree; will start reading from there
 	GetTreePath(pNode, szExists);
@@ -1396,7 +1507,7 @@ EmptyStatusAndReturn:
       StripBackslash(szPath);
 
       SetStatusText(SBT_NOBORDERS|255, SST_FORMAT|SST_RESOURCE,
-               (LPCTSTR)(DWORD)(fShowSourceBitmaps ? IDS_DRAG_COPYING : IDS_DRAG_MOVING),
+               (LPCTSTR)(DWORD_PTR)GetDragStatusText(iShowSourceBitmaps),
                szPath);
       UpdateWindow(hwndStatus);
 
@@ -1617,11 +1728,11 @@ TCWP_DrawItem(
 
       // HACK: Don't draw the bitmap when moving
 
-      if (fShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected)
+      if (iShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected)
       {
             // Blt the proper folder bitmap
 
-            view = GetWindowLongPtr(GetParent(hWnd), GWL_VIEW);
+            view = (DWORD)GetWindowLongPtr(GetParent(hWnd), GWL_VIEW);
 
             if (IsNetPath(pNode)) {
                 if (bDrawSelected)
@@ -1630,10 +1741,17 @@ TCWP_DrawItem(
                         iBitmap = BM_IND_CLOSEDFS;
 
             } else if (!(view & VIEW_PLUSES) || !(pNode->wFlags & TF_HASCHILDREN)) {
-                if (bDrawSelected)
-                        iBitmap = BM_IND_OPEN;
-                else
-                        iBitmap = BM_IND_CLOSE;
+               if (bDrawSelected)  {
+                  if (pNode->dwAttribs & (ATTR_SYMBOLIC | ATTR_JUNCTION))
+                     iBitmap = BM_IND_OPENREPARSE;
+                  else
+                     iBitmap = BM_IND_OPEN;
+               } else {
+                  if (pNode->dwAttribs & (ATTR_SYMBOLIC | ATTR_JUNCTION))
+                     iBitmap = BM_IND_CLOSEREPARSE;
+                  else
+                     iBitmap = BM_IND_CLOSE;
+               }
             } else {
                 if (pNode->wFlags & TF_EXPANDED) {
                         if (bDrawSelected)
@@ -1812,7 +1930,7 @@ CollapseLevel(HWND hwndLB, PDNODE pNode, INT nIndex)
   /* Disable redrawing early. */
   SendMessage(hwndLB, WM_SETREDRAW, FALSE, 0L);
 
-  xTreeMax = GetWindowLongPtr(GetParent(hwndLB), GWL_XTREEMAX);
+  xTreeMax = (UINT)GetWindowLongPtr(GetParent(hwndLB), GWL_XTREEMAX);
 
   nIndexT++;
 
@@ -1861,6 +1979,7 @@ ExpandLevel(HWND hWnd, WPARAM wParam, INT nIndex, LPTSTR szPath)
   INT iExpandInView;
   INT iCurrentIndex;
   RECT rc;
+  DWORD dwAttribs;
 
   //
   // Don't do anything while the tree is being built.
@@ -1916,8 +2035,9 @@ ExpandLevel(HWND hWnd, WPARAM wParam, INT nIndex, LPTSTR szPath)
 
   if (IsTheDiskReallyThere(hWnd, szPath, FUNC_EXPAND, FALSE))
   {
-     ReadDirLevel(hWnd, pNode, szPath, pNode->nLevels + 1, nIndex,
-        (DWORD)(ATTR_DIR | (GetWindowLongPtr(GetParent(hWnd), GWL_ATTRIBS) & ATTR_HS)),
+     dwAttribs = (DWORD)GetWindowLongPtr(GetParent(hWnd), GWL_ATTRIBS);
+     dwAttribs = ATTR_DIR | (dwAttribs & (ATTR_HS | ATTR_JUNCTION));
+     ReadDirLevel(hWnd, pNode, szPath, pNode->nLevels + 1, nIndex, dwAttribs,
         (BOOL)wParam, NULL, IS_PARTIALSORT(DRIVEID(szPath)));
   }
 
@@ -1931,7 +2051,9 @@ ExpandLevel(HWND hWnd, WPARAM wParam, INT nIndex, LPTSTR szPath)
 
     iNewTopIndex = min((INT)iCurrentIndex, iTopIndex + iNumExpanded - iExpandInView + 1);
 
-    SendMessage(hwndLB, LB_SETTOPINDEX, (WPARAM)iNewTopIndex, 0L);
+    // Control tree view scroll behavior on expand via winfile.ini[Settings]ScrollOnExpand. Default == TRUE
+    if (TRUE == bScrollOnExpand)
+      SendMessage(hwndLB, LB_SETTOPINDEX, (WPARAM)iNewTopIndex, 0L);
   }
 
   SendMessage(hwndLB, WM_SETREDRAW, TRUE, 0L);
@@ -2233,7 +2355,7 @@ TreeControlWndProc(
          if (cchMatch > wcslen(pNode->szName))
                 cchMatch = wcslen(pNode->szName);
          if (CompareString( LOCALE_USER_DEFAULT, NORM_IGNORECASE, 
-             rgchMatch, cchMatch, pNode->szName, cchMatch) == 2)
+             rgchMatch, (INT)cchMatch, pNode->szName, (INT)cchMatch) == 2)
             break;
 
       }
@@ -2355,7 +2477,7 @@ TreeControlWndProc(
             lstrcpy(szPath, (LPTSTR)lParam);
             ScanDirLevel( (PDNODE)pNodeT,
                           szPath,
-                          (GetWindowLongPtr(hwndParent, GWL_ATTRIBS) & ATTR_HS));
+                          (GetWindowLongPtr(hwndParent, GWL_ATTRIBS) & (ATTR_HS | ATTR_JUNCTION)));
 
             //
             // Invalidate the window so the plus gets drawn if needed
@@ -2363,15 +2485,6 @@ TreeControlWndProc(
             if (((PDNODE)pNodeT)->wFlags & TF_HASCHILDREN) {
                InvalidateRect(hwndLB, NULL, FALSE);
             }
-         }
-
-         //
-         // if we are inserting before or at the current selection
-         // push the current selection down
-         //
-         nIndex = (INT)SendMessage(hwndLB, LB_GETCURSEL, 0, 0L);
-         if ((INT)LOWORD(dwTemp) <= nIndex) {
-            SendMessage(hwndLB, LB_SETCURSEL, nIndex + 1, 0L);
          }
 
          break;
@@ -2481,7 +2594,7 @@ TreeControlWndProc(
          //
          // CurSel is returned from SendMessage
          //
-         CurSel = SendMessage(hwnd, TC_GETDIR, (WPARAM) -1,(LPARAM)szPath);
+         CurSel = (INT)SendMessage(hwnd, TC_GETDIR, (WPARAM) -1,(LPARAM)szPath);
          if (CurSel == -1)
          {
              break;
@@ -2490,8 +2603,7 @@ TreeControlWndProc(
          AddBackslash(szPath);
 
          uStrLen = lstrlen(szPath);
-         SendMessage(hwndParent, FS_GETFILESPEC, COUNTOF(szPath)-uStrLen,
-                     (LPARAM)(szPath+uStrLen));
+         SendMessage(hwndParent, FS_GETFILESPEC, COUNTOF(szPath) - uStrLen, (LPARAM)(szPath + uStrLen));
 
          if (hwndDir = HasDirWindow(hwndParent)) {
 
@@ -2686,7 +2798,7 @@ UpdateSelection:
       DragObject(hwndFrame, hwnd, (UINT)DOF_DIRECTORY, (ULONG_PTR)szPath, NULL);
 
       hwndDragging = NULL;
-      fShowSourceBitmaps = TRUE;
+      iShowSourceBitmaps = TRUE;
       InvalidateRect(hwndLB, NULL, FALSE);
 
       return 2;
@@ -2720,7 +2832,7 @@ UpdateSelection:
 
    case WM_DRAGMOVE:
    {
-      static BOOL fOldShowSourceBitmaps = 0;
+      static INT iOldShowSourceBitmaps = 0;
 
       //
       // WM_DRAGMOVE is sent when two consecutive TRUE QUERYDROPOBJECT
@@ -2743,10 +2855,10 @@ UpdateSelection:
       //
       // Is it a new one?
       //
-      if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
+      if (iSel == iSelHighlight && iOldShowSourceBitmaps == iShowSourceBitmaps)
          break;
 
-      fOldShowSourceBitmaps = fShowSourceBitmaps;
+      iOldShowSourceBitmaps = iShowSourceBitmaps;
 
       //
       // Yup, un-select the old item.
@@ -2766,9 +2878,9 @@ UpdateSelection:
       // wParam     TRUE on dropable target
       //            FALSE not dropable target
       // lParam     lpds
-      BOOL bCopy;
+      INT iOperation;
 
-#define lpds ((LPDROPSTRUCT)lParam)
+      LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
       // based on current drop location scroll the sink up or down
       DSDragScrollSink(lpds);
@@ -2783,20 +2895,28 @@ UpdateSelection:
       // Are we over a drop-able sink?
       //
       if (wParam) {
-         if (GetKeyState(VK_CONTROL) < 0)     // CTRL
-            bCopy = TRUE;
-            else if (GetKeyState(VK_MENU)<0 || GetKeyState(VK_SHIFT)<0) // ALT || SHIFT
-               bCopy = FALSE;
+         if (GetKeyState(VK_CONTROL) < 0) {
+            iOperation = DROP_COPY;
+            if (GetKeyState(VK_SHIFT) < 0) {
+               iOperation = DROP_LINK;
+               if (GetKeyState(VK_MENU) < 0) {
+                  iOperation = DROP_JUNC;
+               }
+            }
+         }
+         else if (GetKeyState(VK_MENU) < 0 || GetKeyState(VK_SHIFT) < 0) 
+            // ALT || SHIFT forces a move even if not on same drive
+            iOperation = DROP_MOVE;
             else
-               bCopy = (GetDrive(lpds->hwndSink, lpds->ptDrop) != GetDrive(lpds->hwndSource, lpds->ptDrop));
+            iOperation = (GetDrive(lpds->hwndSink, lpds->ptDrop) != GetDrive(lpds->hwndSource, lpds->ptDrop));
       } else {
-         bCopy = TRUE;
+         iOperation = DROP_COPY;
       }
 
-      if (bCopy != fShowSourceBitmaps) {
+      if (iOperation != iShowSourceBitmaps) {
          RECT  rc;
 
-         fShowSourceBitmaps = bCopy;
+         iShowSourceBitmaps = iOperation;
 
          iSel = (WORD)SendMessage(hwndLB, LB_GETCURSEL, 0, 0L);
 
@@ -2818,12 +2938,12 @@ UpdateSelection:
          SetCursor(GetMoveCopyCursor());
       }
       break;
-#undef lpds
    }
 
    case WM_QUERYDROPOBJECT:
+   {
+      LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
-#define lpds ((LPDROPSTRUCT)lParam)
       //
       // wParam     TRUE on NC area
       //            FALSE on client area
@@ -2859,12 +2979,11 @@ UpdateSelection:
          return FALSE;
 
       return(TRUE);
-#undef lpds
+   }
 
    case WM_DROPOBJECT:
    {
-
-#define lpds ((LPDROPSTRUCT)lParam)
+      LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
       //
       // tree being dropped on do your thing
@@ -2924,21 +3043,25 @@ UpdateSelection:
       //              if ((HWND)(lpds->hwndSource) == hwnd)
       //                 CheckEsc(pFrom);
 
-      DMMoveCopyHelper(pFrom, szPath, fShowSourceBitmaps);
+      // iShowSourceBitmaps is either
+      // 1 == TRUE  == DROP_COPY
+      // 0 == FALSE == DROP_MOVE
+      // 2 ==       == DROP_LINK
+      // 4 ==       == DROP_JUNC
+      DMMoveCopyHelper(pFrom, szPath, iShowSourceBitmaps);
 
       RectTreeItem(hwndLB, nIndex, FALSE);
       return TRUE;
 
-#undef lpds
    }
 
    case WM_MEASUREITEM:
-#define pLBMItem ((LPMEASUREITEMSTRUCT)lParam)
+   {
+      LPMEASUREITEMSTRUCT pLBMItem = (LPMEASUREITEMSTRUCT)lParam;
 
       pLBMItem->itemHeight = (WORD)dyFileName;
       break;
-
-#undef pLBMItem
+   }
 
    case WM_VKEYTOITEM:
 
@@ -2953,11 +3076,11 @@ UpdateSelection:
       case VK_LEFT:
          TypeAheadString('\0', NULL);
 
-		 // if node is expanded and no control key, just collapse
-		 if ((pNode->wFlags & TF_EXPANDED) != 0 && GetKeyState(VK_CONTROL) >= 0) {
-			 CollapseLevel(hwndLB, pNode, i);
-			 return(i);
-		 }
+         // if node is expanded and no control key, just collapse
+         if ((pNode->wFlags & TF_EXPANDED) != 0 && GetKeyState(VK_CONTROL) >= 0) {
+            CollapseLevel(hwndLB, pNode, i);
+            return(i);
+         }
 
          while (SendMessage(hwndLB, LB_GETTEXT, --i, (LPARAM)&pNodeNext) != LB_ERR) {
             if (pNodeNext == pNode->pParent)
@@ -2968,13 +3091,13 @@ UpdateSelection:
       case VK_RIGHT:
          TypeAheadString('\0', NULL);
 
-		 // if node has children (due to ScanDirLevel happening often) and not expanded and no control key, just expand
-		 if ((pNode->wFlags & TF_HASCHILDREN) != 0 && !(pNode->wFlags & TF_EXPANDED) && GetKeyState(VK_CONTROL) >= 0) {
-			 ExpandLevel(hwnd, 0, i, szPath);
-			 return(i);
-		 }
+         // if node is not expanded and no control key, just expand
+         if (!(pNode->wFlags & TF_EXPANDED) && GetKeyState(VK_CONTROL) >= 0) {
+            ExpandLevel(hwnd, 0, i, szPath);
+            return(i);
+         }
 
-		 if ((SendMessage(hwndLB, LB_GETTEXT, i+1, (LPARAM)&pNodeNext) == LB_ERR)
+         if ((SendMessage(hwndLB, LB_GETTEXT, i+1, (LPARAM)&pNodeNext) == LB_ERR)
             || (pNodeNext->pParent != pNode)) {
             goto SameSelection;
          }
@@ -3020,7 +3143,7 @@ SameSelection:
          {
             HWND hwndLB;
 
-            bChangeDisplay = GetWindowLongPtr(hwndDir, GWLP_USERDATA);
+            bChangeDisplay = (BOOL)GetWindowLongPtr(hwndDir, GWLP_USERDATA);
 
             hwndLB = GetDlgItem (hwndDir, IDCW_LISTBOX);
             if (hwndLB && !bChangeDisplay)
@@ -3085,12 +3208,11 @@ SameSelection:
       }
 
       default:
-#if 0
-          // OLD: select disk with that letter
-          if (GetKeyState(VK_CONTROL) < 0)
+        // Select disc by pressing CTRL + ALT + letter
+        if ((GetKeyState(VK_CONTROL) < 0) && (GetKeyState(VK_MENU) < 0))
             return SendMessage(hwndDriveBar, uMsg, wParam, lParam);
-#endif
-         return -1L;
+
+        return -1L;
       }
       break;
 
@@ -3228,7 +3350,7 @@ ResetTreeMax(
     UINT xNew, xTreeMax;
 
 
-    NumItems = SendMessage(hwndLB, LB_GETCOUNT, 0, 0);
+    NumItems = (DWORD)SendMessage(hwndLB, LB_GETCOUNT, 0, 0);
 
     xTreeMax = 0;
 

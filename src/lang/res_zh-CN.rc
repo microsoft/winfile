@@ -34,9 +34,9 @@ BEGIN
     MENUITEM    "创建目录(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "搜索(&H)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "选择文件(&F)...", IDM_SELECT
-	MENUITEM    "打开 Bash...", IDM_STARTBASHSHELL
-	MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
-    MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
+	MENUITEM    "打开 Bash...\tCtrl+B", IDM_STARTBASHSHELL
+	MENUITEM    "打开命令提示符(&L)...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "打开 PowerShell(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
 	MENUITEM    "转到目录(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "退出(&X)",            IDM_EXIT
@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "窗口(&W)"
     BEGIN
-    MENUITEM    "新建窗口(&N)",          IDM_NEWWINDOW
+    MENUITEM    "新建窗口(&N)\tCtrl+Shift Enter",          IDM_NEWWINDOW
     MENUITEM    "层叠(&C)\tShift+F5",   IDM_CASCADE
     MENUITEM    "水平平铺(&H)",   IDM_TILEHORIZONTALLY
     MENUITEM    "垂直平铺(&T)\tShift+F4",      IDM_TILE
@@ -128,7 +128,7 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "新建窗口(&N)\t选中",     IDM_NEWWINDOW
+	MENUITEM    "新建窗口(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "打开(&O)\tEnter",     IDM_OPEN
     MENUITEM    "编辑\tF12",	    IDM_EDIT
     MENUITEM    "移动(&M)...\tF7",     IDM_MOVE
@@ -222,6 +222,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "确认鼠标操作"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "确定把所选文件或目录复制到 %s ？"
     IDS_MOVEMOUSECONFIRM,   "确定把所选文件或目录移动到 %s ？"
+    IDS_LINKMOUSECONFIRM,   "您確定要將選定的文件或目錄鏈接到 %s？"
     IDS_EXECMOUSECONFIRM,   "确定要使用 %s 打开 %s ？"                                                          /* 128 */
 
     IDS_WINFILE,            "文件管理器"                  /* 32 */
@@ -283,6 +284,9 @@ BEGIN
     IDS_COPYERROR + FUNC_SETDRIVE "选择驱动器出错"
     IDS_COPYERROR + FUNC_EXPAND   "读取目录出错"
     IDS_COPYERROR + FUNC_LABEL    "设置磁盘卷标出错"
+    IDS_COPYERROR + FUNC_LINK        "在创建符号连接时出现错误"
+    IDS_COPYERROR + FUNC_HARD        "在创建硬连接时出现错误"
+    IDS_COPYERROR + FUNC_JUNC        "在创建目录连接点时出现错误"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -291,6 +295,9 @@ BEGIN
     IDS_VERBS + FUNC_MOVE       "文件管理器无法移动 %s: %s"
     IDS_VERBS + FUNC_DELETE     "文件管理器无法删除 %s: %s"
     IDS_VERBS + FUNC_RENAME     "文件管理器无法重命名 %s: %s"
+    IDS_VERBS + FUNC_LINK       "文件管理器無法創建符號鏈接 %s: %s"
+    IDS_VERBS + FUNC_HARD       "文件管理器無法創建硬鏈接 %s: %s"
+    IDS_VERBS + FUNC_JUNC       "文件管理器無法創建聯結 %s: %s"
     IDS_ACTIONS + 1             "文件管理器无法创建目录 %s: %s"
     IDS_ACTIONS + 2             "文件管理器无法删除目录 %s: %s"
     IDS_REPLACING               "文件管理器无法创建或替换 %s: %s"
@@ -399,6 +406,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "将文件复制到 %s"
     IDS_DRAG_MOVING             "将文件移动到 %s"
+    IDS_DRAG_LINKING            "将文件链接到 %s"
     IDS_DRAG_EXECUTING          "用 %s 运行文件"
 
     IDS_ORDERB                  "%s 字节"

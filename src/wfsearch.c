@@ -228,6 +228,9 @@ MemoryError:
       (bRoot ||
          ERROR_ACCESS_DENIED != lfndta.err &&
          ERROR_PATH_NOT_FOUND != lfndta.err &&
+         ERROR_INVALID_REPARSE_DATA != lfndta.err &&
+         ERROR_CANT_ACCESS_FILE != lfndta.err &&
+         ERROR_SYMLINK_CLASS_DISABLED != lfndta.err &&
          ERROR_INVALID_NAME != lfndta.err)) {
 
       SearchInfo.eStatus = SEARCH_ERROR;
@@ -307,8 +310,12 @@ MemoryError:
          if (!SearchInfo.bCasePreserved)
             lpxdta->dwAttrs |= ATTR_LOWERCASE;
 
-         if (dwAttrs & ATTR_DIR)
-            iBitmap = BM_IND_CLOSE;
+         if (dwAttrs & ATTR_DIR) {
+            if (dwAttrs & (ATTR_SYMBOLIC | ATTR_JUNCTION))
+               iBitmap = BM_IND_CLOSEREPARSE;
+            else
+               iBitmap = BM_IND_CLOSE;
+         }
          else if (dwAttrs & (ATTR_HIDDEN | ATTR_SYSTEM))
             iBitmap = BM_IND_RO;
          else if (IsProgramFile(lfndta.fd.cFileName))
@@ -463,7 +470,7 @@ FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse, BOOL bIncludeS
    INT iFileCount;
    WCHAR szFileSpec[MAXPATHLEN+1];
    WCHAR szPathName[MAXPATHLEN+1];
-   WCHAR szWildCard[20];
+   WCHAR szWildCard[MAXPATHLEN+1];
    LPWCH lpszCurrentFileSpecStart;
    LPWCH lpszCurrentFileSpecEnd;
    LPXDTALINK lpStart = NULL;
@@ -680,7 +687,7 @@ SearchWndProc(
       return (LRESULT)DirGetSelection(NULL,
                                    hwnd,
                                    hwndLB,
-                                   wParam,
+                                   (INT)wParam,
                                    (BOOL *)lParam,
                                    NULL);
       break;
@@ -748,7 +755,7 @@ SearchWndProc(
       wParam &= ~CD_DONTSTEAL;
 
       if (wParam == CD_VIEW || wParam == CD_SEARCHFONT) {
-         dwNewView = GetWindowLongPtr(hwnd, GWL_VIEW);
+         dwNewView = (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW);
 
          //
          // in case font changed, update maxExt
@@ -1026,7 +1033,7 @@ SearchWndProc(
    {
       LPDRAWITEMSTRUCT lpLBItem;
       PWORD pwTabs;
-      DWORD dwView = GetWindowLongPtr(hwnd, GWL_VIEW);
+      DWORD dwView = (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW);
 
       lpLBItem = (LPDRAWITEMSTRUCT)lParam;
       iSel = lpLBItem->itemID;
@@ -1062,7 +1069,7 @@ SearchWndProc(
       }
 
       DrawItem(hwnd,
-               GetWindowLongPtr(hwnd, GWL_VIEW),
+               (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW),
                (LPDRAWITEMSTRUCT)lParam,
                TRUE);
       break;
@@ -1363,7 +1370,7 @@ SearchDrive(LPVOID lpParameter)
                     (WORD *)GetWindowLongPtr(hwndSearch, GWL_TABARRAY),
                     maxExtLast,
                     0,
-                    GetWindowLongPtr(hwndSearch, GWL_VIEW));
+                    (DWORD)GetWindowLongPtr(hwndSearch, GWL_VIEW));
 
    SearchInfo.iRet = FillSearchLB(SearchInfo.hwndLB,
                                   SearchInfo.szSearch,

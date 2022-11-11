@@ -503,7 +503,7 @@ CreateTreeWindow(
 
 HWND
 CreateDirWindow(
-   register LPWSTR szPath,
+   LPWSTR szPath,
    BOOL bReplaceOpen,
    HWND hwndActive)
 {
@@ -550,8 +550,11 @@ CreateDirWindow(
 
 	   if (hwndT = HasDirWindow(hwndActive))
 	   {
+		   WCHAR szFileSpec[MAXPATHLEN];
+
 		   AddBackslash(szPath);                   // default to all files
-		   SendMessage(hwndT, FS_GETFILESPEC, MAXFILENAMELEN, (LPARAM)(szPath + lstrlen(szPath)));
+		   SendMessage(hwndT, FS_GETFILESPEC, COUNTOF(szFileSpec), (LPARAM)szFileSpec);
+		   lstrcat(szPath, szFileSpec);
 		   SendMessage(hwndT, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)szPath);
 		   StripFilespec(szPath);
 	   }
@@ -692,8 +695,8 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
       //
       if (fEdit)
       {
-          TCHAR szEditPath[MAX_PATH];
-          TCHAR szNotepad[MAX_PATH];
+          TCHAR szEditPath[MAXPATHLEN];
+          TCHAR szNotepad[MAXPATHLEN];
 
           // NOTE: assume system directory and "\\notepad.exe" never exceed MAXPATHLEN
           if (GetSystemDirectory(szNotepad, MAXPATHLEN) != 0)
@@ -701,7 +704,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
           else
               lstrcpy(szNotepad, TEXT("notepad.exe"));
 
-          GetPrivateProfileString(szSettings, szEditorPath, szNotepad, szEditPath, MAX_PATH, szTheINIFile);
+          GetPrivateProfileString(szSettings, szEditorPath, szNotepad, szEditPath, MAXPATHLEN, szTheINIFile);
 
           CheckEsc(szPath);     // add quotes if necessary; reserved space for them above
 
@@ -714,7 +717,7 @@ OpenOrEditSelection(HWND hwndActive, BOOL fEdit)
       }
       else
       {
-          ret = ExecProgram(szPath, szNULL, NULL, (GetKeyState(VK_SHIFT) < 0), FALSE);
+          ret = ExecProgram(szPath, szNULL, NULL, (GetKeyState(VK_SHIFT) < 0), (GetKeyState(VK_CONTROL) < 0));
       }
       if (ret)
          MyMessageBox(hwndFrame, IDS_EXECERRTITLE, ret, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
@@ -1180,7 +1183,7 @@ AppCommandProc(register DWORD id)
 	  if(szFiles == NULL && pDataObj != NULL && pDataObj->lpVtbl->GetData(pDataObj, &fmtetcDrop, &stgmed) == S_OK)
 	  {
 	  	LPWSTR lpFile = GlobalLock(stgmed.hGlobal);
-	  	DWORD cchFile = wcslen(lpFile);
+	  	SIZE_T cchFile = wcslen(lpFile);
 		szFiles = (LPWSTR)LocalAlloc(LMEM_FIXED, (cchFile+3) * sizeof(WCHAR));
 		lstrcpy (szFiles+1, lpFile);
 		*szFiles = '\"';
@@ -1230,29 +1233,41 @@ AppCommandProc(register DWORD id)
    case IDM_CUTTOCLIPBOARD:
 	  {
          LPTSTR  pszFiles;
-		 HANDLE hMemLongW, hDrop;
+		 HANDLE hMemLongW, hMemTextW, hDrop;
 		 LONG cbMemLong;
 		 HANDLE hMemDropEffect;
 		 TCHAR szPathLong[MAXPATHLEN];
 		 POINT pt;
+		 INT iMultipleResult;
 
-         pszFiles=GetSelection(4, NULL);
+		 pszFiles=GetSelection(4, NULL);
 		 if (pszFiles == NULL) {
 			 break;
 		 }
 
-		 // LongFileNameW (only if one file)
+		 // LongFileNameW (only if one file or directory)
+		 // This is allocated twice to record a text form also;
+		 // clipboard requires one handle per format despite them
+		 // having identical contents
 		 hMemLongW = NULL;
-		 if (!CheckMultiple(pszFiles))
+		 hMemTextW = NULL;
+		 iMultipleResult = CheckMultiple(pszFiles);
+		 if (iMultipleResult == 2 || iMultipleResult == 0)
 		 {
 			 GetNextFile(pszFiles, szPathLong, COUNTOF(szPathLong));
-		     cbMemLong = ByteCountOf(lstrlen(szPathLong)+1);
-		     hMemLongW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
-		     if (hMemLongW)
-		     {
-			     lstrcpy(GlobalLock(hMemLongW), szPathLong);
-			     GlobalUnlock(hMemLongW);
-		     }
+			 cbMemLong = ByteCountOf(lstrlen(szPathLong)+1);
+			 hMemLongW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
+			 if (hMemLongW)
+			 {
+				 lstrcpy(GlobalLock(hMemLongW), szPathLong);
+				 GlobalUnlock(hMemLongW);
+			 }
+			 hMemTextW = GlobalAlloc(GPTR|GMEM_DDESHARE, cbMemLong);
+			 if (hMemTextW)
+			 {
+				 lstrcpy(GlobalLock(hMemTextW), szPathLong);
+				 GlobalUnlock(hMemTextW);
+			 }
 		 }
 
 		 hMemDropEffect = NULL;
@@ -1277,6 +1292,7 @@ AppCommandProc(register DWORD id)
 			}
 
 			SetClipboardData(RegisterClipboardFormat(TEXT("LongFileNameW")), hMemLongW);
+			SetClipboardData(CF_UNICODETEXT, hMemTextW);
 			SetClipboardData(CF_HDROP, hDrop);
 
 			CloseClipboard();
@@ -1284,6 +1300,7 @@ AppCommandProc(register DWORD id)
 		 else 
 		 {
 			  GlobalFree(hMemLongW);
+			  GlobalFree(hMemTextW);
 			  GlobalFree(hDrop);
 		 }
 
@@ -1624,7 +1641,7 @@ AppCommandProc(register DWORD id)
 
       } else {
          dwSuperDlgMode = id;
-         ret = DialogBox(hAppInstance, MAKEINTRESOURCE(CHOOSEDRIVEDLG), hwndFrame, ChooseDriveDlgProc);
+         ret = (INT)DialogBox(hAppInstance, MAKEINTRESOURCE(CHOOSEDRIVEDLG), hwndFrame, ChooseDriveDlgProc);
       }
 
       break;
@@ -1651,52 +1668,29 @@ AppCommandProc(register DWORD id)
       //
       WAITNET();
 
-      if (lpfnShareStop) {
+      if (lpfnShowShareFolderUI) {
+         LPTSTR szDir;
+         HRESULT hr;
+         BOOL bDir;
+            
+         bDir = FALSE;
+         szDir = GetSelection(1 | 4 | 16, &bDir);
+         hr = ShowShareFolderUI(hwndFrame, szDir);
+         if (hr != S_OK) {
+            FormatError(TRUE, szMessage, COUNTOF(szMessage), ERROR_INVALID_SHARENAME);
 
-         if (ret = ShareCreate(hwndFrame)) {
-
-            //
-            // Report error
-            // ret must the error code
-            //
-            goto DealWithNetError;
-
-         } else {
-
-            InvalidateAllNetTypes();
+            LoadString(hAppInstance, IDS_NETERR, szTitle, COUNTOF(szTitle));
+            MessageBox(hwndFrame, szMessage, szTitle, MB_OK | MB_ICONSTOP);
          }
+         InvalidateAllNetTypes();
       }
-
       break;
 
    case IDM_STOPSHARE:
 
       //
-      // Check to see if our delayed loading has finished.
+      // IDM_STOPSHARE not shown anymore, because there is no way to open then 'Stop Share Dialog' with W7/10/11 
       //
-      WAITNET();
-
-      if (lpfnShareStop) {
-
-         if (ret = ShareStop(hwndFrame)) {
-
-            //
-            // Report error
-            // ret must the error code
-            //
-
-DealWithNetError:
-
-            FormatError(TRUE, szMessage, COUNTOF(szMessage), ret);
-
-            LoadString(hAppInstance, IDS_NETERR, szTitle, COUNTOF(szTitle));
-            MessageBox(hwndFrame, szMessage, szTitle, MB_OK|MB_ICONSTOP);
-
-         } else {
-
-            InvalidateAllNetTypes();
-         }
-      }
       break;
 
 #if 0
@@ -1980,7 +1974,7 @@ ChangeDisplay:
 
        // toggle pluses view bit
 
-       dwFlags = GetWindowLongPtr(hwndActive, GWL_VIEW) ^ VIEW_PLUSES;
+       dwFlags = (DWORD)(GetWindowLongPtr(hwndActive, GWL_VIEW) ^ VIEW_PLUSES);
 
        SetWindowLongPtr(hwndActive, GWL_VIEW, dwFlags);
 

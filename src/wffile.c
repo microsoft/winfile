@@ -106,8 +106,6 @@ OpenFileForCompress(
     LPTSTR szFile);
 
 
-
-
 /////////////////////////////////////////////////////////////////////////////
 //
 //  MKDir
@@ -124,16 +122,17 @@ DWORD MKDir(
 
    if ((pSrc && *pSrc) ?
          CreateDirectoryEx(pSrc, pName, NULL) :
-         CreateDirectory(pName, NULL))
-   {
+         CreateDirectory(pName, NULL)) {
       ChangeFileSystem(FSC_MKDIR, pName, NULL);
-   }
-   else
-   {
+   } else {
       dwErr = GetLastError();
+
+      // CreateDirectoryEx does not support developer mode, so create symbolic ourselves
+      if (ERROR_PRIVILEGE_NOT_HELD == dwErr)
+         dwErr = WFCopyIfSymlink(pSrc, pName, SYMBOLIC_LINK_FLAG_DIRECTORY, FSC_MKDIR);
    }
 
-   return (dwErr);
+   return dwErr;
 }
 
 
@@ -210,7 +209,7 @@ VOID CentreWindow(
     HWND    hwndParent;
     LONG    dx, dy;
     LONG    dxParent, dyParent;
-    LONG    Style;
+    DWORD   Style;
 
     //
     //  Get window rect.
@@ -223,7 +222,7 @@ VOID CentreWindow(
     //
     //  Get parent rect.
     //
-    Style = GetWindowLongPtr(hwnd, GWL_STYLE);
+    Style = (DWORD)GetWindowLongPtr(hwnd, GWL_STYLE);
     if ((Style & WS_CHILD) == 0)
     {
         hwndParent = GetDesktopWindow();
@@ -1716,7 +1715,6 @@ VOID RedrawAllTreeWindows()
     HWND hwnd, hwndTree, hwndLB;
     int cItems, ctr;
     PDNODE pNode;
-    DWORD dwAttribs;
     TCHAR szPathName[MAXPATHLEN * 2];
 
 
@@ -1738,13 +1736,10 @@ VOID RedrawAllTreeWindows()
                SendMessage(hwndLB, LB_GETTEXT, ctr, (LPARAM)&pNode);
 
                //
-               //  Set the attributes for this directory.
+               //  Set the attributes for this directory/junction/symlink.
                //
                GetTreePath(pNode, szPathName);
-               if ((dwAttribs = GetFileAttributes(szPathName)) != INVALID_FILE_ATTRIBUTES)
-               {
-                   pNode->dwAttribs = dwAttribs;
-               }
+               SetNodeAttribs(pNode, szPathName);
            }
 
            InvalidateRect(hwndLB, NULL, FALSE);
@@ -1776,11 +1771,11 @@ int CompressErrMessageBox(
     //
     //  Put up the error message box - ABORT, RETRY, IGNORE, IGNORE ALL.
     //
-    rc = DialogBoxParam( hAppInstance,
-                         (LPTSTR) MAKEINTRESOURCE(COMPRESSERRDLG),
-                         hwndFrame,
-                         CompressErrDialogProc,
-                         (LPARAM)szFile );
+    rc = (int)DialogBoxParam( hAppInstance,
+                              (LPTSTR) MAKEINTRESOURCE(COMPRESSERRDLG),
+                              hwndFrame,
+                              CompressErrDialogProc,
+                              (LPARAM)szFile );
 
     //
     //  Return the user preference.

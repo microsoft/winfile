@@ -178,7 +178,7 @@ DrawItem(
       }
    }
 
-   if (fShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected) {
+   if (iShowSourceBitmaps || (hwndDragging != hwndLB) || !bDrawSelected) {
 
          HICON hIcon = DocGetIcon(lpxdta->pDocB);
 
@@ -273,7 +273,7 @@ FocusOnly:
             rc = lpLBItem->rcItem;
             rc.right = max(rc.right,
                            rc.left +
-                           SendMessage(hwndLB, LB_GETHORIZONTALEXTENT, 0, 0)) -
+                           (INT)SendMessage(hwndLB, LB_GETHORIZONTALEXTENT, 0, 0)) -
                        dyBorder;
             rc.left += dyBorder;
 
@@ -608,6 +608,7 @@ DirWndProc(
       LPWSTR szItem;
       WCHAR rgchMatch[MAXPATHLEN];
       SIZE_T cchMatch;
+      UINT pos;
 
       if ((ch = LOWORD(wParam)) <= CHAR_SPACE || !GetWindowLongPtr(hwnd, GWL_HDTA))
          return(-1L);
@@ -637,7 +638,7 @@ DirWndProc(
                 cchMatch = wcslen(szItem);
 
          if (CompareString( LOCALE_USER_DEFAULT, NORM_IGNORECASE, 
-             rgchMatch, cchMatch, szItem, cchMatch) == 2)
+             rgchMatch, (int)cchMatch, szItem, (int)cchMatch) == 2)
             break;
 
       }
@@ -645,7 +646,15 @@ DirWndProc(
       if (j == cItems)
          return -2L;
 
-      return((i + j) % cItems);
+      pos = (i + j) % cItems;
+
+      // There is a weird behavior in listbox which selects all between anchor an caret
+      // if SHIFT is pressed. Since we return the position here and thus caret will be 
+      // updated, anchor is behind, and pressing shift selects all between anchor and caret
+      // To overcome this we select the current position, and bring anchor and cart in sync.
+      SendMessage(hwndLB, LB_SETSEL, 1, pos);
+
+      return pos;
    }
    case WM_COMPAREITEM:
 
@@ -653,7 +662,7 @@ DirWndProc(
 
       return (LONG)CompareDTA((LPXDTA)lpci->itemData1,
                               (LPXDTA)lpci->itemData2,
-                              GetWindowLongPtr(hwndParent, GWL_SORT));
+                              (DWORD)GetWindowLongPtr(hwndParent, GWL_SORT));
 #undef lpci
 
    case WM_NCDESTROY:
@@ -711,7 +720,7 @@ DirWndProc(
    case WM_DRAGMOVE:
 
       {
-         static BOOL fOldShowSourceBitmaps = 0;
+         static INT iOldShowSourceBitmaps = 0;
 
          // WM_DRAGMOVE is sent to a sink as the object is being dragged
          // within it.
@@ -721,17 +730,17 @@ DirWndProc(
 
          // DRAGMOVE is used to move our selection rectangle among sub-items.
 
-#define lpds ((LPDROPSTRUCT)lParam)
+         LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
          // Get the subitem we are over.
          iSel = lpds->dwControlData;
 
          // Is it a new one?
 
-         if (iSel == iSelHighlight && fOldShowSourceBitmaps == fShowSourceBitmaps)
+         if (iSel == iSelHighlight && iOldShowSourceBitmaps == iShowSourceBitmaps)
             break;
 
-         fOldShowSourceBitmaps = fShowSourceBitmaps;
+         iOldShowSourceBitmaps = iShowSourceBitmaps;
 
          // Yup, un-select the old item.
          DSRectItem(hwndLB, iSelHighlight, FALSE, FALSE);
@@ -740,14 +749,12 @@ DirWndProc(
          iSelHighlight = iSel;
          DSRectItem(hwndLB, iSel, TRUE, FALSE);
          break;
-
-#undef lpds
       }
 
    case WM_DRAWITEM:
 
       DrawItem(hwnd,
-               GetWindowLongPtr(hwndParent, GWL_VIEW),
+               (DWORD)GetWindowLongPtr(hwndParent, GWL_VIEW),
                (LPDRAWITEMSTRUCT)lParam,
                ((LPDRAWITEMSTRUCT)lParam)->hwndItem == GetFocus());
       break;
@@ -778,7 +785,7 @@ DirWndProc(
       break;
 
    case WM_QUERYDROPOBJECT:
-
+   {
       // lParam LPDROPSTRUCT
       //
       // return values:
@@ -790,7 +797,7 @@ DirWndProc(
       //
       // Ensure that we are dropping on the client area of the listbox.
       //
-#define lpds ((LPDROPSTRUCT)lParam)
+      LPDROPSTRUCT lpds = (LPDROPSTRUCT)lParam;
 
       //
       // Ensure that we can accept the format.
@@ -806,7 +813,7 @@ DirWndProc(
           return TRUE;
       }
       return FALSE;
-#undef lpds
+   }
 
    case WM_SETFOCUS:
       {
@@ -924,17 +931,10 @@ DirWndProc(
          return -2;
 
       default:
-         {
-#if 0
-          // check for Ctrl-[DRIVE LETTER] and pass on to drives
-          // window
-
-          if ((GetKeyState(VK_CONTROL) < 0) && hwndDriveBar) {
-               return SendMessage(hwndDriveBar, uMsg, wParam, lParam);
-          }
-#endif
-            break;
-         }
+        // Select disc by pressing CTRL + ALT + letter
+        if ((GetKeyState(VK_CONTROL) < 0) && (GetKeyState(VK_MENU) < 0) && hwndDriveBar)
+              return SendMessage(hwndDriveBar, uMsg, wParam, lParam);
+        break;
       }
       return -1;
 
@@ -1104,7 +1104,7 @@ ChangeDisplay(
          // and Details view.
          //
          dwNewView = LOWORD(lParam);
-         dwCurView = GetWindowLongPtr(hwndListParms, GWL_VIEW);
+         dwCurView = (DWORD)GetWindowLongPtr(hwndListParms, GWL_VIEW);
 
          //
          // hiword lParam == TRUE means always refresh
@@ -1160,8 +1160,8 @@ ChangeDisplay(
          //
          // Create a new one (preserving the Sort setting).
          //
-         dwNewSort = GetWindowLongPtr(hwndListParms, GWL_SORT);
-         dwNewAttribs = GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
+         dwNewSort = (DWORD)GetWindowLongPtr(hwndListParms, GWL_SORT);
+         dwNewAttribs = (DWORD)GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
          SetWindowLongPtr(hwndListParms, GWL_VIEW, dwNewView);
 
          bCreateDTABlock = FALSE;	// and szPath is NOT set
@@ -1292,9 +1292,9 @@ ChangeDisplay(
          //
          // Create a new one (preserving the Sort setting)
          //
-         dwNewSort = GetWindowLongPtr(hwndListParms, GWL_SORT);
-         dwNewView = GetWindowLongPtr(hwndListParms, GWL_VIEW);
-         dwNewAttribs = GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
+         dwNewSort = (DWORD)GetWindowLongPtr(hwndListParms, GWL_SORT);
+         dwNewView = (DWORD)GetWindowLongPtr(hwndListParms, GWL_VIEW);
+         dwNewAttribs = (DWORD)GetWindowLongPtr(hwndListParms, GWL_ATTRIBS);
 
          SetWindowLongPtr(hwnd, GWLP_USERDATA, 1);
          SendMessage(hwndLB, LB_RESETCONTENT, 0, 0L);
@@ -1473,7 +1473,7 @@ CreateLB:
       SetLBFont(hwnd,
                 hwndLB,
                 hFont,
-                GetWindowLongPtr(hwndListParms, GWL_VIEW),
+                (DWORD)GetWindowLongPtr(hwndListParms, GWL_VIEW),
                 lpStart);
 
 
@@ -1876,7 +1876,7 @@ PutSize(
      *  unformatted.
      */
     lstrcpy(szOutStr, szBuffer);
-    return (wcslen(szOutStr));
+    return ((INT)wcslen(szOutStr));
 }
 
 
@@ -2352,7 +2352,7 @@ CharCountToTab(LPWSTR pszStr)
       pszStr++;
    }
 
-   return pszStr-pszTmp;
+   return (INT)(pszStr-pszTmp);
 }
 
 
@@ -2828,13 +2828,21 @@ UsedAltname:
 
          if (hwndDir) {
 
-            // reparse point; szFile is full path
+            // reparse point; szFile is filename only
             if (lpxdta->dwAttrs & (ATTR_JUNCTION | ATTR_SYMBOLIC))
             {
                if (iSelType & 8) 
                {
                   // if filename part, strip path
                   StripPath(szFile);
+               }
+               else
+               {
+                 // reparse points also need fully qualified path as return
+                 lstrcpy(szTemp, szPath);
+
+                 lstrcat(szTemp, szFile);
+                 lstrcpy(szFile, szTemp);
                }
             }
             //
@@ -2933,7 +2941,7 @@ GDSDone:
 
    if (bCompressTest)
    {
-       return ( (LPWSTR)uiAttr );
+       return ( (LPWSTR)(DWORD_PTR)uiAttr );
    }
 
    if (pfDir) {
@@ -3046,7 +3054,7 @@ DirGetAnchorFocus(
       lstrcpy(pSelInfo->szCaret, MemGetFileName(lpxdta));
    }
 
-   iSel = SendMessage(hwndLB, LB_GETTOPINDEX, 0, 0L);
+   iSel = (INT)SendMessage(hwndLB, LB_GETTOPINDEX, 0, 0L);
 
    if (iSel >= 0 && iSel < iCount) {
       SendMessage(hwndLB, LB_GETTEXT, (WPARAM)iSel, (LPARAM)&lpxdta);
@@ -3142,7 +3150,7 @@ UpdateStatus(HWND hwnd)
 
    if (HasTreeWindow(hwnd)) {
 
-      drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+      drive = (DRIVE)GetWindowLongPtr(hwnd, GWL_TYPE);
 
       if (SPC_IS_NOTREE(qFreeSpace)) {
 
@@ -3424,9 +3432,9 @@ SortDirList(
    INT iMax, iMin, iMid;
    LPXDTA lpxdta;
 
-   dwSort = GetWindowLongPtr((HWND)GetWindowLongPtr(hwndDir,
-                                                   GWL_LISTPARMS),
-                               GWL_SORT);
+   dwSort = (DWORD)GetWindowLongPtr((HWND)GetWindowLongPtr(hwndDir,
+                                                           GWL_LISTPARMS),
+                                    GWL_SORT);
 
    lpxdta = MemFirst(lpStart);
 

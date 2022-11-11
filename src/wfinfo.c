@@ -103,16 +103,16 @@ U_CLOSE(Type)
 
 U_HEAD(Space)
 
-   LARGE_INTEGER qFreeSpace;
-   LARGE_INTEGER qTotalSpace;
+   ULARGE_INTEGER qFreeSpace;
+   ULARGE_INTEGER qTotalSpace;
 
    IF_READ(Space)
       GetDiskSpace(drive, &qFreeSpace, &qTotalSpace);
 
       ENTER_MODIFY(Space)
 
-         aDriveInfo[drive].qFreeSpace = qFreeSpace;
-         aDriveInfo[drive].qTotalSpace= qTotalSpace;
+         aDriveInfo[drive].qFreeSpace.QuadPart = qFreeSpace.QuadPart;
+         aDriveInfo[drive].qTotalSpace.QuadPart = qTotalSpace.QuadPart;
 
       EXIT_MODIFY(Space)
 
@@ -1536,7 +1536,7 @@ UpdateDriveListComplete(VOID)
       if (GetWindow(hwnd, GW_OWNER) || hwnd == hwndSearch)
          continue;
 
-      drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+      drive = (DRIVE)GetWindowLongPtr(hwnd, GWL_TYPE);
 
       //
       // Invalidate cache to get real one in case the user reconnected
@@ -1586,7 +1586,7 @@ UpdateDriveListComplete(VOID)
    if (hwndDriveList)
    {
        SendMessage(hwndDriveList, WM_SETREDRAW, FALSE, 0);
-       CurSel = SendMessage(hwndDriveList, CB_GETCURSEL, 0, 0);
+       CurSel = (INT)SendMessage(hwndDriveList, CB_GETCURSEL, 0, 0);
        for (driveInd = 0; driveInd < cDrives; driveInd++)
        {
            if (aDriveInfo[rgiDrive[driveInd]].dwLines[ALTNAME_MULTI] != 1)
@@ -1736,17 +1736,17 @@ NetLoad(VOID)
 
    if (WNetStat(NS_SHAREDLG)) {
 
-      hNTLanman = LoadLibrary(NTLANMAN_DLL);
+      hNtshrui = LoadLibrary(NTSHRUI_DLL);
 
-      if (hNTLanman) {
+      if (hNtshrui) {
+         lpfnShowShareFolderUI = (PVOID)GetProcAddress(hNtshrui, "ShowShareFolderUI");
+         if (lpfnShowShareFolderUI)
+            PostMessage(hwndToolbar, TB_ENABLEBUTTON, IDM_SHAREAS, TRUE);
+         else {
 
-#define GET_PROC(x) \
-         if (!(lpfn##x = (PVOID) GetProcAddress(hNTLanman, NETWORK_##x))) \
-            goto Fail
-
-         GET_PROC(ShareCreate);
-         GET_PROC(ShareStop);
-#undef GET_PROC
+            PostMessage(hwndToolbar, TB_ENABLEBUTTON, IDM_SHAREAS, FALSE);
+            EnableMenuItem(GetMenu(hwndFrame), IDM_SHAREAS, MF_BYCOMMAND | MF_GRAYED);
+         }
 
          //
          // If bNetShareLoad is FALSE, then we know that the share stuff
@@ -1756,22 +1756,10 @@ NetLoad(VOID)
          //
          bNetShareLoad = TRUE;
 
-      } else {
-Fail:
-         //
-         // Disable the share buttons/menus
-         // Since WNetStat(NS_SHAREDLG) ret'd true, then we added the
-         // buttons.  Mistake.  Disable them now.
-         //
-         PostMessage(hwndToolbar, TB_ENABLEBUTTON, IDM_SHAREAS, FALSE);
          PostMessage(hwndToolbar, TB_ENABLEBUTTON, IDM_STOPSHARE, FALSE);
-
-         EnableMenuItem(GetMenu(hwndFrame), IDM_SHAREAS,
-            MF_BYCOMMAND | MF_GRAYED );
-
-         EnableMenuItem(GetMenu(hwndFrame), IDM_STOPSHARE,
-            MF_BYCOMMAND | MF_GRAYED );
+         EnableMenuItem(GetMenu(hwndFrame), IDM_STOPSHARE, MF_BYCOMMAND | MF_GRAYED);
       }
+
    }
 
    SetEvent(hEventNetLoad);
@@ -1830,7 +1818,7 @@ Fail:
 
          if (hwnd != hwndSearch && !GetWindow(hwnd, GW_OWNER)) {
 
-            drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+            drive = (DRIVE)GetWindowLongPtr(hwnd, GWL_TYPE);
             DRIVESET(szPath, drive);
 
             if (!aDriveInfo[drive].bShareChkTried  &&

@@ -17,10 +17,10 @@
 #define DDETYPECOMBOBOXSIZ 20
 #define DDETYPEMAX  (sizeof(aDDEType) / sizeof(aDDEType[0]))
 
-#define STRINGSIZ  MAX_PATH   // at least >= {DESCSIZ, IDENTSIZ}
-#define DESCSIZ    MAX_PATH
-#define COMMANDSIZ MAX_PATH
-#define DDESIZ     MAX_PATH
+#define STRINGSIZ  MAXPATHLEN   // at least >= {DESCSIZ, IDENTSIZ}
+#define DESCSIZ    MAXPATHLEN
+#define COMMANDSIZ MAXPATHLEN
+#define DDESIZ     MAXPATHLEN
 
 #define FILETYPEBLOCK MAX_PATH
 
@@ -306,14 +306,14 @@ UpdateSelectionExt(HWND hDlg, BOOL bForce)
    PTCHAR p;
    PFILETYPE pFileType;
 
-   TCHAR szTemp[MAX_PATH];
+   TCHAR szTemp[MAXPATHLEN];
 
    //
    // bForce is used when we base the ext on GETCURSEL rather than
    // the text in the edit field.
    //
    if (bForce) {
-      i = SendDlgItemMessage(hDlg, IDD_EXT, CB_GETCURSEL, 0, 0L);
+      i = (INT)SendDlgItemMessage(hDlg, IDD_EXT, CB_GETCURSEL, 0, 0L);
       SendDlgItemMessage(hDlg, IDD_EXT, CB_GETLBTEXT, i, (LPARAM)szExt);
    } else {
 
@@ -631,7 +631,7 @@ DoConfigWinIni:
          //
          // Find which item to remove
          //
-         i = SendDlgItemMessage(hDlg, IDD_CLASSLIST, LB_GETCURSEL, 0, 0L);
+         i = (INT)SendDlgItemMessage(hDlg, IDD_CLASSLIST, LB_GETCURSEL, 0, 0L);
 
          //
          // Should never be 0...  If so, we're in trouble since
@@ -739,7 +739,7 @@ DoConfigWinIni:
          //
          // Set it to the next thing
          //
-         dwError = SendDlgItemMessage(hDlg, IDD_CLASSLIST, LB_SETCURSEL, i, 0L);
+         dwError = (DWORD)SendDlgItemMessage(hDlg, IDD_CLASSLIST, LB_SETCURSEL, i, 0L);
          if (LB_ERR == dwError)
             i--;
 
@@ -926,7 +926,7 @@ Cancel:
             OPENFILENAME ofn;
             DWORD dwSave = dwContext;
 
-            TCHAR szFile[MAX_PATH + 2];
+            TCHAR szFile[MAXPATHLEN + 2];
 
             LPTSTR p;
 
@@ -1257,7 +1257,7 @@ AssociateFileDlgCommand(HWND hDlg,
                      //
                      // Found one, Highlight!
                      //
-                     i = SendDlgItemMessage(hDlg, IDD_EXTLIST, LB_FINDSTRINGEXACT,
+                     i = (INT)SendDlgItemMessage(hDlg, IDD_EXTLIST, LB_FINDSTRINGEXACT,
                         (WPARAM)-1, (LPARAM) &szExt[1]);
 
                      SendDlgItemMessage(hDlg, IDD_EXTLIST, LB_SETCURSEL, i, 0L);
@@ -1372,7 +1372,7 @@ AddDelUpdate:
       if (BN_CLICKED == GET_WM_COMMAND_CMD(wParam, lParam))
       {
          i = pAssociateFileDlgInfo->iAction =
-            SendDlgItemMessage(hDlg, IDD_ACTION, CB_GETCURSEL, 0, 0L);
+            (INT)SendDlgItemMessage(hDlg, IDD_ACTION, CB_GETCURSEL, 0, 0L);
 
          DDEDlgRead(hDlg, pAssociateFileDlgInfo, i);
          pAssociateFileDlgInfo->DDEInfo[i].bUsesDDE =
@@ -1509,8 +1509,8 @@ Reload:
          DWORD dwSave = dwContext;
          LPTSTR p;
 
-         TCHAR szFile[MAX_PATH + 2];
-         TCHAR szTemp2[MAX_PATH];
+         TCHAR szFile[MAXPATHLEN + 2];
+         TCHAR szTemp2[MAXPATHLEN];
 
          dwContext = IDH_ASSOC_BROWSE;
 
@@ -2281,7 +2281,7 @@ FileTypeRead(HWND hDlg,
          if (!pExt->bDelete)
          {
             CharLower(&pExt->szExt[1]);
-            i = SendDlgItemMessage(hDlg, IDD_EXTLIST, LB_ADDSTRING, 0, (LPARAM)&pExt->szExt[1]);
+            i = (UINT)SendDlgItemMessage(hDlg, IDD_EXTLIST, LB_ADDSTRING, 0, (LPARAM)&pExt->szExt[1]);
 
             SendDlgItemMessage(hDlg, IDD_EXTLIST, LB_SETITEMDATA, i, (LPARAM)pExt);
          }
@@ -2623,7 +2623,7 @@ Error:
 DWORD
 DDERead(PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo, INT i)
 {
-   TCHAR szKey[MAX_PATH];
+   TCHAR szKey[MAXPATHLEN];
    INT iPoint;
    LONG lSize;
    DWORD dwError;
@@ -2756,7 +2756,7 @@ DDERead(PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo, INT i)
 DWORD
 DDEWrite(PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo, INT i)
 {
-   TCHAR szKey[MAX_PATH];
+   TCHAR szKey[MAXPATHLEN];
    INT iPoint;
    DWORD dwSize;
    DWORD dwError;
@@ -2859,7 +2859,7 @@ ActionUpdate(HWND hDlg,
 {
     INT i;
 
-    i = SendDlgItemMessage(hDlg, IDD_ACTION, CB_GETCURSEL, 0, 0L);
+    i = (INT)SendDlgItemMessage(hDlg, IDD_ACTION, CB_GETCURSEL, 0, 0L);
 
     //
     // Update out internal variable
@@ -3138,11 +3138,11 @@ AssociateFileDlgExtDelete(HWND hDlg,
     GetDlgItemText(hDlg, IDD_EXT, pAssociateFileDlgInfo->szExt, COUNTOF(pAssociateFileDlgInfo->szExt));
     ExtClean(pAssociateFileDlgInfo->szExt);
 
-    i = SendDlgItemMessage( hDlg,
-                            IDD_EXTLIST,
-                            LB_FINDSTRINGEXACT,
-                            (WPARAM)-1,
-                            (LPARAM)&pAssociateFileDlgInfo->szExt[1]);
+    i = (INT)SendDlgItemMessage( hDlg,
+                                 IDD_EXTLIST,
+                                 LB_FINDSTRINGEXACT,
+                                 (WPARAM)-1,
+                                 (LPARAM)&pAssociateFileDlgInfo->szExt[1]);
     if (LB_ERR == i)
     {
         return (FALSE);
@@ -3233,9 +3233,9 @@ AssociateFileDlgExtAdd(HWND hDlg,
          // That it belongs to some other pFileType, we must ask
          // the user if we really can do this.
 
-         TCHAR szText[MAX_PATH];
-         TCHAR szTitle[MAX_PATH];
-         TCHAR szTemp[MAX_PATH];
+         TCHAR szText[MAXPATHLEN];
+         TCHAR szTitle[MAXPATHLEN];
+         TCHAR szTemp[MAXPATHLEN];
 
          //
          // If it's already associated to something that's
@@ -3468,11 +3468,11 @@ RegExtDelete(HWND hDlg, HKEY hk, PEXT pExt)
    
     if (ERROR_SUCCESS == dwError)
     {
-        i = SendDlgItemMessage( hDlg,
-                                IDD_EXT,
-                                CB_FINDSTRINGEXACT,
-                                (WPARAM)-1,
-                                (LPARAM)&pExt->szExt[1] );
+        i = (INT)SendDlgItemMessage( hDlg,
+                                     IDD_EXT,
+                                     CB_FINDSTRINGEXACT,
+                                     (WPARAM)-1,
+                                     (LPARAM)&pExt->szExt[1] );
         if (CB_ERR != i)
         {
             SendDlgItemMessage(hDlg, IDD_EXT, CB_DELETESTRING, i, 0L);
@@ -3535,7 +3535,7 @@ RegNodeDelete(HKEY hk, LPTSTR lpszKey)
 {
     HKEY hkNode;
     DWORD dwError;
-    TCHAR szKey[MAX_PATH];
+    TCHAR szKey[MAXPATHLEN];
    
    
     dwError = RegOpenKey(hk, lpszKey, &hkNode);

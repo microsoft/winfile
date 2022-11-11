@@ -34,9 +34,9 @@ BEGIN
     MENUITEM    "U&twórz katalog...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "Szuk&aj...\tCtrl+F",             IDM_SEARCH
     MENUITEM    "&Zaznacz pliki...",              IDM_SELECT
-    MENUITEM    "Uruchom powłokę Bash...",        IDM_STARTBASHSHELL
-    MENUITEM    "U&ruchom Wiersz polecenia...",   IDM_STARTCMDSHELL
-    MENUITEM    "Uruchom Po&werShell...",         IDM_STARTPOWERSHELL
+    MENUITEM    "Uruchom powłokę Bash...\tCtrl+B",      IDM_STARTBASHSHELL
+    MENUITEM    "U&ruchom Wiersz polecenia...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "Uruchom Po&werShell...\tCtrl+P",       IDM_STARTPOWERSHELL
     MENUITEM    "Skocz do kata&logu...\tCtrl+G",  IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "Za&kończ",                       IDM_EXIT
@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "O&kno"
     BEGIN
-    MENUITEM    "&Nowe okno",                       IDM_NEWWINDOW
+    MENUITEM    "&Nowe okno\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&Kaskada\tShift+F5",               IDM_CASCADE
     MENUITEM    "&Sąsiadująco w poziomie",          IDM_TILEHORIZONTALLY
     MENUITEM    "Sąsia&dująco w pionie\tShift+F4",  IDM_TILE
@@ -128,7 +128,7 @@ CTXMENU MENU PRELOAD
 BEGIN
     POPUP "Menu prawego przycisku"
     BEGIN
-    MENUITEM    "&Nowe okno\tw wybranym",         IDM_NEWWINDOW
+    MENUITEM    "&Nowe okno\tCtrl+Shift Enter",   IDM_NEWWINDOW
     MENUITEM    "&Otwórz\tEnter",                 IDM_OPEN
     MENUITEM    "Edytuj\tF12",                    IDM_EDIT
     MENUITEM    "&Przenieś...\tF7",               IDM_MOVE
@@ -223,6 +223,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "Potwierdź operację myszy"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "Czy na pewno chcesz skopiować zaznaczone pliki lub katalogi do %s?"
     IDS_MOVEMOUSECONFIRM,   "Czy na pewno chcesz przenieść zaznaczone pliki lub katalogi do %s?"
+    IDS_LINKMOUSECONFIRM,   "Czy na pewno chcesz połączyć wybrane pliki lub katalogi z %s?"
     IDS_EXECMOUSECONFIRM,   "Czy na pewno chcesz uruchomić %s używając %s jako pliku początkowego?"                                                          /* 128 */
 
     IDS_WINFILE,            "Menedżer plików"                  /* 32 */
@@ -291,6 +292,9 @@ JAPANEND
     IDS_COPYERROR + FUNC_SETDRIVE "Błąd przy wyborze dysku"
     IDS_COPYERROR + FUNC_EXPAND   "Błąd przy odczycie katalogu"
     IDS_COPYERROR + FUNC_LABEL    "Błąd przy nadawaniu etykiety dysku"
+    IDS_COPYERROR + FUNC_LINK        "Błąd przy tworzeniu dowiązania symbolicznego"
+    IDS_COPYERROR + FUNC_HARD        "Błąd przy tworzeniu dowiązania twardego"
+    IDS_COPYERROR + FUNC_JUNC        "Błąd przy tworzeniu powiązania"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -299,6 +303,9 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "Menedżer plików nie może przenieść %s: %s"
     IDS_VERBS + FUNC_DELETE     "Menedżer plików nie może usunąć %s: %s"
     IDS_VERBS + FUNC_RENAME     "Menedżer plików nie może zmienić nazwy %s: %s"
+    IDS_VERBS + FUNC_LINK       "Menedżer plików nie może utworzyć dowiązania symbolicznego %s: %s"
+    IDS_VERBS + FUNC_HARD       "Menedżer plików nie może utworzyć twardego łącza %s: %s"
+    IDS_VERBS + FUNC_JUNC       "Menedżer plików nie może utworzyć połączenia %s: %s"
     IDS_ACTIONS + 1             "Menedżer plików nie może utworzyć katalogu %s: %s"
     IDS_ACTIONS + 2             "Menedżer plików nie może usunąć katalogu %s: %s"
     IDS_REPLACING               "Menedżer plików nie może utworzyć lub zamienić %s: %s"
@@ -412,6 +419,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "Kopiowanie plików do %s"
     IDS_DRAG_MOVING             "Przenoszenie plików do %s"
+    IDS_DRAG_LINKING            "Łączenie plików z %s"
     IDS_DRAG_EXECUTING          "Uruchamianie plików z %s"
 
     IDS_ORDERB                  "Bajtów: %s"

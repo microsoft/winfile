@@ -34,9 +34,9 @@ BEGIN
     MENUITEM    "&יצירת תיקיה...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "&חיפוש...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "&בחירת קבצים...", IDM_SELECT
-	MENUITEM    "הפעלת Bash Shell...", IDM_STARTBASHSHELL
-	MENUITEM    "הפעלת Cmd Shel&l...", IDM_STARTCMDSHELL
-    MENUITEM    "הפעלת Po&werShell...", IDM_STARTPOWERSHELL
+	MENUITEM    "הפעלת Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
+	MENUITEM    "הפעלת Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "הפעלת Po&werShell...\tCtrl+P", IDM_STARTPOWERSHELL
 	MENUITEM    "עבור לתיקיה...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "י&ציאה",            IDM_EXIT
@@ -106,7 +106,7 @@ BEGIN
     END
     POPUP       "&חלון"
     BEGIN
-    MENUITEM    "ח&לון חדש",          IDM_NEWWINDOW
+    MENUITEM    "ח&לון חדש\tCtrl+Shift Enter",          IDM_NEWWINDOW
     MENUITEM    "&מדורג\tShift+F5",   IDM_CASCADE
     MENUITEM    "פרוש &אופקית",   IDM_TILEHORIZONTALLY
     MENUITEM    "&פרוש אנכית\tShift+F4",      IDM_TILE
@@ -128,7 +128,7 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "&חלון חדש\tעל בחירה",     IDM_NEWWINDOW
+	MENUITEM    "&חלון חדש\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&פתח\tEnter",     IDM_OPEN
     MENUITEM    "ערוך\tF12",	    IDM_EDIT
     MENUITEM    "העברה...\tF7",     IDM_MOVE
@@ -223,6 +223,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "אישור פעולת עכבר"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "האם אתה בטוח להעתיק את הקבצים או התיקיות הנבחרים ל%s?"
     IDS_MOVEMOUSECONFIRM,   "האם אתה בטוח להעביר את הקבצים או התיקיות הנבחרים ל%s?"
+    IDS_LINKMOUSECONFIRM,   "האם אתה בטוח שברצונך לקשר את הקבצים או הספריות שנבחרו אל %s?"
     IDS_EXECMOUSECONFIRM,   "הם אתה בטוח להפעיל %s באמצעות %s בתור הקובץ ההתחלתי?"                                                   /* 128 */
 
     IDS_WINFILE,            "מנהל הקבצים"                  /* 32 */
@@ -291,6 +292,9 @@ JAPANEND
     IDS_COPYERROR + FUNC_SETDRIVE "שגיאה בבחירת כונן"
     IDS_COPYERROR + FUNC_EXPAND   "שגיאה בקריאת תיקיה"
     IDS_COPYERROR + FUNC_LABEL    "שגיאה בכתיבת תווית לכונן"
+    IDS_COPYERROR + FUNC_LINK        "שגיאה ביצירת קישור סמלי"
+    IDS_COPYERROR + FUNC_HARD        "שגיאה ביצירת קישור קשיח"
+    IDS_COPYERROR + FUNC_JUNC        "שגיאה ביצירת צומת"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -299,6 +303,9 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "מנהל הקבצים אינו יכול להעביר %s: %s"
     IDS_VERBS + FUNC_DELETE     "מנהל הקבצים אינו יכול למחוק %s: %s"
     IDS_VERBS + FUNC_RENAME     "מנהל הקבצים אינו יכול לשנות שם %s: %s"
+    IDS_VERBS + FUNC_LINK       "מנהל הקבצים לא יכול ליצור קישור סמלי %s: %s"
+    IDS_VERBS + FUNC_HARD       "מנהל הקבצים לא יכול ליצור קישור קשיח %s: %s"
+    IDS_VERBS + FUNC_JUNC       "מנהל הקבצים לא יכול ליצור צומת %s: %s"
     IDS_ACTIONS + 1             "מנהל הקבצים אינו יכול ליצור תיקיה %s: %s"
     IDS_ACTIONS + 2             "מנהל הקבצים אינו יכול להסיר תיקיה %s: %s"
     IDS_REPLACING               "מנהל הקבצים אינו יכול ליצור או להחליף %s: %s"
@@ -412,6 +419,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "מעתיק קבצים ל%s"
     IDS_DRAG_MOVING             "מעביר קבצים ל%s"
+    IDS_DRAG_LINKING            "קישור קבצים ל- %s"
     IDS_DRAG_EXECUTING          "מפעיל קבצים עם %s"
 
     IDS_ORDERB                  "%s בתים"
@@ -616,8 +624,8 @@ END
 
 STRINGTABLE MOVEABLE DISCARDABLE
 BEGIN
-    IDS_CONNECT,                "חיבור כונן &רשת..."
-    IDS_DISCONNECT,             "&ניתוק כונן רשת..."
+    IDS_CONNECT,                "חיבור כונן &רשת...\tCtrl+N"
+    IDS_DISCONNECT,             "&ניתוק כונן רשת...\tCtrl+D"
     IDS_CONNECTIONS,            "&חיבורי רשת..."
     IDS_SHAREDDIR               "תיקיות &משותפות..."
     IDS_SHAREAS,                "&שיתוף בתור..."

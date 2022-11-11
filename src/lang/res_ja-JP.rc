@@ -34,9 +34,10 @@ BEGIN
     MENUITEM    "ディレクトリを作成(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "検索(&C)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "ファイルを選択(&F)...", IDM_SELECT
-	MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
-	MENUITEM    "コマンド プロンプトを起動(&L)...", IDM_STARTCMDSHELL
-    MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
+    MENUITEM    "Bash を起動...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "コマンド プロンプトを起動(&L)...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "PowerShell を起動(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
+
 	MENUITEM    "別のディレクトリーへ移動(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "終了(&X)",            IDM_EXIT
@@ -106,7 +107,7 @@ BEGIN
     END
     POPUP       "ウィンドウ(&W)"
     BEGIN
-    MENUITEM    "新しいウィンドウ(&N)",          IDM_NEWWINDOW
+    MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",          IDM_NEWWINDOW
     MENUITEM    "縦に重ねる(&C)\tShift+F5",   IDM_CASCADE
     MENUITEM    "横に並べる(&H)",   IDM_TILEHORIZONTALLY
     MENUITEM    "縦に並べる(&T)\tShift+F4",      IDM_TILE
@@ -128,7 +129,7 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "新しいウィンドウ(&N)\t選択アイテム",     IDM_NEWWINDOW
+	MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "開く(&O)\tEnter",     IDM_OPEN
     MENUITEM    "編集\tF12",	    IDM_EDIT
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
@@ -222,6 +223,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "マウス操作の確認"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "選択しているファイルまたはディレクトリを %s にコピーしますか?"
     IDS_MOVEMOUSECONFIRM,   "選択しているファイルまたはディレクトリを %s に移動しますか?"
+    IDS_LINKMOUSECONFIRM,   "選択したファイルまたはディレクトリを %s にリンクしてもよろしいですか？"
     IDS_EXECMOUSECONFIRM,   "%s を起動して最初のファイルとして %s を使用しますか?"                                                          /* 128 */
 
     IDS_WINFILE,            "ファイル マネージャー"                  /* 32 */
@@ -290,6 +292,9 @@ JAPANEND
     IDS_COPYERROR + FUNC_SETDRIVE "ドライブの選択中のエラー"
     IDS_COPYERROR + FUNC_EXPAND   "ディレクトリの読み込み中のエラー"
     IDS_COPYERROR + FUNC_LABEL    "ディスクのボリューム ラベル設定中のエラー"
+    IDS_COPYERROR + FUNC_LINK        "シンボリックリンクの作成に失敗しました。"
+    IDS_COPYERROR + FUNC_HARD        "ハードリンクの作成に失敗しました。"
+    IDS_COPYERROR + FUNC_JUNC        "ジャンクションの作成に失敗しました。"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -298,6 +303,9 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "ファイル マネージャーは %s を移動できません: %s"
     IDS_VERBS + FUNC_DELETE     "ファイル マネージャーは %s を削除できません: %s"
     IDS_VERBS + FUNC_RENAME     "ファイル マネージャーは %s の名前を変更できません: %s"
+    IDS_VERBS + FUNC_LINK       "ファイル マネージャーはシンボリックリンク %s を作成できません: %s"
+    IDS_VERBS + FUNC_HARD       "ファイル マネージャーはハードリンク %s を作成できません: %s"
+    IDS_VERBS + FUNC_JUNC       "ファイル マネージャーはジャンクション %s を作成できません: %s"
     IDS_ACTIONS + 1             "ファイル マネージャーはディレクトリ %s を作成できません: %s"
     IDS_ACTIONS + 2             "ファイル マネージャーはディレクトリ %s を削除できません: %s"
     IDS_REPLACING               "ファイル マネージャーは %s を作成または置き換える事ができません: %s"
@@ -410,6 +418,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "%s へファイルをコピー中"
     IDS_DRAG_MOVING             "%s へファイルを移動中"
+    IDS_DRAG_LINKING            "ファイルを ％s にリンクする"
     IDS_DRAG_EXECUTING          "%s でファイルを実行中"
 
     IDS_ORDERB                  "%s バイト"

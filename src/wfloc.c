@@ -29,7 +29,7 @@ VOID InitLangList(HWND hCBox)
     // Propogate the list
     for (UINT i = 0; i <= (COUNTOF(szLCIDs) - 1); i++)
     {
-        TCHAR szLangName[MAX_PATH] = { 0 };
+        TCHAR szLangName[MAXPATHLEN] = { 0 };
         LCID lcidTemp = LocaleNameToLCID(szLCIDs[i], 0);
 
         // TODO: need to test this on pre-Vista and on/after Win XP 64
@@ -50,7 +50,7 @@ VOID InitLangList(HWND hCBox)
 
 VOID SaveLang(HWND hCBox)
 {
-    int iIndex = SendMessage(hCBox, CB_GETCURSEL, 0, 0);
+    int iIndex = (INT)SendMessage(hCBox, CB_GETCURSEL, 0, 0);
 
     if (iIndex == CB_ERR)
         return; // do nothing

@@ -116,7 +116,7 @@ CompactPath(HDC hDC, LPTSTR lpszPath, DWORD dx)
    GetTextExtentPoint32(hDC, lpFixed, lstrlen(lpFixed), &sizeF);
 
    while (TRUE) {
-      GetTextExtentPoint32(hDC, lpszPath, lpEnd - lpszPath, &sizeT);
+      GetTextExtentPoint32(hDC, lpszPath, (int)(lpEnd - lpszPath), &sizeT);
       len = sizeF.cx + sizeT.cx;
 
       if (bEllipsesIn)
@@ -288,7 +288,7 @@ SwitchDriveSelection(HWND hwndChild, BOOL bSelectToolbarDrive)
    DRIVEIND i, driveIndOld, driveIndOldFocus;
    RECT rc;
 
-   drive = GetWindowLongPtr(hwndChild, GWL_TYPE);
+   drive = (DRIVE)GetWindowLongPtr(hwndChild, GWL_TYPE);
 
    if (TYPE_SEARCH == drive) {
 
@@ -296,8 +296,8 @@ SwitchDriveSelection(HWND hwndChild, BOOL bSelectToolbarDrive)
    }
 
 
-   driveIndOld      = GetWindowLongPtr(hwndDriveBar, GWL_CURDRIVEIND);
-   driveIndOldFocus = GetWindowLongPtr(hwndDriveBar, GWL_CURDRIVEFOCUS);
+   driveIndOld      = (DRIVEIND)GetWindowLongPtr(hwndDriveBar, GWL_CURDRIVEIND);
+   driveIndOldFocus = (DRIVEIND)GetWindowLongPtr(hwndDriveBar, GWL_CURDRIVEFOCUS);
 
    for (i=0; i < cDrives; i++) {
       if (rgiDrive[i] == drive) {
@@ -535,6 +535,7 @@ TreeWndProc(
 
             INT dxSplit;
             DRIVE drive;
+            DWORD dwNewExStyle;
             WCHAR szPath[2 * MAXFILENAMELEN];
 
             //
@@ -563,6 +564,19 @@ TreeWndProc(
 
             SetWindowLongPtr(hwnd, GWL_VOLNAME, 0L);
             SetWindowLongPtr(hwnd, GWL_PATHLEN, 0L);
+
+            //
+            // Add a sunken border to the window
+            //
+            dwNewExStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+            dwNewExStyle = dwNewExStyle | WS_EX_CLIENTEDGE;
+            SetWindowLong(hwnd, GWL_EXSTYLE, dwNewExStyle);
+
+            //
+            // Refresh its frame so the child windows below are created
+            // in the correct place now the border is in place
+            //
+            SetWindowPos(hwnd, NULL, 0, 0, 0, 0, SWP_FRAMECHANGED | SWP_NOACTIVATE | SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_NOCOPYBITS);
 
             if (!ResizeSplit(hwnd, dxSplit))
                return -1;

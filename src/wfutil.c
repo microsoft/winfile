@@ -660,7 +660,7 @@ SetMDIWindowText(
             // if (wTextAttribs & TA_LOWERCASE)
             //    CharLower(szTemp);
 
-            drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+            drive = (DWORD)GetWindowLongPtr(hwnd, GWL_TYPE);
             if (drive != -1) {     /* if not a search window */
                lstrcat(szTemp, SZ_SPACEDASHSPACE);
 
@@ -684,7 +684,7 @@ SetMDIWindowText(
    }
 
 
-   drive = GetWindowLongPtr(hwnd, GWL_TYPE);
+   drive = (DWORD)GetWindowLongPtr(hwnd, GWL_TYPE);
 
    uTitleLen = lstrlen(szTitle);
 
@@ -1417,7 +1417,7 @@ MyMessageBox(HWND hwnd, DWORD idTitle, DWORD idMessage, DWORD wStyle)
 DWORD
 ExecProgram(LPTSTR lpPath, LPTSTR lpParms, LPTSTR lpDir, BOOL bLoadIt, BOOL bRunAs)
 {
-  DWORD          ret;
+  DWORD_PTR     ret;
   INT           iCurCount;
   INT           i;
   HCURSOR       hCursor;
@@ -1447,7 +1447,7 @@ ExecProgram(LPTSTR lpPath, LPTSTR lpParms, LPTSTR lpDir, BOOL bLoadIt, BOOL bRun
      lpszTitle++;
 
   SetErrorMode(0);
-  ret = (DWORD) ShellExecute(hwndFrame, bRunAs ? L"runas" : NULL, lpPath, lpParms, lpDir, bLoadIt ? SW_SHOWMINNOACTIVE : SW_SHOWNORMAL);
+  ret = (DWORD_PTR) ShellExecute(hwndFrame, bRunAs ? L"runas" : NULL, lpPath, lpParms, lpDir, bLoadIt ? SW_SHOWMINNOACTIVE : SW_SHOWNORMAL);
 
   SetErrorMode(1);
 
@@ -1512,7 +1512,7 @@ EPExit:
 
   SetCursor(hCursor);
 
-  return ret;
+  return (DWORD)ret;
 }
 
 
@@ -1569,32 +1569,51 @@ IsBucketFile(LPTSTR lpszPath, PPDOCBUCKET ppBucket)
 // ch == '\0' resets the tick and buffer
 BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 {
-	static DWORD tick64 = 0;
-	static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
-	DWORD tickT;
-	size_t ich;
+   static DWORD tick64 = 0;
+   
+   // Ringbuffer for typed chracters
+   static WCHAR rgchTA[MAXPATHLEN] = { '\0' };
+   
+   // When typing characters all characters so far are the same
+   static BOOL sameChar = TRUE;
+   DWORD tickT;
+   size_t ich;
 
-	if (ch == '\0')
-	{
-		tick64 = 0;
-		rgchTA[0] = '\0';
-		return FALSE;
-	}
+   if (ch == '\0') {
+      tick64 = 0;
+      rgchTA[0] = '\0';
+      return FALSE;
+   }
 
-	tickT = GetTickCount();
-	ch = (WCHAR)CharUpper((LPWSTR)ch);
-	ich = wcslen(rgchTA);
+   tickT = GetTickCount();
+   ch = (WCHAR)CharUpper((LPWSTR)ch);
+   ich = wcslen(rgchTA);
 
-	// if only one char and it repeats or more than .5s since last char, start over
-	if (ich == 1 && rgchTA[0] == ch || tickT - tick64 > 500)
-		ich = 0;
+   // if out of space or more than .5s since last char, start over
+   if (tickT - tick64 > 500 || ich > MAXPATHLEN - 2)
+   {
+      ich = 0;
+      sameChar = TRUE;
+   }
 
-	rgchTA[ich] = ch;
-	rgchTA[ich+1] = '\0';
+   rgchTA[ich] = ch;
+   rgchTA[ich + 1] = '\0';
 
-	tick64 = tickT;
-	lstrcpy(szT, rgchTA);
+   tick64 = tickT;
 
-	return ich != 0;
+   if (rgchTA[0] == ch && TRUE == sameChar) {
+      // Same consecutive character as the first was pressed so jump ahead by one
+      szT[0] = ch;
+      szT[1] = '\0';
+
+      return FALSE;
+   }
+   else {
+      // not the same character as the first
+      sameChar = FALSE;
+   }
+
+   lstrcpy(szT, rgchTA);
+
+   return ich != 0;
 }
-

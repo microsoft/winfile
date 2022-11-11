@@ -92,8 +92,8 @@ INT atoiW(LPWSTR sz);
 #define MAXDOSFILENAMELEN   (12+1)            // includes the NULL
 #define MAXDOSPATHLEN       (68+MAXDOSFILENAMELEN)  // includes the NULL
 
-#define MAXLFNFILENAMELEN   260
-#define MAXLFNPATHLEN       260
+#define MAXLFNFILENAMELEN   1024
+#define MAXLFNPATHLEN       1024
 
 #define MAXFILENAMELEN      MAXLFNFILENAMELEN
 #define MAXPATHLEN          MAXLFNPATHLEN
@@ -363,7 +363,7 @@ VOID vWaitMessage();
 VOID RedoDriveWindows(HWND);
 BOOL FmifsLoaded(VOID);
 VOID  ChangeFileSystem(DWORD dwOper, LPWSTR lpPath, LPWSTR lpTo);
-HWND  CreateDirWindow(register LPWSTR szPath, BOOL bReplaceOpen, HWND hwndActive);
+HWND  CreateDirWindow(LPWSTR szPath, BOOL bReplaceOpen, HWND hwndActive);
 HWND CreateTreeWindow(LPWSTR szPath, INT x, INT y, INT dx, INT dy, INT dxSplit);
 VOID SwitchToSafeDrive();
 DWORD ReadMoveStatus();
@@ -372,7 +372,7 @@ VOID UpdateMoveStatus(DWORD dwEffect);
 
 // WFDOS.C
 
-VOID GetDiskSpace(DRIVE drive, PLARGE_INTEGER pqFreeSpace, PLARGE_INTEGER pqTotalSpace);
+VOID GetDiskSpace(DRIVE drive, PULARGE_INTEGER pqFreeSpace, PULARGE_INTEGER pqTotalSpace);
 INT   ChangeVolumeLabel(DRIVE, LPTSTR);
 DWORD GetVolumeLabel(DRIVE, LPTSTR*, BOOL);
 DWORD
@@ -516,7 +516,7 @@ DWORD StartBuildingDirectoryTrie();
 
 // WFCOPY.C
 
-DWORD  DMMoveCopyHelper(LPTSTR pFrom, LPTSTR pTo, BOOL bCopy);
+DWORD  DMMoveCopyHelper(LPTSTR pFrom, LPTSTR pTo, INT iOperation);
 DWORD  WFMoveCopyDriver(PCOPYINFO pCopyInfo);
 DWORD WINAPI WFMoveCopyDriverThread(LPVOID lpParameter);
 
@@ -646,6 +646,12 @@ VOID  BuildDriveLine(LPTSTR* lpszTemp, INT i, BOOL fGetFloppyLabel, DWORD dwType
 DWORD WFCopy(LPTSTR,LPTSTR);
 DWORD WFRemove(LPTSTR pszFile);
 DWORD WFMove(LPTSTR pszFrom, LPTSTR pszTo, PBOOL pbErrorOnDest, BOOL bSilent);
+DWORD WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotification);
+DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPWSTR szDest, DWORD cwcDest);
+DWORD WFHardLink(LPTSTR pszFrom, LPTSTR pszTo);
+DWORD WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags);
+DWORD WFJunction(LPCWSTR LinkDirectory, LPCWSTR LinkTarget);
+
 
 
 // TREECTL.C
@@ -654,6 +660,7 @@ VOID  wfYield(VOID);
 VOID  InvalidateAllNetTypes(VOID);
 VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
 BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
+
 
 
 //--------------------------------------------------------------------------
@@ -887,6 +894,9 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define BM_IND_CLOSEMINUS   10
 #define BM_IND_CLOSEDFS     11
 #define BM_IND_OPENDFS      12
+#define BM_IND_CLOSEREPARSE 15
+#define BM_IND_OPENREPARSE  16
+#define BM_IND_FILREPARSE   17
 
 typedef struct _DRIVE_INFO {
 
@@ -999,8 +1009,9 @@ BOOL LoadUxTheme(VOID);
 //----------------------------
 
 #define MPR_DLL      TEXT("mpr.dll")
-#define NTLANMAN_DLL TEXT("ntlanman.dll")
+#define NTSHRUI_DLL  TEXT("Ntshrui.dll")
 #define ACLEDIT_DLL  TEXT("acledit.dll")
+#define NTDLL_DLL    TEXT("ntdll.dll")
 
 #define WAITNET()      WaitLoadEvent(TRUE)
 #define WAITACLEDIT()  WaitLoadEvent(FALSE)
@@ -1032,8 +1043,7 @@ Extern DWORD (CALLBACK *lpfnWNetFormatNetworkNameW)(
                     DWORD    dwFlags,
                     DWORD    dwAveCharPerLine
                     );
-Extern DWORD (CALLBACK *lpfnShareCreate)(HWND);
-Extern DWORD (CALLBACK *lpfnShareStop)(HWND);
+Extern DWORD (CALLBACK *lpfnShowShareFolderUI)(HWND, LPWSTR);
 
 #ifdef NETCHECK
 Extern DWORD (CALLBACK *lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
@@ -1072,8 +1082,7 @@ Extern DWORD (CALLBACK *lpfnWNetDirectoryNotifyW)(HWND, LPWSTR, DWORD);
 #define WNetRestoreConnectionW     (*lpfnWNetRestoreConnectionW)
 #define WNetRestoreSingleConnectionW     (*lpfnWNetRestoreSingleConnectionW)
 #define WNetFormatNetworkNameW     (*lpfnWNetFormatNetworkNameW)
-#define ShareCreate                (*lpfnShareCreate)
-#define ShareStop                  (*lpfnShareStop)
+#define ShowShareFolderUI          (*lpfnShowShareFolderUI)
 
 #ifdef NETCHECK
 #define WNetDirectoryNotifyW       (*lpfnWNetDirectoryNotifyW)
@@ -1085,8 +1094,9 @@ Extern BOOL        bSecMenuDeleted;
 
 Extern HANDLE hVersion             EQ( NULL );
 Extern HANDLE hMPR                 EQ( NULL );
-Extern HANDLE hNTLanman            EQ( NULL );
+Extern HANDLE hNtshrui             EQ( NULL );
 Extern HANDLE hAcledit             EQ( NULL );
+Extern HANDLE hNtdll               EQ (NULL );
 
 
 //--------------------------------------------------------------------------
@@ -1156,10 +1166,11 @@ Extern BOOL bConfirmMouse    EQ( TRUE );
 Extern BOOL bConfirmFormat   EQ( TRUE );
 Extern BOOL bConfirmReadOnly EQ( TRUE );
 
-Extern BOOL bSaveSettings   EQ( TRUE );
+Extern BOOL bSaveSettings    EQ( TRUE );
+Extern BOOL bScrollOnExpand  EQ( TRUE );
 
 Extern BOOL bConnectable       EQ( FALSE );
-Extern BOOL fShowSourceBitmaps EQ( TRUE );
+Extern INT  iShowSourceBitmaps EQ( 1 );
 Extern BOOL bFSCTimerSet       EQ( FALSE );
 
 Extern TCHAR        chFirstDrive;           // 'A' or 'a'
@@ -1179,11 +1190,16 @@ Extern TCHAR        szDisableVisualStyles[] EQ( TEXT("DisableVisualStyles") );
 Extern TCHAR        szUILanguage[]          EQ( TEXT("UILanguage") );
 Extern TCHAR        szEditorPath[]          EQ( TEXT("EditorPath"));
 Extern TCHAR        szMirrorContent[]       EQ( TEXT("MirrorContent") );
+Extern TCHAR        szCachedPath[]          EQ( TEXT("CachedPath"));
+Extern TCHAR        szCachedPathIni[MAXPATHLEN];
+Extern TCHAR        szGotoCachePunctuation[] EQ(TEXT("GotoCachePunctuation"));
+Extern TCHAR        szPunctuation[MAXPATHLEN];
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );
 Extern TCHAR        szStatusBar[]           EQ( TEXT("StatusBar") );
 Extern TCHAR        szSaveSettings[]        EQ( TEXT("Save Settings") );
+Extern TCHAR        szScrollOnExpand[]      EQ( TEXT("ScrollOnExpand"));
 
 Extern TCHAR        szConfirmDelete[]       EQ( TEXT("ConfirmDelete") );
 Extern TCHAR        szConfirmSubDel[]       EQ( TEXT("ConfirmSubDel") );
@@ -1364,8 +1380,17 @@ Extern TCHAR szFmifsDll[]    EQ( TEXT("fmifs.dll") );
 Extern   CANCEL_INFO CancelInfo;
 Extern   SEARCH_INFO SearchInfo;
 
+Extern BOOL  bDeveloperModeAvailable EQ(FALSE);
+
 // this value is an index into dwMenuIDs and used to workaround a bug
 #define MHPOP_CURRENT 2
+
+Extern CHAR PHCM_EXPOSE_PLACEHOLDERS    EQ(2);
+typedef NTSYSAPI CHAR (*RtlSetProcessPlaceholderCompatibilityMode_t)(
+   CHAR aMode
+   );
+RtlSetProcessPlaceholderCompatibilityMode_t pfnRtlSetProcessPlaceholderCompatibilityMode;
+
 
 #ifdef _GLOBALS
    DWORD dwMenuIDs[] = {

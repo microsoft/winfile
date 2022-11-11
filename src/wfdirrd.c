@@ -50,7 +50,6 @@ LPXDTALINK CreateDTABlockWorker(HWND hwnd, HWND hwndDir);
 LPXDTALINK StealDTABlock(HWND hwndCur, LPWSTR pPath, DWORD dwAttribs);
 BOOL IsNetDir(LPWSTR pPath, LPWSTR pName);
 VOID DirReadAbort(HWND hwnd, LPXDTALINK lpStart, EDIRABORT eDirAbort);
-DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPCWSTR szChild, LPWSTR szDest, DWORD cwcDest);
 LONG WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
 
 BOOL
@@ -692,7 +691,7 @@ CreateDTABlockWorker(
 
    LeaveCriticalSection(&CriticalSectionDirRead);
 
-   dwAttribs = GetWindowLongPtr(hwnd, GWL_ATTRIBS);
+   dwAttribs = (DWORD)GetWindowLongPtr(hwnd, GWL_ATTRIBS);
 
    //
    // get the drive index assuming path is
@@ -704,12 +703,16 @@ CreateDTABlockWorker(
    lpHead = MemLinkToHead(lpStart);
    lpLinkLast = lpStart;
 
+ RestartOverFindFirst:
    if (!WFFindFirst(&lfndta, szPath, dwAttribs & ATTR_ALL)) {
 
       //
       // Try again!  But first, see if the directory was invalid!
       //
-      if (ERROR_PATH_NOT_FOUND == lfndta.err) {
+      if (ERROR_PATH_NOT_FOUND == lfndta.err ||
+         ERROR_INVALID_REPARSE_DATA == lfndta.err ||
+         ERROR_SYMLINK_CLASS_DISABLED == lfndta.err ||
+         ERROR_CANT_ACCESS_FILE == lfndta.err) {
 
          iError = IDS_BADPATHMSG;
          goto InvalidDirectory;
@@ -729,6 +732,9 @@ CreateDTABlockWorker(
 
          switch (lfndta.err) {
          case ERROR_PATH_NOT_FOUND:
+         case ERROR_CANT_ACCESS_FILE:
+         case ERROR_INVALID_REPARSE_DATA:
+         case ERROR_SYMLINK_CLASS_DISABLED:
 
 InvalidDirectory:
 
@@ -747,6 +753,14 @@ InvalidDirectory:
 
             if (hwndTree=HasTreeWindow(hwnd)) {
 
+               // Check if it is a Reparse Point
+               lpTemp[0] = '\0';
+               DWORD attr = GetFileAttributes(szPath);
+               lpTemp[0] = CHAR_BACKSLASH;
+               if (attr & ATTR_REPARSE_POINT) {
+                  // For dead Reparse Points just tell that the directory could not be read
+                  break;
+               } else {
                //
                // If we changed dirs, and there is a tree window, set the
                // dir to the root and collapse it
@@ -758,6 +772,7 @@ InvalidDirectory:
 Fail:
                MemDelete(lpStart);
                return NULL;
+            }
             }
 
             lstrcpy(szPath+3, lpTemp+1);
@@ -775,65 +790,25 @@ Fail:
             break;
 
          case ERROR_ACCESS_DENIED:
+         {
+            // Strip *.*
+            WCHAR szTemp[2 * MAXPATHLEN];
+            lstrcpy(szTemp, szPath);
+            StripFilespec(szTemp);
 
-            iError = IDS_NOACCESSDIR;
+            DWORD tag = DecodeReparsePoint(szTemp, szLinkDest, COUNTOF(szLinkDest));
+            if (tag != IO_REPARSE_TAG_RESERVED_ZERO)
             {
-                DWORD tag = DecodeReparsePoint(szPath, NULL, szLinkDest, COUNTOF(szLinkDest));
-                if (tag != IO_REPARSE_TAG_RESERVED_ZERO && WFFindFirst(&lfndta, szLinkDest, ATTR_ALL))
-		        {
-		        	// TODO: make add routine to share with below
-
-					lpxdta = MemAdd(&lpLinkLast, lstrlen(szLinkDest), 0);
-
-					if (!lpxdta)
-					 goto CDBMemoryErr;
-
-					lpHead->dwEntries++;
-
-					lpxdta->dwAttrs = ATTR_DIR | ATTR_REPARSE_POINT;
-					lpxdta->ftLastWriteTime = lfndta.fd.ftLastWriteTime;
-
-					//
-					// files > 2^63 will come out negative, so tough.
-					// (WIN32_FIND_DATA.nFileSizeHigh is not signed, but
-					// LARGE_INTEGER is)
-					//
-					lpxdta->qFileSize.LowPart = lfndta.fd.nFileSizeLow;
-					lpxdta->qFileSize.HighPart = lfndta.fd.nFileSizeHigh;
-
-					lpxdta->byBitmap = BM_IND_CLOSE;
-					lpxdta->pDocB = NULL;
-
-					if (IsLFN(szLinkDest)) {
-					 lpxdta->dwAttrs |= ATTR_LFN;
-					}
-
-					if (!bCasePreserved)
-					 lpxdta->dwAttrs |= ATTR_LOWERCASE;
-
-                    if (tag == IO_REPARSE_TAG_MOUNT_POINT)
-                        lpxdta->dwAttrs |= ATTR_JUNCTION;
-
-                    else if (tag == IO_REPARSE_TAG_SYMLINK)
-                        lpxdta->dwAttrs |= ATTR_SYMBOLIC;
-
-					else
-					{
-						// DebugBreak();
-					}
-
-					lstrcpy(MemGetFileName(lpxdta), szLinkDest);
-				    MemGetAlternateFileName(lpxdta)[0] = CHAR_NULL;
-				    
-					lpHead->dwTotalCount++;
-					(lpHead->qTotalSize).QuadPart = (lpxdta->qFileSize).QuadPart +
-					                              (lpHead->qTotalSize).QuadPart;					
-
-			        iError = 0;
-			        goto Done;
-		        }
-		    }
-            break;
+               lstrcpy(szPath, szLinkDest);
+               AppendToPath(szPath, szStarDotStar);
+               goto RestartOverFindFirst;
+            }
+            else
+            {
+               iError = IDS_NOACCESSDIR;
+            }
+         }
+         break;
 
          default:
             {
@@ -906,25 +881,7 @@ Fail:
       //
       // be safe, zero unused DOS dta bits
       //
-      lfndta.fd.dwFileAttributes &= ATTR_USED;
-
-      //
-      // if reparse point, figure out whether it is a junction point
-	  if (lfndta.fd.dwFileAttributes & ATTR_REPARSE_POINT)
-      {
-          DWORD tag = DecodeReparsePoint(szPath, pName, szLinkDest, COUNTOF(szLinkDest));
-
-          if (tag == IO_REPARSE_TAG_MOUNT_POINT)
-              lfndta.fd.dwFileAttributes |= ATTR_JUNCTION;
-
-          else if (tag == IO_REPARSE_TAG_SYMLINK)
-              lfndta.fd.dwFileAttributes |= ATTR_SYMBOLIC;
-
-          else
-          {
-              // DebugBreak();
-          }
-      }
+      lfndta.fd.dwFileAttributes &= (ATTR_USED | ATTR_JUNCTION | ATTR_SYMBOLIC);
 
 	  //
       // filter unwanted stuff here based on current view settings
@@ -968,7 +925,12 @@ Fail:
          if (IsNetDir(szPath,pName))
             iBitmap = BM_IND_CLOSEDFS;
          else
+         {
+            if (lfndta.fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION))
+               iBitmap = BM_IND_CLOSEREPARSE;
+            else
             iBitmap = BM_IND_CLOSE;
+         }
       } else if (lfndta.fd.dwFileAttributes & (ATTR_HIDDEN | ATTR_SYSTEM)) {
          iBitmap = BM_IND_RO;
       } else if (pProgram) {
@@ -976,6 +938,9 @@ Fail:
       } else if (pDoc) {
          iBitmap = BM_IND_DOC;
       } else {
+         if (lfndta.fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION))
+            iBitmap = BM_IND_FILREPARSE;
+         else
          iBitmap = BM_IND_FIL;
       }
 
@@ -1085,7 +1050,7 @@ Done:
    SetLBFont(hwndDir,
              GetDlgItem(hwndDir, IDCW_LISTBOX),
              hFont,
-             GetWindowLongPtr(hwnd, GWL_VIEW),
+             (DWORD)GetWindowLongPtr(hwnd, GWL_VIEW),
              lpStart);
 
    R_Space(drive);
@@ -1167,109 +1132,6 @@ IsNetDir(LPWSTR pPath, LPWSTR pName)
 
    aDriveInfo[drive].bShareChkTried = TRUE;
    return dwType;
-}
-
-typedef struct _REPARSE_DATA_BUFFER {
-  ULONG  ReparseTag;
-  USHORT  ReparseDataLength;
-  USHORT  Reserved;
-  union {
-    struct {
-      USHORT  SubstituteNameOffset;
-      USHORT  SubstituteNameLength;
-      USHORT  PrintNameOffset;
-      USHORT  PrintNameLength;
-      ULONG   Flags; // it seems that the docu is missing this entry (at least 2008-03-07)
-      WCHAR  PathBuffer[1];
-      } SymbolicLinkReparseBuffer;
-    struct {
-      USHORT  SubstituteNameOffset;
-      USHORT  SubstituteNameLength;
-      USHORT  PrintNameOffset;
-      USHORT  PrintNameLength;
-      WCHAR  PathBuffer[1];
-      } MountPointReparseBuffer;
-    struct {
-      UCHAR  DataBuffer[1];
-    } GenericReparseBuffer;
-  };
-} REPARSE_DATA_BUFFER, *PREPARSE_DATA_BUFFER;
-
-#if FALSE
-// now coming from Windows 10 SDK files; not sure why struct above isn't there...
-
-#define REPARSE_DATA_BUFFER_HEADER_SIZE FIELD_OFFSET(REPARSE_DATA_BUFFER, GenericReparseBuffer)
- 
-#define FSCTL_GET_REPARSE_POINT         CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 42, METHOD_BUFFERED, FILE_ANY_ACCESS) // REPARSE_DATA_BUFFER
-#define FILE_FLAG_OPEN_REPARSE_POINT    0x00200000
-#define IsReparseTagMicrosoft(_tag) (              \
-                           ((_tag) & 0x80000000)   \
-                           )
-#define IO_REPARSE_TAG_MOUNT_POINT              (0xA0000003L)       
-#define IO_REPARSE_TAG_SYMLINK                  (0xA000000CL)       
-#endif
-
-DWORD DecodeReparsePoint(LPCWSTR szMyFile, LPCWSTR szChild, LPWSTR szDest, DWORD cwcDest)
-{
-	HANDLE hFile;
-	DWORD dwBufSize = MAXIMUM_REPARSE_DATA_BUFFER_SIZE;
-	REPARSE_DATA_BUFFER* rdata;
-	DWORD dwRPLen, cwcLink = 0;
-	DWORD reparseTag;
-	BOOL bRP;
-	WCHAR szFullPath[2*MAXPATHLEN];
-
-	lstrcpy(szFullPath, szMyFile);
-	StripFilespec(szFullPath);
-
-	if (szChild != NULL)
-		AppendToPath(szFullPath, szChild);
-
-	hFile = CreateFile(szFullPath, FILE_READ_EA, FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, NULL, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS | FILE_FLAG_OPEN_REPARSE_POINT, NULL);
-	if (hFile == INVALID_HANDLE_VALUE)
-		return IO_REPARSE_TAG_RESERVED_ZERO;
-		
-	// Allocate the reparse data structure
-	rdata = (REPARSE_DATA_BUFFER*)LocalAlloc(LMEM_FIXED, dwBufSize);
-	
-	// Query the reparse data
-	bRP = DeviceIoControl(hFile, FSCTL_GET_REPARSE_POINT, NULL, 0, rdata, dwBufSize, &dwRPLen, NULL);
-
-	CloseHandle(hFile);
-
-	if (!bRP)
-	{
-		LocalFree(rdata);
-		return IO_REPARSE_TAG_RESERVED_ZERO;
-	}
-
-	reparseTag = rdata->ReparseTag;
-
-	if (IsReparseTagMicrosoft(rdata->ReparseTag) && 
-		(rdata->ReparseTag == IO_REPARSE_TAG_MOUNT_POINT || rdata->ReparseTag == IO_REPARSE_TAG_SYMLINK)
-		)		
-	{
-		cwcLink = rdata->SymbolicLinkReparseBuffer.SubstituteNameLength / sizeof(WCHAR);
-        // NOTE: cwcLink does not include any '\0' termination character
-		if (cwcLink < cwcDest)
-		{
-			LPWSTR szT = &rdata->SymbolicLinkReparseBuffer.PathBuffer[rdata->SymbolicLinkReparseBuffer.SubstituteNameOffset / sizeof(WCHAR)];
-			if (szT[0] == '?' && szT[1] == '\\')
-			{
-				szT += 2;
-				cwcLink -= 2;
-			}
-			wcsncpy_s(szDest, MAXPATHLEN, szT, cwcLink);
-			szDest[cwcLink] = 0;
-		}
-		else
-		{
-			lstrcpy(szDest, L"<symbol link reference too long>");
-		}
-	}
-
-	LocalFree(rdata);
-	return reparseTag;
 }
 
 // RegGetValue isn't available on Windows XP
