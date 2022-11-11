@@ -497,10 +497,9 @@ JAPANEND
 
             if (bJAPAN) {
 
-               //by yutakas 1992/10/29
-               LoadString(hAppInstance, IDS_KK_COPYFROMSTR, szStr, COUNTOF(szStr));
+               LoadString(hAppInstance, IDS_KK_HARDLINKFROMSTR, szStr, COUNTOF(szStr));
                SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
-               LoadString(hAppInstance, IDS_KK_COPYTOSTR, szStr, COUNTOF(szStr));
+               LoadString(hAppInstance, IDS_KK_HARDLINKTOSTR, szStr, COUNTOF(szStr));
                SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
             }
 
@@ -514,10 +513,9 @@ JAPANEND
 
             if (bJAPAN) {
 
-               //by yutakas 1992/10/29
-               LoadString(hAppInstance, IDS_KK_COPYFROMSTR, szStr, COUNTOF(szStr));
+               LoadString(hAppInstance, IDS_KK_SYMLINKFROMSTR, szStr, COUNTOF(szStr));
                SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
-               LoadString(hAppInstance, IDS_KK_COPYTOSTR, szStr, COUNTOF(szStr));
+               LoadString(hAppInstance, IDS_KK_SYMLINKTOSTR, szStr, COUNTOF(szStr));
                SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
             }
 

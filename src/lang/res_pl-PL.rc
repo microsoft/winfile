@@ -258,7 +258,11 @@ JAPANBEGIN
     IDS_KK_COPYTOSTR,       "コピー先(&T):"
     IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
     IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
-JAPANEND
+    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
+    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
+    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
+    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
+  JAPANEND
 
 //    IDS_MAKESYSDISK,        "Utwórz dysk systemowy"              /* 32 */
 

@@ -621,4 +621,8 @@ JAPANBEGIN
 #define IDS_KK_RENAMETOSTR              2003
 #define IDS_KK_COPY                     2004
 #define IDS_WRNNOSHIFTJIS               2005
+#define IDS_KK_HARDLINKFROMSTR          2006
+#define IDS_KK_HARDLINKTOSTR            2007
+#define IDS_KK_SYMLINKFROMSTR           2008
+#define IDS_KK_SYMLINKTOSTR             2009
 JAPANEND
