@@ -108,10 +108,10 @@ BEGIN
     POPUP       "ウィンドウ(&W)"
     BEGIN
     MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",          IDM_NEWWINDOW
-    MENUITEM    "縦に重ねる(&C)\tShift+F5",   IDM_CASCADE
-    MENUITEM    "横に並べる(&H)",   IDM_TILEHORIZONTALLY
-    MENUITEM    "縦に並べる(&T)\tShift+F4",      IDM_TILE
-    MENUITEM    "アイコンの配置(&A)",       IDM_ARRANGE
+    MENUITEM    "重ねて表示(&C)\tShift+F5",   IDM_CASCADE
+    MENUITEM    "上下に並べて表示(&H)",   IDM_TILEHORIZONTALLY
+    MENUITEM    "左右に並べて表示(&T)\tShift+F4",      IDM_TILE
+    MENUITEM    "アイコンの整列(&A)",       IDM_ARRANGE
     MENUITEM    "更新(&R)\tF5",         IDM_REFRESH
     END
     POPUP       "ヘルプ(&H)"
@@ -602,10 +602,10 @@ BEGIN
     MH_MYITEMS+IDM_SAVESETTINGS,        "ファイル マネージャーの終了時に設定を保存する"
 
     MH_MYITEMS+IDM_NEWWINDOW,   "新しいウィンドウを開く"
-    MH_MYITEMS+IDM_CASCADE,     "縦に重ねる"
-    MH_MYITEMS+IDM_TILEHORIZONTALLY,    "横に並べる"
-    MH_MYITEMS+IDM_TILE,        "縦に並べる"
-    MH_MYITEMS+IDM_ARRANGE,     "アイコンを配置する"
+    MH_MYITEMS+IDM_CASCADE,     "ウィンドウを重ねて表示する"
+    MH_MYITEMS+IDM_TILEHORIZONTALLY,    "ウィンドウを上下に並べて表示する"
+    MH_MYITEMS+IDM_TILE,        "ウィンドウを左右に並べて表示する"
+    MH_MYITEMS+IDM_ARRANGE,     "アイコンを整列する"
     MH_MYITEMS+IDM_REFRESH,     "ウィンドウの内容を更新する"
 
     MH_MYITEMS+IDM_PERMISSIONS  "選択アイテムの権限情報を表示する"
