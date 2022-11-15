@@ -38,7 +38,7 @@ BEGIN
     MENUITEM    "コマンド プロンプトを起動(&L)...\tCtrl+K", IDM_STARTCMDSHELL
     MENUITEM    "PowerShell を起動(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
 
-	MENUITEM    "別のディレクトリーへ移動(&G)...\tCtrl+G", IDM_GOTODIR
+	MENUITEM    "別のディレクトリへ移動(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "終了(&X)",            IDM_EXIT
     END
@@ -58,7 +58,7 @@ BEGIN
     MENUITEM    "全て展開(&A)\tCtrl+*",  IDM_EXPALL
     MENUITEM    "サブディレクトリを折り畳む(&C)\t-",  IDM_COLLAPSE
     MENUITEM    SEPARATOR
-    MENUITEM    "展開可能なサブディレクトリーを表示(&I)",    IDM_ADDPLUSES
+    MENUITEM    "展開可能なサブディレクトリを表示(&I)",    IDM_ADDPLUSES
     END
     POPUP       "表示(&V)"
     BEGIN
@@ -99,7 +99,7 @@ BEGIN
     MENUITEM    "今すぐ設定を保存(&N)",       IDM_SAVENOW
 #endif
     END
-    POPUP       "セキュリティー(&S)"
+    POPUP       "セキュリティ(&S)"
     BEGIN
     MENUITEM    "権限(&P)...",  IDM_PERMISSIONS
     MENUITEM    "監査(&A)...",     IDM_AUDITING
@@ -233,7 +233,7 @@ BEGIN
     IDS_READING             "ディレクトリを読み込んでいます。しばらくお待ち下さい..."
     IDS_TOOMANYTITLE,       "ファイルが多すぎます"                /* 32 */
     IDS_OOMTITLE,           "ファイル マネージャー - メモリ不足"  /* 32 */
-    IDS_OOMREADINGDIRMSG,   "ディレクトリー全体を読み取る事ができません。一部のみ一覧に表示されます。"                                              /* 128 */
+    IDS_OOMREADINGDIRMSG,   "ディレクトリ全体を読み取る事ができません。一部のみ一覧に表示されます。"                                              /* 128 */
 
 //    IDS_PRINTFNF            "The file to be printed cannot be found. Make sure the correct path and filename are specified."                                                                                  /* 128 */
     IDS_PRINTMEMORY         "印刷に必要なメモリがありません。\n\n1つまたは複数のアプリケーションを終了してもう一度試して下さい。"                                             /* 128 */
@@ -385,7 +385,7 @@ JAPANEND
     IDS_DISKCOPYCONFIRMTITLE    "ディスクのコピーの確認"
     IDS_ANDCLOSE                "閉じる(&C)"        // goes on Selection dialog
     IDS_CLOSE                   "閉じる"         // braindead "&Change"
-    IDS_PATHNOTTHERE            "ディレクスト %s が存在しません。\n\n作成しますか?"
+    IDS_PATHNOTTHERE            "ディレクトリ %s が存在しません。\n\n作成しますか?"
     IDS_PROGRAMS                "プログラム#*.exe;*.pif;*.com;*.bat#全てのファイル (*.*)#*.*#"
 
     IDS_MENUANDITEM             "%s - %s"
@@ -455,7 +455,7 @@ JAPANEND
     IDS_DRIVEBUSY_FORMAT        "%c: ドライブは使用中の為アクセスできません。\nファイル マネージャーがディスクをフォーマットしています。"
 
     IDS_COPYMOVENOTCOMPLETED    "全ての操作が完了していません"
-    IDS_DIRREMAINS              "ファイルとディレクトリーの全ての操作を完了できません。"
+    IDS_DIRREMAINS              "ファイルとディレクトリの全ての操作を完了できません。"
 
     IDS_TOOMANYWINDOWS          "多くのディレクトリ ウィンドウが開かれています。\n\n1つまたは複数のウィンドウを閉じてもう一度試して下さい。"
     IDS_FMIFSLOADERR            "この操作に必要なライブラリをロードする事ができません。"
@@ -524,7 +524,7 @@ BEGIN
     MH_POPUP+IDM_TREE,          "ツリー ウィンドウの動作に関するコマンド"
     MH_POPUP+IDM_VIEW,          "情報の表示方法を決定するコマンド"
     MH_POPUP+IDM_OPTIONS,       "オプションを設定するコマンド"
-    MH_POPUP+IDM_SECURITY,      "ファイルとディレクトリのセキュリティーを操作するコマンド"
+    MH_POPUP+IDM_SECURITY,      "ファイルとディレクトリのセキュリティを操作するコマンド"
     MH_POPUP+IDM_WINDOW,        "ウィンドウを配置するコマンド"
     MH_POPUP+IDM_HELP,          "ファイル マネージャーのヘルプを表示するコマンド"
 END
