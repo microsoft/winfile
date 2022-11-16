@@ -418,7 +418,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "%s へファイルをコピー中"
     IDS_DRAG_MOVING             "%s へファイルを移動中"
-    IDS_DRAG_LINKING            "ファイルを %s にリンクする"
+    IDS_DRAG_LINKING            "%s へファイルをリンク中"
     IDS_DRAG_EXECUTING          "%s でファイルを実行中"
 
     IDS_ORDERB                  "%s バイト"
