@@ -21,7 +21,7 @@ BEGIN
 	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"貼り付け(&P)\tCtrl+V", 	IDM_PASTE
     MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
-    MENUITEM    "リネーム(&N)...",   IDM_RENAME
+    MENUITEM    "名前の変更(&N)...",   IDM_RENAME
     MENUITEM    "プロパティ(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    SEPARATOR
     MENUITEM    "圧縮(&S)...",     IDM_COMPRESS
@@ -31,13 +31,14 @@ BEGIN
     MENUITEM    "印刷(&P)...",        IDM_PRINT
     MENUITEM    "関連付け(&A)...",    IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "ディレクトリーを作成(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
+    MENUITEM    "ディレクトリを作成(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "検索(&C)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "ファイルを選択(&F)...", IDM_SELECT
-	MENUITEM    "Bash を起動...\tCtrl+B", IDM_STARTBASHSHELL
-	MENUITEM    "Cmd シェルを起動...(&L)...\tCtrl+K", IDM_STARTCMDSHELL
-    MENUITEM    "PowerShell を起動...(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
-	MENUITEM    "別のディレクトリーへ移動(&G)...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "Bash を起動...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "コマンド プロンプトを起動(&L)...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "PowerShell を起動(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
+
+	MENUITEM    "別のディレクトリへ移動(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "終了(&X)",            IDM_EXIT
     END
@@ -53,17 +54,17 @@ BEGIN
     POPUP       "ツリー(&T)"
     BEGIN
     MENUITEM    "1つ展開(&X)\t+", IDM_EXPONE
-    MENUITEM    "サブディレクトリーを展開(&B)\t*",    IDM_EXPSUB
+    MENUITEM    "サブディレクトリを展開(&B)\t*",    IDM_EXPSUB
     MENUITEM    "全て展開(&A)\tCtrl+*",  IDM_EXPALL
-    MENUITEM    "サブディレクトリーを折り畳む(&C)\t-",  IDM_COLLAPSE
+    MENUITEM    "サブディレクトリを折り畳む(&C)\t-",  IDM_COLLAPSE
     MENUITEM    SEPARATOR
-    MENUITEM    "展開可能なサブディレクトリーを表示(&I)",    IDM_ADDPLUSES
+    MENUITEM    "展開可能なサブディレクトリを表示(&I)",    IDM_ADDPLUSES
     END
     POPUP       "表示(&V)"
     BEGIN
-    MENUITEM    "ツリーとディレクトリー(&R)",  IDM_BOTH
+    MENUITEM    "ツリーとディレクトリ(&R)",  IDM_BOTH
     MENUITEM    "ツリーのみ(&E)",           IDM_TREEONLY
-    MENUITEM    "ディレクトリーのみ(&O)",      IDM_DIRONLY
+    MENUITEM    "ディレクトリのみ(&O)",      IDM_DIRONLY
     MENUITEM    SEPARATOR
     MENUITEM    "分割(&L)",               IDM_SPLIT
     MENUITEM    SEPARATOR
@@ -71,11 +72,11 @@ BEGIN
     MENUITEM    "全てのファイルの詳細(&A)",    IDM_VDETAILS,   CHECKED
     MENUITEM    "一部のファイルの詳細(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM "名前でソート(&S)",   IDM_BYNAME
-    MENUITEM "種別でソート(&B)",   IDM_BYTYPE
-    MENUITEM "サイズでソート(&Z)",   IDM_BYSIZE
-    MENUITEM "日付でソート(&D)",   IDM_BYDATE
-    MENUITEM "日付で逆ソート(&F)",   IDM_BYFDATE
+    MENUITEM "名前で並び替え(&S)",   IDM_BYNAME
+    MENUITEM "種別で並び替え(&B)",   IDM_BYTYPE
+    MENUITEM "サイズで並び替え(&Z)",   IDM_BYSIZE
+    MENUITEM "日付で昇順に並び替え(&D)",   IDM_BYDATE
+    MENUITEM "日付で降順に並び替え(&F)",   IDM_BYFDATE
     MENUITEM    SEPARATOR
     MENUITEM    "ファイル タイプで絞り込み(&T)...",     IDM_VINCLUDE
     END
@@ -85,10 +86,10 @@ BEGIN
     MENUITEM    "フォント(&F)...",             IDM_FONT
     MENUITEM    "ツール バーのカスタマイズ(&B)...", IDM_TOOLBARCUST
     MENUITEM    "追加の設定(&P)", IDM_PREF
-    MENUITEM    SEPARATOR
-    MENUITEM    "ツール バー(&T)",                 IDM_TOOLBAR
-    MENUITEM    "ドライブバー(&D)",                IDM_DRIVEBAR
-    MENUITEM    "ステータスバー(&S)",              IDM_STATUSBAR
+  MENUITEM    SEPARATOR
+  MENUITEM    "ツール バー(&T)",                 IDM_TOOLBAR
+    MENUITEM    "ドライブ バー(&D)",                IDM_DRIVEBAR
+    MENUITEM    "ステータス バー(&S)",              IDM_STATUSBAR
     MENUITEM    SEPARATOR
     MENUITEM    "プログラムの起動時に最小化(&M)",     IDM_MINONRUN
     MENUITEM    "起動時に移動先インデックスを作成(&G)", IDM_INDEXONLAUNCH
@@ -98,7 +99,7 @@ BEGIN
     MENUITEM    "今すぐ設定を保存(&N)",       IDM_SAVENOW
 #endif
     END
-    POPUP       "セキュリティー(&S)"
+    POPUP       "セキュリティ(&S)"
     BEGIN
     MENUITEM    "権限(&P)...",  IDM_PERMISSIONS
     MENUITEM    "監査(&A)...",     IDM_AUDITING
@@ -107,10 +108,10 @@ BEGIN
     POPUP       "ウィンドウ(&W)"
     BEGIN
     MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",          IDM_NEWWINDOW
-    MENUITEM    "縦に重ねる(&C)\tShift+F5",   IDM_CASCADE
-    MENUITEM    "横に並べる(&H)",   IDM_TILEHORIZONTALLY
-    MENUITEM    "縦に並べる(&T)\tShift+F4",      IDM_TILE
-    MENUITEM    "アイコンの配置(&A)",       IDM_ARRANGE
+    MENUITEM    "重ねて表示(&C)\tShift+F5",   IDM_CASCADE
+    MENUITEM    "上下に並べて表示(&H)",   IDM_TILEHORIZONTALLY
+    MENUITEM    "左右に並べて表示(&T)\tShift+F4",      IDM_TILE
+    MENUITEM    "アイコンの整列(&A)",       IDM_ARRANGE
     MENUITEM    "更新(&R)\tF5",         IDM_REFRESH
     END
     POPUP       "ヘルプ(&H)"
@@ -124,7 +125,7 @@ BEGIN
 
 END
 
-CTXMENU MENU PRELOAD 
+CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
@@ -137,13 +138,13 @@ BEGIN
 	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
 	MENUITEM	"貼り付け(&P)\tCtrl+V", IDM_PASTE
 	MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
-    MENUITEM    "リネーム(&N)...\tF2",   IDM_RENAME
+    MENUITEM    "名前の変更(&N)...\tF2",   IDM_RENAME
     MENUITEM    "プロパティ(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "実行(&R)...",          IDM_RUN
     MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
-	MENUITEM    "Cmd シェルを起動(&L)...", IDM_STARTCMDSHELL
+	MENUITEM    "コマンド プロンプトを起動(&L)...", IDM_STARTCMDSHELL
 	MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
-	MENUITEM    "別のディレクトリーへ移動(&G)...", IDM_GOTODIR
+	MENUITEM    "別のディレクトリへ移動(&G)...", IDM_GOTODIR
 	END
 END
 
@@ -166,7 +167,7 @@ BEGIN
     IDS_COPYSRCDESTINCOMPAT "コピー元とコピー先のディスクが対応していません。"                                                                          /* 128 */
 
     IDS_PERCENTCOMP         "%d%% 完了"                /* 32 */
-    IDS_CREATEROOT          "ルート ディレクトリーを作成..."       /* 32 */
+    IDS_CREATEROOT          "ルート ディレクトリを作成..."       /* 32 */
     IDS_COPYSYSFILES        "システム ファイルをコピー..."          /* 32 */
     IDS_FORMATERR           "ディスクのフォーマット エラー"             /* 32 */
     IDS_FORMATQUICKFAILURE  "ファイル マネージャーはクイック フォーマットを実行できません。\n\n通常フォーマットで続行しますか?"
@@ -187,7 +188,7 @@ BEGIN
     IDS_NETDISCONOPEN       "ファイル マネージャーはネットワーク ドライブを切断できません。\n\nこのドライブ上のファイルが開かれています。"
 
     IDS_ATTRIBERR           "ファイル マネージャーは属性を変更できません。"
-    IDS_MAKEDIRERR          "ファイル マネージャーはディレクトリーを作成できません。"
+    IDS_MAKEDIRERR          "ファイル マネージャーはディレクトリを作成できません。"
 
     IDS_LABELDISKERR        "ファイル マネージャーはフロッピー ディスクにボリューム ラベルを付けられません。\n\nフロッピー ディスクが書き込み禁止になっていない事、ネットワーク ドライブではない事を確認して、正しい名前を入力して下さい。\n名前には次の文字を含めることはできません:\n[空白] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
@@ -216,23 +217,23 @@ BEGIN
     IDS_INVALIDDLL          "このアプリケーションを実行する為に必要なライブラリ ファイルの1つが破壊されています。このアプリケーションを再インストールして下さい。"
     IDS_SHAREERROR          "このファイルは他のアプリケーションで使用されています。"
 
-    IDS_CREATELONGDIR       "ファイル マネージャーはディレクトリー '%s' に作成されたファイルにアクセスできません。\n\n続行しますか?"
-    IDS_CREATELONGDIRTITLE  "ディレクトリーを作成"
+    IDS_CREATELONGDIR       "ファイル マネージャーはディレクトリ '%s' に作成されたファイルにアクセスできません。\n\n続行しますか?"
+    IDS_CREATELONGDIRTITLE  "ディレクトリを作成"
 
     IDS_MOUSECONFIRM,       "マウス操作の確認"       /* 32 */
-    IDS_COPYMOUSECONFIRM,   "選択しているファイルまたはディレクトリーを %s にコピーしますか?"
-    IDS_MOVEMOUSECONFIRM,   "選択しているファイルまたはディレクトリーを %s に移動しますか?"
-    IDS_LINKMOUSECONFIRM,   "選択したファイルまたはディレクトリを ％ sにリンクしてもよろしいですか？"
+    IDS_COPYMOUSECONFIRM,   "選択しているファイルまたはディレクトリを %s にコピーしますか?"
+    IDS_MOVEMOUSECONFIRM,   "選択しているファイルまたはディレクトリを %s に移動しますか?"
+    IDS_LINKMOUSECONFIRM,   "選択したファイルまたはディレクトリを %s にリンクしてもよろしいですか？"
     IDS_EXECMOUSECONFIRM,   "%s を起動して最初のファイルとして %s を使用しますか?"                                                          /* 128 */
 
     IDS_WINFILE,            "ファイル マネージャー"                  /* 32 */
-    IDS_TREETITLE,          "ディレクトリー ツリー"                /* 32 */
+    IDS_TREETITLE,          "ディレクトリ ツリー"                /* 32 */
     IDS_SEARCHTITLE,        "検索結果:"              /* 32 */
 
-    IDS_READING             "ディレクトリーを読み込み中。お待ち下さい..."
+    IDS_READING             "ディレクトリを読み込んでいます。しばらくお待ち下さい..."
     IDS_TOOMANYTITLE,       "ファイルが多すぎます"                /* 32 */
     IDS_OOMTITLE,           "ファイル マネージャー - メモリ不足"  /* 32 */
-    IDS_OOMREADINGDIRMSG,   "ディレクトリー全体を読み取る事ができません。一部のみ一覧に表示されます。"                                              /* 128 */
+    IDS_OOMREADINGDIRMSG,   "ディレクトリ全体を読み取る事ができません。一部のみ一覧に表示されます。"                                              /* 128 */
 
 //    IDS_PRINTFNF            "The file to be printed cannot be found. Make sure the correct path and filename are specified."                                                                                  /* 128 */
     IDS_PRINTMEMORY         "印刷に必要なメモリがありません。\n\n1つまたは複数のアプリケーションを終了してもう一度試して下さい。"                                             /* 128 */
@@ -240,7 +241,7 @@ BEGIN
     IDS_PRINTERROR          "印刷中にエラーが発生しました。\n\nプリンタが正しく設定/選択されているか確認して下さい。"             /* 128 */
     IDS_PRINTONLYONE        "ファイル マネージャーは同時に複数のファイルを印刷する事はできません。\n\nファイルを1つだけ選択しもう一度試して下さい。"                                               /* 128 */
 
-    IDS_CURDIRIS,           "カレント ディレクトリー: %s"                                                                                                    /* 128 */
+    IDS_CURDIRIS,           "現在のディレクトリ: %s"                                                                                                    /* 128 */
     IDS_COPY,               "コピー"                          /* 32 */
     IDS_RENAME,             "名前を変更"                        /* 32 */
     IDS_FORMAT,             "ディスクのフォーマット"                   /* 32 */
@@ -273,8 +274,8 @@ JAPANEND
     IDS_STATUSMSG,          "合計 %d 個のファイル (%s)"             /* 128 */
     IDS_STATUSMSG2,         "%d 個のファイルを選択 (%s)"          /* 128 */
     IDS_DRIVEFREE,          "%c: %s 使用可能(合計 %s)"            /* 128 */
-    IDS_TREEABORT,          "ディレクトリー ツリーの表示が不完全"     /* 128 */
-    IDS_DIRSREAD,           "ディレクトリーの読み込み: %d"                   /* 32 */
+    IDS_TREEABORT,          "ディレクトリ ツリーの表示が不完全"     /* 128 */
+    IDS_DIRSREAD,           "ディレクトリの読み込み: %d"                   /* 32 */
     IDS_SEARCHMSG,          "%d 個のファイルが見つかりました"
     IDS_BYTES,              "%ld バイト"
     IDS_SBYTES,             "%s バイト"
@@ -289,7 +290,7 @@ JAPANEND
     IDS_COPYERROR + FUNC_DELETE "ファイルの削除中のエラー"
     IDS_COPYERROR + FUNC_RENAME "ファイルの名前の変更中のエラー"
     IDS_COPYERROR + FUNC_SETDRIVE "ドライブの選択中のエラー"
-    IDS_COPYERROR + FUNC_EXPAND   "ディレクトリーの読み込み中のエラー"
+    IDS_COPYERROR + FUNC_EXPAND   "ディレクトリの読み込み中のエラー"
     IDS_COPYERROR + FUNC_LABEL    "ディスクのボリューム ラベル設定中のエラー"
     IDS_COPYERROR + FUNC_LINK        "シンボリックリンクの作成に失敗しました。"
     IDS_COPYERROR + FUNC_HARD        "ハードリンクの作成に失敗しました。"
@@ -302,11 +303,11 @@ JAPANEND
     IDS_VERBS + FUNC_MOVE       "ファイル マネージャーは %s を移動できません: %s"
     IDS_VERBS + FUNC_DELETE     "ファイル マネージャーは %s を削除できません: %s"
     IDS_VERBS + FUNC_RENAME     "ファイル マネージャーは %s の名前を変更できません: %s"
-    IDS_VERBS + FUNC_LINK       "ファイルマネージャはシンボリックリンク ％s を作成できません: %s"
-    IDS_VERBS + FUNC_HARD       "ファイルマネージャはハードリンク ％s を作成できません: %s"
-    IDS_VERBS + FUNC_JUNC       "ファイルマネージャはジャンクション ％s を作成できません: %s"
-    IDS_ACTIONS + 1             "ファイル マネージャーはディレクトリー %s を作成できません: %s"
-    IDS_ACTIONS + 2             "ファイル マネージャーはディレクトリー %s を削除できません: %s"
+    IDS_VERBS + FUNC_LINK       "ファイル マネージャーはシンボリックリンク %s を作成できません: %s"
+    IDS_VERBS + FUNC_HARD       "ファイル マネージャーはハードリンク %s を作成できません: %s"
+    IDS_VERBS + FUNC_JUNC       "ファイル マネージャーはジャンクション %s を作成できません: %s"
+    IDS_ACTIONS + 1             "ファイル マネージャーはディレクトリ %s を作成できません: %s"
+    IDS_ACTIONS + 2             "ファイル マネージャーはディレクトリ %s を削除できません: %s"
     IDS_REPLACING               "ファイル マネージャーは %s を作成または置き換える事ができません: %s"
     // IDS_CREATING             "File Manager cannot create %s: %s"
 
@@ -384,7 +385,7 @@ JAPANEND
     IDS_DISKCOPYCONFIRMTITLE    "ディスクのコピーの確認"
     IDS_ANDCLOSE                "閉じる(&C)"        // goes on Selection dialog
     IDS_CLOSE                   "閉じる"         // braindead "&Change"
-    IDS_PATHNOTTHERE            "ディレクスト %s が存在しません。\n\n作成しますか?"
+    IDS_PATHNOTTHERE            "ディレクトリ %s が存在しません。\n\n作成しますか?"
     IDS_PROGRAMS                "プログラム#*.exe;*.pif;*.com;*.bat#全てのファイル (*.*)#*.*#"
 
     IDS_MENUANDITEM             "%s - %s"
@@ -394,20 +395,20 @@ JAPANEND
     IDS_CONNECTHELP             "ネットワーク ドライブに接続"
     IDS_DISCONHELP              "ネットワーク ドライブを切断"
     IDS_CONNECTIONHELP          "ネットワーク接続"
-    IDS_SHAREASHELP             "ディレクトリーの共有"
-    IDS_STOPSHAREHELP           "ディレクトリー共有の停止"
+    IDS_SHAREASHELP             "ディレクトリの共有"
+    IDS_STOPSHAREHELP           "ディレクトリ共有の停止"
     IDS_VDETAILSHELP            "全てのファイル詳細を表示"
     IDS_VNAMEHELP               "名前のみ表示"
-    IDS_BYNAMEHELP              "名前でソート"
-    IDS_BYTYPEHELP              "種別でソート"
-    IDS_BYSIZEHELP              "サイズでソート"
-    IDS_BYDATEHELP              "日付でソート"
+    IDS_BYNAMEHELP              "名前で並び替え"
+    IDS_BYTYPEHELP              "種別で並び替え"
+    IDS_BYSIZEHELP              "サイズで並び替え"
+    IDS_BYDATEHELP              "日付で並び替え"
     IDS_NEWWINHELP              "新しいウィンドウ"
     IDS_COPYHELP                "ファイルのコピー"
     IDS_MOVEHELP                "ファイルの移動"
     IDS_DELHELP                 "ファイルの削除"
 
-    IDS_DIRNAMELABEL            "ディレクトリー名(&D):"
+    IDS_DIRNAMELABEL            "ディレクトリ名(&D):"
     IDS_DRIVENOTAVAILABLE       "ネットワーク ドライブはありません。"
 
     IDS_SHAREDAS                "%s として共有済み"
@@ -417,7 +418,7 @@ JAPANEND
 
     IDS_DRAG_COPYING            "%s へファイルをコピー中"
     IDS_DRAG_MOVING             "%s へファイルを移動中"
-    IDS_DRAG_LINKING            "ファイルを ％s にリンクする"
+    IDS_DRAG_LINKING            "%s へファイルをリンク中"
     IDS_DRAG_EXECUTING          "%s でファイルを実行中"
 
     IDS_ORDERB                  "%s バイト"
@@ -431,7 +432,7 @@ JAPANEND
     IDS_VN_FILEDESCRIPTION      "ファイルの詳細"
     IDS_VN_INTERNALNAME         "内部名"
     IDS_VN_LEGALTRADEMARKS      "法的商標"
-    IDS_VN_ORIGINALFILENAME     "オリジナルのファイル名"
+    IDS_VN_ORIGINALFILENAME     "元のファイル名"
     IDS_VN_PRIVATEBUILD         "内部ビルド詳細"
     IDS_VN_PRODUCTNAME          "製品名"
     IDS_VN_PRODUCTVERSION       "製品バージョン"
@@ -447,20 +448,20 @@ JAPANEND
     IDS_ASSOCNOTEXE             "%s はプログラムではないため、ファイル拡張子に関連付けることはできません。"
     IDS_ASSOCNONE               "(無し)"
     IDS_NOFILES                 "ファイルが見つかりません。"
-    IDS_NOACCESSDIR             "このディレクトリーにアクセスする権限がありません。"
+    IDS_NOACCESSDIR             "このディレクトリにアクセスする権限がありません。"
     IDS_NOACCESSFILE            "このファイルにアクセスする権限がありません。"
 
     IDS_DRIVEBUSY_COPY          "%c: ドライブは使用中の為アクセスできません。\nファイル マネージャーがディスクをコピーしています。"
     IDS_DRIVEBUSY_FORMAT        "%c: ドライブは使用中の為アクセスできません。\nファイル マネージャーがディスクをフォーマットしています。"
 
     IDS_COPYMOVENOTCOMPLETED    "全ての操作が完了していません"
-    IDS_DIRREMAINS              "ファイルとディレクトリーの全ての操作を完了できません。"
+    IDS_DIRREMAINS              "ファイルとディレクトリの全ての操作を完了できません。"
 
-    IDS_TOOMANYWINDOWS          "多くのディレクトリー ウィンドウが開かれています。\n\n1つまたは複数のウィンドウを閉じてもう一度試して下さい。"
+    IDS_TOOMANYWINDOWS          "多くのディレクトリ ウィンドウが開かれています。\n\n1つまたは複数のウィンドウを閉じてもう一度試して下さい。"
     IDS_FMIFSLOADERR            "この操作に必要なライブラリをロードする事ができません。"
 
-    IDS_NOSUCHDIRTITLE          "ディレクトリーを読み取れません"
-    IDS_NOSUCHDIR               "ディレクトリーが存在しません。"
+    IDS_NOSUCHDIRTITLE          "ディレクトリを読み取れません"
+    IDS_NOSUCHDIR               "ディレクトリが存在しません。"
 
     IDS_BADNETNAMETITLE         "ネットワーク ドライブを接続できません"
     IDS_BADNETNAME              "ネットワーク名が見つかりませんでした。"
@@ -503,8 +504,8 @@ JAPANEND
     IDS_INITUPDATEFAIL          "バックグラウンドでの更新を行う機能を初期化できませんでした。ファイル マネージャーを終了します。"
     IDS_INITUPDATEFAILTITLE     "ファイル マネージャーの情報"
 
-    IDS_COMPRESSDIR             "%s 内の全てのファイルとサブディレクトリーを圧縮しますか?"
-    IDS_UNCOMPRESSDIR           "%s 内の全てのファイルとサブディレクトリーを解凍しますか?"
+    IDS_COMPRESSDIR             "%s 内の全てのファイルとサブディレクトリを圧縮しますか?"
+    IDS_UNCOMPRESSDIR           "%s 内の全てのファイルとサブディレクトリを解凍しますか?"
     IDS_COMPRESS_ATTRIB_ERR     "ファイル マネージャーは %s の圧縮属性を変更できません。"
     IDS_NTLDRCOMPRESSERR        "ファイル %s は圧縮されません。このファイルを圧縮するとシステムが起動しなくなるかもしれません。"
     IDS_MULTICOMPRESSERR        "ファイル マネージャーは現在、ファイルを圧縮または解凍しています。\n他のファイルを圧縮するには、全てのファイルを圧縮また解凍が完了するまでお待ち下さい。"
@@ -523,7 +524,7 @@ BEGIN
     MH_POPUP+IDM_TREE,          "ツリー ウィンドウの動作に関するコマンド"
     MH_POPUP+IDM_VIEW,          "情報の表示方法を決定するコマンド"
     MH_POPUP+IDM_OPTIONS,       "オプションを設定するコマンド"
-    MH_POPUP+IDM_SECURITY,      "ファイルとディレクトリーのセキュリティーを操作するコマンド"
+    MH_POPUP+IDM_SECURITY,      "ファイルとディレクトリのセキュリティを操作するコマンド"
     MH_POPUP+IDM_WINDOW,        "ウィンドウを配置するコマンド"
     MH_POPUP+IDM_HELP,          "ファイル マネージャーのヘルプを表示するコマンド"
 END
@@ -534,24 +535,24 @@ END
 STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
 BEGIN
     MH_MYITEMS+IDM_OPEN,        "選択アイテムを開く"
-    MH_MYITEMS+IDM_EDIT,        "選択アイテムを notepad.exe で編集する"
+    MH_MYITEMS+IDM_EDIT,        "選択アイテムをメモ帳で編集する"
     MH_MYITEMS+IDM_MOVE,        "選択アイテムを移動する"
-    MH_MYITEMS+IDM_COPY,        "ファイルまたはディレクトリーをコピーする"
+    MH_MYITEMS+IDM_COPY,        "ファイルまたはディレクトリをコピーする"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "1つまたは複数のファイルをクリップボードにコピーする"
 	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "1つまたは複数のファイルをクリップボードに切り取る"
-    MH_MYITEMS+IDM_PASTE,		"カレント ディレクトリーにクリップボードから貼り付ける"
-    MH_MYITEMS+IDM_COMPRESS,    "ファイルまたはディレクトリーを圧縮する"
-    MH_MYITEMS+IDM_UNCOMPRESS,  "ファイルまたはディレクトリーを解凍する"
-    MH_MYITEMS+IDM_DELETE,      "ファイルまたはディレクトリーを削除する"
-    MH_MYITEMS+IDM_RENAME,      "ファイルまたはディレクトリーの名前を変更する"
+    MH_MYITEMS+IDM_PASTE,		"現在のディレクトリにクリップボードから貼り付ける"
+    MH_MYITEMS+IDM_COMPRESS,    "ファイルまたはディレクトリを圧縮する"
+    MH_MYITEMS+IDM_UNCOMPRESS,  "ファイルまたはディレクトリを解凍する"
+    MH_MYITEMS+IDM_DELETE,      "ファイルまたはディレクトリを削除する"
+    MH_MYITEMS+IDM_RENAME,      "ファイルまたはディレクトリの名前を変更する"
     MH_MYITEMS+IDM_ATTRIBS,     "ファイルの拡張子を設定する、またはプロパティを表示する"
     MH_MYITEMS+IDM_UNDELETE,    "削除したファイルを戻す"
     MH_MYITEMS+IDM_RUN, "アプリケーションを実行する、またはドキュメントを開く"
     MH_MYITEMS+IDM_PRINT,       "ドキュメントを印刷する"
     MH_MYITEMS+IDM_ASSOCIATE,   "ファイルの拡張子に関連付けを行う"
-    MH_MYITEMS+IDM_MAKEDIR,     "ディレクトリーを作成する"
-    MH_MYITEMS+IDM_SEARCH,      "ファイルまたはディレクトリーを検索する"
-    MH_MYITEMS+IDM_SELECT,      "ファイルまたはディレクトリーを選択する"
+    MH_MYITEMS+IDM_MAKEDIR,     "ディレクトリを作成する"
+    MH_MYITEMS+IDM_SEARCH,      "ファイルまたはディレクトリを検索する"
+    MH_MYITEMS+IDM_SELECT,      "ファイルまたはディレクトリを選択する"
     MH_MYITEMS+IDM_EXIT,        "ファイル マネージャーを終了する"
 
     MH_MYITEMS+IDM_DISKCOPY,    "ディスクをコピーする"
@@ -562,30 +563,30 @@ BEGIN
     MH_MYITEMS+IDM_DISCONNECT,  "ネットワーク ドライブの切断する"
 //    MH_MYITEMS+IDM_CONNECTIONS,       "Network Connections..."
 //    MH_MYITEMS+IDM_SHARES,    "View Shared Directories..."
-    MH_MYITEMS+IDM_SHAREAS,     "ディレクトリーを共有する"
-    MH_MYITEMS+IDM_STOPSHARE,   "ディレクトリーの共有を停止する"
+    MH_MYITEMS+IDM_SHAREAS,     "ディレクトリを共有する"
+    MH_MYITEMS+IDM_STOPSHARE,   "ディレクトリの共有を停止する"
 
     MH_MYITEMS+IDM_DRIVESMORE,  "別のドライブを選択する"
 
     MH_MYITEMS+IDM_EXPONE,      "1つ展開する"
-    MH_MYITEMS+IDM_EXPSUB,      "サブディレクトリーを展開する"
+    MH_MYITEMS+IDM_EXPSUB,      "サブディレクトリを展開する"
     MH_MYITEMS+IDM_EXPALL,      "全て展開する"
-    MH_MYITEMS+IDM_COLLAPSE,    "サブディレクトリーを折り畳む"
-    MH_MYITEMS+IDM_ADDPLUSES,   "展開可能なサブディレクトリーを表示する"
+    MH_MYITEMS+IDM_COLLAPSE,    "サブディレクトリを折り畳む"
+    MH_MYITEMS+IDM_ADDPLUSES,   "展開可能なサブディレクトリを表示する"
 
-    MH_MYITEMS+IDM_BOTH,        "ディレクトリーのツリーとカレント ディレクトリーの内容を表示する"
-    MH_MYITEMS+IDM_TREEONLY,    "ディレクトリーのツリーを表示する"
-    MH_MYITEMS+IDM_DIRONLY,     "カレント ディレクトリーの内容を表示する"
-    MH_MYITEMS+IDM_SPLIT,       "ディレクトリー ウィンドウを分割または分割バーを移動する"
+    MH_MYITEMS+IDM_BOTH,        "ディレクトリのツリーと現在のディレクトリの内容を表示する"
+    MH_MYITEMS+IDM_TREEONLY,    "ディレクトリのツリーを表示する"
+    MH_MYITEMS+IDM_DIRONLY,     "現在のディレクトリの内容を表示する"
+    MH_MYITEMS+IDM_SPLIT,       "ディレクトリ ウィンドウを分割または分割バーを移動する"
     MH_MYITEMS+IDM_VNAME,       "名前だけ表示する"
     MH_MYITEMS+IDM_VDETAILS,    "全てのファイルの詳細を表示する"
     MH_MYITEMS+IDM_VOTHER,      "一部のファイルの詳細を表示する"
-    MH_MYITEMS+IDM_BYNAME,      "名前でソートする"
-    MH_MYITEMS+IDM_BYTYPE,      "種別でソートする"
-    MH_MYITEMS+IDM_BYSIZE,      "サイズでソートする"
-    MH_MYITEMS+IDM_BYDATE,      "日付でソートする"
-    MH_MYITEMS+IDM_BYFDATE,     "日付で逆ソートする"
-    MH_MYITEMS+IDM_VINCLUDE,    "ファイル タイプで絞り込む"
+    MH_MYITEMS+IDM_BYNAME,      "名前で並び替え"
+    MH_MYITEMS+IDM_BYTYPE,      "種別で並び替え"
+    MH_MYITEMS+IDM_BYSIZE,      "サイズで並び替え"
+    MH_MYITEMS+IDM_BYDATE,      "日付で昇順に並び替え"
+    MH_MYITEMS+IDM_BYFDATE,     "日付で降順に並び替え"
+    MH_MYITEMS+IDM_VINCLUDE,    "ファイルの種類で絞り込む"
 
     MH_MYITEMS+IDM_CONFIRM,     "確認メッセージを制御する"
     MH_MYITEMS+IDM_FONT,        "ファイル マネージャーのフォントを変更する"
@@ -601,10 +602,10 @@ BEGIN
     MH_MYITEMS+IDM_SAVESETTINGS,        "ファイル マネージャーの終了時に設定を保存する"
 
     MH_MYITEMS+IDM_NEWWINDOW,   "新しいウィンドウを開く"
-    MH_MYITEMS+IDM_CASCADE,     "縦に重ねる"
-    MH_MYITEMS+IDM_TILEHORIZONTALLY,    "横に並べる"
-    MH_MYITEMS+IDM_TILE,        "縦に並べる"
-    MH_MYITEMS+IDM_ARRANGE,     "アイコンを配置する"
+    MH_MYITEMS+IDM_CASCADE,     "ウィンドウを重ねて表示する"
+    MH_MYITEMS+IDM_TILEHORIZONTALLY,    "ウィンドウを上下に並べて表示する"
+    MH_MYITEMS+IDM_TILE,        "ウィンドウを左右に並べて表示する"
+    MH_MYITEMS+IDM_ARRANGE,     "アイコンを整列する"
     MH_MYITEMS+IDM_REFRESH,     "ウィンドウの内容を更新する"
 
     MH_MYITEMS+IDM_PERMISSIONS  "選択アイテムの権限情報を表示する"
@@ -625,13 +626,12 @@ BEGIN
     IDS_CONNECT,                "ネットワーク ドライブの接続(&N)..."
     IDS_DISCONNECT,             "ネットワーク ドライブの切断(&C)..."
     IDS_CONNECTIONS,            "ネットワーク接続(&N)..."
-    IDS_SHAREDDIR               "ディレクトリーを共有(&H)..."
+    IDS_SHAREDDIR               "ディレクトリを共有(&H)..."
     IDS_SHAREAS,                "共有(&A)..."
     IDS_STOPSHARE,              "共有を停止(&T)..."
-    IDS_SHARES,                 "共有ディレクトリーの表示(&H)..."
+    IDS_SHARES,                 "共有ディレクトリの表示(&H)..."
     IDS_UNDELETE,               "削除の取り消し(&U)..."
     IDS_NEWWINONCONNECT,        "接続時に新しいウィンドウを開く(&O)"
 END
 
 #include "winfile_ja-JP.dlg"
-

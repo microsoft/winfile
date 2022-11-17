@@ -34,7 +34,7 @@
 SUGGEST( 1, DE_SAMEFILE, 0L, \
  "コピー元とコピー先が同じです。" )
 SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
- "リネームするファイルを1つだけ選択するか、ワイルド カード(例: *.TXT)を使用して似た名前のファイル名を変更します。" )
+ "名前を変更するファイルを1つだけ選択するか、ワイルド カード(例: *.TXT)を使用して似た名前のファイル名を変更します。" )
 SUGGEST( 3, DE_DIFFDIR, 0L, \
  "別のディレクトリまたはディスクに名前を変更することはできません。\n'ファイル移動' コマンドを使用して下さい。" )
 SUGGEST( 4, DE_ROOTDIR, 0L, \
@@ -87,4 +87,3 @@ SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
   "このプログラムは有効な Windows NT アプリケーションではありません。" )
 SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
   "エラーが発生しました。このエラーに関するメッセージはありません。" )
-
