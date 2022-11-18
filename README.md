@@ -86,7 +86,7 @@ was created.  For changes post v10.0, see the commit and release history.
 In summary v10.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
-2. control characters (e.g., ctrl+C) map to current short cut (e.g., `ctrl+c` -> `copy` and copy path to clipboard)
+2. control characters (e.g., ctrl+C) map to current short cut (e.g., `ctrl+C` -> `copy` and copy path to clipboard)
 instead of changing drives. Change drives now via CTRL + ALT + letter
 3. cut (`ctrl+X`) followed by paste (`ctrl+V`) translates into a file move as one would expect
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer
@@ -100,17 +100,19 @@ the output is also sorted by the date instead of by the name
 11. `ctrl+K` starts a command shell (ConEmu if installed) in the current directory; `shift+ctrl+K`
 starts an elevated command shell (`cmd.exe` only)
 12. File.Goto (`ctrl+G`) enables one to type a few words of a path and get a list of directories;
-selecting one changes to that directory.  Default = c:\. Confgigure via Winfile.ini[Settings]CachedPath
-13. UI shows reparse points (e.g., Junction points and Symbolic Links) as such
+selecting one changes to that directory.  Default = c:\\. Configure via Winfile.ini[Settings]CachedPath
+13. UI shows reparse points (e.g., Junction Points and Symbolic Links) as such with little icons.
 14. added simple forward / back navigation (probably needs to be improved)
-15. View command has a new option to sort by date forward (oldest on top);
+15. View command has a new option to sort by date forward (oldest on top). Icon in tool-bar available
 normal date sorting is newest on top
 16. CTRL + ENTER executes associated files as administrator
 17. Symbolic Link directories/files and can be created by pressing CTRL + SHIFT during drag and drop of directories/files
 18. Hardlinks and Junctions and can be created by pressing CTRL + SHIFT + ALT during drag and drop of directories/files
 19. The delimiters for splitting words for the GotoCache can be configured via Winfile.ini[Settings]GotoCachePunctuation. The default is - _.
 20. The scroll behavior of the treeview on expand can be configured via Winfile.ini[Settings]ScrollOnExpand. The default is to scroll.
-21. Winfile can handle pathes up to 1024 characters with Windows10 >= 1607. Set HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled=1 as admin
+21. Can handle pathes up to 1024 characters with Windows10 >= 1607. Set HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled=1 as admin.
+22. Japanese localisation with full-width katakanas
+23. Create files with suffix '- Copy', when copying with (`ctrl+C`) -> (`ctrl+V`) in the same dir, or drag-copy with mouse onto empty space in same dir.
 
 You can read the code for more details.
 
