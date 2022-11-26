@@ -41,8 +41,8 @@ ifeq ($(OS),Windows_NT)
 TARGET := $(TARGET).exe
 endif
 
-CC = gcc
-CXX = g++
+CC ?= gcc
+CXX ?= g++
 WINDRES = windres
 RM = rm -f
 
