@@ -103,8 +103,7 @@ starts an elevated command shell (`cmd.exe` only)
 selecting one changes to that directory.  Default = c:\\. Configure via Winfile.ini[Settings]CachedPath
 13. UI shows reparse points (e.g., Junction Points and Symbolic Links) as such with little icons.
 14. added simple forward / back navigation (probably needs to be improved)
-15. View command has a new option to sort by date forward (oldest on top). Icon in tool-bar available
-normal date sorting is newest on top
+15. View command has a new option to sort by date forward (oldest on top); normal date sorting is newest on top; Icon in tool-bar available
 16. CTRL + ENTER executes associated files as administrator
 17. Symbolic Link directories/files and can be created by pressing CTRL + SHIFT during drag and drop of directories/files
 18. Hardlinks and Junctions and can be created by pressing CTRL + SHIFT + ALT during drag and drop of directories/files
