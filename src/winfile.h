@@ -1389,7 +1389,7 @@ Extern CHAR PHCM_EXPOSE_PLACEHOLDERS    EQ(2);
 typedef NTSYSAPI CHAR (*RtlSetProcessPlaceholderCompatibilityMode_t)(
    CHAR aMode
    );
-RtlSetProcessPlaceholderCompatibilityMode_t pfnRtlSetProcessPlaceholderCompatibilityMode;
+Extern RtlSetProcessPlaceholderCompatibilityMode_t pfnRtlSetProcessPlaceholderCompatibilityMode;
 
 
 #ifdef _GLOBALS
