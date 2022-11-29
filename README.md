@@ -48,10 +48,7 @@ The Windows File manager was originally released with Windows 3.0 in the early 1
 can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
 
 ## What it looks like
-
-![(https://commons.wikimedia.org/wiki/File:Winfile-v10-0-file-manager_%28cropped%29.png)](https://upload.wikimedia.org/wikipedia/commons/6/67/Winfile-v10-0-file-manager_%28cropped%29.png)
-
-Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded the image to Wikimedia.
+# ![Winfile](winfilescreenshot.png)
 
 ## Changes in original_plus
 
@@ -68,8 +65,8 @@ The most significant changes are:
 6. converted internal shell APIs to public APIs (the primary reason the old version would not run)
 
 The help directory contains both winfile.hlp and winfile.chm.  Winfile.hlp was in the NT4
-source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from 
-a regular installation of Windows 98 and works on Windows 10.  As is, `WinFile.exe` 
+source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from
+a regular installation of Windows 98 and works on Windows 10.  As is, `WinFile.exe`
 tries to launch winfile.hlp which fails.
 
 To create your own local branch referring to this release, run `git checkout -b <your branch> original_plus`.
