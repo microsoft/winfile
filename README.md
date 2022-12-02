@@ -8,7 +8,7 @@ There are two primary versions of the source code in the master branch:
 1. original_plus tag: refers to the source for WinFile as of Windows NT4 with minimal changes
 so that it compiles with Visual Studio and runs on current Windows.
 
-2. current master: contains my personal changes / additions to WinFile.
+2. current master: contains my personal changes/additions to WinFile.
 
 I will consider bugs fixes and suggestions for minor changes to the master branch. Feel free to create a pull request or post issues as you see fit.
 
@@ -21,7 +21,7 @@ If you are running Windows 10, you can download the app from the store
 
 <a href="https://www.microsoft.com/store/apps/9p7vbbbc49rb?ocid=badge"><img src="https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png" alt="Get it from Microsoft" width="150px"></a>
 
-If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of precompiled versions available.
+If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of pre-compiled versions available.
 
 Please select the version which you would like to download.
 
@@ -77,15 +77,15 @@ The master branch contains changes I have made since 2007.  The changes have bee
 by my needs and personal use.  Some of the changes have limitations that fit the way I use the tool.
 For example, the path index which supports the new goto command only contains information for the c: drive.
 
-I have also not redesigned or restructured WinFile in any major way.
+I have also not redesigned or restructured WinFile in significant way.
 
 Version v10.0 represents the entire set of changes from Nov. 2007 until this OSS project
 was created.  For changes post v10.0, see the commit and release history.
 
-In summary v10.0 has the following changes/new features compared to original_plus:
+In summary, v10.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
-2. control characters (e.g., ctrl+C) map to current short cut (e.g., `ctrl+C` -> `copy` and copy path to clipboard)
+2. control characters (e.g., ctrl+C) map to current shortcut (e.g., `ctrl+C` -> `copy` and copy path to clipboard)
 instead of changing drives. Change drives now via CTRL + ALT + letter
 3. cut (`ctrl+X`) followed by paste (`ctrl+V`) translates into a file move as one would expect
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer
