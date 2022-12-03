@@ -31,7 +31,6 @@ GetMoveCopyCursor()
    case DROP_LINK:
       return LoadCursor(hAppInstance, (LPTSTR)MAKEINTRESOURCE((iCurDrag | 0b0100) & ~0b0001));
 
-   case DROP_JUNC:
    case DROP_HARD:
       return LoadCursor(hAppInstance, (LPTSTR)MAKEINTRESOURCE((iCurDrag | 0b1000) & ~0b0101));
 

@@ -2341,7 +2341,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
          // or foo.bar -> c:\temp
          // do this not for jucntion or symlinks
 
-         if (!IsWild(pCopyInfo->pTo) && (ManySource || IsDirectory(pCopyInfo->pTo)) && pCopyInfo->dwFunc != FUNC_LINK && pCopyInfo->dwFunc != FUNC_JUNC) {
+         if (!IsWild(pCopyInfo->pTo) && (ManySource || IsDirectory(pCopyInfo->pTo)) && pCopyInfo->dwFunc != FUNC_LINK && pCopyInfo->dwFunc != FUNC_HARD) {
             AddBackslash(pCopyInfo->pTo);
             lstrcat(pCopyInfo->pTo, szStarDotStar);
          }
@@ -2444,7 +2444,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
          //
          bSameFile = !lstrcmpi(szSource, szDest);
          if (bSameFile &&
-            (pCopyInfo->dwFunc == FUNC_COPY || pCopyInfo->dwFunc == FUNC_LINK || pCopyInfo->dwFunc == FUNC_HARD || pCopyInfo->dwFunc == FUNC_JUNC) &&
+            (pCopyInfo->dwFunc == FUNC_COPY || pCopyInfo->dwFunc == FUNC_LINK || pCopyInfo->dwFunc == FUNC_HARD) &&
             (oper != OPER_RMDIR)) {
 
             // Source and destination are exactly the same
@@ -2776,7 +2776,6 @@ SkipMKDir:
       // FUNC_HARD is here, because one can select a directory in the file-pane and have SHIFT+CTRL+ALT pressed to 
       // create a junction. In this very case we get a Junction creation 'disguised' as FUNC_HARD
       case OPER_MKDIR | FUNC_HARD: 
-      case OPER_MKDIR | FUNC_JUNC:
       case OPER_MKDIR | FUNC_LINK:  
       {
          // Create symbolic link or junction
@@ -2810,7 +2809,6 @@ SkipMKDir:
             break;
 
          case FUNC_HARD:
-         case FUNC_JUNC:
             ret = WFJunction(szDest, szSource);
             break;
          }
@@ -3298,8 +3296,10 @@ ShowMessageBox:
             }
          }
 
-         ret = CopyError(szSource, szDest, ret, pCopyInfo->dwFunc,
-            oper, bErrorOnDest, bFatalError);
+         INT errorIndex = FUNC_HARD;
+         if (pCopyInfo->dwFunc == FUNC_HARD && IsDirectory(szSource))
+           pCopyInfo->dwFunc = FUNC_JUNC;
+         ret = CopyError(szSource, szDest, ret, errorIndex, oper, bErrorOnDest, bFatalError);
 
          switch (ret) {
          case DE_RETRY:
@@ -3420,7 +3420,6 @@ DMMoveCopyHelper(
          break;
       case DROP_LINK:
       case DROP_HARD:
-      case DROP_JUNC:
          iConfirmMsg = IDS_LINKMOUSECONFIRM;
          break;
 
@@ -3503,9 +3502,6 @@ Error:
       break;
    case DROP_HARD:
       pCopyInfo->dwFunc = FUNC_HARD;
-      break;
-   case DROP_JUNC:
-      pCopyInfo->dwFunc = FUNC_JUNC;
       break;
 
    default:

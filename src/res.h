@@ -54,7 +54,6 @@
 #define DROP_COPY 0x01
 #define DROP_LINK 0x02
 #define DROP_HARD 0x03
-#define DROP_JUNC 0x04
 
 
 /* This is for the menuhelp messages.  Pretty much all ID's after this should

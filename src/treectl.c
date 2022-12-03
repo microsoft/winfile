@@ -118,7 +118,6 @@ int GetDragStatusText(int iOperation)
       iStatusText = IDS_DRAG_COPYING;
       break;
 
-   case DROP_JUNC:
    case DROP_HARD:
    case DROP_LINK:
       iStatusText = IDS_DRAG_LINKING;
@@ -2900,7 +2899,7 @@ UpdateSelection:
             if (GetKeyState(VK_SHIFT) < 0) {
                iOperation = DROP_LINK;
                if (GetKeyState(VK_MENU) < 0) {
-                  iOperation = DROP_JUNC;
+                  iOperation = DROP_HARD;
                }
             }
          }
@@ -3047,7 +3046,7 @@ UpdateSelection:
       // 1 == TRUE  == DROP_COPY
       // 0 == FALSE == DROP_MOVE
       // 2 ==       == DROP_LINK
-      // 4 ==       == DROP_JUNC
+      // 4 ==       == DROP_HARD
       DMMoveCopyHelper(pFrom, szPath, iShowSourceBitmaps);
 
       RectTreeItem(hwndLB, nIndex, FALSE);

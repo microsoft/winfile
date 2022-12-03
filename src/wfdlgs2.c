@@ -782,11 +782,7 @@ Error:
                pCopyInfo->dwFunc = FUNC_LINK;
                break;
             case IDM_HARDLINK:
-               // If source is a directory then create a junction
-               if (IsDirectory(pCopyInfo->pFrom))
-                  pCopyInfo->dwFunc = FUNC_JUNC;
-               else
-                  pCopyInfo->dwFunc = FUNC_HARD;
+                pCopyInfo->dwFunc = FUNC_HARD;
                break;
             }
 
