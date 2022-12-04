@@ -8,7 +8,7 @@ There are two primary versions of the source code in the master branch:
 1. original_plus tag: refers to the source for WinFile as of Windows NT4 with minimal changes
 so that it compiles with Visual Studio and runs on current Windows.
 
-2. current master: contains my personal changes / additions to WinFile.
+2. current master: contains my personal changes/additions to WinFile.
 
 I will consider bugs fixes and suggestions for minor changes to the master branch. Feel free to create a pull request or post issues as you see fit.
 
@@ -21,13 +21,15 @@ If you are running Windows 10, you can download the app from the store
 
 <a href="https://www.microsoft.com/store/apps/9p7vbbbc49rb?ocid=badge"><img src="https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png" alt="Get it from Microsoft" width="150px"></a>
 
-If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of precompiled versions available.
+If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of pre-compiled versions available.
 
 Please select the version which you would like to download.
 
 - Latest build from master (located on Azure): [Win32 (x86)](https://winfilerelease.blob.core.windows.net/craigwi/Win32/Winfile.exe), [x64](https://winfilerelease.blob.core.windows.net/craigwi/x64/Winfile.exe), [ARM](https://winfilerelease.blob.core.windows.net/craigwi/ARM/Winfile.exe).
 
 - [Chocolatey release](https://chocolatey.org/packages/winfile)
+
+- [Winget release]: `winget install "Windows File Manager"`
 
 - [MSYS2 release](https://packages.msys2.org/base/mingw-w64-winfile)
 
@@ -46,10 +48,7 @@ The Windows File manager was originally released with Windows 3.0 in the early 1
 can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
 
 ## What it looks like
-
-![(https://commons.wikimedia.org/wiki/File:Winfile-v10-0-file-manager_%28cropped%29.png)](https://upload.wikimedia.org/wikipedia/commons/6/67/Winfile-v10-0-file-manager_%28cropped%29.png)
-
-Thanks to [@Speps](https://github.com/speps) for the link; not sure who uploaded the image to Wikimedia.
+# ![Winfile](winfilescreenshot.png)
 
 ## Changes in original_plus
 
@@ -66,8 +65,8 @@ The most significant changes are:
 6. converted internal shell APIs to public APIs (the primary reason the old version would not run)
 
 The help directory contains both winfile.hlp and winfile.chm.  Winfile.hlp was in the NT4
-source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from 
-a regular installation of Windows 98 and works on Windows 10.  As is, `WinFile.exe` 
+source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from
+a regular installation of Windows 98 and works on Windows 10.  As is, `WinFile.exe`
 tries to launch winfile.hlp which fails.
 
 To create your own local branch referring to this release, run `git checkout -b <your branch> original_plus`.
@@ -78,15 +77,15 @@ The master branch contains changes I have made since 2007.  The changes have bee
 by my needs and personal use.  Some of the changes have limitations that fit the way I use the tool.
 For example, the path index which supports the new goto command only contains information for the c: drive.
 
-I have also not redesigned or restructured WinFile in any major way.
+I have also not redesigned or restructured WinFile in any significant way.
 
 Version v10.0 represents the entire set of changes from Nov. 2007 until this OSS project
 was created.  For changes post v10.0, see the commit and release history.
 
-In summary v10.0 has the following changes/new features compared to original_plus:
+In summary, v10.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
-2. control characters (e.g., ctrl+C) map to current short cut (e.g., `ctrl+c` -> `copy` and copy path to clipboard)
+2. control characters (e.g., ctrl+C) map to current shortcut (e.g., `ctrl+C` -> `copy` and copy path to clipboard)
 instead of changing drives. Change drives now via CTRL + ALT + letter
 3. cut (`ctrl+X`) followed by paste (`ctrl+V`) translates into a file move as one would expect
 4. left and right arrows in the tree view expand and collapse folders like in the Explorer
@@ -100,17 +99,18 @@ the output is also sorted by the date instead of by the name
 11. `ctrl+K` starts a command shell (ConEmu if installed) in the current directory; `shift+ctrl+K`
 starts an elevated command shell (`cmd.exe` only)
 12. File.Goto (`ctrl+G`) enables one to type a few words of a path and get a list of directories;
-selecting one changes to that directory.  Default = c:\. Confgigure via Winfile.ini[Settings]CachedPath
-13. UI shows reparse points (e.g., Junction points and Symbolic Links) as such
+selecting one changes to that directory.  Default = c:\\. Configure via Winfile.ini[Settings]CachedPath
+13. UI shows reparse points (e.g., Junction Points and Symbolic Links) as such with little icons.
 14. added simple forward / back navigation (probably needs to be improved)
-15. View command has a new option to sort by date forward (oldest on top);
-normal date sorting is newest on top
+15. View command has a new option to sort by date forward (oldest on top); normal date sorting is newest on top; Icon in tool-bar available
 16. CTRL + ENTER executes associated files as administrator
 17. Symbolic Link directories/files and can be created by pressing CTRL + SHIFT during drag and drop of directories/files
 18. Hardlinks and Junctions and can be created by pressing CTRL + SHIFT + ALT during drag and drop of directories/files
 19. The delimiters for splitting words for the GotoCache can be configured via Winfile.ini[Settings]GotoCachePunctuation. The default is - _.
 20. The scroll behavior of the treeview on expand can be configured via Winfile.ini[Settings]ScrollOnExpand. The default is to scroll.
-21. Winfile can handle pathes up to 1024 characters with Windows10 >= 1607. Set HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled=1 as admin
+21. Can handle paths up to 1024 characters with Windows10 >= 1607. Set HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled=1 as admin.
+22. Japanese localisation with full-width katakanas
+23. Create files with suffix '- Copy', when copying with (`ctrl+C`) -> (`ctrl+V`) in the same dir, or drag-copy with mouse onto empty space in same dir.
 
 You can read the code for more details.
 
