@@ -17,6 +17,8 @@ BEGIN
     MENUITEM    "Bearbeiten\tF12",                                IDM_EDIT
     MENUITEM    "&Verschieben...\tF7",                            IDM_MOVE
     MENUITEM    "&Kopieren...\tF8",                               IDM_COPY
+    MENUITEM    "S&ymlink...\tF11",                               IDM_SYMLINK
+    MENUITEM    "H&ardlink...\tUmschalt+F11",                     IDM_HARDLINK
     MENUITEM    "&In Zwischenablage...\tStrg+C",				  IDM_COPYTOCLIPBOARD
     MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",	  IDM_CUTTOCLIPBOARD
     MENUITEM    "&Einfügen\tStrg+V",                              IDM_PASTE
@@ -132,6 +134,8 @@ BEGIN
   MENUITEM    "Bearbeiten\tF12",	                                IDM_EDIT
   MENUITEM    "&Verschieben...\tF7",                              IDM_MOVE
   MENUITEM    "&Kopieren...\tF8",                                 IDM_COPY
+  MENUITEM    "S&ymlinken...\tF11",                               IDM_SYMLINK
+  MENUITEM    "H&ardlinken...\tUmschalt+F11",                     IDM_HARDLINK
   MENUITEM    "&In Zwischenablage...\tStrg+C",                IDM_COPYTOCLIPBOARD
   MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",    IDM_CUTTOCLIPBOARD
   MENUITEM    "&Einfügen\tStrg+V",                            IDM_PASTE
@@ -244,13 +248,19 @@ BEGIN
     IDS_RENAME,             "Umbenennen"                        /* 32 */
     IDS_FORMAT,             "Datenträger formatieren"                   /* 32 */
     IDS_FORMATSELDISK,      "Wählen Sie den Datenträger aus, den Sie formatieren möchten."                                                                                               /* 128 */
+    IDS_SYMLINK,            "Symlinken"                       /* 32 */
+    IDS_HARDLINK,           "Hardlinken"                      /* 32 */
 
 JAPANBEGIN
-    IDS_KK_COPYFROMSTR,        "コピー元(&F):"
-    IDS_KK_COPYTOSTR,          "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,      "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,        "新しい名前(&T):"
-JAPANEND
+    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
+    IDS_KK_COPYTOSTR,       "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
+    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
+    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
+    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
+    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
+  JAPANEND
 
 //    IDS_MAKESYSDISK,      "Erstelle Systemdatenträger"  /* 32 */
 

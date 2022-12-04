@@ -17,6 +17,8 @@ BEGIN
         MENUITEM    "&Düzenle\tF12",                IDM_EDIT
         MENUITEM    "&Taşı...\tF7",                 IDM_MOVE
         MENUITEM    "K&opyala...\tF8",              IDM_COPY
+        MENUITEM    "S&embolik bağlantı...\tF11",   IDM_SYMLINK
+        MENUITEM    "Sabi&t bağlantı...\tShift+F11",IDM_HARDLINK
         MENUITEM    "&Pano'ya Kopyala\tCtrl+C",     IDM_COPYTOCLIPBOARD
         MENUITEM    "Pano'ya Kes\tCtrl+X",          IDM_CUTTOCLIPBOARD
         MENUITEM    "Yapıştı&r\tCtrl+V",            IDM_PASTE
@@ -133,6 +135,8 @@ BEGIN
     MENUITEM    "&Düzenle\tF12",                    IDM_EDIT
     MENUITEM    "&Taşı...\tF7",                     IDM_MOVE
     MENUITEM    "K&opyala...\tF8",                  IDM_COPY
+    MENUITEM    "S&embolik bağlantı...\tF11",       IDM_SYMLINK
+    MENUITEM    "Sabi&t bağlantı...\tShift+F11",  IDM_HARDLINK
     MENUITEM    "&Pano'ya Kopyala\tCtrl+C",         IDM_COPYTOCLIPBOARD
     MENUITEM    "Pa&no'ya Kes\tCtrl+X",             IDM_CUTTOCLIPBOARD
     MENUITEM    "Yapıştı&r\tCtrl+V",                IDM_PASTE
@@ -221,7 +225,7 @@ BEGIN
 
    IDS_MOUSECONFIRM,        "Fare İşlemini Onayla"
    IDS_COPYMOUSECONFIRM,    "Seçili dosyaları veya dizinleri %s dizinine kopyalamak istediğinizden emin misiniz?"
-   IDS_LINKMOUSECONFIRM,    "Seçilen dosyaları veya dizinleri %s'ye bağlamak istediğinizden emin misiniz? %s?"
+   IDS_LINKMOUSECONFIRM,    "Seçilen dosyaları veya dizinleri %s 'ye bağlamak istediğinizden emin misiniz?"
    IDS_MOVEMOUSECONFIRM,    "Seçili dosyaları veya dizinleri %s dizinine taşımak istediğinizden emin misiniz?"
    IDS_EXECMOUSECONFIRM,    "%s dosyasının, %s başlatıldığında açılan ilk dosya olmasını istediğinizden emin misiniz?"
 
@@ -245,7 +249,8 @@ BEGIN
    IDS_RENAME,              "Ad Değiştir"
    IDS_FORMAT,              "Disk Biçimlendir"
    IDS_FORMATSELDISK,       "Biçimlendirilecek diski seçin."
-   // IDS_MAKESYSDISK,         "Sistem Disketi Hazırla"
+   IDS_SYMLINK,             "Sembolik bağlantı"
+   IDS_HARDLINK,            "Sabit bağlantı"
    IDS_CREATINGMSG,         "Oluşturuluyor:"
    IDS_REMOVINGDIRMSG,      "Kaldırılıyor:"
    IDS_REMOVINGMSG,         "Kaldırılıyor..."
@@ -290,7 +295,11 @@ JAPANBEGIN
     IDS_KK_COPYTOSTR,       "コピー先(&T):"
     IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
     IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
-JAPANEND
+    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
+    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
+    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
+    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
+  JAPANEND
 
 // include reason strings
 #include "suggest_tr-TR.db"
@@ -451,7 +460,7 @@ JAPANBEGIN
     IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
 JAPANEND
 
-    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak.  "
+    IDS_INITUPDATEFAIL          "Arka plan güncelleme desteği başlatılamıyor. Dosya Yöneticisi şimdi çıkacak."
     IDS_INITUPDATEFAILTITLE     "Dosya Yöneticisi Başlatımı"
     IDS_COMPRESSDIR             "%s içindeki tüm dosyaları ve alt dizinleri de sıkıştırmak istediğinizden emin misiniz?"
     IDS_UNCOMPRESSDIR           "%s içindeki tüm dosyaların ve alt dizinlerin de sıkıştırmasını açmak istediğinizden emin misiniz?"

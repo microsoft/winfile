@@ -54,7 +54,6 @@
 #define DROP_COPY 0x01
 #define DROP_LINK 0x02
 #define DROP_HARD 0x03
-#define DROP_JUNC 0x04
 
 
 /* This is for the menuhelp messages.  Pretty much all ID's after this should
@@ -97,6 +96,8 @@
 #define IDM_STARTPOWERSHELL 128
 #define IDM_STARTBASHSHELL  129
 #define IDM_CLOSEWINDOW     130
+#define IDM_SYMLINK         132
+#define IDM_HARDLINK        133
 
 // This IDM_ is reserved for IDH_GROUP_ATTRIBS
 #define IDM_GROUP_ATTRIBS   199
@@ -326,8 +327,8 @@
 #define IDS_ANDRENAME       144
 #define IDS_FORMAT          145
 #define IDS_FORMATSELDISK   146
-//#define IDS_MAKESYSDISK     147
-// moved #define IDS_DISCONNECT      148
+#define IDS_SYMLINK         147
+#define IDS_HARDLINK        148
 //#define IDS_DISCONSELDISK   149
 #define IDS_CREATINGMSG     150
 #define IDS_REMOVINGMSG     151
@@ -619,4 +620,8 @@ JAPANBEGIN
 #define IDS_KK_RENAMETOSTR              2003
 #define IDS_KK_COPY                     2004
 #define IDS_WRNNOSHIFTJIS               2005
+#define IDS_KK_HARDLINKFROMSTR          2006
+#define IDS_KK_HARDLINKTOSTR            2007
+#define IDS_KK_SYMLINKFROMSTR           2008
+#define IDS_KK_SYMLINKTOSTR             2009
 JAPANEND

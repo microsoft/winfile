@@ -17,6 +17,8 @@ BEGIN
     MENUITEM    "ערוך\tF12",	    IDM_EDIT
     MENUITEM    "העברה...\tF7",     IDM_MOVE
     MENUITEM    "ה&עתקה...\tF8",     IDM_COPY
+    MENUITEM    "קישור סימלי...\tF11", IDM_SYMLINK
+    MENUITEM    "קישור קשה...\tShift+F11", IDM_HARDLINK
     MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"&הדבק\tCtrl+V", 	IDM_PASTE
@@ -133,6 +135,8 @@ BEGIN
     MENUITEM    "ערוך\tF12",	    IDM_EDIT
     MENUITEM    "העברה...\tF7",     IDM_MOVE
     MENUITEM    "ה&עתקה...\tF8",     IDM_COPY
+    MENUITEM    "קישור סימלי...\tF11",   IDM_SYMLINK
+    MENUITEM    "קישור קשה...\tShift+F11", IDM_HARDLINK
 	MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
 	MENUITEM	"&הדבק\tCtrl+V", IDM_PASTE
@@ -246,13 +250,19 @@ BEGIN
     IDS_RENAME,             "שינוי שם"                                                                                               /* 32 */
     IDS_FORMAT,             "אתחול דיסק/תקליטון"                                                                                     /* 32 */
     IDS_FORMATSELDISK,      "בחר את הדיסק לאתחול."                                                                                   /* 128 */
+    IDS_SYMLINK, 			      "קישור סימלי"
+    IDS_HARDLINK,           "קישור קשה"
 
 JAPANBEGIN
-    IDS_KK_COPYFROMSTR,        "コピー元(&F):"
-    IDS_KK_COPYTOSTR,          "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,      "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,        "新しい名前(&T):"
-JAPANEND
+    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
+    IDS_KK_COPYTOSTR,       "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
+    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
+    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
+    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
+    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
+  JAPANEND
 
 //    IDS_MAKESYSDISK,      "יצירת דיסק מערכת"             
 

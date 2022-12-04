@@ -17,6 +17,8 @@ BEGIN
     MENUITEM    "Edit\tF12",	    IDM_EDIT
     MENUITEM    "&Move...\tF7",     IDM_MOVE
     MENUITEM    "&Copy...\tF8",     IDM_COPY
+    MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
+    MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
     MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"&Paste\tCtrl+V", 	IDM_PASTE
@@ -133,6 +135,8 @@ BEGIN
     MENUITEM    "Edit\tF12",	    IDM_EDIT
     MENUITEM    "&Move...\tF7",     IDM_MOVE
     MENUITEM    "&Copy...\tF8",     IDM_COPY
+    MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
+    MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
 	MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
 	MENUITEM	"&Paste\tCtrl+V", IDM_PASTE
@@ -246,13 +250,19 @@ BEGIN
     IDS_RENAME,             "Rename"                        /* 32 */
     IDS_FORMAT,             "Format Disk"                   /* 32 */
     IDS_FORMATSELDISK,      "Select the disk to format."                                                                                               /* 128 */
+    IDS_SYMLINK,            "Symlink"                       /* 32 */
+    IDS_HARDLINK,           "Hardlink"                      /* 32 */
 
 JAPANBEGIN
-    IDS_KK_COPYFROMSTR,        "コピー元(&F):"
-    IDS_KK_COPYTOSTR,          "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,      "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,        "新しい名前(&T):"
-JAPANEND
+    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
+    IDS_KK_COPYTOSTR,       "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
+    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
+    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
+    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
+    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
+  JAPANEND
 
 //    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
 
