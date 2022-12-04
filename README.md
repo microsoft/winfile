@@ -77,7 +77,7 @@ The master branch contains changes I have made since 2007.  The changes have bee
 by my needs and personal use.  Some of the changes have limitations that fit the way I use the tool.
 For example, the path index which supports the new goto command only contains information for the c: drive.
 
-I have also not redesigned or restructured WinFile in significant way.
+I have also not redesigned or restructured WinFile in any significant way.
 
 Version v10.0 represents the entire set of changes from Nov. 2007 until this OSS project
 was created.  For changes post v10.0, see the commit and release history.
