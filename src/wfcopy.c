@@ -2339,7 +2339,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
          // deal with case where directory is implicit in source
          // move/copy: *.* -> c:\windows, c:\windows -> c:\temp
          // or foo.bar -> c:\temp
-         // do this not for jucntion or symlinks
+         // do this not for junction or symlinks
 
          if (!IsWild(pCopyInfo->pTo) && (ManySource || IsDirectory(pCopyInfo->pTo)) && pCopyInfo->dwFunc != FUNC_LINK && pCopyInfo->dwFunc != FUNC_HARD) {
             AddBackslash(pCopyInfo->pTo);
@@ -3296,9 +3296,9 @@ ShowMessageBox:
             }
          }
 
-         INT errorIndex = FUNC_HARD;
-         if (pCopyInfo->dwFunc == FUNC_HARD && IsDirectory(szSource))
-           pCopyInfo->dwFunc = FUNC_JUNC;
+         INT errorIndex = pCopyInfo->dwFunc;
+         if (errorIndex == FUNC_HARD && IsDirectory(szSource))
+           errorIndex = FUNC_JUNC;
          ret = CopyError(szSource, szDest, ret, errorIndex, oper, bErrorOnDest, bFatalError);
 
          switch (ret) {
