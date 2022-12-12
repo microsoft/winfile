@@ -25,15 +25,13 @@ If you just want to download the WinFile application without worrying about comp
 
 Please select the version which you would like to download.
 
-- Latest build from master (located on Azure): [Win32 (x86)](https://winfilerelease.blob.core.windows.net/craigwi/Win32/Winfile.exe), [x64](https://winfilerelease.blob.core.windows.net/craigwi/x64/Winfile.exe), [ARM](https://winfilerelease.blob.core.windows.net/craigwi/ARM/Winfile.exe).
-
 - [Chocolatey release](https://chocolatey.org/packages/winfile)
 
-- [Winget release]: `winget install "Windows File Manager"`
+- Winget release: `winget install "Windows File Manager"`
 
 - [MSYS2 release](https://packages.msys2.org/base/mingw-w64-winfile)
 
-- [Latest Release on Github (v10.1901.1)](https://github.com/microsoft/winfile/releases/tag/v10.0.1901.1)
+- [Latest Release on Github (v10.2.0.0)](https://github.com/microsoft/winfile/releases/latest)
 
 - [First Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
 
