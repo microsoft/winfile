@@ -1021,52 +1021,61 @@ AppCommandProc(register DWORD id)
       break;
 
    case IDM_STARTCMDSHELL:
-	   {
-		   BOOL bRunAs;
-		   BOOL bUseCmd;
-		   BOOL bDir;
-		   DWORD cchEnv;
-		   TCHAR szToRun[MAXPATHLEN];
-		   LPTSTR szDir;
+   {
+      BOOL bRunAs;
+      BOOL bUseCmd;
+      BOOL bDir;
+      DWORD cchEnv;
+      TCHAR szToRun[MAXPATHLEN];
+      LPTSTR szDir;
 
 #define ConEmuParamFormat TEXT(" -Single -Dir \"%s\"")
-           TCHAR szParams[MAXPATHLEN + COUNTOF(ConEmuParamFormat)];
+      TCHAR szParams[MAXPATHLEN + COUNTOF(ConEmuParamFormat)];
 
-			szDir = GetSelection(1|4|16, &bDir);
-			if (!bDir && szDir)
-				StripFilespec(szDir);
-	
-		   bRunAs = GetKeyState(VK_SHIFT) < 0;
+      szDir = GetSelection(1 | 4 | 16, &bDir);
+      if (!bDir && szDir)
+         StripFilespec(szDir);
 
-		   // check if conemu exists: %ProgramFiles%\ConEmu\ConEmu64.exe
-		   bUseCmd = TRUE;
-		   cchEnv = GetEnvironmentVariable(TEXT("ProgramFiles"), szToRun, MAXPATHLEN);
-		   if (cchEnv != 0) {
-			   if (lstrcmpi(szToRun + cchEnv - 6, TEXT(" (x86)")) == 0) {
-				   szToRun[cchEnv - 6] = TEXT('\0');
-			   }
-               // NOTE: assume ProgramFiles directory and "\\ConEmu\\ConEmu64.exe" never exceed MAXPATHLEN
-               lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
-			   if (PathFileExists(szToRun)) {
-				   wsprintf(szParams, ConEmuParamFormat, szDir);
-				   bUseCmd = FALSE;
-			   }
-		   }
+      bRunAs = GetKeyState(VK_SHIFT) < 0;
 
-		   // use cmd.exe if ConEmu doesn't exist or we are running admin mode
-		   if (bUseCmd || bRunAs) {
-               // NOTE: assume system directory and "\\cmd.exe" never exceed MAXPATHLEN
-               if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
-                    lstrcat(szToRun, TEXT("\\cmd.exe"));
-               else
-			        lstrcpy(szToRun, TEXT("cmd.exe"));
-			   szParams[0] = TEXT('\0');
-		   }
+      // check if conemu exists: %ProgramFiles%\ConEmu\ConEmu64.exe
+      bUseCmd = TRUE;
+      cchEnv = GetEnvironmentVariable(TEXT("ProgramFiles"), szToRun, MAXPATHLEN);
+      if (cchEnv != 0) {
+         if (lstrcmpi(szToRun + cchEnv - 6, TEXT(" (x86)")) == 0) {
+            szToRun[cchEnv - 6] = TEXT('\0');
+         }
+         // NOTE: assume ProgramFiles directory and "\\ConEmu\\ConEmu64.exe" never exceed MAXPATHLEN
+         lstrcat(szToRun, TEXT("\\ConEmu\\ConEmu64.exe"));
+         if (PathFileExists(szToRun)) {
+            wsprintf(szParams, ConEmuParamFormat, szDir);
+            bUseCmd = FALSE;
+         }
+      }
 
-		   ret = ExecProgram(szToRun, szParams, szDir, FALSE, bRunAs);
-		   LocalFree(szDir);
-		}
-	   break;
+      // use cmd.exe if ConEmu doesn't exist or we are running admin mode
+      if (bUseCmd) {
+         // NOTE: assume system directory and "\\cmd.exe" never exceed MAXPATHLEN
+         if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
+            lstrcat(szToRun, TEXT("\\cmd.exe"));
+         else
+            lstrcpy(szToRun, TEXT("cmd.exe"));
+
+         if (bRunAs) {
+            // Windows >= 8 ignores the 5th parameter of ShellExecute aka 'lpDirectory' when elevating, 
+            // thus we have to execute a command and cd into the directory
+            lstrcpy(szParams, TEXT("/k cd /d "));
+            lstrcat(szParams, szDir);
+         }
+         else {
+            szParams[0] = TEXT('\0');
+         }
+      }
+
+      ret = ExecProgram(szToRun, szParams, szDir, FALSE, bRunAs);
+      LocalFree(szDir);
+   }
+   break;
 
     case IDM_STARTPOWERSHELL:
        {
