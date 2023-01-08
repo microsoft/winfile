@@ -1030,7 +1030,8 @@ AppCommandProc(register DWORD id)
       LPTSTR szDir;
 
 #define ConEmuParamFormat TEXT(" -Single -Dir \"%s\"")
-      TCHAR szParams[MAXPATHLEN + COUNTOF(ConEmuParamFormat)];
+#define CmdParamFormat TEXT("/k cd /d ")
+      TCHAR szParams[MAXPATHLEN + max(COUNTOF(CmdParamFormat), COUNTOF(ConEmuParamFormat))];
 
       szDir = GetSelection(1 | 4 | 16, &bDir);
       if (!bDir && szDir)
@@ -1064,7 +1065,7 @@ AppCommandProc(register DWORD id)
          if (bRunAs) {
             // Windows >= 8 ignores the 5th parameter of ShellExecute aka 'lpDirectory' when elevating, 
             // thus we have to execute a command and cd into the directory
-            lstrcpy(szParams, TEXT("/k cd /d "));
+            lstrcpy(szParams, CmdParamFormat);
             lstrcat(szParams, szDir);
          }
          else {
