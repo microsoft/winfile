@@ -1063,8 +1063,7 @@ AppCommandProc(register DWORD id)
             lstrcpy(szToRun, TEXT("cmd.exe"));
 
          if (bRunAs) {
-            // Windows >= 8 ignores the 5th parameter of ShellExecute aka 'lpDirectory' when elevating, 
-            // thus we have to execute a command and cd into the directory
+            // Execute a command prompt and cd into the directory
             lstrcpy(szParams, CmdParamFormat);
             lstrcat(szParams, szDir);
          }
