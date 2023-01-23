@@ -523,7 +523,8 @@ VOID UpdateGotoList(HWND hDlg)
 	if (options.empty())
 		return;
 
-	for (auto i = 0u; i < 10u && i < options.size(); i++)
+	constexpr int maxResults = 1000;
+	for (size_t i = 0; i < maxResults && i < options.size(); i++)
 	{
 		GetTreePath(options.at(i), szText);
 
@@ -534,7 +535,7 @@ VOID UpdateGotoList(HWND hDlg)
 	{
 		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)TEXT("... limited ..."));
 	}
-	else if (options.size() >= 10)
+	else if (options.size() >= maxResults)
 	{
 		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)TEXT("... more ..."));
 	}
