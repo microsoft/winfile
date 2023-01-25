@@ -523,7 +523,7 @@ VOID UpdateGotoList(HWND hDlg)
 	if (options.empty())
 		return;
 
-	constexpr int maxResults = 1000;
+	constexpr int maxResults = 500;
 	for (size_t i = 0; i < maxResults && i < options.size(); i++)
 	{
 		GetTreePath(options.at(i), szText);
