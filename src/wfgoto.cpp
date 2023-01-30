@@ -518,29 +518,44 @@ VOID UpdateGotoList(HWND hDlg)
 	vector<PDNODE> options = GetDirectoryOptionsFromText(szText, &bLimited);
 
 	HWND hwndLB = GetDlgItem(hDlg, IDD_GOTOLIST);
+
+	// Since we're probably about to add a lot of items, suppress redraw
+	// and do it once at the end
+	SendMessage(hwndLB, WM_SETREDRAW, FALSE, 0);
 	SendMessage(hwndLB, LB_RESETCONTENT, 0, 0);
 
-	if (options.empty())
-		return;
-
-	constexpr int maxResults = 500;
-	for (size_t i = 0; i < maxResults && i < options.size(); i++)
+	if (!options.empty())
 	{
-		GetTreePath(options.at(i), szText);
+		const size_t resultCount = min(1000, options.size());
 
-		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)szText);
+		// Try to allocate enough space in the list to avoid repeated
+		// allocations.  This is an optimization and doesn't need to be
+		// perfect, although being slightly too large is probably better
+		// than slightly too small.  Since building the paths for this
+		// seems needlessly expensive, assume each entry will be MAX_PATH.
+		SendMessage(hwndLB, LB_INITSTORAGE, resultCount, resultCount * MAX_PATH);
+		for (size_t i = 0; i < resultCount; ++i)
+		{
+			GetTreePath(options.at(i), szText);
+
+			SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)szText);
+		}
+
+		if (bLimited)
+		{
+			SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)TEXT("... limited ..."));
+		}
+		else if (options.size() > resultCount)
+		{
+			SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)TEXT("... more ..."));
+		}
+
+		SendMessage(hwndLB, LB_SETCURSEL, 0, 0);
 	}
 
-	if (bLimited)
-	{
-		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)TEXT("... limited ..."));
-	}
-	else if (options.size() >= maxResults)
-	{
-		SendMessage(hwndLB, LB_ADDSTRING, 0, (LPARAM)TEXT("... more ..."));
-	}
-
-	SendMessage(hwndLB, LB_SETCURSEL, 0, 0);
+	// Perform the redraw
+	SendMessage(hwndLB, WM_SETREDRAW, TRUE, 0);
+	RedrawWindow(hwndLB, NULL, NULL, RDW_ERASE | RDW_FRAME | RDW_INVALIDATE | RDW_ALLCHILDREN);
 }
 
 /*--------------------------------------------------------------------------*/
