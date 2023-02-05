@@ -579,33 +579,16 @@ LRESULT APIENTRY GotoEditSubclassProc(
 		if (lParam) {
 			LPMSG lpmsg = (LPMSG)lParam;
 
-			constexpr int height = 11;
-			if (lpmsg->message == WM_KEYDOWN && 
-				(lpmsg->wParam == VK_DOWN || lpmsg->wParam == VK_UP || lpmsg->wParam == VK_HOME || lpmsg->wParam == VK_END || lpmsg->wParam == VK_PRIOR || lpmsg->wParam == VK_NEXT)) {
-				HWND hwndDlg = GetParent(hwnd);
-				DWORD iSel = (DWORD)SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCURSEL, 0, 0);
-				if (iSel == LB_ERR)
-					iSel = 0;
-				else if (lpmsg->wParam == VK_DOWN)
-					iSel++;
-				else if (lpmsg->wParam == VK_UP)
-					iSel--;
-				else if (lpmsg->wParam == VK_HOME)
-					iSel = 0;
-				else if (lpmsg->wParam == VK_END) {
-					iSel = (DWORD)SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCOUNT, 0, 0) - 1;
-				}
-				else if (lpmsg->wParam == VK_PRIOR)
-					iSel -= height;
-				else if (lpmsg->wParam == VK_NEXT)
-					iSel += height;
+			if ((lpmsg->message == WM_KEYDOWN || lpmsg->message == WM_KEYUP) && 
+				(lpmsg->wParam == VK_DOWN ||
+				 lpmsg->wParam == VK_UP ||
+				 lpmsg->wParam == VK_HOME ||
+				 lpmsg->wParam == VK_END ||
+				 lpmsg->wParam == VK_PRIOR ||
+				 lpmsg->wParam == VK_NEXT)) {
 
-				if (SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_SETCURSEL, iSel, 0) == LB_ERR) {
-					if (lpmsg->wParam == VK_PRIOR)
-						SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_SETCURSEL, 0, 0);
-					else if (lpmsg->wParam == VK_NEXT)
-						SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_SETCURSEL, SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, LB_GETCOUNT, 0, 0) - 1, 0);
-				}
+				HWND hwndDlg = GetParent(hwnd);
+				SendDlgItemMessage(hwndDlg, IDD_GOTOLIST, lpmsg->message, lpmsg->wParam, lpmsg->lParam);
 				return DLGC_WANTALLKEYS;
 			}
 		}
