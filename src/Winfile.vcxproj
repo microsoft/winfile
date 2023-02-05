@@ -318,6 +318,7 @@
     <ClInclude Include="mpr.h" />
     <ClInclude Include="numfmt.h" />
     <ClInclude Include="res.h" />
+    <ClInclude Include="resize.h" />
     <ClInclude Include="spinlock.h" />
     <ClInclude Include="suggest.h" />
     <ClInclude Include="treectl.h" />
@@ -385,6 +386,7 @@
     <ClCompile Include="lfn.c" />
     <ClCompile Include="lfnmisc.c" />
     <ClCompile Include="numfmt.c" />
+    <ClCompile Include="resize.c" />
     <ClCompile Include="suggest.c" />
     <ClCompile Include="tbar.c" />
     <ClCompile Include="treectl.c" />

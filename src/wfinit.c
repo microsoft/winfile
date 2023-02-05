@@ -17,6 +17,7 @@
 
 #include <ole2.h>
 #include <shlobj.h>
+#include "resize.h"
 
 #include "dbg.h"
 
@@ -1272,6 +1273,10 @@ JAPANEND
       return FALSE;
    }
 #endif
+
+   if (!ResizeDialogInitialize(hInstance)) {
+      return FALSE;
+   }
 
    if (!LoadString(hInstance, IDS_WINFILE, szTitle, COUNTOF(szTitle))) {
       return FALSE;
