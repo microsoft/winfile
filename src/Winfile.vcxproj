@@ -341,22 +341,22 @@
     <None Include="lang\res_de-DE.rc" />
     <None Include="lang\res_tr-TR.rc" />
     <ResourceCompile Include="res.rc">
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">i386=1;STD_CALL;CONDITION_HANDLING=1;NT_UP=1;NT_INST=0;_NT1X_=100;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;DEVL=1;FPO=0;_IDWBUILD;RDRDBG;SRVDBG;NDEBUG;_X86_;_M_IX86;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">STD_CALL;CONDITION_HANDLING=1;NT_UP=1;NT_INST=0;_NT1X_=100;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;DEVL=1;FPO=0;_IDWBUILD;RDRDBG;SRVDBG;NDEBUG;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">i386=1;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;NDEBUG;_X86_;_M_IX86;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;NDEBUG;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">0x0409</Culture>
       <Culture Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">0x0409</Culture>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ShowProgress>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ShowProgress>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">i386=1;STD_CALL;CONDITION_HANDLING=1;NT_UP=1;NT_INST=0;_NT1X_=100;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;DEVL=1;FPO=0;_IDWBUILD;RDRDBG;SRVDBG;NDEBUG;_X86_;_M_IX86;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">i386=1;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;NDEBUG;_X86_;_M_IX64;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">0x0409</Culture>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ShowProgress>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">i386=1;STD_CALL;CONDITION_HANDLING=1;NT_UP=1;NT_INST=0;_NT1X_=100;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;DEVL=1;FPO=0;_IDWBUILD;RDRDBG;SRVDBG;NDEBUG;_X86_;_M_IX86;WIN32;_WIN32;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">STD_CALL;CONDITION_HANDLING=1;NT_UP=1;NT_INST=0;_NT1X_=100;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;DEVL=1;FPO=0;_IDWBUILD;RDRDBG;SRVDBG;NDEBUG;WIN32;_WIN32;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">i386=1;WINNT=1;WIN32_LEAN_AND_MEAN=1;NDEBUG;_X86_;_M_IX86;WIN32;_WIN32;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">WINNT=1;WIN32_LEAN_AND_MEAN=1;NDEBUG;WIN32;_WIN32;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">0x0409</Culture>
       <Culture Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">0x0409</Culture>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">i386=1;STD_CALL;CONDITION_HANDLING=1;NT_UP=1;NT_INST=0;_NT1X_=100;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;DEVL=1;FPO=0;_IDWBUILD;RDRDBG;SRVDBG;NDEBUG;_X86_;_M_IX86;WIN32;_WIN32;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|x64'">i386=1;WINNT=1;WIN32_LEAN_AND_MEAN=1;NDEBUG;_X86_;_M_IX64;WIN32;_WIN32;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <Culture Condition="'$(Configuration)|$(Platform)'=='Release|x64'">0x0409</Culture>
       <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
