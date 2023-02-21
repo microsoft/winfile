@@ -39,6 +39,7 @@ BEGIN
     MENUITEM    "Uruchom powłokę Bash...\tCtrl+B",      IDM_STARTBASHSHELL
     MENUITEM    "U&ruchom Wiersz polecenia...\tCtrl+K", IDM_STARTCMDSHELL
     MENUITEM    "Uruchom Po&werShell...\tCtrl+P",       IDM_STARTPOWERSHELL
+    MENUITEM    "Uruchom E&xplorer...\tCtrl+E", IDM_STARTEXPLORER
     MENUITEM    "Skocz do kata&logu...\tCtrl+G",  IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "Za&kończ",                       IDM_EXIT
@@ -147,6 +148,7 @@ BEGIN
     MENUITEM    "Uruchom powłokę Bash...",        IDM_STARTBASHSHELL
     MENUITEM    "U&ruchom Wiersz polecenia...",   IDM_STARTCMDSHELL
     MENUITEM    "Uruchom Po&werShell...",         IDM_STARTPOWERSHELL
+    MENUITEM    "Uruchom E&xplorer...",           IDM_STARTEXPLORER
     MENUITEM    "Skocz do kata&logu...\tCtrl+G",  IDM_GOTODIR
     END
 END

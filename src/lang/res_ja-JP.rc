@@ -17,10 +17,10 @@ BEGIN
     MENUITEM    "編集\tF12",	    IDM_EDIT
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
     MENUITEM    "コピー(&C)...\tF8",     IDM_COPY
-   MENUITEM    "シンボリックリンク(&Y)...\tF11", IDM_SYMLINK
-   MENUITEM    "ハードリンク(&K)...\tShift+F11", IDM_HARDLINK
+    MENUITEM    "シンボリックリンク(&Y)...\tF11", IDM_SYMLINK
+    MENUITEM    "ハードリンク(&K)...\tShift+F11", IDM_HARDLINK
     MENUITEM    "クリップボードにコピー(&B)...\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"貼り付け(&P)\tCtrl+V", 	IDM_PASTE
     MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
     MENUITEM    "名前の変更(&N)...",   IDM_RENAME
@@ -39,8 +39,9 @@ BEGIN
     MENUITEM    "Bash を起動...\tCtrl+B", IDM_STARTBASHSHELL
     MENUITEM    "コマンド プロンプトを起動(&L)...\tCtrl+K", IDM_STARTCMDSHELL
     MENUITEM    "PowerShell を起動(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
+    MENUITEM    "Explorer を起動(&X)...\tCtrl+E", IDM_STARTEXPLORER
 
-	MENUITEM    "別のディレクトリへ移動(&G)...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "別のディレクトリへ移動(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "終了(&X)",            IDM_EXIT
     END
@@ -131,24 +132,25 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
+    MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "開く(&O)\tEnter",     IDM_OPEN
     MENUITEM    "編集\tF12",	    IDM_EDIT
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
     MENUITEM    "コピー(&C)...\tF8",     IDM_COPY
     MENUITEM    "シンボリックリンク(&Y)...\tF11",       IDM_SYMLINK
     MENUITEM    "ハードリンク(&K)...\tShift+F11", IDM_HARDLINK
-	MENUITEM    "クリップボードにコピー(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
-	MENUITEM	"貼り付け(&P)\tCtrl+V", IDM_PASTE
-	MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
+    MENUITEM    "クリップボードにコピー(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM	 "貼り付け(&P)\tCtrl+V", IDM_PASTE
+    MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
     MENUITEM    "名前の変更(&N)...\tF2",   IDM_RENAME
     MENUITEM    "プロパティ(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "実行(&R)...",          IDM_RUN
     MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
-	MENUITEM    "コマンド プロンプトを起動(&L)...", IDM_STARTCMDSHELL
-	MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
-	MENUITEM    "別のディレクトリへ移動(&G)...", IDM_GOTODIR
+    MENUITEM    "コマンド プロンプトを起動(&L)...", IDM_STARTCMDSHELL
+    MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
+    MENUITEM    "Explorer を起動(&X)...", IDM_STARTEXPLORER
+    MENUITEM    "別のディレクトリへ移動(&G)...", IDM_GOTODIR
 	END
 END
 

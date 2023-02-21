@@ -20,7 +20,7 @@ BEGIN
     MENUITEM    "קישור סימלי...\tF11", IDM_SYMLINK
     MENUITEM    "קישור קשה...\tShift+F11", IDM_HARDLINK
     MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"&הדבק\tCtrl+V", 	IDM_PASTE
     MENUITEM    "&מחיקה...\tDel",  IDM_DELETE
     MENUITEM    "שינוי שם...\tF2",   IDM_RENAME
@@ -36,10 +36,11 @@ BEGIN
     MENUITEM    "&יצירת תיקיה...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "&חיפוש...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "&בחירת קבצים...", IDM_SELECT
-	MENUITEM    "הפעלת Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
-	MENUITEM    "הפעלת Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "הפעלת Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "הפעלת Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
     MENUITEM    "הפעלת Po&werShell...\tCtrl+P", IDM_STARTPOWERSHELL
-	MENUITEM    "עבור לתיקיה...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "הפעלת E&xplorer...\tCtrl+E", IDM_STARTEXPLORER
+    MENUITEM    "עבור לתיקיה...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "י&ציאה",            IDM_EXIT
     END
@@ -130,24 +131,25 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "&חלון חדש\tCtrl+Shift Enter",     IDM_NEWWINDOW
+    MENUITEM    "&חלון חדש\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&פתח\tEnter",     IDM_OPEN
     MENUITEM    "ערוך\tF12",	    IDM_EDIT
     MENUITEM    "העברה...\tF7",     IDM_MOVE
     MENUITEM    "ה&עתקה...\tF8",     IDM_COPY
     MENUITEM    "קישור סימלי...\tF11",   IDM_SYMLINK
     MENUITEM    "קישור קשה...\tShift+F11", IDM_HARDLINK
-	MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
-	MENUITEM	"&הדבק\tCtrl+V", IDM_PASTE
-	MENUITEM    "&מחיקה...\tDel",  IDM_DELETE
+    MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM	"&הדבק\tCtrl+V", IDM_PASTE
+    MENUITEM    "&מחיקה...\tDel",  IDM_DELETE
     MENUITEM    "שינוי שם...\tF2",   IDM_RENAME
     MENUITEM    "מאפיינים...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "הפעלה...",          IDM_RUN
     MENUITEM    "הפעלת Bash Shell...", IDM_STARTBASHSHELL
-	MENUITEM    "הפעלת Cmd She&ll...", IDM_STARTCMDSHELL
-	MENUITEM    "הפעלת Po&werShell...", IDM_STARTPOWERSHELL
-	MENUITEM    "&עבור לתיקיה...", IDM_GOTODIR
+    MENUITEM    "הפעלת Cmd She&ll...", IDM_STARTCMDSHELL
+    MENUITEM    "הפעלת Po&werShell...", IDM_STARTPOWERSHELL
+    MENUITEM    "הפעלת E&xplorer...", IDM_STARTEXPLORER
+    MENUITEM    "&עבור לתיקיה...", IDM_GOTODIR
 	END
 END
 

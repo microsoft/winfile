@@ -20,8 +20,8 @@ BEGIN
     MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
     MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
     MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
-    MENUITEM	"&Paste\tCtrl+V", 	IDM_PASTE
+    MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM	 "&Paste\tCtrl+V", 	IDM_PASTE
     MENUITEM    "&Delete...\tDel",  IDM_DELETE
     MENUITEM    "Re&name...\tF2",   IDM_RENAME
     MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
@@ -36,10 +36,11 @@ BEGIN
     MENUITEM    "Cr&eate Directory...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "Select &Files...", IDM_SELECT
-	MENUITEM    "Start Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
-	MENUITEM    "Start Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "Start Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "Start Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
     MENUITEM    "Start Po&werShell...\tCtrl+P", IDM_STARTPOWERSHELL
-	MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "Start E&xplorer...\tCtrl+E", IDM_STARTEXPLORER
+    MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "E&xit",            IDM_EXIT
     END
@@ -130,24 +131,25 @@ CTXMENU MENU PRELOAD
 BEGIN
 	POPUP "Dummy Popup"
 	BEGIN
-	MENUITEM    "&New Window\tCtrl+Shift Enter",     IDM_NEWWINDOW
+    MENUITEM    "&New Window\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&Open\tEnter",     IDM_OPEN
     MENUITEM    "Edit\tF12",	    IDM_EDIT
     MENUITEM    "&Move...\tF7",     IDM_MOVE
     MENUITEM    "&Copy...\tF8",     IDM_COPY
     MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
     MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
-	MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
-	MENUITEM	"&Paste\tCtrl+V", IDM_PASTE
-	MENUITEM    "&Delete...\tDel",  IDM_DELETE
+    MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM	 "&Paste\tCtrl+V", IDM_PASTE
+    MENUITEM    "&Delete...\tDel",  IDM_DELETE
     MENUITEM    "Re&name...\tF2",   IDM_RENAME
     MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "&Run...",          IDM_RUN
     MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
-	MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
-	MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
-	MENUITEM    "&Goto Directory...", IDM_GOTODIR
+    MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
+    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
+    MENUITEM    "Start E&xplorer...", IDM_STARTEXPLORER
+    MENUITEM    "&Goto Directory...", IDM_GOTODIR
 	END
 END
 

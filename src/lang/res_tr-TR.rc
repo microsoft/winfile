@@ -39,6 +39,7 @@ BEGIN
         MENUITEM    "Bash Kabuğu &Başlat...\tCtrl+B",  IDM_STARTBASHSHELL
         MENUITEM    "Cmd Kabuğu Ba&şlat...\tCtrl+K",   IDM_STARTCMDSHELL
         MENUITEM    "Po&wershell'i Başlat...\tCtrl+P", IDM_STARTPOWERSHELL
+        MENUITEM    "E&xplorer'i Başlat...\tCtrl+E", IDM_STARTEXPLORER
         MENUITEM    "Dizine &Git...",               IDM_GOTODIR
         MENUITEM    SEPARATOR
         MENUITEM    "Çı&kış",                       IDM_EXIT
@@ -136,7 +137,7 @@ BEGIN
     MENUITEM    "&Taşı...\tF7",                     IDM_MOVE
     MENUITEM    "K&opyala...\tF8",                  IDM_COPY
     MENUITEM    "S&embolik bağlantı...\tF11",       IDM_SYMLINK
-    MENUITEM    "Sabi&t bağlantı...\tShift+F11",  IDM_HARDLINK
+    MENUITEM    "Sabi&t bağlantı...\tShift+F11",    IDM_HARDLINK
     MENUITEM    "&Pano'ya Kopyala\tCtrl+C",         IDM_COPYTOCLIPBOARD
     MENUITEM    "Pa&no'ya Kes\tCtrl+X",             IDM_CUTTOCLIPBOARD
     MENUITEM    "Yapıştı&r\tCtrl+V",                IDM_PASTE
@@ -146,7 +147,8 @@ BEGIN
     MENUITEM    "Ça&lıştır...",                     IDM_RUN
     MENUITEM    "Bash Kabuğu Başlat...",            IDM_STARTBASHSHELL
     MENUITEM    "Cmd Kabuğu Başlat...",             IDM_STARTCMDSHELL
-    MENUITEM    "PowerShell Başlat...",             IDM_STARTPOWERSHELL
+    MENUITEM    "Po&werShell Başlat...",            IDM_STARTPOWERSHELL
+    MENUITEM    "E&xplorer Başlat...",              IDM_STARTEXPLORER
     MENUITEM    "Dizine &Git...",                   IDM_GOTODIR
     END
 END
