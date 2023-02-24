@@ -74,10 +74,10 @@ BEGIN
     MENUITEM    "全てのファイルの詳細(&A)",    IDM_VDETAILS,   CHECKED
     MENUITEM    "一部のファイルの詳細(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM "名前で並び替え(&S)",   IDM_BYNAME
+    MENUITEM "名前で並び替え(&S)\tCtrl+N",   IDM_BYNAME
     MENUITEM "種別で並び替え(&B)",   IDM_BYTYPE
     MENUITEM "サイズで並び替え(&Z)",   IDM_BYSIZE
-    MENUITEM "日付で昇順に並び替え(&D)",   IDM_BYDATE
+    MENUITEM "日付で昇順に並び替え(&D)\tCtrl+D",   IDM_BYDATE
     MENUITEM "日付で降順に並び替え(&F)",   IDM_BYFDATE
     MENUITEM    SEPARATOR
     MENUITEM    "ファイル タイプで絞り込み(&T)...",     IDM_VINCLUDE

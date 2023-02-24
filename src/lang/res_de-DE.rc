@@ -73,10 +73,10 @@ BEGIN
     MENUITEM    "Alle &Dateiangaben",                             IDM_VDETAILS, CHECKED
     MENUITEM    "&Bestimmte Dateiangaben...",                     IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM    "Nach N&ame",                                     IDM_BYNAME
+    MENUITEM    "Nach N&ame\tStrg+N",                             IDM_BYNAME
     MENUITEM    "Nach &Typ",                                      IDM_BYTYPE
     MENUITEM    "Nach &Größe",                                    IDM_BYSIZE
-    MENUITEM    "Nach Datu&m",                                    IDM_BYDATE
+    MENUITEM    "Nach Datu&m\tStrg+D",                            IDM_BYDATE
     MENUITEM    "Nach Datum v&orwärts",                           IDM_BYFDATE
     MENUITEM    SEPARATOR
     MENUITEM    "Angaben aus&wählen...",                          IDM_VINCLUDE

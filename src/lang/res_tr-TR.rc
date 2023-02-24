@@ -73,10 +73,10 @@ BEGIN
         MENUITEM    "Tü&m Dosya Ayrıntıları",       IDM_VDETAILS,   CHECKED
         MENUITEM    "&Kısımsal Dosya Ayrıntıları...", IDM_VOTHER
         MENUITEM    SEPARATOR
-        MENUITEM    "Ada Göre &Sırala",             IDM_BYNAME
+        MENUITEM    "Ada Göre &Sırala\tCtrl+N",             IDM_BYNAME
         MENUITEM    "&Türe Göre Sırala",            IDM_BYTYPE
         MENUITEM    "Boy&uta Göre Sırala",          IDM_BYSIZE
-        MENUITEM    "Ta&rihe Göre Sırala",          IDM_BYDATE
+        MENUITEM    "Ta&rihe Göre Sırala\tCtrl+D",  IDM_BYDATE
         MENUITEM    "İlet&ilme Tarihine Göre Sırala", IDM_BYFDATE
         MENUITEM    SEPARATOR
         MENUITEM    "Dosya Türüne &Göre...",        IDM_VINCLUDE
