@@ -17,8 +17,8 @@ BEGIN
     MENUITEM    "编辑\tF12",	    IDM_EDIT
     MENUITEM    "移动(&M)...\tF7",     IDM_MOVE
     MENUITEM    "复制(&C)...\tF8",     IDM_COPY
-    MENUITEM    "符號鏈接(&Y)...\tF11",    IDM_SYMLINK
-    MENUITEM    "硬鏈接(&K)...\tShift+F11",IDM_HARDLINK
+    MENUITEM    "符号链接(&Y)...\tF11",    IDM_SYMLINK
+    MENUITEM    "硬链接(&K)...\tShift+F11",IDM_HARDLINK
     MENUITEM    "复制到剪贴板(&B)...\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "剪切到剪贴板\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM	"粘贴(&P)\tCtrl+V", 	IDM_PASTE
@@ -135,8 +135,8 @@ BEGIN
     MENUITEM    "编辑\tF12",	    IDM_EDIT
     MENUITEM    "移动(&M)...\tF7",     IDM_MOVE
     MENUITEM    "复制(&C)...\tF8",     IDM_COPY
-    MENUITEM    "符號鏈接(&Y)...\tF11",    IDM_SYMLINK
-    MENUITEM    "硬鏈接(&K)...\tShift+F11",IDM_HARDLINK
+    MENUITEM    "符号链接(&Y)...\tF11",    IDM_SYMLINK
+    MENUITEM    "硬链接(&K)...\tShift+F11",IDM_HARDLINK
 	MENUITEM    "复制到剪贴板(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
 	MENUITEM    "剪切到剪贴板\tCtrl+X", IDM_CUTTOCLIPBOARD
 	MENUITEM	"粘贴(&P)\tCtrl+V", IDM_PASTE
@@ -226,7 +226,7 @@ BEGIN
     IDS_MOUSECONFIRM,       "确认鼠标操作"       /* 32 */
     IDS_COPYMOUSECONFIRM,   "确定把所选文件或目录复制到 %s ？"
     IDS_MOVEMOUSECONFIRM,   "确定把所选文件或目录移动到 %s ？"
-    IDS_LINKMOUSECONFIRM,   "您確定要將選定的文件或目錄鏈接到 %s？"
+    IDS_LINKMOUSECONFIRM,   "确定把所选文件或目录链接到 %s？"
     IDS_EXECMOUSECONFIRM,   "确定要使用 %s 打开 %s ？"                                                          /* 128 */
 
     IDS_WINFILE,            "文件管理器"                  /* 32 */
@@ -290,7 +290,7 @@ BEGIN
     IDS_COPYERROR + FUNC_LABEL    "设置磁盘卷标出错"
     IDS_COPYERROR + FUNC_LINK        "在创建符号连接时出现错误"
     IDS_COPYERROR + FUNC_HARD        "在创建硬连接时出现错误"
-    IDS_COPYERROR + FUNC_JUNC        "在创建目录连接点时出现错误"
+    IDS_COPYERROR + FUNC_JUNC        "在创建目录联接时出现错误"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -299,9 +299,9 @@ BEGIN
     IDS_VERBS + FUNC_MOVE       "文件管理器无法移动 %s: %s"
     IDS_VERBS + FUNC_DELETE     "文件管理器无法删除 %s: %s"
     IDS_VERBS + FUNC_RENAME     "文件管理器无法重命名 %s: %s"
-    IDS_VERBS + FUNC_LINK       "文件管理器無法創建符號鏈接 %s: %s"
-    IDS_VERBS + FUNC_HARD       "文件管理器無法創建硬鏈接 %s: %s"
-    IDS_VERBS + FUNC_JUNC       "文件管理器無法創建聯結 %s: %s"
+    IDS_VERBS + FUNC_LINK       "文件管理器无法创建符号链接 %s: %s"
+    IDS_VERBS + FUNC_HARD       "文件管理器无法创建硬链接 %s: %s"
+    IDS_VERBS + FUNC_JUNC       "文件管理器无法创建目录联接 %s: %s"
     IDS_ACTIONS + 1             "文件管理器无法创建目录 %s: %s"
     IDS_ACTIONS + 2             "文件管理器无法删除目录 %s: %s"
     IDS_REPLACING               "文件管理器无法创建或替换 %s: %s"
