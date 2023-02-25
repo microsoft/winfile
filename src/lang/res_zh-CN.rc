@@ -290,7 +290,7 @@ BEGIN
     IDS_COPYERROR + FUNC_LABEL    "设置磁盘卷标出错"
     IDS_COPYERROR + FUNC_LINK        "在创建符号连接时出现错误"
     IDS_COPYERROR + FUNC_HARD        "在创建硬连接时出现错误"
-    IDS_COPYERROR + FUNC_JUNC        "在创建目录连接点时出现错误"
+    IDS_COPYERROR + FUNC_JUNC        "在创建目录联接时出现错误"
 
     /* The first %s is replaced by a file name. The second %s is replaced
      * by one of the "reasons" below. */
@@ -301,7 +301,7 @@ BEGIN
     IDS_VERBS + FUNC_RENAME     "文件管理器无法重命名 %s: %s"
     IDS_VERBS + FUNC_LINK       "文件管理器无法创建符号链接 %s: %s"
     IDS_VERBS + FUNC_HARD       "文件管理器无法创建硬链接 %s: %s"
-    IDS_VERBS + FUNC_JUNC       "文件管理器无法创建目录连接点 %s: %s"
+    IDS_VERBS + FUNC_JUNC       "文件管理器无法创建目录联接 %s: %s"
     IDS_ACTIONS + 1             "文件管理器无法创建目录 %s: %s"
     IDS_ACTIONS + 2             "文件管理器无法删除目录 %s: %s"
     IDS_REPLACING               "文件管理器无法创建或替换 %s: %s"
