@@ -793,7 +793,7 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 if (dwCchTitleLength > 0)
                 {
                     dwCchTitleLength++;
-                    pszDlgTitle = malloc(ByteCountOf(dwCchTitleLength));
+                    pszDlgTitle = (LPTSTR)LocalAlloc(LMEM_FIXED, ByteCountOf(dwCchTitleLength));
                     if (pszDlgTitle != NULL)
                     {
                         GetWindowText(hDlg, pszDlgTitle, dwCchTitleLength);
@@ -824,7 +824,7 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 }
                 if (pszDlgTitle != NULL)
                 {
-                    free(pszDlgTitle);
+                    LocalFree(pszDlgTitle);
                 }
 
                 return TRUE;
