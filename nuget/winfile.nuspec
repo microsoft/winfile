@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>winfile</id>
+    <version>10.2.0.0</version>
+    <title>WinFile</title>
+    <authors>Microsoft, WinFile OSS Contributors</authors>
+    <owners>https://github.com/craigwi</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/Microsoft/winfile/raw/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Microsoft/winfile</projectUrl>
+    <iconUrl>https://github.com/Microsoft/winfile/blob/master/winfile.png</iconUrl>
+    <description>Windows File Manager (WinFile) was originally released with Windows 3.0 in the early 1990s. You can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).</description>
+    <summary>WinFile is the predecessor to the Windows Explorer and now runs on modern Windows, including Windows 10.</summary>
+    <copyright>Copyright (c) Microsoft Corporation. All rights reserved.</copyright>
+	<tags>file manager utilities tools</tags>
+    <dependencies>
+      <dependency id='vcredist140' />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="LICENSE.txt" target="legal\LICENSE.txt" />
+    <file src="VERIFICATION.txt" target="legal\VERIFICATION.txt" />
+    <file src="x86\Winfile.exe" target="tools\x86\Winfile.exe" />
+    <file src="x86\Winfile.pdb" target="tools\x86\Winfile.pdb" />
+	<file src="help\winfile.chm" target="tools\x86\winfile.chm" />
+    <file src="x64\Winfile.exe" target="tools\x64\Winfile.exe" />
+    <file src="x64\Winfile.pdb" target="tools\x64\Winfile.pdb" />
+    <file src="arm64\Winfile.exe" target="tools\arm64\Winfile.exe" />
+    <file src="arm64\Winfile.pdb" target="tools\arm64\Winfile.pdb" />
+  </files>
+</package>
