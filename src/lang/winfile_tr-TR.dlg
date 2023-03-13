@@ -839,7 +839,7 @@ BEGIN
    CONTROL "Dil:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
    CONTROL "Bazı ayarların etkili olması için\nuygulamayı yeniden başlatmanız gerekmektedir.",
-			IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 90, 180, 20
+            IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 90, 180, 20
    CONTROL "Tamam", IDOK, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 55, 120, 40, 14
    CONTROL "İptal", IDCANCEL, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 103, 120, 40, 14
    CONTROL "&Yardım", IDD_HELP, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 149, 120, 40, 14

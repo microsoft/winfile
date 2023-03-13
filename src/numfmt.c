@@ -45,7 +45,7 @@ ShortSizeFormatInternal(LPTSTR szBuf, LARGE_INTEGER qw)
 
    for ( i = 1;
          (qw.QuadPart > qConstant.QuadPart);
-		 qw.QuadPart = qw.QuadPart / 1024L, ++i)
+         qw.QuadPart = qw.QuadPart / 1024L, ++i)
 
       /* do nothing */
       ;

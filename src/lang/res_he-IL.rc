@@ -14,14 +14,14 @@ BEGIN
     POPUP       "&קובץ"
     BEGIN
     MENUITEM    "&פתח\tEnter",     IDM_OPEN
-    MENUITEM    "ערוך\tF12",	    IDM_EDIT
+    MENUITEM    "ערוך\tF12",        IDM_EDIT
     MENUITEM    "העברה...\tF7",     IDM_MOVE
     MENUITEM    "ה&עתקה...\tF8",     IDM_COPY
     MENUITEM    "קישור סימלי...\tF11", IDM_SYMLINK
     MENUITEM    "קישור קשה...\tShift+F11", IDM_HARDLINK
     MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
     MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
-    MENUITEM	"&הדבק\tCtrl+V", 	IDM_PASTE
+    MENUITEM    "&הדבק\tCtrl+V",    IDM_PASTE
     MENUITEM    "&מחיקה...\tDel",  IDM_DELETE
     MENUITEM    "שינוי שם...\tF2",   IDM_RENAME
     MENUITEM    "מאפיינים...\tAlt+Enter",IDM_ATTRIBS
@@ -129,18 +129,18 @@ END
 
 CTXMENU MENU PRELOAD 
 BEGIN
-	POPUP "Dummy Popup"
-	BEGIN
+    POPUP "Dummy Popup"
+    BEGIN
     MENUITEM    "&חלון חדש\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&פתח\tEnter",     IDM_OPEN
-    MENUITEM    "ערוך\tF12",	    IDM_EDIT
+    MENUITEM    "ערוך\tF12",        IDM_EDIT
     MENUITEM    "העברה...\tF7",     IDM_MOVE
     MENUITEM    "ה&עתקה...\tF8",     IDM_COPY
     MENUITEM    "קישור סימלי...\tF11",   IDM_SYMLINK
     MENUITEM    "קישור קשה...\tShift+F11", IDM_HARDLINK
     MENUITEM    "העתקה ללוח העתקה\tCtrl+C", IDM_COPYTOCLIPBOARD
     MENUITEM    "גזירה ללוח העתקה\tCtrl+X", IDM_CUTTOCLIPBOARD
-    MENUITEM	"&הדבק\tCtrl+V", IDM_PASTE
+    MENUITEM    "&הדבק\tCtrl+V", IDM_PASTE
     MENUITEM    "&מחיקה...\tDel",  IDM_DELETE
     MENUITEM    "שינוי שם...\tF2",   IDM_RENAME
     MENUITEM    "מאפיינים...\tAlt+Enter",IDM_ATTRIBS
@@ -150,7 +150,7 @@ BEGIN
     MENUITEM    "הפעלת Po&werShell...", IDM_STARTPOWERSHELL
     MENUITEM    "הפעלת E&xplorer...", IDM_STARTEXPLORER
     MENUITEM    "&עבור לתיקיה...", IDM_GOTODIR
-	END
+    END
 END
 
 
@@ -252,7 +252,7 @@ BEGIN
     IDS_RENAME,             "שינוי שם"                                                                                               /* 32 */
     IDS_FORMAT,             "אתחול דיסק/תקליטון"                                                                                     /* 32 */
     IDS_FORMATSELDISK,      "בחר את הדיסק לאתחול."                                                                                   /* 128 */
-    IDS_SYMLINK, 			      "קישור סימלי"
+    IDS_SYMLINK,            "קישור סימלי"
     IDS_HARDLINK,           "קישור קשה"
 
 JAPANBEGIN
@@ -552,8 +552,8 @@ BEGIN
     MH_MYITEMS+IDM_MOVE,        "העברת פריט נבחר"
     MH_MYITEMS+IDM_COPY,        "העתקת קבצים ותיקיות"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "מעתיק קובץ אחד או יותר ללוח העתקה"
-	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "גוזר קובץ אחד או יותר ללוח העתקה"
-    MH_MYITEMS+IDM_PASTE,		"מדביק קובץ מלוח ההעתקה לתיקיה הנוכחית"
+    MH_MYITEMS+IDM_CUTTOCLIPBOARD, "גוזר קובץ אחד או יותר ללוח העתקה"
+    MH_MYITEMS+IDM_PASTE,       "מדביק קובץ מלוח ההעתקה לתיקיה הנוכחית"
     MH_MYITEMS+IDM_COMPRESS,    "דחיסת קובץ או תיקיה"
     MH_MYITEMS+IDM_UNCOMPRESS,  "ביטול דחיסת קובץ או תיקיה"
     MH_MYITEMS+IDM_DELETE,      "מחיקת קבצים ותיקיות"

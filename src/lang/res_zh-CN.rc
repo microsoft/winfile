@@ -14,14 +14,14 @@ BEGIN
     POPUP       "文件(&F)"
     BEGIN
     MENUITEM    "打开(&O)\tEnter",     IDM_OPEN
-    MENUITEM    "编辑\tF12",	    IDM_EDIT
+    MENUITEM    "编辑\tF12",        IDM_EDIT
     MENUITEM    "移动(&M)...\tF7",     IDM_MOVE
     MENUITEM    "复制(&C)...\tF8",     IDM_COPY
     MENUITEM    "符号链接(&Y)...\tF11",    IDM_SYMLINK
     MENUITEM    "硬链接(&K)...\tShift+F11",IDM_HARDLINK
     MENUITEM    "复制到剪贴板(&B)...\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "剪切到剪贴板\tCtrl+X", IDM_CUTTOCLIPBOARD
-    MENUITEM	"粘贴(&P)\tCtrl+V", 	IDM_PASTE
+    MENUITEM    "剪切到剪贴板\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "粘贴(&P)\tCtrl+V",     IDM_PASTE
     MENUITEM    "删除(&D)...\tDel",  IDM_DELETE
     MENUITEM    "重命名(&N)...",   IDM_RENAME
     MENUITEM    "属性(&T)...\tAlt+Enter",IDM_ATTRIBS
@@ -36,11 +36,11 @@ BEGIN
     MENUITEM    "创建目录(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "搜索(&H)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "选择文件(&F)...", IDM_SELECT
-	MENUITEM    "打开 Bash...\tCtrl+B", IDM_STARTBASHSHELL
-	MENUITEM    "打开命令提示符(&L)...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "打开 Bash...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "打开命令提示符(&L)...\tCtrl+K", IDM_STARTCMDSHELL
     MENUITEM    "打开 PowerShell(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
     MENUITEM    "打开 Explorer(&X)...\tCtrl+E", IDM_STARTEXPLORER
-	MENUITEM    "转到目录(&G)...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "转到目录(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "退出(&X)",            IDM_EXIT
     END
@@ -129,28 +129,28 @@ END
 
 CTXMENU MENU PRELOAD 
 BEGIN
-	POPUP "Dummy Popup"
-	BEGIN
-	MENUITEM    "新建窗口(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
+    POPUP "Dummy Popup"
+    BEGIN
+    MENUITEM    "新建窗口(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "打开(&O)\tEnter",     IDM_OPEN
-    MENUITEM    "编辑\tF12",	    IDM_EDIT
+    MENUITEM    "编辑\tF12",        IDM_EDIT
     MENUITEM    "移动(&M)...\tF7",     IDM_MOVE
     MENUITEM    "复制(&C)...\tF8",     IDM_COPY
     MENUITEM    "符号链接(&Y)...\tF11",    IDM_SYMLINK
     MENUITEM    "硬链接(&K)...\tShift+F11",IDM_HARDLINK
-	MENUITEM    "复制到剪贴板(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "剪切到剪贴板\tCtrl+X", IDM_CUTTOCLIPBOARD
-	MENUITEM	"粘贴(&P)\tCtrl+V", IDM_PASTE
-	MENUITEM    "删除(&D)...\tDel",  IDM_DELETE
+    MENUITEM    "复制到剪贴板(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "剪切到剪贴板\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "粘贴(&P)\tCtrl+V", IDM_PASTE
+    MENUITEM    "删除(&D)...\tDel",  IDM_DELETE
     MENUITEM    "重命名(&N)...\tF2",   IDM_RENAME
     MENUITEM    "属性(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "运行(&R)...",          IDM_RUN
     MENUITEM    "打开 Bash...", IDM_STARTBASHSHELL
-	MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
-	MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
+    MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
+    MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
     MENUITEM    "打开 Explorer(&X)...", IDM_STARTEXPLORER
-	MENUITEM    "转到目录(&G)...", IDM_GOTODIR
-	END
+    MENUITEM    "转到目录(&G)...", IDM_GOTODIR
+    END
 END
 
 
@@ -197,7 +197,7 @@ BEGIN
 
     IDS_LABELDISKERR        "文件管理器无法为软盘命名。\n\n请确认软盘未作写保护、并非网络驱动器，而且输入正确的名称。\n名称不可包含下列字符: \n[空格] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
-	IDS_SEARCHNOMATCHES     "未找到匹配的文件。"
+    IDS_SEARCHNOMATCHES     "未找到匹配的文件。"
     IDS_SEARCHREFRESH       "这个驱动器的内容已有变化。您想更新“搜索结果“窗口吗？"
     IDS_LABELACCESSDENIED   "您必须以管理员身份登录此工作站，以便在硬盘上运行此项操作。"
 
@@ -529,8 +529,8 @@ BEGIN
     MH_MYITEMS+IDM_MOVE,        "移动所选的项目"
     MH_MYITEMS+IDM_COPY,        "复制文件及目录"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "复制文件到剪贴板"
-	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "剪切一个或多个文件到剪贴板"
-    MH_MYITEMS+IDM_PASTE,		"粘贴剪切板中的文件到当前目录"
+    MH_MYITEMS+IDM_CUTTOCLIPBOARD, "剪切一个或多个文件到剪贴板"
+    MH_MYITEMS+IDM_PASTE,       "粘贴剪切板中的文件到当前目录"
     MH_MYITEMS+IDM_COMPRESS,    "压缩文件或目录"
     MH_MYITEMS+IDM_UNCOMPRESS,  "解压缩文件或目录"
     MH_MYITEMS+IDM_DELETE,      "删除文件及目录"

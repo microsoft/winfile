@@ -813,7 +813,7 @@ BEGIN
    CONTROL "Sprache:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
    CONTROL "Einige Einstellungen werden nur durch erneutes Starten\ndes Programmes wirksam.",
-			IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 90, 180, 20
+            IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 90, 180, 20
    CONTROL "OK", IDOK, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 47, 120, 40, 14
    CONTROL "Abbrechen", IDCANCEL, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 95, 120, 40, 14
    CONTROL "&Hilfe", IDD_HELP, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 143, 120, 40, 14

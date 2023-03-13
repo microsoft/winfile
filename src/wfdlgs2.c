@@ -314,7 +314,7 @@ RunDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                   }
 
                   bLoadIt = IsDlgButtonChecked(hDlg, IDD_LOAD);
-				  bRunAs = IsDlgButtonChecked(hDlg, IDD_RUNAS);
+                  bRunAs = IsDlgButtonChecked(hDlg, IDD_RUNAS);
 
                   // Stop SaveBits flickering by invalidating the SaveBitsStuff.
                   // You can't just hide the window because it messes up the
@@ -549,22 +549,22 @@ JAPANEND
             TCHAR szDirs[MAXPATHLEN];
             LPTSTR rgszDirs[MAX_DRIVES];
             int drive, driveCur;
-        	BOOL fFirst = TRUE;
+            BOOL fFirst = TRUE;
             
             iCtrl = IDD_TO;
             if (dwSuperDlgMode == IDM_RENAME)
-	            SetDlgItemText(hDlg, IDD_TO, p);
+                SetDlgItemText(hDlg, IDD_TO, p);
 
-			driveCur = (int)GetWindowLongPtr(hwndActive, GWL_TYPE);
+            driveCur = (int)GetWindowLongPtr(hwndActive, GWL_TYPE);
 
-			lstrcpy(szDirs, TEXT("Other: "));
+            lstrcpy(szDirs, TEXT("Other: "));
 
-   			GetAllDirectories(rgszDirs);
+            GetAllDirectories(rgszDirs);
 
-        	for (drive = 0; drive < MAX_DRIVES; drive++)
-        	{
-				if (drive != driveCur && rgszDirs[drive] != NULL)
-				{
+            for (drive = 0; drive < MAX_DRIVES; drive++)
+            {
+                if (drive != driveCur && rgszDirs[drive] != NULL)
+                {
                     if (!fFirst)
                     {
                         wcsncat_s(szDirs, MAXPATHLEN, TEXT(";"), 1);
@@ -575,11 +575,11 @@ JAPANEND
                     // but due to the limited width of the dialog, we can't see it all anyway.
                     wcsncat_s(szDirs, MAXPATHLEN, rgszDirs[drive], _TRUNCATE);
 
-	        		LocalFree(rgszDirs[drive]);
-	        	}
-        	}
+                    LocalFree(rgszDirs[drive]);
+                }
+            }
 
-	        SetDlgItemText(hDlg, IDD_DIRS, szDirs);
+            SetDlgItemText(hDlg, IDD_DIRS, szDirs);
          }
 
          SendDlgItemMessage(hDlg, iCtrl, EM_LIMITTEXT, COUNTOF(szTo) - 1, 0L);
@@ -711,7 +711,7 @@ SuperDlgExit:
             LocalFree(pszFrom);
             goto SuperDlgExit;
 
-		 } else {
+         } else {
 
             if (dwSuperDlgMode == IDM_RENAME && bTreeHasFocus) {
                MessWithRenameDirPath(pszFrom);
@@ -736,7 +736,7 @@ Error:
                MessageBox(hwndFrame, szMessage, szTitle, MB_OK | MB_ICONEXCLAMATION);
 
                LocalFree(pszFrom);
-	           goto SuperDlgExit;
+               goto SuperDlgExit;
             }
 
             pCopyInfo->pFrom = pszFrom;

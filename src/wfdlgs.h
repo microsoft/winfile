@@ -85,7 +85,7 @@
 #define IDD_TYPE      202
 #define IDD_SIZE      203
 #define IDD_DATE      204
-#define IDD_FDATE	  205
+#define IDD_FDATE     205
 
 #define IDD_TIME      299
 #define IDD_FLAGS     206
@@ -154,7 +154,7 @@
 #define IDD_CRATIOLABEL     270
 #define IDD_CRATIO          271
 
-#define IDD_RUNAS			272
+#define IDD_RUNAS           272
 
 #define IDD_SHOWJUNCTION    273
 
@@ -228,5 +228,5 @@
 #define IDD_KK_TEXTTO         2001
 #define IDD_KK_TEXTFROM       2002
 
-#define IDD_DIRS 		2003
+#define IDD_DIRS              2003
 
