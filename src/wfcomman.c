@@ -1094,7 +1094,7 @@ AppCommandProc(register DWORD id)
 
        TCHAR szParams[MAXPATHLEN] = { TEXT('\0') };
 
-       ret = ExecProgram(szToRun, szDir, szDir, FALSE, GetKeyState(VK_SHIFT) < 0);
+       ret = ExecProgram(szToRun, szDir, szDir, FALSE, FALSE);
        LocalFree(szDir);
    }
    break;
