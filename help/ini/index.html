@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Building winfile.ini from scratch</title>
+</head>
+<body>
+ <p>OR: Building WINFILE.INI from scratch is a bad idea. Here's how to do it anyway.</p>
+<h3>Preface:</h3>
+<p>This is not an "issue" per se, and is more of an "I couldn't find this written down anywhere and perhaps somebody else might want to know this for some reason" thing. Feel free to mark it as "solved" or "complete" or whatever, this is purely informational. If you need an issue, somebody could find a way to work this information into the help documentation or whatever.</p>
+<p>To be perfectly clear, there is very little practical reason you should ever edit WINFILE.INI directly - nearly everything that is stored in the INI can be directly changed using the user interface, and it's much easier to make these changes in the UI directly. I make this quick reference available simply to satisfy my own sensibilities. If this helps you, great.</p>
+<p>At any rate, if you ever need or desire to modify the INI file for fun or profit, here is a list of all of the INI settings I've identified, with best-effort descriptions of what they do. Add them to the help files or whatever. Hopefully, google/bing/whatever will index this and the next person who searches for it will find this.</p>
+<p>Also, for anybody following along at home, sprinkled throughout this document are example lines ripped directly from my INI file. You don't have to copy them directly if you don't want to - this is just how I like mine.</p>
+<h3>[Settings]</h3>
+<p>The INI file begins with the line <em>[Settings]</em>. It delimits the beginning of the settings portion of the INI file, which just so happens to be the entire file. This line is mandatory: File Manager is pretty lax about the order of each key/setting, however it outright ignores all parameters that are not beneath [Settings] - it has to be the first line of the file.</p>
+<p><code>[Settings]</code></p>
+<h3>Window metrics:</h3>
+<p>The first entry of note is <strong>Window</strong>, which stores the last opened location of the MDI parent window. It features several parameters, not all of which are known to me - if you know what the missing ones are, feel free to share. In order, the parameters are the leftmost pixel location, the topmost pixel location, the width in pixels, the height in pixels, an unknown blank parameter, another unknown blank parameter, and visibility. Set visibility zero to make the program window not display at all even though winfile is running in the background, 1 for normal, 3 for maximized. Technically, I think 2 should have it start minimized, but it doesn't.</p>
+<p><code>Window=123,123,800,600, , ,1</code></p>
+<p>Similarly, Windows File Manager has many child windows, and it will save the location/metrics of these windows on close using entries <strong>dir1</strong>, <strong>dir2</strong>, etc. You <em>could</em> edit these entries to change the view options of each window. I do not recommend doing so, as any missing parameters cause file manager to close entirely, and I don't fully understand how each parameter is calculated. The known parameters are: leftmost pixel, topmost pixel, width, height, -1, -1, visible, ?, ?, ?,divider,path. Those three question marks? Those are used for the view options. How exactly those values are calculated are beyond the scope of this document because I don't know myself. As with the parent, so with the child - set visible to 0 for an invisible folder window, 1 for normal display, 2 for minimized, and 3 for maximized. Path must include the file mask you wish to show. For example, <code>C:\*.* </code>shows all files in the C:\ drive. <code>D:\folder\*.exe</code> shows all exe files in the location D:\folder, etc.</p>
+<pre><code>dir1=80,52,776,486,-1,-1,1,30,201,135958,247,C:\*.*
+dir2=0,0,636,348,-1,-1,1,32,201,24561,193,Z:\*.exe
+dir3=120,44,500,300,-1,-1,2,30,201,24561,193,E:\*.*
+</code></pre>
+<h3>Options menu items</h3>
+<p>Most of these are self explanatory. <strong>MinOnRun</strong> does exactly that, if set to true (1), File Manager minimized itself when a program or file is executed. <strong>IndexOnLaunch</strong>, when set to 1, causes the Goto Directory index to be created on launch. This is helpful because it means you don't have to remember exactly how things are spelled when using the goto feature.<strong>StatusBar</strong>, <strong>DriveBar</strong>, and <strong>Toolbar</strong> all control whether or not these bars are visible (1) or not (0). Finally, <strong>NewWinOnNetConnect</strong> determines if a new folder window is opened when you connect to a network drive.</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="goto.png"><img src="goto.png" alt="GotoIndex" style="max-width: 100%;"></a><br>
+[Figure 1: The Goto directory dialog (Ctrl+G) is shown with indexing disabled and again with it enabled.]</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="toolbar.png"><img src="toolbar.png" alt="ToolbarsOnOff" style="max-width: 100%;"></a><br>
+[Figure 2: The primary interface is shown with the toolbar/drivebar/status bar disabled, and again below with aforementioned bars enabled]</p>
+<pre><code>MinOnRun=0
+IndexOnLaunch=1
+StatusBar=1
+DriveBar=1
+Toolbar=1
+NewWinOnNetConnect=1
+</code></pre>
+<h3>Are you sure about that?</h3>
+<p>All of these options are found in the Options &gt; Confirmation dialog, and they are entirely self explanatory. Setting them to 0 unchecks the box and consequently means File Manager does not ask for confirmation. Setting them to 1 checks the box and makes it ask you to confirm. <strong>ConfirmDelete</strong> asks on file deletion, <strong>ConfirmSubDel</strong> asks on folder deletion, <strong>ConfirmReplace</strong> asks when you try to replace an existing file, <strong>ConfirmMouse</strong> asks when you drag-and-drop a file, <strong>ConfirmFormat</strong> is supposed to ask when you select to format a drive, but doesn't appear to do so. <strong>ConfirmReadOnly</strong> asks when you try to modify a System, Hidden, and/or Read-Only file.</p>
+<pre><code>ConfirmDelete=1
+ConfirmSubDel=1
+ConfirmReplace=1
+ConfirmMouse=0
+ConfirmFormat=1
+ConfirmReadOnly=1
+</code></pre>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="confirm.png"><img src="confirm.png" alt="image" style="max-width: 100%;"></a><br>
+[Figure 3: File Manager is asking me to confirm I intended to delete a file. I am prone to accidents, so having it double check my work is always reassuring, especially when you consider that File Manager bypasses the Windows Recycle Bin and directly deletes the file.]</p>
+<h3>Fun Visual Tricks</h3>
+<p><strong>DisableVisualStyles</strong> determines if the toolbar uses visual styles (0), or does not (1). If you want that authentic 9x/nt4 feel, set it to 1 for raised buttons. Or leave it at 0 and get the boring, flat buttons.<br>
+<strong>MirrorContent</strong> reverses the left-right order of individual items without reversing text. See attached picture below. I'm not sure if there's an actual practical use for it, or if it's just neat.<br>
+<a target="_blank" rel="noopener noreferrer nofollow" href="styles.png"><img src="styles.png" alt="visualStyling" style="max-width: 100%;"></a><br>
+[Figure 4: Visual styles are enabled (top) and disabled (bottom). It's altogether a minor change, but if you're using a classic theme on your computer it may tie things together.]</p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="rtl.png"><img src="rtl.png" alt="mirror_mode" style="max-width: 100%;"></a><br>
+[Figure 5: The File Manager window has been mirrored! Text is still rendered in the correct left-to-right fashion, but menu items and buttons are right-to-left ordered.]</p>
+<pre><code>DisableVisualStyles=1
+MirrorContent=0
+</code></pre>
+<h3>Fun with Fonts</h3>
+<p><strong>Face</strong> sets the font face used by File Manager. Note: it uses the name of the font as shown in the font picker, and not the filename of a font, so the font has to be installed in the system to use. <strong>Size</strong> sets the font size. These are probably the only two you should mess with.</p>
+<p><strong>LowerCase</strong> controls whether or not Italic/Oblique fonts are used. Oh, and also makes every thing lowercase. It's pulling double duty. Default value is 0. Add 1 to the value to make FAT formatted drives display in lowercase. Add 8 to the value to make all drives display in lowercase. Add 4 to the value to make the font italic. So, for example, to make the font italic <em>and</em> have FAT drives display lowercase, set the value to 5. <strong>Weight</strong> sets the font weight used. What values are valid? Depends on the font. For example, in Segoe UI a value of 300 corresponds to light, 350 semilight, 400 regular, 700 semibold. Different fonts have different values. Frankly, I suggest just omitting this property entirely.</p>
+<pre><code>Face=Segoe UI
+Size=10
+LowerCase=0
+</code></pre>
+<h3>Miscellaneous other tweaks</h3>
+<p><strong>UILanguage</strong> sets the language used by File Manager. At, present, to my knowledge anyways, there are six available language options currently: en-US, zh-CN, he-IL, ja-JP, pl-PL, and de-DE. English (US), Chinese (Simplified), Hebrew, Japanese, Polish, and German.</p>
+<p><code>UILanguage=en-US</code></p>
+<p><strong>EditorPath</strong> sets the editor that is executed when the edit command is selected. Contrary to what the name indicates, you might not necessarily need the entire path - if the editor itself is in your path somewhere, you can just put the editor command in alone.<br>
+<code>EditorPath=nano</code></p>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="edit.gif"><img src="edit.gif" alt="ezgif com-gif-maker" style="max-width: 100%;"></a><br>
+[Figure 6: I have set the default editor to nano. Now, when File Manager is told to edit the the file NOSHARE, the file is automatically opened in the console based text editor nano.]</p>
+<p><strong>ScrollOnExpand</strong> determines if the directory tree view scrolls automatically when you expand a folder in the tree. The default behavior (1) is that it does scroll automatically putting the directory you expanded at the top of the view. You can disable this behavior by setting the value to 0.<br>
+Note: at the time of writing, this behavior is not available in the currently released version. I'm led to believe that the changes necessary have been implemented if you build from source, and it could turn up in a theoretical future release.</p>
+<p><code>ScrollOnExpand = 0</code></p>
+</body>
+</html>
