@@ -19,8 +19,8 @@ BEGIN
     MENUITEM    "&Kopieren...\tF8",                               IDM_COPY
     MENUITEM    "S&ymlink...\tF11",                               IDM_SYMLINK
     MENUITEM    "H&ardlink...\tUmschalt+F11",                     IDM_HARDLINK
-    MENUITEM    "&In Zwischenablage...\tStrg+C",				  IDM_COPYTOCLIPBOARD
-    MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",	  IDM_CUTTOCLIPBOARD
+    MENUITEM    "&In Zwischenablage...\tStrg+C",                  IDM_COPYTOCLIPBOARD
+    MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",      IDM_CUTTOCLIPBOARD
     MENUITEM    "&Einfügen\tStrg+V",                              IDM_PASTE
     MENUITEM    "&Löschen...\tEntf",                              IDM_DELETE
     MENUITEM    "&Umbenennen...\tF2",                             IDM_RENAME
@@ -33,12 +33,13 @@ BEGIN
     MENUITEM    "&Drucken...",                                    IDM_PRINT
     MENUITEM    "Zuord&nen...",                                   IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+Strg+N",              IDM_MAKEDIR
+    MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+Strg+N",     IDM_MAKEDIR
     MENUITEM    "&Suchen...\tStrg+F",                             IDM_SEARCH
     MENUITEM    "Dateien aus&wählen...",                          IDM_SELECT
     MENUITEM    "Starte Bash Shell...\tStrg+B",                   IDM_STARTBASHSHELL
     MENUITEM    "Starte Cmd Shel&l...\tStrg+K",                   IDM_STARTCMDSHELL
     MENUITEM    "Starte Po&werShell...\tStrg+P",                  IDM_STARTPOWERSHELL
+    MENUITEM    "Starte E&xplorer...\tCtrl+E",                    IDM_STARTEXPLORER
     MENUITEM    "&Gehe ins Verzeichnis...\tStrg+G",               IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "&Beenden",                                       IDM_EXIT
@@ -129,16 +130,16 @@ CTXMENU MENU PRELOAD
 BEGIN
   POPUP "Dummy Popup"
   BEGIN
-  MENUITEM    "&Neues Fenster\tStrg+Umschalt Eingabetaste",      IDM_NEWWINDOW
-  MENUITEM    "Öffnen\tEnter",                                   IDM_OPEN
-  MENUITEM    "Bearbeiten\tF12",	                                IDM_EDIT
+  MENUITEM    "&Neues Fenster\tStrg+Umschalt Eingabetaste",       IDM_NEWWINDOW
+  MENUITEM    "Öffnen\tEnter",                                    IDM_OPEN
+  MENUITEM    "Bearbeiten\tF12",                                  IDM_EDIT
   MENUITEM    "&Verschieben...\tF7",                              IDM_MOVE
   MENUITEM    "&Kopieren...\tF8",                                 IDM_COPY
   MENUITEM    "S&ymlinken...\tF11",                               IDM_SYMLINK
   MENUITEM    "H&ardlinken...\tUmschalt+F11",                     IDM_HARDLINK
-  MENUITEM    "&In Zwischenablage...\tStrg+C",                IDM_COPYTOCLIPBOARD
-  MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",    IDM_CUTTOCLIPBOARD
-  MENUITEM    "&Einfügen\tStrg+V",                            IDM_PASTE
+  MENUITEM    "&In Zwischenablage...\tStrg+C",                    IDM_COPYTOCLIPBOARD
+  MENUITEM    "Ausschneiden in Zwischenablage...\tStrg+X",        IDM_CUTTOCLIPBOARD
+  MENUITEM    "&Einfügen\tStrg+V",                                IDM_PASTE
   MENUITEM    "&Löschen...\tEntf",                                IDM_DELETE
   MENUITEM    "&Umbenennen...\tF2",                               IDM_RENAME
   MENUITEM    "&Eigenschaften...\tAlt+Eingabetaste",              IDM_ATTRIBS
@@ -146,6 +147,7 @@ BEGIN
   MENUITEM    "Starte Bash Shell...",                             IDM_STARTBASHSHELL
   MENUITEM    "Starte Cmd She&ll...",                             IDM_STARTCMDSHELL
   MENUITEM    "Starte Po&werShell...",                            IDM_STARTPOWERSHELL
+  MENUITEM    "Starte E&xplorer...",                              IDM_STARTEXPLORER
   MENUITEM    "&Gehe ins Verzeichnis...",                         IDM_GOTODIR
   END
 END
@@ -548,7 +550,7 @@ BEGIN
     MH_MYITEMS+IDM_MOVE,            "Verschieben des ausgewählten Objekts"
     MH_MYITEMS+IDM_COPY,            "Kopieren von Dateien und Verzeichnissen"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "Kopieren einer Datei in die Zwischenablage"
-	MH_MYITEMS+IDM_CUTTOCLIPBOARD,  "Schneidet eine oder mehrere Dateien in die Zwischenablage aus"
+    MH_MYITEMS+IDM_CUTTOCLIPBOARD,  "Schneidet eine oder mehrere Dateien in die Zwischenablage aus"
     MH_MYITEMS+IDM_PASTE,           "Datei aus der Zwischenablage in das aktuelle Verzeichnis einfügen"
     MH_MYITEMS+IDM_COMPRESS,        "Komprimieren einer Datei oder eines Verzeichnisses"
     MH_MYITEMS+IDM_UNCOMPRESS,      "Dekomprimieren einer Datei oder eines Verzeichnisses"

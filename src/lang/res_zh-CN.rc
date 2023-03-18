@@ -39,6 +39,7 @@ BEGIN
 	MENUITEM    "打开 Bash...\tCtrl+B", IDM_STARTBASHSHELL
 	MENUITEM    "打开命令提示符(&L)...\tCtrl+K", IDM_STARTCMDSHELL
     MENUITEM    "打开 PowerShell(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
+    MENUITEM    "打开 Explorer(&X)...\tCtrl+E", IDM_STARTEXPLORER
 	MENUITEM    "转到目录(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "退出(&X)",            IDM_EXIT
@@ -147,6 +148,7 @@ BEGIN
     MENUITEM    "打开 Bash...", IDM_STARTBASHSHELL
 	MENUITEM    "打开命令提示符(&L)...", IDM_STARTCMDSHELL
 	MENUITEM    "打开 PowerShell(&W)...", IDM_STARTPOWERSHELL
+    MENUITEM    "打开 Explorer(&X)...", IDM_STARTEXPLORER
 	MENUITEM    "转到目录(&G)...", IDM_GOTODIR
 	END
 END

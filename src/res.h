@@ -99,6 +99,8 @@
 #define IDM_SYMLINK         132
 #define IDM_HARDLINK        133
 
+#define IDM_STARTEXPLORER   134
+
 // This IDM_ is reserved for IDH_GROUP_ATTRIBS
 #define IDM_GROUP_ATTRIBS   199
 

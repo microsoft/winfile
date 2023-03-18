@@ -1077,6 +1077,28 @@ AppCommandProc(register DWORD id)
    }
    break;
 
+   case IDM_STARTEXPLORER:
+   {
+       BOOL bDir;
+       LPTSTR szDir;
+       TCHAR szToRun[MAXPATHLEN];
+
+       szDir = GetSelection(1 | 4 | 16, &bDir);
+       if (!bDir && szDir)
+           StripFilespec(szDir);
+
+       if (GetSystemDirectory(szToRun, MAXPATHLEN) != 0)
+           lstrcat(szToRun, TEXT("\\..\\explorer.exe"));
+       else
+           lstrcpy(szToRun, TEXT("explorer.exe"));
+
+       TCHAR szParams[MAXPATHLEN] = { TEXT('\0') };
+
+       ret = ExecProgram(szToRun, szDir, szDir, FALSE, FALSE);
+       LocalFree(szDir);
+   }
+   break;
+
     case IDM_STARTPOWERSHELL:
        {
            BOOL bRunAs;
