@@ -21,7 +21,7 @@
 #include <memory.h>
 #include "mpr.h"
 #include <npapi.h>
-#include <wfext.h>
+#include "wfext.h"
 #include <commdlg.h>
 #include <commctrl.h>
 #include "fmifs.h"
