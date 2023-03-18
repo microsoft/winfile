@@ -16,6 +16,7 @@
 #include "Resources.h"
 
 #define COUNTOF(x) (sizeof(x)/sizeof(*x))
+#define DWORD_ALIGN(x) (((x) + sizeof(DWORD) - 1) & ~(sizeof(DWORD) - 1))
 
 BOOL CALLBACK ProcessTypesInMod(HMODULE hMod, LPWSTR lpType, LONG_PTR lParam);
 BOOL CALLBACK ProcessNamesInMod(HMODULE hMod, LPCTSTR lpszType, LPTSTR lpszName, LONG_PTR lParam);
@@ -58,23 +59,25 @@ LPCTSTR MapRTToString(LPCTSTR lpType)
 {
     if (IS_INTRESOURCE(lpType))
     {
-        switch ((int)lpType)
+        INT_PTR iType;
+        iType = (int)(INT_PTR)lpType;
+        switch (iType)
         {
-        case (int)RT_CURSOR: return L"RT_CURSOR";
-        case (int)RT_BITMAP: return L"RT_BITMAP";
-        case (int)RT_ICON: return L"RT_ICON";
-        case (int)RT_MENU: return L"RT_MENU";
-        case (int)RT_DIALOG: return L"RT_DIALOG";
-        case (int)RT_STRING: return L"RT_STRING";
-        case (int)RT_FONTDIR: return L"RT_FONTDIR";
-        case (int)RT_FONT: return L"RT_FONT";
-        case (int)RT_ACCELERATOR: return L"RT_ACCELERATOR";
-        case (int)RT_RCDATA: return L"RT_RCDATA";
-        case (int)RT_MESSAGETABLE: return L"RT_MESSAGETABLE";
-        case (int)RT_MANIFEST: return L"RT_MANIFEST";
-        case (int)RT_VERSION: return L"RT_VERSION";
-        case (int)RT_GROUP_CURSOR: return L"RT_GROUP_CURSOR";
-        case (int)RT_GROUP_ICON: return L"RT_GROUP_ICON";
+        case (INT_PTR)RT_CURSOR: return L"RT_CURSOR";
+        case (INT_PTR)RT_BITMAP: return L"RT_BITMAP";
+        case (INT_PTR)RT_ICON: return L"RT_ICON";
+        case (INT_PTR)RT_MENU: return L"RT_MENU";
+        case (INT_PTR)RT_DIALOG: return L"RT_DIALOG";
+        case (INT_PTR)RT_STRING: return L"RT_STRING";
+        case (INT_PTR)RT_FONTDIR: return L"RT_FONTDIR";
+        case (INT_PTR)RT_FONT: return L"RT_FONT";
+        case (INT_PTR)RT_ACCELERATOR: return L"RT_ACCELERATOR";
+        case (INT_PTR)RT_RCDATA: return L"RT_RCDATA";
+        case (INT_PTR)RT_MESSAGETABLE: return L"RT_MESSAGETABLE";
+        case (INT_PTR)RT_MANIFEST: return L"RT_MANIFEST";
+        case (INT_PTR)RT_VERSION: return L"RT_VERSION";
+        case (INT_PTR)RT_GROUP_CURSOR: return L"RT_GROUP_CURSOR";
+        case (INT_PTR)RT_GROUP_ICON: return L"RT_GROUP_ICON";
 
         default: return L"RT_Unknown";
         }
@@ -99,7 +102,7 @@ BOOL CALLBACK ProcessNamesInMod(HMODULE hMod, LPCTSTR lpszType, LPTSTR lpszName,
 
     if (IS_INTRESOURCE(lpszName))
     {
-        wsprintf(szName, L"%d", (int)lpszName);
+        wsprintf(szName, L"%d", (int)(INT_PTR)lpszName);
     }
     else
     {
@@ -126,7 +129,7 @@ BOOL CALLBACK ProcessNamesInMod(HMODULE hMod, LPCTSTR lpszType, LPTSTR lpszName,
 
                 LCIDToLocaleName(rglcidInUse[iloc], szLocale, COUNTOF(szLocale), 0);
 
-                printf("Error: missing lanaguage %ls for resource type %ls, name %ls\n", szLocale, MapRTToString(lpszType), szName);
+                printf("Error: missing language %ls for resource type %ls, name %ls\n", szLocale, MapRTToString(lpszType), szName);
             }
         }
     }
@@ -134,7 +137,7 @@ BOOL CALLBACK ProcessNamesInMod(HMODULE hMod, LPCTSTR lpszType, LPTSTR lpszName,
     {
         if (procres.rghglobSeen[ILOCALE_ENG] == NULL)
         {
-            printf("Error: missing lanaguage en-US for resource type %ls, name %ls\n", MapRTToString(lpszType), szName);
+            printf("Error: missing language en-US for resource type %ls, name %ls\n", MapRTToString(lpszType), szName);
         }
 
         // extra language entries are caught below when scanning with !bGatherLang
@@ -265,7 +268,7 @@ VOID DecodeDlgItem(WORD **ppwT, BOOL bExtended, DLGITEMDECODE *pdecitem)
         pwT = (WORD *)((char *)pwT + pdecitem->cbCreate + sizeof(WORD));
 
     // align on DWORD boundary
-    pwT = (WORD *)RAWINPUT_ALIGN((INT_PTR)pwT);
+    pwT = (WORD *)DWORD_ALIGN((INT_PTR)pwT);
 
     *ppwT = pwT;
 }
@@ -353,7 +356,7 @@ VOID DecodeDialog(VOID *lpv, DLGDECODE *pdecdlg)
     }
 
     // align on DWORD boundary
-    pwT = (WORD *)RAWINPUT_ALIGN((INT_PTR)pwT);
+    pwT = (WORD *)DWORD_ALIGN((INT_PTR)pwT);
 
     if (pdecdlg->pdlg->cdit > MAXDLGITEMS)
     {
@@ -580,7 +583,7 @@ VOID VerifyLangStrings(HMODULE hMod, PROCRES *pprocres)
 
         if (wUsedT != wUsedEng)
         {
-            printf("Error: string table block usage mismatch for language %ls block %d\n", szLocale, (int)pprocres->lpName);
+            printf("Error: string table block usage mismatch for language %ls block %d %ls\n", szLocale, (int)(INT_PTR)pprocres->lpName, (LPTSTR)pprocres->rghglobSeen[ILOCALE_ENG]);
         }
     }
 }
