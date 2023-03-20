@@ -3,6 +3,7 @@ SRCS = \
 	src/lfn.c \
 	src/lfnmisc.c \
 	src/numfmt.c \
+	src/Resize.c \
 	src/suggest.c \
 	src/tbar.c \
 	src/treectl.c \
@@ -61,7 +62,7 @@ $(TARGET) : $(OBJS)
 	$(CXX) -c $(CFLAGS) -I. $< -o $@
 
 src/res.o : src/res.rc src/lang/*.rc src/lang/*.dlg
-	$(WINDRES) -DNOWINRES -I. -i src/res.rc -o src/res.o
+	$(WINDRES) -DNOWINRES -I. -Isrc/ -i src/res.rc -o src/res.o
 
 clean :
 	$(RM) $(OBJS) $(TARGET)
