@@ -527,7 +527,7 @@ VOID UpdateGotoList(HWND hDlg)
 
 	if (!options.empty())
 	{
-		const size_t resultCount = min(1000, options.size());
+		const size_t resultCount = min((size_t)1000, options.size());
 
 		// Try to allocate enough space in the list to avoid repeated
 		// allocations.  This is an optimization and doesn't need to be
