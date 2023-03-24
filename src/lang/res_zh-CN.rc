@@ -254,6 +254,17 @@ BEGIN
     IDS_SYMLINK,            "符号链接"                       /* 32 */
     IDS_HARDLINK,           "硬链接"                      /* 32 */
 
+JAPANBEGIN
+    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
+    IDS_KK_COPYTOSTR,       "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
+    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
+    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
+    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
+    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
+  JAPANEND
+
     IDS_CREATINGMSG,        "创建:"                     /* 32 */
     IDS_REMOVINGDIRMSG,     "正在删除:"                     /* 32 */
     IDS_REMOVINGMSG,        "正在删除..."                   /* 32 */
@@ -317,6 +328,10 @@ BEGIN
     IDS_WRITEPROTECTFILE        "这是一个系统、隐藏或只读文件。"
 
     IDS_COPYINGTITLE            "正在复制..."
+
+JAPANBEGIN
+    IDS_KK_COPY                 "コピー先:"
+JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "快速格式化..."
 
@@ -489,6 +504,10 @@ JAPANEND
     IDS_NEWFILETYPETITLE        "新文件类型"
     IDS_COPYINGDISKTITLE        "正在复制磁盘"
     IDS_SEARCHING               "正在搜索..."
+
+JAPANBEGIN
+    IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
+JAPANEND
 
     IDS_INITUPDATEFAIL          "无法初始化后台更新支持。文件管理器将会退出。"
     IDS_INITUPDATEFAILTITLE     "文件管理器初始化"
