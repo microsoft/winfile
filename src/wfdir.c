@@ -370,7 +370,15 @@ CreateLBLine(register DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
       }
       else 
       {
-         pch += PutSize(&lpxdta->qFileSize, pch);
+         if (dwAttr & ATTR_SYMBOLIC) 
+         {
+            lstrcpy(pch, TEXT("<SYMLINK>"));
+            pch += lstrlen(pch);
+         } 
+         else 
+         {
+            pch += PutSize(&lpxdta->qFileSize, pch);
+         }
       }
    }
 
