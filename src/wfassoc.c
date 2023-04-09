@@ -142,7 +142,7 @@ PEXT pExtBase = NULL;
 
 // Prototypes
 
-INT_PTR CALLBACK AssociateFileDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK AssociateFileDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 BOOL AssociateDlgInit(HWND hDlg, LPTSTR lpszExt, INT iSel);
 BOOL AssociateFileDlgExtAdd(HWND hDlg, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
 BOOL AssociateFileDlgExtDelete(HWND hDlg, PASSOCIATEFILEDLGINFO pAssociateFileDlgInfo);
@@ -412,7 +412,7 @@ UpdateSelectionExt(HWND hDlg, BOOL bForce)
 
 INT_PTR
 CALLBACK
-AssociateDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+AssociateDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szTemp[STRINGSIZ];
    PFILETYPE pFileType, pft2;
@@ -427,7 +427,7 @@ AssociateDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
    case WM_INITDIALOG:
       {
          LPTSTR p;
-         register LPTSTR pSave;
+         LPTSTR pSave;
          INT iItem;
 
          // Turn off refresh flag (GWL_USERDATA)
@@ -1015,7 +1015,7 @@ DoHelp:
 
 INT_PTR
 CALLBACK
-AssociateFileDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+AssociateFileDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    INT i;
    DWORD dwError;

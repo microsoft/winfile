@@ -138,10 +138,10 @@ DO_AGAIN:
 
 INT_PTR
 CALLBACK
-OtherDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+OtherDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
   DWORD          dwView;
-  register HWND hwndActive;
+  HWND           hwndActive;
 
   UNREFERENCED_PARAMETER(lParam);
 
@@ -808,8 +808,8 @@ DoHelp:
 VOID
 KillQuoteTrailSpace( LPTSTR szFile )
 {
-   register LPTSTR pc;
-   register LPTSTR pcNext;
+   LPTSTR pc;
+   LPTSTR pcNext;
    LPTSTR pcLastSpace = NULL;
 
    // Could reuse szFile, but that's ok,

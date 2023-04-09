@@ -82,7 +82,7 @@ GetTreeFocus(HWND hwndTree)
 BOOL
 CompactPath(HDC hDC, LPTSTR lpszPath, DWORD dx)
 {
-   register INT  len;
+   INT           len;
    SIZE          sizeF, sizeT;
    LPTSTR        lpEnd;          /* end of the unfixed string */
    LPTSTR        lpFixed;        /* start of text that we always display */
@@ -351,9 +351,9 @@ SwitchDriveSelection(HWND hwndChild, BOOL bSelectToolbarDrive)
 LRESULT
 CALLBACK
 TreeWndProc(
-   register HWND hwnd,
+   HWND hwnd,
    UINT uMsg,
-   register WPARAM wParam,
+   WPARAM wParam,
    LPARAM lParam)
 {
    HWND hwndTree, hwndDir, hwndFocus;

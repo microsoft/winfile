@@ -32,9 +32,9 @@ typedef struct _SELINFO {
 
 VOID RightTabbedTextOut(HDC hdc, INT x, INT y, LPWSTR pLine, WORD *pTabStops, INT x_offset, DWORD dwAlternateFileNameExtent);
 LRESULT ChangeDisplay(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-INT CompareDTA(register LPXDTA lpItem1, register LPXDTA lpItem2, DWORD dwSort);
+INT CompareDTA(LPXDTA lpItem1, LPXDTA lpItem2, DWORD dwSort);
 BOOL SetDirFocus(HWND hwndDir);
-VOID DirGetAnchorFocus(register HWND hwndLB, LPXDTALINK lpStart, PSELINFO pSelInfo);
+VOID DirGetAnchorFocus(HWND hwndLB, LPXDTALINK lpStart, PSELINFO pSelInfo);
 BOOL SetSelection(HWND hwndLB, LPXDTALINK lpStart, LPWSTR pszSel);
 INT DirFindIndex(HWND hwndLB, LPXDTALINK lpStart, LPTSTR lpszFile);
 VOID SortDirList(HWND hwndDir, LPXDTALINK lpStart, DWORD count, LPXDTA* lplpxdta);
@@ -311,9 +311,9 @@ FocusOnly:
 /////////////////////////////////////////////////////////////////////
 
 VOID
-CreateLBLine(register DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
+CreateLBLine(DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
 {
-   register LPWSTR pch;
+   LPWSTR pch;
    DWORD dwAttr;
 
    pch = szBuffer;
@@ -1727,7 +1727,7 @@ GetPict(
    WCHAR ch,
    LPCWSTR pszStr)
 {
-   register UINT  count;
+   UINT  count;
 
    count = 0;
    while (ch == *pszStr++)
@@ -1974,8 +1974,8 @@ PutTime(
 
 INT
 PutAttributes(
-   register DWORD dwAttribute,
-   register LPWSTR pszStr)
+   DWORD dwAttribute,
+   LPWSTR pszStr)
 {
    INT   cch = 0;
 
@@ -2440,7 +2440,7 @@ FillDirList(
    HWND hwndDir,
    LPXDTALINK lpStart)
 {
-   register DWORD count;
+   DWORD count;
    UINT   i;
    LPXDTAHEAD lpHead;
    INT iError;
@@ -2515,11 +2515,11 @@ Error:
 
 INT
 CompareDTA(
-   register LPXDTA lpItem1,
-   register LPXDTA lpItem2,
+   LPXDTA lpItem1,
+   LPXDTA lpItem2,
    DWORD dwSort)
 {
-   register INT  ret;
+   INT  ret;
 
    if (!lpItem1 || !lpItem2)
       return lpItem1 ? 1 : -1;
@@ -2989,7 +2989,7 @@ GDSDone:
 INT
 DirFindIndex(HWND hwndLB, LPXDTALINK lpStart, LPWSTR lpszFile)
 {
-   register INT i;
+   INT i;
    DWORD dwSel;
    LPXDTA lpxdta;
 
@@ -3025,11 +3025,11 @@ DirFindIndex(HWND hwndLB, LPXDTALINK lpStart, LPWSTR lpszFile)
 
 VOID
 DirGetAnchorFocus(
-   register HWND hwndLB,
+   HWND hwndLB,
    LPXDTALINK lpStart,
    PSELINFO pSelInfo)
 {
-   register INT iSel, iCount;
+   INT iSel, iCount;
    LPXDTA   lpxdta;
 
    iSel = (INT)SendMessage(hwndLB, LB_GETANCHORINDEX, 0, 0L);

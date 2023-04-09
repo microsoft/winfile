@@ -105,7 +105,7 @@ LocateDirWindow(
     BOOL bNoFileSpec,
     BOOL bNoTreeWindow)
 {
-   register HWND hwndT;
+   HWND hwndT;
    HWND hwndDir;
    LPTSTR pT2;
    TCHAR szTemp[MAXPATHLEN];
@@ -173,7 +173,7 @@ UpdateAllDirWindows(
     DWORD dwFunction,
     BOOL bNoFileSpec)
 {
-   register HWND hwndT;
+   HWND hwndT;
    HWND hwndDir;
    LPTSTR pT2;
    TCHAR szTemp[MAXPATHLEN];
@@ -248,7 +248,7 @@ UpdateAllDirWindows(
 
 VOID
 ChangeFileSystem(
-   register DWORD dwFunction,
+   DWORD dwFunction,
    LPTSTR lpszFile,
    LPTSTR lpszTo)
 {
@@ -507,7 +507,7 @@ CreateDirWindow(
    BOOL bReplaceOpen,
    HWND hwndActive)
 {
-   register HWND hwndT;
+   HWND hwndT;
    INT dxSplit;
 
    if (hwndActive == hwndSearch) {
@@ -882,11 +882,11 @@ BOOL GetBashExePath(LPTSTR szBashPath, UINT bufSize)
 /*--------------------------------------------------------------------------*/
 
 BOOL
-AppCommandProc(register DWORD id)
+AppCommandProc(DWORD id)
 {
    DWORD         dwFlags;
    HMENU         hMenu;
-   register HWND hwndActive;
+   HWND          hwndActive;
    BOOL          bTemp;
    HWND          hwndT;
    TCHAR         szPath[MAXPATHLEN];
