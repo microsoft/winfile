@@ -341,7 +341,6 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "Menedżer plików obecnie formatuje dysk. Zakończenie działania Menedżera plików spowoduje przerwanie tej operacji."
     IDS_BUSYCOPYQUITVERIFY      "Menedżer plików obecnie kopiuje dysk. Zakończenie działania Menedżera plików spowoduje przerwanie tej operacji."
     IDS_PERCENTCOMPLETE         "Procent ukończono"
-    IDS_FORMATSELECTDLGTITLE    "Sformatuj dysk"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"

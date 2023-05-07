@@ -318,7 +318,6 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "Dosya Yöneticisi şu anda bir diski biçimlendiriyor. Dosya Yöneticisi'nden çıkmak bu işlemi iptal edecektir."
     IDS_BUSYCOPYQUITVERIFY      "Dosya Yöneticisi şu anda bir diski kopyalıyor. Dosya Yöneticisi'nden çıkmak bu işlemi iptal edecektir."
     IDS_PERCENTCOMPLETE         "Tamamlanan Yüzde"
-    IDS_FORMATSELECTDLGTITLE    "Diski Biçimlendir"
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"
     IDS_144MB                   "1%s44 MB"

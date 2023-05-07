@@ -341,7 +341,6 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "File Manager is currently formatting a disk.  Exiting File Manager will abort this operation."
     IDS_BUSYCOPYQUITVERIFY      "File Manager is currently copying a disk.  Exiting File Manager will abort this operation."
     IDS_PERCENTCOMPLETE         "Percent Complete"
-    IDS_FORMATSELECTDLGTITLE    "Format Drive"
 
     IDS_12MB                    "1%s2 MB"
     IDS_360KB                   "360K"

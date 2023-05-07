@@ -341,7 +341,6 @@ JAPANEND
     IDS_BUSYFORMATQUITVERIFY    "מנהל הקבצים מאתחל כרגע דיסק. יציאה ממנהל הקבצים תגרום לביטול הפעולה."
     IDS_BUSYCOPYQUITVERIFY      "מנהל הקבצים מעתיק כרגע דיסק. יציאה ממנהל הקבצים תגרום לביטול הפעולה."
     IDS_PERCENTCOMPLETE         "אחוז השלמה"
-    IDS_FORMATSELECTDLGTITLE    "אתחול כונן"
 
     IDS_12MB                    "1%s2 מ""ב"
     IDS_360KB                   "360K"

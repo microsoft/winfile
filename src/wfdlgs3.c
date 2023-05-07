@@ -18,7 +18,6 @@
 #define LABEL_FAT_MAX  11
 #define CCH_VERSION    40
 #define CCH_DRIVE       3
-#define CCH_DLG_TITLE  16
 
 DWORD WINAPI FormatDrive( IN PVOID ThreadParameter );
 DWORD WINAPI CopyDiskette( IN PVOID ThreadParameter );
@@ -749,7 +748,8 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
     DRIVE drive;
     DWORD dwFormatResult;
     TCHAR szDrive[CCH_DRIVE] = { 0 };
-    TCHAR szDlgTitle[CCH_DLG_TITLE] = { 0 };
+    DWORD  dwCchTitleLength;
+    LPTSTR pszDlgTitle;
 
     switch (wMsg)
     {
@@ -788,6 +788,18 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 // that parent, even if it is hidden.
                 ShowWindow(hDlg, SW_HIDE);
 
+                pszDlgTitle = NULL;
+                dwCchTitleLength = GetWindowTextLength(hDlg);
+                if (dwCchTitleLength > 0)
+                {
+                    dwCchTitleLength++;
+                    pszDlgTitle = (LPTSTR)LocalAlloc(LMEM_FIXED, ByteCountOf(dwCchTitleLength));
+                    if (pszDlgTitle != NULL)
+                    {
+                        GetWindowText(hDlg, pszDlgTitle, dwCchTitleLength);
+                    }
+                }
+
                 // Retrieve the selected drive index and call SHFormatDrive with it.
                 comboxIndex = (INT)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETCURSEL, 0, 0);
                 drive = (DRIVE)SendDlgItemMessage(hDlg, IDD_SELECTDRIVE, CB_GETITEMDATA, comboxIndex, 0);
@@ -800,14 +812,20 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 {
                     // SHFormatDrive sometimes sets the parent window title when it encounters an error.
                     // We don't want this; set the title back before we show the dialog.
-                    LoadString(hAppInstance, IDS_FORMATSELECTDLGTITLE, szDlgTitle, CCH_DLG_TITLE);
-                    SetWindowText(hDlg, szDlgTitle);
+                    if (pszDlgTitle != NULL && dwCchTitleLength > 0)
+                    {
+                        SetWindowText(hDlg, pszDlgTitle);
+                    }
                     ShowWindow(hDlg, SW_SHOW);
                 }
                 else
                 {
                     DestroyWindow(hDlg);
                     hwndFormatSelect = NULL;
+                }
+                if (pszDlgTitle != NULL)
+                {
+                    LocalFree(pszDlgTitle);
                 }
 
                 return TRUE;
