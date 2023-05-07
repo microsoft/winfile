@@ -812,7 +812,8 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 {
                     // SHFormatDrive sometimes sets the parent window title when it encounters an error.
                     // We don't want this; set the title back before we show the dialog.
-                    if (pszDlgTitle != NULL && dwCchTitleLength > 0) {
+                    if (pszDlgTitle != NULL && dwCchTitleLength > 0)
+                    {
                         SetWindowText(hDlg, pszDlgTitle);
                     }
                     ShowWindow(hDlg, SW_SHOW);
