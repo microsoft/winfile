@@ -254,16 +254,14 @@ BEGIN
     IDS_SYMLINK,            "符号链接"                       /* 32 */
     IDS_HARDLINK,           "硬链接"                      /* 32 */
 
-JAPANBEGIN
-    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
-    IDS_KK_COPYTOSTR,       "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
-    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
-    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
-    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
-    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
-  JAPANEND
+    IDS_KK_COPYFROMSTR,     "从(&F):"
+    IDS_KK_COPYTOSTR,       "到(&T):"
+    IDS_KK_RENAMEFROMSTR,   "从(&F):"
+    IDS_KK_RENAMETOSTR,     "到(&T):"
+    IDS_KK_HARDLINKFROMSTR, "从(&F):"
+    IDS_KK_HARDLINKTOSTR,   "到(&T):"
+    IDS_KK_SYMLINKFROMSTR,  "从(&F):"
+    IDS_KK_SYMLINKTOSTR,    "到(&T):"
 
     IDS_CREATINGMSG,        "创建:"                     /* 32 */
     IDS_REMOVINGDIRMSG,     "正在删除:"                     /* 32 */
@@ -328,10 +326,6 @@ JAPANBEGIN
     IDS_WRITEPROTECTFILE        "这是一个系统、隐藏或只读文件。"
 
     IDS_COPYINGTITLE            "正在复制..."
-
-JAPANBEGIN
-    IDS_KK_COPY                 "コピー先:"
-JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "快速格式化..."
 

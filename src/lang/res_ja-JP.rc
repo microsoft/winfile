@@ -255,7 +255,6 @@ BEGIN
     IDS_SYMLINK,            "シンボリックリンク"                       /* 32 */
     IDS_HARDLINK,           "ハードリンク"                      /* 32 */
 
-JAPANBEGIN
     IDS_KK_COPYFROMSTR,     "コピー元(&F):"
     IDS_KK_COPYTOSTR,       "コピー先(&T):"
     IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
@@ -264,7 +263,6 @@ JAPANBEGIN
     IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
     IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
     IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
-  JAPANEND
 
 //    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
 
@@ -331,10 +329,6 @@ JAPANBEGIN
     IDS_WRITEPROTECTFILE        "これは、システム ファイル、隠しファイル、または読み取り専用ファイルです。"
 
     IDS_COPYINGTITLE            "コピー中..."
-
-JAPANBEGIN
-    IDS_KK_COPY                 "コピー先:"
-JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "クイック フォーマットを実行中..."
 
