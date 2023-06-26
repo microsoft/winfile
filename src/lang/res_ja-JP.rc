@@ -36,11 +36,13 @@ BEGIN
     MENUITEM    "ディレクトリを作成(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "検索(&C)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "ファイルを選択(&F)...", IDM_SELECT
-    MENUITEM    "Bash を起動...\tCtrl+B", IDM_STARTBASHSHELL
-    MENUITEM    "コマンド プロンプトを起動(&L)...\tCtrl+K", IDM_STARTCMDSHELL
-    MENUITEM    "PowerShell を起動(&W)...\tCtrl+P", IDM_STARTPOWERSHELL
-    MENUITEM    "Explorer を起動(&X)...\tCtrl+E", IDM_STARTEXPLORER
-
+    POPUP       "を起動(&.)"
+    BEGIN
+    MENUITEM    "&Bash を起動...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "コマンド プロンプトを起動(&C)...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "&PowerShell を起動...\tCtrl+P", IDM_STARTPOWERSHELL
+    MENUITEM    "&Explorer を起動...\tCtrl+E", IDM_STARTEXPLORER
+    END
     MENUITEM    "別のディレクトリへ移動(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "終了(&X)",            IDM_EXIT

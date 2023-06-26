@@ -36,10 +36,13 @@ BEGIN
     MENUITEM    "&יצירת תיקיה...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "&חיפוש...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "&בחירת קבצים...", IDM_SELECT
-    MENUITEM    "הפעלת Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
-    MENUITEM    "הפעלת Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
-    MENUITEM    "הפעלת Po&werShell...\tCtrl+P", IDM_STARTPOWERSHELL
-    MENUITEM    "הפעלת E&xplorer...\tCtrl+E", IDM_STARTEXPLORER
+    POPUP       "הפעלת (&.)"
+    BEGIN
+    MENUITEM    "הפעלת &Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "הפעלת &Cmd Shell...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "הפעלת &PowerShell...\tCtrl+P", IDM_STARTPOWERSHELL
+    MENUITEM    "הפעלת &Explorer...\tCtrl+E", IDM_STARTEXPLORER
+    END
     MENUITEM    "עבור לתיקיה...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "י&ציאה",            IDM_EXIT

@@ -36,10 +36,13 @@ BEGIN
     MENUITEM    "Ver&zeichnis erstellen...\tUmschalt+Strg+N",     IDM_MAKEDIR
     MENUITEM    "&Suchen...\tStrg+F",                             IDM_SEARCH
     MENUITEM    "Dateien aus&wählen...",                          IDM_SELECT
-    MENUITEM    "Starte Bash Shell...\tStrg+B",                   IDM_STARTBASHSHELL
-    MENUITEM    "Starte Cmd Shel&l...\tStrg+K",                   IDM_STARTCMDSHELL
-    MENUITEM    "Starte Po&werShell...\tStrg+P",                  IDM_STARTPOWERSHELL
-    MENUITEM    "Starte E&xplorer...\tCtrl+E",                    IDM_STARTEXPLORER
+    POPUP       "Starte (&.)"
+    BEGIN
+    MENUITEM    "&Bash Shell...\tStrg+B",                         IDM_STARTBASHSHELL
+    MENUITEM    "&Cmd Shell...\tStrg+K",                          IDM_STARTCMDSHELL
+    MENUITEM    "&PowerShell...\tStrg+P",                         IDM_STARTPOWERSHELL
+    MENUITEM    "&Explorer...\tStrg+E",                           IDM_STARTEXPLORER
+    END
     MENUITEM    "&Gehe ins Verzeichnis...\tStrg+G",               IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "&Beenden",                                       IDM_EXIT

@@ -36,10 +36,13 @@ BEGIN
     MENUITEM    "Cr&eate Directory...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "Select &Files...", IDM_SELECT
-    MENUITEM    "Start Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
-    MENUITEM    "Start Cmd Shel&l...\tCtrl+K", IDM_STARTCMDSHELL
-    MENUITEM    "Start Po&werShell...\tCtrl+P", IDM_STARTPOWERSHELL
-    MENUITEM    "Start E&xplorer...\tCtrl+E", IDM_STARTEXPLORER
+    POPUP       "Start (&.)"
+    BEGIN
+    MENUITEM    "&Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "&Cmd Shell...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "&PowerShell...\tCtrl+P", IDM_STARTPOWERSHELL
+    MENUITEM    "&Explorer...\tCtrl+E", IDM_STARTEXPLORER
+    END
     MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "E&xit",            IDM_EXIT
@@ -553,7 +556,7 @@ BEGIN
     MH_MYITEMS+IDM_RENAME,      "Renames a file or directory"
     MH_MYITEMS+IDM_ATTRIBS,     "Sets file attributes and displays properties"
     MH_MYITEMS+IDM_UNDELETE,    "Retrieves previously deleted files"
-    MH_MYITEMS+IDM_RUN, "Starts or opens an application or document"
+    MH_MYITEMS+IDM_RUN,         "Starts or opens an application or document"
     MH_MYITEMS+IDM_PRINT,       "Prints a document"
     MH_MYITEMS+IDM_ASSOCIATE,   "Associates a file with an application"
     MH_MYITEMS+IDM_MAKEDIR,     "Creates a directory"
