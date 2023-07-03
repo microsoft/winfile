@@ -843,7 +843,7 @@ IsNetDrive(INT drive)
 #endif
 
 BOOL
-IsNTFSDrive(register DRIVE drive)
+IsNTFSDrive(DRIVE drive)
 {
    U_VolInfo(drive);
 
@@ -868,7 +868,7 @@ IsNTFSDrive(register DRIVE drive)
 //            If it is NOT a FAT drive, it returns TRUE.
 //
 BOOL
-IsCasePreservedDrive(register DRIVE drive)
+IsCasePreservedDrive(DRIVE drive)
 {
    U_VolInfo(drive);
 
@@ -896,14 +896,14 @@ IsCasePreservedDrive(register DRIVE drive)
 
 
 BOOL
-IsRemovableDrive(register DRIVE drive)
+IsRemovableDrive(DRIVE drive)
 {
    return aDriveInfo[drive].uType == DRIVE_REMOVABLE;
 }
 
 
 BOOL
-IsRemoteDrive(register DRIVE drive)
+IsRemoteDrive(DRIVE drive)
 {
    return aDriveInfo[drive].uType == DRIVE_REMOTE;
 }
@@ -1244,7 +1244,7 @@ CheckSlashes(LPTSTR lpT)
 UINT
 AddBackslash(LPTSTR lpszPath)
 {
-   register UINT uLen = lstrlen(lpszPath);
+   UINT uLen = lstrlen(lpszPath);
 
    if (*(lpszPath+uLen-1) != CHAR_BACKSLASH) {
 
@@ -1269,7 +1269,7 @@ AddBackslash(LPTSTR lpszPath)
 VOID
 StripBackslash(LPTSTR lpszPath)
 {
-  register UINT len;
+  UINT len;
 
   len = (lstrlen(lpszPath) - 1);
   if ((len == 2) || (lpszPath[len] != CHAR_BACKSLASH))

@@ -435,14 +435,14 @@ BOOL GetPrevHistoryDir(BOOL forward, HWND *phwnd, LPWSTR szDir);
 VOID   UpdateStatus(HWND hWnd);
 LPWSTR DirGetSelection(HWND hwndDir, HWND hwndView, HWND hwndLB, INT iSelType, BOOL *pfDir, PINT piLastSel);
 VOID   FillDirList(HWND hwndDir, LPXDTALINK lpStart);
-VOID   CreateLBLine(register DWORD dwLineFormat, LPXDTA lpxdta, LPTSTR szBuffer);
+VOID   CreateLBLine(DWORD dwLineFormat, LPXDTA lpxdta, LPTSTR szBuffer);
 INT    GetMaxExtent(HWND hwndLB, LPXDTALINK lpXDTA, BOOL bNTFS);
 VOID   UpdateSelection(HWND hwndLB);
 
 INT  PutDate(LPFILETIME lpftDate, LPTSTR szStr);
 INT  PutTime(LPFILETIME lpftTime, LPTSTR szStr);
 INT  PutSize(PLARGE_INTEGER pqSize, LPTSTR szOutStr);
-INT  PutAttributes(register DWORD dwAttribute, register LPTSTR szStr);
+INT  PutAttributes(DWORD dwAttribute, LPTSTR szStr);
 HWND GetMDIChildFromDescendant(HWND hwnd);
 VOID SetLBFont(HWND hwnd, HWND hwndLB, HANDLE hNewFont, DWORD dwViewFlags, LPXDTALINK lpStart);
 
@@ -503,7 +503,7 @@ VOID  FreeFileManager(VOID);
 VOID  DeleteBitmaps(VOID);
 BOOL  CreateSavedWindows(VOID);
 VOID  InitExtensions(VOID);
-INT   GetDriveOffset(register DRIVE drive);
+INT   GetDriveOffset(DRIVE drive);
 VOID  InitMenus(VOID);
 UINT  MapIDMToMenuPos(UINT idm);
 UINT  MapMenuPosToIDM(UINT pos);
@@ -521,13 +521,13 @@ DWORD  WFMoveCopyDriver(PCOPYINFO pCopyInfo);
 DWORD WINAPI WFMoveCopyDriverThread(LPVOID lpParameter);
 
 BOOL  IsDirectory(LPTSTR pPath);
-BOOL  IsTheDiskReallyThere(HWND hwnd, register LPTSTR pPath, DWORD wFunc, BOOL bModal);
+BOOL  IsTheDiskReallyThere(HWND hwnd, LPTSTR pPath, DWORD wFunc, BOOL bModal);
 BOOL  QualifyPath(LPTSTR);
 INT   CheckMultiple(LPTSTR pInput);
 VOID  SetDlgItemPath(HWND hDlg, INT id, LPTSTR pszPath);
 DWORD NetCheck(LPTSTR pPath, DWORD dwType);
 
-VOID DialogEnterFileStuff(register HWND hwnd);
+VOID DialogEnterFileStuff(HWND hwnd);
 
 
 // WFUTIL.C
@@ -591,7 +591,7 @@ INT_PTR CALLBACK DiskLabelDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lP
 INT_PTR CALLBACK ChooseDriveDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR CALLBACK FormatDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR CALLBACK FormatSelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
-INT_PTR CALLBACK OtherDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK OtherDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
 INT_PTR CALLBACK ProgressDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 INT_PTR CALLBACK SortByDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
@@ -659,7 +659,7 @@ DWORD WFJunction(LPCWSTR LinkDirectory, LPCWSTR LinkTarget);
 VOID  wfYield(VOID);
 VOID  InvalidateAllNetTypes(VOID);
 VOID  GetTreeUNCName(HWND hwndTree, LPTSTR szBuf, INT nBuf);
-BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
+BOOL  RectTreeItem(HWND hwndLB, INT iItem, BOOL bFocusOn);
 
 
 

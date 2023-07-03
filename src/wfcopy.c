@@ -32,14 +32,14 @@ DWORD ConfirmDialog(
    BOOL bConfirmByDefault, BOOL *pbAll,
    BOOL bConfirmReadOnlyByDefault, BOOL *pbReadOnlyAll);
 
-DWORD IsInvalidPath(register LPTSTR pPath);
-DWORD GetNextPair(register PCOPYROOT pcr, LPTSTR pFrom, LPTSTR pToPath, LPTSTR pToSpec, DWORD dwFunc, PDWORD pdwError, BOOL bIsLFNDriveDest);
+DWORD IsInvalidPath(LPTSTR pPath);
+DWORD GetNextPair(PCOPYROOT pcr, LPTSTR pFrom, LPTSTR pToPath, LPTSTR pToSpec, DWORD dwFunc, PDWORD pdwError, BOOL bIsLFNDriveDest);
 INT  CheckMultiple(LPTSTR pInput);
-VOID DialogEnterFileStuff(register HWND hwnd);
+VOID DialogEnterFileStuff(HWND hwnd);
 DWORD SafeFileRemove(LPTSTR szFileOEM);
 BOOL IsWindowsFile(LPTSTR szFileOEM);
 
-INT_PTR CALLBACK ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
+INT_PTR CALLBACK ReplaceDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam);
 
 
 BOOL
@@ -84,9 +84,9 @@ IsValidChar(TUCHAR ch, BOOL fPath, BOOL bLFN)
 //--------------------------------------------------------------------------
 
 LPTSTR
-StripColon(register LPTSTR pPath)
+StripColon(LPTSTR pPath)
 {
-   register INT cb = lstrlen(pPath);
+   INT cb = lstrlen(pPath);
 
    if (cb > 2 && pPath[cb-1] == CHAR_COLON)
       pPath[cb-1] = CHAR_NULL;
@@ -103,9 +103,9 @@ StripColon(register LPTSTR pPath)
 /* Returns a pointer to the last component of a path string. */
 
 LPTSTR
-FindFileName(register LPTSTR pPath)
+FindFileName(LPTSTR pPath)
 {
-   register LPTSTR pT;
+   LPTSTR pT;
 
    for (pT=pPath; *pPath; pPath++) {
       if ((pPath[0] == CHAR_BACKSLASH || pPath[0] == CHAR_COLON) && pPath[1])
@@ -615,7 +615,7 @@ AddComponent:
 /*--------------------------------------------------------------------------*/
 
 BOOL
-IsRootDirectory(register LPTSTR pPath)
+IsRootDirectory(LPTSTR pPath)
 {
   if (!lstrcmpi(pPath+1, TEXT(":\\")))
       return(TRUE);
@@ -687,11 +687,11 @@ IsDirectory(LPTSTR pPath)
 BOOL 
 IsTheDiskReallyThere(
    HWND hwnd,
-   register LPTSTR pPath,
+   LPTSTR pPath,
    DWORD dwFunc,
    BOOL bModal)
 {
-   register DRIVE drive;
+   DRIVE drive;
    TCHAR szTemp[MAXMESSAGELEN];
    TCHAR szMessage[MAXMESSAGELEN];
    TCHAR szTitle[128];
@@ -941,7 +941,7 @@ SetDlgItemPath(HWND hDlg, INT id, LPTSTR pszPath)
 
 INT_PTR
 CALLBACK
-ReplaceDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+ReplaceDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    WCHAR szMessage[MAXMESSAGELEN];
 
@@ -1155,7 +1155,7 @@ NetCheck(LPTSTR pPath, DWORD dwType)
  */
 
 DWORD
-IsInvalidPath(register LPTSTR pPath)
+IsInvalidPath(LPTSTR pPath)
 {
   TCHAR  sz[9];
   INT   n = 0;
@@ -1887,7 +1887,7 @@ IsCurrentDirectory (LPTSTR p)
 //
 
 INT
-CheckMultiple(register LPTSTR pInput)
+CheckMultiple(LPTSTR pInput)
 {
   LPTSTR pT;
   TCHAR szTemp[MAXPATHLEN];
@@ -1921,9 +1921,9 @@ CheckMultiple(register LPTSTR pInput)
 /* Prevents the user from diddling anything other than the cancel button. */
 
 VOID
-DialogEnterFileStuff(register HWND hwnd)
+DialogEnterFileStuff(HWND hwnd)
 {
-   register HWND hwndT;
+   HWND hwndT;
 
    //
    // set the focus to the cancel button so the user can hit space or esc
@@ -3392,8 +3392,8 @@ ExitLoop:
 
 DWORD
 DMMoveCopyHelper(
-   register LPTSTR pFrom,
-   register LPTSTR pTo,
+   LPTSTR pFrom,
+   LPTSTR pTo,
    INT iOperation)
 {
    DWORD       dwStatus;

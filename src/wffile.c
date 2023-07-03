@@ -1708,7 +1708,7 @@ BOOL GetRootPath(
 //
 /////////////////////////////////////////////////////////////////////////////
 
-extern VOID GetTreePath(PDNODE pNode, register LPTSTR szDest);
+extern VOID GetTreePath(PDNODE pNode, LPTSTR szDest);
 
 VOID RedrawAllTreeWindows()
 {

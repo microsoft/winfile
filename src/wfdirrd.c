@@ -296,7 +296,7 @@ StealDTABlock(
 VOID
 FreeDTA(HWND hwnd)
 {
-   register LPXDTALINK lpxdtaLink;
+   LPXDTALINK lpxdtaLink;
 
    lpxdtaLink = (LPXDTALINK)GetWindowLongPtr(hwnd, GWL_HDTA);
 
@@ -436,8 +436,8 @@ BuildDocumentString()
 VOID
 BuildDocumentStringWorker()
 {
-   register LPTSTR   p;
-   register INT      uLen;
+   LPTSTR            p;
+   INT               uLen;
    TCHAR             szT[EXTSIZ + 1];
    INT               i,j;
    LPTSTR            pszDocuments = NULL;
@@ -647,7 +647,7 @@ CreateDTABlockWorker(
    HWND hwnd,
    HWND hwndDir)
 {
-   register LPWSTR pName;
+   LPWSTR pName;
    PDOCBUCKET pDoc, pProgram;
 
    LFNDTA lfndta;

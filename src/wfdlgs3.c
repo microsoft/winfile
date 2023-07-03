@@ -47,7 +47,7 @@ typedef enum {
 
 INT_PTR
 CALLBACK
-ChooseDriveDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+ChooseDriveDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szDrive[5];
 
@@ -156,7 +156,7 @@ DoHelp:
 
 INT_PTR
 CALLBACK
-DiskLabelDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+DiskLabelDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szNewVol[MAXPATHLEN];
    LPTSTR lpszVol;
@@ -512,7 +512,7 @@ FillDriveCapacity(HWND hDlg, INT nDrive, FMIFS_MEDIA_TYPE fmSelect, BOOL fDoPopu
 
 INT_PTR
 CALLBACK
-FormatDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+FormatDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    TCHAR szBuf[128];
    INT  i, count;
@@ -740,7 +740,7 @@ DoHelp:
 
 INT_PTR
 CALLBACK
-FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+FormatSelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     HWND  hwndSelectDrive;
     INT   driveIndex;
@@ -847,7 +847,7 @@ FormatSelectDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 
 INT_PTR
 CALLBACK
-AboutDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+AboutDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
     WORD wMajorVersion   = 0;
     WORD wMinorVersion   = 0;
@@ -1324,7 +1324,7 @@ CancelDlgProc(HWND hDlg,
 
 INT_PTR
 CALLBACK
-ProgressDlgProc(register HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
+ProgressDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
 {
    static PCOPYINFO pCopyInfo;
    TCHAR szTitle[MAXTITLELEN];

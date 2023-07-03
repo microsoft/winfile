@@ -286,9 +286,9 @@ MemClone(LPXDTALINK lpStart)
 }
 
 LPXDTA
-MemNext(register LPXDTALINK* plpLink, register LPXDTA lpxdta)
+MemNext(LPXDTALINK* plpLink, LPXDTA lpxdta)
 {
-   register LPXDTALINK lpLinkCur = *plpLink;
+   LPXDTALINK lpLinkCur = *plpLink;
 
    if ((PBYTE)lpxdta + lpxdta->dwSize - (PBYTE)lpLinkCur == (INT)lpLinkCur->dwNextFree)
    {
