@@ -516,7 +516,7 @@ DocDestruct(PPDOCBUCKET ppDocBucket)
          pDocBucket=pDocBucketNext) {
 
          pDocBucketNext = pDocBucket->next;
-       	 DestroyIcon(pDocBucket->hIcon);
+         DestroyIcon(pDocBucket->hIcon);
          LocalFree((HLOCAL)pDocBucket->lpszFI);
          LocalFree((HLOCAL)pDocBucket);
       }
@@ -630,9 +630,9 @@ DocInsert(PPDOCBUCKET ppDocBucket,
    pDocBucket->lpszFI = NULL;
    
    if (lpszFileIcon != NULL)
-	   pDocBucket->lpszFI = (LPTSTR) LocalAlloc(LPTR, ByteCountOf(lstrlen(lpszFileIcon)+1));		
+      pDocBucket->lpszFI = (LPTSTR) LocalAlloc(LPTR, ByteCountOf(lstrlen(lpszFileIcon)+1));
    if (pDocBucket->lpszFI != NULL)
-	  lstrcpy(pDocBucket->lpszFI, lpszFileIcon);
+      lstrcpy(pDocBucket->lpszFI, lpszFileIcon);
 
    ppDocBucket[iBucket] = pDocBucket;
 
@@ -694,7 +694,7 @@ DocFind(PPDOCBUCKET ppDocBucket, LPTSTR lpszExt)
 HICON DocGetIcon(PDOCBUCKET pDocBucket)
 {
    if (pDocBucket == NULL)
-		return NULL;
+      return NULL;
 
    if (pDocBucket->hIcon == NULL && pDocBucket->lpszFI != NULL)
    {
@@ -702,12 +702,12 @@ HICON DocGetIcon(PDOCBUCKET pDocBucket)
 
       if (pchT != NULL)
       {
-      	  INT index = atoi(pchT+1);
-      	  HICON hIcon;
+          INT index = atoi(pchT+1);
+          HICON hIcon;
 
-		  *pchT = '\0';
-      	  if (ExtractIconEx(pDocBucket->lpszFI, index, NULL, &hIcon, 1) == 1)
-      	  	pDocBucket->hIcon = hIcon;
+          *pchT = '\0';
+          if (ExtractIconEx(pDocBucket->lpszFI, index, NULL, &hIcon, 1) == 1)
+             pDocBucket->hIcon = hIcon;
       }
    }
    return pDocBucket->hIcon;

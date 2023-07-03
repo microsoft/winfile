@@ -279,7 +279,7 @@ typedef struct _SEARCH_INFO {
       SEARCH_MDICLOSE
    } eStatus;
    WCHAR szSearch[MAXPATHLEN+1];
-   FILETIME ftSince;			// UTC
+   FILETIME ftSince;            // UTC
 } SEARCH_INFO, *PSEARCH_INFO;
 
 typedef struct _COPYINFO {
@@ -820,7 +820,7 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 #define ATTR_COMPRESSED     FILE_ATTRIBUTE_COMPRESSED   // == 0x0800
 #define ATTR_NOT_INDEXED    FILE_ATTRIBUTE_NOT_CONTENT_INDEXED // == 0x2000
 #define ATTR_ENCRYPTED      FILE_ATTRIBUTE_ENCRYPTED    // == 0x4000
-#define ATTR_USED           0x6DBF						// ATTR we use that are returned from FindFirst/NextFile
+#define ATTR_USED           0x6DBF                      // ATTR we use that are returned from FindFirst/NextFile
 
 #define ATTR_PARENT         0x0040  // my hack DTA bits
 #define ATTR_LFN           0x10000  // my hack DTA bits
@@ -871,7 +871,7 @@ BOOL  RectTreeItem(HWND hwndLB, register INT iItem, BOOL bFocusOn);
 /* Child Window IDs */
 #define IDCW_DRIVES         1
 #define IDCW_DIR            2
-#define IDCW_TREELISTBOX    3	// list in tree control
+#define IDCW_TREELISTBOX    3   // list in tree control
 #define IDCW_TREECONTROL    5
 #define IDCW_LISTBOX        6   // list in directory and search
 
@@ -1260,7 +1260,7 @@ Extern TCHAR        szStatusDir[80];
 
 Extern TCHAR        szOriginalDirPath[MAXPATHLEN]; // was OEM string!!!!!!
 
-Extern TCHAR        szTheINIFile[MAXPATHLEN];		// ini file location in %APPDATA%
+Extern TCHAR        szTheINIFile[MAXPATHLEN];      // ini file location in %APPDATA%
 
 Extern TCHAR szBytes[20];
 Extern TCHAR szSBytes[10];

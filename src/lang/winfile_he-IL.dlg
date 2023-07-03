@@ -874,7 +874,7 @@ BEGIN
    CONTROL "שפה:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 82, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 80, 150, 14
    CONTROL "נא לשים לב ששינוים מסוימים יהיו פעילים\nרק אחרי פתיחה מחדש של התכנית.",
-			IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 102, 180, 20
+            IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 102, 180, 20
    CONTROL "אישור", IDOK, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 55, 132, 40, 14
    CONTROL "ביטול", IDCANCEL, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 103, 132, 40, 14
    CONTROL "&עזרה", IDD_HELP, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 149, 132, 40, 14

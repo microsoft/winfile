@@ -113,7 +113,7 @@ GetExtSelection(
                      COUNTOF(szExtSelDir),
                      (LPARAM)szExtSelDir);
 
-	 GetShortPathName(szExtSelDir, szExtSelDirShort, COUNTOF(szExtSelDirShort));
+         GetShortPathName(szExtSelDir, szExtSelDirShort, COUNTOF(szExtSelDirShort));
       }
 
       LocalFree(lpExtSelItems);
@@ -188,7 +188,7 @@ GetExtSelection(
       //
       if (!bLFNAware) {
 
-	 GetShortPathName(MemGetFileName(lpxdta), pszFileName, COUNTOF(lpSelW->szName));
+         GetShortPathName(MemGetFileName(lpxdta), pszFileName, COUNTOF(lpSelW->szName));
       }
 
    } else {

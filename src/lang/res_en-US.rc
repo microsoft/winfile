@@ -129,8 +129,8 @@ END
 
 CTXMENU MENU PRELOAD 
 BEGIN
-	POPUP "Dummy Popup"
-	BEGIN
+    POPUP "Dummy Popup"
+    BEGIN
     MENUITEM    "&New Window\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "&Open\tEnter",     IDM_OPEN
     MENUITEM    "Edit\tF12",        IDM_EDIT
@@ -150,7 +150,7 @@ BEGIN
     MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
     MENUITEM    "Start E&xplorer...", IDM_STARTEXPLORER
     MENUITEM    "&Goto Directory...", IDM_GOTODIR
-	END
+    END
 END
 
 

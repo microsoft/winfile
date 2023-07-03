@@ -1697,7 +1697,7 @@ SearchStartFail:
                   goto ReturnPair;
                }
 
-			      //
+               //
                // Directory: operation is recursive, but not for junctions and symlinks
                //
                if (pDTA->fd.dwFileAttributes & (ATTR_SYMBOLIC | ATTR_JUNCTION))
@@ -2522,10 +2522,10 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
                // GetShortPathName.
                //
 
-	       GetShortPathName(szDest, szShortDest, COUNTOF(szShortDest));
+               GetShortPathName(szDest, szShortDest, COUNTOF(szShortDest));
 
-	       GetShortPathName(szSource, szShortSource, COUNTOF(szShortSource));
-			   
+               GetShortPathName(szSource, szShortSource, COUNTOF(szShortSource));
+
                if (!lstrcmpi(szShortSource, szShortDest)) {
 
                   ret = DE_SAMEFILE;
