@@ -613,15 +613,14 @@
 
 // IDS_ from 1100 to 1199 reserved for suggestions!
 
-JAPANBEGIN
 #define IDS_KK_COPYFROMSTR              2000
 #define IDS_KK_COPYTOSTR                2001
 #define IDS_KK_RENAMEFROMSTR            2002
 #define IDS_KK_RENAMETOSTR              2003
-#define IDS_KK_COPY                     2004
+JAPANBEGIN
 #define IDS_WRNNOSHIFTJIS               2005
+JAPANEND
 #define IDS_KK_HARDLINKFROMSTR          2006
 #define IDS_KK_HARDLINKTOSTR            2007
 #define IDS_KK_SYMLINKFROMSTR           2008
 #define IDS_KK_SYMLINKTOSTR             2009
-JAPANEND

@@ -255,16 +255,14 @@ BEGIN
     IDS_SYMLINK,            "קישור סימלי"
     IDS_HARDLINK,           "קישור קשה"
 
-JAPANBEGIN
-    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
-    IDS_KK_COPYTOSTR,       "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
-    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
-    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
-    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
-    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
-  JAPANEND
+    IDS_KK_COPYFROMSTR,     "&מקור:"
+    IDS_KK_COPYTOSTR,       "&יעד:"
+    IDS_KK_RENAMEFROMSTR,   "&מקור:"
+    IDS_KK_RENAMETOSTR,     "&יעד:"
+    IDS_KK_HARDLINKFROMSTR, "&מקור:"
+    IDS_KK_HARDLINKTOSTR,   "&יעד:"
+    IDS_KK_SYMLINKFROMSTR,  "&מקור:"
+    IDS_KK_SYMLINKTOSTR,    "&יעד:"
 
 //    IDS_MAKESYSDISK,      "יצירת דיסק מערכת"             
 
@@ -331,10 +329,6 @@ JAPANBEGIN
     IDS_WRITEPROTECTFILE        "הקובץ הינו קובץ מערכת, מוחבא, או לקריאה בלבד."
 
     IDS_COPYINGTITLE            "מעתיק..."
-
-JAPANBEGIN
-    IDS_KK_COPY                 "コピー先:"
-JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "אתחול מהיר..."
 

@@ -255,16 +255,14 @@ BEGIN
     IDS_SYMLINK,            "Symlink"                       /* 32 */
     IDS_HARDLINK,           "Hardlink"                      /* 32 */
 
-JAPANBEGIN
-    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
-    IDS_KK_COPYTOSTR,       "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
-    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
-    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
-    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
-    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
-  JAPANEND
+    IDS_KK_COPYFROMSTR,     "&From:"
+    IDS_KK_COPYTOSTR,       "&To:"
+    IDS_KK_RENAMEFROMSTR,   "&From:"
+    IDS_KK_RENAMETOSTR,     "&To:"
+    IDS_KK_HARDLINKFROMSTR, "&From:"
+    IDS_KK_HARDLINKTOSTR,   "&To:"
+    IDS_KK_SYMLINKFROMSTR,  "&From:"
+    IDS_KK_SYMLINKTOSTR,    "&To:"
 
 //    IDS_MAKESYSDISK,      "Make System Disk"              /* 32 */
 
@@ -331,10 +329,6 @@ JAPANBEGIN
     IDS_WRITEPROTECTFILE        "This is a system, hidden, or read-only file."
 
     IDS_COPYINGTITLE            "Copying..."
-
-JAPANBEGIN
-    IDS_KK_COPY                 "コピー先:"
-JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "Quick Formatting..."
 

@@ -298,16 +298,14 @@ BEGIN
    IDS_REPLACING            "Dosya Yöneticisi %s öğesini oluşturamıyor veya değiştiremiyor: %s"
    // IDS_CREATING              "Dosya Yöneticisi %s öğesini oluşturamıyor: %s"
 
-JAPANBEGIN
-    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
-    IDS_KK_COPYTOSTR,       "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
-    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
-    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
-    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
-    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
-  JAPANEND
+    IDS_KK_COPYFROMSTR,     "Şu&radan:"
+    IDS_KK_COPYTOSTR,       "Ş&uraya:"
+    IDS_KK_RENAMEFROMSTR,   "Şu&radan:"
+    IDS_KK_RENAMETOSTR,     "Ş&uraya:"
+    IDS_KK_HARDLINKFROMSTR, "Şu&radan:"
+    IDS_KK_HARDLINKTOSTR,   "Ş&uraya:"
+    IDS_KK_SYMLINKFROMSTR,  "Şu&radan:"
+    IDS_KK_SYMLINKTOSTR,    "Ş&uraya:"
 
 // include reason strings
 #include "suggest_tr-TR.db"
@@ -315,10 +313,6 @@ JAPANBEGIN
     IDS_DESTFULL                "Hedef sürücüde yer yok.\n\nSürücüye yeni bir disk yerleştirin."
     IDS_WRITEPROTECTFILE        "Bu; gizli, saltokunur veya bir sistem dosyası."
     IDS_COPYINGTITLE            "Kopyalanıyor..."
-
-JAPANBEGIN
-    IDS_KK_COPY                 "コピー先:"
-JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "Hızlı biçimlendiriliyor..."
     IDS_BUSYFORMATQUITVERIFY    "Dosya Yöneticisi şu anda bir diski biçimlendiriyor. Dosya Yöneticisi'nden çıkmak bu işlemi iptal edecektir."

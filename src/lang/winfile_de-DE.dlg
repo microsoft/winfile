@@ -810,6 +810,7 @@ BEGIN
    CONTROL "...", IDC_EDITOR, "button", BS_PUSHBUTTON | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 195, 14, 20, 14
    CONTROL "Visuelles Design der Toolbar abschalten", IDC_VSTYLE, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 38, 150, 14
    CONTROL "Erstelle beim Starten einen &Goto-Index", IDC_GOTO, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 16, 50, 150, 14
+   CONTROL "Mirror application content", IDC_MIRROR, "button", BS_AUTOCHECKBOX | WS_CHILD /* | WS_VISIBLE | WS_TABSTOP */, 0, 0, 0, 0    // invisible, not a tabsop; here to satisfy VerifyResources tool.
    CONTROL "Sprache:", IDD_TEXT, "static", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_GROUP, 15, 70, 35, 14
    CONTROL "", IDC_LANGCB, "combobox", CBS_DROPDOWNLIST | WS_BORDER | WS_VSCROLL | WS_TABSTOP | WS_CHILD, 50, 68, 150, 14
    CONTROL "Einige Einstellungen werden nur durch erneutes Starten\ndes Programmes wirksam.",

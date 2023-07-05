@@ -254,6 +254,15 @@ BEGIN
     IDS_SYMLINK,            "符号链接"                       /* 32 */
     IDS_HARDLINK,           "硬链接"                      /* 32 */
 
+    IDS_KK_COPYFROMSTR,     "从(&F):"
+    IDS_KK_COPYTOSTR,       "到(&T):"
+    IDS_KK_RENAMEFROMSTR,   "从(&F):"
+    IDS_KK_RENAMETOSTR,     "到(&T):"
+    IDS_KK_HARDLINKFROMSTR, "从(&F):"
+    IDS_KK_HARDLINKTOSTR,   "到(&T):"
+    IDS_KK_SYMLINKFROMSTR,  "从(&F):"
+    IDS_KK_SYMLINKTOSTR,    "到(&T):"
+
     IDS_CREATINGMSG,        "创建:"                     /* 32 */
     IDS_REMOVINGDIRMSG,     "正在删除:"                     /* 32 */
     IDS_REMOVINGMSG,        "正在删除..."                   /* 32 */
@@ -489,6 +498,10 @@ JAPANEND
     IDS_NEWFILETYPETITLE        "新文件类型"
     IDS_COPYINGDISKTITLE        "正在复制磁盘"
     IDS_SEARCHING               "正在搜索..."
+
+JAPANBEGIN
+    IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
+JAPANEND
 
     IDS_INITUPDATEFAIL          "无法初始化后台更新支持。文件管理器将会退出。"
     IDS_INITUPDATEFAILTITLE     "文件管理器初始化"

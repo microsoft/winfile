@@ -253,16 +253,14 @@ BEGIN
     IDS_SYMLINK,            "Symlinken"                       /* 32 */
     IDS_HARDLINK,           "Hardlinken"                      /* 32 */
 
-JAPANBEGIN
-    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
-    IDS_KK_COPYTOSTR,       "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
-    IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
-    IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
-    IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
-    IDS_KK_SYMLINKTOSTR,    "シンボリックリンク先(&T):"
-  JAPANEND
+    IDS_KK_COPYFROMSTR,     "&Von:"
+    IDS_KK_COPYTOSTR,       "&Nach:"
+    IDS_KK_RENAMEFROMSTR,   "&Von:"
+    IDS_KK_RENAMETOSTR,     "&Nach:"
+    IDS_KK_HARDLINKFROMSTR, "&Von:"
+    IDS_KK_HARDLINKTOSTR,   "&Nach:"
+    IDS_KK_SYMLINKFROMSTR,  "&Von:"
+    IDS_KK_SYMLINKTOSTR,    "&Nach:"
 
 //    IDS_MAKESYSDISK,      "Erstelle Systemdatenträger"  /* 32 */
 
@@ -329,10 +327,6 @@ JAPANBEGIN
     IDS_WRITEPROTECTFILE        "Dies ist eine System-, eine versteckte oder eine schreibgeschützte Datei."
 
     IDS_COPYINGTITLE            "Kopiere..."
-
-JAPANBEGIN
-    IDS_KK_COPY                 "コピー先:"
-JAPANEND
 
     IDS_QUICKFORMATTINGTITLE    "Schnell-Formatierung..."
 

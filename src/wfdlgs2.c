@@ -461,14 +461,10 @@ JAPANEND
             LoadString(hAppInstance, IDS_COPY, szTitle, COUNTOF(szTitle));
             SetWindowText(hDlg, szTitle);
 
-            if (bJAPAN) {
-
-               //by yutakas 1992/10/29
-               LoadString(hAppInstance, IDS_KK_COPYFROMSTR, szStr, COUNTOF(szStr));
-               SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
-               LoadString(hAppInstance, IDS_KK_COPYTOSTR, szStr, COUNTOF(szStr));
-               SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
-            }
+            LoadString(hAppInstance, IDS_KK_COPYFROMSTR, szStr, COUNTOF(szStr));
+            SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
+            LoadString(hAppInstance, IDS_KK_COPYTOSTR, szStr, COUNTOF(szStr));
+            SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
 
             break;
          case IDM_HARDLINK:
@@ -478,13 +474,10 @@ JAPANEND
             LoadString(hAppInstance, IDS_HARDLINK, szTitle, COUNTOF(szTitle));
             SetWindowText(hDlg, szTitle);
 
-            if (bJAPAN) {
-
-               LoadString(hAppInstance, IDS_KK_HARDLINKFROMSTR, szStr, COUNTOF(szStr));
-               SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
-               LoadString(hAppInstance, IDS_KK_HARDLINKTOSTR, szStr, COUNTOF(szStr));
-               SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
-            }
+            LoadString(hAppInstance, IDS_KK_HARDLINKFROMSTR, szStr, COUNTOF(szStr));
+            SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
+            LoadString(hAppInstance, IDS_KK_HARDLINKTOSTR, szStr, COUNTOF(szStr));
+            SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
 
             break;
          case IDM_SYMLINK:
@@ -494,13 +487,10 @@ JAPANEND
             LoadString(hAppInstance, IDS_SYMLINK, szTitle, COUNTOF(szTitle));
             SetWindowText(hDlg, szTitle);
 
-            if (bJAPAN) {
-
-               LoadString(hAppInstance, IDS_KK_SYMLINKFROMSTR, szStr, COUNTOF(szStr));
-               SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
-               LoadString(hAppInstance, IDS_KK_SYMLINKTOSTR, szStr, COUNTOF(szStr));
-               SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
-            }
+            LoadString(hAppInstance, IDS_KK_SYMLINKFROMSTR, szStr, COUNTOF(szStr));
+            SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
+            LoadString(hAppInstance, IDS_KK_SYMLINKTOSTR, szStr, COUNTOF(szStr));
+            SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
 
             break;
          case IDM_RENAME:
@@ -508,13 +498,10 @@ JAPANEND
             LoadString(hAppInstance, IDS_RENAME, szTitle, COUNTOF(szTitle));
             SetWindowText(hDlg, szTitle);
 
-            if (bJAPAN) {
-               //by yutakas 1992/10/29
-               LoadString(hAppInstance, IDS_KK_RENAMEFROMSTR, szStr, COUNTOF(szStr));
-               SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
-               LoadString(hAppInstance, IDS_KK_RENAMETOSTR, szStr, COUNTOF(szStr));
-               SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
-            }
+            LoadString(hAppInstance, IDS_KK_RENAMEFROMSTR, szStr, COUNTOF(szStr));
+            SetDlgItemText(hDlg, IDD_KK_TEXTFROM, szStr);
+            LoadString(hAppInstance, IDS_KK_RENAMETOSTR, szStr, COUNTOF(szStr));
+            SetDlgItemText(hDlg, IDD_KK_TEXTTO, szStr);
 
             // when renaming the current directory we cd up a level
             // (not really) and apply the appropriate adjustments
