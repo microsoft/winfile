@@ -291,8 +291,8 @@ FONT 8, "MS Shell Dlg"
 BEGIN
     CONTROL         "当前目录: N", IDD_DIR, "Static", SS_SIMPLE | SS_NOPREFIX, 3, 6, 232, 10
 
-    CONTROL         "到(&T):", IDD_KK_TEXTTO, "Static", SS_LEFTNOWORDWRAP, 3, 33, 20, 10
-    EDITTEXT        IDD_TO, 37, 32, 188, 12, ES_AUTOHSCROLL
+    CONTROL         "移动到(&T):", IDD_KK_TEXTTO, "Static", SS_LEFTNOWORDWRAP, 3, 33, 50, 10
+    EDITTEXT        IDD_TO, 62, 32, 163, 12, ES_AUTOHSCROLL
 
     CONTROL         "", IDD_STATUS, "Static", SS_SIMPLE | SS_NOPREFIX, 3, 49, 40, 10
     CONTROL         "", IDD_NAME, "Static", SS_SIMPLE | SS_NOPREFIX,  45, 49, 190, 10
@@ -302,8 +302,8 @@ BEGIN
     PUSHBUTTON      "取消", IDCANCEL, 235, 23, 40, 14
     PUSHBUTTON      "帮助(&H)", IDD_HELP, 235, 40, 40, 14
 
-    CONTROL         "从(&F):", IDD_KK_TEXTFROM, "Static", SS_LEFTNOWORDWRAP, 3, 19, 20, 10
-    EDITTEXT        IDD_FROM, 37, 18, 188, 12, ES_AUTOHSCROLL
+    CONTROL         "从(&F):", IDD_KK_TEXTFROM, "Static", SS_LEFTNOWORDWRAP, 3, 19, 50, 10
+    EDITTEXT        IDD_FROM, 62, 18, 163, 12, ES_AUTOHSCROLL
 
     CONTROL         "", IDD_DIRS, "Static", SS_LEFTNOWORDWRAP, 3, 49, 230, 10
 END

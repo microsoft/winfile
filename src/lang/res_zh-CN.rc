@@ -255,13 +255,13 @@ BEGIN
     IDS_HARDLINK,           "硬链接"                      /* 32 */
 
     IDS_KK_COPYFROMSTR,     "从(&F):"
-    IDS_KK_COPYTOSTR,       "到(&T):"
-    IDS_KK_RENAMEFROMSTR,   "从(&F):"
-    IDS_KK_RENAMETOSTR,     "到(&T):"
+    IDS_KK_COPYTOSTR,       "复制到(&T):"
+    IDS_KK_RENAMEFROMSTR,   "原名(&F):"
+    IDS_KK_RENAMETOSTR,     "重命名为(&T):"
     IDS_KK_HARDLINKFROMSTR, "从(&F):"
-    IDS_KK_HARDLINKTOSTR,   "到(&T):"
+    IDS_KK_HARDLINKTOSTR,   "硬链接到(&T):"
     IDS_KK_SYMLINKFROMSTR,  "从(&F):"
-    IDS_KK_SYMLINKTOSTR,    "到(&T):"
+    IDS_KK_SYMLINKTOSTR,    "符号链接到(&T):"
 
     IDS_CREATINGMSG,        "创建:"                     /* 32 */
     IDS_REMOVINGDIRMSG,     "正在删除:"                     /* 32 */
