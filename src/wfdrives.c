@@ -67,64 +67,66 @@ NewTree(
       return;
 
    pszSearchDir = (LPWSTR)SendMessage(hwndSrc,
-	   FS_GETSELECTION,
-	   1 | 4 | 16,
-	   (LPARAM)&bDir);
+      FS_GETSELECTION,
+      1 | 4 | 16,
+      (LPARAM)&bDir);
 
    //
    // If no selection
    //
    if (!pszSearchDir || !pszSearchDir[0] || DRIVEID(pszSearchDir) != drive) {
 
-	   //
-	   // Update net con in case remote drive was swapped from console
-	   //
-	   if (IsRemoteDrive(drive)) {
-		   R_NetCon(drive);
-	   }
+      //
+      // Update net con in case remote drive was swapped from console
+      //
+      if (IsRemoteDrive(drive)) {
+         R_NetCon(drive);
+      }
 
-	   //
-	   // Update volume label here too if removable
-	   // This is broken since we may steal stale data from another window.
-	   // But this is what winball does and there's no simpler solution.
-	   //
-	   if (IsRemovableDrive(drive)) {
-		   R_VolInfo(drive);
-	   }
+      //
+      // Update volume label here too if removable
+      // This is broken since we may steal stale data from another window.
+      // But this is what winball does and there's no simpler solution.
+      //
+      if (IsRemovableDrive(drive)) {
+         R_VolInfo(drive);
+      }
 
-	   // TODO: if directory in right pane, get that instead of directory in left pane
+      // TODO: if directory in right pane, get that instead of directory in left pane
 
-	   GetSelectedDirectory(drive + 1, szDir);
-	   AddBackslash(szDir);
-	   SendMessage(hwndSrc,
-		   FS_GETFILESPEC,
-		   MAXPATHLEN,
-		   (LPARAM)(szDir + lstrlen(szDir)));
+      GetSelectedDirectory(drive + 1, szDir);
+      AddBackslash(szDir);
+      SendMessage(hwndSrc,
+         FS_GETFILESPEC,
+         MAXPATHLEN,
+         (LPARAM)(szDir + lstrlen(szDir)));
    }
    else {
 
-	   lstrcpy(szDir, pszSearchDir);
+      lstrcpy(szDir, pszSearchDir);
 
-	   if (!bDir) {
+      if (!bDir) {
 
-		   RemoveLast(szDir);
+         RemoveLast(szDir);
 
-		   //
-		   // pszInitialSel is a global used to pass initial state:
-		   // currently selected item in the dir part of the window
-		   //
-		   // Freed by caller
-		   //
-		   psz = pszSearchDir + lstrlen(szDir) + 1;
+         //
+         // pszInitialSel is a global used to pass initial state:
+         // currently selected item in the dir part of the window
+         //
+         // Freed by caller
+         //
+         psz = pszSearchDir + lstrlen(szDir) + 1;
 
-		   pszInitialDirSel = (LPWSTR)LocalAlloc(LMEM_FIXED,
+         pszInitialDirSel = (LPWSTR)LocalAlloc(LMEM_FIXED,
                ByteCountOf(lstrlen(psz) + 1));
-		   if (pszInitialDirSel)
-			   lstrcpy(pszInitialDirSel, psz);
-	   }
+         if (pszInitialDirSel)
+         {
+            lstrcpy(pszInitialDirSel, psz);
+         }
+      }
 
-	   AddBackslash(szDir);
-	   lstrcat(szDir, szStarDotStar);
+      AddBackslash(szDir);
+      lstrcat(szDir, szStarDotStar);
    }
 
    if (hwndSrc == hwndSearch) {
@@ -132,15 +134,16 @@ NewTree(
    }
    else {
 
-	   hwndTree = HasTreeWindow(hwndSrc);
-	   hwndDir = HasDirWindow(hwndSrc);
+      hwndTree = HasTreeWindow(hwndSrc);
+      hwndDir = HasDirWindow(hwndSrc);
 
-	   if (hwndTree && hwndDir)
-		   dxSplit = GetSplit(hwndSrc);
-	   else if (hwndDir)
-		   dxSplit = 0;
-	   else
-		   dxSplit = 10000;
+      if (hwndTree && hwndDir) {
+         dxSplit = GetSplit(hwndSrc);
+      } else if (hwndDir) {
+         dxSplit = 0;
+      } else {
+          dxSplit = 10000;
+      }
    }
 
    //
@@ -401,10 +404,11 @@ CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
          //
          WAITNET();
 
-		 if (lpfnWNetRestoreSingleConnectionW != NULL)
-		 	err = WNetRestoreSingleConnectionW(hwnd, szDrive, TRUE);
-		 else
-	        err = WNetRestoreConnectionW(hwnd, szDrive);
+         if (lpfnWNetRestoreSingleConnectionW != NULL) {
+            err = WNetRestoreSingleConnectionW(hwnd, szDrive, TRUE);
+         } else {
+            err = WNetRestoreConnectionW(hwnd, szDrive);
+         }
 
          if (err != WN_SUCCESS) {
 

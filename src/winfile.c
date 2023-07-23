@@ -168,7 +168,7 @@ ResizeControls(VOID)
 BOOL
 InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
 {
-   DWORD	 dwSort;
+   DWORD     dwSort;
    DWORD     dwView;
    UINT      uMenuFlags, uCompFlags;
    HWND      hwndTree, hwndDir;
@@ -206,11 +206,11 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
       //
       if ((hwndTree) && GetWindowLongPtr(hwndTree, GWL_READLEVEL))
       {
-          uMenuFlags = MF_BYCOMMAND | MF_GRAYED;
+         uMenuFlags = MF_BYCOMMAND | MF_GRAYED;
       }
       else
       {
-          uMenuFlags = MF_BYCOMMAND;
+         uMenuFlags = MF_BYCOMMAND;
       }
       EnableMenuItem(hMenu, IDM_MOVE, uMenuFlags);
       EnableMenuItem(hMenu, IDM_COPY, uMenuFlags);
@@ -218,29 +218,31 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
       EnableMenuItem(hMenu, IDM_RENAME, uMenuFlags);
       EnableMenuItem(hMenu, IDM_MAKEDIR, uMenuFlags);
 
-	  if (OleGetClipboard(&pDataObj) == S_OK)
-	  {
-	      UINT uPaste = uMenuFlags;
-	  	  FORMATETC fmtetcDrop = { CF_HDROP, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
-	  	  FORMATETC fmtetcLFN = { 0, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
-	      unsigned short cp_format_descriptor = RegisterClipboardFormat(CFSTR_FILEDESCRIPTOR);
-		  unsigned short cp_format_contents = RegisterClipboardFormat(CFSTR_FILECONTENTS);
+      if (OleGetClipboard(&pDataObj) == S_OK)
+      {
+         UINT uPaste = uMenuFlags;
+         FORMATETC fmtetcDrop = { CF_HDROP, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
+         FORMATETC fmtetcLFN = { 0, 0, DVASPECT_CONTENT, -1, TYMED_HGLOBAL };
+         unsigned short cp_format_descriptor = RegisterClipboardFormat(CFSTR_FILEDESCRIPTOR);
+         unsigned short cp_format_contents = RegisterClipboardFormat(CFSTR_FILECONTENTS);
 
-		  //Set up format structure for the descriptor and contents
-		  FORMATETC descriptor_format = {cp_format_descriptor, NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
-		  FORMATETC contents_format = {cp_format_contents, NULL, DVASPECT_CONTENT, -1, TYMED_ISTREAM};
+         //Set up format structure for the descriptor and contents
+         FORMATETC descriptor_format = {cp_format_descriptor, NULL, DVASPECT_CONTENT, -1, TYMED_HGLOBAL};
+         FORMATETC contents_format = {cp_format_contents, NULL, DVASPECT_CONTENT, -1, TYMED_ISTREAM};
 
-  	  	  fmtetcLFN.cfFormat = RegisterClipboardFormat(TEXT("LongFileNameW"));
+         fmtetcLFN.cfFormat = RegisterClipboardFormat(TEXT("LongFileNameW"));
 
-		  if (pDataObj->lpVtbl->QueryGetData(pDataObj, &fmtetcDrop) != S_OK &&
-		  	  pDataObj->lpVtbl->QueryGetData(pDataObj, &fmtetcLFN) != S_OK && 
-			  (pDataObj->lpVtbl->QueryGetData(pDataObj, &descriptor_format) != S_OK ||
-			   pDataObj->lpVtbl->QueryGetData(pDataObj, &contents_format) != S_OK))
-		  	 uPaste |= MF_GRAYED;
-		  	 
-		  EnableMenuItem(hMenu, IDM_PASTE, uPaste);
+         if (pDataObj->lpVtbl->QueryGetData(pDataObj, &fmtetcDrop) != S_OK &&
+             pDataObj->lpVtbl->QueryGetData(pDataObj, &fmtetcLFN) != S_OK && 
+             (pDataObj->lpVtbl->QueryGetData(pDataObj, &descriptor_format) != S_OK ||
+              pDataObj->lpVtbl->QueryGetData(pDataObj, &contents_format) != S_OK))
+         {
+            uPaste |= MF_GRAYED;
+         }
 
-		  pDataObj->lpVtbl->Release(pDataObj);
+          EnableMenuItem(hMenu, IDM_PASTE, uPaste);
+
+          pDataObj->lpVtbl->Release(pDataObj);
       }
 
       if (!hwndDir)
@@ -439,7 +441,7 @@ InitPopupMenus(UINT uMenus, HMENU hMenu, HWND hwndActive)
       CheckMenuItem(hMenu, IDM_BYSIZE, (dwSort == IDD_SIZE) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
       CheckMenuItem(hMenu, IDM_BYDATE, (dwSort == IDD_DATE) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
       CheckMenuItem(hMenu, IDM_BYFDATE,(dwSort == IDD_FDATE) ? MF_CHECKED | MF_BYCOMMAND : MF_UNCHECKED | MF_BYCOMMAND);
-      
+
       if (hwndActive == hwndSearch || hwndDir)
          uMenuFlags = MF_BYCOMMAND | MF_ENABLED;
       else
@@ -767,35 +769,35 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
             WS_CHILD|WS_BORDER|WS_CLIPSIBLINGS,
             szNULL, hwndFrame, IDC_STATUS);
 
-		 if (hwndStatus) {
-			 HDC hDC;
-			 INT nParts[3];
-			 INT nInch;
+         if (hwndStatus) {
+            HDC hDC;
+            INT nParts[3];
+            INT nInch;
 
-			 hDC = GetDC(NULL);
-			 nInch = GetDeviceCaps(hDC, LOGPIXELSX);
-			 ReleaseDC(NULL, hDC);
+            hDC = GetDC(NULL);
+            nInch = GetDeviceCaps(hDC, LOGPIXELSX);
+            ReleaseDC(NULL, hDC);
 
-			 // use the smaller font for Status bar so that messages fix in it.
-			 if (bJAPAN)
-			 {
-				 nParts[0] = nInch * 8 / 4 + (nInch * 7 / 8);
-				 nParts[1] = nParts[0] + nInch * 11 / 4 + nInch * 7 / 8;
-				 nParts[2] = -1;
+            // use the smaller font for Status bar so that messages fix in it.
+            if (bJAPAN)
+            {
+               nParts[0] = nInch * 8 / 4 + (nInch * 7 / 8);
+               nParts[1] = nParts[0] + nInch * 11 / 4 + nInch * 7 / 8;
+               nParts[2] = -1;
 
-				 SendMessage(hwndStatus, SB_SETPARTS, 3, (LPARAM)(LPINT)nParts);
+               SendMessage(hwndStatus, SB_SETPARTS, 3, (LPARAM)(LPINT)nParts);
 
-				 SendMessage(hwndStatus, WM_SETFONT, (WPARAM)hFontStatus, 0L);
-			 }
-			 else
-			 {
-				 nParts[0] = nInch * 9 / 4 + (nInch * 7 / 8);
-				 nParts[1] = nParts[0] + nInch * 5 / 2 + nInch * 7 / 8;
-				 nParts[2] = -1;
+               SendMessage(hwndStatus, WM_SETFONT, (WPARAM)hFontStatus, 0L);
+            }
+            else
+            {
+               nParts[0] = nInch * 9 / 4 + (nInch * 7 / 8);
+               nParts[1] = nParts[0] + nInch * 5 / 2 + nInch * 7 / 8;
+               nParts[2] = -1;
 
-				 SendMessage(hwndStatus, SB_SETPARTS, 3, (LPARAM)(LPINT)nParts);
-			 }
-		 }
+               SendMessage(hwndStatus, SB_SETPARTS, 3, (LPARAM)(LPINT)nParts);
+            }
+         }
          break;
       }
 
@@ -934,8 +936,8 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
       break;
 
    case WM_SETFOCUS:
-	   UpdateMoveStatus(ReadMoveStatus());
-	   goto DoDefault;
+      UpdateMoveStatus(ReadMoveStatus());
+      goto DoDefault;
 
    case WM_MENUSELECT:
       {

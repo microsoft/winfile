@@ -251,14 +251,14 @@ MemoryError:
          break;
       }
 
-	  // default ftSince is 0 and so normally this will be true
-	  bFound = CompareFileTime(&SearchInfo.ftSince, &lfndta.fd.ftLastWriteTime) < 0;
+      // default ftSince is 0 and so normally this will be true
+      bFound = CompareFileTime(&SearchInfo.ftSince, &lfndta.fd.ftLastWriteTime) < 0;
 
-	  // if we otherwise match, but shouldn't include directories in the output, skip
-	  if (bFound && !bIncludeSubdirs && (lfndta.fd.dwFileAttributes & ATTR_DIR) != 0)
-	  {
-		  bFound = FALSE;
-	  }
+      // if we otherwise match, but shouldn't include directories in the output, skip
+      if (bFound && !bIncludeSubdirs && (lfndta.fd.dwFileAttributes & ATTR_DIR) != 0)
+      {
+         bFound = FALSE;
+      }
 
       //
       // Make sure this matches date (if specified) and is not a "." or ".." directory 
@@ -326,7 +326,7 @@ MemoryError:
             iBitmap = BM_IND_FIL;
 
          lpxdta->byBitmap = iBitmap;
-		 lpxdta->pDocB = NULL;
+         lpxdta->pDocB = NULL;
 
          SendMessage(hwndFrame,
                      FS_SEARCHLINEINSERT,
@@ -388,7 +388,7 @@ SearchCleanup:
                               pszNewPath,
                               szFileSpec,
                               bRecurse,
-							  bIncludeSubdirs,
+                              bIncludeSubdirs,
                               plpStart,
                               iFileCount,
                               FALSE);
@@ -497,32 +497,34 @@ FillSearchLB(HWND hwndLB, LPWSTR szSearchFileSpec, BOOL bRecurse, BOOL bIncludeS
    // This loop runs for each subspec in the search string
    //
    while (*lpszCurrentFileSpecEnd) {
-	  lpszCurrentFileSpecStart = lpszCurrentFileSpecEnd;
+      lpszCurrentFileSpecStart = lpszCurrentFileSpecEnd;
 
-	  // Find the next separator or the end of the string
-	  while ((*lpszCurrentFileSpecEnd) && (*lpszCurrentFileSpecEnd) != ';')
-		 lpszCurrentFileSpecEnd++;
+      // Find the next separator or the end of the string
+      while ((*lpszCurrentFileSpecEnd) && (*lpszCurrentFileSpecEnd) != ';')
+      {
+         lpszCurrentFileSpecEnd++;
+      }
 
-	  // If a separator is reached, add the string terminator and move the
-	  // end after the terminator for the next cycle
-	  if (*lpszCurrentFileSpecEnd == ';') {
-		  *lpszCurrentFileSpecEnd = TEXT('\0');
-		  lpszCurrentFileSpecEnd++;
-	  }
+      // If a separator is reached, add the string terminator and move the
+      // end after the terminator for the next cycle
+      if (*lpszCurrentFileSpecEnd == ';') {
+         *lpszCurrentFileSpecEnd = TEXT('\0');
+         lpszCurrentFileSpecEnd++;
+      }
 
       // copy the wild card to a temporary buffer sine FixUpFileSpec modifies the buffer
       wcsncpy_s(szWildCard, COUNTOF(szWildCard), lpszCurrentFileSpecStart, _TRUNCATE);
 
-	  FixUpFileSpec(szWildCard);
+      FixUpFileSpec(szWildCard);
 
-	  iRet = SearchList(hwndLB,
-		  szPathName,
-		  szWildCard,
-		  bRecurse,
-		  bIncludeSubdirs,
-		  &lpStart,
-		  iFileCount,
-		  TRUE);
+      iRet = SearchList(hwndLB,
+          szPathName,
+          szWildCard,
+          bRecurse,
+          bIncludeSubdirs,
+          &lpStart,
+          iFileCount,
+          TRUE);
 
       iFileCount = iRet;
    }
@@ -619,11 +621,12 @@ SearchWndProc(
 #define lpItem1 ((LPXDTA)(lpcis->itemData1))
 #define lpItem2 ((LPXDTA)(lpcis->itemData2))
 
-	   // simple name sort if no date; otherwise sort by date (newest on top)
-	   if (SearchInfo.ftSince.dwHighDateTime == 0 && SearchInfo.ftSince.dwLowDateTime == 0)
-		   return lstrcmpi(MemGetFileName(lpItem1), MemGetFileName(lpItem2));
-	   else
-		   return CompareFileTime(&lpItem2->ftLastWriteTime, &lpItem1->ftLastWriteTime);
+      // simple name sort if no date; otherwise sort by date (newest on top)
+      if (SearchInfo.ftSince.dwHighDateTime == 0 && SearchInfo.ftSince.dwLowDateTime == 0) {
+         return lstrcmpi(MemGetFileName(lpItem1), MemGetFileName(lpItem2));
+      } else {
+         return CompareFileTime(&lpItem2->ftLastWriteTime, &lpItem1->ftLastWriteTime);
+      }
 
 #undef lpcis
 #undef lpItem1
@@ -789,18 +792,18 @@ SearchWndProc(
          if (wParam == CD_SEARCHUPDATE) {
             LoadString(hAppInstance, IDS_SEARCHTITLE, szTitle, COUNTOF(szTitle));
             LoadString(hAppInstance, IDS_SEARCHREFRESH, szMessage, COUNTOF(szMessage));
-			int msg = MessageBox(hwnd, szMessage, szTitle, MB_ABORTRETRYIGNORE | MB_ICONQUESTION);
+            int msg = MessageBox(hwnd, szMessage, szTitle, MB_ABORTRETRYIGNORE | MB_ICONQUESTION);
 
-			if (msg == IDABORT)
-			{
-				HWND hwndNext = GetWindow(hwndSearch, GW_HWNDNEXT);
-				SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndNext, 0);
-				SendMessage(hwndSearch, WM_CLOSE, 0, 0L);
-			}
-			if (msg != IDRETRY)
-			{
-				break;
-			}
+            if (msg == IDABORT)
+            {
+               HWND hwndNext = GetWindow(hwndSearch, GW_HWNDNEXT);
+               SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM)hwndNext, 0);
+               SendMessage(hwndSearch, WM_CLOSE, 0, 0L);
+            }
+            if (msg != IDRETRY)
+            {
+               break;
+            }
          }
 
          //
@@ -956,8 +959,8 @@ SearchWndProc(
       break;
 
    case WM_CONTEXTMENU:
-	   ActivateCommonContextMenu(hwnd, hwndLB, lParam);
-	   break;
+      ActivateCommonContextMenu(hwnd, hwndLB, lParam);
+      break;
 
    case WM_DRAGSELECT:
 
@@ -1177,20 +1180,21 @@ SearchProgDlgProc(HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
       StripPath(szTemp);
       SetDlgItemText(hDlg, IDD_NAME, szTemp);
 
-	  if (SearchInfo.ftSince.dwHighDateTime == 0 && SearchInfo.ftSince.dwLowDateTime == 0) {
-		  SetDlgItemText(hDlg, IDD_DATE, TEXT("n/a"));
-	  }
-	  else {
-		  SYSTEMTIME st;
-		  FILETIME ftLocal;
-		  FileTimeToLocalFileTime(&SearchInfo.ftSince, &ftLocal);
-		  FileTimeToSystemTime(&ftLocal, &st);
-		  if (st.wHour == 0 && st.wMinute == 0)
-			  wsprintf(szTemp, TEXT("%4d-%2d-%2d"), st.wYear, st.wMonth, st.wDay);
-		  else
-			  wsprintf(szTemp, TEXT("%4d-%2d-%2d %02d:%02d"), st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute);
-		  SetDlgItemText(hDlg, IDD_DATE, szTemp);
-	  }
+      if (SearchInfo.ftSince.dwHighDateTime == 0 && SearchInfo.ftSince.dwLowDateTime == 0) {
+         SetDlgItemText(hDlg, IDD_DATE, TEXT("n/a"));
+      }
+      else {
+         SYSTEMTIME st;
+         FILETIME ftLocal;
+         FileTimeToLocalFileTime(&SearchInfo.ftSince, &ftLocal);
+         FileTimeToSystemTime(&ftLocal, &st);
+         if (st.wHour == 0 && st.wMinute == 0) {
+            wsprintf(szTemp, TEXT("%4d-%2d-%2d"), st.wYear, st.wMonth, st.wDay);
+         } else {
+            wsprintf(szTemp, TEXT("%4d-%2d-%2d %02d:%02d"), st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute);
+         }
+         SetDlgItemText(hDlg, IDD_DATE, szTemp);
+      }
 
       lstrcpy(szTemp,SearchInfo.szSearch);
       StripFilespec(szTemp);
@@ -1351,11 +1355,11 @@ CloseWindow:
 
       SendMessage(hwndMDIClient, WM_MDIACTIVATE, (WPARAM) hwndSearch, 0L);
 
-	  // for some reason when the results list is short and the window already maximized,
-	  // the focus doesn't get set on the results window (specifically the LB); do so no.
-	  PostMessage(hwndSearch, WM_SETFOCUS, 0, 0L);
-	  
-	  UpdateSearchStatus(SearchInfo.hwndLB,
+      // for some reason when the results list is short and the window already maximized,
+      // the focus doesn't get set on the results window (specifically the LB); do so no.
+      PostMessage(hwndSearch, WM_SETFOCUS, 0, 0L);
+ 
+      UpdateSearchStatus(SearchInfo.hwndLB,
          (INT)SendMessage(SearchInfo.hwndLB, LB_GETCOUNT, 0, 0L));
    }
 }
@@ -1375,7 +1379,7 @@ SearchDrive(LPVOID lpParameter)
    SearchInfo.iRet = FillSearchLB(SearchInfo.hwndLB,
                                   SearchInfo.szSearch,
                                   !SearchInfo.bDontSearchSubs,
-								  SearchInfo.bIncludeSubDirs);
+                                  SearchInfo.bIncludeSubDirs);
 
    if (SearchInfo.hThread) {
       CloseHandle(SearchInfo.hThread);
