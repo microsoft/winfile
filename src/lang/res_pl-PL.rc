@@ -248,6 +248,7 @@ BEGIN
     IDS_PRINTONLYONE        "Menedżer plików nie może drukować wielu plików.\n\nWybierz tylko jeden plik i spróbuj ponownie."                                               /* 128 */
 
     IDS_CURDIRIS,           "Bieżący katalog: %s"                                                                                                    /* 128 */
+    IDS_CURDIRSARE,         "Other: "
     IDS_COPY,               "Kopiuj"                          /* 32 */
     IDS_RENAME,             "Zmień nazwę"                     /* 32 */
     IDS_FORMAT,             "Formatuj dysk"                   /* 32 */

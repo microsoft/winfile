@@ -248,6 +248,7 @@ BEGIN
     IDS_PRINTONLYONE        "מנהל הקבצים אינו יכול להדפיס קבצים מרובים.\n\nבחר קובץ אחד בלבד ונסה שוב."                             /* 128 */
 
     IDS_CURDIRIS,           "תיקיה נוכחית: %s"                                                                                       /* 128 */
+    IDS_CURDIRSARE,         "Other: "
     IDS_COPY,               "העתקה"                                                                                                  /* 32 */
     IDS_RENAME,             "שינוי שם"                                                                                               /* 32 */
     IDS_FORMAT,             "אתחול דיסק/תקליטון"                                                                                     /* 32 */
