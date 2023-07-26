@@ -9,7 +9,7 @@
 
 LANGUAGE LANG_POLISH, SUBLANG_POLISH_POLAND
 
-FRAMEMENU MENU PRELOAD
+FRAMEMENU MENU
 BEGIN
     POPUP       "&Plik"
     BEGIN
@@ -127,7 +127,7 @@ BEGIN
 
 END
 
-CTXMENU MENU PRELOAD 
+CTXMENU MENU
 BEGIN
     POPUP "Menu prawego przycisku"
     BEGIN
@@ -156,7 +156,7 @@ END
 
 #define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 /*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
-STRINGTABLE DISCARDABLE PRELOAD
+STRINGTABLE
 BEGIN
 //    IDS_ENDSESSION          "Zamknij system"                  /* 32 */
 //    IDS_ENDSESSIONMSG       "Kończy sesję systemu Windows."                                                                                      /* 128 */
@@ -515,7 +515,7 @@ JAPANEND
     IDS_COMPRESS_ATTRIB_ERR     "Menedżer plików nie może zmienić atrybutów kompresji dla %s."
     IDS_NTLDRCOMPRESSERR        "Plik %s nie zostanie skompresowany. Kompresja tego pliku może spowodować, że rozruch systemu nie będzie możliwy."
     IDS_MULTICOMPRESSERR        "Menedżer plików dokonuje obecnie kompresji/dekompresji plików.\nMusisz poczekać na zakończenie procesu przed próbą kompresji/dekompresji dalszych plików."
-      
+
     IDS_EDITFILTER              "Programy (*.exe)\0*.exe\0"
 
 END
@@ -523,7 +523,7 @@ END
 
 /* Help strings for the popup menus.
  */
-STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     MH_POPUP+IDM_FILE,          "Polecenia do pracy z plikami"
     MH_POPUP+IDM_DISK,          "Polecenia do pracy z dyskami"
@@ -538,7 +538,7 @@ END
 
 // Help strings for the "standard" toolbar items.
 
-STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     MH_MYITEMS+IDM_OPEN,             "Otwiera zaznaczony element"
     MH_MYITEMS+IDM_EDIT,             "Otwiera zaznaczony element w celu edycji"
@@ -627,7 +627,7 @@ END
 
 // Strings for menu items that may be added at init time.
 
-STRINGTABLE MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     IDS_CONNECT,                "&Podłącz dysk sieciowy..."
     IDS_DISCONNECT,             "O&dłącz dysk sieciowy..."

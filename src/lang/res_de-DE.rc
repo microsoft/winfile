@@ -9,7 +9,7 @@
 
 LANGUAGE LANG_GERMAN, SUBLANG_GERMAN
 
-FRAMEMENU MENU PRELOAD
+FRAMEMENU MENU
 BEGIN
     POPUP       "&Datei"
     BEGIN
@@ -126,7 +126,7 @@ BEGIN
     END
 END
 
-CTXMENU MENU PRELOAD 
+CTXMENU MENU
 BEGIN
   POPUP "Dummy Popup"
   BEGIN
@@ -154,7 +154,7 @@ END
 
 #define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 /*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
-STRINGTABLE DISCARDABLE PRELOAD
+STRINGTABLE
 BEGIN
 //    IDS_ENDSESSION          "Exit Windows"                                                          /* 32 */
 //    IDS_ENDSESSIONMSG       "This will end your Windows session."                                   /* 128 */
@@ -521,7 +521,7 @@ END
 
 /* Help strings for the popup menus.
  */
-STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     MH_POPUP+IDM_FILE,          "Befehle zum Arbeiten mit Dateien"
     MH_POPUP+IDM_DISK,          "Befehle zum Arbeiten mit Datenträgern"
@@ -536,7 +536,7 @@ END
 
 // Help strings for the "standard" toolbar items.
 
-STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     MH_MYITEMS+IDM_OPEN,            "Ausgewähltes Objekt öffnen"
     MH_MYITEMS+IDM_EDIT,            "Bearbeiten des ausgewählten Elements mit Notepad.exe"
@@ -625,7 +625,7 @@ END
 
 // Strings for menu items that may be added at init time.
 
-STRINGTABLE MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     IDS_CONNECT,                "Netzlaufwerk &verbinden...\tStrg+N"
     IDS_DISCONNECT,             "Netzlaufwerk &trennen...\tStrg+D"

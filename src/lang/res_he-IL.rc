@@ -9,7 +9,7 @@
 
 LANGUAGE LANG_HEBREW, SUBLANG_HEBREW_ISRAEL
 
-FRAMEMENU MENU PRELOAD
+FRAMEMENU MENU
 BEGIN
     POPUP       "&קובץ"
     BEGIN
@@ -127,7 +127,7 @@ BEGIN
 
 END
 
-CTXMENU MENU PRELOAD 
+CTXMENU MENU
 BEGIN
     POPUP "Dummy Popup"
     BEGIN
@@ -156,10 +156,10 @@ END
 
 #define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 /*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
-STRINGTABLE DISCARDABLE PRELOAD
+STRINGTABLE
 BEGIN
-//    IDS_ENDSESSION          "יציאת מחלונות"                  
-//    IDS_ENDSESSIONMSG       "פעולה זאת תסגור את פעילות החלונות שלך."          
+//    IDS_ENDSESSION          "יציאת מחלונות"
+//    IDS_ENDSESSIONMSG       "פעולה זאת תסגור את פעילות החלונות שלך."
 
     IDS_COPYDISK            "העתקת תוכן של דיסק/תקליטון"                     /* 32 */
     IDS_INSERTDEST          "הכנס דיסק יעד."                                                                                                 /* 128 */
@@ -176,8 +176,8 @@ BEGIN
     IDS_COPYSYSFILES        "מעתיק קבצי מערכת..."          /* 32 */
     IDS_FORMATERR           "שגיאת אתחול דיסק"             /* 32 */
     IDS_FORMATQUICKFAILURE  "מנהל הקבצים לא יכול לבצע אתחול מהיר.\n\nלהמשיך עם אתחול רגיל?"
-//    IDS_FORMATERRMSG        "לא ניתן לאתחל דיסק."        
-//    IDS_FORMATCURERR      "לא ניתן לאתחל את הכונן הנוכחי."                                                                                     
+//    IDS_FORMATERRMSG        "לא ניתן לאתחל דיסק."
+//    IDS_FORMATCURERR      "לא ניתן לאתחל את הכונן הנוכחי."
     IDS_FORMATCOMPLETE      "אתחול הושלם"               /* 32 */
     IDS_FORMATANOTHER       "שטח דיסק כולל:%ld בתים\n%ld בתים זמינים בדיסק\n\nהאם ברצונך לאתחל דיסק נוסף?"                           /* 128 */
 
@@ -241,7 +241,7 @@ BEGIN
     IDS_OOMTITLE,           "מנהל הקבצים - נגמר זיכרון"  /* 32 */
     IDS_OOMREADINGDIRMSG,   "לא היה ניתן לקרוא את התיקיה בשלמותה.  רק רישום חלקי יוצג."                                              /* 128 */
 
-//    IDS_PRINTFNF            "לא ניתן למצוא את הקובץ להדפסה. נא לוודא שהנתיב ושם קובץ נכונים."       
+//    IDS_PRINTFNF            "לא ניתן למצוא את הקובץ להדפסה. נא לוודא שהנתיב ושם קובץ נכונים."
     IDS_PRINTMEMORY         "אין מספיק זיכרון כדי להדפיס.\n\nסגור מתכנית אחת או יותר, ונסה שוב."                                      /* 128 */
     IDS_PRINTDISK           "אין מספיק שטח דיסק כדי להדפיס.\n\nמחק קובץ אחד או יותר כדי להגדיל שטח דיסק פנוי ונסה שוב."             /* 128 */
     IDS_PRINTERROR          "התרחשה שגיאה בזמן ההדפסה.\n\nנא לוודא שהמדפסת מוגדרת כפי שצריך ושבחרת אותה."                            /* 128 */
@@ -264,7 +264,7 @@ BEGIN
     IDS_KK_SYMLINKFROMSTR,  "&מקור:"
     IDS_KK_SYMLINKTOSTR,    "&יעד:"
 
-//    IDS_MAKESYSDISK,      "יצירת דיסק מערכת"             
+//    IDS_MAKESYSDISK,      "יצירת דיסק מערכת"
 
     IDS_CREATINGMSG,        "יוצר:"                     /* 32 */
     IDS_REMOVINGDIRMSG,     "מסיר:"                     /* 32 */
@@ -523,7 +523,7 @@ END
 
 /* Help strings for the popup menus.
  */
-STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     MH_POPUP+IDM_FILE,          "פקודות לעבודה עם קבצים"
     MH_POPUP+IDM_DISK,          "פקודות לעבודה עם דיסקים"
@@ -538,7 +538,7 @@ END
 
 // Help strings for the "standard" toolbar items.
 
-STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     MH_MYITEMS+IDM_OPEN,        "פתיחת פריט נבחר"
     MH_MYITEMS+IDM_EDIT,        "עריכת פריט נבחר עם פנקס הרשימות"
@@ -627,7 +627,7 @@ END
 
 // Strings for menu items that may be added at init time.
 
-STRINGTABLE MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     IDS_CONNECT,                "חיבור כונן &רשת...\tCtrl+N"
     IDS_DISCONNECT,             "&ניתוק כונן רשת...\tCtrl+D"
