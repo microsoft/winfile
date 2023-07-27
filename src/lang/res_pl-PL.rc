@@ -36,10 +36,13 @@ BEGIN
     MENUITEM    "U&twórz katalog...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "Szuk&aj...\tCtrl+F",             IDM_SEARCH
     MENUITEM    "&Zaznacz pliki...",              IDM_SELECT
-    MENUITEM    "Uruchom powłokę Bash...\tCtrl+B",      IDM_STARTBASHSHELL
-    MENUITEM    "U&ruchom Wiersz polecenia...\tCtrl+K", IDM_STARTCMDSHELL
-    MENUITEM    "Uruchom Po&werShell...\tCtrl+P",       IDM_STARTPOWERSHELL
-    MENUITEM    "Uruchom E&xplorer...\tCtrl+E", IDM_STARTEXPLORER
+    POPUP       "Uruchom (&.)"
+    BEGIN
+    MENUITEM    "Uruchom powłokę &Bash...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "Uruchom Wiersz pole&cenia...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "Uruchom &PowerShell...\tCtrl+P", IDM_STARTPOWERSHELL
+    MENUITEM    "Uruchom &Explorer...\tCtrl+E",   IDM_STARTEXPLORER
+    END
     MENUITEM    "Skocz do kata&logu...\tCtrl+G",  IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "Za&kończ",                       IDM_EXIT
