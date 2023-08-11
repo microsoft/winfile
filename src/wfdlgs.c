@@ -14,6 +14,7 @@
 #include <dlgs.h>
 #include "lfn.h"
 #include "wfcopy.h"
+#include "explorermenu.h"
 
 VOID  MDIClientSizeChange(HWND hwndActive, INT iFlags);
 
@@ -848,6 +849,7 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 {
 	DWORD cmd, item;
 	POINT pt;
+	WCHAR *pSelectedFile = NULL;
 
 	HMENU hMenu = GetSubMenu(LoadMenu(hAppInstance, TEXT("CTXMENU")), 0);
 
@@ -889,14 +891,20 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
 				SendMessage(hwndLB, LB_SETSEL, (WPARAM)TRUE, (LPARAM)item);
 
                 BOOL bDir = FALSE;
-                SendMessage(hwnd, FS_GETSELECTION, 5, (LPARAM)&bDir);
+                pSelectedFile = (WCHAR *)SendMessage(hwnd, FS_GETSELECTION, 5, (LPARAM)&bDir);
                 if (bDir)
                     EnableMenuItem(hMenu, IDM_EDIT, MF_BYCOMMAND | MF_DISABLED | MF_GRAYED);
             }
 		}
 	}
 
-	cmd = TrackPopupMenu(hMenu, TPM_LEFTALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 0, hwnd, NULL);
+	if (pSelectedFile != NULL) {
+		cmd = ShowExplorerContextMenu(hwnd, pSelectedFile, hMenu, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam));
+	}
+	else
+	{
+		cmd = TrackPopupMenu(hMenu, TPM_LEFTALIGN | TPM_LEFTBUTTON | TPM_RETURNCMD, GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam), 0, hwnd, NULL);
+	}
 	if (cmd != 0)
 		PostMessage(hwndFrame, WM_COMMAND, GET_WM_COMMAND_MPS(cmd, 0, 0));
 

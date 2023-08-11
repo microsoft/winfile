@@ -312,6 +312,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="dbg.h" />
+    <ClInclude Include="explorermenu.h" />
     <ClInclude Include="fmifs.h" />
     <ClInclude Include="lfn.h" />
     <ClInclude Include="BagOValues.h" />
@@ -383,6 +384,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbg.c" />
+    <ClCompile Include="explorermenu.c" />
     <ClCompile Include="lfn.c" />
     <ClCompile Include="lfnmisc.c" />
     <ClCompile Include="numfmt.c" />
