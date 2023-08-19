@@ -249,6 +249,7 @@ BEGIN
     IDS_PRINTONLYONE        "Datei-Manager kann nicht mehrere Dateien drucken.\n\nWählen Sie eine Datei aus und versuchen Sie es erneut."                                               /* 128 */
 
     IDS_CURDIRIS,           "Aktuelles Verzeichnis: %s"                                                                                                    /* 128 */
+    IDS_CURDIRSARE,         "Other: "
     IDS_COPY,               "Kopieren"                          /* 32 */
     IDS_RENAME,             "Umbenennen"                        /* 32 */
     IDS_FORMAT,             "Datenträger formatieren"                   /* 32 */

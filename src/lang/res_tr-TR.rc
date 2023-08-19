@@ -250,6 +250,7 @@ BEGIN
    IDS_PRINTONLYONE         "Birden fazla dosya yazdırılamıyor.\n\nTek bir dosya seçip yeniden deneyin."
 
    IDS_CURDIRIS,            "Geçerli Dizin: %s"
+   IDS_CURDIRSARE,          "Other: "
    IDS_COPY,                "Kopyala"
    IDS_RENAME,              "Ad Değiştir"
    IDS_FORMAT,              "Disk Biçimlendir"

@@ -544,7 +544,7 @@ JAPANEND
 
             driveCur = (int)GetWindowLongPtr(hwndActive, GWL_TYPE);
 
-            lstrcpy(szDirs, TEXT("Other: "));
+            LoadString(hAppInstance, IDS_CURDIRSARE, szDirs, COUNTOF(szDirs));
 
             GetAllDirectories(rgszDirs);
 

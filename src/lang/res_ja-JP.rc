@@ -250,6 +250,7 @@ BEGIN
     IDS_PRINTONLYONE        "ファイル マネージャーは同時に複数のファイルを印刷する事はできません。\n\nファイルを1つだけ選択しもう一度試して下さい。"                                               /* 128 */
 
     IDS_CURDIRIS,           "現在のディレクトリ: %s"                                                                                                    /* 128 */
+    IDS_CURDIRSARE,         "Other: "
     IDS_COPY,               "コピー"                          /* 32 */
     IDS_RENAME,             "名前を変更"                        /* 32 */
     IDS_FORMAT,             "ディスクのフォーマット"                   /* 32 */

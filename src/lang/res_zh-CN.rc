@@ -250,6 +250,7 @@ BEGIN
     IDS_PRINTONLYONE        "文件管理器不能同时打印多份文件。\n\n只选择一份文件，然后重试。"                                               /* 128 */
 
     IDS_CURDIRIS,           "当前目录: %s"                                                                                                    /* 128 */
+    IDS_CURDIRSARE,         "Other: "
     IDS_COPY,               "复制"                          /* 32 */
     IDS_RENAME,             "重命名"                        /* 32 */
     IDS_FORMAT,             "格式化磁盘"                   /* 32 */

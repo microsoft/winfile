@@ -331,7 +331,8 @@
 #define IDS_FORMATSELDISK   146
 #define IDS_SYMLINK         147
 #define IDS_HARDLINK        148
-//#define IDS_DISCONSELDISK   149
+#define IDS_CURDIRSARE      149
+//#define IDS_DISCONSELDISK   149 reused
 #define IDS_CREATINGMSG     150
 #define IDS_REMOVINGMSG     151
 #define IDS_COPYINGMSG      152

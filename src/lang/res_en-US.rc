@@ -251,6 +251,7 @@ BEGIN
     IDS_PRINTONLYONE        "File Manager cannot print multiple files.\n\nSelect only one file, and then try again."                                               /* 128 */
 
     IDS_CURDIRIS,           "Current Directory: %s"                                                                                                    /* 128 */
+    IDS_CURDIRSARE,         "Other current directories: "
     IDS_COPY,               "Copy"                          /* 32 */
     IDS_RENAME,             "Rename"                        /* 32 */
     IDS_FORMAT,             "Format Disk"                   /* 32 */
