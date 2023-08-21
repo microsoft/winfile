@@ -522,9 +522,9 @@ BuildDocumentStringWorker()
       // those that are of the form *.ext
       //
       for (i=0, dwStatus = 0L; ERROR_NO_MORE_ITEMS!=dwStatus; i++) {
-		 DWORD cbClass, cbIconFile;
-		 TCHAR szClass[MAXPATHLEN];
-		 TCHAR szIconFile[MAXPATHLEN];
+         DWORD cbClass, cbIconFile;
+         TCHAR szClass[MAXPATHLEN];
+         TCHAR szIconFile[MAXPATHLEN];
 
          dwStatus = RegEnumKey(hk, (DWORD)i, szT, COUNTOF(szT));
 
@@ -537,27 +537,33 @@ BuildDocumentStringWorker()
             continue;
          }
 
-		 cbClass = sizeof(szClass);
-		 cbIconFile = 0;
-		 if (WFRegGetValueW(hk, szT, NULL, NULL, szClass, &cbClass) == ERROR_SUCCESS)
-		 {
-		    DWORD cbClass2;
-			TCHAR szClass2[MAXPATHLEN];
+         cbClass = sizeof(szClass);
+         cbIconFile = 0;
+         if (WFRegGetValueW(hk, szT, NULL, NULL, szClass, &cbClass) == ERROR_SUCCESS)
+         {
+            DWORD cbClass2;
+            TCHAR szClass2[MAXPATHLEN];
 
-			cbClass2 = sizeof(szClass2);
-			lstrcat(szClass, L"\\CurVer");
-			if (WFRegGetValueW(hk, szClass, NULL, NULL, szClass2, &cbClass2) == ERROR_SUCCESS)
-				lstrcpy(szClass, szClass2);
-			else
-				szClass[lstrlen(szClass)-7] = '\0';
+            cbClass2 = sizeof(szClass2);
+            lstrcat(szClass, L"\\CurVer");
+            if (WFRegGetValueW(hk, szClass, NULL, NULL, szClass2, &cbClass2) == ERROR_SUCCESS)
+            {
+               lstrcpy(szClass, szClass2);
+            }
+            else
+            {
+               szClass[lstrlen(szClass)-7] = '\0';
+            }
 
-			cbIconFile = sizeof(szIconFile);
-			lstrcat(szClass, L"\\DefaultIcon");
-			if (WFRegGetValueW(hk, szClass, NULL, NULL, szIconFile, &cbIconFile) != ERROR_SUCCESS)
-				cbIconFile = 0;
-		 }
+            cbIconFile = sizeof(szIconFile);
+            lstrcat(szClass, L"\\DefaultIcon");
+            if (WFRegGetValueW(hk, szClass, NULL, NULL, szIconFile, &cbIconFile) != ERROR_SUCCESS)
+            {
+               cbIconFile = 0;
+            }
+         }
 
-		 DocInsert(ppDocBucket, szT+1, cbIconFile != 0 ? szIconFile : NULL);
+         DocInsert(ppDocBucket, szT+1, cbIconFile != 0 ? szIconFile : NULL);
       }
 
       if (bCloseKey)
@@ -860,7 +866,7 @@ Fail:
       //
       lpxdta->dwAttrs = ATTR_DIR | ATTR_PARENT;
       lpxdta->byBitmap = BM_IND_DIRUP;
-	  lpxdta->pDocB = NULL;
+      lpxdta->pDocB = NULL;
 
 
       MemGetFileName(lpxdta)[0] = CHAR_NULL;
@@ -883,11 +889,11 @@ Fail:
       //
       lfndta.fd.dwFileAttributes &= (ATTR_USED | ATTR_JUNCTION | ATTR_SYMBOLIC);
 
-	  //
+      //
       // filter unwanted stuff here based on current view settings
       //
-	  pDoc = NULL;
-	  pProgram = NULL;
+      pDoc = NULL;
+      pProgram = NULL;
       if (!(lfndta.fd.dwFileAttributes & ATTR_DIR)) {
 
          pProgram = IsProgramFile(pName);
@@ -903,10 +909,11 @@ Fail:
          if (!(dwAttribs & ATTR_OTHER) && !(pProgram || pDoc))
             goto CDBCont;
       }
-	  else if (lfndta.fd.dwFileAttributes & ATTR_JUNCTION) {
-		  if (!(dwAttribs & ATTR_JUNCTION))
-			  goto CDBCont;
-	  }
+      else if (lfndta.fd.dwFileAttributes & ATTR_JUNCTION) {
+         if (!(dwAttribs & ATTR_JUNCTION)) {
+            goto CDBCont;
+         }
+      }
 
       //
       // figure out the bitmap type here
@@ -965,7 +972,7 @@ Fail:
       lpxdta->qFileSize.HighPart = lfndta.fd.nFileSizeHigh;
 
       lpxdta->byBitmap = iBitmap;
-      lpxdta->pDocB = pDoc;			// even if program, use extension list for icon to display
+      lpxdta->pDocB = pDoc;        // even if program, use extension list for icon to display
 
       if (IsLFN(pName)) {
          lpxdta->dwAttrs |= ATTR_LFN;
@@ -1137,15 +1144,15 @@ IsNetDir(LPWSTR pPath, LPWSTR pName)
 // RegGetValue isn't available on Windows XP
 LONG WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData)
 {
-	DWORD dwStatus;
-	HKEY hkeySub;
+    DWORD dwStatus;
+    HKEY hkeySub;
 
-	if ((dwStatus = RegOpenKey(hkey, lpSubKey, &hkeySub)) == ERROR_SUCCESS)
-	{
-			dwStatus = RegQueryValueEx(hkeySub, lpValue, NULL, pdwType, pvData, pcbData);
+    if ((dwStatus = RegOpenKey(hkey, lpSubKey, &hkeySub)) == ERROR_SUCCESS)
+    {
+        dwStatus = RegQueryValueEx(hkeySub, lpValue, NULL, pdwType, pvData, pcbData);
 
-			RegCloseKey(hkeySub);
-	}
+        RegCloseKey(hkeySub);
+    }
 
-	return dwStatus;
+    return dwStatus;
 }

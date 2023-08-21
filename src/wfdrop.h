@@ -16,37 +16,37 @@
 // data object:
 
 typedef struct {
-	IDataObject ido;
-	int ref_count;
-	FORMATETC *m_pFormatEtc;
-	STGMEDIUM *m_pStgMedium;
-	LONG	   m_nNumFormats;
-	LONG m_lRefCount;
+    IDataObject ido;
+    int ref_count;
+    FORMATETC *m_pFormatEtc;
+    STGMEDIUM *m_pStgMedium;
+    LONG       m_nNumFormats;
+    LONG m_lRefCount;
 } WF_IDataObject;
 
 
 typedef struct {
-	IEnumFORMATETC ief;
-	int ref_count;
-	int ix;
-	LONG		m_lRefCount;		// Reference count for this COM interface
-	ULONG		m_nIndex;			// current enumerator index
-	ULONG		m_nNumFormats;		// number of FORMATETC members
-	FORMATETC * m_pFormatEtc;
+    IEnumFORMATETC ief;
+    int ref_count;
+    int ix;
+    LONG        m_lRefCount;        // Reference count for this COM interface
+    ULONG       m_nIndex;           // current enumerator index
+    ULONG       m_nNumFormats;      // number of FORMATETC members
+    FORMATETC * m_pFormatEtc;
 } WF_IEnumFORMATETC;
 
 typedef struct {
-	IDropSource ids;
-	LONG	   m_lRefCount;
-}	WF_IDropSource;
+    IDropSource ids;
+    LONG        m_lRefCount;
+} WF_IDropSource;
 
 typedef struct {
-	IDropTarget idt;
-	LONG	m_lRefCount;
-	HWND	m_hWnd;
-	BOOL  m_fAllowDrop;
-	DWORD m_iItemSelected;
-	IDataObject *m_pDataObject;
+    IDropTarget idt;
+    LONG  m_lRefCount;
+    HWND  m_hWnd;
+    BOOL  m_fAllowDrop;
+    DWORD m_iItemSelected;
+    IDataObject *m_pDataObject;
 } WF_IDropTarget;
 
 typedef struct WF_IDataObjectVtbl
