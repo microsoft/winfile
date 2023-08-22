@@ -9,7 +9,7 @@
 
 LANGUAGE LANG_JAPANESE, SUBLANG_JAPANESE_JAPAN
 
-FRAMEMENU MENU PRELOAD
+FRAMEMENU MENU
 BEGIN
     POPUP       "ファイル(&F)"
     BEGIN
@@ -130,7 +130,7 @@ BEGIN
 
 END
 
-CTXMENU MENU PRELOAD
+CTXMENU MENU
 BEGIN
     POPUP "Dummy Popup"
     BEGIN
@@ -159,7 +159,7 @@ END
 
 #define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
 /*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
-STRINGTABLE DISCARDABLE PRELOAD
+STRINGTABLE
 BEGIN
 //    IDS_ENDSESSION          "Exit Windows"                  /* 32 */
 //    IDS_ENDSESSIONMSG       "This will end your Windows session."                                                                                      /* 128 */
@@ -525,7 +525,7 @@ END
 
 /* Help strings for the popup menus.
  */
-STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     MH_POPUP+IDM_FILE,          "ファイルの操作に関するコマンド"
     MH_POPUP+IDM_DISK,          "ディスクの操作に関するコマンド"
@@ -540,7 +540,7 @@ END
 
 // Help strings for the "standard" toolbar items.
 
-STRINGTABLE LOADONCALL MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     MH_MYITEMS+IDM_OPEN,        "選択アイテムを開く"
     MH_MYITEMS+IDM_EDIT,        "選択アイテムをメモ帳で編集する"
@@ -629,7 +629,7 @@ END
 
 // Strings for menu items that may be added at init time.
 
-STRINGTABLE MOVEABLE DISCARDABLE
+STRINGTABLE
 BEGIN
     IDS_CONNECT,                "ネットワーク ドライブの接続(&N)..."
     IDS_DISCONNECT,             "ネットワーク ドライブの切断(&C)..."
