@@ -2714,9 +2714,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
 #endif
 
 #ifdef FASTMOVE
-            if ((CHAR_COLON == pcr->sz[1]) &&
-               (CHAR_COLON == szDest[1]) &&
-               (DRIVEID(pcr->sz) == DRIVEID(szDest))) {
+            if (DRIVEID(pcr->sz) == DRIVEID(szDest)) {
 
                //
                // Warning: This will not work on winball drives!
