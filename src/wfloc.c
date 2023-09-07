@@ -22,6 +22,7 @@ LPCTSTR szLCIDs[] = {
     TEXT("pl-PL"),    // Polish, Poland
     TEXT("de-DE"),    // German, Germany
     TEXT("tr-TR"),    // Turkish, Turkey
+    TEXT("pt-PT"),    // Portuguese, Portugal
 };
 
 VOID InitLangList(HWND hCBox)
