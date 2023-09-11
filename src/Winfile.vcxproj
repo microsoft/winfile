@@ -340,7 +340,6 @@
     <None Include="lang\res_pl-PL.rc" />
     <None Include="lang\res_de-DE.rc" />
     <None Include="lang\res_tr-TR.rc" />
-    <None Include="lang\res_pt-PT.rc" />
     <ResourceCompile Include="res.rc">
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">i386=1;WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;NDEBUG;_X86_;_M_IX86;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">WINNT=1;WIN32_LEAN_AND_MEAN=1;DBG=1;NDEBUG;WIN32;_WIN32;_DEBUG;_WINDOWS;LFN;STRICT;FASTMOVE;LFNCLIPBOARD;W3;UNICODE;_UNICODE;USELASTDOT;MEMDOUBLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -367,6 +366,7 @@
     <None Include="lang\res_zh-CN.rc" />
     <None Include="lang\res_ja-JP.rc" />
     <None Include="lang\res_he-IL.rc" />
+    <None Include="lang\res_pt-PT.rc" />
     <None Include="lang\suggest_de-DE.db" />
     <None Include="lang\suggest_en-US.db" />
     <None Include="lang\suggest_pl-PL.db" />
