@@ -265,8 +265,6 @@ JAPANBEGIN
     // Allocate enough space for 8.3 conversion to DBCS here (each
     // part done individually, so 8 chars is enough).
     //
-    LPSTR pOrigA;
-    CHAR szOrigA[8*2];
 JAPANEND
 
     //
@@ -357,7 +355,7 @@ JAPANEND
 
     DRIVESET(szDrive,drive);
 
-    flfn = IsLFNDrive(szDrive);
+    flfn = IsLFNDrive(szDrive) || ISDIGIT_DRIVE(szDrive);
 
     //
     // on FAT _AND_ lfn devices, replace any illegal chars with underscores
@@ -475,6 +473,8 @@ AddComponent:
 
           } else {
 
+             LPSTR pOrigA;
+             CHAR szOrigA[11 * 2];
              if (bJAPAN) {
                 if (!WideCharToMultiByte(CP_ACP,
                                          0,

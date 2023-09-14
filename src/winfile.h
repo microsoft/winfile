@@ -209,6 +209,7 @@ INT atoiW(LPWSTR sz);
 #define DRIVESET_UC(drive) ((drive < OFFSET_UNC ? CHAR_A : CHAR_Z - CHAR_A - 3) + drive)
 #define DRIVESET(str, drive) (str[0] = DRIVESET_UC(drive))
 #define ISDIGIT(c)  ((c) >= TEXT('0') && (c) <= TEXT('9'))
+#define ISDIGIT_DRIVE(str) (CHAR_COLON == str[1] && ISDIGIT(str[0]))
 #define COUNTOF(x) (sizeof(x)/sizeof(*x))
 #define ByteCountOf(x) ((x)*sizeof(TCHAR))
 #define abs(x) (((x) < 0) ? -(x) : (x))
