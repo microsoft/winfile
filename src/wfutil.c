@@ -224,37 +224,37 @@ hwndfound:
 
 BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir)
 {
-    DWORD ret;
-    WCHAR drvstr[MAXPATHLEN];
+   DWORD ret;
+   WCHAR drvstr[MAXPATHLEN];
 
-    if (iDrive - 1 < OFFSET_UNC)
-    {
-	pszDir[0] = '\0';
-	
-    if(iDrive!=0)
-    {
-        drvstr[0] = ('A') - 1 + iDrive;
-        drvstr[1] = (':');
-        drvstr[2] = ('.');
-        drvstr[3] = ('\0');
-    }
-    else
-    {
-        drvstr[0] = ('.');
-        drvstr[1] = ('\0');
-    }
-    } 
-    else
-    {
-       lstrcpy(drvstr, aDriveInfo[iDrive - 1].szRoot);
-    }
+   if (iDrive - 1 < OFFSET_UNC)
+   {
+      pszDir[0] = '\0';
 
-	if (GetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
-		return FALSE;
+      if (iDrive != 0)
+      {
+         drvstr[0] = ('A') - 1 + iDrive;
+         drvstr[1] = (':');
+         drvstr[2] = ('.');
+         drvstr[3] = ('\0');
+      }
+      else
+      {
+         drvstr[0] = ('.');
+         drvstr[1] = ('\0');
+      }
+   }
+   else
+   {
+      lstrcpy(drvstr, aDriveInfo[iDrive - 1].szRoot);
+   }
 
-    ret = GetFullPathName( drvstr, MAXPATHLEN, pszDir, NULL);
+   if (GetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
+      return FALSE;
 
-	return ret != 0;
+   ret = GetFullPathName(drvstr, MAXPATHLEN, pszDir, NULL);
+
+   return ret != 0;
 }
 
 
