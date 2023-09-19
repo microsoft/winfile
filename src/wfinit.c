@@ -760,6 +760,11 @@ CheckDirExists(
    BOOL bRet = FALSE;
 
    DRIVE drive = DRIVEID(szDir);
+   
+   // Immediatley give up on not existing UNC Drives. They will not reconnect at some time
+   if (drive >= OFFSET_UNC && INVALID_FILE_ATTRIBUTES == GetFileAttributes(szDir))
+      return FALSE;
+
    if (IsNetDrive(drive) == 2 || drive >= OFFSET_UNC) {
 
       CheckDrive(hwndFrame, drive, FUNC_SETDRIVE);
