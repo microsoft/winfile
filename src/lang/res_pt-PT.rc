@@ -1,0 +1,648 @@
+/********************************************************************
+
+   res_pt-PT.rc
+
+   Copyright (c) Microsoft Corporation. All rights reserved.
+   Licensed under the MIT License.
+
+********************************************************************/
+
+LANGUAGE LANG_PORTUGUESE, SUBLANG_PORTUGUESE
+
+FRAMEMENU MENU
+BEGIN
+    POPUP       "&Ficheiro"
+    BEGIN
+    MENUITEM    "&Abrir\tEnter",     IDM_OPEN
+    MENUITEM    "Editar\tF12",        IDM_EDIT
+    MENUITEM    "Mo&ver...\tF7",     IDM_MOVE
+    MENUITEM    "&Copiar...\tF8",     IDM_COPY
+    MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
+    MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
+    MENUITEM    "Copiar para a Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "Cortar para a Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "&Colar\tCtrl+V",   IDM_PASTE
+    MENUITEM    "Eli&minar...\tDel",  IDM_DELETE
+    MENUITEM    "M&udar o nome...\tF2",   IDM_RENAME
+    MENUITEM    "Propri&edades...\tAlt+Enter",IDM_ATTRIBS
+    MENUITEM    SEPARATOR
+    MENUITEM    "Comp&rimir...",     IDM_COMPRESS
+    MENUITEM    "&Descomprimir...",   IDM_UNCOMPRESS
+    MENUITEM    SEPARATOR
+    MENUITEM    "E&xecutar...",          IDM_RUN
+    MENUITEM    "&Imprimir...",        IDM_PRINT
+    MENUITEM    "Ass&ociar...",    IDM_ASSOCIATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "Criar &Directório...\tCtrl+Shift+N", IDM_MAKEDIR
+    MENUITEM    "&Procurar...\tCtrl+F",       IDM_SEARCH
+    MENUITEM    "Seleccionar &Ficheiros...", IDM_SELECT
+    POPUP       "Iniciar (&.)"
+    BEGIN
+    MENUITEM    "&Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "&Cmd Shell...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "&PowerShell...\tCtrl+P", IDM_STARTPOWERSHELL
+    MENUITEM    "&Explorer...\tCtrl+E", IDM_STARTEXPLORER
+    END
+    MENUITEM    "&Ir para Directório...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Sair",            IDM_EXIT
+    END
+    POPUP       "&Disco"
+    BEGIN
+    MENUITEM    "&Copiar Disco...",    IDM_DISKCOPY
+    MENUITEM    "&Identificar Disco...",   IDM_LABEL
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Formatar Disco...",  IDM_FORMAT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Seleccionar Unidade...", IDM_DRIVESMORE
+    END
+    POPUP       "Ár&vore"
+    BEGIN
+    MENUITEM    "&Expandir um Nível\t+", IDM_EXPONE
+    MENUITEM    "Expandir &Ramo\t*",    IDM_EXPSUB
+    MENUITEM    "Expandir &Tudo\tCtrl+*",  IDM_EXPALL
+    MENUITEM    "&Fechar Ramo\t-",  IDM_COLLAPSE
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Indicar Ramos Expansíveis",    IDM_ADDPLUSES
+    END
+    POPUP       "V&er"
+    BEGIN
+    MENUITEM    "Á&rvore e Directório",  IDM_BOTH
+    MENUITEM    "&Apenas Árvore",           IDM_TREEONLY
+    MENUITEM    "Apenas &Directório",      IDM_DIRONLY
+    MENUITEM    SEPARATOR
+    MENUITEM    "D&ividir",               IDM_SPLIT
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Nome",                IDM_VNAME
+    MENUITEM    "&Todos os Detalhes dos Ficheiros",    IDM_VDETAILS,   CHECKED
+    MENUITEM    "Deta&lhes Parciais...",  IDM_VOTHER
+    MENUITEM    SEPARATOR
+    MENUITEM "Ordenar por No&me",   IDM_BYNAME
+    MENUITEM "Ord&enar por Tipo",   IDM_BYTYPE
+    MENUITEM "Ordenar por Taman&ho",   IDM_BYSIZE
+    MENUITEM "&Ordenar por Data",   IDM_BYDATE
+    MENUITEM "Ordenar por Data De&scendente",   IDM_BYFDATE
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Por Tipo de Ficheiro...",     IDM_VINCLUDE
+    END
+    POPUP       "&Opções"
+    BEGIN
+    MENUITEM    "&Confirmação...",     IDM_CONFIRM
+    MENUITEM    "&Tipo de Letra...",             IDM_FONT
+    MENUITEM    "&Personalizar a Barra de Ferramentas...", IDM_TOOLBARCUST
+    MENUITEM    "Preferências &Adicionais", IDM_PREF
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Barra de Ferramentas",                 IDM_TOOLBAR
+    MENUITEM    "Barra de &Unidades",                IDM_DRIVEBAR
+    MENUITEM    "Barra de &Estado",              IDM_STATUSBAR
+    MENUITEM    SEPARATOR
+    MENUITEM    "Executar &Minimizado",     IDM_MINONRUN
+    MENUITEM    "Criar &Index 'Ir para' ao Ligar", IDM_INDEXONLAUNCH
+    MENUITEM    "&Guardar Definições ao Sair",   IDM_SAVESETTINGS
+#ifdef PROGMAN
+    MENUITEM    SEPARATOR
+    MENUITEM    "Guardar &Definições Agora",       IDM_SAVENOW
+#endif
+    END
+    POPUP       "&Segurança"
+    BEGIN
+    MENUITEM    "&Permissões...",  IDM_PERMISSIONS
+    MENUITEM    "&Auditoria...",     IDM_AUDITING
+    MENUITEM    "&Proprietário...",        IDM_OWNER
+    END
+    POPUP       "&Janela"
+    BEGIN
+    MENUITEM    "&Nova Janela\tCtrl+Shift Enter",          IDM_NEWWINDOW
+    MENUITEM    "Em &Cascata\tShift+F5",   IDM_CASCADE
+    MENUITEM    "Em Mosaico na &Horizontal",   IDM_TILEHORIZONTALLY
+    MENUITEM    "Em Mosaico na &Vertical\tShift+F4",      IDM_TILE
+    MENUITEM    "D&ispor Ícones",       IDM_ARRANGE
+    MENUITEM    "&Actualizar\tF5",         IDM_REFRESH
+    END
+    POPUP       "&Ajuda"
+    BEGIN
+    MENUITEM    "&Conteúdos",                IDM_HELPINDEX
+    MENUITEM    "&Procurar por Ajuda em...",   IDM_HELPKEYS
+    MENUITEM    "&Como Usar a Ajuda",         IDM_HELPHELP
+    MENUITEM    SEPARATOR
+    MENUITEM    "&Acerca do Gestor de Ficheiros...",   IDM_ABOUT
+    END
+
+END
+
+CTXMENU MENU
+BEGIN
+    POPUP "Dummy Popup"
+    BEGIN
+    MENUITEM    "&Nova Janela\tCtrl+Shift Enter",     IDM_NEWWINDOW
+    MENUITEM    "&Abrir\tEnter",     IDM_OPEN
+    MENUITEM    "Editar\tF12",        IDM_EDIT
+    MENUITEM    "Mo&ver...\tF7",     IDM_MOVE
+    MENUITEM    "&Copiar...\tF8",     IDM_COPY
+    MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
+    MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
+    MENUITEM    "Copiar para a Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "Cortar para a Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "Co&lar\tCtrl+V", IDM_PASTE
+    MENUITEM    "Eli&minar...\tDel",  IDM_DELETE
+    MENUITEM    "M&udar o Nome...\tF2",   IDM_RENAME
+    MENUITEM    "Propri&edades...\tAlt+Enter",IDM_ATTRIBS
+    MENUITEM    "E&xecutar...",          IDM_RUN
+    MENUITEM    "Iniciar a Bash Shell...", IDM_STARTBASHSHELL
+    MENUITEM    "Iniciar a Cmd She&ll...", IDM_STARTCMDSHELL
+    MENUITEM    "Iniciar a Po&werShell...", IDM_STARTPOWERSHELL
+    MENUITEM    "Iniciar o &Explorer...", IDM_STARTEXPLORER
+    MENUITEM    "&Ir para Directório...", IDM_GOTODIR
+    END
+END
+
+
+#define SUGGEST(id,err,flags,str) id+IDS_SUGGESTBEGIN str
+/*              0....5....1....56...2....5....3.2..5....4....5....5....6....5....7....5....8....5....9....5....0....5....1....5....2....5..8 */
+STRINGTABLE
+BEGIN
+//    IDS_ENDSESSION          "Exit Windows"                  /* 32 */
+//    IDS_ENDSESSIONMSG       "This will end your Windows session."                                                                                      /* 128 */
+
+    IDS_COPYDISK            "Copiar disco"                     /* 32 */
+    IDS_INSERTDEST          "Inserir disco de destino."                                                                                                 /* 128 */
+    IDS_INSERTSRC           "Inserir disco de origem."                                                                                                      /* 128 */
+    IDS_INSERTSRCDEST       "Inserir discos de origem e destino."                                                                                     /* 128 */
+    IDS_FORMATTINGDEST      "A Formatar Disco de Destino"                                                                                             /* 128 */
+
+    IDS_COPYDISKERR         "Erro ao Copiar o Disco"               /* 32 */
+    IDS_COPYDISKERRMSG      "Não é possível copiar o disco."                                                                                                     /* 128 */
+    IDS_COPYSRCDESTINCOMPAT "Discos de origem e destino são incompatíveis."                                                                          /* 128 */
+
+    IDS_PERCENTCOMP         "%d%% concluído"                /* 32 */
+    IDS_CREATEROOT          "A criar directório raiz..."       /* 32 */
+    IDS_COPYSYSFILES        "A copiar ficheiros do sistema..."          /* 32 */
+    IDS_FORMATERR           "Erro ao Formatar Disco"             /* 32 */
+    IDS_FORMATQUICKFAILURE  "O Gestor de Ficheiros não pode realizar uma formatação rápida.\n\nContinuar com formatação normal?"
+//    IDS_FORMATERRMSG        "Não foi possível formatar disco."                                                                                                      /* 128 */
+//    IDS_FORMATCURERR      "Não pode formatar a unidade actual."                                                                                     /* 128 */
+    IDS_FORMATCOMPLETE      "Formatação Concluída"               /* 32 */
+    IDS_FORMATANOTHER       "%ld bytes espaço total do disco\n%ld bytes disponíveis no disco\n\nDeseja formatar outro disco?"                           /* 128 */
+
+//    IDS_SYSDISK             "Criar Disco de Sistema"
+//    IDS_SYSDISKRUSURE       "Tem a certeza que deseja copiar ficheiros de sistema para o disco na unidade %c?"
+//    IDS_SYSDISKERR          "Erro no Disco de Sistema"
+//    IDS_SYSDISKNOFILES      "A unidade de arranque MS-DOS não contém ficheiros de sistema ou não está disponível."
+//    IDS_SYSDISKSAMEDRIVE    "Não foi possível copiar ficheiros de sistema para a unidade de arranque MS-DOS."
+//    IDS_SYSDISKADDERR       "Não foi possível adicionar ficheiros de sistema a este disco.\n\nCertifique-se de que um disco formatado está presente na unidade e que a porta está fechada."
+
+    IDS_NETERR              "Erro de Rede"                 /* 32 */
+    IDS_NETDISCONWINERR     "Este disco contém ficheiros do sistema Windows e não pode ser desligado."                                                 /* 128 */
+    IDS_NETDISCONOPEN       "O Gestor de Ficheiros não consegue desligar a unidade de rede.\n\nHá ficheiros abertos nesta unidade."
+
+    IDS_ATTRIBERR           "O 'Gestor de Ficheiros' não consegue mudar os atributos.  "
+    IDS_MAKEDIRERR          "O 'Gestor de Ficheiros' não consegue criar o directório.  "
+
+    IDS_LABELDISKERR        "O 'Gestor de Ficheiros' não pode identificar o disco.\n\nCertifique-se de que o disco não está protegido contra escrita nem é uma unidade de rede e que o nome é válido.\
+                             Os nomes não podem ter os caracteres:\n[espaço] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+    IDS_SEARCHNOMATCHES     "Não foram encontrados ficheiros correspondentes."
+    IDS_SEARCHREFRESH       "O conteúdo desta unidade mudou. Deseja realizar a Procura de novo?"
+    IDS_LABELACCESSDENIED   "Deverá estar autenticado como um administrador nesta workstation oara realizar esta operação em discos rígidos."
+
+    IDS_DRIVETEMP           "Unidade %c:%c"
+
+    IDS_EXECERRTITLE,       "Não é Possível Executar o Programa"
+    IDS_PRINTERRTITLE,      "Não é Possível Imprimir o Ficheiro"
+
+    IDS_UNKNOWNMSG,         "Erro não esperado: %d."
+    IDS_NOMEMORYMSG,        "Sem memória para iniciar a aplicação especificada.\n\nFeche uma ou mais aplicações e tente de novo."                   /* 128 */
+    IDS_FILENOTFOUNDMSG,    "O 'Gestor de Ficheiros' não consegue localizar o ficheiro especificado (ou um dos seus componentes).\n\nCertifique-se de que o caminho e nome do ficheiro estão correctos e que todas as bibliotecas necessárias estão disponíveis."
+    IDS_BADPATHMSG,         "O caminho especificado é inválido."                                                                                           /* 128 */
+//    IDS_MANYOPENFILESMSG,   "Demasiados ficheiros estão a ser usados atualmente.\n\nFeche uma ou mais aplicações ou aumente o valor do comando FILES no CONFIG.SYS, e tente de novo."                                    /* 128 */
+    IDS_NOASSOCMSG,         "Não existe nenhuma aplicação associada a este ficheiro.\n\nSeleccione 'Associar' no menu 'Ficheiro' para criar uma associação."       /* 128 */
+    IDS_ASSOCINCOMPLETE,    " O 'Gestor de Ficheiros' não consegue abrir ou imprimir o ficheiro.\n\nInicie a aplicação usada para criar o ficheiro e abra ou imprima o ficheiro a partir daí."
+//    IDS_MULTIPLEDSMSG,      "Não foi possível iniciar mais do que uma cópia do programa especificado."                                                                /* 128 */
+//    IDS_OS2APPMSG           "A aplicação especificada não é um programa Windows ou MS-DOS."                                                            /* 128 */
+//    IDS_NEWWINDOWSMSG       "Esta aplicação requer uma versão mais nova do Microsoft Windows."                                                          /* 128 */
+//    IDS_PMODEONLYMSG        "Esta aplicação requer o Windows."                                                             /* 128 */
+    IDS_DDEFAIL             "Ocorreu um erro ao mandar o comando para a aplicação."                                                                /* 128 */
+//    IDS_COMPRESSEDEXE       "Este programa ou dos seus componentes está comprimido.\n\nUse a utilidade MS-DOS expand para copiar o ficheiro dos discos de configuração."
+    IDS_INVALIDDLL          "Um ou mais ficheiros de bibliotecas necessárias para executar esta aplicação está danificado. Por favor reinstale esta aplicação."
+    IDS_SHAREERROR          "Este ficheiro está a ser usado por outra aplicação."
+
+    IDS_CREATELONGDIR       "O 'Gestor de Ficheiros' poderá não conseguir aceder a ficheiros criados no directório '%s.'\n\nTem a certeza que deseja continuar?"
+    IDS_CREATELONGDIRTITLE  "Criar Directório"
+
+    IDS_MOUSECONFIRM,       "Confirmar Operação do Rato"       /* 32 */
+    IDS_COPYMOUSECONFIRM,   "Tem a certeza que deseja copiar os ficheiros ou directórios seleccionados para %s?"
+    IDS_MOVEMOUSECONFIRM,   "Tem a certeza que deseja mover os ficheiros ou directórios seleccionados para %s?"
+    IDS_LINKMOUSECONFIRM,   "Tem a certeza que deseja fazer 'link' dos ficheiros ou directórios seleccionados para %s?"
+    IDS_EXECMOUSECONFIRM,   "Tem a certeza que deseja iniciar %s usando %s como o ficheiro inicial?"                                                          /* 128 */
+
+    IDS_WINFILE,            "Gestor de Ficheiros"                  /* 32 */
+    IDS_TREETITLE,          "Árvore do Directório"                /* 32 */
+    IDS_SEARCHTITLE,        "Resultados da Procura: "              /* 32 */
+
+    IDS_READING             "A ler directório, por favor aguarde..."
+    IDS_TOOMANYTITLE,       "Demasiados Ficheiros"                /* 32 */
+    IDS_OOMTITLE,           "Gestor de Ficheiros - Sem Memória"  /* 32 */
+    IDS_OOMREADINGDIRMSG,   "Não foi possível ler o directório completo.  Apenas uma listagem parcial vai ser mostrada."                                              /* 128 */
+
+//    IDS_PRINTFNF            "O ficheiro a ser imprimido não foi encontrado. Certifique-se de que o caminho e nome de ficheiro correctos foram especificados."                                                                                  /* 128 */
+    IDS_PRINTMEMORY         "Sem memória para imprimir.\n\nFeche uma ou mais aplicações e tente de novo."                                             /* 128 */
+    IDS_PRINTDISK           "Sem espaço no disco para imprimir.\n\nElimine um ou mais ficheiros para aumentar o espaço no disco e tente de novo."                        /* 128 */
+    IDS_PRINTERROR          "Ocorreu um erro durante a impressão.\n\nCertifique-se que a impressora está corretamente configurada e seleccionada."             /* 128 */
+    IDS_PRINTONLYONE        "O 'Gestor de Ficheiros' não consegue imprimir múltiplos ficheiros.\n\nSeleccione apenas um ficheiro e tente de novo."                                               /* 128 */
+
+    IDS_CURDIRIS,           "Directório Actual: %s"                                                                                                    /* 128 */
+    IDS_CURDIRSARE,         "Outros directórios actuais: "
+    IDS_COPY,               "Copiar"                          /* 32 */
+    IDS_RENAME,             "Renomear"                        /* 32 */
+    IDS_FORMAT,             "Formatar Disco"                   /* 32 */
+    IDS_FORMATSELDISK,      "Seleccionar o disco para formatar."                                                                                               /* 128 */
+    IDS_SYMLINK,            "Symlink"                       /* 32 */
+    IDS_HARDLINK,           "Hardlink"                      /* 32 */
+
+    IDS_KK_COPYFROMSTR,     "&De:"
+    IDS_KK_COPYTOSTR,       "&Para:"
+    IDS_KK_RENAMEFROMSTR,   "&De:"
+    IDS_KK_RENAMETOSTR,     "&Para:"
+    IDS_KK_HARDLINKFROMSTR, "&De:"
+    IDS_KK_HARDLINKTOSTR,   "&Para:"
+    IDS_KK_SYMLINKFROMSTR,  "&De:"
+    IDS_KK_SYMLINKTOSTR,    "&Para:"
+
+//    IDS_MAKESYSDISK,      "Criar Disco de Sistema"              /* 32 */
+
+    IDS_CREATINGMSG,        "A criar:"                     /* 32 */
+    IDS_REMOVINGDIRMSG,     "A remover:"                     /* 32 */
+    IDS_REMOVINGMSG,        "A remover..."                   /* 32 */
+    IDS_COPYINGMSG,         "A copiar:"                      /* 32 */
+    IDS_OPENINGMSG,         "A abrir..."                    /* 32 */
+    IDS_CLOSINGMSG,         "A fechar..."                    /* 32 */
+    IDS_RENAMINGMSG,        "A renomear..."                   /* 32 */
+    IDS_MOVINGMSG,          "A mover..."                     /* 32 */
+    IDS_DELETINGMSG,        "A eliminar..."                   /* 32 */
+    IDS_PRINTINGMSG,        "A imprimir: %s"                  /* 32 */
+
+//    IDS_NOSUCHDRIVE,        "A unidade %c não existe."                                                                                            /* 128 */
+    IDS_DRIVENOTREADY,      "Não existe nenhum disco na unidade %c.\n\nInsira um disco e tente de novo."
+    IDS_UNFORMATTED,        "O disco na unidade %c não está formatado.\n\nDeseja formatá-lo agora?"
+
+    IDS_STATUSMSG,          "Total de %d ficheiro(s) (%s)"             /* 128 */
+    IDS_STATUSMSG2,         "%d ficheiro(s) seleccionados (%s)"          /* 128 */
+    IDS_DRIVEFREE,          "%c: %s livres, total de %s"            /* 128 */
+    IDS_TREEABORT,          "Árvore incompleta de directório mostrada"     /* 128 */
+    IDS_DIRSREAD,           "Directórios lidos: %d "                   /* 32 */
+    IDS_SEARCHMSG,          "%d ficheiro(s) encontrado(s)"
+    IDS_BYTES,              "%ld bytes"
+    IDS_SBYTES,             "%s bytes"
+
+    IDS_SELECTEDFILES,      "os ficheiros seleccionados"            /* 32 */
+
+    /* These strings are used for generating error messages
+     * from the Copy, Move, and Delete code. */
+
+    IDS_COPYERROR + FUNC_COPY     "Erro ao Copiar Ficheiro"
+    IDS_COPYERROR + FUNC_MOVE     "Erro ao Mover Ficheiro"
+    IDS_COPYERROR + FUNC_DELETE   "Erro ao Eliminar Ficheiro"
+    IDS_COPYERROR + FUNC_RENAME   "Erro ao Renomear Ficheiro"
+    IDS_COPYERROR + FUNC_SETDRIVE "Erro ao Seleccionar Unidade"
+    IDS_COPYERROR + FUNC_EXPAND   "Erro ao Ler Directório"
+    IDS_COPYERROR + FUNC_LABEL    "Erro ao Identificar Disco"
+    IDS_COPYERROR + FUNC_LINK     "Erro ao Criar Symbolic Link"
+    IDS_COPYERROR + FUNC_HARD     "Erro ao Criar Hardlink"
+    IDS_COPYERROR + FUNC_JUNC     "Erro ao Criar Junção"
+
+    /* The first %s is replaced by a file name. The second %s is replaced
+     * by one of the "reasons" below. */
+
+    IDS_VERBS + FUNC_COPY       "O 'Gestor de Ficheiros' não consegue copiar %s: %s"
+    IDS_VERBS + FUNC_MOVE       "O 'Gestor de Ficheiros' não consegue mover %s: %s"
+    IDS_VERBS + FUNC_DELETE     "O 'Gestor de Ficheiros' não consegue eliminar %s: %s"
+    IDS_VERBS + FUNC_RENAME     "O 'Gestor de Ficheiros' não consegue renomear %s: %s"
+    IDS_VERBS + FUNC_LINK       "O 'Gestor de Ficheiros' não consegue criar o symbolic link %s: %s"
+    IDS_VERBS + FUNC_HARD       "O 'Gestor de Ficheiros' não consegue criar o hardlink %s: %s"
+    IDS_VERBS + FUNC_JUNC       "O 'Gestor de Ficheiros' não consegue criar a junção %s: %s"
+    IDS_ACTIONS + 1             "O 'Gestor de Ficheiros' não consegue criar o directório %s: %s"
+    IDS_ACTIONS + 2             "O 'Gestor de Ficheiros' não consegue remover o directório %s: %s"
+    IDS_REPLACING               "O 'Gestor de Ficheiros' não consegue criar ou substituir %s: %s"
+    // IDS_CREATING             "O 'Gestor de Ficheiros' não consegue criar %s: %s"
+
+// include reason strings
+
+#include "suggest_pt-PT.db"
+
+    IDS_DESTFULL                "O disco de destino está cheio. Por favor insira outro disco para continuar."
+    IDS_WRITEPROTECTFILE        "Trata-se de um ficheiro de sistema, oculto ou só de leitura."
+
+    IDS_COPYINGTITLE            "A Copiar..."
+
+    IDS_QUICKFORMATTINGTITLE    "Formatação Rápida..."
+
+    IDS_BUSYFORMATQUITVERIFY    "O 'Gestor de Ficheiros' está a formatar um disco.  Sair do 'Gestor de Ficheiros' vai abortar esta operação."
+    IDS_BUSYCOPYQUITVERIFY      "O 'Gestor de Ficheiros' está a copiar um disco.  Sair do 'Gestor de Ficheiros' vai abortar esta operação."
+    IDS_PERCENTCOMPLETE         "Percentagem Concluído"
+
+    IDS_12MB                    "1%s2 MB"
+    IDS_360KB                   "360K"
+    IDS_144MB                   "1%s44 MB"
+    IDS_720KB                   "720K"
+    IDS_288MB                   "2%s88 MB"
+    IDS_2080MB                  "20%s8 MB"
+
+#if defined(JAPAN) && defined(i386)
+/* ADD KBNES. NEC MEDIATYPE START */
+JAPANBEGIN
+    IDS_125MB                   "1%s25 MB"
+    IDS_256KB                   "256K"
+    IDS_128MB                   "128 MB"
+JAPANEND
+/* ADD KBNES. NEC MEDIATYPE END */
+
+//
+// FMR jul.21.1994 JY
+// We added 640KB/1.23MB media types.
+//
+JAPANBEGIN
+    IDS_640KB                   "640K"
+    IDS_123MB                   "1%s23 MB"
+JAPANEND
+#endif
+
+    IDS_DEVICECAP               "Capacidade da Unidade"
+    IDS_QSUPMEDIA               "O 'Gestor de Ficheiros' não consegue obter informação sobre o disco.\n\nCertifique-se que o disco está na unidade."
+    IDS_REMOVEMED               "Tipo de Disco Desconhecido"
+
+    IDS_CANTFORMATTITLE         "Tipo de Disco Desconhecido"
+    IDS_CANTFORMAT              "O tipo de disco na unidade %s não pode ser formatado com o 'Gestor de Ficheiros'.  Por favor use a Gestão de Discos para formatar este disco."
+
+    IDS_FFERR_INCFS             "Sistema de ficheiros incompatível."
+    IDS_FFERR_ACCESSDENIED      "Acesso negado."
+    IDS_FFERR_DISKWP            "O disco está protegido contra escrita."
+    IDS_FFERR_CANTLOCK          "O 'Gestor de Ficheiros' não consegue abrir o volume."
+    IDS_FFERR_CANTQUICKF        "O 'Gestor de Ficheiros' não consegue realizar uma formatação rápida do disco.\n\nCertifique-se que o disco tem a densidade correcta."
+    IDS_FFERR_SRCIOERR          "Erro IO no disco de origem."
+    IDS_FFERR_DSTIOERR          "Erro IO no disco de destino."
+    IDS_FFERR_SRCDSTIOERR       "Erro IO em ambos os discos de origem e destino."
+    IDS_FFERR_GENIOERR          "Ocorreu um erro IO."
+//    IDS_FFERR_MEDIASENSE      "Este disco pode ser formatado na capacidade de %s. Continuar a formatar o disco a esta capacidade?"
+    IDS_FFERR                   "O 'Gestor de Ficheiros' não pode formatar o disco.\n\nCertifique-se de que o disco está inserido na unidade e que não está protegido contra escrita, danificado ou tem a densidade errada."
+    IDS_FFERR_BADLABEL          "O 'Gestor de Ficheiros' não pode identificar o disco.\n\nO identificador espeçificado é inválido.  Certifique-se que o identificador não contém nenhum dos seguintes caracteres\n\
+                                [espaço] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+
+
+    IDS_FORMATCONFIRM           "A formatação vai eliminar TODOS os dados do seu disco. Tem a certeza que deseja formatar o disco na unidade %c?"
+    IDS_FORMATCONFIRMTITLE      "Confirmar Formatação do Disco"
+
+    IDS_DISKCOPYCONFIRM         "Esta operação vai eliminar TODOS os dados do disco de destino. Tem a certeza que deseja continuar?"
+    IDS_DISKCOPYCONFIRMTITLE    "Confirmar Copia do Disco"
+    IDS_ANDCLOSE                "&Fechar"        // goes on Selection dialog
+    IDS_CLOSE                   "Fechar"         // braindead "&Change"
+    IDS_PATHNOTTHERE            "Directório %s não existe.\n\nDeseja criá-lo?"
+    IDS_PROGRAMS                "Programas#*.exe;*.pif;*.com;*.bat#All Files (*.*)#*.*#"
+
+    IDS_MENUANDITEM             "%s - %s"
+    IDS_DRIVELABEL              "Disco:"
+    IDS_STATUSMSGSINGLE         "%s, "
+
+    IDS_CONNECTHELP             "Ligar unidade de rede"
+    IDS_DISCONHELP              "Desligar unidade de rede"
+    IDS_CONNECTIONHELP          "Ligações de rede"
+    IDS_SHAREASHELP             "Partilhar directório"
+    IDS_STOPSHAREHELP           "Parar partilha do directório"
+    IDS_VDETAILSHELP            "Ver todos os detalhes dos ficheiros"
+    IDS_VNAMEHELP               "Ver nome apenas"
+    IDS_BYNAMEHELP              "Ordenar por nome"
+    IDS_BYTYPEHELP              "Ordenar por tipo"
+    IDS_BYSIZEHELP              "Ordenar por tamanho"
+    IDS_BYDATEHELP              "Ordenar por data"
+    IDS_NEWWINHELP              "Nova janela"
+    IDS_COPYHELP                "Copiar ficheiros"
+    IDS_MOVEHELP                "Mover ficheiros"
+    IDS_DELHELP                 "Eliminar ficheiros"
+
+    IDS_DIRNAMELABEL            "Nome do &Directório:"
+    IDS_DRIVENOTAVAILABLE       "A unidade de rede não está disponível."
+
+    IDS_SHAREDAS                "Partilhado como %s"
+    IDS_NOTSHARED               "Não partilhado"
+
+    IDS_DRIVE_COMPRESSED        " - COMPRIMIDO"
+
+    IDS_DRAG_COPYING            "A copiar ficheiros para %s"
+    IDS_DRAG_MOVING             "A mover ficheiros para %s"
+    IDS_DRAG_LINKING            "A fazer linking de ficheiros para %s"
+    IDS_DRAG_EXECUTING          "A executar ficheiros com %s"
+
+    IDS_ORDERB                  "%s bytes"
+    IDS_ORDERKB                 "%sKB"
+    IDS_ORDERMB                 "%sMB"
+    IDS_ORDERGB                 "%sGB"
+    IDS_ORDERTB                 "%sTB"
+
+    IDS_VN_COMMENTS             "Comentários"
+    IDS_VN_COMPANYNAME          "Nome da Empresa"
+    IDS_VN_FILEDESCRIPTION      "Descrição do Ficheiro"
+    IDS_VN_INTERNALNAME         "Nome Interno"
+    IDS_VN_LEGALTRADEMARKS      "Trademarks Legais"
+    IDS_VN_ORIGINALFILENAME     "Nome de Ficheiro Original"
+    IDS_VN_PRIVATEBUILD         "Descrição Privada de Compilação"
+    IDS_VN_PRODUCTNAME          "Nome do Produto"
+    IDS_VN_PRODUCTVERSION       "Versão do Produto"
+    IDS_VN_SPECIALBUILD         "Descrição de Compilação Especial"
+
+    IDS_VN_LANGUAGE             "Linguagem"
+    IDS_VN_LANGUAGES            "Linguagens"
+
+    IDS_ASSOCIATE               "Procurar"
+    IDS_RUN                     "Executar"
+    IDS_WINHELPERR              "Não foi possível mostrar informação da Ajuda."
+    IDS_NOEXEASSOC              "Ficheiros com a extensão %s são programas e não podem ser associados com outra aplicação."
+    IDS_ASSOCNOTEXE             "%s não é um programa e não pode ser associado com uma extensão de ficheiros."
+    IDS_ASSOCNONE               "(Nenhum)"
+    IDS_NOFILES                 "Nenhum ficheiro encontrado."
+    IDS_NOACCESSDIR             "Não tem permissão para aceder a este directório."
+    IDS_NOACCESSFILE            "Não tem permissão para aceder a este ficheiro."
+
+    IDS_DRIVEBUSY_COPY          "Unidade %c: está ocupada e não pode ser acedida.\nO 'Gestor de Ficheiros' está a realizar uma cópia do disco."
+    IDS_DRIVEBUSY_FORMAT        "Unidade %c: está ocupada e não pode ser acedida.\nO 'Gestor de Ficheiros' está a formatar este disco."
+
+    IDS_COPYMOVENOTCOMPLETED    "A operação não foi totalmente concluída"
+    IDS_DIRREMAINS              "Não foi possível finalizar a operação em todos os ficheiros e directórios."
+
+    IDS_TOOMANYWINDOWS          "Existem demasiadas janelas de directório abertas.\n\nFeche uma ou mais janelas e tente de novo."
+    IDS_FMIFSLOADERR            "Não foi possível carregar uma biblioteca necessária para esta operação."
+
+    IDS_NOSUCHDIRTITLE          "Não foi possível ler o directório"
+    IDS_NOSUCHDIR               "O directório não existe."
+
+    IDS_BADNETNAMETITLE         "Não foi possível ligar a unidade de rede"
+    IDS_BADNETNAME              "O nome de rede não foi encontrado."
+
+    IDS_ALLFILES                "'Sim para todos' afecta todos os ficheiros, incluindo de sistema, ocultos e só de leitura."
+
+    IDS_ASSOC_OPEN              "Abrir"
+    IDS_ASSOC_PRINT             "Imprimir"
+
+    IDS_ADDEXTTITLE             "Adicionar Extensão"
+    IDS_ADDEXTTEXT              "A extensão '%s' está atualmente associada a '%s.'  Continuar e substituir esta associação and overwrite this association?"
+
+    IDS_EXTTITLE                "Editor de Associação de Ficheiros"
+
+    IDS_EXTADDERROR             "Não foi possível associar extensão.  "
+    IDS_EXTDELERROR             "Não foi possível eliminar extensão.  "
+    IDS_FILETYPEADDERROR        "Não foi possível adicionar Tipo de Ficheiro.  "
+    IDS_FILETYPEDELERROR        "Não foi possível eliminar Tipo de Ficheiro.  "
+    IDS_FILETYPEREADERROR       "Não foi possível ler Tipo de Ficheiro.  "
+
+    IDS_FILETYPENULLDESCERROR   "A descrição do Tipo de Ficheiro não pode estar vazia.  Por favor insira um novo Tipo de Ficheiro."
+    IDS_FILETYPEDUPDESCERROR    "Não foi possível gerar um identificador único baseado no seu Tipo de Ficheiro.  Por favor insira um novo Tipo de Ficheiro."
+
+    IDS_FILETYPEDELCONFIRMTITLE "Eliminar Tipo de Ficheiro"
+    IDS_FILETYPEDELCONFIRMTEXT  "Isto vai eliminar o Tipo de Ficheiro e todas as suas extensões associadas.  Tem a certeza que deseja eliminar '%s'?"
+#ifdef ASSOC
+    IDS_FILETYPEDELCONFIRMUSERTEXT "Está a eliminar um Tipo de Ficheiro Pessoal.  Isto irá reverter para o Tipo de Ficheiro Comum e todas as suas extensões continuarão intactas.  Tem a certeza que deseja reverter '%s'?"
+    IDS_FILETYPEUSERIZETEXT     "Está a personalizar um Tipo de Ficheiro Comum.  O 'Gestor de Ficheiros' irá guardar as suas definições num Tipo de Ficheiro Personalizado.  Continuar?"
+#endif
+    IDS_FILETYPECOMMANDNULLTEXT "O Tipo de Ficheiro deverá ter um comando para pelo menos uma das Acções.  Por favor insira uma aplicação na linha de comandos."
+
+    IDS_NEWFILETYPETITLE        "Novo Tipo de Ficheiro"
+    IDS_COPYINGDISKTITLE        "A Copiar Disco"
+    IDS_SEARCHING               "A Procurar..."
+
+JAPANBEGIN
+    IDS_WRNNOSHIFTJIS           "このフォントを使用すると漢字の表示が\nできなくなります。"
+JAPANEND
+
+    IDS_INITUPDATEFAIL          "Não foi possível iniciar o suporte de actualização de fundo.  O 'Gestor de Ficheiros' vai fechar.  "
+    IDS_INITUPDATEFAILTITLE     "Inicialização do 'Gestor de Ficheiros'"
+
+    IDS_COMPRESSDIR             "Deseja Comprimir todos os ficheiros e subdirectórios em %s também?"
+    IDS_UNCOMPRESSDIR           "Deseja Descomprimir todos os ficheiros e subdirectórios em %s também?"
+    IDS_COMPRESS_ATTRIB_ERR     "O 'Gestor de Ficheiros' não consegue mudar os atributos de compressão para %s."
+    IDS_NTLDRCOMPRESSERR        "O ficheiro %s não vai ser comprimido.  Comprimir este ficheiro poderá impedir o seu sistema de arrancar."
+    IDS_MULTICOMPRESSERR        "O 'Gestor de Ficheiros' está atualmente no processo de comprimir/descomprimir ficheiros.\nTerá de esperar até que isto esteja concluído antes de tentar comprimir/descomprimir ficheiros adicionais."
+
+    IDS_EDITFILTER              "Programas (*.exe)\0*.exe\0"
+
+END
+#undef SUGGEST
+
+/* Help strings for the popup menus.
+ */
+STRINGTABLE
+BEGIN
+    MH_POPUP+IDM_FILE,          "Comandos para trabalhar com ficheiros"
+    MH_POPUP+IDM_DISK,          "Comandos para trabalhar com discos"
+    MH_POPUP+IDM_TREE,          "Comandos para trabalhar na janela da árvore"
+    MH_POPUP+IDM_VIEW,          "Comandos para determinar como as informações são mostradas"
+    MH_POPUP+IDM_OPTIONS,       "Comandos para definir opções"
+    MH_POPUP+IDM_SECURITY,      "Comandos para manipular a segurança de ficheiros e directórios"
+    MH_POPUP+IDM_WINDOW,        "Comandos para dispor janelas"
+    MH_POPUP+IDM_HELP,          "Comandos para mostrar a ajuda do 'Gestor de Ficheiros'"
+END
+
+
+// Help strings for the "standard" toolbar items.
+
+STRINGTABLE
+BEGIN
+    MH_MYITEMS+IDM_OPEN,        "Abre o item seleccionado"
+    MH_MYITEMS+IDM_EDIT,        "Editar o item seleccionado usando o notepad.exe"
+    MH_MYITEMS+IDM_MOVE,        "Move o item seleccionado"
+    MH_MYITEMS+IDM_COPY,        "Copia ficheiros e directórios"
+    MH_MYITEMS+IDM_COPYTOCLIPBOARD, "Copia um ou mais ficheiros para a clipboard"
+    MH_MYITEMS+IDM_CUTTOCLIPBOARD, "Corta um ou mais ficheiros para a clipboard"
+    MH_MYITEMS+IDM_PASTE,       "Cola ficheiro da clipboard para o directório atual"
+    MH_MYITEMS+IDM_COMPRESS,    "Comprime um ficheiro ou directório"
+    MH_MYITEMS+IDM_UNCOMPRESS,  "Descomprime um ficheiro ou directório"
+    MH_MYITEMS+IDM_DELETE,      "Elimina ficheiros ou directórios"
+    MH_MYITEMS+IDM_RENAME,      "Muda o nome a um ficheiro ou directório"
+    MH_MYITEMS+IDM_ATTRIBS,     "Define os atributos de ficheiro e mostra as propriedades"
+    MH_MYITEMS+IDM_UNDELETE,    "Recupera ficheiros previamente eliminados"
+    MH_MYITEMS+IDM_RUN,         "Inicia ou abre uma aplicação ou um documento"
+    MH_MYITEMS+IDM_PRINT,       "Imprime um documento"
+    MH_MYITEMS+IDM_ASSOCIATE,   "Associa um ficheiro a uma aplicação"
+    MH_MYITEMS+IDM_MAKEDIR,     "Cria um directório"
+    MH_MYITEMS+IDM_SEARCH,      "Procura ficheiros e directórios"
+    MH_MYITEMS+IDM_SELECT,      "Selecciona ficheiros e directórios"
+    MH_MYITEMS+IDM_EXIT,        "Sai do 'Gestor de Ficheiros'"
+
+    MH_MYITEMS+IDM_DISKCOPY,    "Copia o conteúdo de uma disquete"
+    MH_MYITEMS+IDM_LABEL,       "Atribui ou altera o nome de volume de um disco"
+    MH_MYITEMS+IDM_FORMAT,      "Formata um disco"
+//    MH_MYITEMS+IDM_SYSDISK,     "Copia ficheiros MS-DOS para uma disquete"
+    MH_MYITEMS+IDM_CONNECT,     "Liga a uma unidade de rede"
+    MH_MYITEMS+IDM_DISCONNECT,  "Desliga de uma unidade de rede"
+//    MH_MYITEMS+IDM_CONNECTIONS,       "Conexões de Rede..."
+//    MH_MYITEMS+IDM_SHARES,    "Ver Directórios Partilhados..."
+    MH_MYITEMS+IDM_SHAREAS,     "Partilha um directório"
+    MH_MYITEMS+IDM_STOPSHARE,   "Pára a partilha de um directório"
+
+    MH_MYITEMS+IDM_DRIVESMORE,  "Selecciona outra unidade"
+
+    MH_MYITEMS+IDM_EXPONE,      "Mostra outro nível de um directório"
+    MH_MYITEMS+IDM_EXPSUB,      "Mostra todos os níveis de um directório"
+    MH_MYITEMS+IDM_EXPALL,      "Mostra todos os níveis de todos os directórios"
+    MH_MYITEMS+IDM_COLLAPSE,    "Fecha todos os directórios de um directório seleccionado"
+    MH_MYITEMS+IDM_ADDPLUSES,   "Indica os directórios que possuem subdirectórios"
+
+    MH_MYITEMS+IDM_BOTH,        "Mostra a árvore de directórios e o conteúdo do directório actual"
+    MH_MYITEMS+IDM_TREEONLY,    "Mostra a árvore de directórios"
+    MH_MYITEMS+IDM_DIRONLY,     "Mostra o conteúdo do directório atual"
+    MH_MYITEMS+IDM_SPLIT,       "Divide uma janela de directório ou move a barra de divisão"
+    MH_MYITEMS+IDM_VNAME,       "Mostra apenas os nomes dos ficheiros"
+    MH_MYITEMS+IDM_VDETAILS,    "Mostra todos os detalhes dos ficheiros"
+    MH_MYITEMS+IDM_VOTHER,      "Mostra os detalhes parciais dos ficheiros"
+    MH_MYITEMS+IDM_BYNAME,      "Ordena os ficheiros pelo nome"
+    MH_MYITEMS+IDM_BYTYPE,      "Ordena os ficheiros pelo tipo"
+    MH_MYITEMS+IDM_BYSIZE,      "Ordena os ficheiros pelo tamanho"
+    MH_MYITEMS+IDM_BYDATE,      "Ordena os ficheiros pela data"
+    MH_MYITEMS+IDM_BYFDATE,     "Ordena os ficheiros pela data descendente"
+    MH_MYITEMS+IDM_VINCLUDE,    "Mostra os ficheiros de um tipo especificado"
+
+    MH_MYITEMS+IDM_CONFIRM,     "Controla as mensagens de confirmação"
+    MH_MYITEMS+IDM_FONT,        "Altera o tipo de letra do 'Gestor de Ficheiros'"
+
+    MH_MYITEMS+IDM_TOOLBARCUST, "Personaliza a barra de ferramentas"
+    MH_MYITEMS+IDM_TOOLBAR,     "Mostra ou oculta a barra de ferramentas"
+    MH_MYITEMS+IDM_DRIVEBAR,    "Mostra ou oculta a barra de unidades"
+    MH_MYITEMS+IDM_STATUSBAR,   "Mostra ou oculta a barra de estado"
+    MH_MYITEMS+IDM_NEWWINONCONNECT,     "Abre uma nova janela quando ligar"
+
+    MH_MYITEMS+IDM_MINONRUN,    "Reduz o 'Gestor de Ficheiros' a um ícone no arranque"
+    MH_MYITEMS + IDM_INDEXONLAUNCH, "Cria um index para 'Ir para Directório' quandoo 'Gestor de Ficheiros' inicia"
+    MH_MYITEMS+IDM_SAVESETTINGS,        "Guarda as definições na saída do 'Gestor de Ficheiros'"
+
+    MH_MYITEMS+IDM_NEWWINDOW,   "Abre uma nova janela"
+    MH_MYITEMS+IDM_CASCADE,     "Dispõe as janelas"
+    MH_MYITEMS+IDM_TILEHORIZONTALLY,    "Dispõe as janelas horizontalmente"
+    MH_MYITEMS+IDM_TILE,        "Dispõe as janelas verticalmente"
+    MH_MYITEMS+IDM_ARRANGE,     "Dispõe os ícones"
+    MH_MYITEMS+IDM_REFRESH,     "Actualiza o conteúdo de uma janela"
+
+    MH_MYITEMS+IDM_PERMISSIONS  "Mostra ou define informação de permissões no(s) item(s) seleccionados"
+    MH_MYITEMS+IDM_AUDITING     "Mostra ou define informação de auditoria no(s) item(s) seleccionados"
+    MH_MYITEMS+IDM_OWNER        "Mostrar ou tomar controlo dos item(s) seleccionados"
+
+    MH_MYITEMS+IDM_HELPINDEX,   "Mostra o índice para a ajuda do 'Gestor de Ficheiros'"
+    MH_MYITEMS+IDM_HELPKEYS,    "Procura por um tópico na ajuda do 'Gestor de Ficheiros'"
+    MH_MYITEMS+IDM_HELPHELP,    "Mostra informação sobre como usar a Ajuda"
+    MH_MYITEMS+IDM_ABOUT,       "Mostra informação sobre o 'Gestor de Ficheiros'"
+END
+
+
+// Strings for menu items that may be added at init time.
+
+STRINGTABLE
+BEGIN
+    IDS_CONNECT,                "&Ligar Unidade de Rede..."
+    IDS_DISCONNECT,             "Desligar &Unidade de Rede..."
+    IDS_CONNECTIONS,            "Ligações de &Rede..."
+    IDS_SHAREDDIR               "Directórios &Partilhados..."
+    IDS_SHAREAS,                "Partilhar &Como..."
+    IDS_STOPSHARE,              "P&arar Partilha..."
+    IDS_SHARES,                 "Ver Directórios &Partilhados..."
+    IDS_UNDELETE,               "&Recuperar..."
+    IDS_NEWWINONCONNECT,        "&Abrir N&ova Janela ao Ligar"
+END
+
+#include "winfile_pt-PT.dlg"
+
