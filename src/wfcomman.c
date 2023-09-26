@@ -578,10 +578,10 @@ CreateDirWindow(
 
    // call TC_SETDRIVE like use of CreateTreeWindow in NewTree()
    if (hwndActive && (hwndT = HasTreeWindow(hwndActive)))
-      SendMessage(hwndT,
-         TC_SETDRIVE,
-         MAKELONG(MAKEWORD(FALSE, 0), TRUE),
-         0L);
+	   SendMessage(hwndT,
+		   TC_SETDRIVE,
+		   MAKELONG(MAKEWORD(FALSE, 0), TRUE),
+		   0L);
 
    return hwndActive;
 }

@@ -601,39 +601,39 @@ LRESULT APIENTRY GotoEditSubclassProc(
 VOID
 SetCurrentPathOfWindow(LPWSTR szPath)
 {
-	HWND hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+   HWND hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
 
-	HWND hwndNew = nullptr;
-	if (ISUNCPATH(szPath)) 
-	{
-		// For UNC path this is the place of opening a new UNC window.
-		// Use CTRL+W to remove the number-drive mapping and close it
-		DRIVE freeDriveFound = AddUNCDrive(szPath);
-		switch (freeDriveFound)
-		{
-		case -1:
-			// UNC Loop found. Throw your favourite messagebox here
-			break;
+   HWND hwndNew = nullptr;
+   if (ISUNCPATH(szPath))
+   {
+      // For UNC path this is the place of opening a new UNC window.
+      // Use CTRL+W to remove the number-drive mapping and close it
+      DRIVE freeDriveFound = AddUNCDrive(szPath);
+      switch (freeDriveFound)
+      {
+      case -1:
+         // UNC Loop found. Throw your favourite messagebox here
+         break;
 
-		case 0:
-			// Out of free UNC Slots. Throw your favourite messagebox here
-			break;
+      case 0:
+         // Out of free UNC Slots. Throw your favourite messagebox here
+         break;
 
-			// drive slot found > 0
-		default:
-			hwndNew = CreateDirWindow(szPath, FALSE, hwndActive);
-			if (hwndNew)
-				RefreshWindow(hwndNew, TRUE, TRUE);
-		}
-	}
-	else
-		hwndNew = CreateDirWindow(szPath, TRUE, hwndActive);
+         // drive slot found > 0
+      default:
+         hwndNew = CreateDirWindow(szPath, FALSE, hwndActive);
+         if (hwndNew)
+            RefreshWindow(hwndNew, TRUE, TRUE);
+      }
+   }
+   else
+      hwndNew = CreateDirWindow(szPath, TRUE, hwndActive);
 
-	HWND hwndTree = HasTreeWindow(hwndNew);
-	if (hwndTree)
-	{
-		SetFocus(hwndTree);
-	}
+   HWND hwndTree = HasTreeWindow(hwndNew);
+   if (hwndTree)
+   {
+      SetFocus(hwndTree);
+   }
 }
 
 INT_PTR

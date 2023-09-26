@@ -14,14 +14,14 @@ BEGIN
     POPUP       "ファイル(&F)"
     BEGIN
     MENUITEM    "開く(&O)\tEnter",     IDM_OPEN
-    MENUITEM    "編集\tF12",	    IDM_EDIT
+    MENUITEM    "編集\tF12",        IDM_EDIT
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
     MENUITEM    "コピー(&C)...\tF8",     IDM_COPY
-   MENUITEM    "シンボリックリンク(&Y)...\tF11", IDM_SYMLINK
-   MENUITEM    "ハードリンク(&K)...\tShift+F11", IDM_HARDLINK
+    MENUITEM    "シンボリックリンク(&Y)...\tF11", IDM_SYMLINK
+    MENUITEM    "ハードリンク(&K)...\tShift+F11", IDM_HARDLINK
     MENUITEM    "クリップボードにコピー(&B)...\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
-    MENUITEM	"貼り付け(&P)\tCtrl+V", 	IDM_PASTE
+    MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "貼り付け(&P)\tCtrl+V",     IDM_PASTE
     MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
     MENUITEM    "名前の変更(&N)...",   IDM_RENAME
     MENUITEM    "プロパティ(&T)...\tAlt+Enter",IDM_ATTRIBS
@@ -43,7 +43,7 @@ BEGIN
     MENUITEM    "&PowerShell を起動...\tCtrl+P", IDM_STARTPOWERSHELL
     MENUITEM    "&Explorer を起動...\tCtrl+E", IDM_STARTEXPLORER
     END
-	MENUITEM    "別のディレクトリへ移動(&G)...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "別のディレクトリへ移動(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "終了(&X)",            IDM_EXIT
     END
@@ -93,8 +93,8 @@ BEGIN
     MENUITEM    "追加の設定(&P)", IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "ツール バー(&T)",                 IDM_TOOLBAR
-    MENUITEM    "ドライブバー(&D)",                IDM_DRIVEBAR
-    MENUITEM    "ステータスバー(&S)",              IDM_STATUSBAR
+    MENUITEM    "ドライブ バー(&D)",                IDM_DRIVEBAR
+    MENUITEM    "ステータス バー(&S)",              IDM_STATUSBAR
     MENUITEM    SEPARATOR
     MENUITEM    "プログラムの起動時に最小化(&M)",     IDM_MINONRUN
     MENUITEM    "起動時に移動先インデックスを作成(&G)", IDM_INDEXONLAUNCH
@@ -132,28 +132,28 @@ END
 
 CTXMENU MENU
 BEGIN
-	POPUP "Dummy Popup"
-	BEGIN
-	MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
+    POPUP "Dummy Popup"
+    BEGIN
+    MENUITEM    "新しいウィンドウ(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
     MENUITEM    "開く(&O)\tEnter",     IDM_OPEN
-    MENUITEM    "編集\tF12",	    IDM_EDIT
+    MENUITEM    "編集\tF12",        IDM_EDIT
     MENUITEM    "移動(&M)...\tF7",     IDM_MOVE
     MENUITEM    "コピー(&C)...\tF8",     IDM_COPY
     MENUITEM    "シンボリックリンク(&Y)...\tF11",       IDM_SYMLINK
     MENUITEM    "ハードリンク(&K)...\tShift+F11", IDM_HARDLINK
-	MENUITEM    "クリップボードにコピー(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
-	MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
-	MENUITEM	"貼り付け(&P)\tCtrl+V", IDM_PASTE
-	MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
+    MENUITEM    "クリップボードにコピー(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "クリップボードに切り取り\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "貼り付け(&P)\tCtrl+V", IDM_PASTE
+    MENUITEM    "削除(&D)...\tDel",  IDM_DELETE
     MENUITEM    "名前の変更(&N)...\tF2",   IDM_RENAME
     MENUITEM    "プロパティ(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "実行(&R)...",          IDM_RUN
     MENUITEM    "Bash を起動...", IDM_STARTBASHSHELL
-	MENUITEM    "コマンド プロンプトを起動(&L)...", IDM_STARTCMDSHELL
-	MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
+    MENUITEM    "コマンド プロンプトを起動(&L)...", IDM_STARTCMDSHELL
+    MENUITEM    "PowerShell を起動(&W)...", IDM_STARTPOWERSHELL
     MENUITEM    "Explorer を起動(&X)...", IDM_STARTEXPLORER
-	MENUITEM    "別のディレクトリへ移動(&G)...", IDM_GOTODIR
-	END
+    MENUITEM    "別のディレクトリへ移動(&G)...", IDM_GOTODIR
+    END
 END
 
 
@@ -200,7 +200,7 @@ BEGIN
 
     IDS_LABELDISKERR        "ファイル マネージャーはフロッピー ディスクにボリューム ラベルを付けられません。\n\nフロッピー ディスクが書き込み禁止になっていない事、ネットワーク ドライブではない事を確認して、正しい名前を入力して下さい。\n名前には次の文字を含めることはできません:\n[空白] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
-	IDS_SEARCHNOMATCHES     "一致するファイルが見つかりませんでした。"
+    IDS_SEARCHNOMATCHES     "一致するファイルが見つかりませんでした。"
     IDS_SEARCHREFRESH       "このドライブの内容が変更されました。検索を再度実行しますか?"
     IDS_LABELACCESSDENIED   "この操作をハード ディスク上で実行するには、このワークステーションに管理者としてログインする必要があります。"
 
@@ -258,10 +258,10 @@ BEGIN
     IDS_SYMLINK,            "シンボリックリンク"                       /* 32 */
     IDS_HARDLINK,           "ハードリンク"                      /* 32 */
 
-    IDS_KK_COPYFROMSTR,        "コピー元(&F):"
-    IDS_KK_COPYTOSTR,          "コピー先(&T):"
-    IDS_KK_RENAMEFROMSTR,      "元の名前(&F):"
-    IDS_KK_RENAMETOSTR,        "新しい名前(&T):"
+    IDS_KK_COPYFROMSTR,     "コピー元(&F):"
+    IDS_KK_COPYTOSTR,       "コピー先(&T):"
+    IDS_KK_RENAMEFROMSTR,   "元の名前(&F):"
+    IDS_KK_RENAMETOSTR,     "新しい名前(&T):"
     IDS_KK_HARDLINKFROMSTR, "ハードリンク元(&F):"
     IDS_KK_HARDLINKTOSTR,   "ハードリンク先(&T):"
     IDS_KK_SYMLINKFROMSTR,  "シンボリックリンク元(&F):"
@@ -547,8 +547,8 @@ BEGIN
     MH_MYITEMS+IDM_MOVE,        "選択アイテムを移動する"
     MH_MYITEMS+IDM_COPY,        "ファイルまたはディレクトリをコピーする"
     MH_MYITEMS+IDM_COPYTOCLIPBOARD, "1つまたは複数のファイルをクリップボードにコピーする"
-	MH_MYITEMS+IDM_CUTTOCLIPBOARD, "1つまたは複数のファイルをクリップボードに切り取る"
-    MH_MYITEMS+IDM_PASTE,		"現在のディレクトリにクリップボードから貼り付ける"
+    MH_MYITEMS+IDM_CUTTOCLIPBOARD, "1つまたは複数のファイルをクリップボードに切り取る"
+    MH_MYITEMS+IDM_PASTE,       "現在のディレクトリにクリップボードから貼り付ける"
     MH_MYITEMS+IDM_COMPRESS,    "ファイルまたはディレクトリを圧縮する"
     MH_MYITEMS+IDM_UNCOMPRESS,  "ファイルまたはディレクトリを解凍する"
     MH_MYITEMS+IDM_DELETE,      "ファイルまたはディレクトリを削除する"
