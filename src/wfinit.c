@@ -737,15 +737,30 @@ GetSavedWindow(
    }
 
    // Search for an optional name of the root, which seperated by " from the directory
+   // and a drive number also seperated with "
    // e.g. 
-   //   dir1==....,\\unc\path1\*.*"\\unc\path1\aurea\prima
+   //   dir1==....,\\unc\path1\*.*"\\unc\path1\aurea\prima"2
    // It is " because is must be a character, which is not allowed in pathnames
    LPTSTR szDir = szBuf;
    while (*szBuf && *szBuf != CHAR_DQUOTE)
       szBuf++;
    if (*szBuf) {
       *szBuf = CHAR_NULL;
-      lstrcpy(pwin->szRoot, ++szBuf);    // name of the root
+      LPCTSTR szRoot = ++szBuf;
+
+      // Search on for the next quote
+      while (*szBuf && *szBuf != CHAR_DQUOTE)
+         szBuf++;
+      if (*szBuf) {
+         *szBuf = CHAR_NULL;
+         ++szBuf;    // number of drive
+         if (*szBuf)
+            pwin->dwDriveNumber = atoi(szBuf);
+      } else
+         pwin->dwDriveNumber = -1;
+
+      lstrcpy(pwin->szRoot, szRoot);    // name of the root
+
    } else {
       pwin->szRoot[0] = CHAR_NULL;
    }
@@ -815,13 +830,17 @@ CreateSavedWindows()
          StripFilespec(szDir);
          StripBackslash(szDir);
 
-         if (win.szRoot[0])
+         if (win.szRoot[0]) {
             // UNC Drive
-            AddUNCDrive(win.szRoot);
-         else
+            if (win.dwDriveNumber > -1 && win.dwDriveNumber < MAX_UNC)
+               SetUNCDrive(win.szRoot, OFFSET_UNC + win.dwDriveNumber);
+            else
+               AddUNCDrive(win.szRoot);
+         } else {
             // In case of broken .ini file and UNC
             if (ISUNCPATH(szDir))
                AddUNCDrive(szDir);
+         }
 
          if (!CheckDirExists(szDir))
             continue;
@@ -1344,7 +1363,7 @@ JAPANEND
    win.rc.right -= win.rc.left;
    win.rc.bottom -= win.rc.top;
 
-   // We need to know about all reaprse tags
+   // We need to know about all reparse tags
    hNtdll = GetModuleHandle(NTDLL_DLL);
    if (hNtdll)
    {

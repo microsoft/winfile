@@ -106,15 +106,16 @@ DO_AGAIN:
                GetSplit(hwnd),
                szPath);
          } else {
-            // For UNC path we need to save the name of the root too
-            wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld,%ld,%ld,%u,%lu,%lu,%lu,%d,%s\"%s"),
+            // For UNC path we need to save the name of the root and the drive id too
+            wsprintf(buf2, TEXT("%ld,%ld,%ld,%ld,%ld,%ld,%u,%lu,%lu,%lu,%d,%s\"%s\"%d"),
                wp.rcNormalPosition.left, wp.rcNormalPosition.top,
                wp.rcNormalPosition.right, wp.rcNormalPosition.bottom,
                wp.ptMinPosition.x, wp.ptMinPosition.y,
                wp.showCmd, view, sort, attribs,
                GetSplit(hwnd),
                szPath,
-               aDriveInfo[drive].szRoot);
+               aDriveInfo[drive].szRoot,
+               drive - OFFSET_UNC);
          }
 
          // the dir is an ANSI string (?)
