@@ -1646,10 +1646,52 @@ DRIVE FindUNCDrive(LPCTSTR path, PDWORD pdwFreeDriveSlot)
    return 0;
 }
 
+VOID SaveUNCDrives()
+{
+   TCHAR szUNCBuf[MAXPATHLEN];
+   for (DWORD dwDriveIndex = OFFSET_UNC; dwDriveIndex < MAX_DRIVES; ++dwDriveIndex) {
+
+      TCHAR szUNCKey[MAXPATHLEN];
+      wsprintf(szUNCKey, szUNCKeyFormat, dwDriveIndex - OFFSET_UNC);
+
+      if (aDriveInfo[dwDriveIndex].bDirtyPersist == FALSE && aDriveInfo[dwDriveIndex].szRoot[0])
+      {
+         // For UNC path we need to save the name of the root and the drive id too
+         wsprintf(szUNCBuf, TEXT("%s"),
+            aDriveInfo[dwDriveIndex].szRoot);
+
+         WritePrivateProfileString(szSettings, szUNCKey, szUNCBuf, szTheINIFile);
+      } else {
+         WritePrivateProfileString(szSettings, szUNCKey, NULL, szTheINIFile);
+         aDriveInfo[dwDriveIndex].bDirtyPersist = FALSE;
+      }
+
+   }
+}
+
+VOID LoadUNCDrives()
+{
+   TCHAR szUNCBuf[MAXPATHLEN];
+   for (DWORD dwDriveIndex = OFFSET_UNC; dwDriveIndex < MAX_DRIVES; ++dwDriveIndex) {
+
+      TCHAR szUNCKey[MAXPATHLEN];
+      wsprintf(szUNCKey, szUNCKeyFormat, dwDriveIndex - OFFSET_UNC);
+
+      GetPrivateProfileString(szSettings, szUNCKey, szNULL, szUNCBuf, COUNTOF(szUNCBuf), szTheINIFile);
+      if (szUNCBuf[0])
+         SetUNCDrive(szUNCBuf, dwDriveIndex);
+   }
+}
+
 VOID SetUNCDrive(LPTSTR path, DWORD aFreeDriveSlot)
 {
    lstrcpy(aDriveInfo[aFreeDriveSlot].szRoot, path);
    lstrcpy(aDriveInfo[aFreeDriveSlot].szRootBackslash, path);
+
+   // Force drive to be Network drive
+   aDriveInfo[aFreeDriveSlot].uType = DRIVE_REMOTE;
+   aDriveInfo[aFreeDriveSlot].iOffset = GetDriveOffset(aFreeDriveSlot);
+
    AddBackslash(aDriveInfo[aFreeDriveSlot].szRootBackslash);
 }
 

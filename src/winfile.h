@@ -443,6 +443,8 @@ DRIVE RemoveUNCDrive(LPCTSTR path);
 DRIVE FindUNCDrive(LPCTSTR path, PDWORD pdwFreeDriveSlot);
 BOOL FindUNCLoop(LPCTSTR path);
 VOID SetUNCDrive(LPTSTR path, DWORD aFreeDriveSlot);
+VOID SaveUNCDrives();
+VOID LoadUNCDrives();
 
 // WFDIR.C
 
@@ -956,6 +958,7 @@ typedef struct _DRIVE_INFO {
 
    TCHAR szRoot[MAXPATHLEN];
    TCHAR szRootBackslash[MAXPATHLEN];
+   BOOL bDirtyPersist;
 } DRIVEINFO, *PDRIVEINFO;
 
 #define SC_SPLIT            100
@@ -1230,6 +1233,7 @@ Extern TCHAR        szChangeNotifyTime[]    EQ( TEXT("ChangeNotifyTime") );
 Extern UINT         uChangeNotifyTime       EQ( 3000 );
 
 Extern TCHAR        szDirKeyFormat[]        EQ( TEXT("dir%d") );
+Extern TCHAR        szUNCKeyFormat[]        EQ(TEXT("unc%d"));
 Extern TCHAR        szWindow[]              EQ( TEXT("Window") );
 Extern TCHAR        szWindows[]             EQ( TEXT("Windows") );
 
