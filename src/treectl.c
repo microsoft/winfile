@@ -509,14 +509,26 @@ InsertDirectory(
        pNode->dwAttribs = dwAttribs;
    }
 
-   SendMessage(hwndLB, LB_INSERTSTRING, iMax, (LPARAM)pNode);
+   BOOL bInsertNode = TRUE;
+   if (pNode->dwAttribs & ATTR_JUNCTION)
+      if (!(GetWindowLongPtr(GetParent(hwndTreeCtl), GWL_ATTRIBS) & ATTR_JUNCTION))
+         bInsertNode = FALSE;
 
-   if (ppNode)
+   if (bInsertNode)
    {
-      *ppNode = pNode;
-   }
+      SendMessage(hwndLB, LB_INSERTSTRING, iMax, (LPARAM)pNode);
 
-   return (iMax);
+      if (ppNode)
+      {
+         *ppNode = pNode;
+      }
+      return iMax;
+   }
+   else 
+   {
+      LocalFree(pNode);
+      return 0;
+   }
 }
 
 
@@ -1188,7 +1200,7 @@ FillTreeListbox(HWND hwndTC,
                                &pNode,
                                IsCasePreservedDrive(DRIVEID(szDefaultDir)),
                                bPartialSort,
-                               (DWORD)(-1) );
+                               INVALID_FILE_ATTRIBUTES );
 
       if (pNode) {
 
@@ -2101,7 +2113,6 @@ TreeControlWndProc(
    INT    iSel;
    INT    i, j;
    INT    nIndex;
-   DWORD  dwTemp;
    PDNODE pNode, pNodeNext;
    HWND  hwndLB;
    HWND  hwndParent;
@@ -2466,14 +2477,14 @@ TreeControlWndProc(
          //
          // Insert it into the tree listbox
          //
-         dwTemp = InsertDirectory( hwnd,
-                                   pNode,
-                                   (WORD)nIndex,
-                                   szPath,
-                                   &pNodeT,
-                                   IsCasePreservedDrive(DRIVEID(((LPTSTR)lParam))),
-                                   FALSE,
-                                   (DWORD)(-1) );
+         InsertDirectory( hwnd,
+                          pNode,
+                          (WORD)nIndex,
+                          szPath,
+                          &pNodeT,
+                          IsCasePreservedDrive(DRIVEID(((LPTSTR)lParam))),
+                          FALSE,
+                          INVALID_FILE_ATTRIBUTES );
 
          //
          // Add a plus if necessary
