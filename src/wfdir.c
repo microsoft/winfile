@@ -888,7 +888,6 @@ DirWndProc(
 
    case FS_RCLICKED:
    {
-       LPXDTALINK lpxdta;
        DWORD item = wParam;
        INT iMac = (INT)SendMessage(hwndLB, LB_GETSELCOUNT, 0, 0L);
        LPINT lpSelItems = (LPINT)LocalAlloc(LMEM_FIXED, sizeof(INT) * iMac);
@@ -906,6 +905,7 @@ DirWndProc(
            SendMessage(hwndLB, LB_SETSEL, (WPARAM)FALSE, (LPARAM)-1); // deselect current item
            SendMessage(hwndLB, LB_SETSEL, (WPARAM)TRUE, (LPARAM)item); // select clicked item
        }
+       LocalFree((HLOCAL)lpSelItems);
        break;
    }
 
