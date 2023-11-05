@@ -1691,12 +1691,12 @@ VOID LoadUNCDrives()
    }
 }
 
-VOID SetUNCDrive(LPTSTR path, DWORD aFreeDriveSlot)
+VOID SetUNCDrive(LPCTSTR path, DWORD aFreeDriveSlot)
 {
    lstrcpy(aDriveInfo[aFreeDriveSlot].szRoot, path);
    lstrcpy(aDriveInfo[aFreeDriveSlot].szRootBackslash, path);
 
-   // Force drive to be Network drive
+   // Force drive to be network drive
    aDriveInfo[aFreeDriveSlot].uType = DRIVE_REMOTE;
    aDriveInfo[aFreeDriveSlot].iOffset = GetDriveOffset(aFreeDriveSlot);
 
@@ -1735,6 +1735,50 @@ DRIVE RemoveUNCDrive(LPCTSTR path)
 
    return dwFreeDriveSlot;
 }
+
+PTCHAR GetUNCDrivePath(const DRIVE aDrive)
+{
+   return aDriveInfo[aDrive].szRootBackslash;
+}
+
+// Closes the UNC mapping and all the windows showing instances of this UNC mapping
+// if all instances of the UNC drive are not the last open windows
+VOID CloseUNCDrive(LPCTSTR aPath)
+{
+   HWND hUNCSave[MAX_DRIVES] = { 0 };
+   INT iWndCount = 0;
+   INT iUNCWndCount = 0;
+   INT iUNCSaveCount = 0;
+
+   PTCHAR szUNCPath = GetUNCDrivePath(DRIVEID(aPath));
+   
+   // Go through all non title/search windows to find instances of aPath windows
+   for (HWND hwnd = GetWindow(hwndMDIClient, GW_CHILD); hwnd; hwnd = GetWindow(hwnd, GW_HWNDNEXT)) {
+      if (!GetWindow(hwnd, GW_OWNER) && ((INT)GetWindowLongPtr(hwnd, GWL_TYPE) >= 0)) {
+
+         TCHAR szUNCWndPath[MAX_PATH];
+         SendMessage(hwnd, FS_GETDIRECTORY, COUNTOF(szUNCWndPath), (LPARAM)szUNCWndPath);
+         
+         // Check if this is an instance of the active UNC windows
+         if (StrStrIW(szUNCWndPath, szUNCPath)) {
+            iUNCWndCount++;
+            hUNCSave[iUNCSaveCount++] = hwnd;
+         }
+
+         iWndCount++;
+      }
+   }
+   
+   // If there are more windows open than instances of the active UNC windows, we 
+   // can close the windows and then unmap the UNC drive
+   if (iWndCount > iUNCWndCount) {
+      for (INT i = 0; i < iUNCSaveCount; ++i)
+         PostMessage(hUNCSave[i], WM_CLOSE, 0, 0L);
+      
+      RemoveUNCDrive(aPath);
+   }
+}
+
 
 DRIVE DRIVEID(LPCTSTR path)
 {

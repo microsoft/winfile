@@ -1139,21 +1139,22 @@ AppCommandProc(DWORD id)
 		break;
 
    case IDM_CLOSEWINDOW:
-       {
-           HWND      hwndActive;
+      {
+         HWND      hwndActive;
 
-           hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+         hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
 
-           if (!IsLastWindow()) {
-              TCHAR szPath[MAXPATHLEN];
-              SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szPath), (LPARAM)szPath);
-              RemoveUNCDrive(szPath);
-              RefreshWindow(hwndActive, TRUE, TRUE);
+         SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szPath), (LPARAM)szPath);
+         if (ISUNCPATH(szPath))
+         {
+            CloseUNCDrive(szPath);
+            RefreshWindow(hwndActive, TRUE, TRUE);
 
-              PostMessage(hwndActive, WM_CLOSE, 0, 0L);
-           }
-       }
-       break;
+         }
+         else
+            PostMessage(hwndActive, WM_CLOSE, 0, 0L);
+      }
+      break;
 
    case IDM_SELECT:
 

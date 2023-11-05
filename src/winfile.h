@@ -442,9 +442,11 @@ DRIVE AddUNCDrive(LPTSTR path);
 DRIVE RemoveUNCDrive(LPCTSTR path);
 DRIVE FindUNCDrive(LPCTSTR path, PDWORD pdwFreeDriveSlot);
 BOOL FindUNCLoop(LPCTSTR path);
-VOID SetUNCDrive(LPTSTR path, DWORD aFreeDriveSlot);
+VOID SetUNCDrive(LPCTSTR path, DWORD aFreeDriveSlot);
 VOID SaveUNCDrives();
 VOID LoadUNCDrives();
+PTCHAR GetUNCDrivePath(const DRIVE aDrive);
+VOID CloseUNCDrive(LPCTSTR aPath);
 
 // WFDIR.C
 
