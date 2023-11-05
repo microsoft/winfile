@@ -1574,6 +1574,14 @@ UpdateDriveListComplete(VOID)
 
       if (IsRemoteDrive(drive)) {
 
+         // UNC drives always need a refresh
+         if (drive >= OFFSET_UNC)
+         {
+            RefreshWindow(hwnd, FALSE, FALSE);
+            continue;
+         }
+         
+         // Network drives might need a refresh if the share has changed
          if (!WFGetConnection(drive, &lpszVol, FALSE, ALTNAME_REG)) {
             lpszOldVol = (LPTSTR) GetWindowLongPtr(hwnd, GWL_VOLNAME);
 
