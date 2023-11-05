@@ -1624,8 +1624,16 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 BOOL FindUNCLoop(LPCTSTR path)
 {
    for (DWORD dwDriveIndex = OFFSET_UNC; dwDriveIndex < MAX_DRIVES; ++dwDriveIndex) {
-      if (aDriveInfo[dwDriveIndex].szRoot[0] && StrStrIW(aDriveInfo[dwDriveIndex].szRoot, path))
-         return TRUE;
+      if (aDriveInfo[dwDriveIndex].szRoot[0] && StrStrIW(aDriveInfo[dwDriveIndex].szRoot, path)) {
+         
+         if (_wcsicmp(path, aDriveInfo[dwDriveIndex].szRoot))
+            // path a was a parent of an existing drive, e.g. \\foo\bar for \\foo\bar\share
+            // This is a loop, which can't be handled
+            return TRUE;
+            // else
+            //    path is the same as an existing drive, e.g. \\foo\bar for \\foo\bar
+            //    This is o ok
+      }
    }
    return FALSE;
 }

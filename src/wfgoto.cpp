@@ -612,7 +612,8 @@ SetCurrentPathOfWindow(LPWSTR szPath)
       switch (freeDriveFound)
       {
       case -1:
-         // UNC Loop found. Throw your favourite messagebox here
+         // UNC Loop found.  e.g. \\foo\bar for existing drive \\foo\bar\share
+         // Throw your favourite messagebox here
          break;
 
       case 0:
