@@ -886,8 +886,7 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
          }
          else
          {
-            SendMessage(hwndLB, LB_SETSEL, (WPARAM)FALSE, (LPARAM)-1);
-            SendMessage(hwndLB, LB_SETSEL, (WPARAM)TRUE, (LPARAM)item);
+            SendMessage(hwnd, FS_RCLICKED, (WPARAM)item, (LPARAM)0);
 
             BOOL bDir = FALSE;
             SendMessage(hwnd, FS_GETSELECTION, 5, (LPARAM)&bDir);

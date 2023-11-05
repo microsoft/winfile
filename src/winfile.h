@@ -807,6 +807,8 @@ BOOL  RectTreeItem(HWND hwndLB, INT iItem, BOOL bFocusOn);
 #define FS_ENABLEFSC               (WM_USER+0x121)
 #define FS_DISABLEFSC              (WM_USER+0x122)
 
+#define FS_RCLICKED                (WM_USER+0x150)
+
 #define ATTR_READWRITE      0x0000
 #define ATTR_READONLY       FILE_ATTRIBUTE_READONLY     // == 0x0001
 #define ATTR_HIDDEN         FILE_ATTRIBUTE_HIDDEN       // == 0x0002
