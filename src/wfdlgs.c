@@ -886,7 +886,24 @@ ActivateCommonContextMenu(HWND hwnd, HWND hwndLB, LPARAM lParam)
          }
          else
          {
-            SendMessage(hwnd, FS_RCLICKED, (WPARAM)item, (LPARAM)0);
+            // directory.  Allow for multiselection
+            INT iMac = (INT)SendMessage(hwndLB, LB_GETSELCOUNT, 0, 0L);
+            LPINT lpSelItems = (LPINT)LocalAlloc(LMEM_FIXED, sizeof(INT) * iMac);
+            iMac = (INT)SendMessage(hwndLB,
+               LB_GETSELITEMS,
+               (WPARAM)iMac,
+               (LPARAM)lpSelItems);
+            boolean clickedOnSelected = 0;
+            for (int i = 0; i < iMac; i++) {
+               if (lpSelItems[i] == item) {
+                  clickedOnSelected = 1;
+               }
+            }
+            if (!clickedOnSelected) { // clicked on something new, select it
+               SendMessage(hwndLB, LB_SETSEL, (WPARAM)FALSE, (LPARAM)-1);
+               SendMessage(hwndLB, LB_SETSEL, (WPARAM)TRUE, (LPARAM)item);
+            }
+            LocalFree((HLOCAL)lpSelItems);
 
             BOOL bDir = FALSE;
             SendMessage(hwnd, FS_GETSELECTION, 5, (LPARAM)&bDir);
