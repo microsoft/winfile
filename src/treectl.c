@@ -527,7 +527,10 @@ InsertDirectory(
    else 
    {
       LocalFree(pNode);
-      return 0;
+      if (ppNode)
+        *ppNode = NULL;
+
+        return 0;
    }
 }
 
