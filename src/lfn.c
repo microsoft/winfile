@@ -737,6 +737,7 @@ DWORD WFJunction(LPCWSTR pszLinkDirectory, LPCWSTR pszLinkTarget)
    }
 
    CloseHandle(hFile);
+   ChangeFileSystem(FSC_MKDIR, pszLinkDirectory, NULL);
    return ERROR_SUCCESS;
 }
 

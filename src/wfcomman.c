@@ -249,8 +249,8 @@ UpdateAllDirWindows(
 VOID
 ChangeFileSystem(
    DWORD dwFunction,
-   LPTSTR lpszFile,
-   LPTSTR lpszTo)
+   LPCTSTR lpszFile,
+   LPCTSTR lpszTo)
 {
    HWND   hwnd, hwndTree, hwndOld;
    TCHAR  szFrom[MAXPATHLEN];
