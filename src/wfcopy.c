@@ -265,8 +265,6 @@ JAPANBEGIN
     // Allocate enough space for 8.3 conversion to DBCS here (each
     // part done individually, so 8 chars is enough).
     //
-    LPSTR pOrigA;
-    CHAR szOrigA[8*2];
 JAPANEND
 
     //
@@ -334,7 +332,7 @@ JAPANEND
        //
 
        if ( !(pOrig[0] >= CHAR_A && pOrig[0] <= CHAR_Z) &&
-          !(pOrig[0] >= CHAR_a && pOrig[0] <= TEXT('z')) ) {
+          !(pOrig[0] >= CHAR_a && pOrig[0] <= CHAR_z) ) {
 
           //
           // Invalid drive string; return FALSE!
@@ -357,7 +355,7 @@ JAPANEND
 
     DRIVESET(szDrive,drive);
 
-    flfn = IsLFNDrive(szDrive);
+    flfn = IsLFNDrive(szDrive) || ISDIGIT_DRIVE(szDrive);
 
     //
     // on FAT _AND_ lfn devices, replace any illegal chars with underscores
@@ -375,7 +373,7 @@ JAPANEND
     }
 
     if (CHAR_BACKSLASH == pOrig[0]) {
-      lpszPath[0] = (TCHAR)drive + (TCHAR)'A';
+      lpszPath[0] = (TCHAR)drive + CHAR_A;
       lpszPath[1] = CHAR_COLON;
       lpszPath[2] = CHAR_BACKSLASH;
       lpszPath[3] = CHAR_NULL;
@@ -475,6 +473,8 @@ AddComponent:
 
           } else {
 
+             LPSTR pOrigA;
+             CHAR szOrigA[11 * 2];
              if (bJAPAN) {
                 if (!WideCharToMultiByte(CP_ACP,
                                          0,
@@ -704,7 +704,7 @@ IsTheDiskReallyThere(
 
    STKCHK();
 
-   if (pPath[1]==CHAR_COLON)
+   if (pPath[1] == CHAR_COLON || ISUNCPATH(pPath))
       drive = DRIVEID(pPath);
    else
       return 1;
@@ -717,7 +717,7 @@ IsTheDiskReallyThere(
       LoadString(hAppInstance, IDS_COPYERROR + FUNC_SETDRIVE, szTitle,
          COUNTOF(szTitle));
 
-      wsprintf(szMessage, szTemp, drive + CHAR_A);
+      wsprintf(szMessage, szTemp, DRIVESET_UC(drive));
       MessageBox(hwnd, szMessage, szTitle, MB_ICONHAND);
 
       return 0;
@@ -794,7 +794,7 @@ DiskNotThere:
       //
       LoadString(hAppInstance, IDS_COPYERROR + dwFunc, szTitle, COUNTOF(szTitle));
       LoadString(hAppInstance, IDS_DRIVENOTREADY, szTemp, COUNTOF(szTemp));
-      wsprintf(szMessage, szTemp, drive + CHAR_A);
+      wsprintf(szMessage, szTemp, DRIVESET_UC(drive));
       if (MessageBox(hwnd, szMessage, szTitle, MB_ICONEXCLAMATION | MB_RETRYCANCEL) == IDRETRY)
          goto Retry;
       else
@@ -815,7 +815,7 @@ DiskNotThere:
 
       if (!CancelInfo.hCancelDlg && IsRemovableDrive(drive)) {
          LoadString(hAppInstance, IDS_UNFORMATTED, szTemp, COUNTOF(szTemp));
-         wsprintf(szMessage, szTemp, drive + CHAR_A);
+         wsprintf(szMessage, szTemp, DRIVESET_UC(drive));
 
          if (MessageBox(hwnd, szMessage, szTitle, MB_ICONEXCLAMATION| MB_YESNO) == IDYES) {
 
@@ -2714,9 +2714,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
 #endif
 
 #ifdef FASTMOVE
-            if ((CHAR_COLON == pcr->sz[1]) &&
-               (CHAR_COLON == szDest[1]) &&
-               (DRIVEID(pcr->sz) == DRIVEID(szDest))) {
+            if (DRIVEID(pcr->sz) == DRIVEID(szDest)) {
 
                //
                // Warning: This will not work on winball drives!

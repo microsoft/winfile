@@ -285,7 +285,7 @@ BEGIN
 
     IDS_STATUSMSG,          "%d Datei(en) (%s)"             /* 128 */
     IDS_STATUSMSG2,         "%d Datei(en) (%s) ausgewählt"          /* 128 */
-    IDS_DRIVEFREE,          "%c: %s von  %s frei"            /* 128 */
+    IDS_DRIVEFREE,          "%s %s von  %s frei"            /* 128 */
     IDS_TREEABORT,          "Unvollständiger Verzeichnisbaum wird angezeigt"     /* 128 */
     IDS_DIRSREAD,           "%d Verzeichnisse gelesen"                   /* 32 */
     IDS_SEARCHMSG,          "%d Datei(en) gefunden"

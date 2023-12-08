@@ -41,8 +41,7 @@ NotifySearchFSC(
    if (!hwndSearch)
       return;
 
-   if (DRIVEID(pszPath) ==
-      SendMessage(hwndSearch, FS_GETDRIVE, 0, 0L) - CHAR_A) {
+   if (DRIVEID(pszPath) == SendMessage(hwndSearch, FS_GETDRIVE, 0, 0L) - CHAR_A) {
 
       SendMessage(hwndSearch, WM_FSC, dwFunction, 0L);
    }
@@ -511,10 +510,10 @@ CreateDirWindow(
    INT dxSplit;
 
    if (hwndActive == hwndSearch) {
-	   bReplaceOpen = FALSE;
-	   dxSplit = -1;
+      bReplaceOpen = FALSE;
+      dxSplit = -1;
    } else {
-	   dxSplit = GetSplit(hwndActive);
+      dxSplit = GetSplit(hwndActive);
    }
 
    //
@@ -532,48 +531,41 @@ CreateDirWindow(
    // Are we replacing the contents of the currently active child?
    //
    if (bReplaceOpen) {
-	   CharUpperBuff(szPath, 1);     // make sure
+      DRIVE drive = DRIVEID(szPath);
+      for (INT i = 0; i < cDrives; i++) {
+         if (drive == rgiDrive[i]) {
+            // if not already selected, do so now
+            if (i != SendMessage(hwndDriveList, CB_GETCURSEL, i, 0L)) {
+               SelectToolbarDrive(i);
+            }
+            break;
+         }
+      }
 
-	   DRIVE drive = DRIVEID(szPath);
-	   for (INT i = 0; i<cDrives; i++)
-	   {
-		   if (drive == rgiDrive[i])
-		   {
-			   // if not already selected, do so now
-			   if (i != SendMessage(hwndDriveList, CB_GETCURSEL, i, 0L))
-			   {
-				   SelectToolbarDrive(i);
-			   }
-			   break;
-		   }
-	   }
+      if (hwndT = HasDirWindow(hwndActive)) {
+         WCHAR szFileSpec[MAXPATHLEN];
 
-	   if (hwndT = HasDirWindow(hwndActive))
-	   {
-		   WCHAR szFileSpec[MAXPATHLEN];
+         AddBackslash(szPath);                   // default to all files
+         SendMessage(hwndT, FS_GETFILESPEC, COUNTOF(szFileSpec), (LPARAM)szFileSpec);
+         lstrcat(szPath, szFileSpec);
+         SendMessage(hwndT, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)szPath);
+         StripFilespec(szPath);
+      }
 
-		   AddBackslash(szPath);                   // default to all files
-		   SendMessage(hwndT, FS_GETFILESPEC, COUNTOF(szFileSpec), (LPARAM)szFileSpec);
-		   lstrcat(szPath, szFileSpec);
-		   SendMessage(hwndT, FS_CHANGEDISPLAY, CD_PATH, (LPARAM)szPath);
-		   StripFilespec(szPath);
-	   }
+      //
+      // update the tree if necessary
+      //
+      ;
+      if (hwndT = HasTreeWindow(hwndActive)) {
+         SendMessage(hwndT, TC_SETDRIVE, 0, (LPARAM)(szPath));
+      }
 
-	   //
-	   // update the tree if necessary
-	   //
-	   ;
-	   if (hwndT = HasTreeWindow(hwndActive))
-	   {
-		   SendMessage(hwndT, TC_SETDRIVE, 0, (LPARAM)(szPath));
-	   }
+      //
+      // Update the status in case we are "reading"
+      //
+      UpdateStatus(hwndActive);
 
-	   //
-	   // Update the status in case we are "reading"
-	   //
-	   UpdateStatus(hwndActive);
-
-	   return hwndActive;
+      return hwndActive;
    }
 
    AddBackslash(szPath);                   // default to all files
@@ -1147,13 +1139,22 @@ AppCommandProc(DWORD id)
 		break;
 
    case IDM_CLOSEWINDOW:
-       {
-           HWND      hwndActive;
+      {
+         HWND      hwndActive;
 
-           hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-           PostMessage(hwndActive, WM_CLOSE, 0, 0L);
-       }
-       break;
+         hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+
+         SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szPath), (LPARAM)szPath);
+         if (ISUNCPATH(szPath))
+         {
+            CloseUNCDrive(szPath);
+            RefreshWindow(hwndActive, TRUE, TRUE);
+
+         }
+         else
+            PostMessage(hwndActive, WM_CLOSE, 0, 0L);
+      }
+      break;
 
    case IDM_SELECT:
 
@@ -2074,9 +2075,7 @@ CHECK_OPTION:
     case IDM_REFRESH:
        {
           INT i;
-
-#define NUMDRIVES (sizeof(rgiDrive)/sizeof(rgiDrive[0]))
-          INT rgiSaveDrives[NUMDRIVES];
+          INT rgiSaveDrives[MAX_DRIVES];
 
           if (WAITNET_LOADED) {
 
@@ -2088,7 +2087,7 @@ CHECK_OPTION:
              AddNetMenuItems();
           }
 
-          for (i=0; i<NUMDRIVES; ++i)
+          for (i = 0; i < MAX_DRIVES; ++i)
              rgiSaveDrives[i] = rgiDrive[i];
 
           for (i = 0; i < iNumExtensions; i++) {
@@ -2101,7 +2100,7 @@ CHECK_OPTION:
           // (done by sending the WM_SIZE below) and invalidate them so that
           // they will reflect the current status
 
-          for (i=0; i<NUMDRIVES; ++i) {
+          for (i = 0; i < MAX_DRIVES; ++i) {
              if (rgiDrive[i] != rgiSaveDrives[i]) {
 
                 // RedoDriveWindows no longer calls

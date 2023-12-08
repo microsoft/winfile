@@ -89,7 +89,15 @@ U_HEAD(Type)
    DRIVESET(szDrive, drive);
 
    IF_READ(Type)
-      uType = GetDriveType(szDrive);
+      if (drive < OFFSET_UNC)
+         uType = GetDriveType(szDrive);
+      else
+      {
+         if (pDriveInfo->szRootBackslash[0])
+            uType = GetDriveType(pDriveInfo->szRootBackslash);
+         else
+            uType = DRIVE_UNKNOWN;
+      }
 
       ENTER_MODIFY(Type)
 
@@ -269,7 +277,20 @@ Retry:
 
          pDriveInfo->dwConnectInfoMax = dwSize;
 
-         dwRetVal = WNetGetConnection2(szDrive, lpConnectInfo, &dwSize);
+         if (drive < OFFSET_UNC)
+            dwRetVal = WNetGetConnection2(szDrive, lpConnectInfo, &dwSize);
+         else
+         {
+            // Mimic WNetGetConnection2()
+            lpConnectInfo->lpRemoteName = LocalAlloc(LPTR, lstrlen(aDriveInfo[drive].szRoot) * 2 + 2);
+            lstrcpy(lpConnectInfo->lpRemoteName, aDriveInfo[drive].szRoot);
+
+            #define NetWorkProvider L"Microsoft Windows Network"
+            lpConnectInfo->lpProvider = LocalAlloc(LPTR, sizeof(NetWorkProvider) + 2);
+            lstrcpy(lpConnectInfo->lpProvider, NetWorkProvider);
+
+            dwRetVal = ERROR_SUCCESS;
+         }
 
          if (ERROR_MORE_DATA == dwRetVal) {
 
@@ -1553,6 +1574,14 @@ UpdateDriveListComplete(VOID)
 
       if (IsRemoteDrive(drive)) {
 
+         // UNC drives always need a refresh
+         if (drive >= OFFSET_UNC)
+         {
+            RefreshWindow(hwnd, FALSE, FALSE);
+            continue;
+         }
+         
+         // Network drives might need a refresh if the share has changed
          if (!WFGetConnection(drive, &lpszVol, FALSE, ALTNAME_REG)) {
             lpszOldVol = (LPTSTR) GetWindowLongPtr(hwnd, GWL_VOLNAME);
 

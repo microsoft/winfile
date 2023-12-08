@@ -736,7 +736,35 @@ GetSavedWindow(
       count++;
    }
 
-   lstrcpy(pwin->szDir, szBuf);    // this is the directory
+   // Search for an optional name of the root, which seperated by " from the directory
+   // and a drive number also seperated with "
+   // e.g. 
+   //   dir1==....,\\unc\path1\*.*"\\unc\path1\aurea\prima"2
+   // It is " because is must be a character, which is not allowed in pathnames
+   LPTSTR szDir = szBuf;
+   while (*szBuf && *szBuf != CHAR_DQUOTE)
+      szBuf++;
+   if (*szBuf) {
+      *szBuf = CHAR_NULL;
+      LPCTSTR szRoot = ++szBuf;
+
+      // Search on for the next quote
+      while (*szBuf && *szBuf != CHAR_DQUOTE)
+         szBuf++;
+      if (*szBuf) {
+         *szBuf = CHAR_NULL;
+         ++szBuf;    // number of drive
+         if (*szBuf)
+            pwin->dwDriveNumber = atoi(szBuf);
+      } else
+         pwin->dwDriveNumber = -1;
+
+      lstrcpy(pwin->szRoot, szRoot);    // name of the root
+
+   } else {
+      pwin->szRoot[0] = CHAR_NULL;
+   }
+   lstrcpy(pwin->szDir, szDir);    // this is the directory
 }
 
 
@@ -746,13 +774,19 @@ CheckDirExists(
 {
    BOOL bRet = FALSE;
 
-   if (IsNetDrive(DRIVEID(szDir)) == 2) {
+   DRIVE drive = DRIVEID(szDir);
+   
+   // Immediatley give up on not existing UNC Drives. They will not reconnect at some time
+   if (drive >= OFFSET_UNC && INVALID_FILE_ATTRIBUTES == GetFileAttributes(szDir))
+      return FALSE;
 
-      CheckDrive(hwndFrame, DRIVEID(szDir), FUNC_SETDRIVE);
+   if (IsNetDrive(drive) == 2 || drive >= OFFSET_UNC) {
+
+      CheckDrive(hwndFrame, drive, FUNC_SETDRIVE);
       return TRUE;
    }
 
-   if (IsValidDisk(DRIVEID(szDir)))
+   if (IsValidDisk(drive))
       bRet = SetCurrentDirectory(szDir);
 
    return bRet;
@@ -790,22 +824,35 @@ CreateSavedWindows()
 
          GetSavedWindow(buf, &win);
 
-         //
-         // clean off some junk so we
-         // can do this test
-         //
          lstrcpy(szDir, win.szDir);
+
+         // clean off some junk so we can do this test
          StripFilespec(szDir);
          StripBackslash(szDir);
 
+         if (win.szRoot[0]) {
+            // UNC Drive
+            if (win.dwDriveNumber > -1 && win.dwDriveNumber < MAX_UNC)
+               SetUNCDrive(win.szRoot, OFFSET_UNC + win.dwDriveNumber);
+            else
+               AddUNCDrive(win.szRoot);
+         } else {
+            // In case of broken .ini file and UNC
+            if (ISUNCPATH(szDir))
+               AddUNCDrive(szDir);
+         }
+
          if (!CheckDirExists(szDir))
             continue;
+
+         AddBackslash(szDir);
+         lstrcat(szDir, szStarDotStar);
 
          dwNewView = win.dwView;
          dwNewSort = win.dwSort;
          dwNewAttribs = win.dwAttribs;
 
-         hwnd = CreateTreeWindow(win.szDir,
+         hwnd = CreateTreeWindow(szDir,
                                  win.rc.left,
                                  win.rc.top,
                                  win.rc.right - win.rc.left,
@@ -828,6 +875,8 @@ CreateSavedWindows()
       }
 
    } while (*buf);
+
+   LoadUNCDrives();
 
    //
    // if nothing was saved create a tree for the current drive
@@ -1051,7 +1100,7 @@ JAPANEND
    //
    SetErrorMode(1);
 
-   for (i=0; i<26;i++) {
+   for (i = 0; i < MAX_DRIVES; i++) {
       I_Space(i);
    }
 
@@ -1095,8 +1144,6 @@ JAPANEND
    hicoTree = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(TREEICON));
    hicoTreeDir = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(TREEDIRICON));
    hicoDir = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(DIRICON));
-
-   chFirstDrive = CHAR_a;
 
    // now build the parameters based on the font we will be using
 
@@ -1318,7 +1365,7 @@ JAPANEND
    win.rc.right -= win.rc.left;
    win.rc.bottom -= win.rc.top;
 
-   // We need to know about all reaprse tags
+   // We need to know about all reparse tags
    hNtdll = GetModuleHandle(NTDLL_DLL);
    if (hNtdll)
    {
