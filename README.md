@@ -3,84 +3,28 @@
 The Windows File Manager lives again and runs as a native x86 and x64 desktop app
 on all currently supported version of Windows, including Windows 10. I welcome your thoughts, comments and suggestions.
 
-There are two primary versions of the source code in the master branch:
-
-1. original_plus tag: refers to the source for WinFile as of Windows NT4 with minimal changes
-so that it compiles with Visual Studio and runs on current Windows.
-
-2. current master: contains my personal changes/additions to WinFile.
-
+2. current master: contains personal changes/additions to WinFile over the years by many contributors
 I will consider bugs fixes and suggestions for minor changes to the master branch. Feel free to create a pull request or post issues as you see fit.
 
-I will not be changing the original_plus sources nor creating other branches for other purposes.
-You are welcome to do that on your own.
-
 ## Download The App
-
-If you are running Windows 10, you can download the app from the store
-
-<a href="https://www.microsoft.com/store/apps/9p7vbbbc49rb?ocid=badge"><img src="https://developer.microsoft.com/store/badges/images/English_get-it-from-MS.png" alt="Get it from Microsoft" width="150px"></a>
-
 If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of pre-compiled versions available.
 
 Please select the version which you would like to download.
 
-- [Chocolatey release](https://chocolatey.org/packages/winfile)
-
-- Winget release: `winget install "Windows File Manager"`
-
-- [MSYS2 release](https://packages.msys2.org/base/mingw-w64-winfile)
-
-- [Latest Release on Github (v10.2.0.0)](https://github.com/microsoft/winfile/releases/latest)
-
-- [First Stable Release (v10.0)](https://github.com/Microsoft/winfile/releases/tag/v10.0)
-
-- [Original_Plus](https://github.com/Microsoft/winfile/releases/tag/original_plus)
+- [Latest Release on Github (v10.2.1.0)](https://github.com/microsoft/winfile/releases/latest)
 
 To see more release binaries, including of older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
 
 
 ## History
-
 The Windows File manager was originally released with Windows 3.0 in the early 1990s.  You
 can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(Windows).
 
 ## What it looks like
 # ![Winfile](winfilescreenshot.png)
 
-## Changes in original_plus
-
-The source code provided here (in the `src` directory) was copied from the Windows NT 4 source tree in November
-2007.  The tag named original_plus contains a very limited set of  modifications
-from the original sources to enable `WinFile.exe` to run on current Windows.
-The most significant changes are:
-
-1. converted to Visual Studio solution; works on VS 2015 and 2017
-2. compiles and runs on 64-bit Windows (e.g., GetWindowLong -> GetWindowLongPtr, LONG -> LPARAM)
-3. added a few header files which were stored elsewhere in the NT source tree (e.g., wfext.h)
-4. deleted some unused files (e.g., winfile.def)
-5. converted 64-bit arithmetic from internal libraries to C
-6. converted internal shell APIs to public APIs (the primary reason the old version would not run)
-
-The help directory contains both winfile.hlp and winfile.chm.  Winfile.hlp was in the NT4
-source tree, but does not work on Windows 10 any more.  Winfile.chm was copied from
-a regular installation of Windows 98 and works on Windows 10.  As is, `WinFile.exe`
-tries to launch winfile.hlp which fails.
-
-To create your own local branch referring to this release, run `git checkout -b <your branch> original_plus`.
-
-## Changes in master v10.0 after original_plus
-
-The master branch contains changes I have made since 2007.  The changes have been solely determined
-by my needs and personal use.  Some of the changes have limitations that fit the way I use the tool.
-For example, the path index which supports the new goto command only contains information for the c: drive.
-
-I have also not redesigned or restructured WinFile in any significant way.
-
-Version v10.0 represents the entire set of changes from Nov. 2007 until this OSS project
-was created.  For changes post v10.0, see the commit and release history.
-
-In summary, v10.0 has the following changes/new features compared to original_plus:
+## Changes in master v10.2.1.0
+In summary, v10.2.1.0 has the following changes/new features compared to original_plus:
 
 1. OLE drag/drop support
 2. control characters (e.g., ctrl+C) map to current shortcut (e.g., `ctrl+C` -> `copy` and copy path to clipboard)
@@ -109,6 +53,7 @@ selecting one changes to that directory.  Default = c:\\. Configure via Winfile.
 21. Can handle paths up to 1024 characters with Windows10 >= 1607. Set HKLM\SYSTEM\CurrentControlSet\Control\FileSystem\LongPathsEnabled=1 as admin.
 22. Japanese localisation with full-width katakanas
 23. Create files with suffix '- Copy', when copying with (`ctrl+C`) -> (`ctrl+V`) in the same dir, or drag-copy with mouse onto empty space in same dir.
+24. UNC Path support via CTRL-G. Shows up as 'digit drive' 0: - 9:. Select it either via CTRL-0 ... CTRL-9 or from drive drop-down. Remove UNC digit drive with CTRL-W
 
 You can read the code for more details.
 
@@ -127,11 +72,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-### What Makes a Good Pull Request for WinFile?
-If you are interested in contributing and/or suggesting changes to the actual application, you might find it helpful to [read this post first](https://github.com/Microsoft/winfile/issues/88).
-
 ## License
-
 Copyright (c) Microsoft Corporation. All rights reserved.
 
 Licensed under the [MIT](LICENSE) License.
