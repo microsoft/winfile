@@ -585,7 +585,7 @@ WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags)
    Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
 
    if (CreateSymbolicLink(pszTo, pszFrom, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0))) {
-      ChangeFileSystem(FSC_CREATE, pszTo, NULL);
+      ChangeFileSystem(dwFlags == SYMBOLIC_LINK_FLAG_DIRECTORY ? FSC_MKDIR : FSC_CREATE, pszTo, NULL);
       dwRet = ERROR_SUCCESS;
    } else {
       dwRet = GetLastError();
