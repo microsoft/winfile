@@ -77,10 +77,10 @@ BEGIN
     MENUITEM    "P&ełne informacje o pliku",             IDM_VDETAILS,   CHECKED
     MENUITEM    "&Częściowe informacje...",              IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM    "Sortuj według &nazw",                   IDM_BYNAME
+    MENUITEM    "Sortuj według &nazw\tCtrl+N",                   IDM_BYNAME
     MENUITEM    "Sor&tuj według typów",                  IDM_BYTYPE
     MENUITEM    "So&rtuj według rozmiarów",              IDM_BYSIZE
-    MENUITEM    "&Sortuj według dat",                    IDM_BYDATE
+    MENUITEM    "&Sortuj według dat\tCtrl+D",            IDM_BYDATE
     MENUITEM    "Sortuj według dat (od najstarszyc&h)",  IDM_BYFDATE
     MENUITEM    SEPARATOR
     MENUITEM    "&Według typów plików...",               IDM_VINCLUDE

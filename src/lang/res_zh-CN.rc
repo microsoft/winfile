@@ -77,10 +77,10 @@ BEGIN
     MENUITEM    "文件的全部详细信息(&A)",    IDM_VDETAILS,   CHECKED
     MENUITEM    "部分详细信息(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM    "按名称排序(&S)",   IDM_BYNAME
+    MENUITEM    "按名称排序(&S)\tCtrl+N",   IDM_BYNAME
     MENUITEM    "按类型排序(&B)",   IDM_BYTYPE
     MENUITEM    "按大小排序(&Z)",   IDM_BYSIZE
-    MENUITEM    "按日期排序(&D)",   IDM_BYDATE
+    MENUITEM    "按日期排序(&D)\tCtrl+D",   IDM_BYDATE
     MENUITEM    "按先前日期排序(&F)",   IDM_BYFDATE
     MENUITEM    SEPARATOR
     MENUITEM    "按文件类型(&T)...",     IDM_VINCLUDE
