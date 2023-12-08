@@ -1,19 +1,18 @@
 # ![icon](winfile.png) Windows File Manager (WinFile)
 
 The Windows File Manager lives again and runs as a native x86 and x64 desktop app
-on all currently supported version of Windows, including Windows 10. I welcome your thoughts, comments and suggestions.
+on all currently supported version of Windows, including Windows 10 & 11. I welcome your thoughts, comments and suggestions.
 
-2. current master: contains personal changes/additions to WinFile over the years by many contributors
+This current master was forked off from [microsoft/winfile](https://github.com/microsoft/winfile) and contains changes/additions to WinFile over the years by many contributors. Furthermore it contains additions which I think are usefull or bug fixes.
+
 I will consider bugs fixes and suggestions for minor changes to the master branch. Feel free to create a pull request or post issues as you see fit.
 
 ## Download The App
-If you just want to download the WinFile application without worrying about compiling from the source code, we have a number of pre-compiled versions available.
+If you just want to download the WinFile application without worrying about compiling from the source code, go for the pre-compiled version available.
 
-Please select the version which you would like to download.
+- [Latest Release on Github (v10.2.1.0)](https://github.com/schinagl/winfile/releases/tag/v10.2.1.0)
 
-- [Latest Release on Github (v10.2.1.0)](https://github.com/microsoft/winfile/releases/latest)
-
-To see more release binaries, including of older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
+To see older versions, [see the releases page](https://github.com/Microsoft/winfile/releases).
 
 
 ## History
@@ -24,7 +23,7 @@ can read more about the history at https://en.wikipedia.org/wiki/File_Manager_(W
 # ![Winfile](winfilescreenshot.png)
 
 ## Changes in master v10.2.1.0
-In summary, v10.2.1.0 has the following changes/new features compared to original_plus:
+In summary, v10.2.1.0 has the following changes/new features:
 
 1. OLE drag/drop support
 2. control characters (e.g., ctrl+C) map to current shortcut (e.g., `ctrl+C` -> `copy` and copy path to clipboard)
@@ -54,8 +53,6 @@ selecting one changes to that directory.  Default = c:\\. Configure via Winfile.
 22. Japanese localisation with full-width katakanas
 23. Create files with suffix '- Copy', when copying with (`ctrl+C`) -> (`ctrl+V`) in the same dir, or drag-copy with mouse onto empty space in same dir.
 24. UNC Path support via CTRL-G. Shows up as 'digit drive' 0: - 9:. Select it either via CTRL-0 ... CTRL-9 or from drive drop-down. Remove UNC digit drive with CTRL-W
-
-You can read the code for more details.
 
 ## Contributing
 
