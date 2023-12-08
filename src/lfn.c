@@ -122,7 +122,7 @@ WFFindNext(LPLFNDTA lpFind)
    while (FindNextFile(lpFind->hFindFile, &lpFind->fd)) {
 
       lpFind->fd.dwFileAttributes &= ATTR_USED;
-   
+
       //
       // only pick files that fit attr filter
       //
@@ -491,15 +491,20 @@ WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotificatio
 {
    DWORD dwRet;
    WCHAR szReparseDest[2 * MAXPATHLEN];
+
    DWORD dwReparseTag = DecodeReparsePoint(pszFrom, szReparseDest, 2 * MAXPATHLEN);
+
    if (IO_REPARSE_TAG_SYMLINK == dwReparseTag) {
       CreateSymbolicLink(pszTo, szReparseDest, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0));
       dwRet = GetLastError();
-      if (ERROR_SUCCESS == dwRet)
+      if (ERROR_SUCCESS == dwRet) {
          ChangeFileSystem(dwNotification, pszTo, NULL);
+      }
    }
    else
+   {
       dwRet = GetLastError();
+   }
 
    return dwRet;
 }
@@ -585,7 +590,7 @@ WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags)
    Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
 
    if (CreateSymbolicLink(pszTo, pszFrom, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0))) {
-      ChangeFileSystem(dwFlags == SYMBOLIC_LINK_FLAG_DIRECTORY ? FSC_MKDIR : FSC_CREATE, pszTo, NULL);
+      ChangeFileSystem(dwFlags == SYMBOLIC_LINK_FLAG_DIRECTORY ? FSC_SYMLINKD : FSC_CREATE, pszTo, NULL);
       dwRet = ERROR_SUCCESS;
    } else {
       dwRet = GetLastError();
@@ -737,7 +742,7 @@ DWORD WFJunction(LPCWSTR pszLinkDirectory, LPCWSTR pszLinkTarget)
    }
 
    CloseHandle(hFile);
-   ChangeFileSystem(FSC_MKDIR, pszLinkDirectory, NULL);
+   ChangeFileSystem(FSC_JUNCTION, pszLinkDirectory, NULL);
    return ERROR_SUCCESS;
 }
 
@@ -771,8 +776,8 @@ DWORD DecodeReparsePoint(LPCWSTR szFullPath, LPWSTR szDest, DWORD cwcDest)
    reparseTag = rdata->ReparseTag;
 
    if (IsReparseTagMicrosoft(rdata->ReparseTag) &&
-      (rdata->ReparseTag == IO_REPARSE_TAG_MOUNT_POINT || rdata->ReparseTag == IO_REPARSE_TAG_SYMLINK)
-      )
+      (rdata->ReparseTag == IO_REPARSE_TAG_MOUNT_POINT || rdata->ReparseTag == IO_REPARSE_TAG_SYMLINK) &&
+      cwcDest > 0)
    {
       cwcLink = rdata->SymbolicLinkReparseBuffer.SubstituteNameLength / sizeof(WCHAR);
       // NOTE: cwcLink does not include any '\0' termination character
