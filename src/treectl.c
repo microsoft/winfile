@@ -2487,7 +2487,7 @@ TreeControlWndProc(
          bUpdateTree = TRUE;
          if (dwFSCOperation == FSC_JUNCTION) {
             DWORD dwAttribsToInclude;
-            dwAttribsToInclude = GetWindowLongPtr(GetParent(hwnd), GWL_ATTRIBS);
+            dwAttribsToInclude = (DWORD)GetWindowLongPtr(GetParent(hwnd), GWL_ATTRIBS);
             if ((dwAttribsToInclude & ATTR_JUNCTION) == 0) {
                bUpdateTree = FALSE;
             }
