@@ -2432,7 +2432,7 @@ TreeControlWndProc(
       BOOLEAN bUpdateTree;
 
       dwFSCOperation = FSC_Operation(wParam);
-      bDirectoryOperation = FALSE;
+      bCreationOperation = FALSE;
 
       if (!lParam || dwFSCOperation == FSC_REFRESH) {
          break;
