@@ -317,8 +317,6 @@ RefreshWindow(
    BOOL bFlushCache)
 {
    HWND hwndTree, hwndDir;
-   LPARAM lParam;
-   TCHAR szDir[MAXPATHLEN];
    DRIVE drive;
 
    //
@@ -334,38 +332,32 @@ RefreshWindow(
    //
    drive = (DRIVE)GetWindowLongPtr(hwndActive, GWL_TYPE);
 
-   if ((drive >= 0) && !CheckDrive(hwndActive, drive, FUNC_SETDRIVE))
+   if ((drive >= 0) && !CheckDrive(hwndActive, drive, FUNC_SETDRIVE)) {
       return;
+   }
 
    //
    // If bFlushCache, remind ourselves to try it
    //
-   if (bFlushCache)
+   if (bFlushCache) {
       aDriveInfo[drive].bShareChkTried = FALSE;
+   }
 
    // NOTE: similar to CreateDirWindow
 
    //
    // update the dir part first so tree can steal later
    //
-   if (hwndDir = HasDirWindow(hwndActive))
+   if (hwndDir = HasDirWindow(hwndActive)) {
       SendMessage(hwndDir, FS_CHANGEDISPLAY, CD_PATH, 0L);
+   }
 
    if (hwndTree = HasTreeWindow(hwndActive)) {
-      //
-      // remember the current directory
-      //
-      SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szDir), (LPARAM)szDir);
 
       //
       // update the drives windows
       //
       SendMessage(hwndActive, FS_CHANGEDRIVES, 0, 0L);
-
-      if (IsValidDisk(DRIVEID(szDir)))
-         lParam = (LPARAM)szDir;
-      else
-         lParam = 0L;
 
       //
       // update the tree
@@ -373,11 +365,12 @@ RefreshWindow(
       SendMessage(hwndTree,
                   TC_SETDRIVE,
                   MAKELONG(MAKEWORD(FALSE,TRUE),TRUE),
-                  lParam);
+                  0L);
    }
 
-   if (hwndActive == hwndSearch)
+   if (hwndActive == hwndSearch) {
       SendMessage(hwndActive, FS_CHANGEDISPLAY, CD_PATH, 0L);
+   }
 }
 
 //
