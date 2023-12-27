@@ -128,8 +128,9 @@ DWORD MKDir(
       dwErr = GetLastError();
 
       // CreateDirectoryEx does not support developer mode, so create symbolic ourselves
-      if (ERROR_PRIVILEGE_NOT_HELD == dwErr)
-         dwErr = WFCopyIfSymlink(pSrc, pName, SYMBOLIC_LINK_FLAG_DIRECTORY, FSC_MKDIR);
+      if (ERROR_PRIVILEGE_NOT_HELD == dwErr) {
+         dwErr = WFCopyIfSymlink(pSrc, pName, SYMBOLIC_LINK_FLAG_DIRECTORY, FSC_SYMLINKD);
+      }
    }
 
    return dwErr;

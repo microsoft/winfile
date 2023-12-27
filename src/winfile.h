@@ -362,7 +362,7 @@ VOID vWaitMessage();
 
 VOID RedoDriveWindows(HWND);
 BOOL FmifsLoaded(VOID);
-VOID  ChangeFileSystem(DWORD dwOper, LPWSTR lpPath, LPWSTR lpTo);
+VOID  ChangeFileSystem(DWORD dwOper, LPCTSTR lpPath, LPCTSTR lpTo);
 HWND  CreateDirWindow(LPWSTR szPath, BOOL bReplaceOpen, HWND hwndActive);
 HWND CreateTreeWindow(LPWSTR szPath, INT x, INT y, INT dx, INT dy, INT dxSplit);
 VOID SwitchToSafeDrive();
@@ -749,17 +749,23 @@ BOOL  RectTreeItem(HWND hwndLB, INT iItem, BOOL bFocusOn);
 #define TYPE_SEARCH         -1
 
 /* WM_FILESYSCHANGE (WM_FSC) message wParam value */
-#define FSC_CREATE          0
-#define FSC_DELETE          1
-#define FSC_RENAME          2
-#define FSC_ATTRIBUTES      3
-#define FSC_NETCONNECT      4
-#define FSC_NETDISCONNECT   5
-#define FSC_REFRESH         6
-#define FSC_MKDIR           7
-#define FSC_RMDIR           8
-#define FSC_RMDIRQUIET      9
-#define FSC_MKDIRQUIET      10
+#define FSC_CREATE          0x0000
+#define FSC_DELETE          0x0001
+#define FSC_RENAME          0x0002
+#define FSC_ATTRIBUTES      0x0003
+#define FSC_NETCONNECT      0x0004
+#define FSC_NETDISCONNECT   0x0005
+#define FSC_REFRESH         0x0006
+#define FSC_MKDIR           0x0007
+#define FSC_RMDIR           0x0008
+#define FSC_JUNCTION        0x0009
+#define FSC_SYMLINKD        0x000A
+
+#define FSC_QUIET           0x8000
+#define FSC_OPERATIONMASK   0x00ff
+
+#define FSC_Operation(FSC)  \
+    ((FSC) & FSC_OPERATIONMASK)
 
 #define WM_LBTRACKPT        0x131
 

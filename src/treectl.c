@@ -192,8 +192,7 @@ SetNodeAttribs(PDNODE pNode, LPTSTR szPath)
    //
    if (pNode->dwAttribs & ATTR_REPARSE_POINT) {
 
-      TCHAR szTemp[MAXPATHLEN];
-      int tag = DecodeReparsePoint(szPath, szTemp, MAXPATHLEN);
+      DWORD tag = DecodeReparsePoint(szPath, NULL, 0);
       switch (tag) {
       case IO_REPARSE_TAG_MOUNT_POINT:
          pNode->dwAttribs |= ATTR_JUNCTION;
@@ -515,8 +514,7 @@ InsertDirectory(
    {
       *ppNode = pNode;
    }
-
-   return (iMax);
+   return iMax;
 }
 
 
@@ -1188,7 +1186,7 @@ FillTreeListbox(HWND hwndTC,
                                &pNode,
                                IsCasePreservedDrive(DRIVEID(szDefaultDir)),
                                bPartialSort,
-                               (DWORD)(-1) );
+                               INVALID_FILE_ATTRIBUTES );
 
       if (pNode) {
 
@@ -2101,7 +2099,6 @@ TreeControlWndProc(
    INT    iSel;
    INT    i, j;
    INT    nIndex;
-   DWORD  dwTemp;
    PDNODE pNode, pNodeNext;
    HWND  hwndLB;
    HWND  hwndParent;
@@ -2430,22 +2427,41 @@ TreeControlWndProc(
    {
       PDNODE pNodePrev;
       PDNODE pNodeT;
+      DWORD  dwFSCOperation;
+      BOOLEAN bCreationOperation;
+      BOOLEAN bUpdateTree;
 
-      if (!lParam || wParam == FSC_REFRESH)
+      dwFSCOperation = FSC_Operation(wParam);
+      bCreationOperation = FALSE;
+
+      if (!lParam || dwFSCOperation == FSC_REFRESH) {
          break;
+      }
 
-      /* Did we find it? */
+      if (dwFSCOperation == FSC_MKDIR ||
+          dwFSCOperation == FSC_JUNCTION ||
+          dwFSCOperation == FSC_SYMLINKD) {
+
+         bCreationOperation = TRUE;
+      }
+
+      //
+      // search for a tree node corresponding to the item (if it is being
+      // removed), or to the item's parent (if it is being added.)  If an
+      // item is not found, there is no further processing to perform.
+      //
       if (!FindItemFromPath(hwndLB, (LPTSTR)lParam,
-          wParam == FSC_MKDIR || wParam == FSC_MKDIRQUIET, (DWORD*)&nIndex, &pNode)) {
+          bCreationOperation, (DWORD*)&nIndex, &pNode)) {
          break;
       }
 
       lstrcpy(szPath, (LPTSTR)lParam);
       StripPath(szPath);
 
-      switch (wParam) {
+      switch (dwFSCOperation) {
       case FSC_MKDIR:
-      case FSC_MKDIRQUIET:
+      case FSC_JUNCTION:
+      case FSC_SYMLINKD:
 
          //
          // auto expand the branch so they can see the new
@@ -2453,50 +2469,66 @@ TreeControlWndProc(
          //
          if (!(pNode->wFlags & TF_EXPANDED) &&
             (nIndex == (INT)SendMessage(hwndLB, LB_GETCURSEL, 0, 0L)) &&
-            FSC_MKDIRQUIET != wParam)
+            ((wParam & FSC_QUIET) == 0)) {
 
             SendMessage(hwnd, TC_EXPANDLEVEL, FALSE, 0L);
+         }
 
          //
          // make sure this node isn't already here
          //
-         if (FindItemFromPath(hwndLB, (LPTSTR)lParam, FALSE, NULL, NULL))
+         if (FindItemFromPath(hwndLB, (LPTSTR)lParam, FALSE, NULL, NULL)) {
             break;
+         }
 
          //
-         // Insert it into the tree listbox
+         // If FSC_JUNCTION, check if junctions should be displayed
          //
-         dwTemp = InsertDirectory( hwnd,
-                                   pNode,
-                                   (WORD)nIndex,
-                                   szPath,
-                                   &pNodeT,
-                                   IsCasePreservedDrive(DRIVEID(((LPTSTR)lParam))),
-                                   FALSE,
-                                   (DWORD)(-1) );
+         bUpdateTree = TRUE;
+         if (dwFSCOperation == FSC_JUNCTION) {
+            DWORD dwAttribsToInclude;
+            dwAttribsToInclude = (DWORD)GetWindowLongPtr(GetParent(hwnd), GWL_ATTRIBS);
+            if ((dwAttribsToInclude & ATTR_JUNCTION) == 0) {
+               bUpdateTree = FALSE;
+            }
+         }
 
-         //
-         // Add a plus if necessary
-         //
-         if (GetWindowLongPtr(hwndParent, GWL_VIEW) & VIEW_PLUSES) {
-
-            lstrcpy(szPath, (LPTSTR)lParam);
-            ScanDirLevel( (PDNODE)pNodeT,
-                          szPath,
-                          (GetWindowLongPtr(hwndParent, GWL_ATTRIBS) & (ATTR_HS | ATTR_JUNCTION)));
+         if (bUpdateTree) {
 
             //
-            // Invalidate the window so the plus gets drawn if needed
+            // Insert it into the tree listbox
             //
-            if (((PDNODE)pNodeT)->wFlags & TF_HASCHILDREN) {
-               InvalidateRect(hwndLB, NULL, FALSE);
+            InsertDirectory( hwnd,
+                             pNode,
+                             (WORD)nIndex,
+                             szPath,
+                             &pNodeT,
+                             IsCasePreservedDrive(DRIVEID(((LPTSTR)lParam))),
+                             FALSE,
+                             INVALID_FILE_ATTRIBUTES );
+
+            //
+            // Add a plus if necessary
+            //
+            if (GetWindowLongPtr(hwndParent, GWL_VIEW) & VIEW_PLUSES) {
+
+               lstrcpy(szPath, (LPTSTR)lParam);
+               ScanDirLevel( (PDNODE)pNodeT,
+                             szPath,
+                             (GetWindowLongPtr(hwndParent, GWL_ATTRIBS) & (ATTR_HS | ATTR_JUNCTION)));
+
+               //
+               // Invalidate the window so the plus gets drawn if needed
+               //
+               if (((PDNODE)pNodeT)->wFlags & TF_HASCHILDREN) {
+                  InvalidateRect(hwndLB, NULL, FALSE);
+               }
             }
          }
 
          break;
 
       case FSC_RMDIR:
-      case FSC_RMDIRQUIET:
 
          //
          // Don't do anything while the tree is being built.
@@ -2564,7 +2596,7 @@ TreeControlWndProc(
                // In the quiet case, don't change selection.
                // FSC_RENAME will handle this for us.
                //
-               if (FSC_RMDIRQUIET != wParam) {
+               if ((wParam & FSC_QUIET) == 0) {
                   SendMessage(hwndLB, LB_SETCURSEL, nIndex - 1, 0L);
                   SendMessage(hwnd, WM_COMMAND, GET_WM_COMMAND_MPS(0, hwndLB, LBN_SELCHANGE));
                }
