@@ -123,7 +123,7 @@ BEGIN
     BEGIN
     MENUITEM    "&תוכן",                IDM_HELPINDEX
     MENUITEM    "&חיפוש עזרה לגבי...",   IDM_HELPKEYS
-    MENUITEM    "&כיצד להשתמש בעזרה",         IDM_HELPHELP
+    //MENUITEM    "&כיצד להשתמש בעזרה",         IDM_HELPHELP
     MENUITEM    SEPARATOR
     MENUITEM    "&אודות מנהל הקבצים...",   IDM_ABOUT
     END
@@ -624,7 +624,7 @@ BEGIN
 
     MH_MYITEMS+IDM_HELPINDEX,   "הצגת תוכן העזרה של מנהל הקבצים"
     MH_MYITEMS+IDM_HELPKEYS,    "חיפוש נושא בעזרה עבור מנהל הקבצים"
-    MH_MYITEMS+IDM_HELPHELP,    "הצגת מידע אודות השימוש בעזרה"
+    //MH_MYITEMS+IDM_HELPHELP,    "הצגת מידע אודות השימוש בעזרה"
     MH_MYITEMS+IDM_ABOUT,       "הצגת מידע אודות מנהל הקבצים"
 END
 

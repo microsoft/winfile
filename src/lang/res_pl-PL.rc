@@ -123,7 +123,7 @@ BEGIN
     BEGIN
     MENUITEM    "&Spis treści",                      IDM_HELPINDEX
     MENUITEM    "&Pomoc na temat...",                IDM_HELPKEYS
-    MENUITEM    "&Korzystanie z Pomocy",             IDM_HELPHELP
+    //MENUITEM    "&Korzystanie z Pomocy",             IDM_HELPHELP
     MENUITEM    SEPARATOR
     MENUITEM    "Me&nedżer plików - informacje...",  IDM_ABOUT
     END
@@ -624,7 +624,7 @@ BEGIN
 
     MH_MYITEMS+IDM_HELPINDEX,        "Wyświetla spis treści Pomocy Menedżera plików"
     MH_MYITEMS+IDM_HELPKEYS,         "Wyszukuje zagadnienia w Pomocy Menedżera plików"
-    MH_MYITEMS+IDM_HELPHELP,         "Wyświetla informacje o korzystaniu z Pomocy"
+    //MH_MYITEMS+IDM_HELPHELP,         "Wyświetla informacje o korzystaniu z Pomocy"
     MH_MYITEMS+IDM_ABOUT,            "Wyświetla informacje o Menedżerze plików"
 END
 

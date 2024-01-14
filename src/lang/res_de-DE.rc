@@ -123,7 +123,7 @@ BEGIN
     BEGIN
     MENUITEM    "&Hilfethemen",                                   IDM_HELPINDEX
     MENUITEM    "&Suchen...",                                     IDM_HELPKEYS
-    MENUITEM    "&Hilfe &verwenden",                              IDM_HELPHELP
+    //MENUITEM    "&Hilfe &verwenden",                              IDM_HELPHELP
     MENUITEM    SEPARATOR
     MENUITEM    "&Über Datei-Manager",                            IDM_ABOUT
     END
@@ -622,7 +622,7 @@ BEGIN
 
     MH_MYITEMS+IDM_HELPINDEX,         "Inhalt der Hilfe anzeigen"
     MH_MYITEMS+IDM_HELPKEYS,          "Suche nach einem Begriff in der Datei-Manager-Hilfe"
-    MH_MYITEMS+IDM_HELPHELP,          "Hilfe über Benutzen von Hilfe"
+    //MH_MYITEMS+IDM_HELPHELP,          "Hilfe über Benutzen von Hilfe"
     MH_MYITEMS+IDM_ABOUT,             "Anzeige von Informationen über Datei-Manager"
 END
 

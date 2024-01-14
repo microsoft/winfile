@@ -199,7 +199,6 @@
 #define IDM_HELPKEYS        0x001E
 #define IDM_HELPCOMMANDS    0x0020
 #define IDM_HELPPROCS       0x0021
-#define IDM_HELPHELP        1802
 #define IDM_ABOUT           1803
 
 #define IDM_DRIVELISTJUMP 2000  /* for defining an accelerator */
