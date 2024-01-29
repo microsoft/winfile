@@ -1470,7 +1470,8 @@ FindItemFromPath(
 
          } while (*lpszPath);
 
-         bReturn = MatchNode(hwndLB, szElement, &dwIndex, &iPreviousNode, &pPreviousNode);
+         if (*szElement)
+            bReturn = MatchNode(hwndLB, szElement, &dwIndex, &iPreviousNode, &pPreviousNode);
       }
       else {
          // e.g. drive change, when root node is different than lpszPath
