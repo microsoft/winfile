@@ -1273,7 +1273,7 @@ Extern TCHAR        szDecimal[4]    EQ( TEXT(".") );
 Extern TCHAR        szListbox[]        EQ( TEXT("ListBox") );        // window style
 Extern WCHAR        pwszInvalidTheme[] EQ( L" " );
 
-Extern TCHAR        szTitle[128];
+Extern TCHAR        szTitle[MAXSUGGESTLEN];
 
 Extern TCHAR        szMessage[MAXMESSAGELEN];
 

@@ -21,6 +21,10 @@
 
 #include "dbg.h"
 
+#define SECURITY_WIN32
+#include "security.h"
+#include "secext.h"
+
 TCHAR szNTlanman[] = TEXT("ntlanman.dll");
 TCHAR szHelv[] = TEXT("MS Shell Dlg");
 /*
@@ -1413,6 +1417,10 @@ JAPANEND
 
    }
 
+   wchar_t szUsername[MAXSUGGESTLEN];
+   size_t dwUsername = MAXSUGGESTLEN - wcslen(szTitle) - 6;
+   GetUserNameExW(NameSamCompatible, szUsername, &(ULONG)dwUsername);
+   wsprintf(szTitle, L"%s - [%s]", szTitle, szUsername);
 
    if (!CreateWindowEx(dwExStyle, szFrameClass, szTitle, WS_OVERLAPPEDWINDOW | WS_CLIPCHILDREN,
       win.rc.left, win.rc.top, win.rc.right, win.rc.bottom,
