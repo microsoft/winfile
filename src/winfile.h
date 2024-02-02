@@ -1266,6 +1266,7 @@ Extern TCHAR        szNetwork[]             EQ( TEXT("Network") );
 Extern TCHAR        szSpace[]               EQ( TEXT(" ") );
 Extern TCHAR        szDirsRead[32];
 Extern TCHAR        szCurrentFileSpec[14]   EQ( TEXT("*.*") );
+Extern WCHAR        szAdministrator[]               EQ( TEXT("(Administrator)") );
 
 Extern TCHAR        szComma[4]      EQ( TEXT(",") );
 Extern TCHAR        szDecimal[4]    EQ( TEXT(".") );
