@@ -69,17 +69,43 @@ typedef unsigned char TUCHAR, *PTUCHAR;
 #endif /* UNICODE */                // r_winnt
 
 
-////////////////////////////////////////////////////////////////////////////
 //
-//  File Compression stuff
+//  Define things that would be present on new SDKs but may not be present on
+//  older SDKs.  XP support uses a Windows 7.1 SDK, which is effectively the
+//  "oldest" that this code can use.
 //
-//  NOTE: This should be removed when FS_FILE_COMPRESSION is defined in a
-//        global header file.
-////////////////////////////////////////////////////////////////////////////
 
-#ifndef FS_FILE_COMPRESSION
-#define FS_FILE_COMPRESSION 0x0010
-#endif  //  FS_FILE_COMPRESSION
+#ifndef SYMBOLIC_LINK_FLAG_DIRECTORY
+#define SYMBOLIC_LINK_FLAG_DIRECTORY                  (0x01)
+#endif
+
+#ifndef SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE
+#define SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE  (0x02)
+#endif
+
+#ifndef COPY_FILE_COPY_SYMLINK
+#define COPY_FILE_COPY_SYMLINK                        (0x800)
+#endif
+
+#ifndef IO_REPARSE_TAG_CLOUD
+#define IO_REPARSE_TAG_CLOUD                          (0x9000001AL)
+#define IO_REPARSE_TAG_CLOUD_1                        (0x9000101AL)
+#define IO_REPARSE_TAG_CLOUD_2                        (0x9000201AL)
+#define IO_REPARSE_TAG_CLOUD_3                        (0x9000301AL)
+#define IO_REPARSE_TAG_CLOUD_4                        (0x9000401AL)
+#define IO_REPARSE_TAG_CLOUD_5                        (0x9000501AL)
+#define IO_REPARSE_TAG_CLOUD_6                        (0x9000601AL)
+#define IO_REPARSE_TAG_CLOUD_7                        (0x9000701AL)
+#define IO_REPARSE_TAG_CLOUD_8                        (0x9000801AL)
+#define IO_REPARSE_TAG_CLOUD_9                        (0x9000901AL)
+#define IO_REPARSE_TAG_CLOUD_A                        (0x9000A01AL)
+#define IO_REPARSE_TAG_CLOUD_B                        (0x9000B01AL)
+#define IO_REPARSE_TAG_CLOUD_C                        (0x9000C01AL)
+#define IO_REPARSE_TAG_CLOUD_D                        (0x9000D01AL)
+#define IO_REPARSE_TAG_CLOUD_E                        (0x9000E01AL)
+#define IO_REPARSE_TAG_CLOUD_F                        (0x9000F01AL)
+#define IO_REPARSE_TAG_CLOUD_MASK                     (0x0000F000L)
+#endif
 
 
 #define atoi atoiW
@@ -547,6 +573,7 @@ BOOL  IsRamDrive(DRIVE drive);
 VOID  CleanupMessages();
 HWND  GetRealParent(HWND hwnd);
 VOID  WFHelp(HWND hwnd);
+LONG  WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
 
 
 // WFDRIVES.C
@@ -616,6 +643,7 @@ BOOL WFCheckCompress(HWND hDlg, LPTSTR szNameSpec, DWORD dwNewAttrs, BOOL bPrope
 BOOL GetRootPath(LPTSTR szPath, LPTSTR szReturn);
 
 //WFLOC.C
+LCID WFLocaleNameToLCID(LPCWSTR lpName, DWORD dwFlags);
 VOID InitLangList(HWND hCBox);
 VOID SaveLang(HWND hCBox);
 BOOL DefaultLayoutRTL();
@@ -971,7 +999,36 @@ typedef struct _DRIVE_INFO {
 #define EQ(x)
 #endif
 
+//-------------------------------------
+//
+//  Lazy load post-XP function support
+//
+//-------------------------------------
 
+#define KERNEL32_DLL TEXT("kernel32.dll")
+Extern HANDLE hKernel32          EQ( NULL );
+
+Extern BOOLEAN (WINAPI* lpfnCreateSymbolicLinkW)(LPCWSTR, LPCWSTR, DWORD);
+Extern INT     (WINAPI* lpfnGetLocaleInfoEx)(LPCWSTR, LCTYPE, LPWSTR, INT);
+Extern LCID    (WINAPI* lpfnLocaleNameToLCID)(LPCWSTR, DWORD);
+Extern BOOL    (WINAPI* lpfnWow64DisableWow64FsRedirection)(PVOID *);
+Extern BOOL    (WINAPI* lpfnWow64RevertWow64FsRedirection)(PVOID);
+
+#define KERNEL32_CreateSymbolicLinkW            "CreateSymbolicLinkW"
+#define KERNEL32_GetLocaleInfoEx                "GetLocaleInfoEx"
+#define KERNEL32_LocaleNameToLCID               "LocaleNameToLCID"
+#define KERNEL32_Wow64DisableWow64FsRedirection "Wow64DisableWow64FsRedirection"
+#define KERNEL32_Wow64RevertWow64FsRedirection  "Wow64RevertWow64FsRedirection"
+
+#define CreateSymbolicLinkW            (*lpfnCreateSymbolicLinkW)
+#define GetLocaleInfoEx                (*lpfnGetLocaleInfoEx)
+#define LocaleNameToLCID               (*lpfnLocaleNameToLCID)
+#define Wow64DisableWow64FsRedirection (*lpfnWow64DisableWow64FsRedirection)
+#define Wow64RevertWow64FsRedirection  (*lpfnWow64RevertWow64FsRedirection)
+
+#ifndef CreateSymbolicLink
+#define CreateSymbolicLink  CreateSymbolicLinkW
+#endif
 
 //----------------------------
 //

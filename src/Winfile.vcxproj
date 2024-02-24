@@ -59,6 +59,17 @@
       <ImageHasSafeExceptionHandlers>true</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='XPDebug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>DBG=1;DEBUG=1;STRSAFE_NO_DEPRECATE=1;WINVER=0x0501;_WIN32_WINNT=0x501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>DBG=1;DEBUG=1;STRSAFE_NO_DEPRECATE=1;WINVER=0x0501;_WIN32_WINNT=0x501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <ImageHasSafeExceptionHandlers>true</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <ClCompile>
       <PreprocessorDefinitions>DBG=1;DEBUG=1;WINVER=0x0A00;_WIN32_WINNT=0xA00;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -76,6 +87,17 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>WINVER=0x0601;_WIN32_WINNT=0x601;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Link>
+      <ImageHasSafeExceptionHandlers>true</ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='XPRelease|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>STRSAFE_NO_DEPRECATE=1;WINVER=0x0501;_WIN32_WINNT=0x501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>STRSAFE_NO_DEPRECATE=1;WINVER=0x0501;_WIN32_WINNT=0x501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ResourceCompile>
     <Link>
       <ImageHasSafeExceptionHandlers>true</ImageHasSafeExceptionHandlers>
