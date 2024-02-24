@@ -74,6 +74,7 @@ typedef struct
 
 #define MAXMENUITEMS 100
 
+#define MFR_POPUP 0x10
 #define MFR_END 0x80
 
 // used for both normal and popup items
