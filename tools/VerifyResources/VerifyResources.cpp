@@ -31,7 +31,7 @@ VOID VerifyLangDialogs(PROCRES *pprocres);
 VOID VerifyLangMenus(PROCRES *pprocres);
 VOID VerifyLangStrings(HMODULE hMod, PROCRES *pprocres);
 
-int wmain(int argc, wchar_t *argv[])
+int __cdecl wmain(int argc, wchar_t *argv[])
 {
     if (argc != 2)
     {
