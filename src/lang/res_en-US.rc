@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "&Minimize on Use",     IDM_MINONRUN
     MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
     MENUITEM    "Save Settings on &Exit",   IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Save Settings &Now",       IDM_SAVENOW
-#endif
     END
     POPUP       "&Security"
     BEGIN

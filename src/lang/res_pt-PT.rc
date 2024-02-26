@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "Executar &Minimizado",     IDM_MINONRUN
     MENUITEM    "Criar &Index 'Ir para' ao Ligar", IDM_INDEXONLAUNCH
     MENUITEM    "&Guardar Definições ao Sair",   IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Guardar &Definições Agora",       IDM_SAVENOW
-#endif
     END
     POPUP       "&Segurança"
     BEGIN

@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "プログラムの起動時に最小化(&M)",     IDM_MINONRUN
     MENUITEM    "起動時に移動先インデックスを作成(&G)", IDM_INDEXONLAUNCH
     MENUITEM    "終了時に設定を保存(&E)",   IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "今すぐ設定を保存(&N)",       IDM_SAVENOW
-#endif
     END
     POPUP       "セキュリティ(&S)"
     BEGIN

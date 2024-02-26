@@ -1558,12 +1558,10 @@ AppCommandProc(DWORD id)
       break;
    }
 
-#ifdef PROGMAN
    case IDM_SAVENOW:
 
       SaveWindows(hwndFrame);
       break;
-#endif
 
    case IDM_EXIT:
 
