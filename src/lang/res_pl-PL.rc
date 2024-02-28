@@ -90,7 +90,7 @@ BEGIN
     MENUITEM    "&Potwierdzanie...",                          IDM_CONFIRM
     MENUITEM    "&Czcionka...",                               IDM_FONT
     MENUITEM    "Dostosuj pasek nar&zędzi...",                IDM_TOOLBARCUST
-    MENUITEM    "&Dodatkowe preferencje",                     IDM_PREF
+    MENUITEM    "&Dodatkowe preferencje...",                  IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "Pasek &narzędzi",                            IDM_TOOLBAR
     MENUITEM    "Pasek &dysków",                              IDM_DRIVEBAR

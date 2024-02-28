@@ -90,7 +90,7 @@ BEGIN
         MENUITEM    "&Onay...",                     IDM_CONFIRM
         MENUITEM    "&Yazıtipi...",                 IDM_FONT
         MENUITEM    "A&raç Çubuğunu Özelleştir...", IDM_TOOLBARCUST
-        MENUITEM    "&Ek Tercihler",                IDM_PREF
+        MENUITEM    "&Ek Tercihler...",             IDM_PREF
         MENUITEM    SEPARATOR
         MENUITEM    "&Araç Çubuğu",                 IDM_TOOLBAR
         MENUITEM    "&Sürücü Çubuğu",               IDM_DRIVEBAR
