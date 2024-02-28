@@ -90,7 +90,7 @@ BEGIN
     MENUITEM    "确认(&C)...",     IDM_CONFIRM
     MENUITEM    "字体(&F)...",             IDM_FONT
     MENUITEM    "自定义工具栏(&B)...", IDM_TOOLBARCUST
-    MENUITEM    "首选项(&P)", IDM_PREF
+    MENUITEM    "首选项(&P)...", IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "工具栏(&T)",                 IDM_TOOLBAR
     MENUITEM    "驱动器栏(&D)",                IDM_DRIVEBAR
