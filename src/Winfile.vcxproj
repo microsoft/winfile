@@ -59,7 +59,7 @@
       <ImageHasSafeExceptionHandlers>true</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='XPDebug|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugXPStatic|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>DBG=1;DEBUG=1;STRSAFE_NO_DEPRECATE=1;WINVER=0x0501;_WIN32_WINNT=0x501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -92,7 +92,7 @@
       <ImageHasSafeExceptionHandlers>true</ImageHasSafeExceptionHandlers>
     </Link>
   </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='XPRelease|Win32'">
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseXPStatic|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>STRSAFE_NO_DEPRECATE=1;WINVER=0x0501;_WIN32_WINNT=0x501;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
