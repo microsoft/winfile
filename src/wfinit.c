@@ -991,6 +991,16 @@ InitFileManager(
 
    InitializeCriticalSection(&CriticalSectionPath);
 
+   hKernel32 = GetModuleHandle(KERNEL32_DLL);
+   if (hKernel32)
+   {
+      lpfnCreateSymbolicLinkW = (PVOID)GetProcAddress(hKernel32, KERNEL32_CreateSymbolicLinkW);
+      lpfnGetLocaleInfoEx = (PVOID)GetProcAddress(hKernel32, KERNEL32_GetLocaleInfoEx);
+      lpfnLocaleNameToLCID = (PVOID)GetProcAddress(hKernel32, KERNEL32_LocaleNameToLCID);
+      lpfnWow64DisableWow64FsRedirection = (PVOID)GetProcAddress(hKernel32, KERNEL32_Wow64DisableWow64FsRedirection);
+      lpfnWow64RevertWow64FsRedirection = (PVOID)GetProcAddress(hKernel32, KERNEL32_Wow64RevertWow64FsRedirection);
+   }
+
    // ProfStart();
 
    //
@@ -1018,7 +1028,7 @@ InitFileManager(
    GetPrivateProfileString(szSettings, szUILanguage, szNULL, szTemp, COUNTOF(szTemp), szTheINIFile);
    if (szTemp[0])
    {
-       LCID lcidUI = LocaleNameToLCID(szTemp, 0);
+       LCID lcidUI = WFLocaleNameToLCID(szTemp, 0);
        if (lcidUI != 0)
        {
            SetThreadUILanguage((LANGID)lcidUI);
@@ -1318,7 +1328,7 @@ JAPANEND
    win.rc.right -= win.rc.left;
    win.rc.bottom -= win.rc.top;
 
-   // We need to know about all reaprse tags
+   // We need to know about all reparse tags
    hNtdll = GetModuleHandle(NTDLL_DLL);
    if (hNtdll)
    {

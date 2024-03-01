@@ -42,8 +42,11 @@ WFFindFirst(
    // and ORDINARY files too.
    //
 
-   PVOID oldValue;
-   Wow64DisableWow64FsRedirection(&oldValue);
+   PVOID oldValue = NULL;
+   if (Wow64DisableWow64FsRedirection != NULL)
+   {
+       Wow64DisableWow64FsRedirection(&oldValue);
+   }
 
    if ((dwAttrFilter & ~(ATTR_DIR | ATTR_HS)) == 0)
    {
@@ -68,7 +71,10 @@ WFFindFirst(
 
    lpFind->fd.dwFileAttributes &= ATTR_USED;
 
-   Wow64RevertWow64FsRedirection(oldValue);
+   if (Wow64RevertWow64FsRedirection != NULL)
+   {
+       Wow64RevertWow64FsRedirection(oldValue);
+   }
 
    //
    // Keep track of length
@@ -116,8 +122,11 @@ WFFindFirst(
 BOOL
 WFFindNext(LPLFNDTA lpFind)
 {
-   PVOID oldValue;
-   Wow64DisableWow64FsRedirection(&oldValue);
+   PVOID oldValue = NULL;
+   if (Wow64DisableWow64FsRedirection != NULL)
+   {
+       Wow64DisableWow64FsRedirection(&oldValue);
+   }
 
    while (FindNextFile(lpFind->hFindFile, &lpFind->fd)) {
 
@@ -154,7 +163,10 @@ WFFindNext(LPLFNDTA lpFind)
           }
       }
 
-      Wow64RevertWow64FsRedirection(oldValue);
+      if (Wow64RevertWow64FsRedirection != NULL)
+      {
+          Wow64RevertWow64FsRedirection(oldValue);
+      }
 
       lpFind->err = 0;
       return TRUE;
@@ -162,7 +174,10 @@ WFFindNext(LPLFNDTA lpFind)
 
    lpFind->err = GetLastError();
 
-   Wow64RevertWow64FsRedirection(oldValue);
+   if (Wow64RevertWow64FsRedirection != NULL)
+   {
+       Wow64RevertWow64FsRedirection(oldValue);
+   }
    return(FALSE);
 }
 
@@ -494,11 +509,20 @@ WFCopyIfSymlink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags, DWORD dwNotificatio
 
    DWORD dwReparseTag = DecodeReparsePoint(pszFrom, szReparseDest, 2 * MAXPATHLEN);
 
-   if (IO_REPARSE_TAG_SYMLINK == dwReparseTag) {
-      CreateSymbolicLink(pszTo, szReparseDest, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0));
-      dwRet = GetLastError();
-      if (ERROR_SUCCESS == dwRet) {
-         ChangeFileSystem(dwNotification, pszTo, NULL);
+   if (IO_REPARSE_TAG_SYMLINK == dwReparseTag)
+   {
+      if (CreateSymbolicLink == NULL)
+      {
+         dwRet = ERROR_NOT_SUPPORTED;
+      }
+      else
+      {
+         CreateSymbolicLink(pszTo, szReparseDest, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0));
+         dwRet = GetLastError();
+         if (ERROR_SUCCESS == dwRet)
+         {
+            ChangeFileSystem(dwNotification, pszTo, NULL);
+         }
       }
    }
    else
@@ -518,11 +542,12 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
 {
     DWORD dwRet;
     TCHAR szTemp[MAXPATHLEN];
+    BOOL bCancel = FALSE;
 
     Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
 
-    BOOL bCancel = FALSE;
-    if (CopyFileEx(pszFrom, pszTo, NULL, NULL, &bCancel, COPY_FILE_COPY_SYMLINK)) {
+    if (CopyFileEx(pszFrom, pszTo, NULL, NULL, &bCancel, COPY_FILE_COPY_SYMLINK))
+    {
         ChangeFileSystem(FSC_CREATE, pszTo, NULL);
         dwRet = 0;
     }
@@ -540,7 +565,8 @@ WFCopy(LPTSTR pszFrom, LPTSTR pszTo)
           //
           lstrcpy(szTemp, pszTo);
           RemoveLast(szTemp);
-          if (CopyFile(pszFrom, szTemp, FALSE)) {
+          if (CopyFile(pszFrom, szTemp, FALSE))
+          {
              ChangeFileSystem(FSC_CREATE, szTemp, NULL);
              dwRet = 0;
           }
@@ -588,11 +614,17 @@ WFSymbolicLink(LPTSTR pszFrom, LPTSTR pszTo, DWORD dwFlags)
    DWORD dwRet;
 
    Notify(hdlgProgress, IDS_COPYINGMSG, pszFrom, pszTo);
-
-   if (CreateSymbolicLink(pszTo, pszFrom, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0))) {
+   if (CreateSymbolicLink == NULL)
+   {
+      dwRet = ERROR_NOT_SUPPORTED;
+   }
+   else if (CreateSymbolicLink(pszTo, pszFrom, dwFlags | (bDeveloperModeAvailable ? SYMBOLIC_LINK_FLAG_ALLOW_UNPRIVILEGED_CREATE : 0)))
+   {
       ChangeFileSystem(dwFlags == SYMBOLIC_LINK_FLAG_DIRECTORY ? FSC_SYMLINKD : FSC_CREATE, pszTo, NULL);
       dwRet = ERROR_SUCCESS;
-   } else {
+   }
+   else
+   {
       dwRet = GetLastError();
    }
 

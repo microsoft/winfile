@@ -1610,3 +1610,111 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
 
    return ich != 0;
 }
+
+// RegGetValue isn't available on Windows XP
+LONG WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData)
+{
+    DWORD dwStatus;
+    DWORD dwLocalType;
+    DWORD dwOriginalSize;
+    DWORD dwLocalSize;
+    HKEY hkeySub;
+    DWORD dwAllowMask;
+    BOOLEAN bTerminated;
+
+
+    if ((dwStatus = RegOpenKey(hkey, lpSubKey, &hkeySub)) == ERROR_SUCCESS)
+    {
+        dwOriginalSize = 0;
+        if (pcbData != NULL)
+        {
+            dwOriginalSize = *pcbData;
+        }
+
+        dwStatus = RegQueryValueEx(hkeySub, lpValue, NULL, &dwLocalType, pvData, &dwLocalSize);
+        if (dwStatus != ERROR_SUCCESS)
+        {
+            return dwStatus;
+        }
+
+        dwAllowMask = 0;
+        switch(dwLocalType)
+        {
+            case REG_SZ:
+                dwAllowMask = RRF_RT_REG_SZ;
+                break;
+            case REG_EXPAND_SZ:
+                dwAllowMask = RRF_RT_REG_EXPAND_SZ;
+                break;
+            case REG_BINARY:
+                dwAllowMask = RRF_RT_REG_BINARY;
+                break;
+            case REG_DWORD:
+                dwAllowMask = RRF_RT_REG_DWORD;
+                break;
+            case REG_MULTI_SZ:
+                dwAllowMask = RRF_RT_REG_MULTI_SZ;
+                break;
+        }
+
+        if ((dwAllowMask & dwFlags) == 0)
+        {
+            return ERROR_INVALID_DATA;
+        }
+
+        //
+        //  RegGetValue promises to NULL terminate strings.  Look to see if
+        //  we have a string without a NULL terminator.  If so, see if there's
+        //  space to add one; if no space, fail.
+        //
+
+        if (dwLocalType == REG_SZ || dwLocalType == REG_EXPAND_SZ || dwLocalType == REG_MULTI_SZ)
+        {
+            WCHAR * wszData;
+
+            wszData = pvData;
+            bTerminated = FALSE;
+
+            //
+            //  Not an even number of WCHARs, not a valid string
+            //
+
+            if (dwLocalSize & 0x1)
+            {
+                return ERROR_INVALID_DATA;
+            }
+
+            if (dwLocalSize > 0 && wszData[dwLocalSize / 2 - 1] == '\0')
+            {
+                bTerminated = TRUE;
+            }
+
+            if (!bTerminated)
+            {
+                if (dwOriginalSize > dwLocalSize)
+                {
+                    wszData[dwLocalSize / 2] = '\0';
+                    dwLocalSize = dwLocalSize + sizeof(WCHAR);
+                }
+                else
+                {
+                    dwLocalSize = dwLocalSize + sizeof(WCHAR);
+                    *pcbData = dwLocalSize;
+                    return ERROR_MORE_DATA;
+                }
+            }
+        }
+
+        if (pcbData != NULL) {
+            *pcbData = dwLocalSize;
+        }
+
+        if (pdwType != NULL) {
+            *pdwType = dwLocalType;
+        }
+
+        RegCloseKey(hkeySub);
+    }
+
+    return dwStatus;
+}
