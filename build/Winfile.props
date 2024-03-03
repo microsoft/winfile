@@ -17,6 +17,7 @@
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary Condition="'$(Configuration)'=='Debug'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)'=='DebugXPStatic'">MultiThreadedDebug</RuntimeLibrary>
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)'=='DebugXPStatic'">NoExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='ReleaseXPStatic'">
@@ -26,6 +27,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <RuntimeLibrary Condition="'$(Configuration)'=='Release'">MultiThreadedDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)'=='ReleaseXPStatic'">MultiThreaded</RuntimeLibrary>
+      <EnableEnhancedInstructionSet Condition="'$(Configuration)'=='ReleaseXPStatic'">NoExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <OptimizeReferences>true</OptimizeReferences>
