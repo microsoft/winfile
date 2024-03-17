@@ -18,6 +18,7 @@
       <RuntimeLibrary Condition="'$(Configuration)'=='Debug'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)'=='DebugXPStatic'">MultiThreadedDebug</RuntimeLibrary>
       <EnableEnhancedInstructionSet Condition="'$(Configuration)'=='DebugXPStatic'">NoExtensions</EnableEnhancedInstructionSet>
+      <Optimization Condition="'$(Configuration)'=='DebugXPStatic'">MinSpace</Optimization>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='ReleaseXPStatic'">
@@ -28,6 +29,7 @@
       <RuntimeLibrary Condition="'$(Configuration)'=='Release'">MultiThreadedDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)'=='ReleaseXPStatic'">MultiThreaded</RuntimeLibrary>
       <EnableEnhancedInstructionSet Condition="'$(Configuration)'=='ReleaseXPStatic'">NoExtensions</EnableEnhancedInstructionSet>
+      <Optimization Condition="'$(Configuration)'=='ReleaseXPStatic'">MinSpace</Optimization>
     </ClCompile>
     <Link>
       <OptimizeReferences>true</OptimizeReferences>
