@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "自动缩成图标(&M)",     IDM_MINONRUN
     MENUITEM    "在启动时创建“转到目录“索引(&G)", IDM_INDEXONLAUNCH
     MENUITEM    "退出时保存设置值(&E)",   IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Save Settings &Now",       IDM_SAVENOW
-#endif
     END
     POPUP       "安全(&S)"
     BEGIN

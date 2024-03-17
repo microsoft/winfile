@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "&Minimalizuj podczas pracy",                 IDM_MINONRUN
     MENUITEM    "Twórz indeks katalogów przy &uruchomieniu",  IDM_INDEXONLAUNCH
     MENUITEM    "Z&apisz ustawienia przy zakończeniu",        IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Zapisz &ustawienia w tej chwili",            IDM_SAVENOW
-#endif
     END
     POPUP       "&Zabezpieczenia"
     BEGIN
