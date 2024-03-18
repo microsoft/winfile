@@ -18,7 +18,6 @@
       <RuntimeLibrary Condition="'$(Configuration)'=='Debug'">MultiThreadedDebugDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)'=='DebugXPStatic'">MultiThreadedDebug</RuntimeLibrary>
       <EnableEnhancedInstructionSet Condition="'$(Configuration)'=='DebugXPStatic'">NoExtensions</EnableEnhancedInstructionSet>
-      <Optimization Condition="'$(Configuration)'=='DebugXPStatic'">MinSpace</Optimization>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Release' or '$(Configuration)'=='ReleaseXPStatic'">
