@@ -28,6 +28,7 @@
       <RuntimeLibrary Condition="'$(Configuration)'=='Release'">MultiThreadedDLL</RuntimeLibrary>
       <RuntimeLibrary Condition="'$(Configuration)'=='ReleaseXPStatic'">MultiThreaded</RuntimeLibrary>
       <EnableEnhancedInstructionSet Condition="'$(Configuration)'=='ReleaseXPStatic'">NoExtensions</EnableEnhancedInstructionSet>
+      <Optimization Condition="'$(Configuration)'=='ReleaseXPStatic'">MinSpace</Optimization>
     </ClCompile>
     <Link>
       <OptimizeReferences>true</OptimizeReferences>
