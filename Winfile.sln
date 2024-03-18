@@ -215,11 +215,9 @@ Global
 		{AC921D51-18E2-4FBE-A444-059543458C00}.DebugXPStatic|ARM64.ActiveCfg = DebugXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.DebugXPStatic|Win32.ActiveCfg = DebugXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.DebugXPStatic|Win32.Build.0 = DebugXPStatic|Win32
-		{AC921D51-18E2-4FBE-A444-059543458C00}.DebugXPStatic|Win32.Deploy.0 = DebugXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.DebugXPStatic|x64.ActiveCfg = DebugXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.DebugXPStatic|x86.ActiveCfg = DebugXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.DebugXPStatic|x86.Build.0 = DebugXPStatic|Win32
-		{AC921D51-18E2-4FBE-A444-059543458C00}.DebugXPStatic|x86.Deploy.0 = DebugXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.Release|ARM64.ActiveCfg = Release|ARM64
 		{AC921D51-18E2-4FBE-A444-059543458C00}.Release|ARM64.Build.0 = Release|ARM64
 		{AC921D51-18E2-4FBE-A444-059543458C00}.Release|ARM64.Deploy.0 = Release|ARM64
@@ -235,11 +233,9 @@ Global
 		{AC921D51-18E2-4FBE-A444-059543458C00}.ReleaseXPStatic|ARM64.ActiveCfg = ReleaseXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.ReleaseXPStatic|Win32.ActiveCfg = ReleaseXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.ReleaseXPStatic|Win32.Build.0 = ReleaseXPStatic|Win32
-		{AC921D51-18E2-4FBE-A444-059543458C00}.ReleaseXPStatic|Win32.Deploy.0 = ReleaseXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.ReleaseXPStatic|x64.ActiveCfg = ReleaseXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.ReleaseXPStatic|x86.ActiveCfg = ReleaseXPStatic|Win32
 		{AC921D51-18E2-4FBE-A444-059543458C00}.ReleaseXPStatic|x86.Build.0 = ReleaseXPStatic|Win32
-		{AC921D51-18E2-4FBE-A444-059543458C00}.ReleaseXPStatic|x86.Deploy.0 = ReleaseXPStatic|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
