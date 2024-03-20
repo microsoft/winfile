@@ -1566,8 +1566,6 @@ JAPANEND
    InvalidateRect(hwndDriveList, NULL, TRUE);
 
 
-
-
    //
    // Init Menus fast stuff
    //
