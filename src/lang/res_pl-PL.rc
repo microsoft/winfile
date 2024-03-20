@@ -90,7 +90,7 @@ BEGIN
     MENUITEM    "&Potwierdzanie...",                          IDM_CONFIRM
     MENUITEM    "&Czcionka...",                               IDM_FONT
     MENUITEM    "Dostosuj pasek nar&zędzi...",                IDM_TOOLBARCUST
-    MENUITEM    "&Dodatkowe preferencje",                     IDM_PREF
+    MENUITEM    "&Dodatkowe preferencje...",                  IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "Pasek &narzędzi",                            IDM_TOOLBAR
     MENUITEM    "Pasek &dysków",                              IDM_DRIVEBAR
@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "&Minimalizuj podczas pracy",                 IDM_MINONRUN
     MENUITEM    "Twórz indeks katalogów przy &uruchomieniu",  IDM_INDEXONLAUNCH
     MENUITEM    "Z&apisz ustawienia przy zakończeniu",        IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Zapisz &ustawienia w tej chwili",            IDM_SAVENOW
-#endif
     END
     POPUP       "&Zabezpieczenia"
     BEGIN

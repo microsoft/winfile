@@ -14,6 +14,7 @@
 #include <dlgs.h>
 #include "lfn.h"
 #include "wfcopy.h"
+#include "resize.h"
 
 VOID  MDIClientSizeChange(HWND hwndActive, INT iFlags);
 
@@ -352,7 +353,6 @@ DoHelp:
   return TRUE;
 }
 
-
 INT_PTR
 CALLBACK
 SelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
@@ -361,6 +361,10 @@ SelectDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
         TCHAR szList[128];
         TCHAR szSpec[MAXFILENAMELEN];
         LPTSTR p;
+
+        if (ResizeDialogProc(hDlg, wMsg, wParam, lParam)) {
+            return TRUE;
+        }
 
         UNREFERENCED_PARAMETER(lParam);
 

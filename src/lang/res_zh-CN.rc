@@ -90,7 +90,7 @@ BEGIN
     MENUITEM    "确认(&C)...",     IDM_CONFIRM
     MENUITEM    "字体(&F)...",             IDM_FONT
     MENUITEM    "自定义工具栏(&B)...", IDM_TOOLBARCUST
-    MENUITEM    "首选项(&P)", IDM_PREF
+    MENUITEM    "首选项(&P)...", IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "工具栏(&T)",                 IDM_TOOLBAR
     MENUITEM    "驱动器栏(&D)",                IDM_DRIVEBAR
@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "自动缩成图标(&M)",     IDM_MINONRUN
     MENUITEM    "在启动时创建“转到目录“索引(&G)", IDM_INDEXONLAUNCH
     MENUITEM    "退出时保存设置值(&E)",   IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Save Settings &Now",       IDM_SAVENOW
-#endif
     END
     POPUP       "安全(&S)"
     BEGIN

@@ -90,7 +90,7 @@ BEGIN
     MENUITEM    "&Confirmation...",     IDM_CONFIRM
     MENUITEM    "&Font...",             IDM_FONT
     MENUITEM    "Customize Tool&bar...", IDM_TOOLBARCUST
-    MENUITEM    "Additional &Preferences", IDM_PREF
+    MENUITEM    "Additional &Preferences...", IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "&Toolbar",                 IDM_TOOLBAR
     MENUITEM    "&Drivebar",                IDM_DRIVEBAR
@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "&Minimize on Use",     IDM_MINONRUN
     MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
     MENUITEM    "Save Settings on &Exit",   IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Save Settings &Now",       IDM_SAVENOW
-#endif
     END
     POPUP       "&Security"
     BEGIN

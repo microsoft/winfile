@@ -224,37 +224,37 @@ hwndfound:
 
 BOOL  GetDriveDirectory(INT iDrive, LPTSTR pszDir)
 {
-   DWORD ret;
+    DWORD ret;
    WCHAR drvstr[MAXPATHLEN];
 
    if (iDrive - 1 < OFFSET_UNC)
    {
-      pszDir[0] = '\0';
+    pszDir[0] = '\0';
 
-      if (iDrive != 0)
-      {
-         drvstr[0] = ('A') - 1 + iDrive;
-         drvstr[1] = (':');
-         drvstr[2] = ('.');
-         drvstr[3] = ('\0');
-      }
-      else
-      {
-         drvstr[0] = ('.');
-         drvstr[1] = ('\0');
-      }
+    if(iDrive!=0)
+    {
+        drvstr[0] = ('A') - 1 + iDrive;
+        drvstr[1] = (':');
+        drvstr[2] = ('.');
+        drvstr[3] = ('\0');
+    }
+    else
+    {
+        drvstr[0] = ('.');
+        drvstr[1] = ('\0');
+    }
    }
    else
    {
       lstrcpy(drvstr, aDriveInfo[iDrive - 1].szRoot);
    }
 
-   if (GetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
-      return FALSE;
+    if (GetFileAttributes(drvstr) == INVALID_FILE_ATTRIBUTES)
+        return FALSE;
 
-   ret = GetFullPathName(drvstr, MAXPATHLEN, pszDir, NULL);
+    ret = GetFullPathName( drvstr, MAXPATHLEN, pszDir, NULL);
 
-   return ret != 0;
+    return ret != 0;
 }
 
 
@@ -321,8 +321,6 @@ RefreshWindow(
    BOOL bFlushCache)
 {
    HWND hwndTree, hwndDir;
-   LPARAM lParam;
-   TCHAR szDir[MAXPATHLEN];
    DRIVE drive;
 
    //
@@ -338,38 +336,32 @@ RefreshWindow(
    //
    drive = (DRIVE)GetWindowLongPtr(hwndActive, GWL_TYPE);
 
-   if ((drive >= 0) && !CheckDrive(hwndActive, drive, FUNC_SETDRIVE))
+   if ((drive >= 0) && !CheckDrive(hwndActive, drive, FUNC_SETDRIVE)) {
       return;
+   }
 
    //
    // If bFlushCache, remind ourselves to try it
    //
-   if (bFlushCache)
+   if (bFlushCache) {
       aDriveInfo[drive].bShareChkTried = FALSE;
+   }
 
    // NOTE: similar to CreateDirWindow
 
    //
    // update the dir part first so tree can steal later
    //
-   if (hwndDir = HasDirWindow(hwndActive))
+   if (hwndDir = HasDirWindow(hwndActive)) {
       SendMessage(hwndDir, FS_CHANGEDISPLAY, CD_PATH, 0L);
+   }
 
    if (hwndTree = HasTreeWindow(hwndActive)) {
-      //
-      // remember the current directory
-      //
-      SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szDir), (LPARAM)szDir);
 
       //
       // update the drives windows
       //
       SendMessage(hwndActive, FS_CHANGEDRIVES, 0, 0L);
-
-      if (IsValidDisk(DRIVEID(szDir)))
-         lParam = (LPARAM)szDir;
-      else
-         lParam = 0L;
 
       //
       // update the tree
@@ -377,11 +369,12 @@ RefreshWindow(
       SendMessage(hwndTree,
                   TC_SETDRIVE,
                   MAKELONG(MAKEWORD(FALSE,TRUE),TRUE),
-                  lParam);
+                  0L);
    }
 
-   if (hwndActive == hwndSearch)
+   if (hwndActive == hwndSearch) {
       SendMessage(hwndActive, FS_CHANGEDISPLAY, CD_PATH, 0L);
+}
 }
 
 //
@@ -1618,6 +1611,114 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT)
    lstrcpy(szT, rgchTA);
 
    return ich != 0;
+}
+
+// RegGetValue isn't available on Windows XP
+LONG WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData)
+{
+    DWORD dwStatus;
+    DWORD dwLocalType;
+    DWORD dwOriginalSize;
+    DWORD dwLocalSize;
+    HKEY hkeySub;
+    DWORD dwAllowMask;
+    BOOLEAN bTerminated;
+
+
+    if ((dwStatus = RegOpenKey(hkey, lpSubKey, &hkeySub)) == ERROR_SUCCESS)
+    {
+        dwOriginalSize = 0;
+        if (pcbData != NULL)
+        {
+            dwOriginalSize = *pcbData;
+        }
+
+        dwStatus = RegQueryValueEx(hkeySub, lpValue, NULL, &dwLocalType, pvData, &dwLocalSize);
+        if (dwStatus != ERROR_SUCCESS)
+        {
+            return dwStatus;
+        }
+
+        dwAllowMask = 0;
+        switch(dwLocalType)
+        {
+            case REG_SZ:
+                dwAllowMask = RRF_RT_REG_SZ;
+                break;
+            case REG_EXPAND_SZ:
+                dwAllowMask = RRF_RT_REG_EXPAND_SZ;
+                break;
+            case REG_BINARY:
+                dwAllowMask = RRF_RT_REG_BINARY;
+                break;
+            case REG_DWORD:
+                dwAllowMask = RRF_RT_REG_DWORD;
+                break;
+            case REG_MULTI_SZ:
+                dwAllowMask = RRF_RT_REG_MULTI_SZ;
+                break;
+        }
+
+        if ((dwAllowMask & dwFlags) == 0)
+        {
+            return ERROR_INVALID_DATA;
+        }
+
+        //
+        //  RegGetValue promises to NULL terminate strings.  Look to see if
+        //  we have a string without a NULL terminator.  If so, see if there's
+        //  space to add one; if no space, fail.
+        //
+
+        if (dwLocalType == REG_SZ || dwLocalType == REG_EXPAND_SZ || dwLocalType == REG_MULTI_SZ)
+        {
+            WCHAR * wszData;
+
+            wszData = pvData;
+            bTerminated = FALSE;
+
+            //
+            //  Not an even number of WCHARs, not a valid string
+            //
+
+            if (dwLocalSize & 0x1)
+            {
+                return ERROR_INVALID_DATA;
+            }
+
+            if (dwLocalSize > 0 && wszData[dwLocalSize / 2 - 1] == '\0')
+            {
+                bTerminated = TRUE;
+            }
+
+            if (!bTerminated)
+            {
+                if (dwOriginalSize > dwLocalSize)
+                {
+                    wszData[dwLocalSize / 2] = '\0';
+                    dwLocalSize = dwLocalSize + sizeof(WCHAR);
+                }
+                else
+                {
+                    dwLocalSize = dwLocalSize + sizeof(WCHAR);
+                    *pcbData = dwLocalSize;
+                    return ERROR_MORE_DATA;
+                }
+            }
+        }
+
+        if (pcbData != NULL) {
+            *pcbData = dwLocalSize;
+        }
+
+        if (pdwType != NULL) {
+            *pdwType = dwLocalType;
+        }
+
+        RegCloseKey(hkeySub);
+    }
+
+    return dwStatus;
 }
 
 // Search the list of slots if path would be parent of already existing drive == circularity

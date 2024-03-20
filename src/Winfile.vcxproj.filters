@@ -130,6 +130,15 @@
     <None Include="lang\winfile_tr-TR.dlg">
       <Filter>lang</Filter>
     </None>
+    <None Include="lang\res_pt-PT.rc">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\suggest_pt-PT.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_pt-PT.dlg">
+      <Filter>lang</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lang">

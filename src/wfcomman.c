@@ -248,14 +248,15 @@ UpdateAllDirWindows(
 VOID
 ChangeFileSystem(
    DWORD dwFunction,
-   LPTSTR lpszFile,
-   LPTSTR lpszTo)
+   LPCTSTR lpszFile,
+   LPCTSTR lpszTo)
 {
    HWND   hwnd, hwndTree, hwndOld;
    TCHAR  szFrom[MAXPATHLEN];
    TCHAR  szTo[MAXPATHLEN];
    TCHAR  szTemp[MAXPATHLEN];
    TCHAR  szPath[MAXPATHLEN + MAXPATHLEN];
+   DWORD  dwFSCOperation;
 
    // As FSC messages come in from outside winfile
    // we set a timer, and when that expires we
@@ -285,10 +286,15 @@ ChangeFileSystem(
    lstrcpy(szFrom, lpszFile);
    QualifyPath(szFrom);            // already partly qualified
 
-   switch (dwFunction)
+   dwFSCOperation = FSC_Operation(dwFunction);
+
+   switch (dwFSCOperation)
    {
       case ( FSC_RENAME ) :
       {
+         DWORD dwAttribs;
+         DWORD dwFSCOperation;
+
          lstrcpy(szTo, lpszTo);
          QualifyPath(szTo);    // already partly qualified
 
@@ -307,15 +313,32 @@ ChangeFileSystem(
          // Are we renaming a directory?
          lstrcpy(szTemp, szTo);
 
-         if (GetFileAttributes(szTemp) & ATTR_DIR)
+         dwAttribs = GetFileAttributes(szTemp);
+
+         if (dwAttribs & ATTR_DIR)
          {
+            dwFSCOperation = FSC_MKDIR;
+
+            // Check if the directory is a junction or symbolic link.  These
+            // have unique operation codes to keep optional junction display
+            // straightforward.
+            if (dwAttribs & ATTR_REPARSE_POINT)
+            {
+               DWORD dwReparseTag;
+               dwReparseTag = DecodeReparsePoint(szTemp, NULL, 0);
+               if (dwReparseTag == IO_REPARSE_TAG_MOUNT_POINT) {
+                   dwFSCOperation = FSC_JUNCTION;
+               } else if (dwReparseTag == IO_REPARSE_TAG_SYMLINK) {
+                   dwFSCOperation = FSC_SYMLINKD;
+               }
+            }
             for (hwnd = GetWindow(hwndMDIClient, GW_CHILD);
                  hwnd;
                  hwnd = GetWindow(hwnd, GW_HWNDNEXT))
             {
                if (hwndTree = HasTreeWindow(hwnd))
                {
-                  SendMessage(hwndTree, WM_FSC, FSC_RMDIRQUIET, (LPARAM)szFrom);
+                  SendMessage(hwndTree, WM_FSC, FSC_RMDIR | FSC_QUIET, (LPARAM)szFrom);
 
                   // if the current selection is szFrom, we update the
                   // selection after the rename occurs
@@ -323,7 +346,7 @@ ChangeFileSystem(
                   SendMessage(hwnd, FS_GETDIRECTORY, COUNTOF(szPath), (LPARAM)szPath);
                   StripBackslash(szPath);
 
-                  SendMessage(hwndTree, WM_FSC, FSC_MKDIRQUIET, (LPARAM)szTo);
+                  SendMessage(hwndTree, WM_FSC, dwFSCOperation | FSC_QUIET, (LPARAM)szTo);
 
                   // update the selection if necessary, also
                   // change the window text in this case to
@@ -354,7 +377,8 @@ ChangeFileSystem(
       }
 
       case ( FSC_MKDIR ) :
-      case ( FSC_MKDIRQUIET ) :
+      case ( FSC_JUNCTION ) :
+      case ( FSC_SYMLINKD ) :
       {
          /* Update the tree. */
          for (hwnd = GetWindow(hwndMDIClient, GW_CHILD);
@@ -807,7 +831,7 @@ GetPowershellExePath(LPTSTR szPSPath)
             DWORD dwInstall;
             DWORD dwType;
             DWORD cbValue = sizeof(dwInstall);
-            dwError = RegGetValue(hkey, szSub, TEXT("Install"), RRF_RT_DWORD, &dwType, (PVOID)&dwInstall, &cbValue);
+            dwError = WFRegGetValueW(hkey, szSub, TEXT("Install"), RRF_RT_DWORD, &dwType, (PVOID)&dwInstall, &cbValue);
 
             if (dwError == ERROR_SUCCESS && dwInstall == 1)
             {
@@ -821,7 +845,7 @@ GetPowershellExePath(LPTSTR szPSPath)
                     LPTSTR szPSExe = TEXT("\\Powershell.exe");
 
                     cbValue = (MAXPATHLEN - lstrlen(szPSExe)) * sizeof(TCHAR);
-                    dwError = RegGetValue(hkeySub, TEXT("PowerShellEngine"), TEXT("ApplicationBase"), RRF_RT_REG_SZ | RRF_RT_REG_EXPAND_SZ, &dwType, (PVOID)szPSPath, &cbValue);
+                    dwError = WFRegGetValueW(hkeySub, TEXT("PowerShellEngine"), TEXT("ApplicationBase"), RRF_RT_REG_SZ | RRF_RT_REG_EXPAND_SZ, &dwType, (PVOID)szPSPath, &cbValue);
 
                     if (dwError == ERROR_SUCCESS)
                     {
@@ -1535,12 +1559,10 @@ AppCommandProc(DWORD id)
       break;
    }
 
-#ifdef PROGMAN
    case IDM_SAVENOW:
 
       SaveWindows(hwndFrame);
       break;
-#endif
 
    case IDM_EXIT:
 

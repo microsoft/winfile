@@ -90,7 +90,7 @@ BEGIN
         MENUITEM    "&Onay...",                     IDM_CONFIRM
         MENUITEM    "&Yazıtipi...",                 IDM_FONT
         MENUITEM    "A&raç Çubuğunu Özelleştir...", IDM_TOOLBARCUST
-        MENUITEM    "&Ek Tercihler",                IDM_PREF
+        MENUITEM    "&Ek Tercihler...",             IDM_PREF
         MENUITEM    SEPARATOR
         MENUITEM    "&Araç Çubuğu",                 IDM_TOOLBAR
         MENUITEM    "&Sürücü Çubuğu",               IDM_DRIVEBAR
@@ -99,10 +99,8 @@ BEGIN
         MENUITEM    "K&ullanımda Simge Durumuna Küçült", IDM_MINONRUN
         MENUITEM    "&Başlangıçta Şuna Git İndeksi Oluştur", IDM_INDEXONLAUNCH
         MENUITEM    "Çıkışta &Ayarları Kaydet",     IDM_SAVESETTINGS
-#ifdef PROGMAN
-    MENUITEM    SEPARATOR
-    MENUITEM    "Ayarları Ş&imdi Kaydet",           IDM_SAVENOW
-#endif
+        MENUITEM    SEPARATOR
+        MENUITEM    "Ayarları Ş&imdi Kaydet",           IDM_SAVENOW
     END
     POPUP       "Gü&venlik"
     BEGIN

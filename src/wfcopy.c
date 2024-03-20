@@ -2811,14 +2811,6 @@ SkipMKDir:
             break;
          }
 
-
-         if (ERROR_SUCCESS == ret)
-            //
-            // set attributes of dest to source (not including the
-            // subdir and vollabel bits)
-            //
-            WFSetAttr(szDest, pDTA->fd.dwFileAttributes & ~(ATTR_DIR | ATTR_VOLUME));
-
          //
          // If symlink dir already exists ignore the error. return
          // as long as it is a directory and not a file.

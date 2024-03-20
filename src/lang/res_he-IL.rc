@@ -90,7 +90,7 @@ BEGIN
     MENUITEM    "א&ישור...",     IDM_CONFIRM
     MENUITEM    "&גופן...",             IDM_FONT
     MENUITEM    "סרגל כלים...", IDM_TOOLBARCUST
-    MENUITEM    "ה&עדפות נוספות", IDM_PREF
+    MENUITEM    "ה&עדפות נוספות...", IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "&סרגל כלים",                 IDM_TOOLBAR
     MENUITEM    "שורת &כוננים",                IDM_DRIVEBAR
@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "&מזער בעת הפעלה",     IDM_MINONRUN
     MENUITEM    "צור מפתח Goto בעת ההפעלה", IDM_INDEXONLAUNCH
     MENUITEM    "&שמור הגדרות ביציאה",   IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "שמירת הגדרות &עכשיו",       IDM_SAVENOW
-#endif
     END
     POPUP       "&אבטחה"
     BEGIN

@@ -99,10 +99,8 @@ BEGIN
     MENUITEM    "&Symbol nach Programmstart",                     IDM_MINONRUN
     MENUITEM    "Beim Starten &Goto-Index erstellen",             IDM_INDEXONLAUNCH
     MENUITEM    "&Einstellungen beim Beenden speichern",          IDM_SAVESETTINGS
-#ifdef PROGMAN
     MENUITEM    SEPARATOR
     MENUITEM    "Einstellungen jetzt speicher&n",                 IDM_SAVENOW
-#endif
     END
     POPUP       "&Sicherheit"
     BEGIN

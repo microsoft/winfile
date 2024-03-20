@@ -1232,8 +1232,9 @@ CreateFMToolbar(void)
    if (!hwndToolbar)
       return;
 
-   if (bDisableVisualStyles)
-     SetWindowTheme(hwndToolbar, pwszInvalidTheme, pwszInvalidTheme);
+   if (bDisableVisualStyles && SetWindowTheme != NULL) {
+      SetWindowTheme(hwndToolbar, pwszInvalidTheme, pwszInvalidTheme);
+   }
 
    SendMessage (hwndToolbar, TB_SETINDENT, 8, 0);
 
@@ -1257,8 +1258,9 @@ CreateFMToolbar(void)
       return;
    }
 
-   if (bDisableVisualStyles)
-     SetWindowTheme(hwndDriveList, pwszInvalidTheme, pwszInvalidTheme);
+   if (bDisableVisualStyles && SetWindowTheme != NULL) {
+      SetWindowTheme(hwndDriveList, pwszInvalidTheme, pwszInvalidTheme);
+   }
 
    SendMessage(hwndDriveList, CB_SETEXTENDEDUI, 0, 0L);
    SendMessage(hwndDriveList, WM_SETFONT, (WPARAM)hfontDriveList, MAKELPARAM(TRUE, 0));

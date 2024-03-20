@@ -14,27 +14,72 @@ Licensed under the MIT License.
 The Language names are sorted like this because CBS_SORT Flag for comboboxes causes bugs.
 cf. https://msdn.microsoft.com/en-us/library/cc233982.aspx
 */
-LPCTSTR szLCIDs[] = {
-    TEXT("zh-CN"),    // Chinese, Simplified
-    TEXT("en-US"),    // English, United States
-    TEXT("he-IL"),    // Hebrew, Israel
-    TEXT("ja-JP"),    // Japanese, Japan
-    TEXT("pl-PL"),    // Polish, Poland
-    TEXT("de-DE"),    // German, Germany
-    TEXT("tr-TR"),    // Turkish, Turkey
+
+typedef struct _FM_LANG {
+    LPCWSTR String;
+    LANGID Lang;
+} FM_LANG;
+
+FM_LANG fmLCIDs[] = {
+    {TEXT("zh-CN"), MAKELANGID(LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED)}, // Chinese, Simplified
+    {TEXT("en-US"), MAKELANGID(LANG_ENGLISH, SUBLANG_ENGLISH_US)},         // English, United States
+    {TEXT("he-IL"), MAKELANGID(LANG_HEBREW, SUBLANG_HEBREW_ISRAEL)},       // Hebrew, Israel
+    {TEXT("ja-JP"), MAKELANGID(LANG_JAPANESE, SUBLANG_JAPANESE_JAPAN)},    // Japanese, Japan
+    {TEXT("pl-PL"), MAKELANGID(LANG_POLISH, SUBLANG_POLISH_POLAND)},       // Polish, Poland
+    {TEXT("de-DE"), MAKELANGID(LANG_GERMAN, SUBLANG_GERMAN)},              // German, Germany
+    {TEXT("tr-TR"), MAKELANGID(LANG_TURKISH, SUBLANG_TURKISH_TURKEY)},     // Turkish, Turkey
+    {TEXT("pt-PT"), MAKELANGID(LANG_PORTUGUESE, SUBLANG_PORTUGUESE)}       // Portuguese, Portugal
 };
+
+LCID
+WFLocaleNameToLCID(LPCWSTR lpName, DWORD dwFlags)
+{
+    LCID lcidTemp;
+    DWORD i;
+
+    lcidTemp = LOCALE_USER_DEFAULT;
+
+    if (LocaleNameToLCID != NULL)
+    {
+        lcidTemp = LocaleNameToLCID(lpName, 0);
+    }
+
+    for (i = 0; i <= COUNTOF(fmLCIDs) - 1; i++)
+    {
+        if (lstrcmpi(lpName, fmLCIDs[i].String) == 0)
+        {
+            lcidTemp = MAKELCID(fmLCIDs[i].Lang, SORT_DEFAULT);
+            break;
+        }
+    }
+
+    return lcidTemp;
+}
 
 VOID InitLangList(HWND hCBox)
 {
     // Propogate the list
-    for (UINT i = 0; i <= (COUNTOF(szLCIDs) - 1); i++)
+    for (UINT i = 0; i <= (COUNTOF(fmLCIDs) - 1); i++)
     {
         TCHAR szLangName[MAXPATHLEN] = { 0 };
-        LCID lcidTemp = LocaleNameToLCID(szLCIDs[i], 0);
+        LCID lcidTemp;
 
-        // TODO: need to test this on pre-Vista and on/after Win XP 64
-        if (GetLocaleInfoEx(szLCIDs[i], LOCALE_SLOCALIZEDDISPLAYNAME, szLangName, COUNTOF(szLangName)) == 0)
-            lstrcpy(szLangName, TEXT("BUGBUG"));
+        lcidTemp = WFLocaleNameToLCID(fmLCIDs[i].String, 0);
+
+        if (GetLocaleInfoEx != NULL)
+        {
+            if (GetLocaleInfoEx(fmLCIDs[i].String, LOCALE_SLOCALIZEDDISPLAYNAME, szLangName, COUNTOF(szLangName)) == 0)
+            {
+                lstrcpy(szLangName, TEXT("BUGBUG"));
+            }
+        }
+        else
+        {
+            if (GetLocaleInfo(lcidTemp, LOCALE_SLOCALIZEDDISPLAYNAME, szLangName, COUNTOF(szLangName)) == 0)
+            {
+                lstrcpy(szLangName, TEXT("BUGBUG"));
+            }
+        }
 
         // every entry in the array above needs to be addd to the list box;
         // SaveLang() below depends on each index in the listbox being valid.
@@ -55,7 +100,7 @@ VOID SaveLang(HWND hCBox)
     if (iIndex == CB_ERR)
         return; // do nothing
 
-    WritePrivateProfileString(szSettings, szUILanguage, szLCIDs[iIndex], szTheINIFile);
+    WritePrivateProfileString(szSettings, szUILanguage, fmLCIDs[iIndex].String, szTheINIFile);
 }
 
 // returns whether the current language is default RTL; ARABIC, HEBREW: true; else false;

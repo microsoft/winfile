@@ -31,7 +31,7 @@ VOID VerifyLangDialogs(PROCRES *pprocres);
 VOID VerifyLangMenus(PROCRES *pprocres);
 VOID VerifyLangStrings(HMODULE hMod, PROCRES *pprocres);
 
-int wmain(int argc, wchar_t *argv[])
+int __cdecl wmain(int argc, wchar_t *argv[])
 {
     if (argc != 2)
     {
@@ -477,7 +477,14 @@ VOID DecodeMenu(VOID *lpv, MENUDECODE *pmenu)
     while (*pwT != MFR_END)
     {
         pitem->flags = *pwT++;
-        pitem->id = *pwT++;
+        if ((pitem->flags & MFR_POPUP) == 0)
+        {
+            pitem->id = *pwT++;
+        }
+        else
+        {
+            pitem->id = 0;
+        }
 
         pitem->lpszMenu = (LPCTSTR)pwT;
         pwT += wcslen(pitem->lpszMenu) + 1;
@@ -529,10 +536,9 @@ VOID VerifyLangMenus(PROCRES *pprocres)
             wchar_t szLocale[25];
             MENUITEM *pitem = &rgmenu[j].rgitem[i];
 
-            LCIDToLocaleName(rglcidInUse[j], szLocale, COUNTOF(szLocale), 0);
-
             if (pitem->id != id)
             {
+                LCIDToLocaleName(rglcidInUse[j], szLocale, COUNTOF(szLocale), 0);
                 printf("Error: menu %ls for language %ls does not have the required item %d\n", rgmenu[ILOCALE_ENG].lpszTitle, szLocale, id);
                 break;
             }

@@ -36,7 +36,7 @@ BOOL GetTimeStampSignerInfo(PCMSG_SIGNER_INFO pSignerInfo,
 
 BOOL VerifyEmbeddedSignature(LPCWSTR pwszSourceFile);
 
-int _tmain(int argc, TCHAR *argv[])
+int __cdecl _tmain(int argc, TCHAR *argv[])
 {
     WCHAR szFileName[MAX_PATH];
     HCERTSTORE hStore = NULL;
