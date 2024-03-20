@@ -790,7 +790,7 @@ FmifsLoaded()
    // Load the fmifs dll.
 
    if (hfmifsDll < (HANDLE)32) {
-      hfmifsDll = LoadLibrary(szFmifsDll);
+      hfmifsDll = LoadSystemLibrary(FMIFS_DLL);
       if (hfmifsDll < (HANDLE)32) {
          /* FMIFS not available. */
          MyMessageBox(hwndFrame, IDS_WINFILE, IDS_FMIFSLOADERR, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
