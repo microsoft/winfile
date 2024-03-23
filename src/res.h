@@ -82,7 +82,7 @@
 #define IDM_UNDO            114
 #define IDM_EXIT            115
 #define IDM_SELECT          116
-#define IDM_UNDELETE        117
+// was IDM_UNDELETE         117
 #define IDM_COPYTOCLIPBOARD 118
 #define IDM_COMPRESS        119
 #define IDM_UNCOMPRESS      120
@@ -596,7 +596,7 @@
 #define IDS_SHAREAS           (MS_EXTRA+3)
 #define IDS_STOPSHARE         (MS_EXTRA+4)  // IDS_STOPSHARE not used anymore, because there is no way to open then 'Stop Share Dialog' with W7/10/11
 #define IDS_SHARES            (MS_EXTRA+5)
-#define IDS_UNDELETE          (MS_EXTRA+6)
+// was IDS_UNDELETE           (MS_EXTRA+6)
 #define IDS_NEWWINONCONNECT   (MS_EXTRA+7)
 
 // TODO: there should be NUMEXTRACOMMANDS strings above; see usage in tbar.c in LoadDesc().

@@ -552,7 +552,6 @@ BEGIN
     MH_MYITEMS+IDM_DELETE,      "ファイルまたはディレクトリを削除する"
     MH_MYITEMS+IDM_RENAME,      "ファイルまたはディレクトリの名前を変更する"
     MH_MYITEMS+IDM_ATTRIBS,     "ファイルの拡張子を設定する、またはプロパティを表示する"
-    MH_MYITEMS+IDM_UNDELETE,    "削除したファイルを戻す"
     MH_MYITEMS+IDM_RUN, "アプリケーションを実行する、またはドキュメントを開く"
     MH_MYITEMS+IDM_PRINT,       "ドキュメントを印刷する"
     MH_MYITEMS+IDM_ASSOCIATE,   "ファイルの拡張子に関連付けを行う"
@@ -636,7 +635,6 @@ BEGIN
     IDS_SHAREAS,                "共有(&A)..."
     IDS_STOPSHARE,              "共有を停止(&T)..."
     IDS_SHARES,                 "共有ディレクトリの表示(&H)..."
-    IDS_UNDELETE,               "削除の取り消し(&U)..."
     IDS_NEWWINONCONNECT,        "接続時に新しいウィンドウを開く(&O)"
 END
 

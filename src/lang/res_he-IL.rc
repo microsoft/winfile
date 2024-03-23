@@ -554,7 +554,6 @@ BEGIN
     MH_MYITEMS+IDM_DELETE,      "מחיקת קבצים ותיקיות"
     MH_MYITEMS+IDM_RENAME,      "שינוי שם קובץ או תיקיה"
     MH_MYITEMS+IDM_ATTRIBS,     "הגדרה והצגה של תכונות קובץ"
-    MH_MYITEMS+IDM_UNDELETE,    "שחזור קבצים שנמחקו"
     MH_MYITEMS+IDM_RUN, "הפעלה או פתיחה של תכנית או מסמך"
     MH_MYITEMS+IDM_PRINT,       "הדפסת מסמך"
     MH_MYITEMS+IDM_ASSOCIATE,   "שיוך קובץ לתכנית"
@@ -638,7 +637,6 @@ BEGIN
     IDS_SHAREAS,                "&שיתוף בתור..."
     IDS_STOPSHARE,              "ה&פסקת שיתוף..."
     IDS_SHARES,                 "הצגת תיקיות מ&שותפות..."
-    IDS_UNDELETE,               "שחזור..."
     IDS_NEWWINONCONNECT,        "&פתיחת חלון חדש בעת חיבור"
 END
 
