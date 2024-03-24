@@ -775,7 +775,7 @@ CheckDirExists(
    BOOL bRet = FALSE;
 
    DRIVE drive = DRIVEID(szDir);
-   
+
    // Immediatley give up on not existing UNC Drives. They will not reconnect at some time
    if (drive >= OFFSET_UNC && INVALID_FILE_ATTRIBUTES == GetFileAttributes(szDir))
       return FALSE;
@@ -794,7 +794,9 @@ CheckDirExists(
 
 
 BOOL
-CreateSavedWindows()
+CreateSavedWindows(
+    LPCWSTR pszInitialDir
+    )
 {
    WCHAR buf[2*MAXPATHLEN+7*7], key[10];
    WINDOW win;
@@ -815,13 +817,16 @@ CreateSavedWindows()
    nDirNum = 1;
    iNumTrees = 0;
 
-   do {
+   if (pszInitialDir == NULL)
+   {
+      do
+      {
       wsprintf(key, szDirKeyFormat, nDirNum++);
 
       GetPrivateProfileString(szSettings, key, szNULL, buf, COUNTOF(buf), szTheINIFile);
 
-      if (*buf) {
-
+         if (*buf)
+         {
          GetSavedWindow(buf, &win);
 
          lstrcpy(szDir, win.szDir);
@@ -842,8 +847,9 @@ CreateSavedWindows()
                AddUNCDrive(szDir);
          }
 
-         if (!CheckDirExists(szDir))
+         if (!CheckDirExists(szDir)) {
             continue;
+            }
 
          AddBackslash(szDir);
          lstrcat(szDir, szStarDotStar);
@@ -868,18 +874,48 @@ CreateSavedWindows()
          //
          // keep track of this for now...
          //
-         if (IsIconic(hwnd))
+            if (IsIconic(hwnd)) {
              SetWindowPos(hwnd, NULL, win.pt.x, win.pt.y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+            }
 
          ShowWindow(hwnd, win.sw);
       }
 
    } while (*buf);
+   }
+
+   //
+   //  If the user requested to open the program with a specific directory,
+   //  open it
+   //
+
+   if (pszInitialDir != NULL){
+
+      lstrcpy(buf, pszInitialDir);
+      AddBackslash(buf);
+      lstrcat(buf, szStarDotStar);
+
+      //
+      // default to split window
+      //
+      hwnd = CreateTreeWindow(buf, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, -1);
+
+      if (!hwnd)
+         return FALSE;
+
+      //
+      // Default to maximized since the user requested to open a single
+      // directory
+      //
+      ShowWindow(hwnd, SW_MAXIMIZE);
+
+      iNumTrees++;
+   }
 
    LoadUNCDrives();
 
    //
-   // if nothing was saved create a tree for the current drive
+   // if nothing was saved or specified, create a tree for the current drive
    //
    if (!iNumTrees) {
 
@@ -1033,6 +1069,7 @@ InitFileManager(
    HANDLE        hThread;
    DWORD         dwRetval;
    DWORD         dwExStyle = 0L;
+   LPWSTR        pszInitialDir = NULL;
 
    hThread = GetCurrentThread();
 
@@ -1056,9 +1093,6 @@ InitFileManager(
    // Preserve this instance's module handle
    //
    hAppInstance = hInstance;
-
-   if (*lpCmdLine)
-      nCmdShow = SW_SHOWMINNOACTIVE;
 
    // setup ini file location
    lstrcpy(szTheINIFile, szBaseINIFile);
@@ -1122,18 +1156,45 @@ JAPANEND
    //
    GetCurrentDirectory(COUNTOF(szOriginalDirPath), szOriginalDirPath);
 
-   if (*lpCmdLine) {
+   if (*lpCmdLine)
+   {
+      LPWSTR lpArgs;
 
-      if (dwRetval = ExecProgram(lpCmdLine, pszNextComponent(lpCmdLine), NULL, FALSE, FALSE))
-         MyMessageBox(NULL, IDS_EXECERRTITLE, dwRetval, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
+      //
+      //  Note this isn't just finding the next argument, it's NULL
+      //  terminating lpCmdLine at the point of the next argument
+      //
+      lpArgs = pszNextComponent(lpCmdLine);
+      lpCmdLine = pszRemoveSurroundingQuotes(lpCmdLine);
+
+      if (WFIsDir(lpCmdLine))
+      {
+         pszInitialDir = lpCmdLine;
+      }
       else
+      {
          nCmdShow = SW_SHOWMINNOACTIVE;
+
+         dwRetval = ExecProgram(lpCmdLine, lpArgs, NULL, FALSE, FALSE);
+         if (dwRetval != 0)
+         {
+            MyMessageBox(NULL, IDS_EXECERRTITLE, dwRetval, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
+         }
+      }
    }
 
    //
    // Read WINFILE.INI and set the appropriate variables.
    //
    GetSettings();
+
+   //
+   // If the user specified an initial directory on the command line, that
+   // directory will be opened, and save settings is disabled by default.
+   //
+   if (pszInitialDir != NULL) {
+      bSaveSettings = FALSE;
+   }
 
    dwExStyle = MainWindowExStyle();
 
@@ -1503,8 +1564,9 @@ JAPANEND
    //
    if (nCmdShow == SW_SHOW || nCmdShow == SW_SHOWNORMAL &&
       win.sw != SW_SHOWMINIMIZED)
-
+   {
       nCmdShow = win.sw;
+   }
 
    ShowWindow(hwndFrame, nCmdShow);
 
@@ -1559,7 +1621,7 @@ JAPANEND
    InitMenus();
 
 
-   if (!CreateSavedWindows()) {
+   if (!CreateSavedWindows(pszInitialDir)) {
       return FALSE;
    }
 
