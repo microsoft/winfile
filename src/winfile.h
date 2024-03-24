@@ -417,6 +417,7 @@ VOID ExtSelItemsInvalidate();
 // WFUTIL.C
 
 LPWSTR pszNextComponent(LPWSTR pszCmdLine);
+LPWSTR pszRemoveSurroundingQuotes(LPWSTR p);
 VOID cdecl SetStatusText(INT nPane, UINT nFormat, LPCTSTR szFormat, ...);
 VOID RefreshWindow(HWND hwndActive, BOOL bUpdateDriveList, BOOL bFlushCache);
 BOOL IsLastWindow(VOID);
@@ -527,7 +528,7 @@ VOID  InitDriveBitmaps(VOID);
 VOID  InitExtensions(VOID);
 VOID  FreeFileManager(VOID);
 VOID  DeleteBitmaps(VOID);
-BOOL  CreateSavedWindows(VOID);
+BOOL  CreateSavedWindows(LPCWSTR pszInitialDir);
 VOID  InitExtensions(VOID);
 INT   GetDriveOffset(DRIVE drive);
 VOID  InitMenus(VOID);
@@ -1211,30 +1212,30 @@ JAPANBEGIN
 Extern BOOL   bJapan      EQ( FALSE );
 JAPANEND
 
-Extern BOOL bMinOnRun        EQ( FALSE );
-Extern BOOL bIndexOnLaunch   EQ( TRUE );
-Extern BOOL bStatusBar       EQ( TRUE );
+Extern BOOL bMinOnRun            EQ( FALSE );
+Extern BOOL bIndexOnLaunch       EQ( TRUE );
+Extern BOOL bStatusBar           EQ( TRUE );
 
 Extern BOOL bDriveBar            EQ( TRUE );
 Extern BOOL bToolbar             EQ( TRUE );
 Extern BOOL bNewWinOnConnect     EQ( TRUE );
 Extern BOOL bDisableVisualStyles EQ( FALSE );
-Extern BOOL bMirrorContent    EQ( FALSE );
+Extern BOOL bMirrorContent       EQ( FALSE );
 
-Extern BOOL bExitWindows     EQ( FALSE );
-Extern BOOL bConfirmDelete   EQ( TRUE );
-Extern BOOL bConfirmSubDel   EQ( TRUE );
-Extern BOOL bConfirmReplace  EQ( TRUE );
-Extern BOOL bConfirmMouse    EQ( TRUE );
-Extern BOOL bConfirmFormat   EQ( TRUE );
-Extern BOOL bConfirmReadOnly EQ( TRUE );
+Extern BOOL bExitWindows         EQ( FALSE );
+Extern BOOL bConfirmDelete       EQ( TRUE );
+Extern BOOL bConfirmSubDel       EQ( TRUE );
+Extern BOOL bConfirmReplace      EQ( TRUE );
+Extern BOOL bConfirmMouse        EQ( TRUE );
+Extern BOOL bConfirmFormat       EQ( TRUE );
+Extern BOOL bConfirmReadOnly     EQ( TRUE );
 
-Extern BOOL bSaveSettings    EQ( TRUE );
-Extern BOOL bScrollOnExpand  EQ( TRUE );
+Extern BOOL bSaveSettings        EQ( TRUE );
+Extern BOOL bScrollOnExpand      EQ( TRUE );
 
-Extern BOOL bConnectable       EQ( FALSE );
-Extern INT  iShowSourceBitmaps EQ( 1 );
-Extern BOOL bFSCTimerSet       EQ( FALSE );
+Extern BOOL bConnectable         EQ( FALSE );
+Extern INT  iShowSourceBitmaps   EQ( 1 );
+Extern BOOL bFSCTimerSet         EQ( FALSE );
 
 Extern TCHAR        chFirstDrive;           // 'A' or 'a'
 

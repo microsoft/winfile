@@ -76,7 +76,7 @@ pszNextComponent(
       if ((*p == L' ' || *p == L'\t') && !bInQuotes)
          break;
 
-      if (*p == L'\"')
+      if (*p == CHAR_DQUOTE)
          bInQuotes = !bInQuotes;
 
       p++;
@@ -87,6 +87,31 @@ pszNextComponent(
 
       while (*p == L' ' || *p == L'\t')
          p++;
+   }
+
+   return p;
+}
+
+// If a string starts and ends with a quote, truncate the ending quote and
+// return a pointer to the new string start.  Note that parsing such as
+// pszNextComponent above support quotes in the middle of strings, which
+// this function makes no attempt to remove.
+LPWSTR
+pszRemoveSurroundingQuotes(
+   LPWSTR p
+   )
+{
+   if (*p == CHAR_DQUOTE) {
+      size_t len;
+
+      len = wcslen(p);
+
+      // Length needs to be at least 2 to ensure there are 2 quotes rather
+      // than counting the same quote twice
+      if (len > 1 && p[len - 1] == CHAR_DQUOTE) {
+         p[len - 1] = '\0';
+         p++;
+      }
    }
 
    return p;
