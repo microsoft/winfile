@@ -1,12 +1,4 @@
 
-## Changes in master v10.0 after original_plus
-
-The master branch contains changes made since 2007.  WinFile has not been redesigned or restructured in any significant way.
-
-Version v10.0 represents the entire set of changes from Nov. 2007 until this OSS project
-was created.  For changes post v10.0, summaries are provided below, but the complete
-commit history is also available.
-
 ## Changes in v10.3 compared to v10.2 (March 2024)
 
 1. Ability to launch Administrator command prompt or Explorer in a directory
@@ -36,6 +28,8 @@ commit history is also available.
 13. AMD64 build available
 
 ## Changes in v10.0 compared to original_plus (April 2018)
+
+Version v10.0 represents the entire set of changes from Nov. 2007 until this OSS project was created.
 
 1. OLE drag/drop support
 2. control characters (e.g., ctrl+C) map to current shortcut (e.g., `ctrl+C` -> `copy`)
