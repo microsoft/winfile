@@ -330,41 +330,6 @@ InitMenus()
    TCHAR szValue[MAXPATHLEN];
    HMENU hMenuOptions;
 
-   TCHAR szPathName[MAXPATHLEN];
-
-   GetPrivateProfileString(szSettings, szUndelete, szNULL, szValue, COUNTOF(szValue), szTheINIFile);
-
-   if (szValue[0]) {
-
-      // create explicit filename to avoid searching the path
-
-      GetSystemDirectory(szPathName, COUNTOF(szPathName));
-      AddBackslash(szPathName);
-      lstrcat(szPathName, szValue);
-
-      hModUndelete = LoadLibrary(szValue);
-
-      if (hModUndelete) {
-         lpfpUndelete = (FM_UNDELETE_PROC)GetProcAddress(hModUndelete, UNDELETE_ENTRYW);
-
-         if (lpfpUndelete) {
-            bUndeleteUnicode = TRUE;
-         } else {
-            lpfpUndelete = (FM_UNDELETE_PROC)GetProcAddress(hModUndelete, UNDELETE_ENTRYA);
-            bUndeleteUnicode = FALSE;
-         }
-
-         if (lpfpUndelete) {
-            hMenu = GetSubMenu(GetMenu(hwndFrame), MapIDMToMenuPos(IDM_FILE));
-            LoadString(hAppInstance, IDS_UNDELETE, szValue, COUNTOF(szValue));
-            InsertMenu(hMenu, 4, MF_BYPOSITION | MF_STRING, IDM_UNDELETE, szValue);
-         }
-      } else {
-         FreeLibrary(hModUndelete);
-         hModUndelete = NULL;
-      }
-   }
-
    //
    // use submenu because we are doing this by position
    //

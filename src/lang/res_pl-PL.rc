@@ -554,7 +554,6 @@ BEGIN
     MH_MYITEMS+IDM_DELETE,           "Usuwa pliki i katalogi"
     MH_MYITEMS+IDM_RENAME,           "Zmienia nazwę pliku lub katalogu"
     MH_MYITEMS+IDM_ATTRIBS,          "Ustawia atrybuty pliku i wyświetla jego właściwości"
-    MH_MYITEMS+IDM_UNDELETE,         "Odtwarza uprzednio usunięte pliki"
     MH_MYITEMS+IDM_RUN,              "Rozpoczyna lub otwiera aplikację lub dokument"
     MH_MYITEMS+IDM_PRINT,            "Drukuje dokument"
     MH_MYITEMS+IDM_ASSOCIATE,        "Kojarzy plik z aplikacją"
@@ -638,7 +637,6 @@ BEGIN
     IDS_SHAREAS,                "Udos&tępnij jako..."
     IDS_STOPSHARE,              "&Zakończ udostępnianie..."
     IDS_SHARES,                 "Po&każ udostępnione katalogi..."
-    IDS_UNDELETE,               "&Cofnij usunięcie..."
     IDS_NEWWINONCONNECT,        "&Otwórz nowe okno przy podłączeniu"
 END
 

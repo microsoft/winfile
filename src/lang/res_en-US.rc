@@ -554,7 +554,6 @@ BEGIN
     MH_MYITEMS+IDM_DELETE,      "Deletes files and directories"
     MH_MYITEMS+IDM_RENAME,      "Renames a file or directory"
     MH_MYITEMS+IDM_ATTRIBS,     "Sets file attributes and displays properties"
-    MH_MYITEMS+IDM_UNDELETE,    "Retrieves previously deleted files"
     MH_MYITEMS+IDM_RUN,         "Starts or opens an application or document"
     MH_MYITEMS+IDM_PRINT,       "Prints a document"
     MH_MYITEMS+IDM_ASSOCIATE,   "Associates a file with an application"
@@ -638,7 +637,6 @@ BEGIN
     IDS_SHAREAS,                "Share &As..."
     IDS_STOPSHARE,              "S&top Sharing..."
     IDS_SHARES,                 "View S&hared Directories..."
-    IDS_UNDELETE,               "&Undelete..."
     IDS_NEWWINONCONNECT,        "&Open New Window on Connect"
 END
 

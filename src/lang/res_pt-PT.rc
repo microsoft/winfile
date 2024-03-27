@@ -554,7 +554,6 @@ BEGIN
     MH_MYITEMS+IDM_DELETE,      "Elimina ficheiros ou directórios"
     MH_MYITEMS+IDM_RENAME,      "Muda o nome a um ficheiro ou directório"
     MH_MYITEMS+IDM_ATTRIBS,     "Define os atributos de ficheiro e mostra as propriedades"
-    MH_MYITEMS+IDM_UNDELETE,    "Recupera ficheiros previamente eliminados"
     MH_MYITEMS+IDM_RUN,         "Inicia ou abre uma aplicação ou um documento"
     MH_MYITEMS+IDM_PRINT,       "Imprime um documento"
     MH_MYITEMS+IDM_ASSOCIATE,   "Associa um ficheiro a uma aplicação"
@@ -638,7 +637,6 @@ BEGIN
     IDS_SHAREAS,                "Partilhar &Como..."
     IDS_STOPSHARE,              "P&arar Partilha..."
     IDS_SHARES,                 "Ver Directórios &Partilhados..."
-    IDS_UNDELETE,               "&Recuperar..."
     IDS_NEWWINONCONNECT,        "&Abrir N&ova Janela ao Ligar"
 END
 

@@ -1035,8 +1035,6 @@ FrameWndProc(HWND hwnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
       if (GET_WM_COMMAND_ID(wParam, lParam) == IDM_EXIT) {
 
             FreeExtensions();
-            if (hModUndelete >= (HANDLE)32)
-               FreeLibrary(hModUndelete);
 
             DestroyWindow(hwnd);
             break;
