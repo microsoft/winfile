@@ -963,7 +963,7 @@ GetVersionInfo(PTSTR pszPath, PTSTR pszName)
 
    if (!hVersion) {
 
-      hVersion = LoadLibrary(VERSION_DLL);
+      hVersion = LoadSystemLibrary(VERSION_DLL);
 
       if (!hVersion) {
          bDLLFail = TRUE;
