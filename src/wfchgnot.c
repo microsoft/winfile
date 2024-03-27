@@ -179,7 +179,7 @@ NotifyReset()
 //
 // INC       -- drive    -2 == ALL
 //                       -1 == All of type uType
-//                       0 < drive < 26 is the drive to stop
+//                       0 < drive < MAX_DRIVES is the drive to stop
 // INC       -- uType    Type of drive to stop notification on
 //
 //
@@ -239,7 +239,7 @@ NotifyPause(DRIVE drive, UINT uType)
 // Synopsis: Resume all notifications
 //
 // INC       -- drive    -1 == ALL
-//                       0 < drive < 26 is the drive to stop
+//                       0 < drive < MAX_DRIVES is the drive to stop
 // INC       -- uType    Type of drive to stop notification on
 //
 // Return:   VOID

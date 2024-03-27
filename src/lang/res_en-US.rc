@@ -285,7 +285,7 @@ BEGIN
 
     IDS_STATUSMSG,          "Total %d file(s) (%s)"             /* 128 */
     IDS_STATUSMSG2,         "Selected %d file(s) (%s)"          /* 128 */
-    IDS_DRIVEFREE,          "%c: %s free,  %s total"            /* 128 */
+    IDS_DRIVEFREE,          "%s %s free,  %s total"            /* 128 */
     IDS_TREEABORT,          "Incomplete directory tree displayed"     /* 128 */
     IDS_DIRSREAD,           "Directories read: %d "                   /* 32 */
     IDS_SEARCHMSG,          "%d file(s) found"

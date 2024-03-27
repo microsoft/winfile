@@ -530,8 +530,8 @@ TreeWndProc(
 
       case WM_CREATE:
          {
-#define lpcs ((LPCREATESTRUCT)lParam)
-#define lpmdics ((LPMDICREATESTRUCT)(lpcs->lpCreateParams))
+            LPCREATESTRUCT lpcs = (LPCREATESTRUCT)lParam;
+            LPMDICREATESTRUCT lpmdics = (LPMDICREATESTRUCT)(lpcs->lpCreateParams);
 
             INT dxSplit;
             DRIVE drive;
@@ -590,8 +590,6 @@ TreeWndProc(
             SetMDIWindowText(hwnd, szPath);
 
             break;
-#undef lpcs
-#undef lpmdics
          }
 
       case WM_CLOSE:

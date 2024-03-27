@@ -377,9 +377,9 @@ CreateLBLine(DWORD dwLineFormat, LPXDTA lpxdta, LPWSTR szBuffer)
          } 
          else 
          {
-            pch += PutSize(&lpxdta->qFileSize, pch);
-         }
+         pch += PutSize(&lpxdta->qFileSize, pch);
       }
+   }
    }
 
    //
@@ -1432,9 +1432,7 @@ CreateLB:
          // FS_CHANGEDISPLAY (CD_PATH) directory reset
          //
 
-         CharUpperBuff(szPath, 1);     // make sure
-
-         SetWindowLongPtr(hwndListParms, GWL_TYPE, szPath[0] - TEXT('A'));
+         SetWindowLongPtr(hwndListParms, GWL_TYPE, DRIVEID(szPath));
 
          SetMDIWindowText(hwndListParms, szPath);
 
@@ -3180,15 +3178,22 @@ UpdateStatus(HWND hwnd)
             }
 
             U_Space(drive);
-
          }
 
          qFreeSpace=aDriveInfo[drive].qFreeSpace;
          qTotalSpace=aDriveInfo[drive].qTotalSpace;
 
+         WCHAR szRoot[MAXPATHLEN] = { 0 };
+         if (drive < OFFSET_UNC) {
+            lstrcpy(szRoot, SZ_ACOLON);
+            DRIVESET(szRoot, drive);
+         } else {
+            lstrcpy(szRoot, aDriveInfo[drive].szRoot);
+         }
+
          SetStatusText(0, SST_RESOURCE|SST_FORMAT,
             (LPWSTR) MAKEINTRESOURCE(IDS_DRIVEFREE),
-            L'A' + drive,
+            szRoot,
             ShortSizeFormatInternal(szNumBuf1, qFreeSpace),
             ShortSizeFormatInternal(szNumBuf2, qTotalSpace));
       }
