@@ -505,7 +505,6 @@ BEGIN
     MH_MYITEMS+IDM_DELETE,      "Dosyalar ve dizinler siler"
     MH_MYITEMS+IDM_RENAME,      "Bir dosyanın veya dizinin adını değiştirir"
     MH_MYITEMS+IDM_ATTRIBS,     "Dosya özniteliklerini ayarlar ve özelliklerini görüntüler"
-    MH_MYITEMS+IDM_UNDELETE,    "Daha önceden silinen dosyaları geri getirir"
     MH_MYITEMS+IDM_RUN,         "Bir uygulamayı başlatır veya bir belgeyi açar"
     MH_MYITEMS+IDM_PRINT,       "Bir belgeyi yazdırır"
     MH_MYITEMS+IDM_ASSOCIATE,   "Bir dosyayı bir uygulama ile ilişkilendirir"
@@ -582,7 +581,6 @@ BEGIN
     IDS_SHAREAS,                "&Farklı Paylaş..."
     IDS_STOPSHARE,              "Pa&ylaşımı Durdur..."
     IDS_SHARES,                 "Pay&laşılan Dizinleri Görüntüle..."
-    IDS_UNDELETE,               "&Silmeyi Geri Al..."
     IDS_NEWWINONCONNECT,        "Bağla&ntıda Yeni Pencere Aç"
 END
 

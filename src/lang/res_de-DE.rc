@@ -552,7 +552,6 @@ BEGIN
     MH_MYITEMS+IDM_DELETE,          "Löschen von Dateien und Verzeichnissen"
     MH_MYITEMS+IDM_RENAME,          "Umbenennen von Dateien und Verzeichnissen"
     MH_MYITEMS+IDM_ATTRIBS,         "Anzeige der Eigenschaften und Setzen von Dateiattributen"
-    MH_MYITEMS+IDM_UNDELETE,        "Ruft zuvor gelöschte Dateien ab"
     MH_MYITEMS+IDM_RUN,             "Startet oder öffnet eine Anwendung oder ein Dokument"
     MH_MYITEMS+IDM_PRINT,           "Drucken eines Dokuments"
     MH_MYITEMS+IDM_ASSOCIATE,       "Zuordnen einer Datei zu einer Anwendung"
@@ -636,7 +635,6 @@ BEGIN
     IDS_SHAREAS,                "F&reigeben als..."
     IDS_STOPSHARE,              "Freigabe been&den..."
     IDS_SHARES,                 "Freigegeben Verzeichnisse &anzeigen..."
-    IDS_UNDELETE,               "&Wiederherstellen..."
     IDS_NEWWINONCONNECT,        "Neues Fenster beim &Verbinden öffnen"
 END
 

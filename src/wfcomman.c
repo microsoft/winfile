@@ -1367,30 +1367,6 @@ AppCommandProc(DWORD id)
 	  }
       break;
 
-   case IDM_UNDELETE:
-
-      if (lpfpUndelete) {
-         SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szPath), (LPARAM)szPath);
-         StripBackslash(szPath);
-
-         if (bUndeleteUnicode) {
-            if ((*lpfpUndelete)(hwndActive, szPath) != IDOK)
-               break;
-         } else {
-
-            CHAR szPathA[MAXPATHLEN];
-
-            WideCharToMultiByte(CP_ACP, 0L, szPath, -1,
-               szPathA, COUNTOF(szPathA), NULL, NULL);
-
-            if ((*lpfpUndelete)(hwndActive, (LPTSTR)szPathA) != IDOK)
-               break;
-         }
-
-         RefreshWindow(hwndActive, FALSE, FALSE);
-      }
-      break;
-
    case IDM_ATTRIBS:
       {
          LPTSTR pSel, p;
