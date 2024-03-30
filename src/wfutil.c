@@ -399,7 +399,7 @@ RefreshWindow(
 
    if (hwndActive == hwndSearch) {
       SendMessage(hwndActive, FS_CHANGEDISPLAY, CD_PATH, 0L);
-}
+   }
 }
 
 //
@@ -1744,6 +1744,50 @@ LONG WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, DWORD dwFlags,
     }
 
     return dwStatus;
+}
+
+LPTSTR GetFullPathInSystemDirectory(LPCTSTR FileName)
+{
+    UINT LengthRequired;
+    UINT LengthReturned;
+    UINT FileNameLength;
+    LPTSTR FullPath;
+
+    LengthRequired = GetSystemDirectory(NULL, 0);
+    if (LengthRequired == 0) {
+        return NULL;
+    }
+
+    FileNameLength = lstrlen(FileName);
+    FullPath = LocalAlloc(LMEM_FIXED, (LengthRequired + 1 + FileNameLength + 1) * sizeof(TCHAR));
+    if (FullPath == NULL) {
+        return NULL;
+    }
+
+    LengthReturned = GetSystemDirectory(FullPath, LengthRequired);
+    if (LengthReturned == 0 || LengthReturned > LengthRequired) {
+        LocalFree(FullPath);
+        return NULL;
+    }
+
+    FullPath[LengthReturned] = '\\';
+    lstrcpy(&FullPath[LengthReturned + 1], FileName);
+    return FullPath;
+}
+
+HMODULE LoadSystemLibrary(LPCTSTR FileName)
+{
+    LPTSTR FullPath;
+    HMODULE Module;
+
+    FullPath = GetFullPathInSystemDirectory(FileName);
+    if (FullPath == NULL) {
+        return NULL;
+    }
+
+    Module = LoadLibrary(FullPath);
+    LocalFree(FullPath);
+    return Module;
 }
 
 // Search the list of slots if path would be parent of already existing drive == circularity

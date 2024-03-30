@@ -222,9 +222,6 @@ INT atoiW(LPWSTR sz);
 #define FM_EXT_PROC_ENTRYA "FMExtensionProc"
 #define FM_EXT_PROC_ENTRYW "FMExtensionProcW"
 
-#define UNDELETE_ENTRYA "UndeleteFile"
-#define UNDELETE_ENTRYW "UndeleteFileW"
-
 #define FILE_NOTIFY_CHANGE_FLAGS (FILE_NOTIFY_CHANGE_FILE_NAME | \
    FILE_NOTIFY_CHANGE_DIR_NAME | FILE_NOTIFY_CHANGE_SIZE)
 
@@ -593,7 +590,8 @@ VOID  CleanupMessages();
 HWND  GetRealParent(HWND hwnd);
 VOID  WFHelp(HWND hwnd);
 LONG  WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
-
+LPTSTR GetFullPathInSystemDirectory(LPCTSTR FileName);
+HMODULE LoadSystemLibrary(LPCTSTR FileName);
 
 // WFDRIVES.C
 
@@ -1094,10 +1092,11 @@ BOOL LoadUxTheme(VOID);
 //
 //----------------------------
 
-#define MPR_DLL      TEXT("mpr.dll")
-#define NTSHRUI_DLL  TEXT("Ntshrui.dll")
 #define ACLEDIT_DLL  TEXT("acledit.dll")
+#define FMIFS_DLL    TEXT("fmifs.dll")
+#define MPR_DLL      TEXT("mpr.dll")
 #define NTDLL_DLL    TEXT("ntdll.dll")
+#define NTSHRUI_DLL  TEXT("Ntshrui.dll")
 
 #define WAITNET()      WaitLoadEvent(TRUE)
 #define WAITACLEDIT()  WaitLoadEvent(FALSE)
@@ -1314,7 +1313,6 @@ Extern TCHAR        szSaveCharset[]         EQ( TEXT("Charset") );
 JAPANEND
 
 Extern TCHAR        szAddons[]              EQ( TEXT("AddOns") );
-Extern TCHAR        szUndelete[]            EQ( TEXT("UNDELETE.DLL") );
 
 Extern TCHAR        szDefPrograms[]         EQ( TEXT("EXE COM BAT PIF") );
 Extern TCHAR        szRoamINIPath[]         EQ( TEXT("\\Microsoft\\Winfile"));
@@ -1394,7 +1392,6 @@ Extern HANDLE hfmifsDll EQ( NULL );
 
 Extern HANDLE  hAccel            EQ( NULL );
 Extern HINSTANCE  hAppInstance;
-Extern HANDLE  hModUndelete      EQ( NULL );
 
 Extern HBITMAP  hbmBitmaps         EQ( NULL );
 Extern HDC  hdcMem                 EQ( NULL );
@@ -1450,18 +1447,11 @@ Extern WCHAR wszWinfileHelp[] EQ( L"WINFILE.HLP" );
 Extern INT iNumExtensions     EQ( 0 );
 Extern EXTENSION extensions[MAX_EXTENSIONS];
 
-Extern DWORD (APIENTRY *lpfpUndelete)(HWND, LPTSTR) EQ( NULL );
-
-#ifdef UNICODE
-Extern BOOL  bUndeleteUnicode EQ( FALSE );
-#endif
-
 Extern HHOOK hhkMsgFilter     EQ( NULL );
 
 Extern DWORD dwContext       EQ( 0 );
 Extern DWORD nLastDriveInd   EQ( 0 );
 Extern DWORD fFormatFlags    EQ( 0 );
-Extern TCHAR szFmifsDll[]    EQ( TEXT("fmifs.dll") );
 
 Extern   CANCEL_INFO CancelInfo;
 Extern   SEARCH_INFO SearchInfo;

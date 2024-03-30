@@ -782,7 +782,7 @@ FmifsLoaded()
    // Load the fmifs dll.
 
    if (hfmifsDll < (HANDLE)32) {
-      hfmifsDll = LoadLibrary(szFmifsDll);
+      hfmifsDll = LoadSystemLibrary(FMIFS_DLL);
       if (hfmifsDll < (HANDLE)32) {
          /* FMIFS not available. */
          MyMessageBox(hwndFrame, IDS_WINFILE, IDS_FMIFSLOADERR, MB_OK | MB_ICONEXCLAMATION | MB_SYSTEMMODAL);
@@ -1366,30 +1366,6 @@ AppCommandProc(DWORD id)
 
 		 UpdateMoveStatus(id == IDM_CUTTOCLIPBOARD ? DROPEFFECT_MOVE : DROPEFFECT_COPY);
 	  }
-      break;
-
-   case IDM_UNDELETE:
-
-      if (lpfpUndelete) {
-         SendMessage(hwndActive, FS_GETDIRECTORY, COUNTOF(szPath), (LPARAM)szPath);
-         StripBackslash(szPath);
-
-         if (bUndeleteUnicode) {
-            if ((*lpfpUndelete)(hwndActive, szPath) != IDOK)
-               break;
-         } else {
-
-            CHAR szPathA[MAXPATHLEN];
-
-            WideCharToMultiByte(CP_ACP, 0L, szPath, -1,
-               szPathA, COUNTOF(szPathA), NULL, NULL);
-
-            if ((*lpfpUndelete)(hwndActive, (LPTSTR)szPathA) != IDOK)
-               break;
-         }
-
-         RefreshWindow(hwndActive, FALSE, FALSE);
-      }
       break;
 
    case IDM_ATTRIBS:

@@ -550,7 +550,6 @@ BEGIN
     MH_MYITEMS+IDM_DELETE,      "删除文件及目录"
     MH_MYITEMS+IDM_RENAME,      "重命名文件或目录"
     MH_MYITEMS+IDM_ATTRIBS,     "设置文件属性及显示属性"
-    MH_MYITEMS+IDM_UNDELETE,    "检索先前删除的文件"
     MH_MYITEMS+IDM_RUN, "启动或打开应用程序或文档"
     MH_MYITEMS+IDM_PRINT,       "打印文档"
     MH_MYITEMS+IDM_ASSOCIATE,   "将文件与应用程序产生关联"
@@ -634,7 +633,6 @@ BEGIN
     IDS_SHAREAS,                "共享为(&A)..."
     IDS_STOPSHARE,              "停止共享(&T)..."
     IDS_SHARES,                 "查看共享目录(&H)..."
-    IDS_UNDELETE,               "撤销删除(&U)..."
     IDS_NEWWINONCONNECT,        "在连接时打开新窗口(&O)"
 END
 
