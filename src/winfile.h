@@ -572,7 +572,8 @@ VOID  CleanupMessages();
 HWND  GetRealParent(HWND hwnd);
 VOID  WFHelp(HWND hwnd);
 LONG  WFRegGetValueW(HKEY hkey, LPCWSTR lpSubKey, LPCWSTR lpValue, DWORD dwFlags, LPDWORD pdwType, PVOID pvData, LPDWORD pcbData);
-
+LPTSTR GetFullPathInSystemDirectory(LPCTSTR FileName);
+HMODULE LoadSystemLibrary(LPCTSTR FileName);
 
 // WFDRIVES.C
 
@@ -1069,10 +1070,11 @@ BOOL LoadUxTheme(VOID);
 //
 //----------------------------
 
-#define MPR_DLL      TEXT("mpr.dll")
-#define NTSHRUI_DLL  TEXT("Ntshrui.dll")
 #define ACLEDIT_DLL  TEXT("acledit.dll")
+#define FMIFS_DLL    TEXT("fmifs.dll")
+#define MPR_DLL      TEXT("mpr.dll")
 #define NTDLL_DLL    TEXT("ntdll.dll")
+#define NTSHRUI_DLL  TEXT("Ntshrui.dll")
 
 #define WAITNET()      WaitLoadEvent(TRUE)
 #define WAITACLEDIT()  WaitLoadEvent(FALSE)
@@ -1428,7 +1430,6 @@ Extern HHOOK hhkMsgFilter     EQ( NULL );
 Extern DWORD dwContext       EQ( 0 );
 Extern DWORD nLastDriveInd   EQ( 0 );
 Extern DWORD fFormatFlags    EQ( 0 );
-Extern TCHAR szFmifsDll[]    EQ( TEXT("fmifs.dll") );
 
 Extern   CANCEL_INFO CancelInfo;
 Extern   SEARCH_INFO SearchInfo;
