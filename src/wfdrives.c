@@ -749,6 +749,8 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
                    BOOL bDir;
                    BOOL bChangeDisplay = FALSE;
 
+                   hwndNext = NULL;
+
                    GetTreeWindows(hwndChild, &hwndTree, &hwndDir);
                   
                    // Check to see if we can change to the directory window

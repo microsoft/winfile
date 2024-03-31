@@ -616,19 +616,19 @@ ReadDirLevel(
    LPTSTR  szAutoExpand,
    BOOL bPartialSort)
 {
-   LPWSTR      szEndPath;
+   LPWSTR    szEndPath;
    LFNDTA    lfndta;
    INT       iNode;
    BOOL      bFound;
-   PDNODE     pNode;
+   PDNODE    pNode;
    BOOL      bAutoExpand;
    BOOL      bResult = TRUE;
    DWORD     dwView;
    HWND      hwndParent;
    HWND      hwndDir;
    LPXDTALINK lpStart;
-   LPXDTA*  plpxdta;
-   LPXDTA   lpxdta;
+   LPXDTA*   plpxdta;
+   LPXDTA    lpxdta;
    INT       count;
 
    UINT      uYieldCount = 0;
@@ -649,6 +649,8 @@ ReadDirLevel(
    //
 
    lpStart = NULL;
+   plpxdta = NULL;
+   lpxdta = NULL;
 
    if (!(dwView & VIEW_PLUSES)) {
 
@@ -1034,6 +1036,8 @@ StealTreeData(
    DWORD dwView;
    DWORD dwAttribs;
 
+   hwndT = NULL;
+
    //
    // we need to match on these attributes as well as the name
    //
@@ -1159,6 +1163,7 @@ FillTreeListbox(HWND hwndTC,
    BOOL bPartialSort;
    DRIVE drive;
 
+   pNode = NULL;
 
    hwndLB = GetDlgItem(hwndTC, IDCW_TREELISTBOX);
 
@@ -1226,7 +1231,9 @@ FillTreeListbox(HWND hwndTC,
       FindItemFromPath(hwndLB, szDefaultDir, FALSE, NULL, &pNode);
    }
 
-   SendMessage(hwndLB, LB_SELECTSTRING, (WPARAM)-1, (LPARAM)pNode);
+   if (pNode != NULL) {
+      SendMessage(hwndLB, LB_SELECTSTRING, (WPARAM)-1, (LPARAM)pNode);
+   }
 
    UpdateStatus(GetParent(hwndTC));  // Redraw the Status Bar
 
@@ -3170,6 +3177,7 @@ SameSelection:
          BOOL bDir;
          BOOL bChangeDisplay = FALSE;
 
+         hwndNext = NULL;
          TypeAheadString('\0', NULL);
          GetTreeWindows(hwndParent, NULL, &hwndDir);
 
@@ -3207,7 +3215,7 @@ SameSelection:
                }
                else
                {
-                   hwndSet = hwnd;
+                  hwndSet = hwnd;
                }
             }
          }

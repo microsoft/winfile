@@ -1122,9 +1122,11 @@ SetDlgDirectory(HWND hDlg, LPTSTR pszPath)
   HWND      hDlgItem;
   HANDLE    hFont;
   HANDLE    hFontBak;
-  TCHAR      szPath[MAXPATHLEN+5];
-  TCHAR      szTemp[MAXPATHLEN+20];
-  TCHAR      szMessage[MAXMESSAGELEN];
+  TCHAR     szPath[MAXPATHLEN+5];
+  TCHAR     szTemp[MAXPATHLEN+20];
+  TCHAR     szMessage[MAXMESSAGELEN];
+
+  hFontBak = NULL;
 
   if (pszPath)
       lstrcpy(szPath, pszPath);
@@ -1143,14 +1145,16 @@ SetDlgDirectory(HWND hDlg, LPTSTR pszPath)
       // This is required because Japanese Windows uses System font
       // for dialog box
       //
-      if (hFont)
+      if (hFont) {
          hFontBak = SelectObject(hDC, hFont);
+      }
 
       GetTextExtentPoint32(hDC, szMessage, lstrlen(szMessage), &size);
       CompactPath(hDC, szPath, (rc.right-rc.left-size.cx));
 
-      if (hFont)
+      if (hFont) {
          SelectObject(hDC, hFontBak);
+      }
 
       ReleaseDC(hDlg, hDC);
       wsprintf(szTemp, szMessage, szPath);

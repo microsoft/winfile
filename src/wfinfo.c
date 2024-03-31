@@ -1059,6 +1059,8 @@ UpdateDriveListWorker(VOID)
 
    INT iUpdatePhantom = iUpdateReal ^ 1;
 
+   hEnum = NULL;
+
 
    //
    // GetLogicalDrives simply calls GetDriveType,
@@ -1313,11 +1315,13 @@ EnumRetry:
       rgiDriveReal[iUpdatePhantom][i] = 0;
    }
 
-   if (bOpenEnumSucceed)
+   if (bOpenEnumSucceed) {
       WNetCloseEnum(hEnum);
+   }
 
-   if (pcBuf)
+   if (pcBuf) {
       LocalFree((HANDLE)pcBuf);
+   }
 
 
    PostMessage(hwndFrame, FS_UPDATEDRIVETYPECOMPLETE, (WPARAM)cRealDrives, 0L);
