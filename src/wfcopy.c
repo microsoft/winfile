@@ -265,7 +265,7 @@ JAPANBEGIN
     // Allocate enough space for 8.3 conversion to DBCS here (each
     // part done individually, so 8 chars is enough).
     //
-    LPSTR pOrigA;
+    LPSTR pOrigA = NULL;
     CHAR szOrigA[8*2];
 JAPANEND
 
@@ -1403,6 +1403,7 @@ GetNextPair(PCOPYROOT pcr, LPTSTR pFrom,
    STKCHK();
    *pFrom = CHAR_NULL;
    *pdwError = 0 ;
+   pDTA = NULL;
 
    //
    // Keep recursing directory structure until we get to the bottom
@@ -2224,7 +2225,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
 {
    PCOPYINFO pCopyInfo = lpParameter;
    DWORD ret = 0;                     // Return value from WFMoveCopyDriver
-   LPWSTR pSpec;                      // Pointer to file spec
+   LPWSTR pSpec = NULL;               // Pointer to file spec
    DWORD dwAttr;                      // File attributes
    DWORD dwResponse;                  // Response from ConfirmDialog call
    DWORD oper = 0;                    // Disk operation being performed
@@ -2235,7 +2236,7 @@ WFMoveCopyDriverThread(LPVOID lpParameter)
 
    TCHAR szSource[MAXPATHLEN];         // Source file (ANSI string)
    LFNDTA DTADest;                    // DTA block for reporting dest errors
-   PLFNDTA pDTA;                      // DTA pointer for source errors
+   PLFNDTA pDTA = NULL;               // DTA pointer for source errors
    PCOPYROOT pcr;                     // Structure for searching source tree
    BOOL bReplaceAll = FALSE;          // Replace all flag
    BOOL bSubtreeDelAll = FALSE;       // Delete entire subtree flag
