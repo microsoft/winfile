@@ -1318,6 +1318,8 @@ ChangeDisplay(
 
    case WM_CREATE:
 
+      lpStart = NULL;
+
       //
       // dwNewView, dwNewSort and dwNewAttribs define the viewing
       // parameters of the new window (GLOBALS)

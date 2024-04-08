@@ -1783,6 +1783,9 @@ ClassesRead(HKEY hKey,
 
    iKey = 0;
 
+   pFileType = NULL;
+   pExt = NULL;
+
    pFileTypePrev = *ppFileTypeBase;
    pExtPrev = *ppExtBase;
 
