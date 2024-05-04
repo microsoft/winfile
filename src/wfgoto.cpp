@@ -601,11 +601,23 @@ LRESULT APIENTRY GotoEditSubclassProc(
 VOID
 SetCurrentPathOfWindow(LPWSTR szPath)
 {
-	HWND hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+	TCHAR szFullPath[MAXPATHLEN];
+	LPTSTR szFilePart;
+	DWORD result;
+	HWND hwndActive;
+	HWND hwndNew;
+	HWND hwndTree;
 
-	HWND hwndNew = CreateDirWindow(szPath, TRUE, hwndActive);
+	result = GetFullPathName(szPath, COUNTOF(szFullPath), szFullPath, &szFilePart);
+	if (result == 0 || result >= COUNTOF(szFullPath) || ISUNCPATH(szFullPath))
+	{
+		return;
+	}
 
-	HWND hwndTree = HasTreeWindow(hwndNew);
+	hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
+	hwndNew = CreateDirWindow(szFullPath, TRUE, hwndActive);
+	hwndTree = HasTreeWindow(hwndNew);
+
 	if (hwndTree)
 	{
 		SetFocus(hwndTree);

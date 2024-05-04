@@ -731,6 +731,9 @@ CreateSavedWindows(
 {
    WCHAR buf[2*MAXPATHLEN+7*7], key[10];
    WINDOW win;
+   LPTSTR FilePart;
+   DWORD SizeAvailable;
+   DWORD CharsCopied;
 
    //
    // since win.szDir is bigger.
@@ -761,10 +764,20 @@ CreateSavedWindows(
             GetSavedWindow(buf, &win);
 
             //
-            // clean off some junk so we
-            // can do this test
+            // Winfile won't retain any relative paths in the INI file, but if
+            // one was provided externally, convert it into a full path
             //
-            lstrcpy(szDir, win.szDir);
+
+            SizeAvailable = COUNTOF(szDir);
+            CharsCopied = GetFullPathName(win.szDir, SizeAvailable, szDir, &FilePart);
+            if (CharsCopied == 0 || CharsCopied >= SizeAvailable || ISUNCPATH(szDir)) {
+               continue;
+            }
+            lstrcpy(win.szDir, szDir);
+
+            //
+            // clean off some junk so we can do this test
+            //
             StripFilespec(szDir);
             StripBackslash(szDir);
 
@@ -807,27 +820,34 @@ CreateSavedWindows(
    //  open it
    //
 
-   if (pszInitialDir != NULL){
+   if (pszInitialDir != NULL)
+   {
+      SizeAvailable = COUNTOF(buf) - (DWORD)wcslen(szStarDotStar) - 1;
+      CharsCopied = GetFullPathName(pszInitialDir, SizeAvailable, buf, &FilePart);
+      if (CharsCopied > 0 &&
+          CharsCopied < SizeAvailable &&
+          !ISUNCPATH(buf) &&
+          CheckDirExists(buf))
+      {
+         AddBackslash(buf);
+         lstrcat(buf, szStarDotStar);
 
-      lstrcpy(buf, pszInitialDir);
-      AddBackslash(buf);
-      lstrcat(buf, szStarDotStar);
+         //
+         // default to split window
+         //
+         hwnd = CreateTreeWindow(buf, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, -1);
 
-      //
-      // default to split window
-      //
-      hwnd = CreateTreeWindow(buf, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, -1);
+         if (!hwnd)
+            return FALSE;
 
-      if (!hwnd)
-         return FALSE;
+         //
+         // Default to maximized since the user requested to open a single
+         // directory
+         //
+         ShowWindow(hwnd, SW_MAXIMIZE);
 
-      //
-      // Default to maximized since the user requested to open a single
-      // directory
-      //
-      ShowWindow(hwnd, SW_MAXIMIZE);
-
-      iNumTrees++;
+         iNumTrees++;
+      }
    }
 
    //
