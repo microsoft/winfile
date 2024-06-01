@@ -745,24 +745,37 @@ CreateSavedWindows(
    INT iNumTrees;
 
    //
+   // Initialize window geometry to use system default
+   //
+   win.rc.left = CW_USEDEFAULT;
+   win.rc.top = 0;
+   win.rc.right = win.rc.left + CW_USEDEFAULT;
+   win.rc.bottom = 0;
+   win.nSplit = -1;
+
+   win.dwView = dwNewView;
+   win.dwSort = dwNewSort;
+   win.dwAttribs = dwNewAttribs;
+
+   //
    // make sure this thing exists so we don't hit drives that don't
    // exist any more
    //
    nDirNum = 1;
    iNumTrees = 0;
 
-   if (pszInitialDir == NULL)
+   do
    {
-      do
+      wsprintf(key, szDirKeyFormat, nDirNum++);
+
+      GetPrivateProfileString(szSettings, key, szNULL, buf, COUNTOF(buf), szTheINIFile);
+
+      if (*buf)
       {
-         wsprintf(key, szDirKeyFormat, nDirNum++);
+         GetSavedWindow(buf, &win);
 
-         GetPrivateProfileString(szSettings, key, szNULL, buf, COUNTOF(buf), szTheINIFile);
-
-         if (*buf)
+         if (pszInitialDir == NULL)
          {
-            GetSavedWindow(buf, &win);
-
             //
             // Winfile won't retain any relative paths in the INI file, but if
             // one was provided externally, convert it into a full path
@@ -811,9 +824,9 @@ CreateSavedWindows(
 
             ShowWindow(hwnd, win.sw);
          }
+      }
 
-      } while (*buf);
-   }
+   } while (*buf);
 
    //
    //  If the user requested to open the program with a specific directory,
@@ -833,12 +846,23 @@ CreateSavedWindows(
          lstrcat(buf, szStarDotStar);
 
          //
-         // default to split window
+         // use the settings of the most recent window as defaults
          //
-         hwnd = CreateTreeWindow(buf, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, -1);
 
-         if (!hwnd)
+         dwNewView = win.dwView;
+         dwNewSort = win.dwSort;
+         dwNewAttribs = win.dwAttribs;
+
+         hwnd = CreateTreeWindow(buf,
+                                 win.rc.left,
+                                 win.rc.top,
+                                 win.rc.right - win.rc.left,
+                                 win.rc.bottom - win.rc.top,
+                                 win.nSplit);
+
+         if (!hwnd) {
             return FALSE;
+         }
 
          //
          // Default to maximized since the user requested to open a single
