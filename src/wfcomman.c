@@ -289,6 +289,45 @@ ChangeFileSystem(
 
    dwFSCOperation = FSC_Operation(dwFunction);
 
+   // Check if an attribute change refers to a directory.  If it does, the
+   // tree views might want to remove it or insert it based on its new
+   // hidden/system attributes
+   if (dwFSCOperation == FSC_ATTRIBUTES)
+   {
+      DWORD dwFileAttribs;
+      DWORD dwFilterAttribs;
+
+      dwFileAttribs = GetFileAttributes(szFrom);
+      if (dwFileAttribs != INVALID_FILE_ATTRIBUTES &&
+          (dwFileAttribs & ATTR_DIR) != 0)
+      {
+
+         /* Update the tree. */
+         for (hwnd = GetWindow(hwndMDIClient, GW_CHILD);
+              hwnd != NULL;
+              hwnd = GetWindow(hwnd, GW_HWNDNEXT))
+         {
+            dwFilterAttribs = (DWORD)GetWindowLongPtr(hwnd, GWL_ATTRIBS);
+
+            // If the view is hiding hidden/system, perform an insert or
+            // remove based on whether the new attributes include
+            // hidden/system or not.
+            if ((dwFilterAttribs & ATTR_HS) == 0 &&
+               (hwndTree = HasTreeWindow(hwnd)))
+            {
+               if ((dwFileAttribs & ATTR_HS) == 0)
+               {
+                  SendMessage(hwndTree, WM_FSC, FSC_MKDIR | FSC_QUIET, (LPARAM)szFrom);
+               }
+               else
+               {
+                  SendMessage(hwndTree, WM_FSC, FSC_RMDIR | FSC_QUIET, (LPARAM)szFrom);
+               }
+            }
+         }
+      }
+   }
+
    switch (dwFSCOperation)
    {
       case ( FSC_RENAME ) :
