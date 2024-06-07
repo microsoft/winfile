@@ -701,7 +701,35 @@ GetSavedWindow(
       count++;
    }
 
-   lstrcpy(pwin->szDir, szBuf);    // this is the directory
+   // Search for an optional name of the root, which seperated by " from the directory
+   // and a drive number also seperated with "
+   // e.g. 
+   //   dir1==....,\\unc\path1\*.*"\\unc\path1\aurea\prima"2
+   // It is " because is must be a character, which is not allowed in pathnames
+   LPTSTR szDir = szBuf;
+   while (*szBuf && *szBuf != CHAR_DQUOTE)
+      szBuf++;
+   if (*szBuf) {
+      *szBuf = CHAR_NULL;
+      LPCTSTR szRoot = ++szBuf;
+
+      // Search on for the next quote
+      while (*szBuf && *szBuf != CHAR_DQUOTE)
+         szBuf++;
+      if (*szBuf) {
+         *szBuf = CHAR_NULL;
+         ++szBuf;    // number of drive
+         if (*szBuf)
+            pwin->dwDriveNumber = atoi(szBuf);
+      } else
+         pwin->dwDriveNumber = -1;
+
+      lstrcpy(pwin->szRoot, szRoot);    // name of the root
+
+   } else {
+      pwin->szRoot[0] = CHAR_NULL;
+   }
+   lstrcpy(pwin->szDir, szDir);    // this is the directory
 }
 
 
@@ -711,13 +739,19 @@ CheckDirExists(
 {
    BOOL bRet = FALSE;
 
-   if (IsNetDrive(DRIVEID(szDir)) == 2) {
+   DRIVE drive = DRIVEID(szDir);
 
-      CheckDrive(hwndFrame, DRIVEID(szDir), FUNC_SETDRIVE);
+   // Immediatley give up on not existing UNC Drives. They will not reconnect at some time
+   if (drive >= OFFSET_UNC && INVALID_FILE_ATTRIBUTES == GetFileAttributes(szDir))
+      return FALSE;
+
+   if (IsNetDrive(drive) == 2 || drive >= OFFSET_UNC) {
+
+      CheckDrive(hwndFrame, drive, FUNC_SETDRIVE);
       return TRUE;
    }
 
-   if (IsValidDisk(DRIVEID(szDir)))
+   if (IsValidDisk(drive))
       bRet = SetCurrentDirectory(szDir);
 
    return bRet;
@@ -726,23 +760,17 @@ CheckDirExists(
 
 BOOL
 CreateSavedWindows(
-    LPCWSTR pszInitialDir
-    )
+   LPCWSTR pszInitialDir
+)
 {
-   WCHAR buf[2*MAXPATHLEN+7*7], key[10];
+   WCHAR buf[2 * MAXPATHLEN + 7 * 7], key[10];
    WINDOW win;
-   LPTSTR FilePart;
-   DWORD SizeAvailable;
-   DWORD CharsCopied;
-
    //
    // since win.szDir is bigger.
    //
-   WCHAR szDir[2*MAXPATHLEN];
+   WCHAR szDir[2 * MAXPATHLEN];
 
-   INT nDirNum;
    HWND hwnd;
-   INT iNumTrees;
 
    //
    // Initialize window geometry to use system default
@@ -761,8 +789,8 @@ CreateSavedWindows(
    // make sure this thing exists so we don't hit drives that don't
    // exist any more
    //
-   nDirNum = 1;
-   iNumTrees = 0;
+   INT nDirNum = 1;
+   INT iNumTrees = 0;
 
    do
    {
@@ -770,44 +798,61 @@ CreateSavedWindows(
 
       GetPrivateProfileString(szSettings, key, szNULL, buf, COUNTOF(buf), szTheINIFile);
 
-      if (*buf)
-      {
+      if (*buf) {
+
          GetSavedWindow(buf, &win);
 
          if (pszInitialDir == NULL)
          {
-            //
-            // Winfile won't retain any relative paths in the INI file, but if
-            // one was provided externally, convert it into a full path
-            //
+            lstrcpy(szDir, win.szDir);
 
-            SizeAvailable = COUNTOF(szDir);
-            CharsCopied = GetFullPathName(win.szDir, SizeAvailable, szDir, &FilePart);
-            if (CharsCopied == 0 || CharsCopied >= SizeAvailable || ISUNCPATH(szDir)) {
-               continue;
-            }
-            lstrcpy(win.szDir, szDir);
-
-            //
             // clean off some junk so we can do this test
-            //
             StripFilespec(szDir);
             StripBackslash(szDir);
+
+            if (win.szRoot[0]) {
+               // UNC Drive
+               if (win.dwDriveNumber > -1 && win.dwDriveNumber < MAX_UNC)
+                  SetUNCDrive(win.szRoot, OFFSET_UNC + win.dwDriveNumber);
+               else
+                  AddUNCDrive(win.szRoot);
+            }
+            else {
+               // In case of broken .ini file and UNC
+               if (ISUNCPATH(szDir))
+                  AddUNCDrive(szDir);
+               else {
+                  //
+                  // Winfile won't retain any relative paths in the INI file, but if
+                  // one was provided externally, convert it into a full path
+                  //
+                  LPTSTR FilePart;
+                  DWORD SizeAvailable = COUNTOF(win.szDir);
+                  DWORD CharsCopied = GetFullPathName(szDir, SizeAvailable, win.szDir, &FilePart);
+                  if (CharsCopied == 0 || CharsCopied >= SizeAvailable) {
+                     continue;
+                  }
+                  lstrcpy(szDir, win.szDir);
+               }
+            }
 
             if (!CheckDirExists(szDir)) {
                continue;
             }
 
+            AddBackslash(szDir);
+            lstrcat(szDir, szStarDotStar);
+
             dwNewView = win.dwView;
             dwNewSort = win.dwSort;
             dwNewAttribs = win.dwAttribs;
 
-            hwnd = CreateTreeWindow(win.szDir,
-                                    win.rc.left,
-                                    win.rc.top,
-                                    win.rc.right - win.rc.left,
-                                    win.rc.bottom - win.rc.top,
-                                    win.nSplit);
+            hwnd = CreateTreeWindow(szDir,
+               win.rc.left,
+               win.rc.top,
+               win.rc.right - win.rc.left,
+               win.rc.bottom - win.rc.top,
+               win.nSplit);
 
             if (!hwnd) {
                continue;
@@ -825,7 +870,6 @@ CreateSavedWindows(
             ShowWindow(hwnd, win.sw);
          }
       }
-
    } while (*buf);
 
    //
@@ -835,12 +879,12 @@ CreateSavedWindows(
 
    if (pszInitialDir != NULL)
    {
-      SizeAvailable = COUNTOF(buf) - (DWORD)wcslen(szStarDotStar) - 1;
-      CharsCopied = GetFullPathName(pszInitialDir, SizeAvailable, buf, &FilePart);
+      LPTSTR FilePart;
+      DWORD SizeAvailable = COUNTOF(buf) - (DWORD)wcslen(szStarDotStar) - 1;
+      DWORD CharsCopied = GetFullPathName(pszInitialDir, SizeAvailable, buf, &FilePart);
       if (CharsCopied > 0 &&
-          CharsCopied < SizeAvailable &&
-          !ISUNCPATH(buf) &&
-          CheckDirExists(buf))
+         CharsCopied < SizeAvailable &&
+         CheckDirExists(buf))
       {
          AddBackslash(buf);
          lstrcat(buf, szStarDotStar);
@@ -854,11 +898,11 @@ CreateSavedWindows(
          dwNewAttribs = win.dwAttribs;
 
          hwnd = CreateTreeWindow(buf,
-                                 win.rc.left,
-                                 win.rc.top,
-                                 win.rc.right - win.rc.left,
-                                 win.rc.bottom - win.rc.top,
-                                 win.nSplit);
+            win.rc.left,
+            win.rc.top,
+            win.rc.right - win.rc.left,
+            win.rc.bottom - win.rc.top,
+            win.nSplit);
 
          if (!hwnd) {
             return FALSE;
@@ -873,6 +917,8 @@ CreateSavedWindows(
          iNumTrees++;
       }
    }
+
+   LoadUNCDrives();
 
    //
    // if nothing was saved or specified, create a tree for the current drive
@@ -1104,7 +1150,7 @@ JAPANEND
    //
    SetErrorMode(1);
 
-   for (i=0; i<26;i++) {
+   for (i = 0; i < MAX_DRIVES; i++) {
       I_Space(i);
    }
 
@@ -1175,8 +1221,6 @@ JAPANEND
    hicoTree = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(TREEICON));
    hicoTreeDir = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(TREEDIRICON));
    hicoDir = LoadIcon(hAppInstance, (LPTSTR) MAKEINTRESOURCE(DIRICON));
-
-   chFirstDrive = CHAR_a;
 
    // now build the parameters based on the font we will be using
 

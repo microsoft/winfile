@@ -270,7 +270,7 @@ BEGIN
    IDS_UNFORMATTED,         "%c sürücüsündeki disk biçimlendirilmemiş.\n\nŞimdi biçimlendirmek istiyor musunuz?"
    IDS_STATUSMSG,           "Toplam %d dosya (%s bayt)"
    IDS_STATUSMSG2,          "%d dosya seçili (%s bayt)"
-   IDS_DRIVEFREE,           "%c: %s boş, toplam %s"
+   IDS_DRIVEFREE,           "%s %s boş, toplam %s"
    IDS_TREEABORT,           "Görüntülenen dizin ağacı eksik."
    IDS_DIRSREAD,            "Okunan dizin sayısı: %d "
    IDS_SEARCHMSG,           "%d dosya bulundu."
