@@ -2572,8 +2572,26 @@ FileTypeWrite(HWND hDlg,
 
 Error:
 
-   if (IDD_CONFIG != pAssociateFileDlgInfo->mode) {
-      LocalFree((HLOCAL)pFileType);
+   // If creating a new file type
+   if (IDD_CONFIG != pAssociateFileDlgInfo->mode)
+   {
+      // Find any extensions pointing to it, remove them, and point them to
+      // any original file type if possible
+      PEXT pExt;
+      while (pFileType->pExt != NULL)
+      {
+         pExt = pFileType->pExt;
+         ExtDelink(pExt);
+         if (pExt->pftOrig != NULL) {
+            ExtLink(pExt, pExt->pftOrig);
+         }
+         // Indicate no update should occur for this extension
+         pExt->bAdd = FALSE;
+         pExt->bDelete = FALSE;
+      }
+
+      // Free the file type and any associated buffer
+      FileTypeFree(pFileType);
    }
    return dwError;
 }

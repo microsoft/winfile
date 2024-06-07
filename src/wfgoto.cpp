@@ -628,7 +628,18 @@ SetCurrentPathOfWindow(LPWSTR szPath)
       }
    }
    else
-      hwndNew = CreateDirWindow(szPath, TRUE, hwndActive);
+   {
+      TCHAR szFullPath[MAXPATHLEN];
+      LPTSTR szFilePart;
+
+      DWORD result = GetFullPathName(szPath, COUNTOF(szFullPath), szFullPath, &szFilePart);
+      if (result == 0 || result >= COUNTOF(szFullPath))
+      {
+         return;
+      }
+
+      hwndNew = CreateDirWindow(szFullPath, TRUE, hwndActive);
+   }
 
    HWND hwndTree = HasTreeWindow(hwndNew);
    if (hwndTree)

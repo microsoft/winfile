@@ -760,121 +760,162 @@ CheckDirExists(
 
 BOOL
 CreateSavedWindows(
-    LPCWSTR pszInitialDir
-    )
+   LPCWSTR pszInitialDir
+)
 {
-   WCHAR buf[2*MAXPATHLEN+7*7], key[10];
+   WCHAR buf[2 * MAXPATHLEN + 7 * 7], key[10];
    WINDOW win;
-
    //
    // since win.szDir is bigger.
    //
-   WCHAR szDir[2*MAXPATHLEN];
+   WCHAR szDir[2 * MAXPATHLEN];
 
-   INT nDirNum;
    HWND hwnd;
-   INT iNumTrees;
+
+   //
+   // Initialize window geometry to use system default
+   //
+   win.rc.left = CW_USEDEFAULT;
+   win.rc.top = 0;
+   win.rc.right = win.rc.left + CW_USEDEFAULT;
+   win.rc.bottom = 0;
+   win.nSplit = -1;
+
+   win.dwView = dwNewView;
+   win.dwSort = dwNewSort;
+   win.dwAttribs = dwNewAttribs;
 
    //
    // make sure this thing exists so we don't hit drives that don't
    // exist any more
    //
-   nDirNum = 1;
-   iNumTrees = 0;
+   INT nDirNum = 1;
+   INT iNumTrees = 0;
 
-   if (pszInitialDir == NULL)
+   do
    {
-      do
-      {
       wsprintf(key, szDirKeyFormat, nDirNum++);
 
       GetPrivateProfileString(szSettings, key, szNULL, buf, COUNTOF(buf), szTheINIFile);
 
-         if (*buf)
-         {
+      if (*buf) {
+
          GetSavedWindow(buf, &win);
 
-         lstrcpy(szDir, win.szDir);
+         if (pszInitialDir == NULL)
+         {
+            lstrcpy(szDir, win.szDir);
 
-         // clean off some junk so we can do this test
-         StripFilespec(szDir);
-         StripBackslash(szDir);
+            // clean off some junk so we can do this test
+            StripFilespec(szDir);
+            StripBackslash(szDir);
 
-         if (win.szRoot[0]) {
-            // UNC Drive
-            if (win.dwDriveNumber > -1 && win.dwDriveNumber < MAX_UNC)
-               SetUNCDrive(win.szRoot, OFFSET_UNC + win.dwDriveNumber);
-            else
-               AddUNCDrive(win.szRoot);
-         } else {
-            // In case of broken .ini file and UNC
-            if (ISUNCPATH(szDir))
-               AddUNCDrive(szDir);
-         }
-
-         if (!CheckDirExists(szDir)) {
-            continue;
+            if (win.szRoot[0]) {
+               // UNC Drive
+               if (win.dwDriveNumber > -1 && win.dwDriveNumber < MAX_UNC)
+                  SetUNCDrive(win.szRoot, OFFSET_UNC + win.dwDriveNumber);
+               else
+                  AddUNCDrive(win.szRoot);
+            }
+            else {
+               // In case of broken .ini file and UNC
+               if (ISUNCPATH(szDir))
+                  AddUNCDrive(szDir);
+               else {
+                  //
+                  // Winfile won't retain any relative paths in the INI file, but if
+                  // one was provided externally, convert it into a full path
+                  //
+                  LPTSTR FilePart;
+                  DWORD SizeAvailable = COUNTOF(win.szDir);
+                  DWORD CharsCopied = GetFullPathName(szDir, SizeAvailable, win.szDir, &FilePart);
+                  if (CharsCopied == 0 || CharsCopied >= SizeAvailable) {
+                     continue;
+                  }
+                  lstrcpy(szDir, win.szDir);
+               }
             }
 
-         AddBackslash(szDir);
-         lstrcat(szDir, szStarDotStar);
+            if (!CheckDirExists(szDir)) {
+               continue;
+            }
 
-         dwNewView = win.dwView;
-         dwNewSort = win.dwSort;
-         dwNewAttribs = win.dwAttribs;
+            AddBackslash(szDir);
+            lstrcat(szDir, szStarDotStar);
 
-         hwnd = CreateTreeWindow(szDir,
-                                 win.rc.left,
-                                 win.rc.top,
-                                 win.rc.right - win.rc.left,
-                                 win.rc.bottom - win.rc.top,
-                                 win.nSplit);
+            dwNewView = win.dwView;
+            dwNewSort = win.dwSort;
+            dwNewAttribs = win.dwAttribs;
 
-         if (!hwnd) {
-            continue;
-         }
+            hwnd = CreateTreeWindow(szDir,
+               win.rc.left,
+               win.rc.top,
+               win.rc.right - win.rc.left,
+               win.rc.bottom - win.rc.top,
+               win.nSplit);
 
-         iNumTrees++;
+            if (!hwnd) {
+               continue;
+            }
 
-         //
-         // keep track of this for now...
-         //
+            iNumTrees++;
+
+            //
+            // keep track of this for now...
+            //
             if (IsIconic(hwnd)) {
-             SetWindowPos(hwnd, NULL, win.pt.x, win.pt.y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+               SetWindowPos(hwnd, NULL, win.pt.x, win.pt.y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
             }
 
-         ShowWindow(hwnd, win.sw);
+            ShowWindow(hwnd, win.sw);
+         }
       }
-
    } while (*buf);
-   }
 
    //
    //  If the user requested to open the program with a specific directory,
    //  open it
    //
 
-   if (pszInitialDir != NULL){
+   if (pszInitialDir != NULL)
+   {
+      LPTSTR FilePart;
+      DWORD SizeAvailable = COUNTOF(buf) - (DWORD)wcslen(szStarDotStar) - 1;
+      DWORD CharsCopied = GetFullPathName(pszInitialDir, SizeAvailable, buf, &FilePart);
+      if (CharsCopied > 0 &&
+         CharsCopied < SizeAvailable &&
+         CheckDirExists(buf))
+      {
+         AddBackslash(buf);
+         lstrcat(buf, szStarDotStar);
 
-      lstrcpy(buf, pszInitialDir);
-      AddBackslash(buf);
-      lstrcat(buf, szStarDotStar);
+         //
+         // use the settings of the most recent window as defaults
+         //
 
-      //
-      // default to split window
-      //
-      hwnd = CreateTreeWindow(buf, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, -1);
+         dwNewView = win.dwView;
+         dwNewSort = win.dwSort;
+         dwNewAttribs = win.dwAttribs;
 
-      if (!hwnd)
-         return FALSE;
+         hwnd = CreateTreeWindow(buf,
+            win.rc.left,
+            win.rc.top,
+            win.rc.right - win.rc.left,
+            win.rc.bottom - win.rc.top,
+            win.nSplit);
 
-      //
-      // Default to maximized since the user requested to open a single
-      // directory
-      //
-      ShowWindow(hwnd, SW_MAXIMIZE);
+         if (!hwnd) {
+            return FALSE;
+         }
 
-      iNumTrees++;
+         //
+         // Default to maximized since the user requested to open a single
+         // directory
+         //
+         ShowWindow(hwnd, SW_MAXIMIZE);
+
+         iNumTrees++;
+      }
    }
 
    LoadUNCDrives();
