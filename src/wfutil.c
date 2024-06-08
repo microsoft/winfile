@@ -1836,7 +1836,7 @@ VOID SaveUNCDrives()
       TCHAR szUNCKey[MAXPATHLEN];
       wsprintf(szUNCKey, szUNCKeyFormat, dwDriveIndex - OFFSET_UNC);
 
-      if (aDriveInfo[dwDriveIndex].bDirtyPersist == FALSE && aDriveInfo[dwDriveIndex].szRoot[0])
+      if (aDriveInfo[dwDriveIndex].bDirtyPersist == FALSE && aDriveInfo[dwDriveIndex].szRoot[0] && IsValidDisk(dwDriveIndex))
       {
          // For UNC path we need to save the name of the root and the drive id too
          wsprintf(szUNCBuf, TEXT("%s"),
