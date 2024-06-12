@@ -3536,10 +3536,28 @@ FileMove(LPTSTR pFrom, LPTSTR pTo, PBOOL pbErrorOnDest, BOOL bSilent)
    *pbErrorOnDest = FALSE;
 
 TryAgain:
-    if (MoveFile((LPTSTR)pFrom, (LPTSTR)pTo))
+    if (MoveFile((LPTSTR)pFrom, (LPTSTR)pTo)) {
+        ACL EmptyAcl;
         result = 0;
-    else
+
+        //
+        //  Enable ACL inheritance, updating the ACL on the file from its new
+        //  parent.  Note this requires Windows 2000 and above.  There's not
+        //  much we can do if it fails, since the rename already occurred.
+        //
+
+        InitializeAcl(&EmptyAcl, sizeof(EmptyAcl), ACL_REVISION);
+        SetNamedSecurityInfo((LPTSTR)pTo,
+                             SE_FILE_OBJECT,
+                             DACL_SECURITY_INFORMATION | UNPROTECTED_DACL_SECURITY_INFORMATION,
+                             NULL,
+                             NULL,
+                             &EmptyAcl,
+                             NULL);
+
+    } else {
         result = GetLastError();
+    }
 
     // try to create the destination if it is not there
 
