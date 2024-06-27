@@ -1,0 +1,73 @@
+.calibre {
+    background: #FFF;
+    background-color: #FFF;
+    display: block;
+    font-family: Verdana, Arial, Helvetica, MS Sans Serif;
+    font-size: 1em;
+    margin-bottom: 0;
+    margin-left: 5pt;
+    margin-right: 5pt;
+    margin-top: 0;
+    padding-left: 0;
+    padding-right: 0
+    }
+.calibre1 {
+    display: block;
+    margin-bottom: 0.6em;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.6em
+    }
+.calibre2 {
+    font-weight: bold
+    }
+.calibre3 {
+    display: block;
+    list-style-type: disc;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.6em
+    }
+.calibre4 {
+    display: list-item;
+    margin-bottom: 0.7em;
+    margin-left: -2em
+    }
+.calibre5 {
+    display: block;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: disc;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0.6em
+    }
+.calibre6 {
+    display: block;
+    list-style-type: decimal;
+    margin-bottom: 0;
+    margin-left: 4em;
+    margin-right: 0;
+    margin-top: 0.6em
+    }
+.calibre7 {
+    height: auto;
+    width: auto
+    }
+.calibre8 {
+    font-size: 0.75em
+    }
+.calibre9 {
+    display: none
+    }
+.pcalibre:visited {
+    color: #969
+    }
+.pcalibre2:link {
+    color: #00C
+    }
+.pcalibre1:active {
+    color: #969
+    }
