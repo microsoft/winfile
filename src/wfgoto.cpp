@@ -299,6 +299,8 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	LFNDTA lfndta;
 	WCHAR szPath[MAXPATHLEN];
 	LPWSTR szEndPath;
+	BOOL bFound;
+	DWORD dwAttr;
 
 	lstrcpy(szPath, szRoot);
 	if (lstrlen(szPath) + 1 >= COUNTOF(szPath))
@@ -334,7 +336,13 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	// add *.* to end of path
 	lstrcat(szPath, szStarDotStar);
 
-	BOOL bFound = WFFindFirst(&lfndta, szPath, ATTR_DIR);
+	dwAttr = ATTR_DIR;
+	if (bIndexHiddenSystem)
+	{
+		dwAttr = dwAttr | ATTR_HS;
+	}
+
+	bFound = WFFindFirst(&lfndta, szPath, dwAttr);
 
 	while (bFound)
 	{
