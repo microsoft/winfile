@@ -299,6 +299,8 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	LFNDTA lfndta;
 	WCHAR szPath[MAXPATHLEN];
 	LPWSTR szEndPath;
+	BOOL bFound;
+	DWORD dwAttr;
 
 	lstrcpy(szPath, szRoot);
 	if (lstrlen(szPath) + 1 >= COUNTOF(szPath))
@@ -334,7 +336,13 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	// add *.* to end of path
 	lstrcat(szPath, szStarDotStar);
 
-	BOOL bFound = WFFindFirst(&lfndta, szPath, ATTR_DIR);
+	dwAttr = ATTR_DIR;
+	if (bIndexHiddenSystem)
+	{
+		dwAttr = dwAttr | ATTR_HS;
+	}
+
+	bFound = WFFindFirst(&lfndta, szPath, dwAttr);
 
 	while (bFound)
 	{
@@ -346,7 +354,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 		}
 
 		// for all directories at this level, insert into BagOValues
-        // do not insert the directories '.' or '..'; or insert empty directory names (cf. issue #194)
+		// do not insert the directories '.' or '..'; or insert empty directory names (cf. issue #194)
 
 		if ((lfndta.fd.dwFileAttributes & ATTR_DIR) == 0 || ISDOTDIR(lfndta.fd.cFileName) || lfndta.fd.cFileName[0] == CHAR_NULL)
 		{
