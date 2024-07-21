@@ -39,7 +39,7 @@ typedef struct _copyroot {
    WORD    cDepth;
    LPTSTR  pSource;
    LPTSTR  pRoot;
-   TCHAR   cIsDiskThereCheck[26];
+   TCHAR   cIsDiskThereCheck[MAX_DRIVES];
    TCHAR   sz[MAXPATHLEN];
    TCHAR   szDest[MAXPATHLEN];
    LFNDTA  rgDTA[MAXDIRDEPTH];

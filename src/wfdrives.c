@@ -339,7 +339,7 @@ DrawDrive(HDC hdc, INT x, INT y, DRIVEIND driveInd, BOOL bCurrent, BOOL bFocus)
    if (bFocus)
       DrawFocusRect(hdc, &rc);
 
-   szTemp[0] = (TCHAR)(chFirstDrive + rgiDrive[driveInd]);
+   szTemp[0] = DRIVESET_LC(rgiDrive[driveInd]);
    SetBkMode(hdc, TRANSPARENT);
 
    rgb = SetTextColor(hdc, rgb);
@@ -363,7 +363,7 @@ CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
    DWORD err;
    DRIVEIND driveInd;
    HCURSOR hCursor;
-   WCHAR szDrive[] = SZ_ACOLON;
+   WCHAR szDrive[MAXPATHLEN] = SZ_ACOLON;
 
    // Put up the hourglass cursor since this
    // could take a long time
@@ -382,7 +382,13 @@ CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
    while ((driveInd < cDrives) && (rgiDrive[driveInd] != drive))
        driveInd++;
 
-   switch (IsNetDrive(drive)) {
+   INT iNetDrive;
+   if (drive < OFFSET_UNC)
+      iNetDrive = IsNetDrive(drive);
+   else
+      iNetDrive = 2;
+
+   switch (iNetDrive) {
 
    case 2:
 
@@ -456,6 +462,8 @@ CheckDrive(HWND hwnd, DRIVE drive, DWORD dwFunc)
       SetCursor(hCursor);
    ShowCursor(FALSE);
 
+   if (drive >= OFFSET_UNC)
+      lstrcpy(szDrive, aDriveInfo[drive].szRoot);
    return IsTheDiskReallyThere(hwnd, szDrive, dwFunc, FALSE);
 }
 
@@ -827,6 +835,7 @@ DrivesWndProc(HWND hWnd, UINT wMsg, WPARAM wParam, LPARAM lParam)
                 InvalidateRect(hWnd, &rc, TRUE);
                 GetDriveRect(nDrive, &rc);
                 InvalidateRect(hWnd, &rc, TRUE);
+          // UNC How to get there ???
           } else if ((wParam >= CHAR_A) && (wParam <= CHAR_Z))
                 KeyToItem(hWnd, (WORD)wParam);
 
@@ -1118,10 +1127,15 @@ KeyToItem(HWND hWnd, WORD nDriveLetter)
 {
     INT nDrive;
 
-    if (nDriveLetter > CHAR_Z)
-        nDriveLetter -= CHAR_a;
-    else
-        nDriveLetter -= CHAR_A;
+    if (ISDIGIT(nDriveLetter)) {
+       nDriveLetter -= CHAR_ZERO;
+       nDriveLetter += OFFSET_UNC;
+    } else {
+       if (nDriveLetter > CHAR_Z)
+          nDriveLetter -= CHAR_a;
+       else
+          nDriveLetter -= CHAR_A;
+    }
 
     for (nDrive = 0; nDrive < cDrives; nDrive++) {
         if (rgiDrive[nDrive] == (int)nDriveLetter) {

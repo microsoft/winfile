@@ -1,3 +1,5 @@
+## Changes in v10.x compared to v10.x (????? 202x)
+1. UNC Path support via CTRL-G. Shows up as 'digit drive' 0: - 9:. Select it either via CTRL-0 ... CTRL-9 or from drive drop-down. Remove UNC digit drive with CTRL-W
 
 ## Changes in v10.3 compared to v10.2 (March 2024)
 
