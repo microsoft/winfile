@@ -1236,6 +1236,7 @@ JAPANEND
 
 Extern BOOL bMinOnRun            EQ( FALSE );
 Extern BOOL bIndexOnLaunch       EQ( TRUE );
+Extern BOOL bIndexHiddenSystem   EQ( FALSE );
 Extern BOOL bStatusBar           EQ( TRUE );
 
 Extern BOOL bDriveBar            EQ( TRUE );
@@ -1281,6 +1282,7 @@ Extern TCHAR        szPunctuation[MAXPATHLEN];
 
 Extern TCHAR        szMinOnRun[]            EQ( TEXT("MinOnRun") );
 Extern TCHAR        szIndexOnLaunch[]       EQ( TEXT("IndexOnLaunch") );
+Extern TCHAR        szIndexHiddenSystem[]   EQ( TEXT("IndexHiddenSystem") );
 Extern TCHAR        szStatusBar[]           EQ( TEXT("StatusBar") );
 Extern TCHAR        szSaveSettings[]        EQ( TEXT("Save Settings") );
 Extern TCHAR        szScrollOnExpand[]      EQ( TEXT("ScrollOnExpand"));

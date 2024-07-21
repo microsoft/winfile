@@ -334,7 +334,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	// add *.* to end of path
 	lstrcat(szPath, szStarDotStar);
 
-	BOOL bFound = WFFindFirst(&lfndta, szPath, ATTR_DIR);
+	BOOL bFound = WFFindFirst(&lfndta, szPath, bIndexHiddenSystem ? ATTR_DIR | ATTR_HS : ATTR_DIR);
 
 	while (bFound)
 	{
@@ -346,7 +346,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 		}
 
 		// for all directories at this level, insert into BagOValues
-        // do not insert the directories '.' or '..'; or insert empty directory names (cf. issue #194)
+		// do not insert the directories '.' or '..'; or insert empty directory names (cf. issue #194)
 
 		if ((lfndta.fd.dwFileAttributes & ATTR_DIR) == 0 || ISDOTDIR(lfndta.fd.cFileName) || lfndta.fd.cFileName[0] == CHAR_NULL)
 		{
