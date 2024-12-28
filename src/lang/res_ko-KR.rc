@@ -1,129 +1,129 @@
 /********************************************************************
 
-   res_en-US.rc
+   res_ko-KR.rc
 
    Copyright (c) Microsoft Corporation. All rights reserved.
    Licensed under the MIT License.
 
 ********************************************************************/
 
-LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+LANGUAGE LANG_KOREAN, SUBLANG_KOREAN_KOREA
 
 FRAMEMENU MENU
 BEGIN
-    POPUP       "&File"
+    POPUP       "파일(&F)"
     BEGIN
-    MENUITEM    "&Open\tEnter",     IDM_OPEN
-    MENUITEM    "Edit\tF12",        IDM_EDIT
-    MENUITEM    "&Move...\tF7",     IDM_MOVE
-    MENUITEM    "&Copy...\tF8",     IDM_COPY
-    MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
-    MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
-    MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
-    MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
-    MENUITEM    "&Paste\tCtrl+V",   IDM_PASTE
-    MENUITEM    "&Delete...\tDel",  IDM_DELETE
-    MENUITEM    "Re&name...\tF2",   IDM_RENAME
-    MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
+    MENUITEM    "열기(&O)\tEnter",     IDM_OPEN
+    MENUITEM    "편집\tF12",        IDM_EDIT
+    MENUITEM    "이동(&M)...\tF7",     IDM_MOVE
+    MENUITEM    "복사(&C)...\tF8",     IDM_COPY
+    MENUITEM    "심볼릭 링크(&Y)...\tF11", IDM_SYMLINK
+    MENUITEM    "하드 링크(&K)...\tShift+F11", IDM_HARDLINK
+    MENUITEM    "클립보드로 복사(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "글립보드로 잘라내기\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "붙여넣기(&P)\tCtrl+V",   IDM_PASTE
+    MENUITEM    "삭제(&D)...\tDel",  IDM_DELETE
+    MENUITEM    "이름 바꾸기(&N)...\tF2",   IDM_RENAME
+    MENUITEM    "속성(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    SEPARATOR
-    MENUITEM    "Compre&ss...",     IDM_COMPRESS
-    MENUITEM    "&Uncompress...",   IDM_UNCOMPRESS
+    MENUITEM    "압축(&S)...",     IDM_COMPRESS
+    MENUITEM    "압축 풀기(&U)...",   IDM_UNCOMPRESS
     MENUITEM    SEPARATOR
-    MENUITEM    "&Run...",          IDM_RUN
-    MENUITEM    "Pr&int...",        IDM_PRINT
-    MENUITEM    "&Associate...",    IDM_ASSOCIATE
+    MENUITEM    "실행(&R)...",          IDM_RUN
+    MENUITEM    "인쇄(&I)...",        IDM_PRINT
+    MENUITEM    "연결 프로그램(&A)...",    IDM_ASSOCIATE
     MENUITEM    SEPARATOR
-    MENUITEM    "Cr&eate Directory...\tCtrl+Shift+N", IDM_MAKEDIR
-    MENUITEM    "Searc&h...\tCtrl+F",       IDM_SEARCH
-    MENUITEM    "Select &Files...", IDM_SELECT
-    POPUP       "Start (&.)"
+    MENUITEM    "디렉터리 만들기(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
+    MENUITEM    "찾기(&H)...\tCtrl+F",       IDM_SEARCH
+    MENUITEM    "파일 선택(&F)...", IDM_SELECT
+    POPUP       "셸 (&.)"
     BEGIN
-    MENUITEM    "&Bash Shell...\tCtrl+B", IDM_STARTBASHSHELL
-    MENUITEM    "&Cmd Shell...\tCtrl+K", IDM_STARTCMDSHELL
-    MENUITEM    "&PowerShell...\tCtrl+P", IDM_STARTPOWERSHELL
-    MENUITEM    "&Explorer...\tCtrl+E", IDM_STARTEXPLORER
+    MENUITEM    "Bash(&B)...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "명령 프롬프트(&C)...\tCtrl+K", IDM_STARTCMDSHELL
+    MENUITEM    "PowerShell(&P)...\tCtrl+P", IDM_STARTPOWERSHELL
+    MENUITEM    "파일 탐색기(&E)...\tCtrl+E", IDM_STARTEXPLORER
     END
-    MENUITEM    "&Goto Directory...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "디렉터리로 이동(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
-    MENUITEM    "E&xit",            IDM_EXIT
+    MENUITEM    "닫기(&X)",            IDM_EXIT
     END
-    POPUP       "&Disk"
+    POPUP       "디스크(&D)"
     BEGIN
-    MENUITEM    "&Copy Disk...",    IDM_DISKCOPY
-    MENUITEM    "&Label Disk...",   IDM_LABEL
+    MENUITEM    "디스크 복사(&C)...",    IDM_DISKCOPY
+    MENUITEM    "디스크 레이블(&L)...",   IDM_LABEL
     MENUITEM    SEPARATOR
-    MENUITEM    "&Format Drive...",  IDM_FORMAT
+    MENUITEM    "드라이브 포맷(&F)...",  IDM_FORMAT
     MENUITEM    SEPARATOR
-    MENUITEM    "&Select Drive...", IDM_DRIVESMORE
+    MENUITEM    "드라이브 선택(&S)...", IDM_DRIVESMORE
     END
-    POPUP       "&Tree"
+    POPUP       "디렉터리 트리(&T)"
     BEGIN
-    MENUITEM    "E&xpand One Level\t+", IDM_EXPONE
-    MENUITEM    "Expand &Branch\t*",    IDM_EXPSUB
-    MENUITEM    "Expand &All\tCtrl+*",  IDM_EXPALL
-    MENUITEM    "&Collapse Branch\t-",  IDM_COLLAPSE
+    MENUITEM    "한 수준 확장(&X)\t+", IDM_EXPONE
+    MENUITEM    "확장(&B)\t*",    IDM_EXPSUB
+    MENUITEM    "모두 확장(&A)\tCtrl+*",  IDM_EXPALL
+    MENUITEM    "축소(&C)\t-",  IDM_COLLAPSE
     MENUITEM    SEPARATOR
-    MENUITEM    "&Indicate Expandable Branches",    IDM_ADDPLUSES
+    MENUITEM    "확장 가능 표시(&I)",    IDM_ADDPLUSES
     END
-    POPUP       "&View"
+    POPUP       "보기(&V)"
     BEGIN
-    MENUITEM    "T&ree and Directory",  IDM_BOTH
-    MENUITEM    "Tr&ee Only",           IDM_TREEONLY
-    MENUITEM    "Directory &Only",      IDM_DIRONLY
+    MENUITEM    "트리 및 디렉터리(&R)",  IDM_BOTH
+    MENUITEM    "트리만(&E)",           IDM_TREEONLY
+    MENUITEM    "디렉터리만(&O)",      IDM_DIRONLY
     MENUITEM    SEPARATOR
-    MENUITEM    "Sp&lit",               IDM_SPLIT
+    MENUITEM    "나누기(&L)",               IDM_SPLIT
     MENUITEM    SEPARATOR
-    MENUITEM    "&Name",                IDM_VNAME
-    MENUITEM    "&All File Details",    IDM_VDETAILS,   CHECKED
-    MENUITEM    "&Partial Details...",  IDM_VOTHER
+    MENUITEM    "이름만(&N)",                IDM_VNAME
+    MENUITEM    "자세히(&A)",    IDM_VDETAILS,   CHECKED
+    MENUITEM    "일부만 자세히(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
-    MENUITEM "&Sort by Name",   IDM_BYNAME
-    MENUITEM "Sort &by Type",   IDM_BYTYPE
-    MENUITEM "Sort by Si&ze",   IDM_BYSIZE
-    MENUITEM "Sort by &Date",   IDM_BYDATE
-    MENUITEM "Sort &forward Date",   IDM_BYFDATE
+    MENUITEM "이름 오름차순(&S)",   IDM_BYNAME
+    MENUITEM "유형 오름차순(&B)",   IDM_BYTYPE
+    MENUITEM "크기 내림차순(&Z)",   IDM_BYSIZE
+    MENUITEM "날짜 내림차순(&D)",   IDM_BYDATE
+    MENUITEM "날짜 오름차순(&F)",   IDM_BYFDATE
     MENUITEM    SEPARATOR
-    MENUITEM    "By File &Type...",     IDM_VINCLUDE
+    MENUITEM    "파일 유형별(&T)...",     IDM_VINCLUDE
     END
-    POPUP       "&Options"
+    POPUP       "옵션(&O)"
     BEGIN
-    MENUITEM    "&Confirmation...",     IDM_CONFIRM
-    MENUITEM    "&Font...",             IDM_FONT
-    MENUITEM    "Customize Tool&bar...", IDM_TOOLBARCUST
-    MENUITEM    "Additional &Preferences...", IDM_PREF
+    MENUITEM    "확인(&C)...",     IDM_CONFIRM
+    MENUITEM    "글꼴(&F)...",             IDM_FONT
+    MENUITEM    "도구 모음 사용자 지정(&B)...", IDM_TOOLBARCUST
+    MENUITEM    "추가 설정(&P)...", IDM_PREF
     MENUITEM    SEPARATOR
-    MENUITEM    "&Toolbar",                 IDM_TOOLBAR
-    MENUITEM    "&Drivebar",                IDM_DRIVEBAR
-    MENUITEM    "&Status Bar",              IDM_STATUSBAR
+    MENUITEM    "도구 모음(&T)",                 IDM_TOOLBAR
+    MENUITEM    "드라이브 표시줄(&D)",                IDM_DRIVEBAR
+    MENUITEM    "상태 표시줄(&S)",              IDM_STATUSBAR
     MENUITEM    SEPARATOR
-    MENUITEM    "&Minimize on Use",     IDM_MINONRUN
-    MENUITEM    "Create &Goto Index on Launch", IDM_INDEXONLAUNCH
-    MENUITEM    "Save Settings on &Exit",   IDM_SAVESETTINGS
+    MENUITEM    "파일 실행 시 최소화(&M)",     IDM_MINONRUN
+    MENUITEM    "실행 시 디렉터리 이동 색인 생성(&G)", IDM_INDEXONLAUNCH
+    MENUITEM    "종료 시 설정 저장(&E)",   IDM_SAVESETTINGS
     MENUITEM    SEPARATOR
-    MENUITEM    "Save Settings &Now",       IDM_SAVENOW
+    MENUITEM    "설정 저장(&N)",       IDM_SAVENOW
     END
-    POPUP       "&Security"
+    POPUP       "보안(&S)"
     BEGIN
-    MENUITEM    "&Permissions...",  IDM_PERMISSIONS
-    MENUITEM    "&Auditing...",     IDM_AUDITING
-    MENUITEM    "&Owner...",        IDM_OWNER
+    MENUITEM    "권한(&P)...",  IDM_PERMISSIONS
+    MENUITEM    "감사(&A)...",     IDM_AUDITING
+    MENUITEM    "소유자(&O)...",        IDM_OWNER
     END
-    POPUP       "&Window"
+    POPUP       "창(&W)"
     BEGIN
-    MENUITEM    "&New Window\tCtrl+Shift Enter",          IDM_NEWWINDOW
-    MENUITEM    "&Cascade\tShift+F5",   IDM_CASCADE
-    MENUITEM    "Tile &Horizontally",   IDM_TILEHORIZONTALLY
-    MENUITEM    "&Tile Vertically\tShift+F4",      IDM_TILE
-    MENUITEM    "&Arrange Icons",       IDM_ARRANGE
-    MENUITEM    "&Refresh\tF5",         IDM_REFRESH
+    MENUITEM    "새 창(&N)\tCtrl+Shift Enter",          IDM_NEWWINDOW
+    MENUITEM    "계단식 배열(&C)\tShift+F5",   IDM_CASCADE
+    MENUITEM    "가로로 배열(&H)",   IDM_TILEHORIZONTALLY
+    MENUITEM    "세로로 배열(&T)\tShift+F4",      IDM_TILE
+    MENUITEM    "아이콘 정렬(&A)",       IDM_ARRANGE
+    MENUITEM    "새로고침(&R)\tF5",         IDM_REFRESH
     END
-    POPUP       "&Help"
+    POPUP       "도움말(&H)"
     BEGIN
-    MENUITEM    "&Contents",                IDM_HELPINDEX
-    MENUITEM    "&Search for Help on...",   IDM_HELPKEYS
-    MENUITEM    "&How to Use Help",         IDM_HELPHELP
+    MENUITEM    "목차(&C)",                IDM_HELPINDEX
+    MENUITEM    "찾기(&S)...",   IDM_HELPKEYS
+    MENUITEM    "도움말 사용법(&H)",         IDM_HELPHELP
     MENUITEM    SEPARATOR
-    MENUITEM    "&About File Manager...",   IDM_ABOUT
+    MENUITEM    "파일 관리자 정보(&A)...",   IDM_ABOUT
     END
 
 END
@@ -132,25 +132,25 @@ CTXMENU MENU
 BEGIN
     POPUP "Dummy Popup"
     BEGIN
-    MENUITEM    "&New Window\tCtrl+Shift Enter",     IDM_NEWWINDOW
-    MENUITEM    "&Open\tEnter",     IDM_OPEN
-    MENUITEM    "Edit\tF12",        IDM_EDIT
-    MENUITEM    "&Move...\tF7",     IDM_MOVE
-    MENUITEM    "&Copy...\tF8",     IDM_COPY
-    MENUITEM    "S&ymlink...\tF11", IDM_SYMLINK
-    MENUITEM    "Hardlin&k...\tShift+F11", IDM_HARDLINK
-    MENUITEM    "Copy to Clip&board\tCtrl+C", IDM_COPYTOCLIPBOARD
-    MENUITEM    "Cut to Clipboard\tCtrl+X", IDM_CUTTOCLIPBOARD
-    MENUITEM    "&Paste\tCtrl+V", IDM_PASTE
-    MENUITEM    "&Delete...\tDel",  IDM_DELETE
-    MENUITEM    "Re&name...\tF2",   IDM_RENAME
-    MENUITEM    "Proper&ties...\tAlt+Enter",IDM_ATTRIBS
-    MENUITEM    "&Run...",          IDM_RUN
-    MENUITEM    "Start Bash Shell...", IDM_STARTBASHSHELL
-    MENUITEM    "Start Cmd She&ll...", IDM_STARTCMDSHELL
-    MENUITEM    "Start Po&werShell...", IDM_STARTPOWERSHELL
-    MENUITEM    "Start E&xplorer...", IDM_STARTEXPLORER
-    MENUITEM    "&Goto Directory...", IDM_GOTODIR
+    MENUITEM    "새 창(&N)\tCtrl+Shift Enter",     IDM_NEWWINDOW
+    MENUITEM    "열기(&O)\tEnter",     IDM_OPEN
+    MENUITEM    "편집\tF12",        IDM_EDIT
+    MENUITEM    "이동(&M)...\tF7",     IDM_MOVE
+    MENUITEM    "복사(&C)...\tF8",     IDM_COPY
+    MENUITEM    "심볼릭 링크(&Y)...\tF11", IDM_SYMLINK
+    MENUITEM    "하드 링크(&K)...\tShift+F11", IDM_HARDLINK
+    MENUITEM    "클립보드로 복사(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
+    MENUITEM    "글립보드로 잘라내기\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "붙여넣기(&P)\tCtrl+V", IDM_PASTE
+    MENUITEM    "삭제(&D)...\tDel",  IDM_DELETE
+    MENUITEM    "이름 바꾸기(&N)...\tF2",   IDM_RENAME
+    MENUITEM    "속성(&T)...\tAlt+Enter",IDM_ATTRIBS
+    MENUITEM    "실행(&R)...",          IDM_RUN
+    MENUITEM    "Bash 시작...", IDM_STARTBASHSHELL
+    MENUITEM    "명령 프롬프트 시작(&L)...", IDM_STARTCMDSHELL
+    MENUITEM    "PowerShell 시작(&W)...", IDM_STARTPOWERSHELL
+    MENUITEM    "파일 탐색기 시작(&X)...", IDM_STARTEXPLORER
+    MENUITEM    "디렉터리로 이동(&G)...", IDM_GOTODIR
     END
 END
 
@@ -325,7 +325,7 @@ BEGIN
 
 // include reason strings
 
-#include "suggest_en-US.db"
+#include "suggest_ko-KR.db"
 
     IDS_DESTFULL                "The destination disk is full.  Please insert another disk to continue."
     IDS_WRITEPROTECTFILE        "This is a system, hidden, or read-only file."
@@ -640,5 +640,5 @@ BEGIN
     IDS_NEWWINONCONNECT,        "&Open New Window on Connect"
 END
 
-#include "winfile_en-US.dlg"
+#include "winfile_ko-KR.dlg"
 
