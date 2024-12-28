@@ -28,7 +28,8 @@ FM_LANG fmLCIDs[] = {
     {TEXT("pl-PL"), MAKELANGID(LANG_POLISH, SUBLANG_POLISH_POLAND)},       // Polish, Poland
     {TEXT("de-DE"), MAKELANGID(LANG_GERMAN, SUBLANG_GERMAN)},              // German, Germany
     {TEXT("tr-TR"), MAKELANGID(LANG_TURKISH, SUBLANG_TURKISH_TURKEY)},     // Turkish, Turkey
-    {TEXT("pt-PT"), MAKELANGID(LANG_PORTUGUESE, SUBLANG_PORTUGUESE)}       // Portuguese, Portugal
+    {TEXT("pt-PT"), MAKELANGID(LANG_PORTUGUESE, SUBLANG_PORTUGUESE)},      // Portuguese, Portugal
+    {TEXT("ko-KR"), MAKELANGID(LANG_KOREAN, SUBLANG_KOREAN_KOREA)}         // Korean, Korea
 };
 
 LCID
