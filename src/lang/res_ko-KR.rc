@@ -7,7 +7,7 @@
 
 ********************************************************************/
 
-LANGUAGE LANG_KOREAN, SUBLANG_KOREAN_KOREA
+LANGUAGE LANG_KOREAN, SUBLANG_KOREAN
 
 FRAMEMENU MENU
 BEGIN
