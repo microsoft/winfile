@@ -56,7 +56,7 @@ BEGIN
     MENUITEM    SEPARATOR
     MENUITEM    "드라이브 선택(&S)...", IDM_DRIVESMORE
     END
-    POPUP       "디렉터리 트리(&T)"
+    POPUP       "트리(&T)"
     BEGIN
     MENUITEM    "한 수준 확장(&X)\t+", IDM_EXPONE
     MENUITEM    "확장(&B)\t*",    IDM_EXPSUB
