@@ -20,7 +20,7 @@
 // What it does:
 // For system errors (defined here in winfile land as < DE_BEGIN (bit 29 off)),
 // it puts the "suggestion" below the error text (a blank line is between
-// them.
+// them.)
 //
 // For our errors (>= DE_BEGIN), it places the text below (1 blank line)
 // the previous string.  There is no longer any corresponding text called
@@ -33,59 +33,59 @@
 #endif
 
 SUGGEST( 1, DE_SAMEFILE, 0L, \
- "Source and destination are the same." )
+ "원본과 대상이 일치합니다." )
 SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
- "Select only one file to rename, or use wildcards (for example, *.TXT) to rename a group of files with similar names." )
+ "이름을 바꾸려는 파일을 하나만 선택하거나, 여러 파일을 비슷한 이름으로 바꾸려면 대표문자(예, *.TXT)를 사용하십시오." )
 SUGGEST( 3, DE_DIFFDIR, 0L, \
- "Cannot rename to a different directory or disk.\nUse the File Move command instead." )
+ "다른 디렉터리나 디스크로 이름 바꾸기 할 수 없습니다.\n파일 이동 명령을 사용하십시오." )
 SUGGEST( 4, DE_ROOTDIR, 0L, \
- "You cannot rename the root directory." )
+ "루트 디렉터리의 이름은 바꿀 수 없습니다." )
 SUGGEST( 5, DE_DESTSUBTREE, 0L, \
- "The destination directory is a subdirectory of the source." )
+ "대상 디렉터리가 원본 디렉터리의 하위 디렉터리입니다." )
 SUGGEST( 6, DE_WINDOWSFILE, 0L, \
- "File in use by Windows." )
+ "Windows가 파일을 사용하고 있습니다." )
 SUGGEST( 7, DE_MANYDEST, 0L, \
- "Specify only one file or directory in the To box. Or, if you want to specify a group of files, use wildcards (for example, *.TXT)." )
+ "[대상] 상자에 하나의 파일 또는 디렉터리를 지정하십시오. 여러 개의 그룹을 선택하려면 대표문자를 사용하십시오(예, *.TXT)." )
 SUGGEST( 8, DE_RENAMREPLACE, 0L, \
- "A file or directory by this name already exists.  Within a directory, file and directory names must be unique." )
+ "같은 이름의 파일 또는 디렉터리가 이미 있습니다. 한 디렉터리 안에서는 파일이나 디렉터리 이름이 고유해야 합니다." )
 
 // This error is returned when selecting a grayed network drive and the rdr is not started
 SUGGEST( 9, ERROR_FILE_NOT_FOUND, 0L, \
- "Make sure the correct path and filename are specified." )
+ "지정된 경로와 파일 이름이 올바른지 확인하십시오." )
 SUGGEST(10, ERROR_PATH_NOT_FOUND, 0L, \
- "Make sure the correct path is specified." )
+ "지정된 경로가 올바른지 확인하십시오." )
 SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
- "Quit one or more applications, and then try again.  Or, use the Systems option in Control Panel to increase your virtual memory." )
+ "하나 이상의 응용 프로그램을 마친 후 다시 해보십시오. 또는 [제어판]에서 [시스템 옵션]을 사용하여 가상 메모리를 증가시키십시오." )
 // 12
 SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
- "Disable the write-protection on this disk or use another disk, and then try again." )
+ "디스크 쓰기 금지를 풀거나 다른 디스크를 사용하여 다시 해보십시오." )
 SUGGEST(14, ERROR_NETWORK_ACCESS_DENIED, 0L, \
- "Be sure you have the correct network permissions to perform this operation." )
+ "이 작업을 수행하기 위한 올바른 네트워크 사용 권한이 있는지 확인하십시오." )
 SUGGEST(15, ERROR_DISK_FULL, 0L, \
-  "Delete one or more files to increase disk space, and then try again." )
+  "파일을 지워 디스크 공간을 늘린 후 다시 하십시오." )
 SUGGEST(16, ERROR_NO_DATA_DETECTED, SUG_IGN_FORMATMESSAGE, \
-  "No data detected on this medium." )
+  "매체에서 발견된 데이터가 없습니다." )
 
 SUGGEST(17, DE_MAKEDIREXISTS, 0L, \
-  "The directory already exists." )
+  "디렉터리가 이미 있습니다" )
 SUGGEST(18, DE_DIREXISTSASFILE, 0L, \
-  "The specified name is already used by a file." )
+  "지정된 이름은 이미 있는 파일 이름입니다." )
 #ifdef ASSOC
 SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
-  "This can only be deleted when viewing Common File Types and extensions." )
+  "공통 파일 형식과 확장명이 표시되는 경우에만 삭제할 수 있습니다." )
 #endif
 
 // Block out errors that require arguments
 SUGGEST(50, ERROR_WRONG_DISK, SUG_IGN_FORMATMESSAGE, \
-  "The wrong disk is in the drive." )
+  "드라이브에 잘못된 디스크가 있습니다." )
 SUGGEST(51, ERROR_CHILD_NOT_COMPLETE, SUG_IGN_FORMATMESSAGE, \
-  "The application cannot be run in Windows NT mode." )
+  "이 응용 프로그램은 Windows NT 모드에서 실행될 수 없습니다." )
 SUGGEST(52, ERROR_INVALID_ORDINAL, SUG_IGN_FORMATMESSAGE, \
-  "The operating system cannot run this component." )
+  "운영 체제가 이 구성 요소를 실행할 수 없습니다." )
 SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
-  "The component cannot be run in Windows NT mode." )
+  "이 구성 요소는 Windows NT 모드에서 실행될 수 없습니다." )
 SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
-  "This program is not a valid Windows NT application." )
+  "이 프로그램은 올바른 Windows NT 응용 프로그램이 아닙니다." )
 SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
-  "An error occurred.  There is no message text for this error." )
+  오류가 발생했습니다. 오류에 대한 메시지 내용이 없습니다." )
 
