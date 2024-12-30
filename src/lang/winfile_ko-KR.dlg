@@ -943,5 +943,5 @@ BEGIN
     LTEXT           "Copyright (c) Microsoft Corporation. All rights reserved.", -1, 36, 30, 200, 8
     LTEXT           "Licensed under the MIT License.", -1, 36, 42, 200, 8
     LTEXT           "https://github.com/Microsoft/winfile", -1, 36, 54, 200, 8
-    DEFPUSHBUTTON   "OK", IDOK, 200, 50, 40, 14
+    DEFPUSHBUTTON   "확인", IDOK, 200, 50, 40, 14
 END
