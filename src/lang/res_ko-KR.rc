@@ -43,7 +43,7 @@ BEGIN
     MENUITEM    "PowerShell(&P)...\tCtrl+P", IDM_STARTPOWERSHELL
     MENUITEM    "파일 탐색기(&E)...\tCtrl+E", IDM_STARTEXPLORER
     END
-    MENUITEM    "디렉터리로 이동(&G)...\tCtrl+G", IDM_GOTODIR
+    MENUITEM    "디렉터리 이동(&G)...\tCtrl+G", IDM_GOTODIR
     MENUITEM    SEPARATOR
     MENUITEM    "닫기(&X)",            IDM_EXIT
     END
@@ -150,7 +150,7 @@ BEGIN
     MENUITEM    "명령 프롬프트 시작(&L)...", IDM_STARTCMDSHELL
     MENUITEM    "PowerShell 시작(&W)...", IDM_STARTPOWERSHELL
     MENUITEM    "파일 탐색기 시작(&X)...", IDM_STARTEXPLORER
-    MENUITEM    "디렉터리로 이동(&G)...", IDM_GOTODIR
+    MENUITEM    "디렉터리 이동(&G)...", IDM_GOTODIR
     END
 END
 
@@ -328,7 +328,7 @@ BEGIN
 
     IDS_DESTFULL                "대상 디스크가 꽉 찼습니다. 계속하려면 다른 디스크를 넣으십시오."
     IDS_WRITEPROTECTFILE        "시스템, 숨김, 또는 읽기 전용 파일입니다."
-`
+
     IDS_COPYINGTITLE            "복사 중..."
 
     IDS_QUICKFORMATTINGTITLE    "빠른 포맷 중..."

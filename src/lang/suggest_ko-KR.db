@@ -87,5 +87,5 @@ SUGGEST(53, ERROR_INVALID_EXE_SIGNATURE, SUG_IGN_FORMATMESSAGE, \
 SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
   "이 프로그램은 올바른 Windows NT 응용 프로그램이 아닙니다." )
 SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
-  오류가 발생했습니다. 오류에 대한 메시지 내용이 없습니다." )
+  "오류가 발생했습니다. 오류에 대한 메시지 내용이 없습니다." )
 
