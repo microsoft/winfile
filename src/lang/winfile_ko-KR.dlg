@@ -82,7 +82,7 @@ BEGIN
     GROUPBOX        "보기", grp2, 6, 72, 252, 49, WS_GROUP
     CTEXT           "", stc6, 10, 137, 1, 2,
                     SS_NOPREFIX | NOT WS_GROUP
-    CTEXT           "가나다AaBbYyZz", stc5, 10, 81, 243, 37, SS_NOPREFIX | NOT
+    CTEXT           "AaBbYyZz", stc5, 10, 81, 243, 37, SS_NOPREFIX | NOT
                     WS_VISIBLE
 END
 
@@ -396,10 +396,10 @@ STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSME
 BEGIN
     CONTROL "%d개 파일 선택", IDD_TEXT1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 5, 144, 10
     CONTROL "총 %s바이트", IDD_TEXT2, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 16, 144, 10
-    CONTROL "속성", -1, "button", BS_GROUPBOX | WS_CHILD, 5, 29, 120, 54
+    CONTROL "특성", -1, "button", BS_GROUPBOX | WS_CHILD, 5, 29, 120, 54
     CONTROL "읽기 전용(&R)", IDD_READONLY, "button", WS_GROUP | WS_TABSTOP | BS_AUTOCHECKBOX | WS_CHILD, 10, 40, 52, 12
     CONTROL "숨김(&I)", IDD_HIDDEN, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 40, 52, 12
-    CONTROL "기록(&A)", IDD_ARCHIVE, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 52, 52, 12
+    CONTROL "보관(&A)", IDD_ARCHIVE, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 52, 52, 12
     CONTROL "시스템(&S)", IDD_SYSTEM, "button", BS_AUTOCHECKBOX | WS_CHILD, 72, 52, 52, 12
     CONTROL "압축(&C)", IDD_COMPRESSED, "button", BS_AUTOCHECKBOX | WS_CHILD, 10, 64, 52, 12
     CONTROL "암호화(&E)", IDD_ENCRYPTED, "button", BS_AUTOCHECKBOX | WS_CHILD | WS_DISABLED, 72, 64, 52, 12
@@ -445,12 +445,12 @@ BEGIN
     CONTROL         "압축률:", IDD_CRATIOLABEL, "Static",
                     SS_LEFTNOWORDWRAP, 5, 82, 62, 10
     CONTROL         "", IDD_CRATIO, "Static", SS_LEFTNOWORDWRAP, 72, 82, 132, 10
-    GROUPBOX        "속성", IDD_TEXT, 4, 96, 120, 54
+    GROUPBOX        "특성", IDD_TEXT, 4, 96, 120, 54
     CONTROL         "읽기 전용(&R)", IDD_READONLY, "Button", BS_AUTOCHECKBOX |
                     WS_GROUP | WS_TABSTOP, 9, 108, 52, 12
     CONTROL         "숨김(&I)", IDD_HIDDEN, "Button", BS_AUTOCHECKBOX,
                     71, 108, 49, 12
-    CONTROL         "기록(&A)", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX,
+    CONTROL         "보관(&A)", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX,
                     9, 120, 52, 12
     CONTROL         "시스템(&S)", IDD_SYSTEM, "Button", BS_AUTOCHECKBOX,
                     71, 120, 49, 12
@@ -560,7 +560,7 @@ END
 
 
 DISKCOPYPROGRESSDLG DIALOG 30, 30, 130, 55
-CAPTION "디스크 복사중"
+CAPTION "디스크 복사 중"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_DLGFRAME | WS_POPUP | WS_SYSMENU | WS_VISIBLE | DS_SYSMODAL
 BEGIN
@@ -571,12 +571,12 @@ BEGIN
 END
 
 DISKLABELDLG DIALOGEX 20, 20, 161, 63
-CAPTION "디스크 이름"
+CAPTION "디스크 레이블"
 FONT 8, "MS Shell Dlg"
 STYLE WS_BORDER | DS_MODALFRAME | WS_CAPTION | WS_THICKFRAME | WS_POPUP | WS_SYSMENU | WS_CLIPCHILDREN
 BEGIN
     DIALOGRESIZE { 0, 125 }
-    CONTROL "이름(&L):", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 15, 30, 10
+    CONTROL "레이블(&L):", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 15, 30, 10
     DIALOGRESIZECONTROL { 0, 0, 100, 0 }
     CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD | ES_AUTOHSCROLL, 5, 26, 100, 12
     DIALOGRESIZECONTROL { 100, 0, 0, 0 }
@@ -600,7 +600,7 @@ BEGIN
     CONTROL "용량(&C):", IDD_TEXT, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 5, 20, 49, 10
     CONTROL "", IDD_HIGHCAP, "combobox", CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL | WS_CHILD, 55, 19, 65, 40
     CONTROL "옵션", 102, "button", BS_GROUPBOX | WS_GROUP | WS_CHILD, 5, 39, 115, 53
-    CONTROL "이름(&L):", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 11, 51, 39, 10
+    CONTROL "레이블(&L):", -1, "static", SS_LEFTNOWORDWRAP | WS_CHILD, 11, 51, 39, 10
     CONTROL "", IDD_NAME, "edit", ES_LEFT | WS_BORDER | WS_TABSTOP | WS_CHILD, 40, 49, 63, 12
 //    CONTROL "&Make System Disk", IDD_MAKESYS, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD | WS_DISABLED, 11, 62, 90, 12
     CONTROL "빠른 포맷(&Q)", IDD_VERIFY, "button", BS_CHECKBOX | BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 62, 90, 12
@@ -687,7 +687,7 @@ BEGIN
     CONTROL "크기(&S)", IDD_SIZE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 15, 100, 12
     CONTROL "마지막 수정 날짜(&M)", IDD_DATE, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 27, 100, 12
     CONTROL "마지막 수정 시간(&T)", IDD_TIME, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 39, 100, 12
-    CONTROL "파일 속성(&F)", IDD_FLAGS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 51, 100, 12
+    CONTROL "파일 특성(&F)", IDD_FLAGS, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 51, 100, 12
     CONTROL "MS-DOS 파일 이름(&D)", IDD_DOSNAMES, "button", BS_AUTOCHECKBOX | WS_TABSTOP | WS_CHILD, 11, 63, 100, 12
     CONTROL "확인", 1, "button", BS_DEFPUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 6, 40, 14
     CONTROL "취소", 2, "button", BS_PUSHBUTTON | WS_TABSTOP | WS_CHILD, 130, 23, 40, 14
@@ -797,12 +797,12 @@ BEGIN
                     38, 45, 10
     CONTROL         "", IDD_SIZE, "Static", SS_LEFTNOWORDWRAP, 60, 38, 90,
                     10
-    GROUPBOX        "속성", IDD_TEXT, 4, 52, 120, 54
+    GROUPBOX        "특성", IDD_TEXT, 4, 52, 120, 54
     CONTROL         "읽기 전용(&R)", IDD_READONLY, "Button", BS_AUTOCHECKBOX |
                     WS_GROUP | WS_TABSTOP, 9, 64, 52, 12
     CONTROL         "숨김(&I)", IDD_HIDDEN, "Button", BS_AUTOCHECKBOX, 71, 64,
                     49, 12
-    CONTROL         "기록(&A)", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX, 9,
+    CONTROL         "보관(&A)", IDD_ARCHIVE, "Button", BS_AUTOCHECKBOX, 9,
                     76, 52, 12
     CONTROL         "시스템(&S)", IDD_SYSTEM, "Button", BS_AUTOCHECKBOX, 71, 76,
                     49, 12
@@ -854,7 +854,7 @@ BEGIN
     PUSHBUTTON      "도움말(&H)", IDD_HELP, 187, 95, 62, 14
 
 #ifdef ASSOC
-    AUTOCHECKBOX    "공통 파일 형식과 확장명만 보기(&V)", IDD_SYSTEM,
+    AUTOCHECKBOX    "일반 파일 형식과 확장명만 보기(&V)", IDD_SYSTEM,
                     6, 117, 160, 10, WS_GROUP
 #endif
 END

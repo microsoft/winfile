@@ -36,9 +36,9 @@ BEGIN
     MENUITEM    "디렉터리 만들기(&E)...\tCtrl+Shift+N", IDM_MAKEDIR
     MENUITEM    "찾기(&H)...\tCtrl+F",       IDM_SEARCH
     MENUITEM    "파일 선택(&F)...", IDM_SELECT
-    POPUP       "셸 (&.)"
+    POPUP       "시작 (&.)"
     BEGIN
-    MENUITEM    "Bash(&B)...\tCtrl+B", IDM_STARTBASHSHELL
+    MENUITEM    "Bash 셸(&B)...\tCtrl+B", IDM_STARTBASHSHELL
     MENUITEM    "명령 프롬프트(&C)...\tCtrl+K", IDM_STARTCMDSHELL
     MENUITEM    "PowerShell(&P)...\tCtrl+P", IDM_STARTPOWERSHELL
     MENUITEM    "파일 탐색기(&E)...\tCtrl+E", IDM_STARTEXPLORER
@@ -50,7 +50,7 @@ BEGIN
     POPUP       "디스크(&D)"
     BEGIN
     MENUITEM    "디스크 복사(&C)...",    IDM_DISKCOPY
-    MENUITEM    "디스크 이름(&L)...",   IDM_LABEL
+    MENUITEM    "디스크 레이블(&L)...",   IDM_LABEL
     MENUITEM    SEPARATOR
     MENUITEM    "드라이브 포맷(&F)...",  IDM_FORMAT
     MENUITEM    SEPARATOR
@@ -78,12 +78,12 @@ BEGIN
     MENUITEM    "일부만 자세히(&P)...",  IDM_VOTHER
     MENUITEM    SEPARATOR
     MENUITEM "이름 오름차순(&S)",   IDM_BYNAME
-    MENUITEM "유형 오름차순(&B)",   IDM_BYTYPE
+    MENUITEM "확장명 오름차순(&B)",   IDM_BYTYPE
     MENUITEM "크기 내림차순(&Z)",   IDM_BYSIZE
     MENUITEM "날짜 내림차순(&D)",   IDM_BYDATE
     MENUITEM "날짜 오름차순(&F)",   IDM_BYFDATE
     MENUITEM    SEPARATOR
-    MENUITEM    "파일 유형별(&T)...",     IDM_VINCLUDE
+    MENUITEM    "파일 형식별(&T)...",     IDM_VINCLUDE
     END
     POPUP       "옵션(&O)"
     BEGIN
@@ -93,7 +93,7 @@ BEGIN
     MENUITEM    "추가 설정(&P)...", IDM_PREF
     MENUITEM    SEPARATOR
     MENUITEM    "도구 모음(&T)",                 IDM_TOOLBAR
-    MENUITEM    "드라이브 표시줄(&D)",                IDM_DRIVEBAR
+    MENUITEM    "드라이브 모음(&D)",                IDM_DRIVEBAR
     MENUITEM    "상태 표시줄(&S)",              IDM_STATUSBAR
     MENUITEM    SEPARATOR
     MENUITEM    "파일 실행 시 최소화(&M)",     IDM_MINONRUN
@@ -146,7 +146,7 @@ BEGIN
     MENUITEM    "이름 바꾸기(&N)...\tF2",   IDM_RENAME
     MENUITEM    "속성(&T)...\tAlt+Enter",IDM_ATTRIBS
     MENUITEM    "실행(&R)...",          IDM_RUN
-    MENUITEM    "Bash 시작...", IDM_STARTBASHSHELL
+    MENUITEM    "Bash 셸 시작...", IDM_STARTBASHSHELL
     MENUITEM    "명령 프롬프트 시작(&L)...", IDM_STARTCMDSHELL
     MENUITEM    "PowerShell 시작(&W)...", IDM_STARTPOWERSHELL
     MENUITEM    "파일 탐색기 시작(&X)...", IDM_STARTEXPLORER
@@ -193,10 +193,10 @@ BEGIN
     IDS_NETDISCONWINERR     "이 드라이브에 Windows 시스템 파일이 있어서 연결을 끊을 수 없습니다."                                                 /* 128 */
     IDS_NETDISCONOPEN       "네트워크 드라이브의 연결을 끊을 수 없습니다.\n\n이 드라이브에 열린 파일이 있습니다."
 
-    IDS_ATTRIBERR           "속성을 바꿀 수 없습니다.  "
+    IDS_ATTRIBERR           "특성을 바꿀 수 없습니다.  "
     IDS_MAKEDIRERR          "디렉터리를 만들 수 없습니다.  "
 
-    IDS_LABELDISKERR        "디스크에 이름을 만들 수 없습니다.\n\n디스크가 쓰기 금지되어 있지 않은지, 네트워크 드라이브가 아닌지, 이름이 유효한지 확인하십시오. 이름은 다음 문자들을 포함할 수 없습니다:\n[공백] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    IDS_LABELDISKERR        "디스크에 레이블을 지정할 수 없습니다.\n\n디스크가 쓰기 금지되어 있지 않은지, 네트워크 드라이브가 아닌지, 이름이 유효한지 확인하십시오. 이름은 다음 문자들을 포함할 수 없습니다:\n[공백] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
     IDS_SEARCHNOMATCHES     "일치하는 파일이 없습니다."
     IDS_SEARCHREFRESH       "이 드라이브의 내용이 바뀌었습니다. [찾기 결과] 창을 새로 고치시겠습니까?"
@@ -205,7 +205,7 @@ BEGIN
     IDS_DRIVETEMP           "드라이브 %c:%c"
 
     IDS_EXECERRTITLE,       "프로그램을 실행할 수 없습니다."
-    IDS_PRINTERRTITLE,      "파일을 출력할 수 없습니다."
+    IDS_PRINTERRTITLE,      "파일을 인쇄할 수 없습니다."
 
     IDS_UNKNOWNMSG,         "예기치 않은 오류: %d."
     IDS_NOMEMORYMSG,        "메모리가 부족하여 지정한 응용 프로그램을 수행할 수 없습니다.\n\n하나 이상의 응용 프로그램을 마친 다음 다시 해보십시오."                   /* 128 */
@@ -302,7 +302,7 @@ BEGIN
     IDS_COPYERROR + FUNC_RENAME   "파일 이름 바꾸기 오류"
     IDS_COPYERROR + FUNC_SETDRIVE "드라이브 선택 오류"
     IDS_COPYERROR + FUNC_EXPAND   "디렉터리 읽기 오류"
-    IDS_COPYERROR + FUNC_LABEL    "디스크 이름 붙이기 오류"
+    IDS_COPYERROR + FUNC_LABEL    "디스크 레이블 지정 오류"
     IDS_COPYERROR + FUNC_LINK     "심볼릭 링크 생성 오류"
     IDS_COPYERROR + FUNC_HARD     "하드 링크 생성 오류"
     IDS_COPYERROR + FUNC_JUNC     "디렉터리 교차점 생성 오류"
@@ -319,14 +319,14 @@ BEGIN
     IDS_VERBS + FUNC_JUNC       "디렉터리 교차점 %s(을)를 생성할 수 없습니다: %s"
     IDS_ACTIONS + 1             "디렉터리 %s(을)를 생성할 수 없습니다: %s"
     IDS_ACTIONS + 2             "디렉터리 %s(을)를 제거할 수 없습니다: %s"
-    IDS_REPLACING               "%s을(를) 만들거나 바꿀 수 없습니다. %s"
+    IDS_REPLACING               "%s을(를) 생성하거나 바꿀 수 없습니다. %s"
     // IDS_CREATING             "File Manager cannot create %s: %s"
 
 // include reason strings
 
 #include "suggest_ko-KR.db"
 
-    IDS_DESTFULL                "대상 디스크가 꽉 찼습니다. 계속하려면 다른 디스크를 넣으십시오."
+    IDS_DESTFULL                "대상 디스크가 가득 찼습니다. 계속하려면 다른 디스크를 넣으십시오."
     IDS_WRITEPROTECTFILE        "시스템, 숨김, 또는 읽기 전용 파일입니다."
 
     IDS_COPYINGTITLE            "복사 중..."
@@ -381,7 +381,7 @@ JAPANEND
     IDS_FFERR_GENIOERR          "IO 오류가 발생했습니다."
 //    IDS_FFERR_MEDIASENSE      "This disk is capable of being formatted at a capacity of %s. Continue formatting at this capacity?"
     IDS_FFERR                   "디스크를 포맷할 수 없습니다.\n\n디스크가 드라이브에 들어있는지, 쓰기 금지되지 않았는지, 손상되지 않았는지 또는 밀도가 올바른지 확인하십시오."
-    IDS_FFERR_BADLABEL          "디스크에 이름을 붙일 수 없습니다.\n\n지정된 이름표가 올바르지 않습니다. 이름표에 다음 문자가 포함되지 않았는지 확인하십시오:\n[공백] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
+    IDS_FFERR_BADLABEL          "디스크에 레이블을 지정할 수 없습니다.\n\n지정된 이름표가 올바르지 않습니다. 이름표에 다음 문자가 포함되지 않았는지 확인하십시오:\n[공백] * ? / \\ | . , ; : + = [ ] ( ) & ^ < > "" "
 
 
     IDS_FORMATCONFIRM           "포맷은 디스크에 있는 모든 데이터를 지웁니다. %c 드라이브에 있는 디스크를 포맷하시겠습니까?"
@@ -401,8 +401,8 @@ JAPANEND
     IDS_CONNECTHELP             "네트워크 드라이브 연결"
     IDS_DISCONHELP              "네트워크 드라이브 연결 끊기"
     IDS_CONNECTIONHELP          "네트워크 연결"
-    IDS_SHAREASHELP             "디렉토리 공유"
-    IDS_STOPSHAREHELP           "디렉토리 공유 중단"
+    IDS_SHAREASHELP             "디렉터리 공유"
+    IDS_STOPSHAREHELP           "디렉터리 공유 중단"
     IDS_VDETAILSHELP            "자세히 보기"
     IDS_VNAMEHELP               "이름만 보기"
     IDS_BYNAMEHELP              "이름순 정렬"
@@ -450,8 +450,8 @@ JAPANEND
     IDS_ASSOCIATE               "찾아보기"
     IDS_RUN                     "실행"
     IDS_WINHELPERR              "도움말 정보를 표시할 수 없습니다."
-    IDS_NOEXEASSOC              "파일 형식이 %s인 파일은 프로그램이므로 다른 응용 프로그램과 연결할 수 없습니다."
-    IDS_ASSOCNOTEXE             "%s은(는) 프로그램이 아니므로 파일 형식과 연결할 수 없습니다."
+    IDS_NOEXEASSOC              "파일 확장명이 %s인 파일은 프로그램이므로 다른 응용 프로그램과 연결할 수 없습니다."
+    IDS_ASSOCNOTEXE             "%s은(는) 프로그램이 아니므로 파일 확장명과 연결할 수 없습니다."
     IDS_ASSOCNONE               "(없음)"
     IDS_NOFILES                 "파일을 찾을 수 없습니다."
     IDS_NOACCESSDIR             "이 디렉터리에 접근할 권한이 없습니다."
@@ -492,7 +492,7 @@ JAPANEND
     IDS_FILETYPEDUPDESCERROR    "입력한 파일 형식으로 고유한 식별자를 만들 수 없습니다. 새 파일 형식을 입력하십시오."
 
     IDS_FILETYPEDELCONFIRMTITLE "파일 형식 삭제"
-    IDS_FILETYPEDELCONFIRMTEXT  "파일 형식 및 연결된 모든 확장자를 삭제합니다. '%s'을(를) 삭제하시겠습니까?"
+    IDS_FILETYPEDELCONFIRMTEXT  "파일 형식 및 연결된 모든 확장명을 삭제합니다. '%s'을(를) 삭제하시겠습니까?"
 #ifdef ASSOC
     IDS_FILETYPEDELCONFIRMUSERTEXT "You are deleting a Personal File Type.  It will revert to the Common File Type, and all of its extensions will remain intact.  Are you sure you want to revert '%s'?"
     IDS_FILETYPEUSERIZETEXT     "You are customizing a Common File Type.  File Manager save your changes in a Personalized File Type.  Continue?"
@@ -510,9 +510,9 @@ JAPANEND
     IDS_INITUPDATEFAIL          "백그라운드 업데이트 지원을 초기화할 수 없습니다. [파일 관리자]를 마칩니다."
     IDS_INITUPDATEFAILTITLE     "파일 관리자 초기화"
 
-    IDS_COMPRESSDIR             "%s에 있는 모든 파일과 하위 디렉토리도 압축하시겠습니까?"
-    IDS_UNCOMPRESSDIR           "%s에 있는 모든 파일과 하위 디렉토리의 압축을 푸시겠습니까?"
-    IDS_COMPRESS_ATTRIB_ERR     "%s의 압축 속성을 바꿀 수 없습니다."
+    IDS_COMPRESSDIR             "%s에 있는 모든 파일과 하위 디렉터리도 압축하시겠습니까?"
+    IDS_UNCOMPRESSDIR           "%s에 있는 모든 파일과 하위 디렉터리의 압축을 푸시겠습니까?"
+    IDS_COMPRESS_ATTRIB_ERR     "%s의 압축 특성을 바꿀 수 없습니다."
     IDS_NTLDRCOMPRESSERR        "%s 파일은 압축할 수 없습니다. 이 파일을 압축하면 시스템이 부팅되지 않을 수도 있습니다."
     IDS_MULTICOMPRESSERR        "지금 파일 압축/압축 풀기를 하고 있습니다.\n다른 파일을 압축/압축 풀기하려면 지금 작업이 끝날 때까지 기다려야 합니다."
 
@@ -551,13 +551,13 @@ BEGIN
     MH_MYITEMS+IDM_UNCOMPRESS,  "파일 또는 디렉터리 압축 풀기"
     MH_MYITEMS+IDM_DELETE,      "파일 및 디렉터리 삭제"
     MH_MYITEMS+IDM_RENAME,      "파일 또는 디렉터리 이름 바꾸기"
-    MH_MYITEMS+IDM_ATTRIBS,     "파일 속성을 설정하고 [속성] 창 표시"
+    MH_MYITEMS+IDM_ATTRIBS,     "파일 특성을 설정하고 [속성] 창 표시"
     MH_MYITEMS+IDM_RUN,         "응용 프로그램이나 문서를 시작하거나 열기"
     MH_MYITEMS+IDM_PRINT,       "문서를 인쇄"
     MH_MYITEMS+IDM_ASSOCIATE,   "파일을 응용 프로그램과 연결"
     MH_MYITEMS+IDM_MAKEDIR,     "디렉터리 생성"
-    MH_MYITEMS+IDM_SEARCH,      "파일 및 디렉토리 찾기"
-    MH_MYITEMS+IDM_SELECT,      "파일 및 디렉토리 선택"
+    MH_MYITEMS+IDM_SEARCH,      "파일 및 디렉터리 찾기"
+    MH_MYITEMS+IDM_SELECT,      "파일 및 디렉터리 선택"
     MH_MYITEMS+IDM_EXIT,        "파일 관리자 닫기"
 
     MH_MYITEMS+IDM_DISKCOPY,    "플로피 디스크의 내용을 복사"
