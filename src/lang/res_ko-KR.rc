@@ -20,7 +20,7 @@ BEGIN
     MENUITEM    "심볼릭 링크(&Y)...\tF11", IDM_SYMLINK
     MENUITEM    "하드 링크(&K)...\tShift+F11", IDM_HARDLINK
     MENUITEM    "클립보드로 복사(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
-    MENUITEM    "글립보드로 잘라내기\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "클립보드로 잘라내기\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM    "붙여넣기(&P)\tCtrl+V",   IDM_PASTE
     MENUITEM    "삭제(&D)...\tDel",  IDM_DELETE
     MENUITEM    "이름 바꾸기(&N)...\tF2",   IDM_RENAME
@@ -140,7 +140,7 @@ BEGIN
     MENUITEM    "심볼릭 링크(&Y)...\tF11", IDM_SYMLINK
     MENUITEM    "하드 링크(&K)...\tShift+F11", IDM_HARDLINK
     MENUITEM    "클립보드로 복사(&B)\tCtrl+C", IDM_COPYTOCLIPBOARD
-    MENUITEM    "글립보드로 잘라내기\tCtrl+X", IDM_CUTTOCLIPBOARD
+    MENUITEM    "클립보드로 잘라내기\tCtrl+X", IDM_CUTTOCLIPBOARD
     MENUITEM    "붙여넣기(&P)\tCtrl+V", IDM_PASTE
     MENUITEM    "삭제(&D)...\tDel",  IDM_DELETE
     MENUITEM    "이름 바꾸기(&N)...\tF2",   IDM_RENAME
@@ -248,7 +248,7 @@ BEGIN
     IDS_PRINTONLYONE        "여러 파일을 인쇄할 수 없습니다.\n\n파일을 하나만 선택한 다음 다시 하십시오."                                               /* 128 */
 
     IDS_CURDIRIS,           "현재 디렉터리: %s"                                                                                                    /* 128 */
-    IDS_CURDIRSARE,         "Other: "
+    IDS_CURDIRSARE,         "기타 현재 디렉터리: "
     IDS_COPY,               "복사"                          /* 32 */
     IDS_RENAME,             "이름 바꾸기"                        /* 32 */
     IDS_FORMAT,             "디스크 포맷"                   /* 32 */
@@ -256,10 +256,10 @@ BEGIN
     IDS_SYMLINK,            "심볼릭 링크"                       /* 32 */
     IDS_HARDLINK,           "하드 링크"                      /* 32 */
 
-    IDS_KK_COPYFROMSTR,     "원본(&F):"
-    IDS_KK_COPYTOSTR,       "대상(&T):"
-    IDS_KK_RENAMEFROMSTR,   "원본(&F):"
-    IDS_KK_RENAMETOSTR,     "대상(&T):"
+    IDS_KK_COPYFROMSTR,     "원래 위치(&F):"
+    IDS_KK_COPYTOSTR,       "복사할 위치(&T):"
+    IDS_KK_RENAMEFROMSTR,   "이전 이름(&F):"
+    IDS_KK_RENAMETOSTR,     "새 이름(&T):"
     IDS_KK_HARDLINKFROMSTR, "원본(&F):"
     IDS_KK_HARDLINKTOSTR,   "대상(&T):"
     IDS_KK_SYMLINKFROMSTR,  "원본(&F):"
@@ -271,7 +271,7 @@ BEGIN
     IDS_REMOVINGDIRMSG,     "제거하는 중:"                     /* 32 */
     IDS_REMOVINGMSG,        "제거하는 중..."                   /* 32 */
     IDS_COPYINGMSG,         "복사하는 중:"                      /* 32 */
-    IDS_OPENINGMSG,         "복사하는 중..."                    /* 32 */
+    IDS_OPENINGMSG,         "여는 중..."                    /* 32 */
     IDS_CLOSINGMSG,         "닫는 중..."                    /* 32 */
     IDS_RENAMINGMSG,        "이름 바꾸는 중..."                   /* 32 */
     IDS_MOVINGMSG,          "이동하는 중..."                     /* 32 */
