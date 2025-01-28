@@ -139,6 +139,15 @@
     <None Include="lang\winfile_pt-PT.dlg">
       <Filter>lang</Filter>
     </None>
+    <None Include="lang\suggest_ko-KR.db">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\winfile_ko-KR.dlg">
+      <Filter>lang</Filter>
+    </None>
+    <None Include="lang\res_ko-KR.rc">
+      <Filter>lang</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="lang">

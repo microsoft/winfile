@@ -177,6 +177,7 @@
     <None Include="lang\res_ja-JP.rc" />
     <None Include="lang\res_he-IL.rc" />
     <None Include="lang\res_pt-PT.rc" />
+    <None Include="lang\res_ko-KR.rc" />
     <None Include="lang\suggest_de-DE.db" />
     <None Include="lang\suggest_en-US.db" />
     <None Include="lang\suggest_pl-PL.db" />
@@ -185,6 +186,7 @@
     <None Include="lang\suggest_zh-CN.db" />
     <None Include="lang\suggest_ja-JP.db" />
     <None Include="lang\suggest_he-IL.db" />
+    <None Include="lang\suggest_ko-KR.db" />
     <None Include="lang\winfile_de-DE.dlg" />
     <None Include="lang\winfile_en-US.dlg" />
     <None Include="lang\winfile_pl-PL.dlg" />
@@ -193,6 +195,7 @@
     <None Include="lang\winfile_zh-CN.dlg" />
     <None Include="lang\winfile_ja-JP.dlg" />
     <None Include="lang\winfile_he-IL.dlg" />
+    <None Include="lang\winfile_ko-KR.dlg" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dbg.c" />
