@@ -584,7 +584,7 @@ FormatDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
          {
             nItemIndex++;
 
-            wsprintf(szMessage, szBuf, (TCHAR)(CHAR_A+rgiDrive[i]), CHAR_SPACE);
+            wsprintf(szMessage, szBuf, (TCHAR)(DRIVESET_UC(rgiDrive[i])), CHAR_SPACE);
 
             SendDlgItemMessage(hDlg, IDD_DRIVE, CB_INSERTSTRING, count, (LPARAM)szMessage);
             SendDlgItemMessage(hDlg, IDD_DRIVE, CB_SETITEMDATA, count++, MAKELONG(rgiDrive[i], 0));
@@ -692,7 +692,7 @@ FormatDlgProc(HWND hDlg, UINT wMsg, WPARAM wParam, LPARAM lParam)
          if (bConfirmFormat) {
             LoadString(hAppInstance, IDS_FORMATCONFIRMTITLE, szTitle, COUNTOF(szTitle));
             LoadString(hAppInstance, IDS_FORMATCONFIRM, szBuf, COUNTOF(szBuf));
-            wsprintf(szMessage, szBuf, (TCHAR)(CHAR_A+CancelInfo.Info.Format.iFormatDrive));
+            wsprintf(szMessage, szBuf, (TCHAR)(DRIVESET_UC(CancelInfo.Info.Format.iFormatDrive)));
 
             if (MessageBox(hDlg, szMessage, szTitle, MB_ICONEXCLAMATION | MB_YESNO | MB_DEFBUTTON1) != IDYES)
                break;
@@ -888,7 +888,7 @@ FormatDrive( IN PVOID ThreadParameter )
    WCHAR wszDrive[3];
    WCHAR wszFileSystem[4] = L"FAT";
 
-   wszDrive[0] = (WCHAR)(CancelInfo.Info.Format.iFormatDrive + CHAR_A);
+   wszDrive[0] = (WCHAR)(DRIVESET_UC(CancelInfo.Info.Format.iFormatDrive));
    wszDrive[1] = CHAR_COLON;
    wszDrive[2] = CHAR_NULL;
 
@@ -919,11 +919,11 @@ CopyDiskette( IN PVOID ThreadParameter )
   WCHAR wszSrcDrive[3];
   WCHAR wszDestDrive[3];
 
-  wszSrcDrive[0] = (WCHAR)(CancelInfo.Info.Copy.iSourceDrive + CHAR_A);
+  wszSrcDrive[0] = (WCHAR)(DRIVESET_UC(CancelInfo.Info.Copy.iSourceDrive));
   wszSrcDrive[1] = CHAR_COLON;
   wszSrcDrive[2] = CHAR_NULL;
 
-  wszDestDrive[0] = (WCHAR)(CancelInfo.Info.Copy.iDestDrive + CHAR_A);
+  wszDestDrive[0] = (WCHAR)(DRIVESET_UC(CancelInfo.Info.Copy.iDestDrive));
   wszDestDrive[1] = CHAR_COLON;
   wszDestDrive[2] = CHAR_NULL;
 

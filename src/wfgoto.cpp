@@ -299,8 +299,6 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	LFNDTA lfndta;
 	WCHAR szPath[MAXPATHLEN];
 	LPWSTR szEndPath;
-	BOOL bFound;
-	DWORD dwAttr;
 
 	lstrcpy(szPath, szRoot);
 	if (lstrlen(szPath) + 1 >= COUNTOF(szPath))
@@ -336,13 +334,7 @@ BOOL BuildDirectoryBagOValues(BagOValues<PDNODE> *pbov, vector<PDNODE> *pNodes, 
 	// add *.* to end of path
 	lstrcat(szPath, szStarDotStar);
 
-	dwAttr = ATTR_DIR;
-	if (bIndexHiddenSystem)
-	{
-		dwAttr = dwAttr | ATTR_HS;
-	}
-
-	bFound = WFFindFirst(&lfndta, szPath, dwAttr);
+	BOOL bFound = WFFindFirst(&lfndta, szPath, bIndexHiddenSystem ? ATTR_DIR | ATTR_HS : ATTR_DIR);
 
 	while (bFound)
 	{
@@ -609,27 +601,51 @@ LRESULT APIENTRY GotoEditSubclassProc(
 VOID
 SetCurrentPathOfWindow(LPWSTR szPath)
 {
-	TCHAR szFullPath[MAXPATHLEN];
-	LPTSTR szFilePart;
-	DWORD result;
-	HWND hwndActive;
-	HWND hwndNew;
-	HWND hwndTree;
+   HWND hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
 
-	result = GetFullPathName(szPath, COUNTOF(szFullPath), szFullPath, &szFilePart);
-	if (result == 0 || result >= COUNTOF(szFullPath) || ISUNCPATH(szFullPath))
-	{
-		return;
-	}
+   HWND hwndNew = nullptr;
+   if (ISUNCPATH(szPath))
+   {
+      // For UNC path this is the place of opening a new UNC window.
+      // Use CTRL+W to remove the number-drive mapping and close it
+      DRIVE freeDriveFound = AddUNCDrive(szPath);
+      switch (freeDriveFound)
+      {
+      case -1:
+         // UNC Loop found.  e.g. \\foo\bar for existing drive \\foo\bar\share
+         // Throw your favourite messagebox here
+         break;
 
-	hwndActive = (HWND)SendMessage(hwndMDIClient, WM_MDIGETACTIVE, 0, 0L);
-	hwndNew = CreateDirWindow(szFullPath, TRUE, hwndActive);
-	hwndTree = HasTreeWindow(hwndNew);
+      case 0:
+         // Out of free UNC Slots. Throw your favourite messagebox here
+         break;
 
-	if (hwndTree)
-	{
-		SetFocus(hwndTree);
-	}
+         // drive slot found > 0
+      default:
+         hwndNew = CreateDirWindow(szPath, FALSE, hwndActive);
+         if (hwndNew)
+            RefreshWindow(hwndNew, TRUE, TRUE);
+      }
+   }
+   else
+   {
+      TCHAR szFullPath[MAXPATHLEN];
+      LPTSTR szFilePart;
+
+      DWORD result = GetFullPathName(szPath, COUNTOF(szFullPath), szFullPath, &szFilePart);
+      if (result == 0 || result >= COUNTOF(szFullPath))
+      {
+         return;
+      }
+
+      hwndNew = CreateDirWindow(szFullPath, TRUE, hwndActive);
+   }
+
+   HWND hwndTree = HasTreeWindow(hwndNew);
+   if (hwndTree)
+   {
+      SetFocus(hwndTree);
+   }
 }
 
 INT_PTR

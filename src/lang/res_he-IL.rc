@@ -285,7 +285,7 @@ BEGIN
 
     IDS_STATUSMSG,          "סך הכל %d קבצים (%s)"             /* 128 */
     IDS_STATUSMSG2,         "%d קבצים נבחרו (%s)"          /* 128 */
-    IDS_DRIVEFREE,          "%c: %s פנוי,  %s סך הכל"            /* 128 */
+    IDS_DRIVEFREE,          "%s %s פנוי,  %s סך הכל"            /* 128 */
     IDS_TREEABORT,          "עץ התיקיות לא מוצג במלואו"     /* 128 */
     IDS_DIRSREAD,           "תיקיות נקראו: %d "                   /* 32 */
     IDS_SEARCHMSG,          "%d קבצים נמצאו"

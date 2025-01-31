@@ -130,7 +130,9 @@ INT atoiW(LPWSTR sz);
 #define MAXMESSAGELEN       (MAXPATHLEN * 2 + MAXSUGGESTLEN)
 
 #define MAX_WINDOWS         27
-#define MAX_DRIVES          26
+#define MAX_UNC             10
+#define OFFSET_UNC          ('Z' - 'A' + 1)
+#define MAX_DRIVES          OFFSET_UNC + MAX_UNC
 
 // struct for volume info
 
@@ -210,6 +212,7 @@ INT atoiW(LPWSTR sz);
 #define CHAR_A TEXT('A')
 #define CHAR_a TEXT('a')
 #define CHAR_Z TEXT('Z')
+#define CHAR_z TEXT('z')
 
 // Default char for untranslatable unicode
 // MUST NOT BE an acceptable char for file systems!!
@@ -225,12 +228,14 @@ INT atoiW(LPWSTR sz);
 #define DwordAlign(cb)      (((cb) + 3) & ~3)
 #define ISDOTDIR(x)  (x[0]==CHAR_DOT && (!x[1] || (x[1] == CHAR_DOT && !x[2])))
 #define ISUNCPATH(x) (CHAR_BACKSLASH == x[0] && CHAR_BACKSLASH == x[1])
-#define DRIVESET(str, drive) (str[0] = CHAR_A + (drive))
+#define DRIVESET_LC(drive) ((drive < OFFSET_UNC ? CHAR_a : CHAR_Z - CHAR_A - 3) + drive)
+#define DRIVESET_UC(drive) ((drive < OFFSET_UNC ? CHAR_A : CHAR_Z - CHAR_A - 3) + drive)
+#define DRIVESET(str, drive) (str[0] = DRIVESET_UC(drive))
+#define ISDIGIT(c)  ((c) >= TEXT('0') && (c) <= TEXT('9'))
+#define ISDIGIT_DRIVE(str) (CHAR_COLON == str[1] && ISDIGIT(str[0]))
 #define COUNTOF(x) (sizeof(x)/sizeof(*x))
 #define ByteCountOf(x) ((x)*sizeof(TCHAR))
 #define abs(x) (((x) < 0) ? -(x) : (x))
-
-#define DRIVEID(path) ((path[0] - CHAR_A)&31)
 
 #define IsDocument(lpszPath)       IsBucketFile(lpszPath, ppDocBucket)
 #define IsProgramFile(lpszPath)    IsBucketFile(lpszPath, ppProgBucket)
@@ -329,7 +334,9 @@ typedef struct {
    //
    // *2 since may have huge filter
    //
-   WCHAR szDir[2*MAXPATHLEN];
+   TCHAR szDir[2*MAXPATHLEN];
+   TCHAR szRoot[MAXPATHLEN];
+   INT dwDriveNumber;
 
    //
    // Next block of fields must be together (11 DWORDS)
@@ -453,6 +460,17 @@ BOOL TypeAheadString(WCHAR ch, LPWSTR szT);
 
 VOID SaveHistoryDir(HWND hwnd, LPWSTR szDir);
 BOOL GetPrevHistoryDir(BOOL forward, HWND *phwnd, LPWSTR szDir);
+
+DRIVE DRIVEID(LPCTSTR path);
+DRIVE AddUNCDrive(LPTSTR path);
+DRIVE RemoveUNCDrive(LPCTSTR path);
+DRIVE FindUNCDrive(LPCTSTR path, PDWORD pdwFreeDriveSlot);
+BOOL FindUNCLoop(LPCTSTR path);
+VOID SetUNCDrive(LPCTSTR path, DWORD aFreeDriveSlot);
+VOID SaveUNCDrives();
+VOID LoadUNCDrives();
+PTCHAR GetUNCDrivePath(const DRIVE aDrive);
+VOID CloseUNCDrive(LPCTSTR aPath);
 
 // WFDIR.C
 
@@ -972,6 +990,10 @@ typedef struct _DRIVE_INFO {
    STATUSNAME(Space);
    LARGE_INTEGER  qFreeSpace;
    LARGE_INTEGER  qTotalSpace;
+
+   TCHAR szRoot[MAXPATHLEN];
+   TCHAR szRootBackslash[MAXPATHLEN];
+   BOOL bDirtyPersist;
 } DRIVEINFO, *PDRIVEINFO;
 
 #define SC_SPLIT            100
@@ -1190,8 +1212,9 @@ Extern DWORD   gdwMachineId               EQ( MACHINEID_MICROSOFT );
 #define rgiDrive rgiDriveReal[iUpdateReal]
 
 Extern INT       iUpdateReal              EQ( 0 );
-Extern DRIVE     rgiDriveReal[2][26];
-Extern DRIVEINFO aDriveInfo[26];
+
+Extern DRIVE     rgiDriveReal[2][MAX_DRIVES];
+Extern DRIVEINFO aDriveInfo[MAX_DRIVES];
 
 Extern UINT   uMenuID;
 Extern HMENU  hMenu;
@@ -1237,8 +1260,6 @@ Extern BOOL bConnectable         EQ( FALSE );
 Extern INT  iShowSourceBitmaps   EQ( 1 );
 Extern BOOL bFSCTimerSet         EQ( FALSE );
 
-Extern TCHAR        chFirstDrive;           // 'A' or 'a'
-
 Extern TCHAR        szExtensions[]          EQ( TEXT("Extensions") );
 Extern TCHAR        szFrameClass[]          EQ( TEXT("WFS_Frame") );
 Extern TCHAR        szTreeClass[]           EQ( TEXT("WFS_Tree") );
@@ -1279,6 +1300,7 @@ Extern TCHAR        szChangeNotifyTime[]    EQ( TEXT("ChangeNotifyTime") );
 Extern UINT         uChangeNotifyTime       EQ( 3000 );
 
 Extern TCHAR        szDirKeyFormat[]        EQ( TEXT("dir%d") );
+Extern TCHAR        szUNCKeyFormat[]        EQ(TEXT("unc%d"));
 Extern TCHAR        szWindow[]              EQ( TEXT("Window") );
 Extern TCHAR        szWindows[]             EQ( TEXT("Windows") );
 

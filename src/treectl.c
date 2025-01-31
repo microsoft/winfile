@@ -804,6 +804,7 @@ ReadDirLevel(
          iNode, dwAttribs, bFullyExpand, szAutoExpand, bPartialSort);
   }
 
+  BOOL bCasePreserved = IsCasePreservedDrive(DRIVEID(szPath));
   while (bFound) {
 
       if (uYieldCount & (1<<READDIRLEVEL_YIELDBIT))
@@ -846,7 +847,7 @@ ReadDirLevel(
                                    iParentNode,
                                    lfndta.fd.cFileName,
                                    &pNode,
-                                   IsCasePreservedDrive(DRIVEID(szPath)),
+                                   bCasePreserved, 
                                    bPartialSort,
                                    lfndta.fd.dwFileAttributes );
 
@@ -1174,7 +1175,10 @@ FillTreeListbox(HWND hwndTC,
    if (bDontSteal || bFullyExpand || !StealTreeData(hwndTC, hwndLB, szDefaultDir)) {
 
       drive = DRIVEID(szDefaultDir);
-      DRIVESET(szTemp, drive);
+      if (drive < OFFSET_UNC)
+         DRIVESET(szTemp, drive);
+      else
+         lstrcpy(szTemp, aDriveInfo[drive].szRootBackslash);
 
       //
       // Hack: if NTFS/HPFS are partially sorted already
@@ -1202,10 +1206,20 @@ FillTreeListbox(HWND hwndTC,
 
          if (szDefaultDir) {
 
-            lstrcpy(szExpand, szDefaultDir+3);  // skip "X:\"
+            if (drive < OFFSET_UNC) {
+               // skip "X:\" at the beginning
+               lstrcpy(szExpand, szDefaultDir + 3);
+            } else {
+               // skip the UNC Root + backslash, which is e.g \\myserver\path
+               if (_wcsicmp(szDefaultDir, aDriveInfo[drive].szRoot))
+                  lstrcpy(szExpand, szDefaultDir + lstrlen(aDriveInfo[drive].szRoot) + 1);
+               else
+                  *szExpand = CHAR_NULL;
+            }
+
             p = szExpand;
 
-            while (*p) {                // null out all slashes
+            while (*p) {                // null out all slashes of a path
 
                while (*p && *p != CHAR_BACKSLASH)
                   ++p;
@@ -1311,6 +1325,47 @@ FillOutTreeList(HWND hwndTC,
 }
 
 
+
+//
+// MatchNode()
+// 
+// Find the PDNODE and LBIndex for a path element
+//
+// returns:
+//      TRUE if found match; FALSE if out of items
+//
+BOOL MatchNode(
+   HWND hwndLB,
+   LPTSTR lpszElement,
+   DWORD *dwIndex,
+   DWORD *dwPreviousNode,
+   PDNODE *ppPreviousNode
+)
+{
+   PDNODE pNode;
+   BOOL bReturn = TRUE;
+
+   while (TRUE) {
+      // Out of LB items?  Not found.
+      if (SendMessage(hwndLB, LB_GETTEXT, *dwIndex, (LPARAM)&pNode) == LB_ERR) {
+         bReturn = FALSE;
+         break;
+      }
+
+      if (pNode->pParent == *ppPreviousNode) {
+         if (!lstrcmpi(lpszElement, pNode->szName)) {
+            // We've found the element, but we are not at the end of the path
+            *dwPreviousNode = *dwIndex;
+            *ppPreviousNode = pNode;
+            break;
+         }
+      }
+      (*dwIndex)++;
+   }
+
+   return bReturn;
+}
+
 //
 // FindItemFromPath()
 //
@@ -1333,115 +1388,99 @@ FindItemFromPath(
    HWND hwndLB,
    LPTSTR lpszPath,
    BOOL bReturnParent,
-   DWORD *pIndex,
-   PDNODE *ppNode)
+   DWORD* pIndex,
+   PDNODE* ppNode)
 {
-  DWORD              i;
-  LPTSTR             p;
-  PDNODE             pNode;
-  DWORD              iPreviousNode;
-  PDNODE             pPreviousNode;
-  TCHAR              szElement[1+MAXFILENAMELEN+1];
+   DWORD     dwIndex;
+   LPTSTR    p;
+   PDNODE    pNode;
+   DWORD     iPreviousNode;
+   PDNODE    pPreviousNode;
+   TCHAR     szElement[1 + MAXFILENAMELEN + 1];
+   BOOL      bReturn = TRUE;
 
-  if (pIndex)
-    {
+   if (pIndex) {
       *pIndex = (DWORD)-1;
-    }
-  if (ppNode)
-    {
+   }
+   if (ppNode) {
       *ppNode = NULL;
-    }
+   }
 
-  if (!lpszPath || lstrlen(lpszPath) < 3 || lpszPath[1] != CHAR_COLON)
-    {
+   if (!lpszPath || lstrlen(lpszPath) < 3 || !((lpszPath[1] == CHAR_COLON) || lpszPath[1] == CHAR_BACKSLASH)) {
       return FALSE;
-    }
+   }
 
-  i = 0;
-  iPreviousNode = (DWORD)-1;
-  pPreviousNode = NULL;
+   dwIndex = 0;
+   iPreviousNode = (DWORD)-1;
+   pPreviousNode = NULL;
 
-  while (*lpszPath)
-    {
-      /* NULL out szElement[1] so the backslash hack isn't repeated with
-       * a first level directory of length 1.
-       */
-      szElement[1] = CHAR_NULL;
+   // Retrieve the name of the root, which is always on index 0
+   if (SendMessage(hwndLB, LB_GETTEXT, 0, (LPARAM)&pNode) != LB_ERR) {
 
-      /* Copy the next section of the path into 'szElement' */
-      p = szElement;
+      // Is the root node a subnode of lpszPath 
+      if (StrStrI(lpszPath, pNode->szName)) {
+         lstrcpy(szElement, pNode->szName);
+         // move lpszPath at the end of the 
+         lpszPath += lstrlen(szElement);
 
-      while (*lpszPath && *lpszPath != CHAR_BACKSLASH)
-          *p++ = *lpszPath++;
+         do {
+            bReturn = MatchNode(hwndLB, szElement, &dwIndex, &iPreviousNode, &pPreviousNode);
 
-      /* Add a backslash for the Root directory. */
+            /* NULL out szElement[1] so the backslash hack isn't repeated with
+             * a first level directory of length 1.
+             */
+            szElement[1] = CHAR_NULL;
 
-      if (szElement[1] == CHAR_COLON)
-          *p++ = CHAR_BACKSLASH;
+            // Copy the next section of the path into 'szElement' and terminate it
+            p = szElement;
+            while (*lpszPath && *lpszPath != CHAR_BACKSLASH)
+               *p++ = *lpszPath++;
+            *p = CHAR_NULL;
 
-      /* NULL terminate 'szElement' */
-      *p = CHAR_NULL;
+            // Skip over the path's next Backslash.
+            if (*lpszPath)
+               lpszPath++;
+            else
+               if (bReturnParent) {
+                  /* We're at the end of a path which includes a filename.  Return
+                   * the previously found parent.
+                   */
+                  if (pIndex) {
+                     *pIndex = iPreviousNode;
+                  }
+                  if (ppNode) {
+                     *ppNode = pPreviousNode;
+                  }
+                  return TRUE;
+               }
 
-      /* Skip over the path's next Backslash. */
+            // Break through the loops
+            if (!bReturn)
+               break;
 
-      if (*lpszPath)
-          lpszPath++;
+         } while (*lpszPath);
 
-      else if (bReturnParent)
-        {
-          /* We're at the end of a path which includes a filename.  Return
-           * the previously found parent.
-           */
-          if (pIndex) {
-              *pIndex = iPreviousNode;
-          }
-          if (ppNode) {
-              *ppNode = pPreviousNode;
-          }
-          return TRUE;
-        }
+         if (*szElement)
+            bReturn = MatchNode(hwndLB, szElement, &dwIndex, &iPreviousNode, &pPreviousNode);
+      }
+      else {
+         // e.g. drive change, when root node is different than lpszPath
+         bReturn = FALSE;
+      }
+   }
+   else
+      // uuups no root node. We should never get there
+      bReturn = FALSE;
 
-      while (TRUE)
-        {
-          /* Out of LB items?  Not found. */
-          if (SendMessage(hwndLB, LB_GETTEXT, i, (LPARAM)&pNode) == LB_ERR)
-            {
-              if (pIndex)
-                {
-                  *pIndex = iPreviousNode;
-                }
-              if (ppNode)
-                {
-                  *ppNode = pPreviousNode;
-                }
-              return FALSE;
-            }
-
-          if (pNode->pParent == pPreviousNode)
-            {
-              if (!lstrcmpi(szElement, pNode->szName))
-                {
-                  /* We've found the element... */
-                  iPreviousNode = i;
-                  pPreviousNode = pNode;
-                  break;
-                }
-            }
-          i++;
-        }
-    }
-  if (pIndex)
-    {
+   if (pIndex) {
       *pIndex = iPreviousNode;
-    }
-  if (ppNode)
-    {
+   }
+   if (ppNode) {
       *ppNode = pPreviousNode;
-    }
+   }
 
-  return TRUE;
+   return bReturn;
 }
-
 
 /*--------------------------------------------------------------------------*/
 /*                                                                          */
@@ -2123,7 +2162,7 @@ TreeControlWndProc(
 
    switch (uMsg) {
    case FS_GETDRIVE:
-      return (GetWindowLongPtr(hwndParent, GWL_TYPE) + L'A');
+      return GetWindowLongPtr(hwndParent, GWL_TYPE) + CHAR_A;
 
    case TC_COLLAPSELEVEL:
    {
@@ -2248,10 +2287,10 @@ TreeControlWndProc(
 
    case TC_SETDRIVE:
    {
-#define fFullyExpand    LOBYTE(wParam)
-#define fDontSteal      HIBYTE(wParam)
-#define fDontSelChange  HIWORD(wParam)
-#define szDir           (LPTSTR)lParam  // NULL -> default == window text.
+      INT fFullyExpand = LOBYTE(wParam);
+      INT fDontSteal = HIBYTE(wParam);
+      INT fDontSelChange = HIWORD(wParam);
+      LPTSTR szDir = (LPTSTR)lParam;  // NULL -> default == window text.
 
       //
       // Don't do anything while the tree is being built.
@@ -2294,10 +2333,8 @@ TreeControlWndProc(
                      (LPARAM)szPath);
          StripBackslash(szPath);
       }
-
-      CharUpperBuff(szPath, 1);     // make sure
-
-      SetWindowLongPtr(hwndParent, GWL_TYPE, szPath[0] - TEXT('A'));
+	  
+      SetWindowLongPtr(hwndParent, GWL_TYPE, DRIVEID(szPath));
 
       //
       // resize for new vol label
@@ -2324,10 +2361,6 @@ TreeControlWndProc(
                                         LBN_SELCHANGE));
       }
       break;
-#undef fFullyExpand
-#undef fDontSteal
-#undef fDontSelChange
-#undef szDir
    }
 
    case WM_CHARTOITEM:
@@ -3307,10 +3340,13 @@ SameSelection:
 INT
 BuildTreeName(LPTSTR lpszPath, INT iLen, INT iSize)
 {
-   DRIVE drive = DRIVEID(lpszPath);
+   // Check for \\ aka UNC
+   if (!ISUNCPATH(lpszPath))
+      // Check for X:\ 
+      if (3 != iLen || CHAR_BACKSLASH != lpszPath[2])
+         return iLen;
 
-   if (3 != iLen || CHAR_BACKSLASH != lpszPath[2])
-      return iLen;
+   DRIVE drive = DRIVEID(lpszPath);
 
    lstrcat(lpszPath, SZ_FILESYSNAMESEP);
    iLen = lstrlen(lpszPath);

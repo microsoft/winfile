@@ -22,7 +22,7 @@ GetDiskSpace(DRIVE drive,
 
    DRIVESET(szDriveRoot, drive);
 
-   if (!GetDiskFreeSpaceEx(szDriveRoot,
+   if (!GetDiskFreeSpaceEx(drive < OFFSET_UNC ? szDriveRoot : aDriveInfo[drive].szRoot, 
       &qBytesAvailableToCaller,
       pqTotalSpace,
       pqFreeSpace)) {
@@ -82,14 +82,14 @@ FillVolumeInfo(DRIVE drive, LPTSTR lpszVolName, PDWORD pdwVolumeSerialNumber,
    TCHAR szDrive[] = SZ_ACOLONSLASH;
    PDRIVEINFO pDriveInfo = &aDriveInfo[drive];
 
-   DRIVESET(szDrive,drive);
+   DRIVESET(szDrive, drive);
 
-   if (!(GetVolumeInformation(szDrive,
-      lpszVolName, COUNTOF(pDriveInfo->szVolNameMinusFour)-4,
+   if (!GetVolumeInformation(drive < OFFSET_UNC ? szDrive : pDriveInfo->szRootBackslash,
+      lpszVolName, COUNTOF(pDriveInfo->szVolNameMinusFour) - 4,
       pdwVolumeSerialNumber,
       pdwMaximumComponentLength,
       pdwFileSystemFlags,
-      lpszFileSysName, COUNTOF(pDriveInfo->szFileSysName)))) {
+      lpszFileSysName, COUNTOF(pDriveInfo->szFileSysName))) {
 
       lpszVolName[0] = CHAR_NULL;
 

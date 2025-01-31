@@ -282,7 +282,7 @@ BEGIN
 
     IDS_STATUSMSG,          "共 %d 个文件 (%s)"             /* 128 */
     IDS_STATUSMSG2,         "选择了 %d 个文件 (%s)"          /* 128 */
-    IDS_DRIVEFREE,          "%c: %s 可用空间，%s 全部空间"            /* 128 */
+    IDS_DRIVEFREE,          "%s %s 可用空间，%s 全部空间"            /* 128 */
     IDS_TREEABORT,          "目录树未完整显示"     /* 128 */
     IDS_DIRSREAD,           "目录读取: %d"                   /* 32 */
     IDS_SEARCHMSG,          "找到 %d 个文件"
