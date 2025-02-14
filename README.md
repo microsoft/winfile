@@ -1,3 +1,9 @@
+
+
+# Announcement: Repository to be archived on March 1, 2025
+We realize this may come as a shock and disappointment to our contributors but we simply do not have the expertise or resources within the organization to continue to maintain this project. 
+While you may continue to work on your own private fork, remember that use of archived repositories are more risky from a security standpoint and caution should be taken. 
+
 # ![icon](winfile.png) Windows File Manager (WinFile)
 
 The Windows File Manager lives again and runs as a native x86, x64 and arm64 desktop app
