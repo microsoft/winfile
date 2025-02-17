@@ -1,3 +1,10 @@
+## Changes in v10.4 compared to v10.3 (February 2025)
+
+1. New Korean translation
+2. Resizable dialogs in pt-PT
+3. Better preservation of display settings when opening a specified directory via command line
+4. Relative paths when opening a specified directory via command line
+5. Security related warnings and hardening
 
 ## Changes in v10.3 compared to v10.2 (March 2024)
 

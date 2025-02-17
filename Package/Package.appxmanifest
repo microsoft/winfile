@@ -7,7 +7,7 @@
   xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
   IgnorableNamespaces="desktop uap uap3 mp rescap">
-  <Identity Name="Microsoft.WindowsFileManager" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="10.3.0.0" />
+  <Identity Name="Microsoft.WindowsFileManager" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="10.4.0.0" />
   <Properties>
     <DisplayName>Windows File Manager</DisplayName>
     <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>

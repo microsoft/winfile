@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>winfile</id>
-    <version>10.3.0.0</version>
+    <version>10.4.0.0</version>
     <title>WinFile</title>
     <authors>Microsoft, WinFile OSS Contributors</authors>
     <owners>https://github.com/craigwi</owners>
