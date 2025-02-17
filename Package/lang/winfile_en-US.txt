@@ -1,0 +1,5 @@
+Windows File Manager
+
+Window File Manager reborn.  Project is maintained on https://github.com/microsoft/winfile.
+
+Cumulative fixes through March 2024; see Github for details.
