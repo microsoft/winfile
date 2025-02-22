@@ -35,44 +35,44 @@
 SUGGEST( 1, DE_SAMEFILE, 0L, \
  "Fonte e destino são os mesmos." )
 SUGGEST( 2, DE_MANYSRC1DEST, 0L, \
- "Seleccione apenas um ficheiro para renomear, ou use wildcards (por examplo, *.TXT) para renomear um grupo de ficheiros com nomes semelhantes." )
+ "Seleccione apenas um arquivo para renomear, ou use wildcards (por examplo, *.TXT) para renomear um grupo de arquivos com nomes semelhantes." )
 SUGGEST( 3, DE_DIFFDIR, 0L, \
- "Não é possível renomear para um directório ou disco diferente.\nUse o comando Mover Ficheiro." )
+ "Não é possível renomear para um diretório ou disco diferente.\nUse o comando Mover arquivo." )
 SUGGEST( 4, DE_ROOTDIR, 0L, \
- "Não é possível renomear o directório raíz." )
+ "Não é possível renomear o diretório raíz." )
 SUGGEST( 5, DE_DESTSUBTREE, 0L, \
- "O directório de destino é um subdirectório da fonte." )
+ "O diretório de destino é um subdiretório da fonte." )
 SUGGEST( 6, DE_WINDOWSFILE, 0L, \
- "Ficheiro em uso pelo Windows." )
+ "arquivo em uso pelo Windows." )
 SUGGEST( 7, DE_MANYDEST, 0L, \
- "Especifique apenas um ficheiro ou directório no campo 'Para'. Ou, se quiser especificar um grupo de ficheiros, use wildcards (por exemplo, *.TXT)." )
+ "Especifique apenas um arquivo ou diretório no campo 'Para'. Ou, se quiser especificar um grupo de arquivos, use wildcards (por exemplo, *.TXT)." )
 SUGGEST( 8, DE_RENAMREPLACE, 0L, \
- "Já existe um ficheiro ou directório com este nome.  Dentro de um directório, nomes de ficheiros e directórios devem ser únicos." )
+ "Já existe um arquivo ou diretório com este nome.  Dentro de um diretório, nomes de arquivos e diretórios devem ser únicos." )
 
 // This error is returned when selecting a grayed network drive and the rdr is not started
 SUGGEST( 9, ERROR_FILE_NOT_FOUND, 0L, \
- "Certifique-se de que são especificados o caminho e nome de ficheiro correctos." )
+ "Certifique-se de que são especificados o caminho e nome de arquivo corretos." )
 SUGGEST(10, ERROR_PATH_NOT_FOUND, 0L, \
- "Certifique-se de que é especificado o caminho correcto." )
+ "Certifique-se de que é especificado o caminho correto." )
 SUGGEST(11, ERROR_NOT_ENOUGH_MEMORY, 0L, \
- "Feche uma ou mais aplicações e tente de novo.  Ou, use a opção Sistema no Painel de Controlo para aumentar a memória virtual." )
+ "Feche uma ou mais aplicações e tente de novo.  Ou, use a opção Sistema no Painel de Controle para aumentar a memória virtual." )
 // 12
 SUGGEST(13, ERROR_WRITE_PROTECT, 0L, \
- "Desative a protecção contra escrita neste disco ou use outro disco e tente de novo." )
+ "Desative a proteção contra escrita neste disco ou use outro disco e tente de novo." )
 SUGGEST(14, ERROR_NETWORK_ACCESS_DENIED, 0L, \
- "Certifique-se de que tem as permissões de rede correctas para efectuar esta operação." )
+ "Certifique-se de que tem as permissões de rede corretas para efectuar esta operação." )
 SUGGEST(15, ERROR_DISK_FULL, 0L, \
-  "Elimine um ou mais ficheiros para aumentar o espaço no disco e tente de novo." )
+  "Elimine um ou mais arquivos para aumentar o espaço no disco e tente de novo." )
 SUGGEST(16, ERROR_NO_DATA_DETECTED, SUG_IGN_FORMATMESSAGE, \
-  "Nenhuns dados detectados nesta unidade." )
+  "Nenhum dado detectado nesta unidade." )
 
 SUGGEST(17, DE_MAKEDIREXISTS, 0L, \
-  "O directório já existe." )
+  "O diretório já existe." )
 SUGGEST(18, DE_DIREXISTSASFILE, 0L, \
-  "O nome especificado já está a ser usado por um ficheiro." )
+  "O nome especificado já está a ser usado por um arquivo." )
 #ifdef ASSOC
 SUGGEST(19, DE_DELEXTWRONGMODE, 0L, \
-  "Isto só pode ser eliminado ao ver os Tipos de Ficheiro Comuns e extensões." )
+  "Isto só pode ser eliminado ao ver os Tipos de arquivo Comuns e extensões." )
 #endif
 
 // Block out errors that require arguments
@@ -88,5 +88,3 @@ SUGGEST(54, ERROR_BAD_EXE_FORMAT, SUG_IGN_FORMATMESSAGE, \
   "Este programa não é uma aplicação Windows NT válida." )
 SUGGEST(55, ERROR_MR_MID_NOT_FOUND, SUG_IGN_FORMATMESSAGE, \
   "Ocorreu um erro.  Não há uma mensagem de texto para este erro." )
-
-
