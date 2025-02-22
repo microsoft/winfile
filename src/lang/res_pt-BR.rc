@@ -325,7 +325,7 @@ BEGIN
 
 // include reason strings
 
-#include "suggest_pt-PT.db"
+#include "suggest_pt-BR.db"
 
     IDS_DESTFULL                "O disco de destino está cheio. Por favor insira outro disco para continuar."
     IDS_WRITEPROTECTFILE        "Trata-se de um Arquivo de sistema, oculto ou só de leitura."
