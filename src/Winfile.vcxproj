@@ -177,11 +177,13 @@
     <None Include="lang\res_ja-JP.rc" />
     <None Include="lang\res_he-IL.rc" />
     <None Include="lang\res_pt-PT.rc" />
+    <None Include="lang\res_pt-BR.rc" />
     <None Include="lang\res_ko-KR.rc" />
     <None Include="lang\suggest_de-DE.db" />
     <None Include="lang\suggest_en-US.db" />
     <None Include="lang\suggest_pl-PL.db" />
     <None Include="lang\suggest_pt-PT.db" />
+    <None Include="lang\suggest_pt-BR.db" />
     <None Include="lang\suggest_tr-TR.db" />
     <None Include="lang\suggest_zh-CN.db" />
     <None Include="lang\suggest_ja-JP.db" />
@@ -191,6 +193,7 @@
     <None Include="lang\winfile_en-US.dlg" />
     <None Include="lang\winfile_pl-PL.dlg" />
     <None Include="lang\winfile_pt-PT.dlg" />
+    <None Include="lang\winfile_pt-BR.dlg" />
     <None Include="lang\winfile_tr-TR.dlg" />
     <None Include="lang\winfile_zh-CN.dlg" />
     <None Include="lang\winfile_ja-JP.dlg" />
